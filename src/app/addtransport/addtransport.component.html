@@ -1,0 +1,68 @@
+<div class="container">
+  <h5 class="my-3">Add Transport</h5>
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{ successMsg }}
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <label class="m-0">Transport Name</label>
+          <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="Transport Name"
+            [(ngModel)]="transportnm"
+          />
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <label class="m-0">Contact Number</label>
+          <input
+            type="text"
+            class="form-control mb-3"
+            placeholder="Contact Number"
+            [(ngModel)]="contactno"
+          />
+        </div>
+        <div class="col-sm-12 col-xs-12">
+          <label class="m-0">Address</label>
+          <textarea
+            rows="5"
+            class="form-control mb-3"
+            placeholder="Address"
+            [(ngModel)]="address"
+          ></textarea>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+          <button
+            class="btn btn-sm btn-primary"
+            [disabled]="!transportnm || !contactno || !address"
+            (click)="addTransport()"
+            *ngIf="!edittransport"
+          >
+            Add Transport
+          </button>
+          <button
+            class="btn btn-sm btn-warning"
+            [disabled]="!transportnm || !contactno || !address"
+            (click)="updateTransport()"
+            *ngIf="edittransport"
+          >
+            Update Transport
+          </button>
+          <button
+            class="btn btn-sm ml-3 btn-secondary"
+            (click)="cancelUpdate()"
+            *ngIf="edittransport"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-viewtransport
+  (parentMethod)="editFromChildComp($event)"
+></app-viewtransport>

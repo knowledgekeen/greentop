@@ -1,0 +1,174 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~open-iconic/font/css/open-iconic-bootstrap.css";
+body,
+html {
+  font-family: "Nunito", sans-serif !important;
+  /* <-- fonts */
+}
+
+body {
+  background-color: #dedede;
+}
+
+.btn,
+.form-control {
+  border-radius: 0px;
+}
+
+.colorgreen {
+  color: #029545 !important;
+}
+
+textarea {
+  resize: none;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background: none;
+}
+
+/* Index Page */
+.banner {
+  background-image: url("assets/images/banner.jpg");
+  width: 100%;
+  height: 450px;
+}
+.indexpg {
+  font-family: "Bree Serif", serif;
+}
+
+.banner-info {
+  margin: 7em 0 0;
+  color: #ffffff;
+}
+
+.btn-contact {
+  border: 2px solid #a4dd25;
+  font-size: 1em;
+  padding: 10px 40px;
+  color: #ffffff;
+}
+
+.btn-contact:hover {
+  background-color: #a4dd25;
+  color: #000000;
+}
+
+.consultation,
+.certprods,
+.gethelp {
+  background-image: url("assets/images/1.jpg");
+  width: 100%;
+  height: 300px;
+}
+
+.overlaybg {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.55);
+}
+.certprods {
+  background-image: url("assets/images/2.jpg");
+}
+.gethelp {
+  background-image: url("assets/images/3.jpg");
+}
+.bannergrid {
+  padding: 3em 3em 0em;
+  position: relative;
+}
+
+.bannergrid i {
+  font-size: 2em;
+  color: #fff;
+  border: 3px solid #ffffff;
+  padding: 2rem;
+}
+
+.bannergrid h4 {
+  font-size: 1.5em;
+  color: #a4dd25;
+  margin-bottom: 1em;
+}
+
+.bannergrid p {
+  color: #fff;
+  line-height: 2em;
+}
+
+.bglightgray {
+  background-color: #029545;
+}
+
+.palmleaf {
+  background-image: url("assets/images/4.jpg");
+  width: 100%;
+  min-height: 500px;
+}
+
+.m10 {
+  margin: 3rem 0px 20px 0rem;
+}
+
+.bordersm {
+  border-width: 3px !important;
+  width: 100%;
+}
+
+.tractoricon {
+  border: 2px solid #a4dd25;
+}
+
+.fontlg {
+  font-size: 2rem;
+}
+
+.footerbg {
+  background-image: url("assets/images/8.jpg");
+  width: 100%;
+  min-height: 25rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.greenline {
+  border-bottom: 2px solid#a4dd25;
+}
+.text-green {
+  color: #ff0 !important;
+}
+.callus span {
+  font-size: 2.4rem;
+  display: block;
+}
+
+.callus {
+  margin-top: 2em;
+}
+
+@media (min-width: 768px) {
+  .banner {
+    height: 650px;
+  }
+  .banner-info {
+    margin: 15em 0 0;
+  }
+  .bannergrid {
+    padding: 7em 3em 0em;
+  }
+  .m10 {
+    margin: 6rem 0px 0px 5rem;
+  }
+  .bordersm {
+    width: 50%;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

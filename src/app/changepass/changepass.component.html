@@ -1,0 +1,54 @@
+<div class="container">
+  <h5 class="my-3">Change Password</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 col-sm-12">
+          <div class="text-danger mb-2" *ngIf="errorflag">
+            <i class="fa fa-exclamation-triangle"></i> {{ errorflag }}
+          </div>
+          <div class="alert alert-success" role="alert" *ngIf="successflag">
+            <i class="fa fa-check"></i> Password changed successfully.
+          </div>
+          <label class="m-0">Old Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Old Password"
+            [(ngModel)]="oldpass"
+            (blur)="checkOldPass()"
+            autofocus
+          />
+
+          <label class="m-0 mt-2">New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="New Password"
+            [(ngModel)]="newpass"
+            (blur)="checkPassword()"
+          />
+
+          <label class="m-0 mt-2">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Confirm Password"
+            [(ngModel)]="confirmpass"
+            (blur)="checkPassword()"
+          />
+          <button
+            class="btn btn-warning mt-3"
+            [disabled]="!oldpass || !newpass || !confirmpass || errorflag"
+            (click)="changePassword()"
+          >
+            Change Password
+          </button>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
+</div>

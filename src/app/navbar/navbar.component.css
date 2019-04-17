@@ -1,0 +1,26 @@
+header {
+  background-color: #ffffff;
+}
+
+a {
+  cursor: pointer;
+}
+
+.navbar-brand {
+  color: #029545;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .loginform {
+    width: 25rem;
+  }
+}
+
+.menus li:first-child {
+  text-transform: uppercase;
+}
+
+.menus li {
+  text-transform: capitalize;
+}

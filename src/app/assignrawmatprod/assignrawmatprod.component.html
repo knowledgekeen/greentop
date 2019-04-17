@@ -1,0 +1,136 @@
+<div class="container">
+  <h5 class="my-3">Assign Raw Material To Production</h5>
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{ successMsg }}
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Select a Product</label>
+          <select
+            class="form-control"
+            [(ngModel)]="product"
+            [disabled]="!allproducts || editqtyrem"
+            (change)="getAllProdRawmats()"
+          >
+            <option value="{{ prod.prodid }}" *ngFor="let prod of allproducts"
+              >{{ prod.prodid }}.{{ prod.prodname }}</option
+            >
+          </select>
+          <h6 class="h6 text-danger" *ngIf="!allproducts">
+            No Products, Please add one.
+          </h6>
+        </div>
+
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Select Raw Material</label>
+          <select
+            class="form-control"
+            [(ngModel)]="rawmat"
+            [disabled]="!allratmats"
+            *ngIf="!editqtyrem"
+          >
+            <option
+              value="{{ rawmat.rawmatid }}"
+              *ngFor="let rawmat of allratmats"
+              >{{ rawmat.rawmatid }}.{{ rawmat.name }}</option
+            >
+          </select>
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="rawmatnm"
+            *ngIf="editqtyrem"
+            readonly
+          />
+          <h6 class="h6 text-danger" *ngIf="!allratmats">
+            No Raw Materials to add, Please add one.
+          </h6>
+        </div>
+
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Default Quantity Used</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="defqty"
+            placeholder="Default Quantity Used"
+          />
+        </div>
+
+        <div class="col-md-12">
+          <button
+            class="btn btn-primary my-2"
+            [disabled]="!product || !rawmat || !defqty"
+            (click)="addProdRawMaterial()"
+            *ngIf="!editqtyrem"
+          >
+            Add Raw Material
+          </button>
+
+          <button
+            class="btn btn-success my-2"
+            (click)="saveEditRawMaterial()"
+            *ngIf="editqtyrem"
+          >
+            Save Raw Material
+          </button>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="row mt-3">
+        <div
+          class="col-md-12"
+          *ngIf="selected_prod && prod_rawmats && prod_rawmats.length > 0"
+        >
+          <p class="m-0 text-danger" *ngIf="productadded">
+            <i class="fa fa-exclamation-triangle"></i> This product is already
+            added
+          </p>
+          <h5 class="h5 text-primary">
+            All Raw Products needed to make:
+            <span class="text-info font-weight-bold">{{
+              selected_prod.prodname
+            }}</span>
+          </h5>
+          <table class="table table-sm">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Raw Material</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Edit / Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prod of prod_rawmats; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ prod.name }}</td>
+                <td>
+                  {{ prod.defquantity }}
+                </td>
+                <td>
+                  <a
+                    href="javascript:void(0);"
+                    class="text-info mr-3"
+                    (click)="editQuantityRem(prod)"
+                    ><i class="fa fa-pencil"></i> Edit</a
+                  >
+                  <a
+                    href="javascript:void(0);"
+                    class="text-danger"
+                    (click)="deassignRawMaterial(prod)"
+                    ><i class="fa fa-trash"></i> Delete</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

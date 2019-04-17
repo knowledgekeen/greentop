@@ -1,0 +1,51 @@
+<div class="container">
+  <h5 class="my-3">All Trucks</h5>
+  <div class="card">
+    <div class="card-body">
+      <p class="text-right">
+        <a [routerLink]="['/addtransport']">
+          <i class="fa fa-building"></i> Add Transport</a
+        >
+      </p>
+      <input
+        type="text"
+        class="form-control mb-3"
+        [(ngModel)]="searchtxt"
+        placeholder="Search Lorry Number"
+      />
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Lorry Number</th>
+              <th scope="col">Transport Name</th>
+              <th scope="col">Contact Number</th>
+              <th scope="col">Address</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let truck of (alltrucks | searchtruck: searchtxt);
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ truck.lorryno }}</td>
+              <td>{{ truck.transportname }}</td>
+              <td>{{ truck.contactno }}</td>
+              <td>{{ truck.address }}</td>
+              <td>
+                <a href="javascript:void(0);" (click)="editTrucks(truck)"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

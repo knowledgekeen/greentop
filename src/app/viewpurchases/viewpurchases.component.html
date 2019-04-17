@@ -1,0 +1,238 @@
+<div class="container">
+  <h5 class="my-3">View Purchases</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="position-relative" [hidden]="opendtp == false">
+        <div class="card position-absolute border-secondary dtp-pickerwrapper">
+          <div class="card-body">
+            <dl-date-time-picker
+              startView="month"
+              maxView="year"
+              minView="month"
+              [(ngModel)]="selectedDate"
+              (change)="changeDate()"
+            >
+            </dl-date-time-picker>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative">
+        <span class="text-primary font-weight-bold border-bottom border-primary"
+          >Purchase A/c - {{ selectedDate | date: "MMMM, yyyy" }}</span
+        >
+      </div>
+      <div class="position-relative text-right dtp-cardwrapper">
+        <span class="text-danger mx-3 font-weight-bold" *ngIf="errorMsg">
+          <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span
+        >
+        <i
+          class="fa fa-lg py-3 cursor-pointer text-secondary"
+          [ngClass]="{ 'fa-window-close': opendtp, 'fa-bars': !opendtp }"
+          (click)="toggleDTP()"
+        ></i>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Arrival Date</th>
+              <th scope="col">Bill No.</th>
+              <th scope="col">Bill Date</th>
+              <th scope="col">Supplier</th>
+              <th scope="col" class="text-right">Quantity</th>
+              <th scope="col" class="text-right pr-3">Amount</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let purch of allpurchases; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#detailsModal"
+                  (click)="viewPurchaseDetails(purch)"
+                >
+                  {{ purch.arrivaldt | date: "dd-MM-yyyy" }}
+                </a>
+              </td>
+              <td>{{ purch.billno }}</td>
+              <td>{{ purch.billdt | date: "dd-MM-yyyy" }}</td>
+              <td>{{ purch.name }}</td>
+              <td class="text-right">
+                {{ purch.quantity | number: "1.3-3" }}
+              </td>
+              <td class="text-right pr-3">
+                {{ purch.totalamount | currency: "INR" }}
+              </td>
+              <td>
+                <a href="javascript:void(0);" (click)="editPurchase(purch)"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            <tr *ngIf="allpurchases" class="text-primary">
+              <td colspan="5" class="text-right font-weight-bold">
+                Total of {{ selectedDate | date: "MMM, yyyy" }}
+              </td>
+              <td class="font-weight-bold text-right">
+                {{ totalqty | number: "1.3-3" }}
+              </td>
+              <td class="font-weight-bold text-right pr-3">
+                {{ totalamt | currency: "INR" }}
+              </td>
+              <td></td>
+            </tr>
+            <tr *ngIf="!allpurchases" class="text-danger">
+              <td colspan="5">
+                <i class="fa fa-exclamation-triangle"></i> There aren't any
+                reports available for
+                <span class="font-weight-bold text-uppercase">{{
+                  selectedDate | date: "MMMM, yyyy"
+                }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="detailsModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedpurchase"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ selectedpurchase.arrivaldt | date: "dd-MM-yyyy" }} -
+          {{ selectedpurchase.name }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <label class="m-0">Arrival Date: </label>
+            <input
+              type="text"
+              [value]="selectedpurchase.arrivaldt | date: 'dd-MM-yyyy'"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="m-0">Bill Date: </label>
+            <input
+              type="text"
+              [value]="selectedpurchase.billdt | date: 'dd-MM-yyyy'"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="m-0">Bill Number: </label>
+            <input
+              type="text"
+              [value]="selectedpurchase.billno"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-3 mt-3">
+            <label class="m-0">DC Number: </label>
+            <input
+              type="text"
+              [value]="selectedpurchase.dcno"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-3 mt-3">
+            <label class="m-0">Vehical Number: </label>
+            <input
+              type="text"
+              [value]="selectedpurchase.vehicalno"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-6 mt-3">
+            <label class="m-0">Supplier: </label>
+            <input
+              type="text"
+              [value]="selectedpurchase.name"
+              class="form-control"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <table class="table table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Raw Material</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Discount</th>
+                  <th scope="col">Amount Before GST</th>
+                  <th scope="col">CGST / SGST / IGST (%)</th>
+                  <th scope="col">Round Off</th>
+                  <th scope="col">Total Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{ selectedpurchase.rawmatname }}</td>
+                  <td>{{ selectedpurchase.quantity }}</td>
+                  <td>{{ selectedpurchase.amount | currency: "INR" }}</td>
+                  <th>{{ selectedpurchase.discount | currency: "INR" }}</th>
+                  <td>
+                    {{
+                      selectedpurchase.amount - selectedpurchase.discount
+                        | currency: "INR"
+                    }}
+                  </td>
+                  <td>
+                    {{ selectedpurchase.cgst }} / {{ selectedpurchase.sgst }} /
+                    {{ selectedpurchase.igst }}
+                  </td>
+                  <td>{{ selectedpurchase.roundoff | currency: "INR" }}</td>
+                  <td>{{ selectedpurchase.totalamount | currency: "INR" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

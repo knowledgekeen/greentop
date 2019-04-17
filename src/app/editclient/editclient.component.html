@@ -1,0 +1,150 @@
+<div class="container">
+  <h5 class="my-3">Edit Client</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{ successMsg }}
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 text-danger">
+          <p>
+            Fields marked with asterisk (*) are compulsary
+          </p>
+        </div>
+        <div class="col-sm-6 col-xs-12 mb-3">
+          <label class="m-0"
+            >Company Name
+            <sup class="text-danger font-weight-bold">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Company Name"
+            [(ngModel)]="fname"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0"
+            >Contact Number
+            <sup class="text-danger font-weight-bold">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact Number"
+            [(ngModel)]="cno"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0">GST Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="GST No."
+            [(ngModel)]="gstno"
+          />
+        </div>
+        <div class="col-sm-6 col-xs-12 mb-3">
+          <label class="m-0">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email Address"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0">Contact Person 1</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact Person 1"
+            [(ngModel)]="cperson1"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0">Contact Person 1 Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact Person No. 1"
+            [(ngModel)]="cno1"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0">Contact Person 2</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact Person 2"
+            [(ngModel)]="cperson2"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0">Contact Person 2 Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact Person No. 2"
+            [(ngModel)]="cno2"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0"
+            >City <sup class="text-danger font-weight-bold">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="City"
+            [(ngModel)]="city"
+            list="cities"
+          />
+          <datalist id="cities">
+            <option value="{{ city.city }}" *ngFor="let city of allcities">{{
+              city.city
+            }}</option>
+          </datalist>
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3">
+          <label class="m-0"
+            >State <sup class="text-danger font-weight-bold">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="State"
+            [(ngModel)]="state"
+            list="states"
+          />
+          <datalist id="states">
+            <option value="{{ state.state }}" *ngFor="let state of allstates">{{
+              state.state
+            }}</option>
+          </datalist>
+        </div>
+        <div class="col-sm-12 col-xs-12 mb-3">
+          <label class="m-0">Address</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Address"
+            [(ngModel)]="address"
+          ></textarea>
+        </div>
+        <div class="col-sm-6 col-xs-12 mb-3">
+          <button
+            class="btn btn-sm btn-warning"
+            (click)="updateClient()"
+            [disabled]="!fname || !cno || !city || !state"
+          >
+            Update
+            <span *ngIf="clienttype == '1'">Supplier</span>
+            <span *ngIf="clienttype == '2'">Customer</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.dtp-cardwrapper {
+  width: 100%;
+  z-index: 1;
+}
+
+.dtp-pickerwrapper {
+  width: 100%;
+  right: 0;
+  top: 38px;
+}
+
+@media (min-width: 768px) {
+  .dtp-pickerwrapper {
+    width: 50%;
+  }
+}

@@ -1,0 +1,112 @@
+import { Component, OnInit, Input } from "@angular/core";
+import { RESTService } from "../rest.service";
+import { IntervalService } from "../interval.service";
+
+@Component({
+  selector: "app-addclient",
+  templateUrl: "./addclient.component.html",
+  styleUrls: ["./addclient.component.css"]
+})
+export class AddclientComponent implements OnInit {
+  //Supplier type == 1 AND Customer type == 2
+  @Input() clienttype: string;
+  fname: string = null;
+  cno: string = null;
+  gstno: string = null;
+  email: string = null;
+  cperson1: string = null;
+  cno1: string = null;
+  cperson2: string = null;
+  cno2: string = null;
+  city: string = null;
+  state: string = null;
+  address: string = null;
+  successMsg: any = false;
+  allcities: any = null;
+  allstates: any = null;
+
+  constructor(private _rest: RESTService, private _interval: IntervalService) {}
+
+  ngOnInit() {
+    this.getClientCities();
+    this.getClientStates();
+  }
+
+  getClientCities() {
+    this.allcities = null;
+    this._rest
+      .getData("client.php", "getClientCities", null)
+      .subscribe(Response => {
+        if (Response) {
+          this.allcities = Response["data"];
+        }
+      });
+  }
+
+  getClientStates() {
+    this.allstates = null;
+    this._rest
+      .getData("client.php", "getClientStates", null)
+      .subscribe(Response => {
+        if (Response) {
+          this.allstates = Response["data"];
+        }
+      });
+  }
+
+  addClient() {
+    let address = null;
+    if (!this.address) {
+      address = this.city + ", " + this.state;
+    } else {
+      address = this.address;
+    }
+    let clientObj = {
+      fname: this.fname,
+      cno: this.cno,
+      gstno: this.gstno,
+      email: this.email,
+      cperson1: this.cperson1,
+      cno1: this.cno1,
+      cperson2: this.cperson2,
+      cno2: this.cno2,
+      city: this.city,
+      state: this.state,
+      address: address,
+      ctype: this.clienttype
+    };
+
+    this._rest
+      .postData("client.php", "addClient", clientObj, null)
+      .subscribe(Response => {
+        if (Response) {
+          this.resetForm();
+          window.scrollTo(0, 0);
+          this.getClientCities();
+          this.getClientStates();
+          if (this.clienttype == "1") {
+            this.successMsg = "Supplier added successfully";
+          } else {
+            this.successMsg = "Customer added successfully";
+          }
+          this._interval.settimer(null).then(RespInt => {
+            this.successMsg = false;
+          });
+        }
+      });
+  }
+
+  resetForm() {
+    this.fname = null;
+    this.cno = null;
+    this.gstno = null;
+    this.email = null;
+    this.cperson1 = null;
+    this.cno1 = null;
+    this.cperson2 = null;
+    this.cno2 = null;
+    this.city = null;
+    this.state = null;
+    this.address = null;
+  }
+}

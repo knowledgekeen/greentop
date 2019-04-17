@@ -1,0 +1,68 @@
+<div class="container">
+  <h5 class="my-3">Add Truck</h5>
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{ successMsg }}
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <label class="m-0"
+            >Select Transport
+            <span class="text-danger" *ngIf="!alltransports"
+              >* Kindly add a transport first.</span
+            ></label
+          >
+          <select class="form-control" [(ngModel)]="transportopt">
+            <option
+              value="{{ transport.tmid }}"
+              *ngFor="let transport of alltransports"
+              >{{ transport.transportname }}</option
+            >
+          </select>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <label class="m-0">Lorry Number (e.g MH11AA1234 )</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Lorry Number"
+            [(ngModel)]="lorryno"
+            maxlength="10"
+          />
+        </div>
+        <div class="col-sm-12 col-xs-12 mt-4">
+          <button
+            class="btn btn-primary btn-sm"
+            [disabled]="!transportopt || !lorryno"
+            (click)="addTruck()"
+            *ngIf="!edittrucks"
+          >
+            Add Truck
+          </button>
+          <button
+            class="btn btn-warning btn-sm"
+            [disabled]="!transportopt || !lorryno"
+            (click)="updateTruck()"
+            *ngIf="edittrucks"
+          >
+            Update Truck
+          </button>
+          <button
+            class="btn btn-secondary btn-sm ml-3"
+            [disabled]="!transportopt || !lorryno"
+            (click)="cancelEdit()"
+            *ngIf="edittrucks"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-viewtrucks
+  (parentMethod)="editTruckFromChildComp($event)"
+></app-viewtrucks>

@@ -1,0 +1,37 @@
+<div class="container">
+  <h5 class="my-3">View Transport</h5>
+  <div class="card">
+    <div class="card-body">
+      <p class="text-right">
+        <a [routerLink]="['/addtruck']">
+          <i class="fa fa-truck"></i> Add Truck</a
+        >
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Transport Name</th>
+              <th scope="col">Contact Number</th>
+              <th scope="col">Address</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transport of alltransport; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ transport.transportname }}</td>
+              <td>{{ transport.contactno }}</td>
+              <td>{{ transport.address }}</td>
+              <td>
+                <a href="javascript:void(0);" (click)="editTransport(transport)">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

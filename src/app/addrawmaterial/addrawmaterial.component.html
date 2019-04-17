@@ -1,0 +1,187 @@
+<div class="container">
+  <h5 class="my-3">Add New Material</h5>
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{ successMsg }}.
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <label class="m-0">Raw Material Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Raw Material Name"
+            [(ngModel)]="rawmatnm"
+          />
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Opening balance</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Opening balance"
+            [(ngModel)]="openbal"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12">
+          <label class="m-0">HSN Code</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="HSN Code"
+            [(ngModel)]="hsncode"
+          />
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Opening Balance Date</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Opening Balance Date"
+            [(ngModel)]="openbaldt"
+            (blur)="autoFillOpendt()"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <button
+            class="btn btn-success mt-4"
+            [disabled]="!rawmatnm || !openbal || !hsncode || !openbaldt"
+            (click)="addRawMaterial()"
+          >
+            Add Material
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h5 class="my-3" *ngIf="allrawmats">Raw Materials</h5>
+
+  <div class="card" *ngIf="allrawmats">
+    <div class="card-body">
+      <table class="table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Material Name</th>
+            <th scope="col">HSN Code</th>
+            <th scope="col"><i class="fa fa-pencil"></i> Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rawmat of allrawmats; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ rawmat.name }}</td>
+            <td>{{ rawmat.hsncode }}</td>
+            <td>
+              <a
+                href="javascript:void(0);"
+                (click)="selectRawMaterial(rawmat)"
+                data-toggle="modal"
+                data-target="#editModal"
+                ><i class="fa fa-pencil"></i> Edit</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal"
+  id="editModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedrawmat"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ selectedrawmat.name }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-3 mb-3">
+            <label class="m-0">Edit Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="This field cannot be empty."
+              [(ngModel)]="selectedrawmat.name"
+            />
+          </div>
+          <div class="col-sm-12 col-md-3 mb-3">
+            <label class="m-0">Edit HSN Code</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="This field cannot be empty."
+              [(ngModel)]="selectedrawmat.hsncode"
+            />
+          </div>
+          <div class="col-sm-12 col-md-3 mb-3" *ngIf="editstockbal">
+            <label class="m-0">Opening Stock Balance</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="This field cannot be empty."
+              [(ngModel)]="editstockbal.quantity"
+            />
+          </div>
+          <div class="col-sm-12 col-md-3 mb-3" *ngIf="editstockbal">
+            <label class="m-0">Opening Balance Date</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="This field cannot be empty."
+              [(ngModel)]="editstockbal.date"
+            />
+          </div>
+          <div class="col-sm-12 col-md-12 text-primary" *ngIf="!editstockbal">
+            <span
+              ><i class="fa fa-pulse fa-spinner"></i> Please wait, loading stock
+              quantity.</span
+            >
+          </div>
+          <div class="col-sm-12 col-md-12 text-danger" *ngIf="!openbalfound">
+            <span>
+              <i class="fa fa-exclamation"></i> NOTE: There is no opening
+              balance for current financial year, Kindly update atleast once the
+              Opening Stock Balance mentioned above. <br />The "Opening Stock
+              Balance" shown is the current stock of "{{ selectedrawmat.name }}"
+              and todays date, please press "Update Product".
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="updateRawMaterial()"
+          data-dismiss="modal"
+          aria-label="Close"
+          [disabled]="!selectedrawmat.name || !selectedrawmat.hsncode"
+        >
+          Update Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
