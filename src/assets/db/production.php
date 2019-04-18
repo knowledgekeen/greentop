@@ -134,14 +134,18 @@ if($action == "addProductionBatch"){
 				$sqlupdt="UPDATE `stock_master` SET `quantity`='$qtyrem',`lastmodifieddate`='$todaytm' WHERE `stockid`=$stkid";
 				$resultqty = $conn->query($sqlupdt);
 
-				//Insert into Stock Register
-				$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$qtytoadd','$todaytm', 'Updated Stock, created new batch, batchid: $prodid')";
+				//Insert into Stock Register for Raw Materials
+				$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$qtytoadd','$todaytm', 'Updated Stock, created new batch, batchid: $batchid')";
 				$resultqty = $conn->query($sqlins);
 
 				//Insert into Production Batch Register
 				$sqlbatchins="INSERT INTO `production_batch_register`(`rawmatid`, `rawmatqty`, `batchid`) VALUES ($rawmatid,'$qtytoadd','$batchid')";
 				$resultbatchqty = $conn->query($sqlbatchins);
-			}
+			}//For Loop closed
+
+			//Insert into Stock Register For Finished Product
+			$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stockid,'IN','$qtyproduced','$prodtime', 'Updated Stock, created new batch, batchid: $batchid')";
+			$resultqty = $conn->query($sqlins);
 		}
     }
     $data1= array();
@@ -201,7 +205,7 @@ if($action == "deassignRawMaterial"){
 }
 
 if($action == "getAllProductionBatches"){
-	$sql = "SELECT * FROM `production_batch_master` WHERE `status`='open'";
+	$sql = "SELECT pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`status`='open'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -220,6 +224,7 @@ if($action == "getAllProductionBatches"){
 			$tmp[$i]['qtyproduced'] = $row['qtyproduced'];
 			$tmp[$i]['qtyremained'] = $row['qtyremained'];
 			$tmp[$i]['manufacdate'] = $row['manufacdate'];
+			$tmp[$i]['prodname'] = $row['prodname'];
 			$i++;
 		}
 
@@ -234,4 +239,41 @@ if($action == "getAllProductionBatches"){
 
 	echo json_encode($data);
 }
+
+if($action == "getProductionBatchDetails"){
+	$batchid = $_GET["batchid"];
+	$sql = "SELECT pbr.`prodregid`,pbr.`rawmatid`,pbr.`rawmatqty`, rm.`name` FROM `production_batch_register` pbr, `raw_material_master` rm WHERE pbr.`batchid`=$batchid AND pbr.`rawmatid`=rm.`rawmatid`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['prodregid'] = $row['prodregid'];
+			$tmp[$i]['rawmatid'] = $row['rawmatid'];
+			$tmp[$i]['rawmatqty'] = $row['rawmatqty'];
+			$tmp[$i]['name'] = $row['name'];
+			$i++;
+		}
+
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+
 ?>

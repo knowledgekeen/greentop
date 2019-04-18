@@ -101,7 +101,11 @@
 
       <div class="row my-0" *ngIf="allrawmats">
         <div class="col-md-12">
-          <button class="btn btn-primary" (click)="addBatch()">
+          <button
+            class="btn btn-primary"
+            (click)="addBatch()"
+            [disabled]="!proddate || !prodid || !quantity"
+          >
             Add Batch
           </button>
         </div>

@@ -1,0 +1,178 @@
+<div class="container">
+  <h5 class="my-3">View Batches</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Batch id</th>
+            <th scope="col">Manufacture Date</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity Produced</th>
+            <th scope="col">Quantity Remained</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let batch of allbatches; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <a
+                href="javascript:void(0);"
+                data-toggle="modal"
+                data-target="#viewBatchModal"
+                (click)="viewBatchDetails(batch)"
+              >
+                {{ batch.batchid }}
+              </a>
+            </td>
+            <td>
+              <a
+                href="javascript:void(0);"
+                data-toggle="modal"
+                data-target="#viewBatchModal"
+                (click)="viewBatchDetails(batch)"
+              >
+                {{ batch.manufacdate | date: "dd-MM-yyyy" }}
+              </a>
+            </td>
+            <td>{{ batch.prodname }}</td>
+            <td>{{ batch.qtyproduced | number: "1.3-3" }}</td>
+            <td>{{ batch.qtyremained | number: "1.3-3" }}</td>
+            <td>
+              <a href="javascript:void(0);">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="viewBatchModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedbatch"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ selectedbatch.manufacdate | date: "dd-MM-yyyy" }} -
+          {{ selectedbatch.prodname.split(".")[1] }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <label class="m-0">Batch Id</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Batch Id"
+              [value]="selectedbatch.batchid"
+              readonly
+            />
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <label class="m-0">Manufacture Date</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Batch Id"
+              [(ngModel)]="selectedbatch.manufacdate"
+            />
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <label class="m-0">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Product Name"
+              [(ngModel)]="selectedbatch.prodname"
+              list="allprods"
+            />
+            <datalist id="allprods">
+              <option
+                value="{{ prod.prodid }}.{{ prod.prodname }}"
+                *ngFor="let prod of allproducts"
+                >{{ prod.prodid }}.{{ prod.prodname }}</option
+              >
+            </datalist>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <label class="m-0">Quantity Produced</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Quantity Produced"
+              [(ngModel)]="selectedbatch.qtyproduced"
+            />
+            <label class="h6 m-0 text-muted"
+              >Quantity Remained:
+              <span class="font-weight-bold">{{
+                selectedbatch.qtyremained
+              }}</span>
+              tons
+            </label>
+          </div>
+          <div class="col-md-12 col-sm-12 mt-3">
+            <h5 class="text-dark">All Raw Materials Used</h5>
+            <table class="table table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Raw Material</th>
+                  <th scope="col">Quantity Used (bags/tons)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let rawmat of selectedbatchmaterials; let i = index"
+                >
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ rawmat.name }}</td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="rawmat.rawmatqty"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-dismiss="modal"
+          (click)="saveBatch()"
+        >
+          Save Batch
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
