@@ -46,6 +46,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EditclientComponent } from "./editclient/editclient.component";
 import { ChangepassComponent } from "./changepass/changepass.component";
 import { ViewpurchasesComponent } from "./viewpurchases/viewpurchases.component";
+import { ViewbatchComponent } from './viewbatch/viewbatch.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { ViewpurchasesComponent } from "./viewpurchases/viewpurchases.component"
     DashboardComponent,
     EditclientComponent,
     ChangepassComponent,
-    ViewpurchasesComponent
+    ViewpurchasesComponent,
+    ViewbatchComponent
   ],
   imports: [
     BrowserModule,

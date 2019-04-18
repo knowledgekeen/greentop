@@ -55,6 +55,7 @@
             placeholder="Select Customer"
             [(ngModel)]="selectcust"
             list="custlist"
+            [disabled]="!allcustomers"
           />
           <datalist id="custlist">
             <option

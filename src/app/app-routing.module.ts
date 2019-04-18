@@ -19,6 +19,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EditclientComponent } from "./editclient/editclient.component";
 import { ChangepassComponent } from "./changepass/changepass.component";
 import { ViewpurchasesComponent } from "./viewpurchases/viewpurchases.component";
+import { ViewbatchComponent } from "./viewbatch/viewbatch.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   },
   { path: "assignrawmatprod", component: AssignrawmatprodComponent },
   { path: "addbatch", component: AddbatchComponent },
+  { path: "viewbatch", component: ViewbatchComponent },
   { path: "neworder", component: NeworderComponent },
   { path: "dispatches", component: DispatchesComponent },
   { path: "changepwd", component: ChangepassComponent },

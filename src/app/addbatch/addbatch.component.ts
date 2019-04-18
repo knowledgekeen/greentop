@@ -36,6 +36,7 @@ export class AddbatchComponent implements OnInit {
     this.allrawmats = null;
     this.allprods = null;
     this.prodid = null;
+    this.proddate = null;
     this.qty = [];
     let now = moment().format("DDMMYYYY");
     //let proddt = moment().format("DD-MM-YYYY");
