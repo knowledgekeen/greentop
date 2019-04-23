@@ -301,4 +301,82 @@ if($action == "checkRawMatOpenStockForCrntFinanYear"){
 
 	echo json_encode($data);
 }
+
+if($action == "updateCurrentStock"){
+    $data = json_decode(file_get_contents("php://input"));
+    $stockid = $data->stockid;
+    $quantity = $data->quantity;
+    $openbaldt = $data->openbaldt;
+
+	$sql = "SELECT * FROM `stock_master` WHERE `stockid`=$stockid";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+	$totalqty = floatval($row["quantity"]) + floatval($quantity);
+	$sqlregupdt = "UPDATE `stock_master` SET `quantity`='$totalqty',`lastmodifieddate`='$openbaldt' WHERE `stockid`=$stockid";
+	$resultregqty = $conn->query($sqlregupdt);
+	
+    $data1= array();
+    if($result){
+        $data1["status"] = 200;
+        $data1["data"] = $stockid;
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
+
+if($action == "updateStockUsingProdid"){
+    $data = json_decode(file_get_contents("php://input"));
+    $prodid = $data->prodid;
+    $quantity = $data->quantity;
+    $qtydt = $data->qtydt;
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "SELECT * FROM `stock_master` WHERE `prodid`=$prodid";
+		$result = $conn->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$totalqty = floatval($row["quantity"]) + floatval($quantity);
+		$sqlregupdt = "UPDATE `stock_master` SET `quantity`='$totalqty',`lastmodifieddate`='$qtydt' WHERE `prodid`=$prodid";
+		$resultregqty = $conn->query($sqlregupdt);
+	}
+
+    $data1= array();
+    if($result){
+        $data1["status"] = 200;
+        $data1["data"] = $row["stockid"];
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
+
+if($action == "updateStockRegQuantity"){
+    $data = json_decode(file_get_contents("php://input"));
+    $stockid = $data->stockid;
+    $quantity = $data->quantity;
+    $manufacdate = $data->manufacdate;
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlregupdt = "UPDATE `stock_register` SET `quantity`='$quantity' WHERE `stockid`=$stockid AND `date`=$manufacdate";
+		$resultregqty = $conn->query($sqlregupdt);
+	}
+
+    $data1= array();
+    if($resultregqty){
+        $data1["status"] = 200;
+        $data1["data"] = $stockid;
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
 ?>

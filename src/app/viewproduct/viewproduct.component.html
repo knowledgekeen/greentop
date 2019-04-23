@@ -153,6 +153,7 @@
               class="form-control"
               placeholder="This field cannot be empty."
               [(ngModel)]="editstockbal.quantity"
+              [disabled]="disable_editbal"
             />
           </div>
           <div class="col-sm-12 col-md-3 mb-3" *ngIf="editstockbal">

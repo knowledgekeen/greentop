@@ -45,6 +45,15 @@
               <a href="javascript:void(0);">Edit</a>
             </td>
           </tr>
+
+          <tr *ngIf="!allbatches">
+            <td colspan="7">
+              <h6 class="text-danger mt-3">
+                <i class="fa fa-exclamation-triangle"></i> There are no batches
+                yet
+              </h6>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -90,6 +99,16 @@
             />
           </div>
           <div class="col-md-3 col-sm-12">
+            <label class="m-0">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Product Name"
+              [(ngModel)]="selectedbatch.prodname"
+              disabled
+            />
+          </div>
+          <div class="col-md-3 col-sm-12">
             <label class="m-0">Manufacture Date</label>
             <input
               type="text"
@@ -99,29 +118,15 @@
             />
           </div>
           <div class="col-md-3 col-sm-12">
-            <label class="m-0">Product Name</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Product Name"
-              [(ngModel)]="selectedbatch.prodname"
-              list="allprods"
-            />
-            <datalist id="allprods">
-              <option
-                value="{{ prod.prodid }}.{{ prod.prodname }}"
-                *ngFor="let prod of allproducts"
-                >{{ prod.prodid }}.{{ prod.prodname }}</option
-              >
-            </datalist>
-          </div>
-          <div class="col-md-3 col-sm-12">
             <label class="m-0">Quantity Produced</label>
             <input
               type="text"
               class="form-control"
               placeholder="Quantity Produced"
               [(ngModel)]="selectedbatch.qtyproduced"
+              [disabled]="
+                originalbatch.qtyproduced != originalbatch.qtyremained
+              "
             />
             <label class="h6 m-0 text-muted"
               >Quantity Remained:

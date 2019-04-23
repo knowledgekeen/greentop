@@ -18,7 +18,9 @@ export class AddrawmaterialComponent implements OnInit {
   openbaldt: any = null;
   hsncode: string = null;
   editstockbal: any = null;
+  tmpeditstockbal: any = null;
   openbalfound: boolean = false;
+  disable_editbal: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -43,7 +45,7 @@ export class AddrawmaterialComponent implements OnInit {
     this._rest
       .postData("rawmaterial.php", "addRawMaterial", rawmatObj, null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.successMsg = "Raw Material Added Successfully";
           this.rawmatnm = null;
@@ -61,7 +63,7 @@ export class AddrawmaterialComponent implements OnInit {
           this._rest
             .postData("stock.php", "newRawMaterialInStock", objStock, null)
             .subscribe(RespStock => {
-              console.log(RespStock);
+              //console.log(RespStock);
               this.openbal = "0";
               this.hsncode = null;
               this.openbaldt = null;
@@ -87,7 +89,7 @@ export class AddrawmaterialComponent implements OnInit {
   selectRawMaterial(mat) {
     this.openbalfound = false;
     this.selectedrawmat = Object.assign(mat, []);
-    console.log(this.selectedrawmat);
+    //console.log(this.selectedrawmat);
     let finanyr = this._global.getCurrentFinancialYear();
     let rawmaturl =
       "rawmatid=" +
@@ -101,7 +103,7 @@ export class AddrawmaterialComponent implements OnInit {
       .getData("stock.php", "getRawMatOpeningStock", rawmaturl)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           if (Response["data"].quantity) {
             this.editstockbal = Response["data"];
           } else {
@@ -115,6 +117,7 @@ export class AddrawmaterialComponent implements OnInit {
 
         let dt = new Date();
         if (!this.openbalfound) {
+          this.disable_editbal = true;
           let geturl = "rawmatid=" + this.selectedrawmat.rawmatid;
           this._rest
             .getData("stock.php", "getRawMatStock", geturl)
@@ -130,10 +133,14 @@ export class AddrawmaterialComponent implements OnInit {
         this.editstockbal.date = moment(
           parseInt(this.editstockbal.date)
         ).format("DD-MM-YYYY");
+
+        this.tmpeditstockbal = JSON.parse(JSON.stringify(this.editstockbal));
       });
   }
 
   updateRawMaterial() {
+    let toupdatestkqty =
+      this.editstockbal.quantity - this.tmpeditstockbal.quantity;
     this._rest
       .postData(
         "rawmaterial.php",
@@ -153,12 +160,13 @@ export class AddrawmaterialComponent implements OnInit {
               stkdt: new Date().getTime(),
               openbaldt: new Date(balDate).getTime()
             };
-            console.log(uptstk);
+            //console.log(uptstk);
             this._rest
               .postData("stock.php", "updateOpeningStock", uptstk, null)
               .subscribe(Resp => {
-                console.log(Resp);
+                //console.log(Resp);
                 this.successMsg = "Raw Material Updated Successfully";
+                this.disable_editbal = false;
                 this.rawmatnm = null;
                 this.selectedrawmat = null;
                 this.editstockbal = null;
@@ -166,6 +174,23 @@ export class AddrawmaterialComponent implements OnInit {
                   this.successMsg = false;
                 });
               });
+
+            if (this.openbalfound == true) {
+              //Here stock master will be updated as per opening stock
+              let balDate = moment(this.editstockbal.date, "DD-MM-YYYY").format(
+                "MM-DD-YYYY"
+              );
+              let uptstkmast = {
+                stockid: this.editstockbal.stockid,
+                quantity: toupdatestkqty,
+                openbaldt: new Date(balDate).getTime()
+              };
+              this._rest
+                .postData("stock.php", "updateCurrentStock", uptstkmast, null)
+                .subscribe(Resp => {
+                  console.log("Stock master updated successfully");
+                });
+            }
           } else {
             alert(
               "There is some problem updating Product, Kindly try again later and if the issue persists please contact administrator"

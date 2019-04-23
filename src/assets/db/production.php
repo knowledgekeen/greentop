@@ -275,5 +275,27 @@ if($action == "getProductionBatchDetails"){
 	echo json_encode($data);
 }
 
+if($action == "updateProductionMaster"){
+	$data = json_decode(file_get_contents("php://input"));
+	$batchid = $data->batchid;
+	$quantity = $data->quantity;
+	$manufacdate = $data->manufacdate;
+	
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `production_batch_master` SET `qtyproduced`='$quantity', `qtyremained`='$quantity',`manufacdate`='$manufacdate' WHERE `batchid`=$batchid";
+		$result = $conn->query($sql);
+	}
+	$data1= array();
+	if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $batchid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+	}
 
+	echo json_encode($data1);
+}
 ?>

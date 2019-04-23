@@ -16,7 +16,9 @@ export class ViewproductComponent implements OnInit {
   successMsg: any = false;
   activetab: number = 1;
   editstockbal: any = null;
+  tmpeditstockbal: any = null;
   openbalfound: boolean = false;
+  disable_editbal: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -64,6 +66,9 @@ export class ViewproductComponent implements OnInit {
       hsncode: prods.hsncode,
       status: status
     };
+    let toupdatestkqty =
+      this.editstockbal.quantity - this.tmpeditstockbal.quantity;
+
     this._rest
       .postData("product.php", "updateProduct", prodObj, null)
       .subscribe(Response => {
@@ -82,18 +87,36 @@ export class ViewproductComponent implements OnInit {
             .postData("stock.php", "updateOpeningStock", uptstk, null)
             .subscribe(Resp => {
               this.successMsg = "Product Updated Successfully";
+              this.disable_editbal = false;
               this.getActiveProducts();
               this.getDeactiveProducts();
               this._interval.settimer(null).then(a => {
                 this.successMsg = false;
               });
             });
+
+          if (this.openbalfound == true) {
+            //Here stock master will be updated as per opening stock
+            let balDate = moment(this.editstockbal.date, "DD-MM-YYYY").format(
+              "MM-DD-YYYY"
+            );
+            let uptstkmast = {
+              stockid: this.editstockbal.stockid,
+              quantity: toupdatestkqty,
+              openbaldt: new Date(balDate).getTime()
+            };
+            this._rest
+              .postData("stock.php", "updateCurrentStock", uptstkmast, null)
+              .subscribe(Resp => {
+                console.log("Stock master updated successfully");
+              });
+          }
         }
       });
   }
 
   selectProduct(prod) {
-    console.log(prod);
+    //console.log(prod);
     this.selectedprod = prod;
     let finanyr = this._global.getCurrentFinancialYear();
     let produrl =
@@ -107,9 +130,9 @@ export class ViewproductComponent implements OnInit {
     this._rest
       .getData("stock.php", "getProdOpeningStock", produrl)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           if (Response["data"].quantity) {
             this.editstockbal = Response["data"];
           } else {
@@ -122,6 +145,7 @@ export class ViewproductComponent implements OnInit {
         }
         let dt = new Date();
         if (!this.openbalfound) {
+          this.disable_editbal = true;
           let geturl = "prodid=" + this.selectedprod.prodid;
           this._rest
             .getData("stock.php", "getProductStock", geturl)
@@ -137,6 +161,7 @@ export class ViewproductComponent implements OnInit {
         this.editstockbal.date = moment(
           parseInt(this.editstockbal.date)
         ).format("DD-MM-YYYY");
+        this.tmpeditstockbal = JSON.parse(JSON.stringify(this.editstockbal));
       });
   }
 
