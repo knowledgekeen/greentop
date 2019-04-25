@@ -87,7 +87,7 @@ export class DispatchesComponent implements OnInit {
     this._rest
       .getData("order.php", "getOrderConsignees", urldata)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.allconsignees = Response["data"];
         }
@@ -121,7 +121,7 @@ export class DispatchesComponent implements OnInit {
         "Quantity remained cannot be greater than Quantity Entered.";
       return;
     }
-    console.log(this.selqty, this.orderdetails.quantity);
+    //console.log(this.selqty, this.orderdetails.quantity);
     if (parseFloat(this.selqty) > parseFloat(this.orderdetails.quantity)) {
       this.qtyremerror =
         "Quantity Entered cannot be greater than Order Quantity";
@@ -133,7 +133,7 @@ export class DispatchesComponent implements OnInit {
       tmpqty += parseFloat(this.addedbatches[i].selqty);
     }
     let qty = parseFloat(this.orderdetails.quantity) - (tmpqty + qtyrem);
-    console.log(tmpqty, qtyrem, qty);
+    //console.log(tmpqty, qtyrem, qty);
     if (qty < 0) {
       this.qtyremerror =
         "Total Quantity Entered cannot be greater than Order Quantity";
@@ -189,12 +189,12 @@ export class DispatchesComponent implements OnInit {
       partytrans: partytrans,
       addedbatches: this.addedbatches
     };
-    console.log(dispatchObj);
+    //console.log(dispatchObj);
     this._rest
       .postData("dispatch.php", "dispatchOrder", dispatchObj, null)
       .subscribe(
         Response => {
-          console.log(Response);
+          //console.log(Response);
           if (Response) {
             window.scrollTo(0, 0);
             this.successmsg = true;

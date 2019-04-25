@@ -46,6 +46,7 @@ export class PurchaserawmaterialComponent implements OnInit {
   purcmastid: any = false;
   showaddmaterial: boolean = true;
   editpurchasedata: any = null;
+  disablepurchasebtn: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -148,6 +149,7 @@ export class PurchaserawmaterialComponent implements OnInit {
   }
 
   purchaseRawMaterial() {
+    this.disablepurchasebtn = true;
     let myDate = moment(this.billdt, "DD-MM-YYYY").format("MM-DD-YYYY");
     let ariDate = moment(this.arrivaldt, "DD-MM-YYYY").format("MM-DD-YYYY");
 
@@ -166,9 +168,9 @@ export class PurchaserawmaterialComponent implements OnInit {
     let stkObj = {
       billdt: new Date(myDate).getTime(),
       addedmaterials: this.added_materials,
-      remark: "Purchase Raw Material"
+      remark: "Purchase Raw Material",
+      purchid: null
     };
-
     //console.log(rawObj, stkObj);
     /**
      * Before Purchase check if there is any opening balance available for current financial year.
@@ -186,11 +188,12 @@ export class PurchaserawmaterialComponent implements OnInit {
       .subscribe(Resp => {
         if (!Resp) {
           //There is no opening bal for current year, so get latest stock for raw material
+          //console.log("No opening bal");
           let newgeturl = "rawmatid=" + this.added_materials[0].rawmatid;
           this._rest
             .getData("stock.php", "getRawMatStock", newgeturl)
             .subscribe(RespStk => {
-              console.log(RespStk);
+              //console.log(RespStk);
               if (RespStk) {
                 //Once stock value fetched update Opening Stock for Raw Material
                 let postobj = {
@@ -202,7 +205,7 @@ export class PurchaserawmaterialComponent implements OnInit {
                 this._rest
                   .postData("stock.php", "updateOpeningStock", postobj, null)
                   .subscribe(RespOpenBal => {
-                    console.log(RespOpenBal);
+                    //console.log(RespOpenBal);
                   });
               }
             });
@@ -213,6 +216,7 @@ export class PurchaserawmaterialComponent implements OnInit {
           .postData("rawmaterial.php", "purchaseRawMaterial", rawObj, null)
           .subscribe(Response => {
             if (Response) {
+              stkObj.purchid = Response["data"];
               this._rest
                 .postData("stock.php", "updateStockRawMaterial", stkObj, null)
                 .subscribe(RespStk => {
@@ -222,6 +226,7 @@ export class PurchaserawmaterialComponent implements OnInit {
                     this.successMsg = "Raw Material Purchased Successfully";
                     this._interval.settimer(null).then(Resp => {
                       this.successMsg = false;
+                      this.resetForm();
                       window.location.reload();
                     });
                   }
@@ -427,7 +432,7 @@ export class PurchaserawmaterialComponent implements OnInit {
   }
 
   updatePurchasesRawMaterial() {
-    //Update code to write yet
+    this.disablepurchasebtn = true;
     let myDate = moment(this.billdt, "DD-MM-YYYY").format("MM-DD-YYYY");
     let ariDate = moment(this.arrivaldt, "DD-MM-YYYY").format("MM-DD-YYYY");
 
@@ -449,7 +454,8 @@ export class PurchaserawmaterialComponent implements OnInit {
     let stkObj = {
       billdt: new Date(myDate).getTime(),
       addedmaterials: tmpaddedrawmat,
-      remark: "Update Purchase Raw Material"
+      remark: "Update Purchase Raw Material",
+      purchid: null
     };
 
     //console.log(rawObj, stkObj);
@@ -457,6 +463,7 @@ export class PurchaserawmaterialComponent implements OnInit {
       .postData("rawmaterial.php", "updatePurchasesRawMaterial", rawObj, null)
       .subscribe(Response => {
         if (Response) {
+          stkObj.purchid = Response["data"];
           this._rest
             .postData("stock.php", "updateStockRawMaterial", stkObj, null)
             .subscribe(RespStk => {
@@ -472,5 +479,35 @@ export class PurchaserawmaterialComponent implements OnInit {
             });
         }
       });
+  }
+
+  resetForm() {
+    this.arrivaldt = null;
+    this.billdt = null;
+    this.dcno = null;
+    this.billno = null;
+    this.vehicalno = null;
+    this.supplier = null;
+    this.totalamt = null;
+    this.totaldiscount = null;
+    this.totalnetamount = null;
+    this.totalsuppamount = null;
+    this.product = null;
+    this.qty = null;
+    this.rate = null;
+    this.amount = null;
+    this.discount = null;
+    this.netamount = null;
+    this.cgst = null;
+    this.cgstinr = null;
+    this.sgst = null;
+    this.sgstinr = null;
+    this.igst = null;
+    this.igstinr = null;
+    this.roundoff = null;
+    this.rawmattotalamt = null;
+    this.product_mismatch_err = null;
+    this.client_mismatch_err = null;
+    this.added_materials = null;
   }
 }

@@ -25,7 +25,7 @@ export class ViewtrucksComponent implements OnInit {
     this._rest
       .getData("transport.php", "getAllTrucks", null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this._global.updateTrucksData(Response["data"]);
         }

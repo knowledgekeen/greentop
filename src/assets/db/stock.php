@@ -70,6 +70,7 @@ if($action == "updateStockRawMaterial"){
     $billdt = $data->billdt;
     $addedmaterials = $data->addedmaterials;
     $remark = $data->remark;
+    $purchid = $data->purchid;
 
     for($i=0; $i<count($addedmaterials); $i++) {
         $rawmatid=$addedmaterials[$i]->rawmatid;
@@ -83,7 +84,7 @@ if($action == "updateStockRawMaterial"){
         $resultqty = $conn->query($sqlupdt);
 
         $stkid = $row["stockid"];
-        $sqlregins = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'IN','$qty','$billdt', '$remark')";
+        $sqlregins = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'IN','$qty','$billdt', '$remark - Purchase id: $purchid')";
         $resultins = $conn->query($sqlregins);
     }
 
@@ -361,9 +362,10 @@ if($action == "updateStockRegQuantity"){
     $stockid = $data->stockid;
     $quantity = $data->quantity;
     $manufacdate = $data->manufacdate;
+    $newdate = $data->newdate;
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sqlregupdt = "UPDATE `stock_register` SET `quantity`='$quantity' WHERE `stockid`=$stockid AND `date`=$manufacdate";
+		$sqlregupdt = "UPDATE `stock_register` SET `quantity`='$quantity', `date`='$newdate' WHERE `stockid`=$stockid AND `date`=$manufacdate";
 		$resultregqty = $conn->query($sqlregupdt);
 	}
 
@@ -378,5 +380,31 @@ if($action == "updateStockRegQuantity"){
 		header(' ', true, 204);
     }
     echo json_encode($data1);
+}
+
+
+if($action == "getStockidFromRawMatId"){
+	$rawmatid = $_GET["rawmatid"];
+	$sql = "SELECT `stockid`, `quantity` FROM `stock_master` WHERE `rawmatid`=$rawmatid";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($result && $row){
+		$tmp['stockid'] = $row['stockid'];
+		$tmp['quantity'] = $row['quantity'];
+		
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
 }
 ?>

@@ -73,7 +73,7 @@ export class EditclientComponent implements OnInit {
       .getData("client.php", "getClientDetails", clientdata)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           this.clientdata = Response["data"];
           this.setClientDetails();
         }
@@ -120,7 +120,7 @@ export class EditclientComponent implements OnInit {
     this._rest
       .postData("client.php", "updateClient", clientObj, null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.successMsg = true;
           window.scrollTo(0, 0);

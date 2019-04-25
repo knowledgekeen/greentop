@@ -62,7 +62,7 @@ export class AssignrawmatprodComponent implements OnInit {
       this._rest
         .getData("production.php", "getAllProdRawmats", urldata)
         .subscribe(Response => {
-          console.log(Response);
+          //console.log(Response);
           if (Response) {
             this.prod_rawmats = Response["data"];
           }
@@ -123,7 +123,7 @@ export class AssignrawmatprodComponent implements OnInit {
       rawmatid: this.rawmatnm.split(".")[0],
       defqty: this.defqty
     };
-    console.log(tmpObj);
+    //console.log(tmpObj);
     this._rest
       .postData("production.php", "saveEditRawMaterial", tmpObj, null)
       .subscribe(Response => {
@@ -143,7 +143,7 @@ export class AssignrawmatprodComponent implements OnInit {
   }
 
   deassignRawMaterial(rawmat) {
-    console.log(rawmat);
+    //console.log(rawmat);
     let urlData = "prodrawid=" + rawmat.prodrawid;
     this._rest
       .getData("production.php", "deassignRawMaterial", urlData)

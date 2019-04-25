@@ -25,7 +25,7 @@ export class ViewtransportComponent implements OnInit {
     this._rest
       .getData("transport.php", "getActiveTransport", null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this._global.updateTransportData(Response["data"]);
         }

@@ -82,7 +82,7 @@ export class ViewproductComponent implements OnInit {
             stkdt: new Date().getTime(),
             openbaldt: new Date(balDate).getTime()
           };
-          console.log(uptstk);
+          //console.log(uptstk);
           this._rest
             .postData("stock.php", "updateOpeningStock", uptstk, null)
             .subscribe(Resp => {

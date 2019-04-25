@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RESTService } from "../rest.service";
 import * as moment from "moment";
+import { IntervalService } from "../interval.service";
 
 @Component({
   selector: "app-viewbatch",
@@ -15,7 +16,8 @@ export class ViewbatchComponent implements OnInit {
   originalbatchmaterials: any = null;
   allproducts: any = null;
   isbatchused: any = false;
-  constructor(private _rest: RESTService) {}
+  batchsucces: any = false;
+  constructor(private _rest: RESTService, private _interval: IntervalService) {}
 
   ngOnInit() {
     this.initialize();
@@ -50,7 +52,7 @@ export class ViewbatchComponent implements OnInit {
           this.originalbatchmaterials = JSON.parse(
             JSON.stringify(Response["data"])
           );
-          console.log(this.originalbatch);
+          //console.log(this.originalbatchmaterials, this.originalbatch);
         }
       });
   }
@@ -80,7 +82,8 @@ export class ViewbatchComponent implements OnInit {
       let stkregobj = {
         stockid: Response["data"],
         quantity: this.selectedbatch.qtyproduced,
-        manufacdate: this.originalbatch.manufacdate
+        manufacdate: this.originalbatch.manufacdate,
+        newdate: new Date(balDate).getTime()
       };
       //console.log(Response, stkregobj);
       this.updateProductionMaster(batchprodobj).then(Resp => {
@@ -89,9 +92,54 @@ export class ViewbatchComponent implements OnInit {
             //console.log("Success");
             this.allbatches = null;
             this.initialize();
+
+            //Update stock master for all raw materials
+            let tmpprodregarr = [];
+            let vm = this;
+            for (let i in vm.originalbatchmaterials) {
+              (function(e) {
+                let tmpprodregobj = {
+                  prodregid: vm.originalbatchmaterials[e].prodregid,
+                  rawmatid: vm.originalbatchmaterials[e].rawmatid,
+                  rawmatqty: vm.selectedbatchmaterials[e].rawmatqty,
+                  stockid: null,
+                  changeqty: null,
+                  stkdate: vm.originalbatch.manufacdate,
+                  newdate: new Date(balDate).getTime()
+                };
+                tmpprodregobj.changeqty =
+                  parseFloat(vm.selectedbatchmaterials[e].rawmatqty) -
+                  parseFloat(vm.originalbatchmaterials[e].rawmatqty);
+                let url = "rawmatid=" + vm.originalbatchmaterials[e].rawmatid;
+                vm._rest
+                  .getData("stock.php", "getStockidFromRawMatId", url)
+                  .subscribe(resgetstock => {
+                    if (resgetstock) {
+                      //console.log(resgetstock);
+                      tmpprodregobj.stockid = resgetstock["data"]["stockid"];
+                      //tmpprodregarr.push(tmpprodregobj);
+
+                      vm._rest
+                        .postData(
+                          "rawmaterial.php",
+                          "updateRawMaterialsAndStocks",
+                          tmpprodregobj,
+                          null
+                        )
+                        .subscribe(RespTmpProdRegArr => {
+                          //console.log("Success", RespTmpProdRegArr);
+                          vm.batchsucces = true;
+                          vm._interval.settimer(null).then(resp => {
+                            vm.batchsucces = false;
+                          });
+                        });
+                    }
+                  });
+              })(i);
+            }
           })
           .catch(Respstkregerr => {
-            console.log(Respstkregerr);
+            console.log("Error", Respstkregerr);
           });
       });
     });

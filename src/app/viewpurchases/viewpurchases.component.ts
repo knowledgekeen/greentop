@@ -35,7 +35,7 @@ export class ViewpurchasesComponent implements OnInit {
   }
 
   getFromToPurchases(fromdt, todt) {
-    console.log(fromdt, todt);
+    //console.log(fromdt, todt);
     this.allpurchases = null;
     let purchurl = "fromdt=" + fromdt + "&todt=" + todt;
 
@@ -96,7 +96,7 @@ export class ViewpurchasesComponent implements OnInit {
   }
 
   viewPurchaseDetails(purch) {
-    console.log(purch);
+    //console.log(purch);
     this.selectedpurchase = purch;
   }
 }

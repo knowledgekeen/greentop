@@ -62,7 +62,7 @@ export class NeworderComponent implements OnInit {
     this._rest
       .getData("order.php", "getLastOrderId", null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           if (Response["data"]) {
             this.orderno = "GTO-" + (parseInt(Response["data"]) + 1);
@@ -108,7 +108,7 @@ export class NeworderComponent implements OnInit {
       }
 
       if (cust) {
-        console.log(cust);
+        //console.log(cust);
         this.consigneename = cust.name;
         this.consigneecontactperson = cust.contactperson1;
         this.consigneecontactno = cust.contactno;
@@ -188,7 +188,7 @@ export class NeworderComponent implements OnInit {
           });
         }
       });
-    console.log(orderObj);
+    //console.log(orderObj);
   }
 
   resetForm() {

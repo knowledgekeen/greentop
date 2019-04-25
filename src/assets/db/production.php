@@ -135,7 +135,7 @@ if($action == "addProductionBatch"){
 				$resultqty = $conn->query($sqlupdt);
 
 				//Insert into Stock Register for Raw Materials
-				$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$qtytoadd','$todaytm', 'Updated Stock, created new batch, batchid: $batchid')";
+				$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$qtytoadd','$prodtime', 'Updated Stock, created new batch, batchid: $batchid')";
 				$resultqty = $conn->query($sqlins);
 
 				//Insert into Production Batch Register

@@ -33,7 +33,7 @@ export class AddtransportComponent implements OnInit {
     this._rest
       .postData("transport.php", "addTransport", transportObj, null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.successMsg = "Transport Added Successfully.";
           this.transportnm = null;
@@ -58,7 +58,7 @@ export class AddtransportComponent implements OnInit {
   }
 
   editFromChildComp(event) {
-    console.log(event);
+    //console.log(event);
     this.edittransport = event.tmid;
     this.transportnm = event.transportname;
     this.contactno = event.contactno;
@@ -83,7 +83,7 @@ export class AddtransportComponent implements OnInit {
     this._rest
       .postData("transport.php", "updateTransport", transportObj, null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.successMsg = "Transport Updated Successfully.";
           this.cancelUpdate();

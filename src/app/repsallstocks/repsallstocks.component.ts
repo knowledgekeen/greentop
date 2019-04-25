@@ -129,7 +129,7 @@ export class RepsallstocksComponent implements OnInit {
     this.histarr = [];
     this.selectedmat = stock;
     let finanyear = this._global.getCurrentFinancialYear();
-    console.log(finanyear);
+    //console.log(finanyear);
     let geturl =
       "stockid=" +
       stock.stockid +

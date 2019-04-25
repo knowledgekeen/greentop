@@ -392,7 +392,8 @@
             !billno ||
             client_mismatch_err ||
             product_mismatch_err ||
-            added_materials.length <= 0
+            added_materials.length <= 0 ||
+            disablepurchasebtn
           "
           *ngIf="!purcmastid"
         >
@@ -410,7 +411,8 @@
             !billno ||
             client_mismatch_err ||
             product_mismatch_err ||
-            added_materials.length <= 0
+            added_materials.length <= 0 ||
+            disablepurchasebtn
           "
           *ngIf="purcmastid"
         >

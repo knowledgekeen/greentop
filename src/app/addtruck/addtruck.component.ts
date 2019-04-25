@@ -30,7 +30,7 @@ export class AddtruckComponent implements OnInit {
       .getData("transport.php", "getActiveTransport", null)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           this.alltransports = Response["data"];
         }
       });
@@ -74,7 +74,7 @@ export class AddtruckComponent implements OnInit {
     this.lorryno = evt.lorryno;
     this.transportopt = evt.tmid;
     this.edittrucks = evt.truckid;
-    console.log(evt);
+    //console.log(evt);
   }
 
   updateTruck() {

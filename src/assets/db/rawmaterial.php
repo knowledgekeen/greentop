@@ -228,4 +228,48 @@ if($action == "updatePurchasesRawMaterial"){
 
 	echo json_encode($data1);
 }
+
+if($action == "updateRawMaterialsAndStocks"){
+    $data = json_decode(file_get_contents("php://input"));
+	$prodregid=$data->prodregid;
+	$rawmatid=$data->rawmatid;
+	$rawmatqty=$data->rawmatqty;
+	$stockid=$data->stockid;
+	$changeqty=$data->changeqty;
+	$stkdate=$data->stkdate;
+	$newdate=$data->newdate;
+    
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		// Update Production Batch Register
+		$sqlprodbatupd = "UPDATE `production_batch_register` SET `rawmatqty`='$rawmatqty' WHERE `prodregid`=$prodregid";
+		$resultprodbatupt = $conn->query($sqlprodbatupd);
+		
+		// Get latest quantity from Stock Master 
+		$sql = "SELECT `quantity` FROM `stock_master` WHERE `stockid`=$stockid";
+		$result = $conn->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$totalqty = floatval($row["quantity"]) - floatval($changeqty);
+
+		// Update Stock Master
+		$sqlstkmstupd = "UPDATE `stock_master` SET `quantity`='$totalqty',`lastmodifieddate`='$newdate' WHERE `stockid`=$stockid";
+		$resultstkmstupt = $conn->query($sqlstkmstupd);
+
+		// Update Stock Register
+		$sqlstkregupd = "UPDATE `stock_register` SET `quantity`='$rawmatqty',`date`='$newdate' WHERE `INorOUT`='OUT' AND `stockid`=$stockid AND `date`=$stkdate";
+		$resultstkregupt = $conn->query($sqlstkregupd);
+	}
+
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $stockid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

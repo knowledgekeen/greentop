@@ -76,7 +76,7 @@ export class AddbatchComponent implements OnInit {
       .getData("production.php", "getAllProdRawmats", urldata)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response);
+          //console.log(Response);
           this.allrawmats = Response["data"];
           this.prodstk = Response["stock"];
 
@@ -104,7 +104,7 @@ export class AddbatchComponent implements OnInit {
       alert("Please fill all the raw material quantities");
     } else {
       let errorFlag = false;
-      console.log(this.prodid);
+      //console.log(this.prodid);
       for (let j in this.allrawmats) {
         //console.log(cond, isNaN(parseFloat(this.qty[j])));
         if (isNaN(parseFloat(this.qty[j]))) {
@@ -140,7 +140,7 @@ export class AddbatchComponent implements OnInit {
           finalstk: finalstk,
           stockid: this.prodstk.stockid
         };
-        console.log(batchObj);
+        //console.log(batchObj);
 
         this._rest
           .postData("production.php", "addProductionBatch", batchObj, null)
