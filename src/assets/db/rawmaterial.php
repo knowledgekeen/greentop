@@ -272,4 +272,54 @@ if($action == "updateRawMaterialsAndStocks"){
 
 	echo json_encode($data1);
 }
+
+if($action == "checkPurchaseBillNoIfPresent"){
+	$billno = ($_GET["billno"]);
+	$sql = "SELECT * FROM `purchase_master` WHERE `billno`=$billno";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($result && $row){
+		$tmp['billno'] = $row['billno'];
+		$tmp['billdt'] = $row['billdt'];
+		
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "checkPurchaseDCNoIfPresent"){
+	$dcno = ($_GET["dcno"]);
+	$sql = "SELECT * FROM `purchase_master` WHERE `dcno`=$dcno";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($result && $row){
+		$tmp['dcno'] = $row['dcno'];
+		$tmp['billdt'] = $row['billdt'];
+		
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
 ?>

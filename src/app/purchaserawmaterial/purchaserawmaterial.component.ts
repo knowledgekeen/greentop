@@ -47,6 +47,7 @@ export class PurchaserawmaterialComponent implements OnInit {
   showaddmaterial: boolean = true;
   editpurchasedata: any = null;
   disablepurchasebtn: boolean = false;
+  warningflag: any = false;
 
   constructor(
     private _rest: RESTService,
@@ -509,5 +510,45 @@ export class PurchaserawmaterialComponent implements OnInit {
     this.product_mismatch_err = null;
     this.client_mismatch_err = null;
     this.added_materials = null;
+  }
+
+  checkPurchaseBillNoIfPresent() {
+    if (!this.billno) return;
+
+    let geturl = "billno=" + this.billno;
+    this._rest
+      .getData("rawmaterial.php", "checkPurchaseBillNoIfPresent", geturl)
+      .subscribe(Response => {
+        console.log(Response);
+        if (Response) {
+          let tmpdt = moment(parseInt(Response["data"].billdt)).format(
+            "DD-MM-YYYY"
+          );
+          this.warningflag =
+            "Bill No is already present for purchase made on " + tmpdt;
+        } else {
+          this.warningflag = false;
+        }
+      });
+  }
+
+  checkPurchaseDCNoIfPresent() {
+    if (!this.dcno) return;
+
+    let geturl = "dcno=" + this.dcno;
+    this._rest
+      .getData("rawmaterial.php", "checkPurchaseDCNoIfPresent", geturl)
+      .subscribe(Response => {
+        console.log(Response);
+        if (Response) {
+          let tmpdt = moment(parseInt(Response["data"].billdt)).format(
+            "DD-MM-YYYY"
+          );
+          this.warningflag =
+            "DC No is already present for purchase made on " + tmpdt;
+        } else {
+          this.warningflag = false;
+        }
+      });
   }
 }
