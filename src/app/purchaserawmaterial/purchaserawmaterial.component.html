@@ -8,6 +8,12 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 mb-2 text-danger">
           <i class="fa fa-exclamation"></i> All fields are compulsary
+          <span
+            class="float-right border-bottom border-danger"
+            *ngIf="warningflag"
+          >
+            <i class="fa fa-exclamation"></i> {{ warningflag }}</span
+          >
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Arrival Date (DD-MM-YYYY)</label>
@@ -37,6 +43,7 @@
             class="form-control"
             placeholder="D.C number"
             [(ngModel)]="dcno"
+            (blur)="checkPurchaseDCNoIfPresent()"
           />
         </div>
         <div class="col-md-2 col-sm-12">
@@ -46,6 +53,7 @@
             class="form-control"
             placeholder="Bill Number"
             [(ngModel)]="billno"
+            (blur)="checkPurchaseBillNoIfPresent()"
           />
         </div>
         <div class="col-md-2 col-sm-12">
