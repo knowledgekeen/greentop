@@ -50,20 +50,52 @@ export class GlobalService {
       let fromdt: any = new Date(),
         todt: any = new Date();
       fromdt = moment(fromdt.getFullYear() + "-04-01 00:00");
+      todt = moment(todt.getFullYear() + 1 + "-03-31 23:59");
       //console.log(fromdt.unix() * 1000, todt.getTime());
       return {
         fromdt: fromdt.unix() * 1000,
-        todt: todt.getTime()
+        todt: todt.unix() * 1000
       };
     } else {
       //2018-2019
       let fromdt: any = new Date(),
         todt: any = new Date();
       fromdt = moment(fromdt.getFullYear() - 1 + "-04-01 00:00");
+      todt = moment(todt.getFullYear() + "-03-31 23:59");
       //console.log(fromdt.unix() * 1000, todt.getTime());
       return {
         fromdt: fromdt.unix() * 1000,
-        todt: todt.getTime()
+        todt: todt.unix() * 1000
+      };
+    }
+  }
+
+  /**
+   * Pass milliseconds from 1 April to 31 March of year and it will return financial year
+   */
+  getSpecificFinancialYear(ms: any = new Date().getTime()) {
+    let dt = new Date(ms);
+    if (dt.getMonth() > 2) {
+      //2019-2020
+      let fromdt: any = new Date(ms),
+        todt: any = new Date(ms);
+      fromdt = moment(fromdt.getFullYear() + "-04-01 00:00");
+      todt = moment(todt.getFullYear() + 1 + "-03-31 23:59");
+      //console.log(fromdt.unix() * 1000, todt.getTime());
+      return {
+        fromdt: fromdt.unix() * 1000,
+        todt: todt.unix() * 1000
+      };
+    } else {
+      //2018-2019
+      let fromdt: any = new Date(),
+        todt: any = new Date();
+      fromdt = moment(fromdt.getFullYear() - 1 + "-04-01 00:00");
+      todt = moment(todt.getFullYear() + "-03-31 23:59");
+      //console.log(fromdt.unix() * 1000, todt.getTime());
+      return {
+        fromdt: fromdt.unix() * 1000,
+        todt: todt.unix() * 1000
       };
     }
   }
@@ -123,5 +155,34 @@ export class GlobalService {
     } else {
       return dt;
     }
+  }
+
+  /**
+   * *****************************************************************************
+   * Function for dynamic sorting
+   * *****************************************************************************
+   * Examples:
+   *  1.sortArr('key');
+   *  2.sortArr('key', 'desc');
+   *  3.sortArr('key2');
+   */
+  sortArr(key, order = "asc") {
+    return function(a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        // property doesn't exist on either object
+        return 0;
+      }
+
+      const varA = typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
+      const varB = typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
+
+      let comparison = 0;
+      if (varA > varB) {
+        comparison = 1;
+      } else if (varA < varB) {
+        comparison = -1;
+      }
+      return order == "desc" ? comparison * -1 : comparison;
+    };
   }
 }

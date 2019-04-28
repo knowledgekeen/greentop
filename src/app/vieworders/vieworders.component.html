@@ -1,0 +1,70 @@
+<div class="container">
+  <h5 class="my-3">View Orders</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="position-relative" [hidden]="opendtp == false">
+        <div class="card position-absolute border-secondary dtp-pickerwrapper">
+          <div class="card-body">
+            <dl-date-time-picker
+              startView="month"
+              maxView="year"
+              minView="month"
+              [(ngModel)]="selectedDate"
+              (change)="changeDate()"
+            >
+            </dl-date-time-picker>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative">
+        <span class="text-primary font-weight-bold border-bottom border-primary"
+          >Orders - {{ selectedDate | date: "MMMM, yyyy" }}</span
+        >
+      </div>
+      <div class="position-relative text-right dtp-cardwrapper">
+        <span class="text-danger mx-3 font-weight-bold" *ngIf="errorMsg">
+          <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span
+        >
+        <i
+          class="fa fa-lg py-3 cursor-pointer text-secondary"
+          [ngClass]="{ 'fa-window-close': opendtp, 'fa-bars': !opendtp }"
+          (click)="toggleDTP()"
+        ></i>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

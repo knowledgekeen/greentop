@@ -8,7 +8,7 @@ import { GlobalService } from "./global.service";
 export class RESTService {
   constructor(private _http: HttpClient, private vars: GlobalService) {}
 
-  getData(file: string, action: string, urldata: any) {
+  getData(file: string, action: string, urldata: any = null) {
     if (urldata) {
       return this._http.get(
         this.vars.serverpath + file + "?action=" + action + "&" + urldata
@@ -18,7 +18,7 @@ export class RESTService {
     }
   }
 
-  postData(file: string, action: string, dataobj: any, urldata: any) {
+  postData(file: string, action: string, dataobj: any, urldata: any = null) {
     if (urldata) {
       return this._http.post(
         this.vars.serverpath +

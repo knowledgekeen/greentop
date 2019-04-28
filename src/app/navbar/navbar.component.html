@@ -123,6 +123,15 @@
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>
+                  <ul class="py-2 px-4 my-2 list-unstyled menus">
+                    <li>MISC.</li>
+                    <li>
+                      <a [routerLink]="['/addpaymode']"
+                        >Add/View Payment Modes
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="dropdown-divider"></div>
                 </div>
 
                 <div class="col-sm-3">
@@ -135,6 +144,11 @@
                     </li>
                     <li>
                       <a [routerLink]="['/viewpurchases']">View Purchases</a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/purchasepayments']"
+                        >Purchase Payments</a
+                      >
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>
@@ -159,6 +173,9 @@
                     <li><a [routerLink]="['/neworder']">New Order</a></li>
                     <li>
                       <a [routerLink]="['/dispatches']">Dispatches</a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/vieworders']">View Orders</a>
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>

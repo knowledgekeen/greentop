@@ -20,6 +20,9 @@ import { EditclientComponent } from "./editclient/editclient.component";
 import { ChangepassComponent } from "./changepass/changepass.component";
 import { ViewpurchasesComponent } from "./viewpurchases/viewpurchases.component";
 import { ViewbatchComponent } from "./viewbatch/viewbatch.component";
+import { PurchasepaymentsComponent } from "./purchasepayments/purchasepayments.component";
+import { AddpaymodeComponent } from "./addpaymode/addpaymode.component";
+import { ViewordersComponent } from "./vieworders/vieworders.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -45,6 +48,9 @@ const routes: Routes = [
   { path: "dispatches", component: DispatchesComponent },
   { path: "changepwd", component: ChangepassComponent },
   { path: "viewpurchases", component: ViewpurchasesComponent },
+  { path: "purchasepayments", component: PurchasepaymentsComponent },
+  { path: "addpaymode", component: AddpaymodeComponent },
+  { path: "vieworders", component: ViewordersComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" }
 ];
 

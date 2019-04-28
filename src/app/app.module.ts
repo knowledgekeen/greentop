@@ -47,6 +47,9 @@ import { EditclientComponent } from "./editclient/editclient.component";
 import { ChangepassComponent } from "./changepass/changepass.component";
 import { ViewpurchasesComponent } from "./viewpurchases/viewpurchases.component";
 import { ViewbatchComponent } from './viewbatch/viewbatch.component';
+import { PurchasepaymentsComponent } from './purchasepayments/purchasepayments.component';
+import { AddpaymodeComponent } from './addpaymode/addpaymode.component';
+import { ViewordersComponent } from './vieworders/vieworders.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,10 @@ import { ViewbatchComponent } from './viewbatch/viewbatch.component';
     EditclientComponent,
     ChangepassComponent,
     ViewpurchasesComponent,
-    ViewbatchComponent
+    ViewbatchComponent,
+    PurchasepaymentsComponent,
+    AddpaymodeComponent,
+    ViewordersComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,75 @@
+<div class="container">
+  <h5 class="my-3">Add New Payment Mode</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 col-sm-12" *ngIf="successmsg">
+          <div class="alert alert-success" role="alert">
+            <i class="fa fa-check"></i> {{ successmsg }}
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label class="m-0">Payment Mode</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Payment Mode"
+            [(ngModel)]="paymode"
+          />
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <button
+            class="btn btn-primary mt-4"
+            [disabled]="!paymode"
+            (click)="addPayMode()"
+            *ngIf="!selectedmode"
+          >
+            Add Payment Mode
+          </button>
+          <button
+            class="btn btn-warning mt-4"
+            [disabled]="!paymode"
+            (click)="updatePayMode()"
+            *ngIf="selectedmode"
+          >
+            Update Payment Mode
+          </button>
+          <button
+            class="btn btn-secondary mt-4 mx-3"
+            (click)="cancel()"
+            *ngIf="selectedmode"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="allpaymodes">
+    <div class="card-body">
+      <h6 class="text-primary">All Payment Modes</h6>
+      <table class="table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Payment Mode</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mode of allpaymodes; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ mode.paymode }}</td>
+            <td>
+              <a href="javascript:void(0);" (click)="editPaymentMode(mode)"
+                >Edit</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

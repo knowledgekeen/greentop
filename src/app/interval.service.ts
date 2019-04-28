@@ -8,7 +8,7 @@ import { takeUntil, map } from "rxjs/operators";
 export class IntervalService {
   constructor() {}
 
-  settimer(secs: number) {
+  settimer(secs: number = null) {
     let promise = new Promise((resolve, reject) => {
       let secval = 2000;
       if (secs) {

@@ -212,4 +212,60 @@ if($action == "updateClient"){
 
 	echo json_encode($data1);
 }
+
+if($action == "getClientOpeningBal"){
+	$fromdt = ($_GET["fromdt"]);
+	$todt = ($_GET["todt"]);
+	$clientid = ($_GET["clientid"]);
+	$prevfromdt = ($_GET["prevfromdt"]);
+	$prevtodt = ($_GET["prevtodt"]);
+	$sql = "SELECT * FROM `client_openingbal` WHERE `clientid`=$clientid AND `baldate` BETWEEN '$fromdt' AND '$todt'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($row['openbalid'] == null){
+		$sqlprevpp = "SELECT SUM(`amount`) as amount FROM `purchase_payments` WHERE clientid = $clientid AND `paydate` BETWEEN '$prevfromdt' AND '$prevtodt'";
+		$resultprevpp = $conn->query($sqlprevpp);
+		$rowprevpp = $resultprevpp->fetch_array(MYSQLI_ASSOC);
+		
+		$sqlprevpm = "SELECT SUM(`totalamount`) as totalamount FROM `purchase_master` WHERE clientid = $clientid AND `billdt` BETWEEN '$prevfromdt' AND '$prevtodt'";
+		$resultprevpm = $conn->query($sqlprevpm);
+		$rowprevpm = $resultprevpm->fetch_array(MYSQLI_ASSOC);
+		//SELECT SUM(`totalamount`) as totalamount FROM `purchase_master` WHERE `clientid` = 3 AND `billdt` BETWEEN '1554057000000' AND '1556276006131'
+
+		if($rowprevpp["amount"] and $rowprevpm["totalamount"]){
+			//amount balance remained = Purchases amount - amount we paid
+			$amtbal = floatval($rowprevpm["totalamount"]) - floatval($rowprevpp["amount"]);
+			$sqlins = "INSERT INTO `client_openingbal`(`clientid`, `openingbal`, `baldate`) VALUES ($clientid,'$amtbal', '$fromdt')";
+			$resultins = $conn->query($sqlins);
+		}
+		else{
+			$sqlins = "INSERT INTO `client_openingbal`(`clientid`, `openingbal`, `baldate`) VALUES ($clientid,'0', '$fromdt')";
+			$resultins = $conn->query($sqlins);
+		}
+		$sql = "SELECT * FROM `client_openingbal` WHERE `clientid`=$clientid AND `baldate` BETWEEN '$fromdt' AND '$todt'";
+		$result = $conn->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+	}
+
+	if($result && $row){
+		$tmp['openbalid'] = $row['openbalid'];
+		$tmp['clientid'] = $row['clientid'];
+		$tmp['openingbal'] = $row['openingbal'];
+		$tmp['baldate'] = $row['baldate'];
+		
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
 ?>
