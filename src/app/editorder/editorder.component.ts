@@ -1,38 +1,41 @@
 import { Component, OnInit } from "@angular/core";
 import { RESTService } from "../rest.service";
+import { ActivatedRoute } from "@angular/router";
+import { GlobalService } from "../global.service";
 import * as moment from "moment";
 import { IntervalService } from "../interval.service";
-import { GlobalService } from "../global.service";
 
 @Component({
-  selector: "app-neworder",
-  templateUrl: "./neworder.component.html",
-  styleUrls: ["./neworder.component.css"]
+  selector: "app-editorder",
+  templateUrl: "./editorder.component.html",
+  styleUrls: ["./editorder.component.css"]
 })
-export class NeworderComponent implements OnInit {
+export class EditorderComponent implements OnInit {
+  orderid: any = null;
   orderno: any = null;
+  selectedprod: any = null;
   orderdt: any = null;
+  selectedcust: any = null;
+  quantity: any = null;
   allcustomers: any = null;
   allproducts: any = null;
-  allconsignees: any = new Array();
-  selectcust: any = null;
-  selectprod: any = null;
-  remarks: any = null;
-  successMsg: any = false;
-  sendtoself: boolean = false;
-  nocusterr: boolean = false;
-  quantity: any = null;
+  allconsignees: any = [];
+  nocusterr: any = false;
+  sendtoself: any = false;
   consigneename: any = null;
+  remarks: any = null;
   consigneecontactperson: any = null;
-  consigneequantity: any = 0;
   consigneecontactno: any = null;
-  consigneecity: any = null;
   consigneeaddress: any = null;
+  consigneecity: any = null;
+  consigneequantity: any = null;
+  successMsg: any = null;
 
   constructor(
     private _rest: RESTService,
-    private _interval: IntervalService,
-    private _global: GlobalService
+    private _route: ActivatedRoute,
+    private _global: GlobalService,
+    private _interval: IntervalService
   ) {}
 
   ngOnInit() {
@@ -40,56 +43,75 @@ export class NeworderComponent implements OnInit {
   }
 
   initialize() {
-    //let now = moment().format("DD-MM-YYYY");
-    //this.orderdt = now;
-    this.getLastOrderId();
-    this.getAllCustomers();
+    this._route.params.subscribe(Resp => {
+      if (Resp) {
+        this.orderid = Resp.orderid;
+        this.getOrderDetails();
+        this.getOrderConsignees();
+      }
+    });
     this.getAllProducts();
+    this.getAllCustomers();
   }
-
   getAllProducts() {
-    this._rest
-      .getData("product.php", "getActiveProducts", null)
-      .subscribe(Response => {
-        //console.log(Response);
-        if (Response) {
-          this.allproducts = Response["data"];
-        }
-      });
-  }
-
-  getLastOrderId() {
-    this._rest
-      .getData("order.php", "getLastOrderId", null)
-      .subscribe(Response => {
-        //console.log(Response);
-        if (Response) {
-          if (Response["data"]) {
-            this.orderno = "GTO-" + (parseInt(Response["data"]) + 1);
-          } else {
-            this.orderno = "GTO-1";
-          }
-        } else {
-          this.orderno = "GTO-1";
-        }
-      });
+    this.allproducts = null;
+    this._rest.getData("product.php", "getActiveProducts").subscribe(Resp => {
+      if (Resp) {
+        this.allproducts = Resp["data"];
+      }
+    });
   }
 
   getAllCustomers() {
     this.allcustomers = null;
-    let suppdata = "clienttype=2";
+    let geturl = "clienttype=2";
     this._rest
-      .getData("client.php", "getAllClients", suppdata)
-      .subscribe(Response => {
-        if (Response) {
-          this.allcustomers = Response["data"];
-          //console.log(this.allcustomers);
+      .getData("client.php", "getAllClients", geturl)
+      .subscribe(Resp => {
+        if (Resp) {
+          this.allcustomers = Resp["data"];
         }
       });
   }
 
+  getOrderDetails() {
+    let geturl = "orderid=" + this.orderid;
+    this._rest
+      .getData("order.php", "getOrdersDetails", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          let data = Response["data"];
+          console.log(data);
+          this.orderno = data.orderno;
+          this.selectedprod = data.prodid + "." + data.prodname;
+          this.orderdt = moment(parseInt(data.orderdt)).format("DD-MM-YYYY");
+          this.selectedcust = data.clientid + "." + data.name;
+          this.quantity = data.quantity;
+        }
+      });
+  }
+
+  getOrderConsignees() {
+    let geturl = "orderid=" + this.orderid;
+    this._rest
+      .getData("order.php", "getOrderConsignees", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.allconsignees = Response["data"];
+
+          console.log(Response["data"]);
+        }
+      });
+  }
+
+  autoFillDt() {
+    if (!this.orderdt) return;
+
+    this.orderdt = this._global.getAutofillFormattedDt(this.orderdt);
+  }
+
   sendOrderToSelf() {
-    if (!this.selectcust) {
+    if (!this.selectedcust) {
       this.nocusterr = true;
       this._interval.settimer(null).then(Resp => {
         this.nocusterr = false;
@@ -100,7 +122,7 @@ export class NeworderComponent implements OnInit {
     if (this.sendtoself == true) {
       let cust = null;
       for (let i in this.allcustomers) {
-        let custid = this.selectcust.split(".")[0];
+        let custid = this.selectedcust.split(".")[0];
         if (custid == this.allcustomers[i].clientid) {
           cust = this.allcustomers[i];
           break;
@@ -152,32 +174,40 @@ export class NeworderComponent implements OnInit {
     this.consigneecontactno = null;
     this.consigneecity = null;
     this.consigneeaddress = null;
+    this.sendtoself = false;
     this.consigneequantity = 0;
   }
 
-  createNewOrder() {
-    let tmpqty = 0;
-    for (let i in this.allconsignees) {
-      tmpqty += parseFloat(this.allconsignees[i].quantity);
+  removeConsignee(index) {
+    this.allconsignees.splice(index, 1);
+  }
+
+  updateOrderDetails() {
+    let total = 0;
+    for (const i in this.allconsignees) {
+      total += parseFloat(this.allconsignees[i].quantity);
     }
-    if (tmpqty != parseFloat(this.quantity)) {
+    if (total != parseFloat(this.quantity)) {
+      console.log(total, parseFloat(this.quantity));
       alert("Order quantity mismatched with the total consignee quantity.");
       return;
     }
 
+    window.scrollTo(0, 0);
     let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
     let orderObj = {
-      orderid: this.orderno,
+      orderid: this.orderid,
       orderdt: new Date(myDate).getTime(),
-      custid: this.selectcust.split(".")[0],
-      prodid: this.selectprod.split(".")[0],
+      custid: this.selectedcust.split(".")[0],
+      prodid: this.selectedprod.split(".")[0],
       qty: this.quantity,
       consignees: this.allconsignees,
       remarks: this.remarks
     };
+    console.log(orderObj);
 
     this._rest
-      .postData("order.php", "createNewOrder", orderObj, null)
+      .postData("order.php", "updateOrderDetails", orderObj, null)
       .subscribe(Response => {
         if (Response) {
           window.scrollTo(0, 0);
@@ -188,7 +218,6 @@ export class NeworderComponent implements OnInit {
           });
         }
       });
-    //console.log(orderObj);
   }
 
   resetForm() {
@@ -199,8 +228,8 @@ export class NeworderComponent implements OnInit {
     this.consigneecontactno = null;
     this.consigneecity = null;
     this.consigneeaddress = null;
-    this.selectcust = null;
-    this.selectprod = null;
+    this.selectedcust = null;
+    this.selectedprod = null;
     this.orderdt = null;
     this.orderno = null;
     this.quantity = null;
@@ -209,17 +238,5 @@ export class NeworderComponent implements OnInit {
     this.nocusterr = false;
     this.allconsignees = new Array();
     this.allcustomers = null;
-  }
-
-  autoFillDt() {
-    if (!this.orderdt) {
-      return;
-    }
-
-    this.orderdt = this._global.getAutofillFormattedDt(this.orderdt);
-  }
-
-  removeConsignee(index) {
-    this.allconsignees.splice(index, 1);
   }
 }

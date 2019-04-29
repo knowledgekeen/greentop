@@ -1,0 +1,239 @@
+<div class="container">
+  <h5 class="my-3">Edit Order</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> Order Updated successfully.
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Order No.</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Order No."
+            [(ngModel)]="orderno"
+            readonly
+          />
+        </div>
+
+        <div class="col-md-6 col-sm-12 mb-3">
+          <label class="m-0">Select Product</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Select Product"
+            [(ngModel)]="selectedprod"
+            list="prodlist"
+          />
+          <datalist id="prodlist">
+            <option
+              value="{{ prod.prodid }}.{{ prod.prodname }}"
+              *ngFor="let prod of allproducts"
+              >{{ prod.prodid }}.{{ prod.prodname }}</option
+            >
+          </datalist>
+        </div>
+        <div class="col-md-3 col-sm-12 mb-3">
+          <label class="m-0">Order Date</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Order Date(DD-MM-YYYY)"
+            [(ngModel)]="orderdt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-md-8 col-sm-12 mb-3">
+          <label class="m-0">Select Customer</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Select Customer"
+            [(ngModel)]="selectedcust"
+            list="custlist"
+            [disabled]="!allcustomers"
+          />
+          <datalist id="custlist">
+            <option
+              value="{{ cust.clientid }}.{{ cust.name }}"
+              *ngFor="let cust of allcustomers"
+              >{{ cust.clientid }}.{{ cust.name }}</option
+            >
+          </datalist>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Quantity(tons)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Quantity"
+            [(ngModel)]="quantity"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-3">
+    <div class="card-body">
+      <h6 class="text-info">Add Consignees</h6>
+      <p class="text-danger" *ngIf="nocusterr">
+        <i class="fa fa-exclamation"></i> Kindly select a Customer
+      </p>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 mb-3">
+          <div class="custom-control custom-checkbox mt-4">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="customControlAutosizing2"
+              [(ngModel)]="sendtoself"
+              (change)="sendOrderToSelf()"
+              [disabled]="nocusterr"
+            />
+            <label class="custom-control-label" for="customControlAutosizing2"
+              >Send order to SELF</label
+            >
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-12 mb-3">
+          <label class="m-0">
+            <span *ngIf="!sendtoself">Consignee</span> Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneename"
+            placeholder="Consignee Name"
+            [disabled]="nocusterr"
+          />
+        </div>
+        <div class="col-md-3 col-sm-12 mb-3">
+          <label class="m-0">
+            <span *ngIf="!sendtoself">Consignee</span> Contact Person</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneecontactperson"
+            placeholder="Consignee Contact Person"
+            [disabled]="nocusterr"
+          />
+        </div>
+        <div class="col-md-3 col-sm-12 mb-3">
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> Contact Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneecontactno"
+            placeholder="Consignee Contact Number"
+            [disabled]="nocusterr"
+          />
+        </div>
+        <div class="col-md-8 col-sm-12 mb-3">
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneeaddress"
+            placeholder="Consignee Address"
+            [disabled]="nocusterr"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> City</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneecity"
+            placeholder="Consignee City"
+            [disabled]="nocusterr"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> Quantity</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneequantity"
+            placeholder="Consignee Quantity"
+            [disabled]="nocusterr"
+          />
+        </div>
+        <div class="col-md-12 col-sm-12 mb-3">
+          <button
+            class="btn btn-sm btn-info"
+            [disabled]="
+              nocusterr ||
+              !consigneecontactperson ||
+              !consigneecontactno ||
+              !consigneecity ||
+              !consigneeaddress
+            "
+            (click)="addConsignee()"
+          >
+            Add <span *ngIf="!sendtoself">Consignee</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" *ngIf="allconsignees.length > 0">
+    <div class="card-body">
+      <h6 class="text-info">All Consignees</h6>
+      <table class="table table-sm mb-3">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Self / Consignee</th>
+            <th scope="col">Consignee Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">City</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let consignee of allconsignees; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ consignee.remarks }}</td>
+            <td>{{ consignee.consigneename }}</td>
+            <td>{{ consignee.quantity }}</td>
+            <td>{{ consignee.city }}</td>
+            <td>
+              <a
+                href="javascript:void(0);"
+                (click)="removeConsignee(i)"
+                class="text-danger"
+                >Remove</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button
+        class="btn btn-warning"
+        [disabled]="
+          !quantity ||
+          !selectedprod ||
+          !selectedcust ||
+          allconsignees.length <= 0
+        "
+        (click)="updateOrderDetails()"
+      >
+        Update Order
+      </button>
+    </div>
+  </div>
+</div>

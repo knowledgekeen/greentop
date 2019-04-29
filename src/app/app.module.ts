@@ -50,6 +50,7 @@ import { ViewbatchComponent } from './viewbatch/viewbatch.component';
 import { PurchasepaymentsComponent } from './purchasepayments/purchasepayments.component';
 import { AddpaymodeComponent } from './addpaymode/addpaymode.component';
 import { ViewordersComponent } from './vieworders/vieworders.component';
+import { EditorderComponent } from './editorder/editorder.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { ViewordersComponent } from './vieworders/vieworders.component';
     ViewbatchComponent,
     PurchasepaymentsComponent,
     AddpaymodeComponent,
-    ViewordersComponent
+    ViewordersComponent,
+    EditorderComponent
   ],
   imports: [
     BrowserModule,

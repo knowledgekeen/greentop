@@ -23,6 +23,7 @@ import { ViewbatchComponent } from "./viewbatch/viewbatch.component";
 import { PurchasepaymentsComponent } from "./purchasepayments/purchasepayments.component";
 import { AddpaymodeComponent } from "./addpaymode/addpaymode.component";
 import { ViewordersComponent } from "./vieworders/vieworders.component";
+import { EditorderComponent } from "./editorder/editorder.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: "purchasepayments", component: PurchasepaymentsComponent },
   { path: "addpaymode", component: AddpaymodeComponent },
   { path: "vieworders", component: ViewordersComponent },
+  { path: "editorder/:orderid", component: EditorderComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" }
 ];
 
