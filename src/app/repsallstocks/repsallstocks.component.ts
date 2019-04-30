@@ -13,6 +13,7 @@ export class RepsallstocksComponent implements OnInit {
   chartdata: any = null;
   selectedmat: any = null;
   histarr = new Array();
+  hidegraph = false;
   constructor(private _rest: RESTService, private _global: GlobalService) {}
 
   ngOnInit() {

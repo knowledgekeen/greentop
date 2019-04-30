@@ -1,4 +1,93 @@
-<div class="container">
-  <h5 class="my-3">Dashboard</h5>
-  <app-repsallstocks></app-repsallstocks>
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="float-left m-0">My Dashboard</h4>
+          <h4
+            class="float-right m-0"
+            (mouseenter)="hover = true"
+            (mouseleave)="hover = false"
+            [ngClass]="{
+              'text-secondary': hover == false,
+              'text-info': hover == true
+            }"
+            data-toggle="modal"
+            data-target="#settingsModal"
+          >
+            <i class="fa fa-cog cursor-pointer" title="Dashboard Settings"></i>
+          </h4>
+          <h6 class="text-danger mt-5" *ngIf="disabledall">
+            <i class="fa fa-exclamation-triangle"></i> You have disabled all
+            view, please click here to open settings page and enable views you
+            want to see.
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <app-repsallstocks
+        *ngIf="dbsettings && dbsettings[0].state == 1"
+      ></app-repsallstocks>
+    </div>
+    <div class="col-md-12 my-3" *ngIf="dbsettings && dbsettings[1].state == 1">
+      <app-finanyrorders></app-finanyrorders>
+    </div>
+    <div class="col-md-6 my-3" *ngIf="dbsettings && dbsettings[2].state == 1">
+      <app-viewclient clienttype="1"></app-viewclient>
+    </div>
+    <div class="col-md-6 my-3" *ngIf="dbsettings && dbsettings[3].state == 1">
+      <app-viewclient clienttype="2"></app-viewclient>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="settingsModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Dashboard Settings
+          <span class="text-success ml-3" *ngIf="successmsg">
+            Settings updated successfully!
+          </span>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div
+            class="col-md-4 mb-4"
+            *ngFor="let setting of dbsettings; let i = index"
+          >
+            {{ setting.dbsettingtitle }}
+            <br />
+            <label class="switch">
+              <input
+                type="checkbox"
+                [checked]="btnsetting[i]"
+                (change)="changeState(setting, i)"
+              />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

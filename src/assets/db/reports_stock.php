@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'session.php';
 $action = $_GET['action'];
 
 if($action == "getAllStocks"){

@@ -71,4 +71,57 @@ if($action == "changePassword"){
     }
 	echo json_encode($data1);
 }
+
+if($action == "getDBSettings"){
+	$sql = "SELECT * FROM `dbsetting_master`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['dbsettingid'] = $row['dbsettingid'];
+			$tmp[$i]['dbsettingtitle'] = $row['dbsettingtitle'];
+			$tmp[$i]['state'] = $row['state'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "updateDBSettings"){
+	$data = json_decode(file_get_contents("php://input"));
+	$dbsettingid = $data->dbsettingid;
+	$state = $data->state;
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `dbsetting_master` SET `state`=$state WHERE `dbsettingid`=$dbsettingid";
+		$result = $conn->query($sql);
+	}
+	$data1 = array();
+    if($result){
+        $data1["status"] = 200;
+		$data1["data"] = $dbsettingid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+    }
+	echo json_encode($data1);
+}
 ?>

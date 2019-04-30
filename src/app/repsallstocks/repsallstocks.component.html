@@ -1,10 +1,34 @@
 <div class="card">
   <div class="card-body">
+    <h5 class="text-primary">
+      <span class="border-bottom border-primary">Current stocks</span>
+    </h5>
     <div class="row">
-      <div class="col-md-5 col-sm-12 mb-3">
-        <div id="container"></div>
+      <div
+        class="col-sm-12 text-right"
+        [ngClass]="{
+          'col-md-4': hidegraph == false,
+          'col-md-12': hidegraph == true
+        }"
+      >
+        <a
+          href="javascript:void(0);"
+          class="border-bottom"
+          (click)="hidegraph = !hidegraph"
+        >
+          <span *ngIf="!hidegraph">Hide Graph</span>
+          <span *ngIf="hidegraph">Show Graph</span>
+        </a>
+        <div id="container" [hidden]="hidegraph"></div>
       </div>
-      <div class="col-md-7 col-sm-12 mb-3" *ngIf="allstock">
+      <div
+        class="col-sm-12 mb-3"
+        *ngIf="allstock"
+        [ngClass]="{
+          'col-md-8': hidegraph == false,
+          'col-md-12': hidegraph == true
+        }"
+      >
         <h6 class="text-dark text-uppercase font-italic font-weight-bold">
           Raw Materials
         </h6>

@@ -41,11 +41,12 @@ if($action == "createNewOrder"){
             $contactperson = $consignees[$i]->contactperson;
             $contactno = $consignees[$i]->contactno;
             $city = $consignees[$i]->city;
+            $state = $consignees[$i]->state;
             $address = $consignees[$i]->address;
             $remarks = $consignees[$i]->remarks;
             $quantity = $consignees[$i]->quantity;
 
-            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `address`, `quantity`, `remarks`) VALUES ($ordid, '$consigneename', '$contactperson', '$contactno', '$city', '$address', '$quantity', '$remarks')";
+            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `remarks`) VALUES ($ordid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$remarks')";
             $resultqty = $conn->query($sqlins);
         }
     }
@@ -105,7 +106,7 @@ if($action == "getOpenOrders"){
 
 if($action == "getOrderConsignees"){
     $orderid=$_GET["orderid"];
-	$sql = "SELECT `orderconsignid`,`orderid`,`consigneename`,`contactperson`,`contactnumber` as `contactno`,`city`,`address`,`quantity`,`remarks` FROM `order_consignees` WHERE `orderid`=$orderid";
+	$sql = "SELECT `orderconsignid`,`orderid`,`consigneename`,`contactperson`,`contactnumber` as `contactno`,`city`,`state`,`address`,`quantity`,`remarks` FROM `order_consignees` WHERE `orderid`=$orderid";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -124,6 +125,7 @@ if($action == "getOrderConsignees"){
 			$tmp[$i]['contactperson'] = $row['contactperson'];
 			$tmp[$i]['contactno'] = $row['contactno'];
 			$tmp[$i]['city'] = $row['city'];
+			$tmp[$i]['state'] = $row['state'];
 			$tmp[$i]['address'] = $row['address'];
 			$tmp[$i]['quantity'] = $row['quantity'];
 			$tmp[$i]['remarks'] = $row['remarks'];
@@ -141,11 +143,54 @@ if($action == "getOrderConsignees"){
 	echo json_encode($data);
 }
 
-// Get All Orders between dates passed
-if($action == "getOrdersFromToDate"){
+// Get All Open Orders between dates passed
+if($action == "getOpenOrdersFromToDate"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`status`='open' AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt'";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['orderid'] = $row['orderid'];
+			$tmp[$i]['orderno'] = $row['orderno'];
+			$tmp[$i]['orderdt'] = $row['orderdt'];
+			$tmp[$i]['prodid'] = $row['prodid'];
+			$tmp[$i]['prodname'] = $row['prodname'];
+			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['remarks'] = $row['remarks'];
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['address'] = $row['address'];
+			$tmp[$i]['contactno'] = $row['contactno'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+// Get All Orders between dates passed, irrespective if its open
+if($action == "getAllOrdersFromToDate"){
+	$fromdt = $_GET["fromdt"];
+	$todt = $_GET["todt"];
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -244,11 +289,12 @@ if($action == "updateOrderDetails"){
             $contactperson = $consignees[$i]->contactperson;
             $contactno = $consignees[$i]->contactno;
             $city = $consignees[$i]->city;
+            $state = $consignees[$i]->state;
             $address = $consignees[$i]->address;
             $remarks = $consignees[$i]->remarks;
             $quantity = $consignees[$i]->quantity;
 
-            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `address`, `quantity`, `remarks`) VALUES ($orderid, '$consigneename', '$contactperson', '$contactno', '$city', '$address', '$quantity', '$remarks')";
+            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `remarks`) VALUES ($orderid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$remarks')";
             $resultqty = $conn->query($sqlins);
         }
     }

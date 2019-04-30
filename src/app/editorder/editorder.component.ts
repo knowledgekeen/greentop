@@ -28,8 +28,12 @@ export class EditorderComponent implements OnInit {
   consigneecontactno: any = null;
   consigneeaddress: any = null;
   consigneecity: any = null;
+  consigneestate: any = null;
   consigneequantity: any = null;
   successMsg: any = null;
+  clientcities: any = null;
+  clientstates: any = null;
+  dateerror: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -52,7 +56,26 @@ export class EditorderComponent implements OnInit {
     });
     this.getAllProducts();
     this.getAllCustomers();
+    this.getClientCities();
+    this.getClientStates();
   }
+
+  getClientCities() {
+    this._rest.getData("client.php", "getClientCities").subscribe(Response => {
+      if (Response) {
+        this.clientcities = Response["data"];
+      }
+    });
+  }
+
+  getClientStates() {
+    this._rest.getData("client.php", "getClientStates").subscribe(Response => {
+      if (Response) {
+        this.clientstates = Response["data"];
+      }
+    });
+  }
+
   getAllProducts() {
     this.allproducts = null;
     this._rest.getData("product.php", "getActiveProducts").subscribe(Resp => {
@@ -81,7 +104,7 @@ export class EditorderComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           let data = Response["data"];
-          console.log(data);
+          //console.log(data);
           this.orderno = data.orderno;
           this.selectedprod = data.prodid + "." + data.prodname;
           this.orderdt = moment(parseInt(data.orderdt)).format("DD-MM-YYYY");
@@ -99,7 +122,7 @@ export class EditorderComponent implements OnInit {
         if (Response) {
           this.allconsignees = Response["data"];
 
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
         }
       });
   }
@@ -108,6 +131,14 @@ export class EditorderComponent implements OnInit {
     if (!this.orderdt) return;
 
     this.orderdt = this._global.getAutofillFormattedDt(this.orderdt);
+    let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let seldt = new Date(myDate).getTime();
+    let dt = new Date().getTime();
+    if (seldt > dt) {
+      this.dateerror = true;
+    } else {
+      this.dateerror = false;
+    }
   }
 
   sendOrderToSelf() {
@@ -135,6 +166,7 @@ export class EditorderComponent implements OnInit {
         this.consigneecontactperson = cust.contactperson1;
         this.consigneecontactno = cust.contactno;
         this.consigneecity = cust.city;
+        this.consigneestate = cust.state;
         this.consigneeaddress = cust.address;
         this.consigneequantity = this.quantity ? this.quantity : 0;
       }
@@ -143,6 +175,7 @@ export class EditorderComponent implements OnInit {
       this.consigneecontactperson = null;
       this.consigneecontactno = null;
       this.consigneecity = null;
+      this.consigneestate = null;
       this.consigneeaddress = null;
       this.consigneequantity = 0;
     }
@@ -158,6 +191,7 @@ export class EditorderComponent implements OnInit {
       contactperson: this.consigneecontactperson,
       contactno: this.consigneecontactno,
       city: this.consigneecity,
+      state: this.consigneestate,
       address: this.consigneeaddress,
       quantity: this.consigneequantity,
       remarks: null
@@ -173,6 +207,7 @@ export class EditorderComponent implements OnInit {
     this.consigneecontactperson = null;
     this.consigneecontactno = null;
     this.consigneecity = null;
+    this.consigneestate = null;
     this.consigneeaddress = null;
     this.sendtoself = false;
     this.consigneequantity = 0;
@@ -227,6 +262,7 @@ export class EditorderComponent implements OnInit {
     this.consigneequantity = 0;
     this.consigneecontactno = null;
     this.consigneecity = null;
+    this.consigneestate = null;
     this.consigneeaddress = null;
     this.selectedcust = null;
     this.selectedprod = null;
@@ -238,5 +274,6 @@ export class EditorderComponent implements OnInit {
     this.nocusterr = false;
     this.allconsignees = new Array();
     this.allcustomers = null;
+    this.dateerror = false;
   }
 }

@@ -44,6 +44,9 @@
             [(ngModel)]="orderdt"
             (blur)="autoFillDt()"
           />
+          <h6 class="m-0 text-danger" *ngIf="dateerror">
+            <i class="fa fa-exclamation"></i> Warning: Date is from future.
+          </h6>
         </div>
         <div class="col-md-8 col-sm-12 mb-3">
           <label class="m-0">Select Customer</label>
@@ -134,7 +137,7 @@
             [disabled]="nocusterr"
           />
         </div>
-        <div class="col-md-8 col-sm-12 mb-3">
+        <div class="col-md-6 col-sm-12 mb-3">
           <label class="m-0"
             ><span *ngIf="!sendtoself">Consignee</span> Address</label
           >
@@ -156,7 +159,33 @@
             [(ngModel)]="consigneecity"
             placeholder="Consignee City"
             [disabled]="nocusterr"
+            list="cities"
           />
+          <datalist id="cities">
+            <option value="{{ city.city }}" *ngFor="let city of clientcities">{{
+              city.city
+            }}</option>
+          </datalist>
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> State</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneestate"
+            placeholder="Consignee State"
+            [disabled]="nocusterr"
+            list="states"
+          />
+          <datalist id="states">
+            <option
+              value="{{ state.state }}"
+              *ngFor="let state of clientstates"
+              >{{ state.state }}</option
+            >
+          </datalist>
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
           <label class="m-0"
@@ -178,6 +207,7 @@
               !consigneecontactperson ||
               !consigneecontactno ||
               !consigneecity ||
+              !consigneestate ||
               !consigneeaddress
             "
             (click)="addConsignee()"
@@ -233,6 +263,9 @@
         (click)="updateOrderDetails()"
       >
         Update Order
+      </button>
+      <button class="btn btn-secondary ml-3" [routerLink]="['/vieworders']">
+        Cancel
       </button>
     </div>
   </div>

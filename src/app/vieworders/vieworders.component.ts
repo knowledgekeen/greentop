@@ -36,15 +36,15 @@ export class ViewordersComponent implements OnInit {
     todt.setDate(lastday);
     todt.setHours(23, 59, 59, 999);
 
-    this.getOrdersFromToDate(fromdt.getTime(), todt.getTime());
+    this.getOpenOrdersFromToDate(fromdt.getTime(), todt.getTime());
   }
 
-  getOrdersFromToDate(fromdt, todt) {
+  getOpenOrdersFromToDate(fromdt, todt) {
     this.allorders = null;
     this.totalquantity = 0;
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
     this._rest
-      .getData("order.php", "getOrdersFromToDate", geturl)
+      .getData("order.php", "getOpenOrdersFromToDate", geturl)
       .subscribe(Response => {
         if (Response) {
           this.allorders = Response["data"];
@@ -70,7 +70,7 @@ export class ViewordersComponent implements OnInit {
         fromdt = fromdt.getTime();
         let todt = new Date().getTime();
         //If month from future show details of current month
-        this.getOrdersFromToDate(fromdt, todt);
+        this.getOpenOrdersFromToDate(fromdt, todt);
         this.errorMsg = "Month cannot be from future.";
         this.selecteddate.setTime(todaydt);
         this.opendtp = !this.opendtp;
@@ -84,7 +84,7 @@ export class ViewordersComponent implements OnInit {
         let fromdt = this.selecteddate.getTime();
         let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
         //console.log(fromdt, lastdt);
-        this.getOrdersFromToDate(fromdt, lastdt);
+        this.getOpenOrdersFromToDate(fromdt, lastdt);
         this.opendtp = !this.opendtp;
         return;
       }

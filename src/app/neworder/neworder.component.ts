@@ -27,7 +27,11 @@ export class NeworderComponent implements OnInit {
   consigneequantity: any = 0;
   consigneecontactno: any = null;
   consigneecity: any = null;
+  consigneestate: any = null;
   consigneeaddress: any = null;
+  clientcities: any = null;
+  clientstates: any = null;
+  dateerror: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -45,6 +49,24 @@ export class NeworderComponent implements OnInit {
     this.getLastOrderId();
     this.getAllCustomers();
     this.getAllProducts();
+    this.getClientCities();
+    this.getClientStates();
+  }
+
+  getClientCities() {
+    this._rest.getData("client.php", "getClientCities").subscribe(Response => {
+      if (Response) {
+        this.clientcities = Response["data"];
+      }
+    });
+  }
+
+  getClientStates() {
+    this._rest.getData("client.php", "getClientStates").subscribe(Response => {
+      if (Response) {
+        this.clientstates = Response["data"];
+      }
+    });
   }
 
   getAllProducts() {
@@ -113,6 +135,7 @@ export class NeworderComponent implements OnInit {
         this.consigneecontactperson = cust.contactperson1;
         this.consigneecontactno = cust.contactno;
         this.consigneecity = cust.city;
+        this.consigneestate = cust.state;
         this.consigneeaddress = cust.address;
         this.consigneequantity = this.quantity ? this.quantity : 0;
       }
@@ -121,6 +144,7 @@ export class NeworderComponent implements OnInit {
       this.consigneecontactperson = null;
       this.consigneecontactno = null;
       this.consigneecity = null;
+      this.consigneestate = null;
       this.consigneeaddress = null;
       this.consigneequantity = 0;
     }
@@ -136,6 +160,7 @@ export class NeworderComponent implements OnInit {
       contactperson: this.consigneecontactperson,
       contactno: this.consigneecontactno,
       city: this.consigneecity,
+      state: this.consigneestate,
       address: this.consigneeaddress,
       quantity: this.consigneequantity,
       remarks: null
@@ -151,8 +176,10 @@ export class NeworderComponent implements OnInit {
     this.consigneecontactperson = null;
     this.consigneecontactno = null;
     this.consigneecity = null;
+    this.consigneestate = null;
     this.consigneeaddress = null;
     this.consigneequantity = 0;
+    this.sendtoself = false;
   }
 
   createNewOrder() {
@@ -198,6 +225,7 @@ export class NeworderComponent implements OnInit {
     this.consigneequantity = 0;
     this.consigneecontactno = null;
     this.consigneecity = null;
+    this.consigneestate = null;
     this.consigneeaddress = null;
     this.selectcust = null;
     this.selectprod = null;
@@ -209,6 +237,7 @@ export class NeworderComponent implements OnInit {
     this.nocusterr = false;
     this.allconsignees = new Array();
     this.allcustomers = null;
+    this.dateerror = false;
   }
 
   autoFillDt() {
@@ -217,6 +246,15 @@ export class NeworderComponent implements OnInit {
     }
 
     this.orderdt = this._global.getAutofillFormattedDt(this.orderdt);
+    let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let seldt = new Date(myDate).getTime();
+    let dt = new Date().getTime();
+
+    if (seldt > dt) {
+      this.dateerror = true;
+    } else {
+      this.dateerror = false;
+    }
   }
 
   removeConsignee(index) {
