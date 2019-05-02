@@ -1,5 +1,9 @@
 <div class="card">
   <div class="card-body">
+    <h5 class="text-info">
+      <span *ngIf="clienttype == 1">All Suppliers</span>
+      <span *ngIf="clienttype == 2">All Customers</span>
+    </h5>
     <div class="table-responsive">
       <div class="input-group flex-nowrap mb-3">
         <div class="input-group-prepend">

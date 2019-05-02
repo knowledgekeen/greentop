@@ -24,6 +24,7 @@ import { PurchasepaymentsComponent } from "./purchasepayments/purchasepayments.c
 import { AddpaymodeComponent } from "./addpaymode/addpaymode.component";
 import { ViewordersComponent } from "./vieworders/vieworders.component";
 import { EditorderComponent } from "./editorder/editorder.component";
+import { SalepaymentsComponent } from "./salepayments/salepayments.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: "changepwd", component: ChangepassComponent },
   { path: "viewpurchases", component: ViewpurchasesComponent },
   { path: "purchasepayments", component: PurchasepaymentsComponent },
+  { path: "salepayments", component: SalepaymentsComponent },
   { path: "addpaymode", component: AddpaymodeComponent },
   { path: "vieworders", component: ViewordersComponent },
   { path: "editorder/:orderid", component: EditorderComponent },

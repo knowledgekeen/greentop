@@ -52,6 +52,7 @@ import { AddpaymodeComponent } from './addpaymode/addpaymode.component';
 import { ViewordersComponent } from './vieworders/vieworders.component';
 import { EditorderComponent } from './editorder/editorder.component';
 import { FinanyrordersComponent } from './finanyrorders/finanyrorders.component';
+import { SalepaymentsComponent } from './salepayments/salepayments.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { FinanyrordersComponent } from './finanyrorders/finanyrorders.component'
     AddpaymodeComponent,
     ViewordersComponent,
     EditorderComponent,
-    FinanyrordersComponent
+    FinanyrordersComponent,
+    SalepaymentsComponent
   ],
   imports: [
     BrowserModule,

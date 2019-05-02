@@ -142,13 +142,14 @@
             class="form-control"
             placeholder="Paid On Date (DD-MM-YYYY)"
             [(ngModel)]="paidon"
+            (blur)="autoFillPaidOnDate()"
           />
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card" *ngIf="selectedorder">
+  <div class="card mb-3" *ngIf="selectedorder">
     <div class="card-body">
       <h6 class="text-info">Select Manufacture Batch and Quantity</h6>
       <div class="row">
@@ -158,6 +159,7 @@
             class="form-control"
             [(ngModel)]="selbatch"
             (change)="getAllQuantities()"
+            [disabled]="allbatches.length <= 0"
           >
             <option
               value="{{ batch.batchid }}"
@@ -206,7 +208,7 @@
     </div>
   </div>
 
-  <div class="card my-3" *ngIf="selectedorder && addedbatches.length > 0">
+  <div class="card mb-3" *ngIf="selectedorder && addedbatches.length > 0">
     <div class="card-body">
       <table class="table table-sm">
         <thead class="thead-dark">

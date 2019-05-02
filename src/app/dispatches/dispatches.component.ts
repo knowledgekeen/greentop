@@ -163,6 +163,15 @@ export class DispatchesComponent implements OnInit {
   }
 
   dispatchOrder() {
+    let totalqty = 0;
+    for (const i in this.addedbatches) {
+      totalqty += parseFloat(this.addedbatches[i].selqty);
+    }
+    if (totalqty != this.orderdetails.quantity) {
+      alert("Order quantity and total batches quantities does not match.");
+      return;
+    }
+
     let dispatchdate = moment(this.dispatchdate, "DD-MM-YYYY").format(
       "MM-DD-YYYY"
     );
@@ -235,5 +244,11 @@ export class DispatchesComponent implements OnInit {
     if (!this.dispatchdate) return;
 
     this.dispatchdate = this._global.getAutofillFormattedDt(this.dispatchdate);
+  }
+
+  autoFillPaidOnDate() {
+    if (!this.paidon) return;
+
+    this.paidon = this._global.getAutofillFormattedDt(this.paidon);
   }
 }

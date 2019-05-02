@@ -150,7 +150,7 @@ export class PurchasepaymentsComponent implements OnInit {
     let vm = this;
     return new Promise(function(resolve, reject) {
       vm._rest
-        .getData("client.php", "getClientOpeningBal", geturl)
+        .getData("client.php", "getClientPurchaseOpeningBal", geturl)
         .subscribe(CResp => {
           console.log(CResp);
           vm._rest
@@ -165,7 +165,7 @@ export class PurchasepaymentsComponent implements OnInit {
                 purchmast = Response["data"];
               }
 
-              //Irrespective of data from getAllPurchasePayments, need to get payments made details
+              //Irrespective of data from getAllPurchaseMastPayments, need to get payments done details
               vm._rest
                 .getData(
                   "purchase_payments.php",
