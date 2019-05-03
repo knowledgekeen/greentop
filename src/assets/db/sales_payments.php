@@ -4,11 +4,13 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 include 'conn.php';
 $action = $_GET['action'];
 
-if($action == "getAllOrderMastPayments"){
+if($action == "getAllOrderInvoicePayments"){
     $clientid= $_GET["clientid"];
     $fromdt= $_GET["fromdt"];
+    $prevfromdt= $_GET["prevfromdt"];
+    $prevtodt= $_GET["prevtodt"];
     $todt= $_GET["todt"];
-	$sql = "SELECT * FROM `order_master` WHERE `clientid`=$clientid AND `orderdt` BETWEEN '$fromdt' AND '$todt'";
+	$sql = "SELECT * FROM `order_taxinvoice` WHERE `clientid`=$clientid AND `billdt` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -23,8 +25,9 @@ if($action == "getAllOrderMastPayments"){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['orderid'] = $row['orderid'];
-			$tmp[$i]['orderno'] = $row['orderno'];
 			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['billno'] = $row['billno'];
+			$tmp[$i]['billdt'] = $row['billdt'];
 			$tmp[$i]['totalamount'] = $row['totalamount'];
 			$i++;
 		}
@@ -39,11 +42,11 @@ if($action == "getAllOrderMastPayments"){
 	echo json_encode($data);
 }
 
-if($action == "getAllOrderPayments"){
+if($action == "getAllSaleOrderPayments"){
     $clientid= $_GET["clientid"];
     $fromdt= $_GET["fromdt"];
     $todt= $_GET["todt"];
-	$sql = "SELECT op.`orderpayid`, op.`paydate`, op.`clientid`, op.`amount`, op.`paymodeid`, op.`particulars`, pm.paymode FROM `order_payments` op, `paymode_master` pm WHERE pp.`paymodeid`=pm.`paymodeid` AND `clientid`=$clientid AND `paydate` BETWEEN '$fromdt' AND '$todt'";
+	$sql = "SELECT op.`orderpayid`, op.`paydate`, op.`clientid`, op.`amount`, op.`paymodeid`, op.`particulars`, pm.paymode FROM `order_payments` op, `paymode_master` pm WHERE op.`paymodeid`=pm.`paymodeid` AND `clientid`=$clientid AND `paydate` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

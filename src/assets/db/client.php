@@ -287,7 +287,7 @@ if($action == "getClientSaleOpeningBal"){
 		$resultprevpp = $conn->query($sqlprevpp);
 		$rowprevpp = $resultprevpp->fetch_array(MYSQLI_ASSOC);
 		
-		$sqlprevpm = "SELECT SUM(`totalamount`) as totalamount FROM `order_master` WHERE clientid = $clientid AND `orderdt` BETWEEN '$prevfromdt' AND '$prevtodt'";
+		$sqlprevpm = "SELECT SUM(`totalamount`) as totalamount FROM `order_taxinvoice` WHERE clientid = $clientid AND `billdt` BETWEEN '$prevfromdt' AND '$prevtodt'";
 		$resultprevpm = $conn->query($sqlprevpm);
 		$rowprevpm = $resultprevpm->fetch_array(MYSQLI_ASSOC);
 		//SELECT SUM(`totalamount`) as totalamount FROM `purchase_master` WHERE `clientid` = 3 AND `billdt` BETWEEN '1554057000000' AND '1556276006131'

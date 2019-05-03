@@ -88,11 +88,11 @@
   <div class="card my-3" *ngIf="supplier && payhistory">
     <div class="card-body">
       <h6 class="text-primary">
-        Payment History for
+        Payment History of
         <span class="font-weight-bold border-bottom border-primary font-italic">
           {{ supplier.split(".")[1] }}
         </span>
-        Current Financial Year From
+        For Current Financial Year From
         <span class="font-weight-bold border-bottom border-primary font-italic">
           {{ currfinanyr.fromdt | date: "MMMM, yyyy" }}
         </span>

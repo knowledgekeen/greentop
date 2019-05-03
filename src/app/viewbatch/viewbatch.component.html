@@ -6,65 +6,103 @@
       <div class="alert alert-success" role="alert" *ngIf="batchsucces">
         <i class="fa fa-check"></i> Batch updated successful.
       </div>
-      <table class="table table-sm">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Batch id</th>
-            <th scope="col">Manufacture Date</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Quantity Produced</th>
-            <th scope="col">Quantity Remained</th>
-            <th scope="col">Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let batch of allbatches; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>
-              <a
-                href="javascript:void(0);"
-                data-toggle="modal"
-                data-target="#viewBatchModal"
-                (click)="viewBatchDetails(batch)"
-              >
-                {{ batch.batchid }}
-              </a>
-            </td>
-            <td>
-              <a
-                href="javascript:void(0);"
-                data-toggle="modal"
-                data-target="#viewBatchModal"
-                (click)="viewBatchDetails(batch)"
-              >
-                {{ batch.manufacdate | date: "dd-MM-yyyy" }}
-              </a>
-            </td>
-            <td>{{ batch.prodname }}</td>
-            <td>{{ batch.qtyproduced | number: "1.3-3" }}</td>
-            <td>{{ batch.qtyremained | number: "1.3-3" }}</td>
-            <td>
-              <a
-                href="javascript:void(0);"
-                data-toggle="modal"
-                data-target="#viewBatchModal"
-                (click)="viewBatchDetails(batch)"
-                >Edit</a
-              >
-            </td>
-          </tr>
+      <div class="position-relative" [hidden]="opendtp == false">
+        <div class="card position-absolute border-secondary dtp-pickerwrapper">
+          <div class="card-body">
+            <dl-date-time-picker
+              startView="month"
+              maxView="year"
+              minView="month"
+              [(ngModel)]="selectedDate"
+              (change)="changeDate()"
+            >
+            </dl-date-time-picker>
+          </div>
+        </div>
+      </div>
 
-          <tr *ngIf="!allbatches">
-            <td colspan="7">
-              <h6 class="text-danger mt-3">
-                <i class="fa fa-exclamation-triangle"></i> There are no batches
-                yet
-              </h6>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="position-relative">
+        <span class="text-primary font-weight-bold border-bottom border-primary"
+          >Batches of - {{ selectedDate | date: "MMMM, yyyy" }}</span
+        >
+      </div>
+
+      <div class="position-relative text-right dtp-cardwrapper">
+        <span class="text-danger mx-3 font-weight-bold" *ngIf="errorMsg">
+          <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span
+        >
+        <i
+          class="fa fa-lg py-3 cursor-pointer text-secondary"
+          [ngClass]="{ 'fa-window-close': opendtp, 'fa-bars': !opendtp }"
+          (click)="toggleDTP()"
+        ></i>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Batch id</th>
+              <th scope="col">Manufacture Date</th>
+              <th scope="col">Product Name</th>
+              <th scope="col" class="text-right">Quantity Produced</th>
+              <th scope="col" class="text-right">Quantity Remained</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let batch of allbatches; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#viewBatchModal"
+                  (click)="viewBatchDetails(batch)"
+                >
+                  {{ batch.batchid }}
+                </a>
+              </td>
+              <td>
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#viewBatchModal"
+                  (click)="viewBatchDetails(batch)"
+                >
+                  {{ batch.manufacdate | date: "dd-MM-yyyy" }}
+                </a>
+              </td>
+              <td>{{ batch.prodname }}</td>
+              <td class="text-right">
+                {{ batch.qtyproduced | number: "1.3-3" }}
+              </td>
+              <td class="text-right">
+                {{ batch.qtyremained | number: "1.3-3" }}
+              </td>
+              <td>
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#viewBatchModal"
+                  (click)="viewBatchDetails(batch)"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+
+            <tr *ngIf="!allbatches">
+              <td colspan="7">
+                <h6 class="text-danger mt-3">
+                  <i class="fa fa-exclamation-triangle"></i> There are no
+                  batches yet
+                </h6>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

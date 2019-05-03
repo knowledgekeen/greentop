@@ -67,7 +67,7 @@ if($action == "dispatchOrder"){
         $resultInsSM = $conn->query($sqlInsSM);
         
         //Update Order Master
-        $sqlOM = "UPDATE `order_master` SET `status`='closed' WHERE `orderid`=$orderid";
+        $sqlOM = "UPDATE `order_master` SET `status`='dispatched' WHERE `orderid`=$orderid";
         $resultOM = $conn->query($sqlOM);
     }
     $data1= array();

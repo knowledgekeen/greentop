@@ -104,6 +104,48 @@ if($action == "getOpenOrders"){
 	echo json_encode($data);
 }
 
+
+// Get All dispatched orders irrespective of Financial year
+if($action == "getDispatchedOrders"){
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`status`='dispatched' AND o.`prodid`=p.`prodid`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['orderid'] = $row['orderid'];
+			$tmp[$i]['orderno'] = $row['orderno'];
+			$tmp[$i]['orderdt'] = $row['orderdt'];
+			$tmp[$i]['prodid'] = $row['prodid'];
+			$tmp[$i]['prodname'] = $row['prodname'];
+			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['remarks'] = $row['remarks'];
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['address'] = $row['address'];
+			$tmp[$i]['contactno'] = $row['contactno'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
 if($action == "getOrderConsignees"){
     $orderid=$_GET["orderid"];
 	$sql = "SELECT `orderconsignid`,`orderid`,`consigneename`,`contactperson`,`contactnumber` as `contactno`,`city`,`state`,`address`,`quantity`,`remarks` FROM `order_consignees` WHERE `orderid`=$orderid";
@@ -231,7 +273,7 @@ if($action == "getAllOrdersFromToDate"){
 
 if($action == "getOrdersDetails"){
 	$orderid = $_GET["orderid"];
-	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`orderid`=$orderid AND o.`clientid`=c.`clientid` AND o.`status`='open' AND o.`prodid`=p.`prodid`";
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`orderid`=$orderid AND o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid`";
 	$result = $conn->query($sql);
     $row = $result->fetch_array(MYSQLI_ASSOC);
 	

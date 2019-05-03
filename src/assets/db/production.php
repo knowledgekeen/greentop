@@ -240,6 +240,44 @@ if($action == "getAllProductionBatches"){
 	echo json_encode($data);
 }
 
+if($action == "getProductionBatchesFromToDt"){
+	$fromdt = $_GET["fromdt"];
+	$todt = $_GET["todt"];
+	$sql = "SELECT pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`status`='open' AND pbm.`manufacdate` BETWEEN '$fromdt' AND '$todt'";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['batchid'] = $row['batchid'];
+			$tmp[$i]['prodid'] = $row['prodid'];
+			$tmp[$i]['qtyproduced'] = $row['qtyproduced'];
+			$tmp[$i]['qtyremained'] = $row['qtyremained'];
+			$tmp[$i]['manufacdate'] = $row['manufacdate'];
+			$tmp[$i]['prodname'] = $row['prodname'];
+			$i++;
+		}
+
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
 if($action == "getProductionBatchDetails"){
 	$batchid = $_GET["batchid"];
 	$sql = "SELECT pbr.`prodregid`,pbr.`rawmatid`,pbr.`rawmatqty`, rm.`name` FROM `production_batch_register` pbr, `raw_material_master` rm WHERE pbr.`batchid`=$batchid AND pbr.`rawmatid`=rm.`rawmatid`";

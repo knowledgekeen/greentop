@@ -78,15 +78,77 @@ export class SalepaymentsComponent implements OnInit {
       openbal = Response["openingbal"];
       let tmparr = [];
       console.log(openbal, ordermast, orderpay);
+
+      if (openbal) {
+        let tmpobj = {
+          id: tmparr.length,
+          dates: openbal.baldate,
+          particulars: "Opening Balance",
+          payin: null,
+          payout: openbal.openingbal
+        };
+        tmparr.push(tmpobj);
+      }
+
+      //These are Orders made but payments are non done;
+      if (ordermast) {
+        for (let i in ordermast) {
+          let tmpobj = {
+            id: tmparr.length,
+            dates: ordermast[i].billdt,
+            particulars: "Order of bill no-" + ordermast[i].billno,
+            payin: null,
+            payout: ordermast[i].totalamount
+          };
+          tmparr.push(tmpobj);
+        }
+      }
+
+      if (orderpay) {
+        for (let i in orderpay) {
+          let particulars = orderpay[i].particulars;
+          if (!orderpay[i].particulars) {
+            particulars = "Payment made by " + orderpay[i].paymode;
+          }
+          let tmpobj = {
+            id: tmparr.length,
+            dates: orderpay[i].paydate,
+            particulars: particulars,
+            payin: orderpay[i].amount,
+            payout: null
+          };
+          tmparr.push(tmpobj);
+        }
+      }
+      tmparr.sort(this._global.sortArr("dates"));
+      this.payhistory = tmparr;
+      this.calculateTotalDebitCredit();
     });
+  }
+
+  calculateTotalDebitCredit() {
+    let tmpobj = {
+      payin: 0,
+      payout: 0
+    };
+    for (let i in this.payhistory) {
+      if (this.payhistory[i].payin) {
+        tmpobj.payin += parseFloat(this.payhistory[i].payin);
+      } else {
+        tmpobj.payout += parseFloat(this.payhistory[i].payout);
+      }
+    }
+    console.log(tmpobj);
+    this.totalamt = tmpobj;
+    tmpobj = null;
   }
 
   fetchAllPaymentData() {
     let dt = new Date();
     dt.setFullYear(new Date().getFullYear() - 1);
-    console.log(dt);
+    //console.log(dt);
     let prevfinanyr = this._global.getSpecificFinancialYear(dt.getTime());
-    console.log(prevfinanyr);
+    //console.log(prevfinanyr);
     let geturl =
       "clientid=" +
       this.customer.split(".")[0] +
@@ -98,7 +160,7 @@ export class SalepaymentsComponent implements OnInit {
       prevfinanyr.fromdt +
       "&prevtodt=" +
       prevfinanyr.todt;
-    console.log(geturl);
+    //console.log(geturl);
     let ordermast = null;
     let orderpay = null;
     let vm = this;
@@ -109,16 +171,20 @@ export class SalepaymentsComponent implements OnInit {
         .subscribe(CResp => {
           console.log(CResp);
           vm._rest
-            .getData("sales_payments.php", "getAllOrderMastPayments", geturl)
+            .getData("sales_payments.php", "getAllOrderInvoicePayments", geturl)
             .subscribe(Response => {
               //console.log(Response);
               if (Response) {
                 ordermast = Response["data"];
               }
 
-              //Irrespective of data from getAllPurchaseMastPayments, need to get payments done details
+              //Irrespective of data from getAllOrderPayments, need to get payments done details
               vm._rest
-                .getData("purchase_payments.php", "getAllOrderPayments", geturl)
+                .getData(
+                  "sales_payments.php",
+                  "getAllSaleOrderPayments",
+                  geturl
+                )
                 .subscribe(Resp => {
                   //console.log(Resp);
                   if (Resp) {

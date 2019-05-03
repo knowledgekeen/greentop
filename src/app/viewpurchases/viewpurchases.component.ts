@@ -38,7 +38,8 @@ export class ViewpurchasesComponent implements OnInit {
     //console.log(fromdt, todt);
     this.allpurchases = null;
     let purchurl = "fromdt=" + fromdt + "&todt=" + todt;
-
+    let totamt = 0;
+    let totqty = 0;
     this._rest
       .getData("reports_purchases.php", "getFromToPurchases", purchurl)
       .subscribe(Response => {
@@ -48,9 +49,11 @@ export class ViewpurchasesComponent implements OnInit {
           this.allpurchases = Response["data"];
 
           for (let i in this.allpurchases) {
-            this.totalamt += parseFloat(this.allpurchases[i].totalamount);
-            this.totalqty += parseFloat(this.allpurchases[i].quantity);
+            totamt += parseFloat(this.allpurchases[i].totalamount);
+            totqty += parseFloat(this.allpurchases[i].quantity);
           }
+          this.totalamt = totamt;
+          this.totalqty = totqty;
         }
       });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RESTService } from "../rest.service";
 import * as moment from "moment";
 import { IntervalService } from "../interval.service";
+import { GlobalService } from "../global.service";
 
 @Component({
   selector: "app-viewbatch",
@@ -17,23 +18,40 @@ export class ViewbatchComponent implements OnInit {
   allproducts: any = null;
   isbatchused: any = false;
   batchsucces: any = false;
-  constructor(private _rest: RESTService, private _interval: IntervalService) {}
+  opendtp: boolean = false;
+  selectedDate: any = new Date();
+  errorMsg: any = false;
+
+  constructor(
+    private _rest: RESTService,
+    private _interval: IntervalService,
+    private _global: GlobalService
+  ) {}
 
   ngOnInit() {
     this.initialize();
   }
 
   initialize() {
+    let fromdt: any = new Date();
+    fromdt.setDate(1);
+    fromdt.setHours(0, 0, 0, 0);
+    fromdt = fromdt.getTime();
+    let todt = new Date().getTime();
+    this.getProductionBatchesFromToDt(fromdt, todt);
+  }
+
+  getProductionBatchesFromToDt(fromdt, todt) {
     this.allbatches = null;
+    let urldata = "fromdt=" + fromdt + "&todt=" + todt;
     this._rest
-      .getData("production.php", "getAllProductionBatches", null)
+      .getData("production.php", "getProductionBatchesFromToDt", urldata)
       .subscribe(Response => {
         if (Response) {
           this.allbatches = Response["data"];
         }
       });
   }
-
   viewBatchDetails(batch) {
     //console.log(batch);
     this.selectedbatch = JSON.parse(JSON.stringify(batch));
@@ -195,5 +213,41 @@ export class ViewbatchComponent implements OnInit {
           }
         );
     });
+  }
+
+  toggleDTP() {
+    this.opendtp = !this.opendtp;
+  }
+
+  changeDate() {
+    if (this.selectedDate) {
+      //console.log(this.selectedDate.getTime());
+      let todaydt = new Date().getTime();
+      if (this.selectedDate.getTime() > todaydt) {
+        let fromdt: any = new Date();
+        fromdt.setDate(1);
+        fromdt.setHours(0, 0, 0, 0);
+        fromdt = fromdt.getTime();
+        let todt = new Date().getTime();
+        //If month from future show details of current month
+        this.getProductionBatchesFromToDt(fromdt, todt);
+        this.errorMsg = "Month cannot be from future.";
+        this.selectedDate.setTime(todaydt);
+        this.opendtp = !this.opendtp;
+        this._interval.settimer(null).then(Resp => {
+          this.errorMsg = false;
+        });
+        return;
+      } else {
+        let dt = new Date();
+        dt.setTime(this.selectedDate);
+        let fromdt = this.selectedDate.getTime();
+        let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
+        //console.log(fromdt, lastdt);
+        this.getProductionBatchesFromToDt(fromdt, lastdt);
+        this.opendtp = !this.opendtp;
+        return;
+      }
+    }
   }
 }

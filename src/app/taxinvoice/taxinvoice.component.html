@@ -1,14 +1,12 @@
 <div class="container">
-  <h5 class="my-3">Dispatch Order</h5>
+  <h5 class="my-3">Tax Invoice</h5>
 
   <div class="card">
     <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> Bill Details added successfully.
+      </div>
       <div class="row">
-        <div class="col-md-12 col-sm-12 mb-3" *ngIf="successmsg">
-          <div class="alert alert-success" role="alert">
-            <i class="fa fa-check"></i> Order dispatched successfully.
-          </div>
-        </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="w-100 m-0"
             >Select Order
@@ -26,6 +24,7 @@
             class="form-control"
             [(ngModel)]="selectedorder"
             (change)="selectOrder()"
+            [disabled]="!openorders"
           >
             <option value="{{ order.orderid }}" *ngFor="let order of openorders"
               >Order: {{ order.orderid }} Dated:
@@ -34,87 +33,54 @@
           </select>
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">Dispatch Date (DD-MM-YYYY)</label>
+          <label class="m-0">Bill Number</label>
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="dispatchdate"
+            [(ngModel)]="billno"
+            placeholder="Bill Number"
+            readonly
+          />
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Bill Date (DD-MM-YYYY)</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="billdate"
             (blur)="autoFillDate()"
-            placeholder="Dispatch Date (DD-MM-YYYY)"
+            placeholder="Bill Date (DD-MM-YYYY)"
           />
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">DC Number</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="dcno"
-            placeholder="Enter DC Number"
-          />
-        </div>
-        <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">Vehicle Number</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="vehicalno"
-            placeholder="Enter Vehicle Number"
-            list="lorries"
-          />
-          <datalist id="lorries">
-            <option
-              value="{{ lorry.lorryno }}"
-              *ngFor="let lorry of alltrucks"
-              >{{ lorry.lorryno }}</option
-            >
-          </datalist>
-        </div>
-        <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
-          <label class="m-0">Order Quantity</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="orderdetails.quantity"
-            readonly
-          />
-        </div>
-        <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
-          <label class="m-0">Product Ordered</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="orderdetails.prodname"
-            readonly
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card my-3" *ngIf="selectedorder">
-    <div class="card-body">
-      <h6 class="text-info">Transport Payment</h6>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 mb-2">
+        <div class="col-md-12 col-sm-12 mb-3">
           <div class="custom-control custom-checkbox">
             <input
               type="checkbox"
               class="custom-control-input"
-              id="customCheck1"
-              [(ngModel)]="partytransport"
+              id="customControlAutosizing"
+              [(ngModel)]="autocalc"
             />
-            <label class="custom-control-label" for="customCheck1"
-              >Party's Transport</label
+            <label class="custom-control-label" for="customControlAutosizing"
+              >Auto-Calculate</label
             >
           </div>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
-          <label class="m-0">Rate (P.M.T)</label>
+          <label class="m-0">Rate </label>
+
+          <span
+            class="float-right text-info font-weight-bold"
+            *ngIf="orderdetails"
+          >
+            Quantity: {{ orderdetails.quantity }} tons/bags
+          </span>
           <input
             type="text"
             class="form-control"
-            placeholder="rate (P.M.T)"
             [(ngModel)]="rate"
+            placeholder="Rate"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
           />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
@@ -122,128 +88,123 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Amount"
             [(ngModel)]="amount"
+            placeholder="Amount"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
           />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
-          <label class="m-0">Advance</label>
+          <label class="m-0">Discount</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Advance"
-            [(ngModel)]="advance"
+            [(ngModel)]="discount"
+            placeholder="Discount"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
           />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
-          <label class="m-0">Paid On Date (DD-MM-YYYY)</label>
+          <label class="m-0">Amount before GST</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Paid On Date (DD-MM-YYYY)"
-            [(ngModel)]="paidon"
-            (blur)="autoFillPaidOnDate()"
+            [(ngModel)]="amtbeforegst"
+            placeholder="Amount Before GST"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
           />
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card mb-3" *ngIf="selectedorder">
-    <div class="card-body">
-      <h6 class="text-info">Select Manufacture Batch and Quantity</h6>
-      <div class="row">
-        <div class="col-md-4 col-sm-12 mb-1">
-          <label class="m-0">Select Batch</label>
-          <select
-            class="form-control"
-            [(ngModel)]="selbatch"
-            (change)="getAllQuantities()"
-            [disabled]="allbatches.length <= 0"
-          >
-            <option
-              value="{{ batch.batchid }}"
-              *ngFor="let batch of allbatches"
-              >{{ batch.batchid }}</option
-            >
-          </select>
-          <h6 class="h6 text-secondary mt-1" *ngIf="selbatchquantity">
-            Quantity remained
-            <span
-              class="font-weight-bold badge"
-              [ngClass]="{
-                'badge-primary': selbatchquantity > 5,
-                'badge-warning': selbatchquantity <= 5 && selbatchquantity > 0,
-                'badge-danger': selbatchquantity <= 0
-              }"
-              >{{ selbatchquantity }}</span
-            >
-          </h6>
-        </div>
-        <div class="col-md-4 col-sm-12 mb-1">
-          <label class="m-0">Enter Quantity</label>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0">CGST (%)</label>
+          <span class="float-right text-info" *ngIf="cgstinr">
+            {{ cgstinr | currency: "INR" }}
+          </span>
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="selqty"
-            placeholder="Enter Quantity"
-            [disabled]="!selbatch"
+            [(ngModel)]="cgst"
+            placeholder="CGST in %"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
           />
         </div>
-        <div class="col-md-4 col-sm-12 mb-1">
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0">SGST (%)</label>
+          <span class="float-right text-info" *ngIf="sgstinr">
+            {{ sgstinr | currency: "INR" }}
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="sgst"
+            placeholder="SGST in %"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0">IGST (%)</label>
+          <span class="float-right text-info" *ngIf="igstinr">
+            {{ igstinr | currency: "INR" }}
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="igst"
+            placeholder="IGST in %"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <label class="m-0">Round Off (+/-)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Round Off (+/-)"
+            [(ngModel)]="roundoff"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
+          />
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Total Amount</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="totalamount"
+            placeholder="Total Amount"
+            (blur)="calculateAmt()"
+            [disabled]="!orderdetails"
+          />
+        </div>
+        <div class="col-md-12 col-sm 12 mb-3">
           <button
-            class="btn btn-info mt-4"
-            [disabled]="!selbatch || !selqty"
-            (click)="addBatch()"
+            class="btn btn-primary mr-3"
+            title="This button will save the details and will close the order bill"
+            [disabled]="
+              !orderdetails ||
+              !billno ||
+              !billdate ||
+              !rate ||
+              !amount ||
+              !amtbeforegst ||
+              !totalamount
+            "
+            (click)="saveBillDetails()"
           >
-            Add Batch
+            Save Bill
           </button>
         </div>
-        <div class="col-md-12" *ngIf="qtyremerror">
+        <div class="col-md-12 col-sm-12 mb-3">
           <h6 class="text-danger">
-            <i class="fa fa-exclamation-triangle"></i> {{ qtyremerror }}
+            <i class="fa fa-exclamation"></i> Note: Order will be closed once
+            billing details are added.
           </h6>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="card mb-3" *ngIf="selectedorder && addedbatches.length > 0">
-    <div class="card-body">
-      <table class="table table-sm">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Batch Id</th>
-            <th scope="col">Selected Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let batch of addedbatches; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ batch.batchid }}</td>
-            <td>{{ batch.selqty }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button
-        class="btn btn-primary mt-1"
-        [disabled]="
-          !selectedorder ||
-          !dispatchdate ||
-          !dcno ||
-          !vehicalno ||
-          !orderdetails ||
-          !rate ||
-          !amount ||
-          !advance ||
-          !paidon ||
-          addedbatches.length <= 0
-        "
-        (click)="dispatchOrder()"
-      >
-        Dispatch Order
-      </button>
     </div>
   </div>
 </div>
@@ -355,7 +316,7 @@
                 <tr *ngFor="let consignee of allconsignees; let i = index">
                   <th scope="row">{{ i + 1 }}</th>
                   <td>{{ consignee.contactperson }}</td>
-                  <td>{{ consignee.contactno }}</td>
+                  <td>{{ consignee.contactnumber }}</td>
                   <td>{{ consignee.quantity }}</td>
                   <td>{{ consignee.city }}</td>
                   <td>{{ consignee.address }}</td>

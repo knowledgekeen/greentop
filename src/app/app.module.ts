@@ -53,6 +53,8 @@ import { ViewordersComponent } from './vieworders/vieworders.component';
 import { EditorderComponent } from './editorder/editorder.component';
 import { FinanyrordersComponent } from './finanyrorders/finanyrorders.component';
 import { SalepaymentsComponent } from './salepayments/salepayments.component';
+import { TaxinvoiceComponent } from './taxinvoice/taxinvoice.component';
+import { ViewtaxinvoicesComponent } from './viewtaxinvoices/viewtaxinvoices.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,9 @@ import { SalepaymentsComponent } from './salepayments/salepayments.component';
     ViewordersComponent,
     EditorderComponent,
     FinanyrordersComponent,
-    SalepaymentsComponent
+    SalepaymentsComponent,
+    TaxinvoiceComponent,
+    ViewtaxinvoicesComponent
   ],
   imports: [
     BrowserModule,
