@@ -48,7 +48,6 @@ export class ViewtaxinvoicesComponent implements OnInit {
   initialize() {}
 
   getInvoicesFromToDt(fromdt, todt) {
-    console.log("Test");
     this.allinvoices = null;
     let amt = 0;
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
@@ -75,7 +74,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
     this._rest
       .getData("order.php", "getOrdersDetails", urldata)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.orderdetails = Response["data"];
           this._rest
@@ -90,7 +89,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
   }
 
   getBillDetails(billdet) {
-    console.log(billdet);
+    //console.log(billdet);
     this.billdetails = billdet;
     this.billno = billdet.billno;
     this.billdt = moment(parseInt(billdet.billdt)).format("DD-MM-YYYY");
@@ -123,7 +122,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
   }
 
   changeDate() {
-    console.log(this.selecteddate);
+    //console.log(this.selecteddate);
     if (this.selecteddate) {
       //console.log(this.selecteddate.getTime());
       let todaydt = new Date().getTime();

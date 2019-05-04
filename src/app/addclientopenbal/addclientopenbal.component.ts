@@ -77,12 +77,12 @@ export class AddclientopenbalComponent implements OnInit {
       prevyr.fromdt +
       "&prevtodt=" +
       prevyr.todt;
-    console.log(geturl);
+    //console.log(geturl);
     if (this.ctype == "1") {
       this._rest
         .getData("client.php", "getClientPurchaseOpeningBal", geturl)
         .subscribe(Response => {
-          console.log(Response);
+          //console.log(Response);
           if (Response) {
             this.openbal = Response["data"].openingbal;
             this.openbaldata = Response["data"];
@@ -92,7 +92,7 @@ export class AddclientopenbalComponent implements OnInit {
       this._rest
         .getData("client.php", "getClientSaleOpeningBal", geturl)
         .subscribe(Response => {
-          console.log(Response);
+          //console.log(Response);
           if (Response) {
             this.openbal = Response["data"].openingbal;
             this.openbaldata = Response["data"];
@@ -127,6 +127,6 @@ export class AddclientopenbalComponent implements OnInit {
           });
         }
       });
-    console.log(cldata);
+    //console.log(cldata);
   }
 }

@@ -77,7 +77,7 @@ export class SalepaymentsComponent implements OnInit {
       orderpay = Response["orderpay"];
       openbal = Response["openingbal"];
       let tmparr = [];
-      console.log(openbal, ordermast, orderpay);
+      //console.log(openbal, ordermast, orderpay);
 
       if (openbal) {
         let tmpobj = {
@@ -138,7 +138,7 @@ export class SalepaymentsComponent implements OnInit {
         tmpobj.payout += parseFloat(this.payhistory[i].payout);
       }
     }
-    console.log(tmpobj);
+    //console.log(tmpobj);
     this.totalamt = tmpobj;
     tmpobj = null;
   }
@@ -164,12 +164,12 @@ export class SalepaymentsComponent implements OnInit {
     let ordermast = null;
     let orderpay = null;
     let vm = this;
-    console.log(geturl);
+    //console.log(geturl);
     return new Promise(function(resolve, reject) {
       vm._rest
         .getData("client.php", "getClientSaleOpeningBal", geturl)
         .subscribe(CResp => {
-          console.log(CResp);
+          //console.log(CResp);
           vm._rest
             .getData("sales_payments.php", "getAllOrderInvoicePayments", geturl)
             .subscribe(Response => {

@@ -95,7 +95,7 @@ export class ViewordersComponent implements OnInit {
       .getData("order.php", "getOrderConsignees", geturl)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response);
+          //console.log(Response);
           this.selectedorderconsignees = Response["data"];
         }
       });

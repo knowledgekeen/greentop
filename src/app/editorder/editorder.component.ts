@@ -223,7 +223,7 @@ export class EditorderComponent implements OnInit {
       total += parseFloat(this.allconsignees[i].quantity);
     }
     if (total != parseFloat(this.quantity)) {
-      console.log(total, parseFloat(this.quantity));
+      //console.log(total, parseFloat(this.quantity));
       alert("Order quantity mismatched with the total consignee quantity.");
       return;
     }
@@ -239,7 +239,7 @@ export class EditorderComponent implements OnInit {
       consignees: this.allconsignees,
       remarks: this.remarks
     };
-    console.log(orderObj);
+    //console.log(orderObj);
 
     this._rest
       .postData("order.php", "updateOrderDetails", orderObj, null)

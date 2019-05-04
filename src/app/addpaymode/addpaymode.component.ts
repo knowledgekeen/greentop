@@ -50,7 +50,7 @@ export class AddpaymodeComponent implements OnInit {
       paymodeid: this.selectedmode.paymodeid,
       paymode: this.paymode
     };
-    console.log(postobj);
+    //console.log(postobj);
     this._rest
       .postData("payments_common.php", "updatePayMode", postobj)
       .subscribe(Response => {

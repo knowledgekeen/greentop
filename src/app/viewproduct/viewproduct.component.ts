@@ -108,7 +108,7 @@ export class ViewproductComponent implements OnInit {
             this._rest
               .postData("stock.php", "updateCurrentStock", uptstkmast, null)
               .subscribe(Resp => {
-                console.log("Stock master updated successfully");
+                //console.log("Stock master updated successfully");
               });
           }
         }

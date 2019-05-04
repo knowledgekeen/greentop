@@ -79,7 +79,7 @@ export class PurchasepaymentsComponent implements OnInit {
       purchpay = Response["purchpay"];
       openbal = Response["openingbal"];
       let tmparr = [];
-      console.log(openbal, purchmast, purchpay);
+      //console.log(openbal, purchmast, purchpay);
 
       if (openbal) {
         let tmpobj = {
@@ -130,9 +130,9 @@ export class PurchasepaymentsComponent implements OnInit {
   fetchAllPaymentData() {
     let dt = new Date();
     dt.setFullYear(new Date().getFullYear() - 1);
-    console.log(dt);
+    //console.log(dt);
     let prevfinanyr = this._global.getSpecificFinancialYear(dt.getTime());
-    console.log(prevfinanyr);
+    //console.log(prevfinanyr);
     let geturl =
       "clientid=" +
       this.supplier.split(".")[0] +
@@ -144,7 +144,7 @@ export class PurchasepaymentsComponent implements OnInit {
       prevfinanyr.fromdt +
       "&prevtodt=" +
       prevfinanyr.todt;
-    console.log(geturl);
+    //console.log(geturl);
     let purchmast = null;
     let purchpay = null;
     let vm = this;
@@ -152,7 +152,7 @@ export class PurchasepaymentsComponent implements OnInit {
       vm._rest
         .getData("client.php", "getClientPurchaseOpeningBal", geturl)
         .subscribe(CResp => {
-          console.log(CResp);
+          //console.log(CResp);
           vm._rest
             .getData(
               "purchase_payments.php",
@@ -209,11 +209,11 @@ export class PurchasepaymentsComponent implements OnInit {
       particulars: this.particulars
     };
     this.disableaddbtn = true;
-    console.log(tmpObj);
+    //console.log(tmpObj);
     this._rest
       .postData("purchase_payments.php", "addPurchasePayment", tmpObj, null)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.successmsg = "Payment done successfully";
           this._interval.settimer(null).then(resp => {

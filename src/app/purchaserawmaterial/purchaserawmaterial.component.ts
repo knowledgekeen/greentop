@@ -519,7 +519,7 @@ export class PurchaserawmaterialComponent implements OnInit {
     this._rest
       .getData("rawmaterial.php", "checkPurchaseBillNoIfPresent", geturl)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           let tmpdt = moment(parseInt(Response["data"].billdt)).format(
             "DD-MM-YYYY"
@@ -539,7 +539,7 @@ export class PurchaserawmaterialComponent implements OnInit {
     this._rest
       .getData("rawmaterial.php", "checkPurchaseDCNoIfPresent", geturl)
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           let tmpdt = moment(parseInt(Response["data"].billdt)).format(
             "DD-MM-YYYY"

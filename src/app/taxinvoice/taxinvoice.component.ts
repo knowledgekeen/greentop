@@ -50,7 +50,7 @@ export class TaxinvoiceComponent implements OnInit {
     this._rest
       .getData("taxinvoice.php", "getLastBillId")
       .subscribe(Response => {
-        console.log(Response);
+        //console.log(Response);
         if (Response) {
           this.billno = JSON.stringify(parseFloat(Response["data"]) + 1);
         } else {
@@ -133,7 +133,7 @@ export class TaxinvoiceComponent implements OnInit {
   }
 
   saveBillDetails() {
-    console.log(this.orderdetails);
+    //console.log(this.orderdetails);
     let billdt = moment(this.billdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpobj = {
       orderid: this.orderdetails.orderid,
