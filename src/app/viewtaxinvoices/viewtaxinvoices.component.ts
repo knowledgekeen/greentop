@@ -45,14 +45,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
     this.initialize();
   }
 
-  initialize() {
-    let fromdt: any = new Date();
-    fromdt.setDate(1);
-    fromdt.setHours(0, 0, 0, 0);
-    fromdt = fromdt.getTime();
-    let todt = new Date().getTime();
-    //this.getInvoicesFromToDt(fromdt, todt);
-  }
+  initialize() {}
 
   getInvoicesFromToDt(fromdt, todt) {
     console.log("Test");
@@ -139,9 +132,14 @@ export class ViewtaxinvoicesComponent implements OnInit {
         fromdt.setDate(1);
         fromdt.setHours(0, 0, 0, 0);
         fromdt = fromdt.getTime();
-        let todt = new Date().getTime();
+        let todt = new Date();
+        let lastdt = new Date(
+          todt.getFullYear(),
+          todt.getMonth() + 1,
+          0
+        ).getTime();
         //If month from future show details of current month
-        this.getInvoicesFromToDt(fromdt, todt);
+        this.getInvoicesFromToDt(fromdt, lastdt);
         this.errorMsg = "Month cannot be from future.";
         this.selecteddate.setTime(todaydt);
         this.opendtp = !this.opendtp;

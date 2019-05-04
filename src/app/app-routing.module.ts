@@ -27,6 +27,8 @@ import { EditorderComponent } from "./editorder/editorder.component";
 import { SalepaymentsComponent } from "./salepayments/salepayments.component";
 import { TaxinvoiceComponent } from "./taxinvoice/taxinvoice.component";
 import { ViewtaxinvoicesComponent } from "./viewtaxinvoices/viewtaxinvoices.component";
+import { AddclientopenbalComponent } from "./addclientopenbal/addclientopenbal.component";
+import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -58,8 +60,11 @@ const routes: Routes = [
   { path: "addpaymode", component: AddpaymodeComponent },
   { path: "vieworders", component: ViewordersComponent },
   { path: "viewinvoices", component: ViewtaxinvoicesComponent },
+  { path: "pagenotfound", component: PagenotfoundComponent },
   { path: "editorder/:orderid", component: EditorderComponent },
-  { path: "", redirectTo: "/index", pathMatch: "full" }
+  { path: "addclientopenbal/:ctype", component: AddclientopenbalComponent },
+  { path: "", redirectTo: "/index", pathMatch: "full" },
+  { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" }
 ];
 
 @NgModule({

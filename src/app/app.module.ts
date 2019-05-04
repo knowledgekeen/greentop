@@ -55,6 +55,8 @@ import { FinanyrordersComponent } from './finanyrorders/finanyrorders.component'
 import { SalepaymentsComponent } from './salepayments/salepayments.component';
 import { TaxinvoiceComponent } from './taxinvoice/taxinvoice.component';
 import { ViewtaxinvoicesComponent } from './viewtaxinvoices/viewtaxinvoices.component';
+import { AddclientopenbalComponent } from './addclientopenbal/addclientopenbal.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { ViewtaxinvoicesComponent } from './viewtaxinvoices/viewtaxinvoices.comp
     FinanyrordersComponent,
     SalepaymentsComponent,
     TaxinvoiceComponent,
-    ViewtaxinvoicesComponent
+    ViewtaxinvoicesComponent,
+    AddclientopenbalComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

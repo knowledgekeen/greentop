@@ -126,6 +126,22 @@
                   </td>
                 </tr>
                 <tr>
+                  <td colspan="3"></td>
+                  <td class="text-right font-weight-bold">
+                    Balance
+                  </td>
+                  <td
+                    class="text-right font-weight-bold border-top border-secondary"
+                  >
+                    <span *ngIf="totalamt.balance < 0">
+                      ({{ totalamt.balance * -1 }})
+                    </span>
+                    <span *ngIf="totalamt.balance > 0">
+                      {{ totalamt.balance }}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
                   <td colspan="3" class="text-right font-weight-bold">Total</td>
                   <td
                     class="text-right font-weight-bold border-top border-secondary"

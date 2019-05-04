@@ -226,7 +226,8 @@ export class PurchasepaymentsComponent implements OnInit {
   calculateTotalDebitCredit() {
     let tmpobj = {
       debit: 0,
-      credit: 0
+      credit: 0,
+      balance: 0
     };
     for (let i in this.payhistory) {
       if (this.payhistory[i].debit) {
@@ -235,6 +236,7 @@ export class PurchasepaymentsComponent implements OnInit {
         tmpobj.credit += parseFloat(this.payhistory[i].credit);
       }
     }
+    tmpobj.balance = tmpobj.credit - tmpobj.debit;
     this.totalamt = tmpobj;
     tmpobj = null;
   }
@@ -247,5 +249,6 @@ export class PurchasepaymentsComponent implements OnInit {
     this.amtpaid = null;
     this.paymode = null;
     this.particulars = null;
+    this.payhistory = null;
   }
 }

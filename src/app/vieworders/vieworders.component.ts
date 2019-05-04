@@ -23,21 +23,7 @@ export class ViewordersComponent implements OnInit {
     private _interval: IntervalService
   ) {}
 
-  ngOnInit() {
-    let fromdt = new Date();
-    let todt = new Date();
-    fromdt.setDate(1);
-    fromdt.setHours(0, 0, 0, 0);
-    let lastday: any = new Date(
-      todt.getFullYear(),
-      todt.getMonth() + 1,
-      0
-    ).getDate();
-    todt.setDate(lastday);
-    todt.setHours(23, 59, 59, 999);
-
-    this.getOpenOrdersFromToDate(fromdt.getTime(), todt.getTime());
-  }
+  ngOnInit() {}
 
   getOpenOrdersFromToDate(fromdt, todt) {
     this.allorders = null;
@@ -67,10 +53,17 @@ export class ViewordersComponent implements OnInit {
       if (this.selecteddate.getTime() > todaydt) {
         let fromdt: any = new Date();
         fromdt.setDate(1);
+        fromdt.setHours(0, 0, 0, 0);
         fromdt = fromdt.getTime();
-        let todt = new Date().getTime();
+        let todt = new Date();
+        let lastdt = new Date(
+          todt.getFullYear(),
+          todt.getMonth() + 1,
+          0
+        ).getTime();
+
         //If month from future show details of current month
-        this.getOpenOrdersFromToDate(fromdt, todt);
+        this.getOpenOrdersFromToDate(fromdt, lastdt);
         this.errorMsg = "Month cannot be from future.";
         this.selecteddate.setTime(todaydt);
         this.opendtp = !this.opendtp;

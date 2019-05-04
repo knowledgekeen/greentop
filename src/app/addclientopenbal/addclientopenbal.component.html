@@ -1,0 +1,57 @@
+<div class="container">
+  <h5 class="my-3">Add {{ ctypenm }} Opening Balance</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> Opening balance updated.
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">
+            Select
+            <span *ngIf="ctype == 1">Supplier</span>
+            <span *ngIf="ctype == 2">Customer</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="client"
+            list="clientlist"
+            (change)="getClientOpenBal()"
+          />
+          <datalist id="clientlist">
+            <option
+              value="{{ cdet.clientid }}.{{ cdet.name }}"
+              *ngFor="let cdet of allclients"
+            >
+              {{ cdet.clientid }}.{{ cdet.name }}
+            </option>
+          </datalist>
+        </div>
+        <div class="col-md-4 col-sm-12" *ngIf="client">
+          <label class="m-0">Opening Balance</label>
+          <input type="text" class="form-control" [(ngModel)]="openbal" />
+        </div>
+        <div class="col-md-4 col-sm-12" *ngIf="client">
+          <label class="m-0">Opening Balance Date</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="openbaldt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <button
+            class="btn btn-warning"
+            (click)="updateClientOpeningBalance()"
+            [disabled]="!openbaldt || !openbal || !client"
+          >
+            Update Opening Balance
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,14 +25,7 @@ export class ViewpurchasesComponent implements OnInit {
     private _router: Router
   ) {}
 
-  ngOnInit() {
-    let fromdt: any = new Date();
-    fromdt.setDate(1);
-    fromdt = fromdt.getTime();
-    let todt = new Date().getTime();
-    this.getFromToPurchases(fromdt, todt);
-    //console.log(this._global.getCurrentFinancialYear());
-  }
+  ngOnInit() {}
 
   getFromToPurchases(fromdt, todt) {
     //console.log(fromdt, todt);
@@ -70,9 +63,15 @@ export class ViewpurchasesComponent implements OnInit {
         let fromdt: any = new Date();
         fromdt.setDate(1);
         fromdt = fromdt.getTime();
-        let todt = new Date().getTime();
+        let todt = new Date();
+        let lastdt = new Date(
+          todt.getFullYear(),
+          todt.getMonth() + 1,
+          0
+        ).getTime();
+
         //If month from future show details of current month
-        this.getFromToPurchases(fromdt, todt);
+        this.getFromToPurchases(fromdt, lastdt);
         this.errorMsg = "Month cannot be from future.";
         this.selectedDate.setTime(todaydt);
         this.opendtp = !this.opendtp;

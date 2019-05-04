@@ -324,4 +324,30 @@ if($action == "getClientSaleOpeningBal"){
 
 	echo json_encode($data);
 }
+
+if($action == "updateClientOpeningBalance"){
+    $data = json_decode(file_get_contents("php://input"));
+	$openbalid = $data->openbalid;
+	$clientid = $data->clientid;
+	$openbal = $data->openbal;
+	$baldate = $data->baldate;
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        //Status: 1 == 'active'
+		$sql = "UPDATE `client_openingbal` SET `openingbal`='$openbal',`baldate`='$baldate' WHERE `openbalid`=$openbalid";
+        $result = $conn->query($sql);
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $openbalid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>
