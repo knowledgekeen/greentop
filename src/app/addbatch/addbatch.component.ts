@@ -51,6 +51,7 @@ export class AddbatchComponent implements OnInit {
       .getData("production.php", "getTodaysProductionBatch", null)
       .subscribe(Response => {
         if (Response) {
+          console.log(Response);
           this.batchid = parseInt(Response["data"]) + 1;
         } else {
           this.batchid = "1";

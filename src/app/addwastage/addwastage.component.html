@@ -1,0 +1,103 @@
+<div class="container">
+  <h5 class="my-3">Add Raw Material Wastage</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> {{ successmsg }}
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <label class="m-0">Raw Material</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Raw Material"
+            [(ngModel)]="rawmat"
+            (change)="getRawMatStock()"
+            list="allrawmat"
+          />
+          <datalist id="allrawmat">
+            <option
+              value="{{ rawmat.rawmatid }}.{{ rawmat.name }}"
+              *ngFor="let rawmat of allrawmats"
+              >{{ rawmat.rawmatid }}.{{ rawmat.name }}</option
+            >
+          </datalist>
+          <p class="text-primary font-weight-bold" *ngIf="rawmatavailstk">
+            Available Stock:
+            <span class="border-bottom border-primary">
+              {{ rawmatavailstk.quantity }}
+            </span>
+          </p>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label class="m-0">Quantity</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Quantity"
+            [(ngModel)]="quantity"
+          />
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <label class="m-0">Wastage Date</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Wastage Date"
+            [(ngModel)]="wastagedt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-md-12 col-sm-12 my-3">
+          <button
+            class="btn btn-primary"
+            [disabled]="!rawmat || !wastagedt || !quantity"
+            (click)="addWastage()"
+          >
+            Add Wastage
+          </button>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-md-12 col-sm-12">
+          <h6 class="text-primary">All Wastages of Current financial year</h6>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Raw Material</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Wastage Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let waste of allwastages; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ waste.name }}</td>
+                  <td>{{ waste.quantity }}</td>
+                  <td>{{ waste.wastagedt | date: "dd-MM-yyyy" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-primary font-weight-bold" *ngIf="totalwaste">
+            Total wastage of Raw Materials:
+            <span class="border-bottom border-primary">
+              {{ totalwaste.rawmat }} tons
+            </span>
+            , and total wastage of Bags:
+            <span class="border-bottom border-primary">
+              {{ totalwaste.bags }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

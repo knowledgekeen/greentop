@@ -24,7 +24,7 @@
             placeholder="Select Customer"
             [(ngModel)]="customer"
             list="customerlist"
-            (blur)="getAllSalesPayments()"
+            (change)="getAllSalesPayments()"
           />
           <datalist id="customerlist">
             <option
@@ -88,11 +88,11 @@
   <div class="card my-3" *ngIf="customer && payhistory">
     <div class="card-body">
       <h6 class="text-primary">
-        Payment History for
+        Payment History of
         <span class="font-weight-bold border-bottom border-primary font-italic">
           {{ customer.split(".")[1] }}
         </span>
-        Current Financial Year From
+        For Current Financial Year From
         <span class="font-weight-bold border-bottom border-primary font-italic">
           {{ currfinanyr.fromdt | date: "MMMM, yyyy" }}
         </span>
@@ -111,8 +111,8 @@
                   <th scope="col">#</th>
                   <th scope="col">Date</th>
                   <th scope="col">Particulars</th>
-                  <th scope="col" class="text-right">Paid</th>
-                  <th scope="col" class="text-right">To Pay</th>
+                  <th scope="col" class="text-right">Debit</th>
+                  <th scope="col" class="text-right">Credit</th>
                 </tr>
               </thead>
               <tbody>
@@ -120,17 +120,17 @@
                   <th scope="row">{{ i + 1 }}</th>
                   <td>{{ hist.dates | date: "dd-MM-yyyy" }}</td>
                   <td>{{ hist.particulars }}</td>
-                  <td class="text-right">{{ hist.payin | number: "1.3-3" }}</td>
                   <td class="text-right">
                     {{ hist.payout | number: "1.3-3" }}
                   </td>
+                  <td class="text-right">{{ hist.payin | number: "1.3-3" }}</td>
                 </tr>
                 <tr>
                   <td colspan="3" class="text-right font-weight-bold">Total</td>
                   <td
                     class="text-right font-weight-bold border-top border-secondary"
                   >
-                    {{ totalamt.payin | number: "1.3-3" }}
+                    {{ totalamt.payout | number: "1.3-3" }}
                   </td>
                   <td
                     class="text-right font-weight-bold border-top border-secondary"

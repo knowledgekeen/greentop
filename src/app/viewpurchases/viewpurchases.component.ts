@@ -82,7 +82,10 @@ export class ViewpurchasesComponent implements OnInit {
       } else {
         let dt = new Date();
         dt.setTime(this.selectedDate);
-        let fromdt = this.selectedDate.getTime();
+        let fromdate = new Date(parseInt(this.selectedDate.getTime()));
+        fromdate.setDate(1);
+        fromdate.setHours(0, 0, 0, 0);
+        let fromdt = fromdate.getTime();
         let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
         //console.log(fromdt, lastdt);
         this.getFromToPurchases(fromdt, lastdt);

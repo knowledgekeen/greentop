@@ -85,6 +85,10 @@ export class AddclientopenbalComponent implements OnInit {
           //console.log(Response);
           if (Response) {
             this.openbal = Response["data"].openingbal;
+            let myDate = moment(parseInt(Response["data"].baldate)).format(
+              "DD-MM-YYYY"
+            );
+            this.openbaldt = myDate;
             this.openbaldata = Response["data"];
           }
         });
@@ -96,6 +100,10 @@ export class AddclientopenbalComponent implements OnInit {
           if (Response) {
             this.openbal = Response["data"].openingbal;
             this.openbaldata = Response["data"];
+            let myDate = moment(parseInt(Response["data"].baldate)).format(
+              "DD-MM-YYYY"
+            );
+            this.openbaldt = myDate;
           }
         });
     }

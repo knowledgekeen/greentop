@@ -239,7 +239,7 @@ if($action == "getStockHistory"){
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
 	
-	$sql = "SELECT * FROM `stock_register` WHERE `stockid`=$stockid AND `date` BETWEEN '$fromdt' AND '$todt' ORDER BY `stockregid`";
+	$sql = "SELECT * FROM `stock_register` WHERE `stockid`=$stockid AND `date` BETWEEN '$fromdt' AND '$todt' ORDER BY `date`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

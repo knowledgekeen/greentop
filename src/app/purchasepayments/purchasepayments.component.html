@@ -24,7 +24,7 @@
             placeholder="Select Supplier"
             [(ngModel)]="supplier"
             list="supplierlist"
-            (blur)="getAllPurchasePayments()"
+            (change)="getAllPurchasePayments()"
           />
           <datalist id="supplierlist">
             <option
@@ -111,8 +111,8 @@
                   <th scope="col">#</th>
                   <th scope="col">Date</th>
                   <th scope="col">Particulars</th>
-                  <th scope="col" class="text-right">Paid</th>
-                  <th scope="col" class="text-right">To Pay</th>
+                  <th scope="col" class="text-right">Debit</th>
+                  <th scope="col" class="text-right">Credit</th>
                 </tr>
               </thead>
               <tbody>
@@ -133,12 +133,7 @@
                   <td
                     class="text-right font-weight-bold border-top border-secondary"
                   >
-                    <span *ngIf="totalamt.balance < 0">
-                      ({{ totalamt.balance * -1 }})
-                    </span>
-                    <span *ngIf="totalamt.balance > 0">
-                      {{ totalamt.balance }}
-                    </span>
+                    {{ totalamt.balance }}
                   </td>
                 </tr>
                 <tr>

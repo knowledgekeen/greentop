@@ -57,6 +57,8 @@ import { TaxinvoiceComponent } from './taxinvoice/taxinvoice.component';
 import { ViewtaxinvoicesComponent } from './viewtaxinvoices/viewtaxinvoices.component';
 import { AddclientopenbalComponent } from './addclientopenbal/addclientopenbal.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AddhistoricbatchComponent } from './addhistoricbatch/addhistoricbatch.component';
+import { AddwastageComponent } from './addwastage/addwastage.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     TaxinvoiceComponent,
     ViewtaxinvoicesComponent,
     AddclientopenbalComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AddhistoricbatchComponent,
+    AddwastageComponent
   ],
   imports: [
     BrowserModule,

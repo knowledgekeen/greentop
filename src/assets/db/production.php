@@ -79,20 +79,17 @@ if($action == "addProdRawMaterial"){
 
 if($action == "getTodaysProductionBatch"){
 	//$batchid = $_GET["batchid"];
-	$sql = "SELECT * FROM `production_batch_master`";
+	$sql = "SELECT `batchmastid` FROM `production_batch_master` ORDER BY `batchmastid` DESC LIMIT 1";
 	$result = $conn->query($sql);
-	while($row = $result->fetch_array())
-	{
-		$rows[] = $row;
-	}
+	$row = $result->fetch_array(MYSQLI_ASSOC);
 
 	$tmp = array();
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($result){
 		$data["status"] = 200;
-		$data["data"] = count($rows);
+		$data["data"] = $row["batchmastid"];
 		header(' ', true, 200);
 	}
 	else{
@@ -335,5 +332,32 @@ if($action == "updateProductionMaster"){
 	}
 
 	echo json_encode($data1);
+}
+
+if($action == "addHistoricBatch"){
+	$data = json_decode(file_get_contents("php://input"));
+	$batchid = $data->batchid;
+	$proddate = $data->proddate;
+	$quantity = $data->quantity;
+	$prodid = $data->prodid;
+	
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "INSERT INTO `production_batch_master`(`batchid`, `prodid`, `qtyproduced`, `qtyremained`, `manufacdate`, `status`) VALUES ('$batchid',$prodid,'$quantity','$quantity','$proddate','open')";
+		$result = $conn->query($sql);
+		$pbmid = $conn->insert_id;
+	}
+	$data1= array();
+	if($result){
+	$data1["status"] = 200;
+	$data1["data"] = $pbmid;
+	header(' ', true, 200);
+}
+else{
+	$data1["status"] = 204;
+	header(' ', true, 204);
+}
+
+echo json_encode($data1);
+	
 }
 ?>

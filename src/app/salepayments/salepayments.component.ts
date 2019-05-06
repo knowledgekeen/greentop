@@ -129,7 +129,8 @@ export class SalepaymentsComponent implements OnInit {
   calculateTotalDebitCredit() {
     let tmpobj = {
       payin: 0,
-      payout: 0
+      payout: 0,
+      balance: 0
     };
     for (let i in this.payhistory) {
       if (this.payhistory[i].payin) {
@@ -139,6 +140,7 @@ export class SalepaymentsComponent implements OnInit {
       }
     }
     //console.log(tmpobj);
+    tmpobj.balance = tmpobj.payout - tmpobj.payin;
     this.totalamt = tmpobj;
     tmpobj = null;
   }

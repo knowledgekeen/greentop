@@ -29,6 +29,8 @@ import { TaxinvoiceComponent } from "./taxinvoice/taxinvoice.component";
 import { ViewtaxinvoicesComponent } from "./viewtaxinvoices/viewtaxinvoices.component";
 import { AddclientopenbalComponent } from "./addclientopenbal/addclientopenbal.component";
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
+import { AddhistoricbatchComponent } from "./addhistoricbatch/addhistoricbatch.component";
+import { AddwastageComponent } from "./addwastage/addwastage.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -49,6 +51,8 @@ const routes: Routes = [
   },
   { path: "assignrawmatprod", component: AssignrawmatprodComponent },
   { path: "addbatch", component: AddbatchComponent },
+  { path: "addwastage", component: AddwastageComponent },
+  { path: "addhistbatch", component: AddhistoricbatchComponent },
   { path: "viewbatch", component: ViewbatchComponent },
   { path: "neworder", component: NeworderComponent },
   { path: "dispatches", component: DispatchesComponent },

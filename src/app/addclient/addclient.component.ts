@@ -24,12 +24,15 @@ export class AddclientComponent implements OnInit {
   successMsg: any = false;
   allcities: any = null;
   allstates: any = null;
+  allclients: any = null;
+  clientnamepresent: boolean = false;
 
   constructor(private _rest: RESTService, private _interval: IntervalService) {}
 
   ngOnInit() {
     this.getClientCities();
     this.getClientStates();
+    this.getAllClients();
   }
 
   getClientCities() {
@@ -50,6 +53,18 @@ export class AddclientComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allstates = Response["data"];
+        }
+      });
+  }
+
+  getAllClients() {
+    let strObj = "clienttype=" + this.clienttype;
+    this._rest
+      .getData("client.php", "getAllClients", strObj)
+      .subscribe(Response => {
+        if (Response) {
+          console.log(Response);
+          this.allclients = Response["data"];
         }
       });
   }
@@ -108,5 +123,15 @@ export class AddclientComponent implements OnInit {
     this.city = null;
     this.state = null;
     this.address = null;
+  }
+
+  checkClientPresent() {
+    this.clientnamepresent = false;
+    for (const i in this.allclients) {
+      if (this.fname == this.allclients[i].name) {
+        this.clientnamepresent = true;
+        break;
+      }
+    }
   }
 }
