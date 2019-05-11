@@ -16,7 +16,7 @@ if($action == "addWastage"){
         $wasteid = $conn->insert_id;
 
         //Get stock quantity for raw material
-        $sqlraw = "SELECT `quantity` FROM `stock_master` WHERE `rawmatid`=$rawmatid";
+        $sqlraw = "SELECT `stockid`, `quantity` FROM `stock_master` WHERE `rawmatid`=$rawmatid";
         $resultraw = $conn->query($sqlraw);
         $rowraw = $resultraw->fetch_array(MYSQLI_ASSOC);
 
@@ -24,6 +24,11 @@ if($action == "addWastage"){
         $uptqty = floatval($rowraw["quantity"]) - floatval($quantity);
         $sqlupt = "UPDATE `stock_master` SET `quantity`='$uptqty' WHERE `rawmatid`=$rawmatid";
         $resultupt = $conn->query($sqlupt);
+
+		//Update stock register
+		$stockid = $rowraw['stockid'];
+        $sqlins = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stockid, 'OUT', '$quantity', '$wastagedt', 'Wastage added')";
+        $resultins = $conn->query($sqlins);
     }
     $data1= array();
     if($result){

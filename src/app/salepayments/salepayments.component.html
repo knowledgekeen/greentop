@@ -113,6 +113,7 @@
                   <th scope="col">Particulars</th>
                   <th scope="col" class="text-right">Debit</th>
                   <th scope="col" class="text-right">Credit</th>
+                  <th scope="col" class="text-right">Balance</th>
                 </tr>
               </thead>
               <tbody>
@@ -124,6 +125,9 @@
                     {{ hist.payout | number: "1.3-3" }}
                   </td>
                   <td class="text-right">{{ hist.payin | number: "1.3-3" }}</td>
+                  <td class="text-right">
+                    {{ hist.balance | number: "1.3-3" }}
+                  </td>
                 </tr>
                 <tr>
                   <td colspan="3" class="text-right font-weight-bold">Total</td>
@@ -137,6 +141,7 @@
                   >
                     {{ totalamt.payout | number: "1.3-3" }}
                   </td>
+                  <td></td>
                 </tr>
                 <tr *ngIf="!payhistory">
                   <h6 class="text-danger my-3">

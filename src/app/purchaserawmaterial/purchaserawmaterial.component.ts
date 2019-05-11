@@ -169,7 +169,7 @@ export class PurchaserawmaterialComponent implements OnInit {
     let stkObj = {
       billdt: new Date(myDate).getTime(),
       addedmaterials: this.added_materials,
-      remark: "Purchase Raw Material",
+      remark: "Purchase / Party: " + this.supplier.split(".")[1] + " / Bill: " + this.billno,
       purchid: null
     };
     //console.log(rawObj, stkObj);

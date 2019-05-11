@@ -16,8 +16,8 @@ export class DispatchesComponent implements OnInit {
   allconsignees: any = null;
   dispatchdate: any = null;
   dcno: any = null;
-  rate: any = null;
-  amount: any = null;
+  rate: any = "0";
+  amount: any = "0";
   advance: any = "0";
   paidon: any = null;
   vehicalno: any = null;
@@ -87,7 +87,7 @@ export class DispatchesComponent implements OnInit {
     this._rest
       .getData("order.php", "getOrderConsignees", urldata)
       .subscribe(Response => {
-        //console.log(Response);
+        console.log(Response);
         if (Response) {
           this.allconsignees = Response["data"];
         }
@@ -196,9 +196,14 @@ export class DispatchesComponent implements OnInit {
       advance: this.advance,
       paidon: new Date(paidon).getTime(),
       partytrans: partytrans,
-      addedbatches: this.addedbatches
+      addedbatches: this.addedbatches,
+      remarks:
+        "Sales / " +
+        this.orderdetails.name +
+        " / Order No: " +
+        this.orderdetails.orderno
     };
-    //console.log(dispatchObj);
+    //console.log(this.orderdetails,dispatchObj);
     this._rest
       .postData("dispatch.php", "dispatchOrder", dispatchObj, null)
       .subscribe(
@@ -226,8 +231,8 @@ export class DispatchesComponent implements OnInit {
     this.orderdetails = null;
     this.dispatchdate = null;
     this.dcno = null;
-    this.rate = null;
-    this.amount = null;
+    this.rate = "0";
+    this.amount = "0";
     this.advance = "0";
     this.paidon = null;
     this.vehicalno = null;
@@ -244,6 +249,7 @@ export class DispatchesComponent implements OnInit {
     if (!this.dispatchdate) return;
 
     this.dispatchdate = this._global.getAutofillFormattedDt(this.dispatchdate);
+    this.paidon = this.dispatchdate;
   }
 
   autoFillPaidOnDate() {

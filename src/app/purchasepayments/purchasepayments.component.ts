@@ -87,7 +87,8 @@ export class PurchasepaymentsComponent implements OnInit {
           dates: openbal.baldate,
           particulars: "Opening Balance",
           debit: null,
-          credit: openbal.openingbal
+          credit: openbal.openingbal,
+          balance: 0
         };
         tmparr.push(tmpobj);
       }
@@ -99,7 +100,8 @@ export class PurchasepaymentsComponent implements OnInit {
             dates: purchmast[i].billdt,
             particulars: "Purchase on bill no-" + purchmast[i].billno,
             debit: null,
-            credit: purchmast[i].totalamount
+            credit: purchmast[i].totalamount,
+            balance: 0
           };
           tmparr.push(tmpobj);
         }
@@ -116,7 +118,8 @@ export class PurchasepaymentsComponent implements OnInit {
             dates: purchpay[i].paydate,
             particulars: particulars,
             debit: purchpay[i].amount,
-            credit: null
+            credit: null,
+            balance: 0
           };
           tmparr.push(tmpobj);
         }
@@ -235,8 +238,16 @@ export class PurchasepaymentsComponent implements OnInit {
       } else {
         tmpobj.credit += parseFloat(this.payhistory[i].credit);
       }
+      let tmpcredit = 0;
+      let tmpdebit = 0;
+      if (tmpobj.credit) {
+        tmpcredit = tmpobj.credit;
+      }
+      if (tmpobj.debit) {
+        tmpdebit = tmpobj.debit;
+      }
+      this.payhistory[i].balance = tmpobj.balance + tmpcredit - tmpdebit;
     }
-    tmpobj.balance = tmpobj.credit - tmpobj.debit;
     this.totalamt = tmpobj;
     tmpobj = null;
   }

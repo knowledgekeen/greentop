@@ -87,7 +87,7 @@ if($action == "getTodaysProductionBatch"){
 	$data = array();
 	$i = 0;
 
-	if($result){
+	if($result && $row){
 		$data["status"] = 200;
 		$data["data"] = $row["batchmastid"];
 		header(' ', true, 200);
@@ -132,7 +132,7 @@ if($action == "addProductionBatch"){
 				$resultqty = $conn->query($sqlupdt);
 
 				//Insert into Stock Register for Raw Materials
-				$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$qtytoadd','$prodtime', 'Updated Stock, created new batch, batchid: $batchid')";
+				$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$qtytoadd','$prodtime', 'Batch No: $batchid')";
 				$resultqty = $conn->query($sqlins);
 
 				//Insert into Production Batch Register
@@ -141,7 +141,7 @@ if($action == "addProductionBatch"){
 			}//For Loop closed
 
 			//Insert into Stock Register For Finished Product
-			$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stockid,'IN','$qtyproduced','$prodtime', 'Updated Stock, created new batch, batchid: $batchid')";
+			$sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stockid,'IN','$qtyproduced','$prodtime', 'Batch No: $batchid')";
 			$resultqty = $conn->query($sqlins);
 		}
     }
@@ -348,16 +348,16 @@ if($action == "addHistoricBatch"){
 	}
 	$data1= array();
 	if($result){
-	$data1["status"] = 200;
-	$data1["data"] = $pbmid;
-	header(' ', true, 200);
-}
-else{
-	$data1["status"] = 204;
-	header(' ', true, 204);
-}
+		$data1["status"] = 200;
+		$data1["data"] = $pbmid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+	}
 
-echo json_encode($data1);
+	echo json_encode($data1);
 	
 }
 ?>

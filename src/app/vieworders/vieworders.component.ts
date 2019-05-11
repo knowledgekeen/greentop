@@ -27,8 +27,8 @@ export class ViewordersComponent implements OnInit {
 
   getOpenOrdersFromToDate(fromdt, todt) {
     this.allorders = null;
-    this.totalquantity = 0;
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
+    let totqty = 0;
     this._rest
       .getData("order.php", "getOpenOrdersFromToDate", geturl)
       .subscribe(Response => {
@@ -36,8 +36,10 @@ export class ViewordersComponent implements OnInit {
           this.allorders = Response["data"];
 
           for (const i in this.allorders) {
-            this.totalquantity += parseFloat(this.allorders[i].quantity);
+            totqty += parseFloat(this.allorders[i].quantity);
           }
+
+          this.totalquantity = totqty;
         }
       });
   }
@@ -74,9 +76,12 @@ export class ViewordersComponent implements OnInit {
       } else {
         let dt = new Date();
         dt.setTime(this.selecteddate);
-        let fromdt = this.selecteddate.getTime();
+        let fromdate = new Date(parseInt(this.selecteddate.getTime()));
+        fromdate.setDate(1);
+        fromdate.setHours(0, 0, 0, 0);
+        let fromdt = fromdate.getTime();
         let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        //console.log(fromdt, lastdt);
+        console.log(fromdt, lastdt);
         this.getOpenOrdersFromToDate(fromdt, lastdt);
         this.opendtp = !this.opendtp;
         return;

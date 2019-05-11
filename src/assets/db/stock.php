@@ -84,7 +84,7 @@ if($action == "updateStockRawMaterial"){
         $resultqty = $conn->query($sqlupdt);
 
         $stkid = $row["stockid"];
-        $sqlregins = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'IN','$qty','$billdt', '$remark - Purchase id: $purchid')";
+        $sqlregins = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'IN','$qty','$billdt', '$remark')";
         $resultins = $conn->query($sqlregins);
     }
 

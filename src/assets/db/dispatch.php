@@ -19,6 +19,7 @@ if($action == "dispatchOrder"){
     $rate = $data->rate;
     $vehicalno = $data->vehicalno;
     $todaydt = $data->todaydt;
+    $remarks = $data->remarks;
     $dispatchid = -1;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -63,7 +64,7 @@ if($action == "dispatchOrder"){
         $resultUptSM = $conn->query($sqlUptSM);
 
         //Insert Stock Register
-        $sqlInsSM = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$quantity','$todaydt', 'Order Dispathed, Order No: $orderid')";
+        $sqlInsSM = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$quantity','$todaydt', '$remarks')";
         $resultInsSM = $conn->query($sqlInsSM);
         
         //Update Order Master

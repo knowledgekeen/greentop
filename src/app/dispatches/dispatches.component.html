@@ -4,21 +4,28 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
+        <div class="col-md-12 col-sm-12 mb-3" *ngIf="!openorders">
+          <h6 class="text-danger">
+            <i class="fa fa-exclamation"></i> There are no open orders right
+            now.
+          </h6>
+        </div>
         <div class="col-md-12 col-sm-12 mb-3" *ngIf="successmsg">
           <div class="alert alert-success" role="alert">
             <i class="fa fa-check"></i> Order dispatched successfully.
           </div>
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
-          <label class="w-100 m-0"
-            >Select Order
+          <label class="w-100 m-0">
+            Select Order
             <span
               class="float-right btn-link cursor"
               *ngIf="selectedorder"
               data-toggle="modal"
               data-target="#orderDetailsModal"
               (click)="getOrderConsignees()"
-              >More details
+            >
+              More details
               <i class="fa fa-info-circle text-primary"></i>
             </span>
           </label>
@@ -26,6 +33,7 @@
             class="form-control"
             [(ngModel)]="selectedorder"
             (change)="selectOrder()"
+            [disabled]="!openorders"
           >
             <option value="{{ order.orderid }}" *ngFor="let order of openorders"
               >Order: {{ order.orderid }} Dated:
@@ -159,7 +167,7 @@
             class="form-control"
             [(ngModel)]="selbatch"
             (change)="getAllQuantities()"
-            [disabled]="allbatches.length <= 0"
+            [disabled]="!allbatches"
           >
             <option
               value="{{ batch.batchid }}"

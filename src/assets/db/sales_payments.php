@@ -79,4 +79,31 @@ if($action == "getAllSaleOrderPayments"){
 	}
 	echo json_encode($data);
 }
+
+if($action == "addSalesPayment"){
+    $data = json_decode(file_get_contents("php://input"));
+    $paydt = $data->paydt;
+    $custid = $data->custid;
+    $amtpaid = $data->amtpaid;
+    $paymode = $data->paymode;
+    $particulars = $data->particulars;
+   	if($_SERVER['REQUEST_METHOD']=='POST'){
+		//$sql = "INSERT INTO `purchase_payments`(`paydate`, `clientid`, `amount`, `paymodeid`, `particulars`) VALUES ('$paydt','$custid','$amtpaid','$paymode','$particulars')";
+		$sql = "INSERT INTO `order_payments`(`paydate`, `clientid`, `amount`, `paymodeid`, `particulars`) VALUES ('$paydt','$custid','$amtpaid','$paymode','$particulars')";
+        $result = $conn->query($sql);
+        $salepayid = $conn->insert_id;
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $salepayid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

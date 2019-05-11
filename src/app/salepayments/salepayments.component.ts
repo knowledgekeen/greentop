@@ -85,7 +85,8 @@ export class SalepaymentsComponent implements OnInit {
           dates: openbal.baldate,
           particulars: "Opening Balance",
           payin: null,
-          payout: openbal.openingbal
+          payout: openbal.openingbal,
+          balance: 0
         };
         tmparr.push(tmpobj);
       }
@@ -98,7 +99,8 @@ export class SalepaymentsComponent implements OnInit {
             dates: ordermast[i].billdt,
             particulars: "Order of bill no-" + ordermast[i].billno,
             payin: null,
-            payout: ordermast[i].totalamount
+            payout: ordermast[i].totalamount,
+            balance: 0
           };
           tmparr.push(tmpobj);
         }
@@ -115,7 +117,8 @@ export class SalepaymentsComponent implements OnInit {
             dates: orderpay[i].paydate,
             particulars: particulars,
             payin: orderpay[i].amount,
-            payout: null
+            payout: null,
+            balance: 0
           };
           tmparr.push(tmpobj);
         }
@@ -138,6 +141,15 @@ export class SalepaymentsComponent implements OnInit {
       } else {
         tmpobj.payout += parseFloat(this.payhistory[i].payout);
       }
+      let tmpcredit = 0;
+      let tmpdebit = 0;
+      if (tmpobj.payout) {
+        tmpdebit = tmpobj.payout;
+      }
+      if (tmpobj.payin) {
+        tmpcredit = tmpobj.payin;
+      }
+      this.payhistory[i].balance = tmpobj.balance + tmpdebit - tmpcredit;
     }
     //console.log(tmpobj);
     tmpobj.balance = tmpobj.payout - tmpobj.payin;
@@ -205,5 +217,48 @@ export class SalepaymentsComponent implements OnInit {
             });
         });
     });
+  }
+
+  addPayment() {
+    if (parseFloat(this.amtpaid) == 0) {
+      this.errormsg = "Amount paid cannot be '0'";
+      this._interval.settimer(null).then(resp => {
+        this.errormsg = null;
+      });
+      return;
+    }
+    let myDate = moment(this.paydt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let tmpObj = {
+      paydt: new Date(myDate).getTime(),
+      custid: this.customer.split(".")[0],
+      amtpaid: this.amtpaid,
+      paymode: this.paymode,
+      particulars: this.particulars
+    };
+    this.disableaddbtn = true;
+    console.log(tmpObj);
+    //return;
+    this._rest
+      .postData("sales_payments.php", "addSalesPayment", tmpObj, null)
+      .subscribe(Response => {
+        //console.log(Response);
+        if (Response) {
+          this.successmsg = "Payment done successfully";
+          this._interval.settimer(null).then(resp => {
+            this.resetForm();
+          });
+        }
+      });
+  }
+
+  resetForm() {
+    this.successmsg = null;
+    this.disableaddbtn = false;
+    this.paydt = null;
+    this.customer = null;
+    this.amtpaid = null;
+    this.paymode = null;
+    this.particulars = null;
+    this.payhistory = null;
   }
 }
