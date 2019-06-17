@@ -107,7 +107,7 @@ if($action == "getOpenOrders"){
 
 // Get All dispatched orders irrespective of Financial year
 if($action == "getDispatchedOrders"){
-	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`status`='dispatched' AND o.`prodid`=p.`prodid`";
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname`, d.`dcno`, d.`dispatchdate` FROM `order_master` o, `client_master` c, `product_master` p, `dispatch_register` d WHERE o.`clientid`=c.`clientid` AND o.`status`='dispatched' AND o.`prodid`=p.`prodid` AND o.`orderid` = d.`orderid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -132,6 +132,8 @@ if($action == "getDispatchedOrders"){
 			$tmp[$i]['name'] = $row['name'];
 			$tmp[$i]['address'] = $row['address'];
 			$tmp[$i]['contactno'] = $row['contactno'];
+			$tmp[$i]['dcno'] = $row['dcno'];
+			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
 			$i++;
 		}
 		$data["status"] = 200;

@@ -84,8 +84,14 @@ export class SalepaymentsComponent implements OnInit {
           id: tmparr.length,
           dates: openbal.baldate,
           particulars: "Opening Balance",
-          payin: null,
-          payout: openbal.openingbal,
+          payin:
+            parseFloat(openbal.openingbal) < 0
+              ? parseFloat(openbal.openingbal) * -1
+              : null,
+          payout:
+            parseFloat(openbal.openingbal) >= 0
+              ? parseFloat(openbal.openingbal)
+              : null,
           balance: 0
         };
         tmparr.push(tmpobj);
@@ -97,7 +103,7 @@ export class SalepaymentsComponent implements OnInit {
           let tmpobj = {
             id: tmparr.length,
             dates: ordermast[i].billdt,
-            particulars: "Order of bill no-" + ordermast[i].billno,
+            particulars: "Tax Invoice No. " + ordermast[i].billno,
             payin: null,
             payout: ordermast[i].totalamount,
             balance: 0
@@ -110,7 +116,7 @@ export class SalepaymentsComponent implements OnInit {
         for (let i in orderpay) {
           let particulars = orderpay[i].particulars;
           if (!orderpay[i].particulars) {
-            particulars = "Payment made by " + orderpay[i].paymode;
+            particulars = "Payment done by " + orderpay[i].paymode;
           }
           let tmpobj = {
             id: tmparr.length,

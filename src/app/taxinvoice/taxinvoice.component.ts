@@ -29,6 +29,7 @@ export class TaxinvoiceComponent implements OnInit {
   sgstinr: any = 0;
   igstinr: any = 0;
   totalamount: any = 0;
+  dcdetails: any = null;
   successmsg: boolean = false;
 
   constructor(
@@ -75,6 +76,10 @@ export class TaxinvoiceComponent implements OnInit {
     for (let i in this.openorders) {
       if (this.selectedorder == this.openorders[i].orderid) {
         this.orderdetails = this.openorders[i];
+        let dcdate = moment(parseInt(this.orderdetails.dispatchdate)).format(
+          "DD-MM-YYYY"
+        );
+        this.dcdetails = this.orderdetails.dcno + " Dated: " + dcdate;
         break;
       }
     }
@@ -180,6 +185,7 @@ export class TaxinvoiceComponent implements OnInit {
     this.sgstinr = 0;
     this.igstinr = 0;
     this.totalamount = 0;
+    this.orderdetails = null;
     this.initialize();
   }
 }

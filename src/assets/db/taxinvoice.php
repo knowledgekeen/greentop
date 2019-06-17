@@ -43,13 +43,13 @@ if($action == "saveBillDetails"){
 }
 
 if($action == "getLastBillId"){
-    $sql = "SELECT `otaxinvoiceid` FROM `order_taxinvoice` ORDER BY `otaxinvoiceid` DESC LIMIT 1";
+    $sql = "SELECT `billno` FROM `order_taxinvoice` ORDER BY `otaxinvoiceid` DESC LIMIT 1";
     $result = $conn->query($sql);
     $row = $result->fetch_array(MYSQLI_ASSOC);
 
-    if($result && $row['otaxinvoiceid']){
+    if($result && $row['billno']){
         $data["status"] = 200;
-		$data["data"] = $row['otaxinvoiceid'];
+		$data["data"] = $row['billno'];
 		header(' ', true, 200);
 	}
 	else{
@@ -62,7 +62,7 @@ if($action == "getLastBillId"){
 if($action == "getInvoicesFromToDt"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT ot.`otaxinvoiceid`,ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, cm.`name` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt'";
+	$sql = "SELECT ot.`otaxinvoiceid`,ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, cm.`name`,dr.`dcno` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm, `dispatch_register` dr WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid` = dr.`orderid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -95,6 +95,7 @@ if($action == "getInvoicesFromToDt"){
 			$tmp[$i]['quantity'] = $row['quantity'];
 			$tmp[$i]['clientid'] = $row['clientid'];
 			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['dcno'] = $row['dcno'];
 			$i++;
 		}
 		$data["status"] = 200;

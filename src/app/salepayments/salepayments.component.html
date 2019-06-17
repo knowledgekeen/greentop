@@ -87,18 +87,27 @@
 
   <div class="card my-3" *ngIf="customer && payhistory">
     <div class="card-body">
-      <h6 class="text-primary">
-        Payment History of
+      <h5 class="text-center font-weight-bold">
+        Green Top Organics
+      </h5>
+      <h6 class="text-center">
+        Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune.
+      </h6>
+      <h5 class="text-center mt-3">
         <span class="font-weight-bold border-bottom border-primary font-italic">
           {{ customer.split(".")[1] }}
         </span>
-        For Current Financial Year From
-        <span class="font-weight-bold border-bottom border-primary font-italic">
-          {{ currfinanyr.fromdt | date: "MMMM, yyyy" }}
+      </h5>
+      <h6 class="text-center">
+        (Ledger Account)
+      </h6>
+      <h6 class="text-center">
+        <span class="font-weight-bold border-bottom border-primary">
+          {{ currfinanyr.fromdt | date: "dd-MMM-yyyy" }}
         </span>
-        -
-        <span class="font-weight-bold border-bottom border-primary font-italic">
-          {{ currfinanyr.todt | date: "MMMM, yyyy" }}
+        to
+        <span class="font-weight-bold border-bottom border-primary">
+          {{ currfinanyr.todt | date: "dd-MMM-yyyy" }}
         </span>
       </h6>
 
@@ -111,9 +120,15 @@
                   <th scope="col">#</th>
                   <th scope="col">Date</th>
                   <th scope="col">Particulars</th>
-                  <th scope="col" class="text-right">Debit</th>
-                  <th scope="col" class="text-right">Credit</th>
-                  <th scope="col" class="text-right">Balance</th>
+                  <th scope="col" class="text-right">
+                    Debit (<i class="fa fa-inr" aria-hidden="true"></i>)
+                  </th>
+                  <th scope="col" class="text-right">
+                    Credit (<i class="fa fa-inr" aria-hidden="true"></i>)
+                  </th>
+                  <th scope="col" class="text-right">
+                    Balance (<i class="fa fa-inr" aria-hidden="true"></i>)
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -122,11 +137,11 @@
                   <td>{{ hist.dates | date: "dd-MM-yyyy" }}</td>
                   <td>{{ hist.particulars }}</td>
                   <td class="text-right">
-                    {{ hist.payout | number: "1.3-3" }}
+                    {{ hist.payout | number: "1.2-2" }}
                   </td>
-                  <td class="text-right">{{ hist.payin | number: "1.3-3" }}</td>
+                  <td class="text-right">{{ hist.payin | number: "1.2-2" }}</td>
                   <td class="text-right">
-                    {{ hist.balance | number: "1.3-3" }}
+                    {{ hist.balance | number: "1.2-2" }}
                   </td>
                 </tr>
                 <tr>
@@ -134,12 +149,12 @@
                   <td
                     class="text-right font-weight-bold border-top border-secondary"
                   >
-                    {{ totalamt.payout | number: "1.3-3" }}
+                    {{ totalamt.payout | number: "1.2-2" }}
                   </td>
                   <td
                     class="text-right font-weight-bold border-top border-secondary"
                   >
-                    {{ totalamt.payout | number: "1.3-3" }}
+                    {{ totalamt.payin | number: "1.2-2" }}
                   </td>
                   <td></td>
                 </tr>

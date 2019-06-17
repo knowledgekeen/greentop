@@ -36,6 +36,13 @@
 
       <div class="table-responsive">
         <table class="table table-sm">
+          <caption *ngIf="totalbags > 0">
+            Total Number of Bags purchased in this month are:
+            {{
+              totalbags
+            }}
+            Bags
+          </caption>
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -65,7 +72,17 @@
               <td>{{ purch.billdt | date: "dd-MM-yyyy" }}</td>
               <td>{{ purch.name }}</td>
               <td class="text-right">
-                {{ purch.quantity | number: "1.3-3" }}
+                <span
+                  *ngIf="purch.rawmatname.toLowerCase().indexOf('bag') > -1"
+                >
+                  {{ purch.quantity }} Bags
+                </span>
+
+                <span
+                  *ngIf="purch.rawmatname.toLowerCase().indexOf('bag') == -1"
+                >
+                  {{ purch.quantity | number: "1.3-3" }}
+                </span>
               </td>
               <td class="text-right pr-3">
                 {{ purch.totalamount | currency: "INR" }}

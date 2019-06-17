@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2019 at 09:44 AM
+-- Generation Time: May 12, 2019 at 08:51 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -80,11 +80,12 @@ CREATE TABLE `client_openingbal` (
 --
 
 INSERT INTO `client_openingbal` (`openbalid`, `clientid`, `openingbal`, `baldate`) VALUES
-(4, 3, '10', '1554143400000'),
-(5, 1, '5', '1554057000000'),
-(6, 2, '0', '1554057000000'),
-(7, 9, '0', '1554057000000'),
-(8, 10, '0', '1554057000000');
+(1, 3, '0', '1554057000000'),
+(2, 1, '0', '1554057000000'),
+(3, 5, '0', '1554057000000'),
+(4, 2, '0', '1554057000000'),
+(5, 9, '0', '1554057000000'),
+(6, 11, '0', '1554057000000');
 
 -- --------------------------------------------------------
 
@@ -126,15 +127,8 @@ CREATE TABLE `dispatches_batches` (
 --
 
 INSERT INTO `dispatches_batches` (`dispbatid`, `dispatchid`, `batchid`, `quantity`) VALUES
-(1, 1, 1, '5'),
-(2, 2, 1, '5'),
-(3, 2, 2, '5'),
-(4, 3, 2, '5'),
-(5, 3, 3, '10'),
-(6, 4, 3, '5'),
-(7, 5, 3, '10'),
-(8, 6, 3, '5'),
-(9, 6, 4, '11');
+(1, 1, 1, '10'),
+(2, 2, 2, '2');
 
 -- --------------------------------------------------------
 
@@ -155,12 +149,8 @@ CREATE TABLE `dispatch_register` (
 --
 
 INSERT INTO `dispatch_register` (`dispatchid`, `orderid`, `dispatchdate`, `dcno`, `vehicalno`) VALUES
-(1, 1, '1556562600000', '3004', 'MH12LL1212'),
-(2, 2, '1555266600000', '154', 'MH12LL1234'),
-(3, 3, '1555698600000', '204', 'MH11224'),
-(4, 6, '1556649000000', '0105', 'MH1255FF1'),
-(5, 4, '1556908200000', '405', 'MH0011GG'),
-(6, 7, '1557253800000', '99', 'MH12RT4343');
+(1, 1, '1556821800000', '305', 'MH12LL12'),
+(2, 2, '1556994600000', '505', 'MH505');
 
 -- --------------------------------------------------------
 
@@ -183,12 +173,8 @@ CREATE TABLE `dispatch_transport` (
 --
 
 INSERT INTO `dispatch_transport` (`disptransid`, `dispatchid`, `rate`, `amount`, `advance`, `paidondate`, `remarks`) VALUES
-(1, 1, '0', '0', '0', '1556562600000', 'Self Transport'),
-(2, 2, '0', '0', '0', '1555266600000', 'Party\'s Transport'),
-(3, 3, '1000', '150', '1000', '1555698600000', 'Self Transport'),
-(4, 4, '0', '0', '0', '1556649000000', 'Party\'s Transport'),
-(5, 5, '2000', '100', '0', '1556908200000', 'Self Transport'),
-(6, 6, '90', '10000', '0', '1557253800000', 'Self Transport');
+(1, 1, '0', '0', '0', '1556821800000', 'Self Transport'),
+(2, 2, '0', '0', '0', '1556994600000', 'Self Transport');
 
 -- --------------------------------------------------------
 
@@ -214,15 +200,8 @@ CREATE TABLE `order_consignees` (
 --
 
 INSERT INTO `order_consignees` (`orderconsignid`, `orderid`, `consigneename`, `contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `remarks`) VALUES
-(27, 3, 'Kumar Farms', 'Mr. Kumar', '22776655', 'Pune', 'Maharashtra', 'Pune, Maharashtra', '15', 'SELF'),
-(28, 2, 'Mrs. Kapoor', 'Mr. Arjun', '123456789', 'Kolhapur', 'Maharashtra', 'Kolhapur', '10', 'CONSIGNEE'),
-(29, 4, 'Kumar Farms', 'Mr. Kumar', '22776655', 'Pune', 'Maharashtra', 'Pune, Maharashtra', '10', 'SELF'),
-(30, 5, 'Sheti Sang', 'Mr. Shetilal', '2525252525', 'Kolhapur', 'Maharashtra', 'Kolhapur, Maharashtra', '15', 'SELF'),
-(31, 5, 'Ahzar Sang', 'Mr. Azhar', '56545654', 'Pune', 'Maharashtra', 'Pune', '10', 'CONSIGNEE'),
-(32, 1, 'Kumar Farms', 'Mr. Kumar', '22776655', 'Pune', 'Maharashtra', 'Pune, Maharashtra', '10', 'SELF'),
-(33, 6, 'Sheti Sang', 'Mr. Shetilal', '2525252525', 'Kolhapur', 'Maharashtra', 'Kolhapur, Maharashtra', '5', 'SELF'),
-(34, 7, 'Kumar Farms', 'Mr. Kumar', '22776655', 'Pune', 'Maharashtra', 'Pune, Maharashtra', '6', 'SELF'),
-(35, 7, 'consignee1', 'sudesh', '7687656545', 'solapur', 'Maharashtra', 'solapur', '10', 'CONSIGNEE');
+(1, 1, 'Sheti Sang', 'Mr. Shetilal', '2525252525', 'Kolhapur', 'Maharashtra', 'Kolhapur, Maharashtra', '10', 'SELF'),
+(2, 2, 'Kumar Farms', 'Mr. Kumar', '22776655', 'Pune', 'Maharashtra', 'Pune, Maharashtra', '2', 'SELF');
 
 -- --------------------------------------------------------
 
@@ -246,13 +225,8 @@ CREATE TABLE `order_master` (
 --
 
 INSERT INTO `order_master` (`orderid`, `orderno`, `orderdt`, `clientid`, `prodid`, `quantity`, `remarks`, `status`) VALUES
-(1, 'GTO-1', '1554834600000', 2, 1, '10', 'SELF', 'closed'),
-(2, 'GTO-2', '1553452200000', 2, 1, '10', 'CONSIGNEE', 'closed'),
-(3, 'GTO-3', '1555007400000', 2, 1, '15', '', 'dispatched'),
-(4, 'GTO-4', '1556821800000', 2, 1, '10', 'SELF', 'closed'),
-(5, 'GTO-5', '1557599400000', 9, 1, '25', 'CONSIGNEE', 'open'),
-(6, 'GTO-6', '1556649000000', 9, 1, '5', 'SELF', 'closed'),
-(7, 'GTO-7', '1557253800000', 2, 1, '16', 'CONSIGNEE', 'closed');
+(1, 'GTO-1', '1556735400000', 9, 1, '10', 'SELF', 'closed'),
+(2, 'GTO-2', '1556994600000', 2, 1, '2', 'SELF', 'dispatched');
 
 -- --------------------------------------------------------
 
@@ -268,6 +242,14 @@ CREATE TABLE `order_payments` (
   `paymodeid` varchar(20) NOT NULL,
   `particulars` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_payments`
+--
+
+INSERT INTO `order_payments` (`orderpayid`, `paydate`, `clientid`, `amount`, `paymodeid`, `particulars`) VALUES
+(1, '1556908200000', '9', '10000', '1', ''),
+(2, '1556735400000', '9', '5200', '1', '');
 
 -- --------------------------------------------------------
 
@@ -296,10 +278,7 @@ CREATE TABLE `order_taxinvoice` (
 --
 
 INSERT INTO `order_taxinvoice` (`otaxinvoiceid`, `orderid`, `clientid`, `billno`, `billdt`, `amount`, `discount`, `rate`, `cgst`, `sgst`, `igst`, `roundoff`, `totalamount`) VALUES
-(1, 2, 2, '1', '1555698600000', '35000', '0', '3500', '8', '8', '0', '0', '40600'),
-(2, 6, 9, '2', '1556649000000', '1000', '0', '200', '5', '5', '0', '0', '1100'),
-(3, 4, 2, '3', '1556908200000', '150000', '200', '15000', '5', '5', '0', '20', '164800'),
-(4, 7, 2, '4', '1557253800000', '80000', '0', '5000', '2.5', '2.5', '0', '0', '84000');
+(1, 1, 9, '1', '1556821800000', '20000', '0', '2000', '8', '8', '0', '0', '23200');
 
 -- --------------------------------------------------------
 
@@ -318,9 +297,7 @@ CREATE TABLE `paymode_master` (
 
 INSERT INTO `paymode_master` (`paymodeid`, `paymode`) VALUES
 (1, 'Cash'),
-(2, 'Cheque'),
-(3, 'Netbanking'),
-(4, 'NEFT / RTGS');
+(2, 'Netbanking');
 
 -- --------------------------------------------------------
 
@@ -329,6 +306,7 @@ INSERT INTO `paymode_master` (`paymodeid`, `paymode`) VALUES
 --
 
 CREATE TABLE `production_batch_master` (
+  `batchmastid` int(20) NOT NULL,
   `batchid` varchar(20) NOT NULL,
   `prodid` int(20) NOT NULL,
   `qtyproduced` varchar(20) NOT NULL,
@@ -341,12 +319,9 @@ CREATE TABLE `production_batch_master` (
 -- Dumping data for table `production_batch_master`
 --
 
-INSERT INTO `production_batch_master` (`batchid`, `prodid`, `qtyproduced`, `qtyremained`, `manufacdate`, `status`) VALUES
-('1', 1, '10', '0', '1554661800000', 'closed'),
-('2', 1, '10', '0', '1554834600000', 'closed'),
-('3', 1, '30', '0', '1554921000000', 'closed'),
-('4', 1, '25', '14', '1556649000000', 'open'),
-('5', 1, '10', '10', '1556649000000', 'open');
+INSERT INTO `production_batch_master` (`batchmastid`, `batchid`, `prodid`, `qtyproduced`, `qtyremained`, `manufacdate`, `status`) VALUES
+(1, '1', 1, '10', '0', '1554834600000', 'closed'),
+(2, '2', 1, '10', '8', '1555698600000', 'open');
 
 -- --------------------------------------------------------
 
@@ -360,23 +335,6 @@ CREATE TABLE `production_batch_register` (
   `rawmatqty` varchar(20) NOT NULL,
   `batchid` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `production_batch_register`
---
-
-INSERT INTO `production_batch_register` (`prodregid`, `rawmatid`, `rawmatqty`, `batchid`) VALUES
-(1, 1, '10', '1'),
-(2, 2, '50', '1'),
-(3, 1, '10', '2'),
-(4, 2, '55', '2'),
-(5, 1, '10', '3'),
-(6, 2, '100', '3'),
-(7, 1, '10', '4'),
-(8, 2, '50', '4'),
-(9, 1, '5', '5'),
-(10, 2, '70', '5'),
-(11, 3, '2', '5');
 
 -- --------------------------------------------------------
 
@@ -396,7 +354,7 @@ CREATE TABLE `product_master` (
 --
 
 INSERT INTO `product_master` (`prodid`, `prodname`, `hsncode`, `status`) VALUES
-(1, 'ECHOMEAL', '3101', 1);
+(1, 'ECHOMEAL', '001', 1);
 
 -- --------------------------------------------------------
 
@@ -410,15 +368,6 @@ CREATE TABLE `product_rawmat_register` (
   `rawmatid` int(20) NOT NULL,
   `defquantity` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `product_rawmat_register`
---
-
-INSERT INTO `product_rawmat_register` (`prodrawid`, `prodid`, `rawmatid`, `defquantity`) VALUES
-(1, 1, 1, '5'),
-(2, 1, 2, '70'),
-(3, 1, 3, '2');
 
 -- --------------------------------------------------------
 
@@ -443,10 +392,9 @@ CREATE TABLE `purchase_master` (
 --
 
 INSERT INTO `purchase_master` (`purcmastid`, `clientid`, `vehicalno`, `dcno`, `billno`, `billdt`, `arrivaldt`, `totaldiscount`, `totalamount`) VALUES
-(1, 3, 'MH12LL2', '204', '304', '1554229800000', '1554143400000', '0', '3000'),
-(2, 1, 'MH23D1', '504', '604', '1554489000000', '1554402600000', '0', '23100'),
-(3, 3, 'MH12K3', '304', '404', '1554316200000', '1554229800000', '0', '2000'),
-(4, 10, 'MH12RT4343', '90', '90', '1556908200000', '1556908200000', '0', '26250');
+(1, 1, 'MH12LL12', '204', '304', '1554229800000', '1554143400000', '0', '25000'),
+(2, 10, 'MH12AA1', '404', '504', '1554402600000', '1554316200000', '0', '15000'),
+(3, 1, 'MH121212', '904', '804', '1554661800000', '1554748200000', '0', '13750');
 
 -- --------------------------------------------------------
 
@@ -468,13 +416,8 @@ CREATE TABLE `purchase_payments` (
 --
 
 INSERT INTO `purchase_payments` (`purchpayid`, `paydate`, `clientid`, `amount`, `paymodeid`, `particulars`) VALUES
-(1, '1554359712000', '3', '1000', '1', 'Cash Payment'),
-(2, '1554834600000', '3', '500', '1', 'Cash Payment'),
-(3, '1554748200000', '3', '2000', '1', 'Cash Payment'),
-(4, '1554921000000', '3', '1400', '2', 'Cheque 000001'),
-(5, '1557167400000', '10', '26000', '4', ''),
-(6, '1557253800000', '10', '100', '1', ''),
-(7, '1556649000000', '3', '200', '1', '');
+(1, '1557426600000', '1', '5000', '1', ''),
+(2, '1554661800000', '1', '20000', '1', '');
 
 -- --------------------------------------------------------
 
@@ -501,10 +444,29 @@ CREATE TABLE `purchase_register` (
 --
 
 INSERT INTO `purchase_register` (`purcregid`, `purcmastid`, `rawmatid`, `quantity`, `rate`, `cgst`, `sgst`, `igst`, `discount`, `roundoff`, `amount`) VALUES
-(1, 1, 1, '15', '200', '0', '0', '0', '0', '0', '3000'),
-(2, 2, 2, '105', '200', '5', '5', '0', '0', '0', '21000'),
-(3, 3, 1, '5', '400', '0', '0', '0', '0', '0', '2000'),
-(4, 4, 3, '50', '500', '2.5', '2.5', '0', '0', '0', '25000');
+(1, 1, 1, '10', '2500', '0', '0', '0', '0', '0', '25000'),
+(2, 2, 1, '10', '1500', '0', '0', '0', '0', '0', '15000'),
+(3, 3, 5, '250', '50', '5', '5', '0', '0', '0', '12500');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rawmat_wastage_master`
+--
+
+CREATE TABLE `rawmat_wastage_master` (
+  `wastageid` int(20) NOT NULL,
+  `rawmatid` int(20) NOT NULL,
+  `quantity` varchar(50) NOT NULL,
+  `wastagedt` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rawmat_wastage_master`
+--
+
+INSERT INTO `rawmat_wastage_master` (`wastageid`, `rawmatid`, `quantity`, `wastagedt`) VALUES
+(2, 1, '5', '1556994600000');
 
 -- --------------------------------------------------------
 
@@ -523,9 +485,11 @@ CREATE TABLE `raw_material_master` (
 --
 
 INSERT INTO `raw_material_master` (`rawmatid`, `name`, `hsncode`) VALUES
-(1, 'Organic Manure', '100'),
-(2, 'HDPE Bags', '101'),
-(3, 'mud', '3101');
+(1, 'Organic Manure (L.M)', '100'),
+(2, 'Slaughter House Waste', '101'),
+(3, 'Animal Waste Filler', '102'),
+(4, 'Filler Powder', '103'),
+(5, 'HDPE Bags', '104');
 
 -- --------------------------------------------------------
 
@@ -546,10 +510,12 @@ CREATE TABLE `stock_master` (
 --
 
 INSERT INTO `stock_master` (`stockid`, `rawmatid`, `prodid`, `quantity`, `lastmodifieddate`) VALUES
-(1, NULL, 1, '29', '1556871059474'),
-(2, 1, NULL, '-15', '1556870529538'),
-(3, 2, NULL, '280', '1556870529538'),
-(4, 3, NULL, '133', '1556870529538');
+(1, 1, NULL, '65', '1554402600000'),
+(2, 2, NULL, '50', '1557381595706'),
+(3, 3, NULL, '50', '1557381714495'),
+(4, 4, NULL, '50', '1557381758946'),
+(5, 5, NULL, '750', '1554661800000'),
+(6, NULL, 1, '38', '1557401622702');
 
 -- --------------------------------------------------------
 
@@ -571,38 +537,18 @@ CREATE TABLE `stock_register` (
 --
 
 INSERT INTO `stock_register` (`stockregid`, `stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES
-(1, 1, 'IN', '10', '1554057000000', 'Opening Balance'),
-(2, 2, 'IN', '10', '1554057000000', 'Opening Balance'),
-(3, 3, 'IN', '500', '1554057000000', 'Opening Balance'),
-(4, 2, 'IN', '10', '1554229800000', 'Purchase Raw Material'),
-(5, 2, 'IN', '5', '1554229800000', 'Update Purchase Raw Material'),
-(6, 3, 'IN', '100', '1554489000000', 'Purchase Raw Material'),
-(7, 2, 'IN', '5', '1554316200000', 'Purchase Raw Material - Purchase id: 3'),
-(8, 3, 'IN', '5', '1554489000000', 'Update Purchase Raw Material - Purchase id: 2'),
-(9, 2, 'OUT', '10', '1554661800000', 'Updated Stock, created new batch, batchid: 1'),
-(10, 3, 'OUT', '50', '1554661800000', 'Updated Stock, created new batch, batchid: 1'),
-(11, 1, 'IN', '10', '1554661800000', 'Updated Stock, created new batch, batchid: 1'),
-(12, 1, 'OUT', '10', '1556630559010', 'Order Dispathed, Order No: 1'),
-(13, 2, 'OUT', '10', '1554834600000', 'Updated Stock, created new batch, batchid: 2'),
-(14, 3, 'OUT', '55', '1554834600000', 'Updated Stock, created new batch, batchid: 2'),
-(15, 1, 'IN', '10', '1554834600000', 'Updated Stock, created new batch, batchid: 2'),
-(16, 2, 'OUT', '10', '1554921000000', 'Updated Stock, created new batch, batchid: 3'),
-(17, 3, 'OUT', '100', '1554921000000', 'Updated Stock, created new batch, batchid: 3'),
-(18, 1, 'IN', '30', '1554921000000', 'Updated Stock, created new batch, batchid: 3'),
-(19, 1, 'OUT', '10', '1556792589893', 'Order Dispathed, Order No: 2'),
-(20, 1, 'OUT', '15', '1556792649423', 'Order Dispathed, Order No: 3'),
-(21, 2, 'OUT', '10', '1556649000000', 'Updated Stock, created new batch, batchid: 4'),
-(22, 3, 'OUT', '50', '1556649000000', 'Updated Stock, created new batch, batchid: 4'),
-(23, 1, 'IN', '25', '1556649000000', 'Updated Stock, created new batch, batchid: 4'),
-(24, 1, 'OUT', '5', '1556801957642', 'Order Dispathed, Order No: 6'),
-(25, 1, 'OUT', '10', '1556815251951', 'Order Dispathed, Order No: 4'),
-(26, 4, 'IN', '85', '1554143400000', 'Opening Balance'),
-(27, 4, 'IN', '50', '1556908200000', 'Purchase Raw Material - Purchase id: 4'),
-(28, 2, 'OUT', '5', '1556649000000', 'Updated Stock, created new batch, batchid: 5'),
-(29, 3, 'OUT', '70', '1556649000000', 'Updated Stock, created new batch, batchid: 5'),
-(30, 4, 'OUT', '2', '1556649000000', 'Updated Stock, created new batch, batchid: 5'),
-(31, 1, 'IN', '10', '1556649000000', 'Updated Stock, created new batch, batchid: 5'),
-(32, 1, 'OUT', '16', '1556871059474', 'Order Dispathed, Order No: 7');
+(1, 1, 'IN', '50', '1554057000000', 'Opening Balance'),
+(2, 2, 'IN', '50', '1554057000000', 'Opening Balance'),
+(3, 3, 'IN', '50', '1554057000000', 'Opening Balance'),
+(4, 4, 'IN', '50', '1554057000000', 'Opening Balance'),
+(5, 5, 'IN', '500', '1554057000000', 'Opening Balance'),
+(6, 6, 'IN', '50', '1554057000000', 'Opening Balance'),
+(8, 1, 'OUT', '5', '1556994600000', 'Wastage added'),
+(9, 1, 'IN', '10', '1554229800000', 'Purchase Raw Material - Purchase id: 1'),
+(10, 1, 'IN', '10', '1554402600000', 'Purchase / Party: New Supplier  / Bill: 504'),
+(11, 6, 'OUT', '10', '1557399669887', 'Sales / Sheti Sang'),
+(12, 6, 'OUT', '2', '1557401622702', 'Sales / Kumar Farms / Order No: GTO-2'),
+(13, 5, 'IN', '250', '1554661800000', 'Purchase / Party: Aadi Plastic Pvt / Bill: 804');
 
 -- --------------------------------------------------------
 
@@ -618,14 +564,6 @@ CREATE TABLE `transport_master` (
   `status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table stores the details of all Transports';
 
---
--- Dumping data for table `transport_master`
---
-
-INSERT INTO `transport_master` (`tmid`, `transportname`, `contactno`, `address`, `status`) VALUES
-(1, 'Abc roadlines', '99998765433', 'wadki pune', 1),
-(2, 'xyz', '767665644334', 'pune maha', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -637,15 +575,6 @@ CREATE TABLE `truck_register` (
   `tmid` int(20) NOT NULL,
   `lorryno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table stores the details of all "Lorries"';
-
---
--- Dumping data for table `truck_register`
---
-
-INSERT INTO `truck_register` (`truckid`, `tmid`, `lorryno`) VALUES
-(1, 1, 'MH12WA6789'),
-(2, 1, 'MH12RT4343'),
-(3, 2, 'MH12ER6565');
 
 -- --------------------------------------------------------
 
@@ -721,6 +650,12 @@ ALTER TABLE `order_master`
   ADD PRIMARY KEY (`orderid`);
 
 --
+-- Indexes for table `order_payments`
+--
+ALTER TABLE `order_payments`
+  ADD PRIMARY KEY (`orderpayid`);
+
+--
 -- Indexes for table `order_taxinvoice`
 --
 ALTER TABLE `order_taxinvoice`
@@ -736,7 +671,7 @@ ALTER TABLE `paymode_master`
 -- Indexes for table `production_batch_master`
 --
 ALTER TABLE `production_batch_master`
-  ADD PRIMARY KEY (`batchid`);
+  ADD PRIMARY KEY (`batchmastid`);
 
 --
 -- Indexes for table `production_batch_register`
@@ -773,6 +708,12 @@ ALTER TABLE `purchase_payments`
 --
 ALTER TABLE `purchase_register`
   ADD PRIMARY KEY (`purcregid`);
+
+--
+-- Indexes for table `rawmat_wastage_master`
+--
+ALTER TABLE `rawmat_wastage_master`
+  ADD PRIMARY KEY (`wastageid`);
 
 --
 -- Indexes for table `raw_material_master`
@@ -824,7 +765,7 @@ ALTER TABLE `client_master`
 -- AUTO_INCREMENT for table `client_openingbal`
 --
 ALTER TABLE `client_openingbal`
-  MODIFY `openbalid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `openbalid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `dbsetting_master`
@@ -836,49 +777,61 @@ ALTER TABLE `dbsetting_master`
 -- AUTO_INCREMENT for table `dispatches_batches`
 --
 ALTER TABLE `dispatches_batches`
-  MODIFY `dispbatid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `dispbatid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dispatch_register`
 --
 ALTER TABLE `dispatch_register`
-  MODIFY `dispatchid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `dispatchid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dispatch_transport`
 --
 ALTER TABLE `dispatch_transport`
-  MODIFY `disptransid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `disptransid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_consignees`
 --
 ALTER TABLE `order_consignees`
-  MODIFY `orderconsignid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `orderconsignid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `orderid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `orderid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `order_payments`
+--
+ALTER TABLE `order_payments`
+  MODIFY `orderpayid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_taxinvoice`
 --
 ALTER TABLE `order_taxinvoice`
-  MODIFY `otaxinvoiceid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `otaxinvoiceid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `paymode_master`
 --
 ALTER TABLE `paymode_master`
-  MODIFY `paymodeid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `paymodeid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `production_batch_master`
+--
+ALTER TABLE `production_batch_master`
+  MODIFY `batchmastid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `production_batch_register`
 --
 ALTER TABLE `production_batch_register`
-  MODIFY `prodregid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `prodregid` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_master`
@@ -890,55 +843,61 @@ ALTER TABLE `product_master`
 -- AUTO_INCREMENT for table `product_rawmat_register`
 --
 ALTER TABLE `product_rawmat_register`
-  MODIFY `prodrawid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prodrawid` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchase_master`
 --
 ALTER TABLE `purchase_master`
-  MODIFY `purcmastid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `purcmastid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `purchase_payments`
 --
 ALTER TABLE `purchase_payments`
-  MODIFY `purchpayid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `purchpayid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `purchase_register`
 --
 ALTER TABLE `purchase_register`
-  MODIFY `purcregid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `purcregid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `rawmat_wastage_master`
+--
+ALTER TABLE `rawmat_wastage_master`
+  MODIFY `wastageid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `raw_material_master`
 --
 ALTER TABLE `raw_material_master`
-  MODIFY `rawmatid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rawmatid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `stock_master`
 --
 ALTER TABLE `stock_master`
-  MODIFY `stockid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `stockid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `stock_register`
 --
 ALTER TABLE `stock_register`
-  MODIFY `stockregid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `stockregid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `transport_master`
 --
 ALTER TABLE `transport_master`
-  MODIFY `tmid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tmid` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `truck_register`
 --
 ALTER TABLE `truck_register`
-  MODIFY `truckid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `truckid` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_register`

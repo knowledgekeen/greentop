@@ -27,29 +27,39 @@
             [disabled]="!openorders"
           >
             <option value="{{ order.orderid }}" *ngFor="let order of openorders"
-              >Order: {{ order.orderid }} Dated:
+              >{{ order.orderno }} Dated:
               {{ order.orderdt | date: "dd-MM-yyyy" }}</option
             >
           </select>
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">Bill Number</label>
+        <div class="col-md-3 col-sm-12 mb-3" *ngIf="orderdetails">
+          <label class="m-0">DC Number</label>
+          <input
+            type="text"
+            class="form-control"
+            [value]="dcdetails"
+            readonly
+          />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <h5 class="m-0 font-weight-bold">
+            Invoice Number
+          </h5>
           <input
             type="text"
             class="form-control"
             [(ngModel)]="billno"
-            placeholder="Bill Number"
-            readonly
+            placeholder="Invoice Number"
           />
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">Bill Date (DD-MM-YYYY)</label>
+        <div class="col-md-3 col-sm-12 mb-3">
+          <h5 class="m-0 font-weight-bold">Invoice Date</h5>
           <input
             type="text"
             class="form-control"
             [(ngModel)]="billdate"
             (blur)="autoFillDate()"
-            placeholder="Bill Date (DD-MM-YYYY)"
+            placeholder="Invoice Date"
           />
         </div>
         <div class="col-md-12 col-sm-12 mb-3">

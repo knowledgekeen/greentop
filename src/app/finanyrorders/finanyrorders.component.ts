@@ -37,7 +37,7 @@ export class FinanyrordersComponent implements OnInit {
     let allorderscopy = JSON.parse(JSON.stringify(this.allorders)); //DEEP COPY
     allorderscopy.sort(this._global.sortArr("orderdt"));
 
-    let dataarr = [];
+    let dataarr = new Array();
     //Data Filteration and combining to months and resp quantity
     for (const i in allorderscopy) {
       let tmpdt = new Date(parseInt(allorderscopy[i].orderdt));
@@ -56,7 +56,6 @@ export class FinanyrordersComponent implements OnInit {
       );
       let todt = lastDay.getTime();
 
-      //console.log(fromdt, lastDay, todt);
       let tmpobj = {
         mnt: null,
         qty: null
@@ -73,6 +72,7 @@ export class FinanyrordersComponent implements OnInit {
       }
     }
 
+    console.log(dataarr);
     //Sagregating Months and total Quantities
     let data = [];
     let mnts = [];
@@ -82,6 +82,7 @@ export class FinanyrordersComponent implements OnInit {
         if (dataarr[i].mnt == dataarr[j].mnt) {
           totalqty += dataarr[j].qty;
           dataarr.splice(j, 1);
+          j--;
         }
       }
       data.push(totalqty);

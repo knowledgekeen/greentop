@@ -46,11 +46,12 @@
               <th scope="col">#</th>
               <th scope="col">Order Date</th>
               <th scope="col">Order No</th>
-              <th scope="col">Bill Date</th>
-              <th scope="col">Bill No</th>
+              <th scope="col">DC No</th>
+              <th scope="col">Inv. Date</th>
+              <th scope="col">Inv. No</th>
               <th scope="col">Customer</th>
               <th scope="col">Product</th>
-              <th scope="col" class="text-right">Quantity</th>
+              <th scope="col" class="text-right">Quantity (MT)</th>
               <th scope="col" class="text-right">Total Amount</th>
               <th scope="col">Edit</th>
             </tr>
@@ -69,6 +70,7 @@
                 </a>
               </td>
               <td>{{ bill.orderno }}</td>
+              <td>{{ bill.dcno }}</td>
               <td>
                 <a
                   href="javascript:void(0);"
@@ -100,6 +102,11 @@
             <tr class="text-right" *ngIf="allinvoices">
               <td colspan="8">
                 <span class="text-primary font-weight-bold">Total</span>
+              </td>
+              <td class="text-right">
+                <span class="text-primary font-weight-bold">
+                  {{ totalmonthqty | number: "1.3-3" }}
+                </span>
               </td>
               <td>
                 <span class="text-primary font-weight-bold">

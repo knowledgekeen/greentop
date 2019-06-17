@@ -34,6 +34,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
   autocalc: boolean = true;
   successmsg: boolean = false;
   totalmonthamt: any = 0;
+  totalmonthqty: any = 0;
 
   constructor(
     private _interval: IntervalService,
@@ -50,6 +51,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
   getInvoicesFromToDt(fromdt, todt) {
     this.allinvoices = null;
     let amt = 0;
+    let qty = 0;
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
     this._rest
       .getData("taxinvoice.php", "getInvoicesFromToDt", geturl)
@@ -59,10 +61,13 @@ export class ViewtaxinvoicesComponent implements OnInit {
           this.allinvoices = Response["data"];
           for (let i in this.allinvoices) {
             amt += parseFloat(this.allinvoices[i].totalamount);
+            qty += parseFloat(this.allinvoices[i].quantity);
           }
           this.totalmonthamt = amt;
+          this.totalmonthqty = qty;
         } else {
           this.totalmonthamt = 0;
+          this.totalmonthqty = 0;
         }
       });
   }

@@ -86,8 +86,10 @@ export class PurchasepaymentsComponent implements OnInit {
           id: tmparr.length,
           dates: openbal.baldate,
           particulars: "Opening Balance",
-          debit: null,
-          credit: openbal.openingbal,
+          debit:
+            parseFloat(openbal.openingbal) < 0 ? openbal.openingbal * -1 : null,
+          credit:
+            parseFloat(openbal.openingbal) >= 0 ? openbal.openingbal : null,
           balance: 0
         };
         tmparr.push(tmpobj);
@@ -98,7 +100,7 @@ export class PurchasepaymentsComponent implements OnInit {
           let tmpobj = {
             id: tmparr.length,
             dates: purchmast[i].billdt,
-            particulars: "Purchase on bill no-" + purchmast[i].billno,
+            particulars: "Purchase Bill No. " + purchmast[i].billno,
             debit: null,
             credit: purchmast[i].totalamount,
             balance: 0

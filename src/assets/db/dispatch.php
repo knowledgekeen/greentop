@@ -64,7 +64,7 @@ if($action == "dispatchOrder"){
         $resultUptSM = $conn->query($sqlUptSM);
 
         //Insert Stock Register
-        $sqlInsSM = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$quantity','$todaydt', '$remarks')";
+        $sqlInsSM = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stkid,'OUT','$quantity','$dispdate', '$remarks')";
         $resultInsSM = $conn->query($sqlInsSM);
         
         //Update Order Master

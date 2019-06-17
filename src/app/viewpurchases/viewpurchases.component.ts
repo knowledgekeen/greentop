@@ -16,6 +16,7 @@ export class ViewpurchasesComponent implements OnInit {
   errorMsg: any = false;
   totalamt: number = 0;
   totalqty: number = 0;
+  totalbags: number = 0;
   selectedpurchase: any = null;
 
   constructor(
@@ -33,20 +34,28 @@ export class ViewpurchasesComponent implements OnInit {
     let purchurl = "fromdt=" + fromdt + "&todt=" + todt;
     let totamt = 0;
     let totqty = 0;
+    let totbags = 0;
     this._rest
       .getData("reports_purchases.php", "getFromToPurchases", purchurl)
       .subscribe(Response => {
         //console.table(Response["data"]);
         if (Response) {
-          //console.log(Response["data"]);
+          console.log(Response["data"]);
           this.allpurchases = Response["data"];
 
           for (let i in this.allpurchases) {
             totamt += parseFloat(this.allpurchases[i].totalamount);
-            totqty += parseFloat(this.allpurchases[i].quantity);
+            let rawmatnm = this.allpurchases[i].rawmatname.toLowerCase();
+            if (rawmatnm.indexOf("bag") > -1) {
+              totbags += parseFloat(this.allpurchases[i].quantity);
+            } else {
+              totqty += parseFloat(this.allpurchases[i].quantity);
+            }
           }
+          console.log("Bags", totbags);
           this.totalamt = totamt;
           this.totalqty = totqty;
+          this.totalbags = totbags;
         }
       });
   }

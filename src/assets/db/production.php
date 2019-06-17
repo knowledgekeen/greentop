@@ -79,7 +79,7 @@ if($action == "addProdRawMaterial"){
 
 if($action == "getTodaysProductionBatch"){
 	//$batchid = $_GET["batchid"];
-	$sql = "SELECT `batchmastid` FROM `production_batch_master` ORDER BY `batchmastid` DESC LIMIT 1";
+	$sql = "SELECT `batchid` FROM `production_batch_master` ORDER BY `batchmastid` DESC LIMIT 1";
 	$result = $conn->query($sql);
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -89,7 +89,7 @@ if($action == "getTodaysProductionBatch"){
 
 	if($result && $row){
 		$data["status"] = 200;
-		$data["data"] = $row["batchmastid"];
+		$data["data"] = $row["batchid"];
 		header(' ', true, 200);
 	}
 	else{

@@ -18,82 +18,41 @@
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="w-100 m-0">
             Select Order
-            <span
-              class="float-right btn-link cursor"
-              *ngIf="selectedorder"
-              data-toggle="modal"
-              data-target="#orderDetailsModal"
-              (click)="getOrderConsignees()"
-            >
+            <span class="float-right btn-link cursor" *ngIf="selectedorder" data-toggle="modal"
+              data-target="#orderDetailsModal" (click)="getOrderConsignees()">
               More details
               <i class="fa fa-info-circle text-primary"></i>
             </span>
           </label>
-          <select
-            class="form-control"
-            [(ngModel)]="selectedorder"
-            (change)="selectOrder()"
-            [disabled]="!openorders"
-          >
-            <option value="{{ order.orderid }}" *ngFor="let order of openorders"
-              >Order: {{ order.orderid }} Dated:
-              {{ order.orderdt | date: "dd-MM-yyyy" }}</option
-            >
+          <select class="form-control" [(ngModel)]="selectedorder" (change)="selectOrder()" [disabled]="!openorders">
+            <option value="{{ order.orderid }}" *ngFor="let order of openorders">Order: {{ order.orderno }} Dated:
+              {{ order.orderdt | date: "dd-MM-yyyy" }}</option>
           </select>
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Dispatch Date (DD-MM-YYYY)</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="dispatchdate"
-            (blur)="autoFillDate()"
-            placeholder="Dispatch Date (DD-MM-YYYY)"
-          />
+          <input type="text" class="form-control" [(ngModel)]="dispatchdate" (blur)="autoFillDate()"
+            placeholder="Dispatch Date (DD-MM-YYYY)" />
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">DC Number</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="dcno"
-            placeholder="Enter DC Number"
-          />
+          <input type="text" class="form-control" [(ngModel)]="dcno" placeholder="Enter DC Number" />
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Vehicle Number</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="vehicalno"
-            placeholder="Enter Vehicle Number"
-            list="lorries"
-          />
+          <input type="text" class="form-control" [(ngModel)]="vehicalno" placeholder="Enter Vehicle Number"
+            list="lorries" />
           <datalist id="lorries">
-            <option
-              value="{{ lorry.lorryno }}"
-              *ngFor="let lorry of alltrucks"
-              >{{ lorry.lorryno }}</option
-            >
+            <option value="{{ lorry.lorryno }}" *ngFor="let lorry of alltrucks">{{ lorry.lorryno }}</option>
           </datalist>
         </div>
         <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
           <label class="m-0">Order Quantity</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="orderdetails.quantity"
-            readonly
-          />
+          <input type="text" class="form-control" [(ngModel)]="orderdetails.quantity" readonly />
         </div>
         <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
           <label class="m-0">Product Ordered</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="orderdetails.prodname"
-            readonly
-          />
+          <input type="text" class="form-control" [(ngModel)]="orderdetails.prodname" readonly />
         </div>
       </div>
     </div>
@@ -105,53 +64,26 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 mb-2">
           <div class="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              id="customCheck1"
-              [(ngModel)]="partytransport"
-            />
-            <label class="custom-control-label" for="customCheck1"
-              >Party's Transport</label
-            >
+            <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="partytransport" />
+            <label class="custom-control-label" for="customCheck1">Party's Transport</label>
           </div>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Rate (P.M.T)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="rate (P.M.T)"
-            [(ngModel)]="rate"
-          />
+          <input type="text" class="form-control" placeholder="rate (P.M.T)" [(ngModel)]="rate" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount"
-            [(ngModel)]="amount"
-          />
+          <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amount" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Advance</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Advance"
-            [(ngModel)]="advance"
-          />
+          <input type="text" class="form-control" placeholder="Advance" [(ngModel)]="advance" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Paid On Date (DD-MM-YYYY)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Paid On Date (DD-MM-YYYY)"
-            [(ngModel)]="paidon"
-            (blur)="autoFillPaidOnDate()"
-          />
+          <input type="text" class="form-control" placeholder="Paid On Date (DD-MM-YYYY)" [(ngModel)]="paidon"
+            (blur)="autoFillPaidOnDate()" />
         </div>
       </div>
     </div>
@@ -163,47 +95,25 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 mb-1">
           <label class="m-0">Select Batch</label>
-          <select
-            class="form-control"
-            [(ngModel)]="selbatch"
-            (change)="getAllQuantities()"
-            [disabled]="!allbatches"
-          >
-            <option
-              value="{{ batch.batchid }}"
-              *ngFor="let batch of allbatches"
-              >{{ batch.batchid }}</option
-            >
+          <select class="form-control" [(ngModel)]="selbatch" (change)="getAllQuantities()" [disabled]="!allbatches">
+            <option value="{{ batch.batchid }}" *ngFor="let batch of allbatches">{{ batch.batchid }}</option>
           </select>
           <h6 class="h6 text-secondary mt-1" *ngIf="selbatchquantity">
             Quantity remained
-            <span
-              class="font-weight-bold badge"
-              [ngClass]="{
+            <span class="font-weight-bold badge" [ngClass]="{
                 'badge-primary': selbatchquantity > 5,
                 'badge-warning': selbatchquantity <= 5 && selbatchquantity > 0,
                 'badge-danger': selbatchquantity <= 0
-              }"
-              >{{ selbatchquantity }}</span
-            >
+              }">{{ selbatchquantity }}</span>
           </h6>
         </div>
         <div class="col-md-4 col-sm-12 mb-1">
           <label class="m-0">Enter Quantity</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="selqty"
-            placeholder="Enter Quantity"
-            [disabled]="!selbatch"
-          />
+          <input type="text" class="form-control" [(ngModel)]="selqty" placeholder="Enter Quantity"
+            [disabled]="!selbatch" />
         </div>
         <div class="col-md-4 col-sm-12 mb-1">
-          <button
-            class="btn btn-info mt-4"
-            [disabled]="!selbatch || !selqty"
-            (click)="addBatch()"
-          >
+          <button class="btn btn-info mt-4" [disabled]="!selbatch || !selqty" (click)="addBatch()">
             Add Batch
           </button>
         </div>
@@ -234,9 +144,7 @@
           </tr>
         </tbody>
       </table>
-      <button
-        class="btn btn-primary mt-1"
-        [disabled]="
+      <button class="btn btn-primary mt-1" [disabled]="
           !selectedorder ||
           !dispatchdate ||
           !dcno ||
@@ -247,9 +155,7 @@
           !advance ||
           !paidon ||
           addedbatches.length <= 0
-        "
-        (click)="dispatchOrder()"
-      >
+        " (click)="dispatchOrder()">
         Dispatch Order
       </button>
     </div>
@@ -257,14 +163,8 @@
 </div>
 
 <!-- Order Details Modal -->
-<div
-  class="modal"
-  id="orderDetailsModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content" *ngIf="orderdetails">
       <div class="modal-header">
@@ -274,12 +174,7 @@
             orderdetails.orderid
           }}</span>
         </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -287,66 +182,32 @@
         <div class="row">
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Customer Name</label>
-            <input
-              type="text"
-              class="form-control"
-              [value]="orderdetails.name"
-              readonly
-            />
+            <input type="text" class="form-control" [value]="orderdetails.name" readonly />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Order Date</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}" readonly />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Contact Number</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.contactno }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.contactno }}" readonly />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Quantity</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.quantity }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.quantity }}" readonly />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Address</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.address }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.address }}" readonly />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Order Sent to</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.remarks }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.remarks }}" readonly />
           </div>
           <div class="col-md-12 col-sm-12 my-3">
             <h6 class="text-primary">
-              <span *ngIf="orderdetails.remarks == 'SELF'"
-                >Self Order Address</span
-              >
-              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'"
-                >All Consignees</span
-              >
+              <span *ngIf="orderdetails.remarks == 'SELF'">Self Order Address</span>
+              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'">All Consignees</span>
             </h6>
             <table class="table table-sm">
               <thead class="thead-dark">
