@@ -91,7 +91,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          {{ selectedbatch.manufacdate | date: "dd-MM-yyyy" }} -
           {{ selectedbatch.prodname.split(".")[1] }}
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -127,7 +126,30 @@
             </label>
           </div>
           <div class="col-md-12 col-sm-12">
-            <h5 class="text-dark">All Raw Materials Used</h5>
+            <p class="text-primary" *ngIf="batchdispatches==false">
+              <i class="fa fa-pulse fa-spinner"></i> Please wait, checking for dispatches...
+            </p>
+            <p class="mb-1" *ngIf="batchdispatches">
+              <a class="btn-link font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample">
+                <i class="fa fa-truck"></i> Click to view "Dispatches" for this batch
+              </a>
+            </p>
+            <div class="collapse mb-3" id="collapseExample" *ngIf="batchdispatches">
+              <div class="card card-body">
+                <p class="mb-1">This batch is used for the following dispatches</p>
+                <ul class="list-group">
+                  <li class="list-group-item d-flex align-items-center" *ngFor="let disp of batchdispatches">
+                    Dispatch Date: <span class="font-weight-bold mx-2">{{disp.dispatchdate | date: 'dd-MM-yyyy'}}</span>
+                    / ID: <span class="font-weight-bold mx-2">{{disp.dispatchid}}</span>
+                    / DC No.: <span class="font-weight-bold mx-2">{{disp.dcno}}</span>
+                    / Quantity: <span class="badge badge-primary badge-pill ml-1">{{disp.quantity}} tons</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr *ngIf="batchdispatches">
+            <h5 class="text-info">All Raw Materials Used</h5>
             <table class="table table-sm">
               <thead class="thead-light">
                 <tr>

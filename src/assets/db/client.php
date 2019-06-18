@@ -350,4 +350,23 @@ if($action == "updateClientOpeningBalance"){
 
 	echo json_encode($data1);
 }
+
+if($action == "deleteClient"){
+	$clientid = $_GET["clientid"];
+	$sql = "DELETE FROM `client_master` WHERE `clientid`=$clientid";
+	$result = $conn->query($sql);
+	
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $clientid;
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

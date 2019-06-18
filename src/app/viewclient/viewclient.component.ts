@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RESTService } from "../rest.service";
+import { IntervalService } from '../interval.service';
 
 @Component({
   selector: "app-viewclient",
@@ -12,15 +13,21 @@ export class ViewclientComponent implements OnInit {
   visibleclients: any = null;
   searchbox: any = null;
   selectedclient: any;
+  delete_client: any;
   pagecount: number = 0;
   pageno: number = 0;
   pagelimit: number = 10;
   disableprevbtn: boolean = true;
   disablenextbtn: boolean = false;
+  successflag: boolean = false;
 
-  constructor(private _rest: RESTService) {}
+  constructor(private _rest: RESTService, private _interval: IntervalService) { }
 
   ngOnInit() {
+    this.getAllClients();
+  }
+
+  getAllClients() {
     let strObj = "clienttype=" + this.clienttype;
     this._rest
       .getData("client.php", "getAllClients", strObj)
@@ -72,5 +79,28 @@ export class ViewclientComponent implements OnInit {
 
     let pageno = this.pageno + 1;
     this.goToPage(pageno);
+  }
+
+  toConfirmDelete(client) {
+    this.delete_client = client
+    console.log(client)
+  }
+
+  deleteClient() {
+    let geturl = "clientid=" + this.delete_client.clientid;
+
+    this._rest.getData("client.php", 'deleteClient', geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.successflag = true;
+          this.getAllClients();
+          this._interval.settimer().then(resp => {
+            this.successflag = false;
+          })
+        }
+      }, error => {
+        console.log(error);
+        alert("The is some error processing your request, please try again later.");
+      })
   }
 }

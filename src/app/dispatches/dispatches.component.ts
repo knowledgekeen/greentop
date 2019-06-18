@@ -35,7 +35,7 @@ export class DispatchesComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -100,6 +100,7 @@ export class DispatchesComponent implements OnInit {
       .getData("production.php", "getAllProductionBatches", null)
       .subscribe(Response => {
         if (Response) {
+          console.log(Response)
           this.allbatches = Response["data"];
         }
       });

@@ -18,66 +18,35 @@
         </div>
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Customer</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Select Customer"
-            [(ngModel)]="customer"
-            list="customerlist"
-            (change)="getAllSalesPayments()"
-          />
+          <input type="text" class="form-control" placeholder="Select Customer" [(ngModel)]="customer"
+            list="customerlist" (change)="getAllSalesPayments()" />
           <datalist id="customerlist">
-            <option
-              value="{{ supp.clientid }}.{{ supp.name }}"
-              *ngFor="let supp of allcustomers"
-              >{{ supp.clientid }}.{{ supp.name }}</option
-            >
+            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allcustomers">
+              {{ supp.clientid }}.{{ supp.name }}</option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Date of Payment</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Date of Payment"
-            [(ngModel)]="paydt"
-            (blur)="autofillPayDt()"
-          />
+          <input type="text" class="form-control" placeholder="Date of Payment" [(ngModel)]="paydt"
+            (blur)="autofillPayDt()" />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Amount Paid</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount Paid"
-            [(ngModel)]="amtpaid"
-          />
+          <input type="text" class="form-control" placeholder="Amount Paid" [(ngModel)]="amtpaid" />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
           <select id="paymode" class="form-control" [(ngModel)]="paymode">
-            <option
-              value="{{ mode.paymodeid }}"
-              *ngFor="let mode of allpaymodes"
-              >{{ mode.paymode }}</option
-            >
+            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
           </select>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Particulars"
-            [(ngModel)]="particulars"
-          />
+          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
         </div>
         <div class="col-md-12 col-sm-12">
-          <button
-            class="btn btn-sm btn-primary"
-            [disabled]="!paydt || !customer || !paymode || disableaddbtn"
-            (click)="addPayment()"
-          >
+          <button class="btn btn-sm btn-primary" [disabled]="!paydt || !customer || !paymode || disableaddbtn"
+            (click)="addPayment()">
             Add Payment
           </button>
         </div>
@@ -95,7 +64,7 @@
       </h6>
       <h5 class="text-center mt-3">
         <span class="font-weight-bold border-bottom border-primary font-italic">
-          {{ customer.split(".")[1] }}
+          {{ customer.split('.').slice(1).join('.') }}
         </span>
       </h5>
       <h6 class="text-center">
@@ -146,14 +115,10 @@
                 </tr>
                 <tr>
                   <td colspan="3" class="text-right font-weight-bold">Total</td>
-                  <td
-                    class="text-right font-weight-bold border-top border-secondary"
-                  >
+                  <td class="text-right font-weight-bold border-top border-secondary">
                     {{ totalamt.payout | number: "1.2-2" }}
                   </td>
-                  <td
-                    class="text-right font-weight-bold border-top border-secondary"
-                  >
+                  <td class="text-right font-weight-bold border-top border-secondary">
                     {{ totalamt.payin | number: "1.2-2" }}
                   </td>
                   <td></td>

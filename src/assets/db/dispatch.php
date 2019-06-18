@@ -85,4 +85,42 @@ if($action == "dispatchOrder"){
 	echo json_encode($data1);
 }
 
+if($action == "getBatchDispatches"){
+    $batchid = $_GET['batchid'];
+	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchid`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om WHERE `batchid`=$batchid AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['dispbatid'] = $row['dispbatid'];
+			$tmp[$i]['dispatchid'] = $row['dispatchid'];
+			$tmp[$i]['batchid'] = $row['batchid'];
+			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['orderid'] = $row['orderid'];
+			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
+			$tmp[$i]['dcno'] = $row['dcno'];
+			$tmp[$i]['orderno'] = $row['orderno'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
 ?>

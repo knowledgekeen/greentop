@@ -240,7 +240,7 @@ if($action == "getAllProductionBatches"){
 if($action == "getProductionBatchesFromToDt"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`status`='open' AND pbm.`manufacdate` BETWEEN '$fromdt' AND '$todt'";
+	$sql = "SELECT pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`manufacdate` BETWEEN '$fromdt' AND '$todt' ORDER BY pbm.`manufacdate`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

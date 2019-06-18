@@ -21,12 +21,13 @@ export class ViewbatchComponent implements OnInit {
   opendtp: boolean = false;
   selectedDate: any = new Date();
   errorMsg: any = false;
+  batchdispatches: any = false;
 
   constructor(
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -53,7 +54,7 @@ export class ViewbatchComponent implements OnInit {
       });
   }
   viewBatchDetails(batch) {
-    //console.log(batch);
+    this.batchdispatches = false;
     this.selectedbatch = JSON.parse(JSON.stringify(batch));
     this.originalbatch = JSON.parse(JSON.stringify(batch));
     let geturl = "batchid=" + batch.batchid;
@@ -73,6 +74,18 @@ export class ViewbatchComponent implements OnInit {
           //console.log(this.originalbatchmaterials, this.originalbatch);
         }
       });
+
+    //Get batch dispathes details
+    this._rest
+      .getData("dispatch.php", "getBatchDispatches", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.batchdispatches = Response['data'];
+        }
+        else {
+          this.batchdispatches = null;
+        }
+      })
   }
 
   saveBatch() {
@@ -115,7 +128,7 @@ export class ViewbatchComponent implements OnInit {
             let tmpprodregarr = [];
             let vm = this;
             for (let i in vm.originalbatchmaterials) {
-              (function(e) {
+              (function (e) {
                 let tmpprodregobj = {
                   prodregid: vm.originalbatchmaterials[e].prodregid,
                   rawmatid: vm.originalbatchmaterials[e].rawmatid,
@@ -165,7 +178,7 @@ export class ViewbatchComponent implements OnInit {
 
   updateStockUsingProdid(batchstkobj) {
     let vm = this;
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       vm._rest
         .postData("stock.php", "updateStockUsingProdid", batchstkobj, null)
         .subscribe(Response => {
@@ -178,7 +191,7 @@ export class ViewbatchComponent implements OnInit {
 
   updateProductionMaster(batchprodobj) {
     let vm = this;
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       vm._rest
         .postData(
           "production.php",
@@ -197,7 +210,7 @@ export class ViewbatchComponent implements OnInit {
   updateStockRegQuantity(stkregobj) {
     let vm = this;
     //console.log(stkregobj);
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       vm._rest
         .postData("stock.php", "updateStockRegQuantity", stkregobj, null)
         .subscribe(
