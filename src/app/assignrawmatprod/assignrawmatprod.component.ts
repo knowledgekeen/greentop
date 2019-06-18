@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RESTService } from "../rest.service";
 import { IntervalService } from "../interval.service";
+import * as moment from "moment";
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: "app-assignrawmatprod",
@@ -13,16 +15,20 @@ export class AssignrawmatprodComponent implements OnInit {
   product: any;
   rawmat: any;
   defqty: any;
+  moddate: any;
   rawmatnm: any;
   editqtyrem: any = false;
   successMsg: any = false;
   selected_prod: any = null;
   prod_rawmats: any = [];
   productadded: boolean = false;
+  spinner: boolean = true;
+  assignhistdata: any = null;
 
-  constructor(private _rest: RESTService, private _interval: IntervalService) {}
+  constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
 
   ngOnInit() {
+    this.moddate = moment(new Date()).format("DD-MM-YYYY");
     this.getActiveProducts();
     this.getRawMaterials();
   }
@@ -71,10 +77,12 @@ export class AssignrawmatprodComponent implements OnInit {
   }
 
   addProdRawMaterial() {
+    let myDate = moment(this.moddate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpObj = {
       prodid: this.selected_prod.prodid,
       rawmatid: this.rawmat,
-      defqty: this.defqty
+      defqty: this.defqty,
+      moddate: new Date(myDate).getTime()
     };
 
     let flag = false;
@@ -91,14 +99,17 @@ export class AssignrawmatprodComponent implements OnInit {
         .subscribe(Response => {
           if (Response) {
             this.successMsg = "Raw material assigned successfully";
-            //this.getAllProdRawmats();
-            this._interval.settimer(null).then(Response => {
-              //console.log(Response);
+            let prod = this.product;
+            this.product = null;
+            this.selected_prod = null;
+            this.rawmat = null;
+            this.defqty = null;
+            this._interval.settimer(100).then(Response => {
+              this.product = prod;
+              this.getAllProdRawmats();
+            });
+            this._interval.settimer().then(Response => {
               this.successMsg = null;
-              this.product = null;
-              this.selected_prod = null;
-              this.rawmat = null;
-              this.defqty = null;
             });
           }
         });
@@ -118,10 +129,12 @@ export class AssignrawmatprodComponent implements OnInit {
   }
 
   saveEditRawMaterial() {
+    let myDate = moment(this.moddate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpObj = {
       prodid: this.selected_prod.prodid,
       rawmatid: this.rawmatnm.split(".")[0],
-      defqty: this.defqty
+      defqty: this.defqty,
+      moddate: new Date(myDate).getTime()
     };
     //console.log(tmpObj);
     this._rest
@@ -129,35 +142,68 @@ export class AssignrawmatprodComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.successMsg = "Raw material quantity updated successfully";
-          this._interval.settimer(null).then(Resp => {
+          let prod = this.product;
+          this.product = null;
+          this.selected_prod = null;
+          this.rawmat = null;
+          this.defqty = null;
+          this.rawmatnm = null;
+          this.editqtyrem = false;
+          this._interval.settimer(100).then(Resp => {
+            this.product = prod;
+            this.getAllProdRawmats();
+          });
+          this._interval.settimer().then(Response => {
             this.successMsg = null;
-            this.product = null;
-            this.selected_prod = null;
-            this.rawmat = null;
-            this.defqty = null;
-            this.rawmatnm = null;
-            this.editqtyrem = false;
           });
         }
       });
   }
 
   deassignRawMaterial(rawmat) {
-    //console.log(rawmat);
-    let urlData = "prodrawid=" + rawmat.prodrawid;
+    let tmpObj = {
+      prodrawid: rawmat.prodrawid,
+      prodid: this.selected_prod.prodid,
+      rawmatid: rawmat.rawmatid,
+      defqty: 0,
+      moddate: new Date().getTime()
+    };
     this._rest
-      .getData("production.php", "deassignRawMaterial", urlData)
+      .postData("production.php", "deassignRawMaterial", tmpObj)
       .subscribe(Response => {
         if (Response) {
           this.successMsg = "Raw material removed successfully";
-          this._interval.settimer(null).then(Resp => {
+          let prod = this.product;
+          this.product = null;
+          this.selected_prod = null;
+          this.rawmat = null;
+          this.defqty = null;
+          this._interval.settimer(100).then(Resp => {
+            this.product = prod;
+            this.getAllProdRawmats();
+          });
+          this._interval.settimer().then(Response => {
             this.successMsg = null;
-            this.product = null;
-            this.selected_prod = null;
-            this.rawmat = null;
-            this.defqty = null;
           });
         }
       });
+  }
+
+  changeDate() {
+    this.moddate = this._global.getAutofillFormattedDt(this.moddate);
+  }
+
+  getRawMatAssignmentHist() {
+    this.assignhistdata = null;
+    this.spinner = true;
+    let geturl = "prodid=" + this.selected_prod.prodid;
+    this._rest
+      .getData("production.php", "getRawMatAssignmentHist", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.spinner = false;
+          this.assignhistdata = Response["data"];
+        }
+      })
   }
 }

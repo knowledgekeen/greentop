@@ -54,18 +54,22 @@ if($action == "getAllProdRawmats"){
 if($action == "addProdRawMaterial"){
     $data = json_decode(file_get_contents("php://input"));
     $prodid = $data->prodid;
+    $insid = $data->prodid;
     $rawmatid = $data->rawmatid;
     $defqty = $data->defqty;
+    $moddate = $data->moddate;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
 			$sql = "INSERT INTO `product_rawmat_register`(`prodid`, `rawmatid`, `defquantity`) VALUES ($prodid, $rawmatid, '$defqty')";
 			$result = $conn->query($sql);
-			$prodid = $conn->insert_id;
+			$insid = $conn->insert_id;
+			$sqlhist = "INSERT INTO `assign_rawmaterial_history`(`prodid`, `rawmatid`, `quantity`, `histdate`) VALUES ($prodid, $rawmatid, '$defqty','$moddate')";
+			$resulthist = $conn->query($sqlhist);
     }
     $data1= array();
     if($result){
 		$data1["status"] = 200;
-		$data1["data"] = $prodid;
+		$data1["data"] = $insid;
 		header(' ', true, 200);
 	}
 	else{
@@ -164,10 +168,13 @@ if($action == "saveEditRawMaterial"){
 	$prodid = $data->prodid;
 	$rawmatid = $data->rawmatid;
 	$defqty = $data->defqty;
+	$moddate = $data->moddate;
 	
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$sql = "UPDATE `product_rawmat_register` SET `defquantity`='$defqty' WHERE `prodid`=$prodid AND `rawmatid`=$rawmatid";
 		$result = $conn->query($sql);
+		$sqlhist = "INSERT INTO `assign_rawmaterial_history`(`prodid`, `rawmatid`, `quantity`, `histdate`) VALUES ($prodid, $rawmatid, '$defqty','$moddate')";
+		$resulthist = $conn->query($sqlhist);
 	}
 		$data1= array();
 		if($result){
@@ -184,9 +191,18 @@ if($action == "saveEditRawMaterial"){
 }
 
 if($action == "deassignRawMaterial"){
-	$prodrawid = $_GET["prodrawid"];
-	$sql = "DELETE FROM `product_rawmat_register` WHERE `prodrawid`=$prodrawid";
-	$result = $conn->query($sql);
+	$data = json_decode(file_get_contents("php://input"));
+	$prodrawid = $data->prodrawid;
+	$prodid = $data->prodid;
+	$rawmatid = $data->rawmatid;
+	$defqty = $data->defqty;
+	$moddate = $data->moddate;
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "DELETE FROM `product_rawmat_register` WHERE `prodrawid`=$prodrawid";
+		$result = $conn->query($sql);
+		$sqlhist = "INSERT INTO `assign_rawmaterial_history`(`prodid`, `rawmatid`, `quantity`, `histdate`) VALUES ($prodid, $rawmatid, '$defqty','$moddate')";
+		$resulthist = $conn->query($sqlhist);
+	}
 	$data1= array();
 	if($result){
 		$data1["status"] = 200;
@@ -360,4 +376,43 @@ if($action == "addHistoricBatch"){
 	echo json_encode($data1);
 	
 }
+
+if($action == "getRawMatAssignmentHist"){
+	$prodid = $_GET["prodid"];
+	$sql = "SELECT arh.`assignrawmatid`, arh.`prodid`, arh.`rawmatid`, arh.`quantity`, arh.`histdate`, rm.`name`, rm.`hsncode` FROM `assign_rawmaterial_history` arh, `raw_material_master` rm WHERE arh.`rawmatid`=rm.`rawmatid` AND arh.`prodid`=$prodid ORDER BY `name`, `histdate`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['assignrawmatid'] = $row['assignrawmatid'];
+			$tmp[$i]['prodid'] = $row['prodid'];
+			$tmp[$i]['rawmatid'] = $row['rawmatid'];
+			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['histdate'] = $row['histdate'];
+			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['hsncode'] = $row['hsncode'];
+			$i++;
+		}
+
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
 ?>
