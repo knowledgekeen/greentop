@@ -30,6 +30,14 @@ if($action == "addClient"){
 		$data1["status"] = 200;
 		$data1["data"] = $userid;
 		header(' ', true, 200);
+		//Logging
+		$log  = "File: client.php - Method: addClient".PHP_EOL.
+		"User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
+		"Attempt: Success".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL.
+		"\n*******************************************************************************".PHP_EOL;
+		"******************************************************************\n".PHP_EOL;
+		file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 	}
 	else{
 		$data1["status"] = 204;

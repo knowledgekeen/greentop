@@ -41,3 +41,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/assets/db/log_18.6.2019.log
+src/assets/db/logs/log_18.6.2019.log
