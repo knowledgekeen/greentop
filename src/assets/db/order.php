@@ -12,10 +12,17 @@ if($action == "getLastOrderId"){
     if($result){
         $data["status"] = 200;
 		$data["data"] = $row['orderid'];
+		$log  = "File: order.php - Method: getLastOrderId".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getLastOrderId".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
 	echo json_encode($data);
@@ -54,10 +61,17 @@ if($action == "createNewOrder"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $ordid;
+		$log  = "File: order.php - Method: createNewOrder".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: order.php - Method: createNewOrder".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data1);
@@ -94,16 +108,20 @@ if($action == "getOpenOrders"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: order.php - Method: getOpenOrders".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getOpenOrders".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
 	echo json_encode($data);
 }
-
 
 // Get All dispatched orders irrespective of Financial year
 if($action == "getDispatchedOrders"){
@@ -138,10 +156,15 @@ if($action == "getDispatchedOrders"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: order.php - Method: getDispatchedOrders".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getDispatchedOrders".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -177,10 +200,15 @@ if($action == "getOrderConsignees"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: order.php - Method: getOrderConsignees".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getOrderConsignees".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -221,10 +249,16 @@ if($action == "getOpenOrdersFromToDate"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: order.php - Method: getOpenOrdersFromToDate".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getOpenOrdersFromToDate".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -264,10 +298,16 @@ if($action == "getAllOrdersFromToDate"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: order.php - Method: getAllOrdersFromToDate".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getAllOrdersFromToDate".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -301,10 +341,16 @@ if($action == "getOrdersDetails"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: order.php - Method: getOrdersDetails".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: order.php - Method: getOrdersDetails".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -347,10 +393,17 @@ if($action == "updateOrderDetails"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $orderid;
+		$log  = "File: order.php - Method: updateOrderDetails".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: order.php - Method: updateOrderDetails".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data1);

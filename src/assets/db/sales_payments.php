@@ -33,10 +33,16 @@ if($action == "getAllOrderInvoicePayments"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data);
@@ -71,10 +77,16 @@ if($action == "getAllSaleOrderPayments"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data);
@@ -97,10 +109,16 @@ if($action == "addSalesPayment"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $salepayid;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 204);
 	}
 

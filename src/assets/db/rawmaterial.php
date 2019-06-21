@@ -18,10 +18,17 @@ if($action == "addRawMaterial"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $rawmatid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -50,10 +57,16 @@ if($action == "getRawMaterials"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -74,10 +87,17 @@ if($action == "updateRawMaterial"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $rawmatid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -122,10 +142,17 @@ if($action == "purchaseRawMaterial"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $purcmastid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -171,10 +198,16 @@ if($action == "getPurchaseDetails"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -219,10 +252,17 @@ if($action == "updatePurchasesRawMaterial"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $purcmastid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -263,10 +303,17 @@ if($action == "updateRawMaterialsAndStocks"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $stockid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -288,10 +335,16 @@ if($action == "checkPurchaseBillNoIfPresent"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -313,10 +366,16 @@ if($action == "checkPurchaseDCNoIfPresent"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 

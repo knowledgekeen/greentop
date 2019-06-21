@@ -25,10 +25,17 @@ if($action == "newProductInStock"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $stkid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -55,10 +62,17 @@ if($action == "newRawMaterialInStock"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $stkid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -92,10 +106,17 @@ if($action == "updateStockRawMaterial"){
     if($result){
         $data1["status"] = 200;
         $data1["data"] = $stkid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
         header(' ', true, 200);
     }
     else{
         $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
     echo json_encode($data1);
@@ -117,10 +138,17 @@ if($action == "updateOpeningStock"){
     if($result){
         $data1["status"] = 200;
         $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
         header(' ', true, 200);
     }
     else{
         $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
     echo json_encode($data1);
@@ -144,10 +172,16 @@ if($action == "getRawMatOpeningStock"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -170,10 +204,16 @@ if($action == "getProductStock"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -196,10 +236,16 @@ if($action == "getRawMatStock"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -224,10 +270,16 @@ if($action == "getProdOpeningStock"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -263,10 +315,16 @@ if($action == "getStockHistory"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -293,10 +351,16 @@ if($action == "checkRawMatOpenStockForCrntFinanYear"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -320,10 +384,17 @@ if($action == "updateCurrentStock"){
     if($result){
         $data1["status"] = 200;
         $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
         header(' ', true, 200);
     }
     else{
         $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
     echo json_encode($data1);
@@ -348,10 +419,17 @@ if($action == "updateStockUsingProdid"){
     if($result){
         $data1["status"] = 200;
         $data1["data"] = $row["stockid"];
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
         header(' ', true, 200);
     }
     else{
         $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
     echo json_encode($data1);
@@ -373,15 +451,21 @@ if($action == "updateStockRegQuantity"){
     if($resultregqty){
         $data1["status"] = 200;
         $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
         header(' ', true, 200);
     }
     else{
         $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
     echo json_encode($data1);
 }
-
 
 if($action == "getStockidFromRawMatId"){
 	$rawmatid = $_GET["rawmatid"];
@@ -398,10 +482,16 @@ if($action == "getStockidFromRawMatId"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 

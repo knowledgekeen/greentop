@@ -20,10 +20,17 @@ if($action == "checkLogin"){
         $tmp[0]['email'] = $row['email'];
         $datares["status"] = 200;
 		$datares["data"] = $tmp;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
     }
     else{
         $datares["status"] = 204;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
     echo json_encode($datares);
@@ -42,10 +49,17 @@ if($action == "checkOldPass"){
     if($result){
         $data1["status"] = 200;
 		$data1["data"] = $row['userid'];
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
 	echo json_encode($data1);
@@ -63,10 +77,17 @@ if($action == "changePassword"){
     if($result){
         $data1["status"] = 200;
 		$data1["data"] = $uid;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
 	echo json_encode($data1);
@@ -94,10 +115,16 @@ if($action == "getDBSettings"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -116,10 +143,17 @@ if($action == "updateDBSettings"){
     if($result){
         $data1["status"] = 200;
 		$data1["data"] = $dbsettingid;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
 	echo json_encode($data1);

@@ -35,10 +35,16 @@ if($action == "getAllPurchaseMastPayments"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data);
@@ -73,10 +79,16 @@ if($action == "getAllPurchasePayments"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data);
@@ -98,10 +110,17 @@ if($action == "addPurchasePayment"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $purchpayid;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 

@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
       .then(Response => {
         this.userdets = Response[0];
       })
-      .catch(err => {});
+      .catch(err => { });
   }
 
   checkLogin() {

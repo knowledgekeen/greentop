@@ -34,10 +34,17 @@ if($action == "addWastage"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $wasteid;
+		$log  = "File: wastage.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: wastage.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 	echo json_encode($data1);
@@ -69,10 +76,16 @@ if($action == "getWastageFromTo"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: wastage.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: wastage.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 

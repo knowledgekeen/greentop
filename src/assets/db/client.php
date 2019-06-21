@@ -32,14 +32,14 @@ if($action == "addClient"){
 		header(' ', true, 200);
 		//Logging
 		$log  = "File: client.php - Method: addClient".PHP_EOL.
-		"User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
-		"Attempt: Success".PHP_EOL.
-		"Data: ".json_encode($data).PHP_EOL.
-		"\n*******************************************************************************".PHP_EOL;
-		"******************************************************************\n".PHP_EOL;
-		file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 	}
 	else{
+		$log  = "File: client.php - Method: addClient".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		$data1["status"] = 204;
 		header(' ', true, 204);
 	}
@@ -70,6 +70,9 @@ if($action == "getClientCities"){
 		header(' ', true, 200);
 	}
 	else{
+		$log  = "File: client.php - Method: getClientCities".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		$data["status"] = 204;
 		header(' ', true, 204);
 	}
@@ -100,6 +103,9 @@ if($action == "getClientStates"){
 		header(' ', true, 200);
 	}
 	else{
+		$log  = "File: client.php - Method: getClientStates".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		$data["status"] = 204;
 		header(' ', true, 204);
 	}
@@ -143,6 +149,9 @@ if($action == "getAllClients"){
 		header(' ', true, 200);
 	}
 	else{
+		$log  = "File: client.php - Method: getAllClients".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		$data["status"] = 204;
 		header(' ', true, 204);
 	}
@@ -177,10 +186,16 @@ if($action == "getClientDetails"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: client.php - Method: getClientDetails".PHP_EOL.
+		"Data: ".json_encode($tmp).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: client.php - Method: getClientDetails".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -211,10 +226,17 @@ if($action == "updateClient"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $clientid;
+		$log  = "File: client.php - Method: updateClient".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: client.php - Method: updateClient".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -267,10 +289,17 @@ if($action == "getClientPurchaseOpeningBal"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: client.php - Method: getClientPurchaseOpeningBal".PHP_EOL.
+		"Data: ".json_encode($tmp).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: client.php - Method: getClientPurchaseOpeningBal".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -323,10 +352,16 @@ if($action == "getClientSaleOpeningBal"){
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: client.php - Method: getClientSaleOpeningBal".PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: client.php - Method: getClientSaleOpeningBal".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -349,10 +384,17 @@ if($action == "updateClientOpeningBalance"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $openbalid;
+		$log  = "File: client.php - Method: updateClientOpeningBalance".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: client.php - Method: updateClientOpeningBalance".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -368,10 +410,17 @@ if($action == "deleteClient"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $clientid;
+		$log  = "File: client.php - Method: deleteClient".PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: client.php - Method: deleteClient".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 

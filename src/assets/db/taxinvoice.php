@@ -32,10 +32,17 @@ if($action == "saveBillDetails"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $billid;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -50,10 +57,17 @@ if($action == "getLastBillId"){
     if($result && $row['billno']){
         $data["status"] = 200;
 		$data["data"] = $row['billno'];
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
     }
 	echo json_encode($data);
@@ -100,10 +114,16 @@ if($action == "getInvoicesFromToDt"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
@@ -131,10 +151,17 @@ if($action == "updateBillDetails"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $otaxinvoiceid;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
+		$log  = "File: taxinvoice.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
 	}
 
