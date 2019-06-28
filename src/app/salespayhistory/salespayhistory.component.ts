@@ -17,7 +17,7 @@ export class SalespayhistoryComponent implements OnInit {
   editparticulars: any = null;
   selectedorderpayid: any = null;
   @Input() customer: any;
-  @Input() isEditable: any;
+  @Input() iseditable: any;
   successflag: any = false;
   totalamt: { payin: number; payout: number; balance: number; };
 

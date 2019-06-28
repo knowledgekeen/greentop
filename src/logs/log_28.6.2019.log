@@ -1416,3 +1416,23 @@ User: ::1 - June 28, 2019, 16:40:32
 File: sales_payments.php - Method: getAllSaleOrderPayments
 
 *******************************************************************************
+Action: Success
+User: ::1 - June 28, 2019, 16:45:54
+File: order.php - Method: getOpenOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 28, 2019, 16:45:54
+File: order.php - Method: getOpenOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 28, 2019, 16:46:23
+File: order.php - Method: getOpenOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 28, 2019, 16:46:23
+File: order.php - Method: getOpenOrdersFromToDate
+
+*******************************************************************************
