@@ -59,6 +59,8 @@ import { AddclientopenbalComponent } from './addclientopenbal/addclientopenbal.c
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddhistoricbatchComponent } from './addhistoricbatch/addhistoricbatch.component';
 import { AddwastageComponent } from './addwastage/addwastage.component';
+import { PurchasepayhistoryComponent } from './purchasepayhistory/purchasepayhistory.component';
+import { SalespayhistoryComponent } from './salespayhistory/salespayhistory.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +105,9 @@ import { AddwastageComponent } from './addwastage/addwastage.component';
     AddclientopenbalComponent,
     PagenotfoundComponent,
     AddhistoricbatchComponent,
-    AddwastageComponent
+    AddwastageComponent,
+    PurchasepayhistoryComponent,
+    SalespayhistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +125,7 @@ import { AddwastageComponent } from './addwastage/addwastage.component';
     EncDecService,
     { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] } // add as factory to your providers
   ],
+  entryComponents: [PurchasepayhistoryComponent, SalespayhistoryComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

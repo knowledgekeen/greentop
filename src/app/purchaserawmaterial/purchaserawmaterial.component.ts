@@ -55,7 +55,7 @@ export class PurchaserawmaterialComponent implements OnInit {
     private _global: GlobalService,
     private _route: ActivatedRoute,
     private _router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getRawMaterials();
@@ -532,23 +532,23 @@ export class PurchaserawmaterialComponent implements OnInit {
       });
   }
 
-  checkPurchaseDCNoIfPresent() {
-    if (!this.dcno) return;
-
-    let geturl = "dcno=" + this.dcno;
-    this._rest
-      .getData("rawmaterial.php", "checkPurchaseDCNoIfPresent", geturl)
-      .subscribe(Response => {
-        //console.log(Response);
-        if (Response) {
-          let tmpdt = moment(parseInt(Response["data"].billdt)).format(
-            "DD-MM-YYYY"
-          );
-          this.warningflag =
-            "DC No is already present for purchase made on " + tmpdt;
-        } else {
-          this.warningflag = false;
-        }
-      });
-  }
+  /*   checkPurchaseDCNoIfPresent() {
+      if (!this.dcno) return;
+  
+      let geturl = "dcno=" + this.dcno;
+      this._rest
+        .getData("rawmaterial.php", "checkPurchaseDCNoIfPresent", geturl)
+        .subscribe(Response => {
+          //console.log(Response);
+          if (Response) {
+            let tmpdt = moment(parseInt(Response["data"].billdt)).format(
+              "DD-MM-YYYY"
+            );
+            this.warningflag =
+              "DC No is already present for purchase made on " + tmpdt;
+          } else {
+            this.warningflag = false;
+          }
+        });
+    } */
 }

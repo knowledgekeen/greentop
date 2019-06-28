@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   email: string = null;
   password: string = null;
   userdets: any = null;
+  spinnerflag: any = false;
 
   constructor(
     private _rest: RESTService,
@@ -42,6 +43,7 @@ export class NavbarComponent implements OnInit {
   }
 
   checkLogin() {
+    this.spinnerflag = true;
     let tmpObj = {
       email: this.email,
       passwd: this.password
@@ -49,6 +51,7 @@ export class NavbarComponent implements OnInit {
     this._rest
       .postData("accounts.php", "checkLogin", tmpObj, null)
       .subscribe(Response => {
+        this.spinnerflag = false;
         if (Response) {
           tmpObj = null;
           this.userdets = Response["data"][0];
@@ -60,6 +63,10 @@ export class NavbarComponent implements OnInit {
         } else {
           alert("Invalid credentials, try again");
         }
+      }, error => {
+        this.spinnerflag = false;
+        console.log("error");
+        alert("Having some trouble logging you in, please try again later.");
       });
   }
 

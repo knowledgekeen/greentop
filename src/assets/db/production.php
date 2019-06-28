@@ -96,7 +96,7 @@ if($action == "addProdRawMaterial"){
 
 if($action == "getTodaysProductionBatch"){
 	//$batchid = $_GET["batchid"];
-	$sql = "SELECT `batchid` FROM `production_batch_master` ORDER BY `batchmastid` DESC LIMIT 1";
+	$sql = "SELECT `batchid` FROM `production_batch_master` where NOT `batchid`='OM'  ORDER BY `batchmastid` DESC LIMIT 1";
 	$result = $conn->query($sql);
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -159,7 +159,7 @@ if($action == "addProductionBatch"){
 				$resultqty = $conn->query($sqlins);
 
 				//Insert into Production Batch Register
-				$sqlbatchins="INSERT INTO `production_batch_register`(`rawmatid`, `rawmatqty`, `batchid`) VALUES ($rawmatid,'$qtytoadd','$batchid')";
+				$sqlbatchins="INSERT INTO `production_batch_register`(`rawmatid`, `rawmatqty`, `batchmastid`) VALUES ($rawmatid,'$qtytoadd','$prodid')";
 				$resultbatchqty = $conn->query($sqlbatchins);
 			}//For Loop closed
 
@@ -257,7 +257,7 @@ if($action == "deassignRawMaterial"){
 }
 
 if($action == "getAllProductionBatches"){
-	$sql = "SELECT pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`status`='open'";
+	$sql = "SELECT pbm.`batchmastid`, pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`status`='open' ORDER BY pbm.`manufacdate`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -271,6 +271,7 @@ if($action == "getAllProductionBatches"){
 	if(count($rows)>0){
 		foreach($rows as $row)
 		{
+			$tmp[$i]['batchmastid'] = $row['batchmastid'];
 			$tmp[$i]['batchid'] = $row['batchid'];
 			$tmp[$i]['prodid'] = $row['prodid'];
 			$tmp[$i]['qtyproduced'] = $row['qtyproduced'];
@@ -301,7 +302,7 @@ if($action == "getAllProductionBatches"){
 if($action == "getProductionBatchesFromToDt"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`manufacdate` BETWEEN '$fromdt' AND '$todt' ORDER BY pbm.`manufacdate`";
+	$sql = "SELECT pbm.`batchmastid`, pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`manufacdate` BETWEEN '$fromdt' AND '$todt' ORDER BY pbm.`manufacdate`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -315,6 +316,7 @@ if($action == "getProductionBatchesFromToDt"){
 	if(count($rows)>0){
 		foreach($rows as $row)
 		{
+			$tmp[$i]['batchmastid'] = $row['batchmastid'];
 			$tmp[$i]['batchid'] = $row['batchid'];
 			$tmp[$i]['prodid'] = $row['prodid'];
 			$tmp[$i]['qtyproduced'] = $row['qtyproduced'];
@@ -343,8 +345,8 @@ if($action == "getProductionBatchesFromToDt"){
 }
 
 if($action == "getProductionBatchDetails"){
-	$batchid = $_GET["batchid"];
-	$sql = "SELECT pbr.`prodregid`,pbr.`rawmatid`,pbr.`rawmatqty`, rm.`name` FROM `production_batch_register` pbr, `raw_material_master` rm WHERE pbr.`batchid`=$batchid AND pbr.`rawmatid`=rm.`rawmatid`";
+	$batchmastid = $_GET["batchmastid"];
+	$sql = "SELECT pbr.`prodregid`,pbr.`rawmatid`,pbr.`rawmatqty`, rm.`name` FROM `production_batch_register` pbr, `raw_material_master` rm WHERE pbr.`batchmastid`=$batchmastid AND pbr.`rawmatid`=rm.`rawmatid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

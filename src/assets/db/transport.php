@@ -107,7 +107,7 @@ if($action == "getActiveTransport"){
 	echo json_encode($data);
 }
 
-if($action == "getAllTrucks"){
+if($action == "getTransportTrucks"){
 	$sql = "SELECT tr.`truckid`, tr.`lorryno`, tm.`tmid`, tm.`transportname`, tm.`contactno`, tm.`address` FROM `truck_register` tr, `transport_master` tm WHERE tr.`tmid`=tm.`tmid` ORDER BY tr.`lorryno`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -208,5 +208,77 @@ if($action == "updateTruck"){
 	}
 
 	echo json_encode($data1);
+}
+
+if($action == "getDispatchTrucks"){
+	$sql = "SELECT DISTINCT(`vehicalno`) FROM `dispatch_register`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['vehicalno'] = $row['vehicalno'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: transport.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: transport.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "getPurchaseTrucks"){
+	$sql = "SELECT DISTINCT(`vehicalno`) FROM `purchase_master`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['vehicalno'] = $row['vehicalno'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: transport.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: transport.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
 }
 ?>

@@ -24,7 +24,7 @@ export class AddbatchComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -52,6 +52,9 @@ export class AddbatchComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           console.log(Response);
+          if (isNaN(parseInt(Response["data"]) + 1)) {
+            console.log("Test")
+          }
           this.batchid = parseInt(Response["data"]) + 1;
         } else {
           this.batchid = "1";

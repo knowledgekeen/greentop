@@ -18,66 +18,36 @@
         </div>
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Supplier</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Select Supplier"
-            [(ngModel)]="supplier"
-            list="supplierlist"
-            (change)="getAllPurchasePayments()"
-          />
+          <input type="text" class="form-control" placeholder="Select Supplier" [(ngModel)]="supplier"
+            list="supplierlist" (change)="loadPurchasePaymentHistory(supplier)" />
+          <!-- (change)=getAllPurchasePayments() -->
           <datalist id="supplierlist">
-            <option
-              value="{{ supp.clientid }}.{{ supp.name }}"
-              *ngFor="let supp of allsuppliers"
-              >{{ supp.clientid }}.{{ supp.name }}</option
-            >
+            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allsuppliers">
+              {{ supp.clientid }}.{{ supp.name }}</option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Date of Payment</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Date of Payment"
-            [(ngModel)]="paydt"
-            (blur)="autofillPayDt()"
-          />
+          <input type="text" class="form-control" placeholder="Date of Payment" [(ngModel)]="paydt"
+            (blur)="autofillPayDt()" />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Amount Paid</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount Paid"
-            [(ngModel)]="amtpaid"
-          />
+          <input type="text" class="form-control" placeholder="Amount Paid" [(ngModel)]="amtpaid" />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
-          <select id="paymode" class="form-control" [(ngModel)]="paymode">
-            <option
-              value="{{ mode.paymodeid }}"
-              *ngFor="let mode of allpaymodes"
-              >{{ mode.paymode }}</option
-            >
+          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoParticulars(paymode)">
+            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
           </select>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Particulars"
-            [(ngModel)]="particulars"
-          />
+          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
         </div>
         <div class="col-md-12 col-sm-12">
-          <button
-            class="btn btn-sm btn-primary"
-            [disabled]="!paydt || !supplier || !paymode || disableaddbtn"
-            (click)="addPayment()"
-          >
+          <button class="btn btn-sm btn-primary" [disabled]="!paydt || !supplier || !paymode || disableaddbtn"
+            (click)="addPayment()">
             Add Payment
           </button>
         </div>
@@ -85,90 +55,6 @@
     </div>
   </div>
 
-  <div class="card my-3" *ngIf="supplier && payhistory">
-    <div class="card-body">
-      <h5 class="text-center font-weight-bold">
-        Green Top Organics
-      </h5>
-      <h6 class="text-center">
-        Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune.
-      </h6>
-      <h5 class="text-center mt-3">
-        <span class="font-weight-bold border-bottom border-primary font-italic">
-          {{ supplier.split(".")[1] }}
-        </span>
-      </h5>
-      <h6 class="text-center">
-        (Ledger Account)
-      </h6>
-      <h6 class="text-center">
-        <span class="font-weight-bold border-bottom border-primary">
-          {{ currfinanyr.fromdt | date: "dd-MMM-yyyy" }}
-        </span>
-        to
-        <span class="font-weight-bold border-bottom border-primary">
-          {{ currfinanyr.todt | date: "dd-MMM-yyyy" }}
-        </span>
-      </h6>
-
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <div class="table-responsive my-3">
-            <table class="table table-sm">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Particulars</th>
-                  <th scope="col" class="text-right">
-                    Debit (<i class="fa fa-inr" aria-hidden="true"></i>)
-                  </th>
-                  <th scope="col" class="text-right">
-                    Credit (<i class="fa fa-inr" aria-hidden="true"></i>)
-                  </th>
-                  <th scope="col" class="text-right">
-                    Balance (<i class="fa fa-inr" aria-hidden="true"></i>)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let hist of payhistory; let i = index">
-                  <th scope="row">{{ i + 1 }}</th>
-                  <td>{{ hist.dates | date: "dd-MM-yyyy" }}</td>
-                  <td>{{ hist.particulars }}</td>
-                  <td class="text-right">{{ hist.debit | number: "1.2-2" }}</td>
-                  <td class="text-right">
-                    {{ hist.credit | number: "1.2-2" }}
-                  </td>
-                  <td class="text-right">
-                    {{ hist.balance | number: "1.2-2" }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3" class="text-right font-weight-bold">Total</td>
-                  <td
-                    class="text-right font-weight-bold border-top border-secondary"
-                  >
-                    {{ totalamt.debit | number: "1.2-2" }}
-                  </td>
-                  <td
-                    class="text-right font-weight-bold border-top border-secondary"
-                  >
-                    {{ totalamt.credit | number: "1.2-2" }}
-                  </td>
-                  <td></td>
-                </tr>
-                <tr *ngIf="!payhistory">
-                  <h6 class="text-danger my-3">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    No payment records found.
-                  </h6>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Purchase payments are dynamically loaded in the following div -->
+  <div class="col-md-12" #purchasepayhistory></div>
 </div>

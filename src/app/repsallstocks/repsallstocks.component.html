@@ -1,34 +1,23 @@
-<div class="card">
+<div class="card" [hidden]="!allstock">
   <div class="card-body">
     <h5 class="text-primary">
       <span class="border-bottom border-primary">Current stocks</span>
     </h5>
     <div class="row">
-      <div
-        class="col-sm-12 text-right"
-        [ngClass]="{
+      <div class="col-sm-12 text-right" [ngClass]="{
           'col-md-4': hidegraph == false,
           'col-md-12': hidegraph == true
-        }"
-      >
-        <a
-          href="javascript:void(0);"
-          class="border-bottom"
-          (click)="hidegraph = !hidegraph"
-        >
+        }">
+        <a href="javascript:void(0);" class="border-bottom" (click)="hidegraph = !hidegraph">
           <span *ngIf="!hidegraph">Hide Graph</span>
           <span *ngIf="hidegraph">Show Graph</span>
         </a>
         <div id="container" [hidden]="hidegraph"></div>
       </div>
-      <div
-        class="col-sm-12 mb-3"
-        *ngIf="allstock"
-        [ngClass]="{
+      <div class="col-sm-12 mb-3" *ngIf="allstock" [ngClass]="{
           'col-md-8': hidegraph == false,
           'col-md-12': hidegraph == true
-        }"
-      >
+        }">
         <h6 class="text-dark text-uppercase font-italic font-weight-bold">
           Raw Materials
         </h6>
@@ -42,17 +31,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              *ngFor="let stock of allstock"
-              [ngClass]="{ 'd-none': stock.rawmatid == null }"
-            >
+            <tr *ngFor="let stock of allstock" [ngClass]="{ 'd-none': stock.rawmatid == null }">
               <td>
-                <a
-                  href="javascript:void(0);"
-                  data-toggle="modal"
-                  data-target="#stockHistoryModal"
-                  (click)="selectRawMaterialOrProduct(stock)"
-                >
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#stockHistoryModal"
+                  (click)="selectRawMaterialOrProduct(stock)">
                   {{ stock.name }}
                 </a>
               </td>
@@ -81,21 +63,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              *ngFor="let stock of allstock"
-              [ngClass]="{
+            <tr *ngFor="let stock of allstock" [ngClass]="{
                 'd-none': stock.rawmatid != null || stock.prodid == null
-              }"
-            >
+              }">
               <td>
-                <a
-                  href="javascript:void(0);"
-                  data-toggle="modal"
-                  data-target="#stockHistoryModal"
-                  (click)="selectRawMaterialOrProduct(stock)"
-                >
-                  {{ stock.prodname }}</a
-                >
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#stockHistoryModal"
+                  (click)="selectRawMaterialOrProduct(stock)">
+                  {{ stock.prodname }}</a>
               </td>
               <td class="text-right pr-5">
                 {{ stock.quantity | number: "1.3-3" }}
@@ -109,15 +83,8 @@
 </div>
 
 <!-- Stock History for Raw Materials -->
-<div
-  class="modal fade"
-  id="stockHistoryModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
-  *ngIf="selectedmat"
->
+<div class="modal fade" id="stockHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" *ngIf="selectedmat">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -125,12 +92,7 @@
           <span *ngIf="selectedmat.rawmatid">{{ selectedmat.name }}</span>
           <span *ngIf="!selectedmat.rawmatid">{{ selectedmat.prodname }}</span>
         </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
 import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
 import { IntervalService } from "../interval.service";
+import { SalespayhistoryComponent } from '../salespayhistory/salespayhistory.component';
 
 @Component({
   selector: "app-vieworders",
@@ -16,14 +17,27 @@ export class ViewordersComponent implements OnInit {
   selectedorder: any = null;
   errorMsg: any = false;
   totalquantity: any = 0;
+  @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,
     private _global: GlobalService,
-    private _interval: IntervalService
-  ) {}
+    private _interval: IntervalService,
+    private resolver: ComponentFactoryResolver
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  loadSalesPaymentHistory(customer) {
+    this.entry.clear();
+    const factory = this.resolver.resolveComponentFactory(SalespayhistoryComponent);
+    const componentRef = this.entry.createComponent(factory);
+    componentRef.instance.customer = customer;
+  }
+
+  openSaleHistoryModal(order) {
+    this.loadSalesPaymentHistory(order.clientid + "." + order.name);
+  }
 
   getOpenOrdersFromToDate(fromdt, todt) {
     this.allorders = null;
@@ -81,7 +95,6 @@ export class ViewordersComponent implements OnInit {
         fromdate.setHours(0, 0, 0, 0);
         let fromdt = fromdate.getTime();
         let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        console.log(fromdt, lastdt);
         this.getOpenOrdersFromToDate(fromdt, lastdt);
         this.opendtp = !this.opendtp;
         return;

@@ -1,14 +1,10 @@
 <?php
 
-function initSession(){
-    session_start();
-}
-
 function startMySession($key, $value){
     $_SESSION[$key] = $value;
 }
 
-function getSession($key){
-    echo $_SESSION[$key];
+function getMySession($key){
+    return $_SESSION[$key];
 }
 ?>

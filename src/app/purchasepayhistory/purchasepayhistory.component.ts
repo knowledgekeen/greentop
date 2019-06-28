@@ -1,83 +1,32 @@
-import {
-  Component, OnInit, ViewChild,
-  ViewContainerRef, ComponentFactoryResolver, ComponentRef, ComponentFactory
-} from "@angular/core";
-import { GlobalService } from "../global.service";
-import { RESTService } from "../rest.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { RESTService } from '../rest.service';
+import { GlobalService } from '../global.service';
 import * as moment from "moment";
-import { IntervalService } from "../interval.service";
-import { PurchasepayhistoryComponent } from '../purchasepayhistory/purchasepayhistory.component';
+import { IntervalService } from '../interval.service';
 
 @Component({
-  selector: "app-purchasepayments",
-  templateUrl: "./purchasepayments.component.html",
-  styleUrls: ["./purchasepayments.component.css"]
+  selector: 'app-purchasepayhistory',
+  templateUrl: './purchasepayhistory.component.html',
+  styleUrls: ['./purchasepayhistory.component.css']
 })
-export class PurchasepaymentsComponent implements OnInit {
-  currfinanyr: any = null;
-  allsuppliers: any = null;
-  paydt: string = null;
-  supplier: string = null;
-  paymode: string = null;
-  allpaymodes: any = null;
-  particulars: string = null;
-  amtpaid: string = "0";
-  errormsg: any = false;
-  successmsg: any = false;
+export class PurchasepayhistoryComponent implements OnInit {
   payhistory: any = null;
-  disableaddbtn: boolean = false;
-  totalamt: any = null;
-  @ViewChild('purchasepayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  totalamt: { debit: number; credit: number; balance: number; };
+  currfinanyr: any;
+  editpurchdate: any = null;
+  editamountpaid: any = null;
+  editparticulars: any = null;
+  selectedpurchpayid: any = null;
+  @Input() supplier: any;
+  @Input() isEditable: any;
+  successflag: any = false;
 
-  constructor(
-    private _global: GlobalService,
-    private _rest: RESTService,
-    private _interval: IntervalService,
-    private resolver: ComponentFactoryResolver
-  ) { }
+  constructor(private _rest: RESTService, private _global: GlobalService, private _interval: IntervalService) { }
 
   ngOnInit() {
+    //console.log(this.supplier)
     this.currfinanyr = this._global.getCurrentFinancialYear();
-    this.getAllSuppliers();
-    this.getAllPayModes();
-    //this.getAllPurchasePayments();
-  }
-
-  loadPurchasePaymentHistory(supplier) {
-    this.entry.clear();
-    const factory = this.resolver.resolveComponentFactory(PurchasepayhistoryComponent);
-    const componentRef = this.entry.createComponent(factory);
-    componentRef.instance.supplier = supplier;
-    componentRef.instance.isEditable = true;
-  }
-
-  getAllSuppliers() {
-    let suppdata = "clienttype=1";
-    this._rest
-      .getData("client.php", "getAllClients", suppdata)
-      .subscribe(Response => {
-        if (Response) {
-          //console.log(Response["data"]);
-          this.allsuppliers = Response["data"];
-        }
-      });
-  }
-
-  getAllPayModes() {
-    this._rest
-      .getData("payments_common.php", "getAllPayModes", null)
-      .subscribe(Response => {
-        if (Response) {
-          //console.log(Response["data"]);
-          this.allpaymodes = Response["data"];
-        }
-      });
-  }
-
-  autofillPayDt() {
-    if (!this.paydt) return;
-
-    this.paydt = this._global.getAutofillFormattedDt(this.paydt);
+    this.getAllPurchasePayments();
   }
 
   getAllPurchasePayments() {
@@ -130,6 +79,7 @@ export class PurchasepaymentsComponent implements OnInit {
             particulars = "Payment made by " + purchpay[i].paymode;
           }
           let tmpobj = {
+            purchpayid: purchpay[i].purchpayid,
             id: tmparr.length,
             dates: purchpay[i].paydate,
             particulars: particulars,
@@ -153,8 +103,7 @@ export class PurchasepaymentsComponent implements OnInit {
     let prevfinanyr = this._global.getSpecificFinancialYear(dt.getTime());
     //console.log(prevfinanyr);
     let geturl =
-      "clientid=" +
-      this.supplier.split(".")[0] +
+      "clientid=" + this.supplier.split(".")[0] +
       "&fromdt=" +
       this.currfinanyr.fromdt +
       "&todt=" +
@@ -173,11 +122,7 @@ export class PurchasepaymentsComponent implements OnInit {
         .subscribe(CResp => {
           //console.log(CResp);
           vm._rest
-            .getData(
-              "purchase_payments.php",
-              "getAllPurchaseMastPayments",
-              geturl
-            )
+            .getData("purchase_payments.php", "getAllPurchaseMastPayments", geturl)
             .subscribe(Response => {
               //console.log(Response);
               if (Response) {
@@ -186,11 +131,7 @@ export class PurchasepaymentsComponent implements OnInit {
 
               //Irrespective of data from getAllPurchaseMastPayments, need to get payments done details
               vm._rest
-                .getData(
-                  "purchase_payments.php",
-                  "getAllPurchasePayments",
-                  geturl
-                )
+                .getData("purchase_payments.php", "getAllPurchasePayments", geturl)
                 .subscribe(Resp => {
                   //console.log(Resp);
                   if (Resp) {
@@ -209,38 +150,6 @@ export class PurchasepaymentsComponent implements OnInit {
             });
         });
     });
-  }
-
-  addPayment() {
-    if (parseFloat(this.amtpaid) == 0) {
-      this.errormsg = "Amount paid cannot be '0'";
-      this._interval.settimer(null).then(resp => {
-        this.errormsg = null;
-      });
-      return;
-    }
-    let myDate = moment(this.paydt, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let tmpObj = {
-      paydt: new Date(myDate).getTime(),
-      suppid: this.supplier.split(".")[0],
-      amtpaid: this.amtpaid,
-      paymode: this.paymode,
-      particulars: this.particulars
-    };
-    this.disableaddbtn = true;
-    //console.log(tmpObj);
-    this._rest
-      .postData("purchase_payments.php", "addPurchasePayment", tmpObj, null)
-      .subscribe(Response => {
-        //console.log(Response);
-        if (Response) {
-          this.loadPurchasePaymentHistory(this.supplier);
-          this.successmsg = "Payment done successfully";
-          this._interval.settimer(null).then(resp => {
-            this.resetForm();
-          });
-        }
-      });
   }
 
   calculateTotalDebitCredit() {
@@ -269,22 +178,49 @@ export class PurchasepaymentsComponent implements OnInit {
     tmpobj = null;
   }
 
-  resetForm() {
-    this.successmsg = null;
-    this.disableaddbtn = false;
-    this.paydt = null;
-    this.amtpaid = null;
-    this.paymode = null;
-    this.particulars = null;
-    this.payhistory = null;
+  editPaymentHistory(hist) {
+    this.editpurchdate = null;
+    this.editamountpaid = null;
+    this.editparticulars = null;
+    this.editpurchdate = moment(parseInt(hist.dates)).format("DD-MM-YYYY");
+    this.editamountpaid = hist.debit;
+    this.editparticulars = hist.particulars;
+    this.selectedpurchpayid = hist.purchpayid;
   }
 
-  setAutoParticulars(paymodeid) {
-    for (let i in this.allpaymodes) {
-      if (paymodeid == this.allpaymodes[i].paymodeid) {
-        this.particulars = this.allpaymodes[i].paymode;
-        break;
-      }
+  updatePurchasePayment() {
+    let balDate = moment(this.editpurchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let postobj = {
+      purchpayid: this.selectedpurchpayid,
+      purchdate: new Date(balDate).getTime(),
+      amountpaid: this.editamountpaid,
+      particulars: this.editparticulars
     }
+    this._rest.postData("purchase_payments.php", "updatePurchasePayment", postobj)
+      .subscribe(Response => {
+        window.scrollTo(0, 0);
+        this.successflag = "Payment details updated successfully";
+        this.getAllPurchasePayments();
+        this._interval.settimer().then(rep => {
+          this.successflag = false;
+        });
+      });
+  }
+
+  confirmDel(hist) {
+    this.selectedpurchpayid = hist.purchpayid;
+  }
+
+  deletePurchasePayRecord() {
+    let geturl = "purchpayid=" + this.selectedpurchpayid;
+    this._rest.getData("purchase_payments.php", "deletePurchasePayRecord", geturl)
+      .subscribe(Response => {
+        window.scrollTo(0, 0);
+        this.successflag = "Payment details deleted successfully";
+        this.getAllPurchasePayments();
+        this._interval.settimer().then(rep => {
+          this.successflag = false;
+        });
+      });
   }
 }

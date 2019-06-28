@@ -1,0 +1,163 @@
+<div class="card my-3" *ngIf="supplier && payhistory">
+  <div class="card-body">
+    <div class="alert alert-success" role="alert" *ngIf="successflag">
+      <i class="fa fa-check"></i> {{successflag}}
+    </div>
+    <h5 class="text-center font-weight-bold">
+      Green Top Organics
+    </h5>
+    <h6 class="text-center">
+      Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune.
+    </h6>
+    <h5 class="text-center mt-3">
+      <span class="font-weight-bold border-bottom border-primary font-italic">
+        {{ supplier.split('.').slice(1).join('.') }}
+      </span>
+    </h5>
+    <h6 class="text-center">
+      (Ledger Account)
+    </h6>
+    <h6 class="text-center">
+      <span class="font-weight-bold border-bottom border-primary">
+        {{ currfinanyr.fromdt | date: "dd-MMM-yyyy" }}
+      </span>
+      to
+      <span class="font-weight-bold border-bottom border-primary">
+        {{ currfinanyr.todt | date: "dd-MMM-yyyy" }}
+      </span>
+    </h6>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="table-responsive my-3">
+          <table class="table table-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Particulars</th>
+                <th scope="col" class="text-right">
+                  Debit (<i class="fa fa-inr" aria-hidden="true"></i>)
+                </th>
+                <th scope="col" class="text-right">
+                  Credit (<i class="fa fa-inr" aria-hidden="true"></i>)
+                </th>
+                <th scope="col" class="text-right">
+                  Balance (<i class="fa fa-inr" aria-hidden="true"></i>)
+                </th>
+                <th *ngIf="isEditable">Edit / Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let hist of payhistory; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ hist.dates | date: "dd-MM-yyyy" }}</td>
+                <td>{{ hist.particulars }}</td>
+                <td class="text-right">{{ hist.debit | number: "1.2-2" }}</td>
+                <td class="text-right">
+                  {{ hist.credit | number: "1.2-2" }}
+                </td>
+                <td class="text-right">
+                  {{ hist.balance | number: "1.2-2" }}
+                </td>
+                <td *ngIf="isEditable">
+                  <h6 class="m-0" *ngIf="hist.debit">
+                    <a href="javascript:void(0);" class="mx-2" title="Edit Payment History" data-toggle="modal"
+                      data-target="#editPayHistoryModal" (click)="editPaymentHistory(hist)">
+                      <i class="fa fa-pencil text-warning"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="mx-2 " title="Delete Payment History"
+                      (click)="confirmDel(hist)" data-toggle="modal" data-target="#delPayHistoryModal">
+                      <i class="fa fa-trash text-danger"></i>
+                    </a>
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="text-right font-weight-bold">Total</td>
+                <td class="text-right font-weight-bold border-top border-secondary">
+                  {{ totalamt.debit | number: "1.2-2" }}
+                </td>
+                <td class="text-right font-weight-bold border-top border-secondary">
+                  {{ totalamt.credit | number: "1.2-2" }}
+                </td>
+                <td colspan="2"></td>
+              </tr>
+              <tr *ngIf="!payhistory">
+                <h6 class="text-danger my-3">
+                  <i class="fa fa-exclamation-triangle"></i>
+                  No payment records found.
+                </h6>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Edit Payment History Modal -->
+<div class="modal" id="editPayHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Payment History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4 my-2">
+            <label for="editpurchdate" class="m-0">Payment Date</label>
+            <input type="text" class="form-control" name="editpurchdate" id="editpurchdate"
+              [(ngModel)]="editpurchdate" />
+          </div>
+          <div class="col-md-4 my-2">
+            <label for="editamountpaid" class="m-0">Amount Paid</label>
+            <input type="text" class="form-control" name="editamountpaid" id="editamountpaid"
+              [(ngModel)]="editamountpaid" />
+          </div>
+          <div class="col-md-4 my-2">
+            <label for="editparticulars" class="m-0">Particulars</label>
+            <input type="text" class="form-control" name="editparticulars" id="editparticulars"
+              [(ngModel)]="editparticulars" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" (click)="updatePurchasePayment();"
+          [disabled]="!editpurchdate || !editamountpaid || !editparticulars" data-dismiss="modal">
+          Update payment details
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="delPayHistoryModal" tabindex="-1" role="dialog" aria-labelledby="delPayHistoryModalLbl"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delPayHistoryModallbl">Delete Record</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-dark">Are you sure to delete this record?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deletePurchasePayRecord()" data-dismiss="modal">
+          Delete record
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

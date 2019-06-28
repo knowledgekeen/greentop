@@ -21,7 +21,7 @@ if($action == "checkLogin"){
         $datares["status"] = 200;
 		$datares["data"] = $tmp;
 		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
-		"Data: ".json_encode($data).PHP_EOL;
+		"Logged In User: ".$data->email.PHP_EOL;
 		write_log($log, "success", NULL);
 		header(' ', true, 200);
     }

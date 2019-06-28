@@ -45,19 +45,51 @@ export class DispatchesComponent implements OnInit {
     let now = moment().format("DD-MM-YYYY");
     //this.dispatchdate = now;
     this.getOpenOrders();
-    this.getAllTrucks();
+    this.getTransportTrucks();
     this.getAllProductionBatches();
   }
 
-  getAllTrucks() {
+  getTransportTrucks() {
+    let transtruck = new Array();
     this.alltrucks = null;
     this._rest
-      .getData("transport.php", "getAllTrucks", null)
+      .getData("transport.php", "getTransportTrucks", null)
       .subscribe(Response => {
         if (Response) {
-          this.alltrucks = Response["data"];
+          for (let i in Response["data"]) {
+            let obj = {
+              lorryno: Response["data"][i].lorryno
+            }
+            transtruck.push(obj);
+          }
         }
+
+        this._rest.getData("transport.php", "getDispatchTrucks", null)
+          .subscribe(Response => {
+            if (Response) {
+              for (let j in Response["data"]) {
+                let obj = {
+                  lorryno: Response["data"][j].vehicalno
+                }
+                transtruck.push(obj);
+              }
+            }
+
+            this._rest.getData("transport.php", "getPurchaseTrucks", null)
+              .subscribe(Response => {
+                if (Response) {
+                  for (let k in Response["data"]) {
+                    let obj = {
+                      lorryno: Response["data"][k].vehicalno
+                    }
+                    transtruck.push(obj);
+                  }
+                }
+              });
+          });
       });
+
+    this.alltrucks = transtruck;
   }
 
   getOpenOrders() {
@@ -100,7 +132,6 @@ export class DispatchesComponent implements OnInit {
       .getData("production.php", "getAllProductionBatches", null)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response)
           this.allbatches = Response["data"];
         }
       });
@@ -108,7 +139,7 @@ export class DispatchesComponent implements OnInit {
 
   getAllQuantities() {
     for (let i in this.allbatches) {
-      if (this.selbatch == this.allbatches[i].batchid) {
+      if (this.selbatch.split("$")[0] == this.allbatches[i].batchmastid) {
         this.selbatchquantity = this.allbatches[i].qtyremained;
         break;
       }
@@ -143,13 +174,14 @@ export class DispatchesComponent implements OnInit {
 
     this.qtyremerror = false;
     let tmpbatch: any = {
-      batchid: this.selbatch,
+      batchmastid: this.selbatch.split("$")[0],
+      batchid: this.selbatch.split("$")[1],
       selqty: this.selqty,
       qtyrem: 0
     };
     let qtyremained = 0;
     for (let i in this.allbatches) {
-      if (this.selbatch == this.allbatches[i].batchid) {
+      if (this.selbatch.split("$")[0] == this.allbatches[i].batchmastid) {
         qtyremained =
           parseFloat(this.allbatches[i].qtyremained) - parseFloat(this.selqty);
         this.allbatches.splice(i, 1);

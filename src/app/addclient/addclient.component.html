@@ -7,17 +7,11 @@
       <div class="col-sm-12 col-xs-12 text-danger">
         <p>
           Fields marked with asterisk (*) are compulsary
-          <a
-            [routerLink]="['/viewsupplier']"
-            class="float-right"
-            *ngIf="clienttype == '1'"
-            ><i class="fa fa-search"></i> View All Supplier
+          <a [routerLink]="['/viewsupplier']" class="float-right" *ngIf="clienttype == '1'"><i class="fa fa-search"></i>
+            View All Supplier
           </a>
-          <a
-            [routerLink]="['/viewcustomer']"
-            class="float-right"
-            *ngIf="clienttype == '2'"
-            ><i class="fa fa-search"></i> View All Customer
+          <a [routerLink]="['/viewcustomer']" class="float-right" *ngIf="clienttype == '2'"><i class="fa fa-search"></i>
+            View All Customer
           </a>
         </p>
       </div>
@@ -25,14 +19,8 @@
         <label class="m-0">
           Company Name <sup class="text-danger font-weight-bold">*</sup>
         </label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Company Name"
-          [(ngModel)]="fname"
-          list="clients"
-          (blur)="checkClientPresent()"
-        />
+        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="fname" list="clients"
+          (blur)="checkClientPresent()" />
 
         <datalist id="clients">
           <option value="{{ client.name }}" *ngFor="let client of allclients">
@@ -41,82 +29,37 @@
         </datalist>
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
-        <label class="m-0"
-          >Contact Number
-          <sup class="text-danger font-weight-bold">*</sup></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Contact Number"
-          [(ngModel)]="cno"
-        />
+        <label class="m-0">Contact Number
+          <sup class="text-danger font-weight-bold">*</sup></label>
+        <input type="text" class="form-control" placeholder="Contact Number" [(ngModel)]="cno" />
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
         <label class="m-0">GST Number</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="GST No."
-          [(ngModel)]="gstno"
-        />
+        <input type="text" class="form-control" placeholder="GST No." [(ngModel)]="gstno" />
       </div>
       <div class="col-sm-6 col-xs-12 mb-3">
         <label class="m-0">Email Address</label>
-        <input
-          type="email"
-          class="form-control"
-          placeholder="Email Address"
-          [(ngModel)]="email"
-        />
+        <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="email" />
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
-        <label class="m-0">Contact Person 1</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Contact Person 1"
-          [(ngModel)]="cperson1"
-        />
+        <label class="m-0">Contact Person 1 Name</label>
+        <input type="text" class="form-control" placeholder="Contact Person 1 Name" [(ngModel)]="cperson1" />
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
         <label class="m-0">Contact Person 1 Number</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Contact Person No. 1"
-          [(ngModel)]="cno1"
-        />
+        <input type="text" class="form-control" placeholder="Contact Person No. 1" [(ngModel)]="cno1" />
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
-        <label class="m-0">Contact Person 2</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Contact Person 2"
-          [(ngModel)]="cperson2"
-        />
+        <label class="m-0">Contact Person 2 Name</label>
+        <input type="text" class="form-control" placeholder="Contact Person 2 Name" [(ngModel)]="cperson2" />
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
         <label class="m-0">Contact Person 2 Number</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Contact Person No. 2"
-          [(ngModel)]="cno2"
-        />
+        <input type="text" class="form-control" placeholder="Contact Person No. 2" [(ngModel)]="cno2" />
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
-        <label class="m-0"
-          >City <sup class="text-danger font-weight-bold">*</sup></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="City"
-          [(ngModel)]="city"
-          list="cities"
-        />
+        <label class="m-0">City <sup class="text-danger font-weight-bold">*</sup></label>
+        <input type="text" class="form-control" placeholder="City" [(ngModel)]="city" list="cities" />
         <datalist id="cities">
           <option value="{{ city.city }}" *ngFor="let city of allcities">{{
             city.city
@@ -124,16 +67,8 @@
         </datalist>
       </div>
       <div class="col-sm-3 col-xs-12 mb-3">
-        <label class="m-0"
-          >State <sup class="text-danger font-weight-bold">*</sup></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="State"
-          [(ngModel)]="state"
-          list="states"
-        />
+        <label class="m-0">State <sup class="text-danger font-weight-bold">*</sup></label>
+        <input type="text" class="form-control" placeholder="State" [(ngModel)]="state" list="states" />
         <datalist id="states">
           <option value="{{ state.state }}" *ngFor="let state of allstates">{{
             state.state
@@ -142,19 +77,11 @@
       </div>
       <div class="col-sm-12 col-xs-12 mb-3">
         <label class="m-0">Address</label>
-        <textarea
-          class="form-control"
-          rows="3"
-          placeholder="Address"
-          [(ngModel)]="address"
-        ></textarea>
+        <textarea class="form-control" rows="3" placeholder="Address" [(ngModel)]="address"></textarea>
       </div>
       <div class="col-sm-12 col-xs-12 mb-3">
-        <button
-          class="btn btn-sm btn-success"
-          (click)="addClient()"
-          [disabled]="!fname || !cno || !city || !state || clientnamepresent"
-        >
+        <button class="btn btn-sm btn-success" (click)="addClient()"
+          [disabled]="!fname || !cno || !city || !state || clientnamepresent">
           Add
           <span *ngIf="clienttype == '1'">Supplier</span>
           <span *ngIf="clienttype == '2'">Customer</span>

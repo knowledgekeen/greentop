@@ -8,147 +8,71 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 mb-2 text-danger">
           <i class="fa fa-exclamation"></i> All fields are compulsary
-          <span
-            class="float-right border-bottom border-danger"
-            *ngIf="warningflag"
-          >
-            <i class="fa fa-exclamation"></i> {{ warningflag }}</span
-          >
+          <span class="float-right border-bottom border-danger" *ngIf="warningflag">
+            <i class="fa fa-exclamation"></i> {{ warningflag }}</span>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Arrival Date (DD-MM-YYYY)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Arrival Date (DD/MM/YYYY)"
-            [(ngModel)]="arrivaldt"
-            (blur)="autoFillArivDt()"
-            autofocus
-          />
+          <input type="text" class="form-control" placeholder="Arrival Date (DD/MM/YYYY)" [(ngModel)]="arrivaldt"
+            (blur)="autoFillArivDt()" autofocus />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Bill Date (DD-MM-YYYY)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Bill Date (DD/MM/YYYY)"
-            [(ngModel)]="billdt"
-            (blur)="autoFillBillDt()"
-          />
+          <input type="text" class="form-control" placeholder="Bill Date (DD/MM/YYYY)" [(ngModel)]="billdt"
+            (blur)="autoFillBillDt()" />
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">D.C Number</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="D.C number"
-            [(ngModel)]="dcno"
-            (blur)="checkPurchaseDCNoIfPresent()"
-          />
+          <input type="text" class="form-control" placeholder="D.C number" [(ngModel)]="dcno" />
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">Bill Number</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Bill Number"
-            [(ngModel)]="billno"
-            (blur)="checkPurchaseBillNoIfPresent()"
-          />
+          <input type="text" class="form-control" placeholder="Bill Number" [(ngModel)]="billno"
+            (blur)="checkPurchaseBillNoIfPresent()" />
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">Vehicle Number</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Vehicle Number"
-            [(ngModel)]="vehicalno"
-            list="lorries"
-          />
+          <input type="text" class="form-control" placeholder="Vehicle Number" [(ngModel)]="vehicalno" list="lorries" />
           <datalist id="lorries">
-            <option
-              value="{{ lorry.lorryno }}"
-              *ngFor="let lorry of alltrucks"
-              >{{ lorry.lorryno }}</option
-            >
+            <option value="{{ lorry.lorryno }}" *ngFor="let lorry of alltrucks">{{ lorry.lorryno }}</option>
           </datalist>
         </div>
         <div class="col-md-4 col-sm-12 mt-3">
           <label class="m-0">Select Supplier</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Select Supplier"
-            list="supplierlist"
-            [(ngModel)]="supplier"
-            (blur)="checkClient()"
-            [disabled]="!allsuppliers"
-          />
+          <input type="text" class="form-control" placeholder="Select Supplier" list="supplierlist"
+            [(ngModel)]="supplier" (blur)="checkClient()" [disabled]="!allsuppliers" />
           <datalist id="supplierlist">
-            <option
-              value="{{ supp.clientid }}.{{ supp.name }}"
-              *ngFor="let supp of allsuppliers"
-              >{{ supp.name }}</option
-            >
+            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allsuppliers">{{ supp.name }}
+            </option>
           </datalist>
-          <span class="text-danger font-weight-bold" *ngIf="!allsuppliers"
-            ><i class="fa fa-exclamation-triangle"></i> Please
-            <a [routerLink]="['/addsupplier']">add</a> suppliers</span
-          >
+          <span class="text-danger font-weight-bold" *ngIf="!allsuppliers"><i class="fa fa-exclamation-triangle"></i>
+            Please
+            <a [routerLink]="['/addsupplier']">add</a> suppliers</span>
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0">Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount"
-            [(ngModel)]="totalamt"
-            tabindex="-1"
-            readonly
-          />
+          <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="totalamt" tabindex="-1" readonly />
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0">Discount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Discount"
-            [(ngModel)]="totaldiscount"
-            tabindex="-1"
-            readonly
-          />
+          <input type="text" class="form-control" placeholder="Discount" [(ngModel)]="totaldiscount" tabindex="-1"
+            readonly />
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0">Amount Before GST</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount Before GST"
-            [(ngModel)]="totalnetamount"
-            tabindex="-1"
-            readonly
-          />
+          <input type="text" class="form-control" placeholder="Amount Before GST" [(ngModel)]="totalnetamount"
+            tabindex="-1" readonly />
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0">Total Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Total Amount"
-            [(ngModel)]="totalsuppamount"
-            tabindex="-1"
-            readonly
-          />
+          <input type="text" class="form-control" placeholder="Total Amount" [(ngModel)]="totalsuppamount" tabindex="-1"
+            readonly />
         </div>
       </div>
     </div>
   </div>
 
-  <div
-    class="card mt-2"
-    [ngClass]="{ 'mb-5': added_materials.length <= 0 }"
-    *ngIf="showaddmaterial"
-  >
+  <div class="card mt-2" [ngClass]="{ 'mb-5': added_materials.length <= 0 }" *ngIf="showaddmaterial">
     <div class="card-body">
       <div class="row">
         <div class="col-md-12 text-info">
@@ -156,177 +80,82 @@
         </div>
         <div class="col-md-12 col-sm-12 mb-3">
           <div class="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              id="customControlAutosizing"
-              [(ngModel)]="autocalc"
-            />
-            <label class="custom-control-label" for="customControlAutosizing"
-              >Auto-Calculate</label
-            >
+            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" [(ngModel)]="autocalc" />
+            <label class="custom-control-label" for="customControlAutosizing">Auto-Calculate</label>
           </div>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Select Raw Material</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Select raw product"
-            list="rawprodlist"
-            [(ngModel)]="product"
-            (blur)="checkProduct()"
-          />
+          <input type="text" class="form-control" placeholder="Select raw product" list="rawprodlist"
+            [(ngModel)]="product" (blur)="checkProduct()" />
           <datalist id="rawprodlist">
-            <option
-              value="{{ prods.rawmatid }}.{{ prods.name }}"
-              *ngFor="let prods of allrawmats"
-              >{{ prods.name }}</option
-            >
+            <option value="{{ prods.rawmatid }}.{{ prods.name }}" *ngFor="let prods of allrawmats">{{ prods.name }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">Quantity (tons/bags)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Quantity"
-            [(ngModel)]="qty"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="Quantity" [(ngModel)]="qty" (blur)="calculateAmt()" />
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">Rate</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Rate"
-            [(ngModel)]="rate"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="Rate" [(ngModel)]="rate" (blur)="calculateAmt()" />
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount"
-            [(ngModel)]="amount"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amount" (blur)="calculateAmt()" />
         </div>
         <div class="col-md-1 col-sm-12">
           <label class="m-0">Discount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Discount"
-            [(ngModel)]="discount"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="Discount" [(ngModel)]="discount"
+            (blur)="calculateAmt()" />
         </div>
         <div class="col-md-2 col-sm-12 ">
           <label class="m-0">Amount before GST</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Amount before GST"
-            [(ngModel)]="netamount"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="Amount before GST" [(ngModel)]="netamount"
+            (blur)="calculateAmt()" />
         </div>
         <div class="col-md-3 col-sm-12 mt-3">
-          <label class="m-0 w-100"
-            >CGST(%)
-            <span class="text-primary float-right" *ngIf="cgstinr"
-              >{{ cgstinr }} inr</span
-            >
+          <label class="m-0 w-100">CGST(%)
+            <span class="text-primary float-right" *ngIf="cgstinr">{{ cgstinr }} inr</span>
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="CGST"
-            [(ngModel)]="cgst"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="CGST" [(ngModel)]="cgst" (blur)="calculateAmt()" />
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
-          <label class="m-0 w-100"
-            >SGST(%)
-            <span class="text-primary float-right" *ngIf="sgstinr"
-              >{{ sgstinr }} inr</span
-            >
+          <label class="m-0 w-100">SGST(%)
+            <span class="text-primary float-right" *ngIf="sgstinr">{{ sgstinr }} inr</span>
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="SGST"
-            [(ngModel)]="sgst"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="SGST" [(ngModel)]="sgst" (blur)="calculateAmt()" />
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
-          <label class="m-0 w-100"
-            >IGST(%)
-            <span class="text-primary float-right" *ngIf="igstinr"
-              >{{ igstinr }} inr</span
-            ></label
-          >
-          <input
-            type="text"
-            class="form-control"
-            placeholder="IGST"
-            [(ngModel)]="igst"
-            (blur)="calculateAmt()"
-          />
+          <label class="m-0 w-100">IGST(%)
+            <span class="text-primary float-right" *ngIf="igstinr">{{ igstinr }} inr</span></label>
+          <input type="text" class="form-control" placeholder="IGST" [(ngModel)]="igst" (blur)="calculateAmt()" />
         </div>
 
         <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0 w-100">Round Off (+/-)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Round Off (+/-)"
-            [(ngModel)]="roundoff"
-            (blur)="calculateAmt()"
-          />
+          <input type="text" class="form-control" placeholder="Round Off (+/-)" [(ngModel)]="roundoff"
+            (blur)="calculateAmt()" />
         </div>
         <div class="col-md-3 col-sm-12 mt-3">
           <label class="m-0">Total Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Total Amount"
-            [(ngModel)]="rawmattotalamt"
-          />
+          <input type="text" class="form-control" placeholder="Total Amount" [(ngModel)]="rawmattotalamt" />
         </div>
         <div class="col-md-12 col-sm-12 mt-3">
-          <button
-            class="btn btn-sm btn-info"
-            (click)="addRawMaterial()"
-            [disabled]="!product || !qty || !amount"
-          >
+          <button class="btn btn-sm btn-info" (click)="addRawMaterial()" [disabled]="!product || !qty || !amount">
             Add
           </button>
         </div>
 
-        <div
-          class="col-sm-12 col-xs-12"
-          *ngIf="product_mismatch_err || client_mismatch_err"
-        >
-          <small class="text-danger m-0" *ngIf="product_mismatch_err"
-            ><i class="fa fa-exclamation-triangle"></i> Raw Material Name
-            Mismatched</small
-          >
-          <small
-            class="font-weight-bold text-danger mx-3"
-            *ngIf="product_mismatch_err && client_mismatch_err"
-            >and</small
-          >
-          <small class="text-danger" *ngIf="client_mismatch_err"
-            ><i class="fa fa-exclamation-triangle"></i> Client Name
-            Mismatched</small
-          >
+        <div class="col-sm-12 col-xs-12" *ngIf="product_mismatch_err || client_mismatch_err">
+          <small class="text-danger m-0" *ngIf="product_mismatch_err"><i class="fa fa-exclamation-triangle"></i> Raw
+            Material Name
+            Mismatched</small>
+          <small class="font-weight-bold text-danger mx-3"
+            *ngIf="product_mismatch_err && client_mismatch_err">and</small>
+          <small class="text-danger" *ngIf="client_mismatch_err"><i class="fa fa-exclamation-triangle"></i> Client Name
+            Mismatched</small>
         </div>
       </div>
     </div>
@@ -364,18 +193,12 @@
               </td>
               <td>{{ mat.rawtotalamt | currency: "INR" }}</td>
               <td>
-                <a
-                  href="javascript:void(0);"
-                  (click)="editAddedMaterial(mat, i)"
-                  >Edit</a
-                >
+                <a href="javascript:void(0);" (click)="editAddedMaterial(mat, i)">Edit</a>
               </td>
             </tr>
             <tr>
               <td colspan="7">
-                <span class="font-weight-bold float-right text-primary"
-                  >Total</span
-                >
+                <span class="font-weight-bold float-right text-primary">Total</span>
               </td>
               <td colspan="2">
                 <span class="font-weight-bold text-primary">{{
@@ -388,10 +211,7 @@
       </div>
 
       <div class="col-sm-12 col-xs-12">
-        <button
-          class="btn btn-sm btn-primary"
-          (click)="purchaseRawMaterial()"
-          [disabled]="
+        <button class="btn btn-sm btn-primary" (click)="purchaseRawMaterial()" [disabled]="
             !arrivaldt ||
             !billdt ||
             !supplier ||
@@ -402,15 +222,10 @@
             product_mismatch_err ||
             added_materials.length <= 0 ||
             disablepurchasebtn
-          "
-          *ngIf="!purcmastid"
-        >
+          " *ngIf="!purcmastid">
           Purchase
         </button>
-        <button
-          class="btn btn-sm btn-warning"
-          (click)="updatePurchasesRawMaterial()"
-          [disabled]="
+        <button class="btn btn-sm btn-warning" (click)="updatePurchasesRawMaterial()" [disabled]="
             !arrivaldt ||
             !billdt ||
             !supplier ||
@@ -421,16 +236,10 @@
             product_mismatch_err ||
             added_materials.length <= 0 ||
             disablepurchasebtn
-          "
-          *ngIf="purcmastid"
-        >
+          " *ngIf="purcmastid">
           Update Purchase
         </button>
-        <button
-          class="btn btn-secondary btn-sm ml-3"
-          (click)="cancelEditing()"
-          *ngIf="purcmastid"
-        >
+        <button class="btn btn-secondary btn-sm ml-3" (click)="cancelEditing()" *ngIf="purcmastid">
           Cancel
         </button>
       </div>

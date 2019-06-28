@@ -126,4 +126,60 @@ if($action == "addPurchasePayment"){
 
 	echo json_encode($data1);
 }
+
+if($action == "updatePurchasePayment"){
+    $data = json_decode(file_get_contents("php://input"));
+    $purchpayid = $data->purchpayid;
+    $purchdate = $data->purchdate;
+    $amountpaid = $data->amountpaid;
+    $particulars = $data->particulars;
+   	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `purchase_payments` SET `paydate`='$purchdate',`amount`='$amountpaid',`particulars`='$particulars' WHERE `purchpayid`=$purchpayid";
+        $result = $conn->query($sql);
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $purchpayid;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
+if($action == "deletePurchasePayRecord"){
+    $purchpayid = $_GET["purchpayid"];
+	$sql = "DELETE FROM `purchase_payments` WHERE `purchpayid`=$purchpayid";
+	$result = $conn->query($sql);
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $purchpayid;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

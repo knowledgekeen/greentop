@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   dbsettings: any = null;
   btnsetting: any = [];
   disabledall: boolean = false;
-  constructor(private _rest: RESTService, private _interval: IntervalService) {}
+  constructor(private _rest: RESTService, private _interval: IntervalService) { }
 
   ngOnInit() {
     this.getDBSettings();
@@ -22,7 +22,6 @@ export class DashboardComponent implements OnInit {
   getDBSettings() {
     this._rest.getData("accounts.php", "getDBSettings").subscribe(Response => {
       if (Response) {
-        //console.log(Response["data"]);
         this.dbsettings = Response["data"];
         this.checkAllSettings();
         for (const i in this.dbsettings) {

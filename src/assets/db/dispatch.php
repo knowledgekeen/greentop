@@ -34,21 +34,22 @@ if($action == "dispatchOrder"){
         $resultdt = $conn->query($sqldt);
 
         for($i=0; $i<count($addedbatches); $i++) {
+            $batchmastid = $addedbatches[$i]->batchmastid;
             $batchid = $addedbatches[$i]->batchid;
             $selqty = $addedbatches[$i]->selqty;
             $qtyrem = $addedbatches[$i]->qtyrem;
 
             // Insert into `dispatches_batches`
-            $sqldb = "INSERT INTO `dispatches_batches`(`dispatchid`, `batchid`, `quantity`) VALUES ($dispatchid, $batchid, $selqty)";
+            $sqldb = "INSERT INTO `dispatches_batches`(`dispatchid`, `batchmastid`, `quantity`) VALUES ($dispatchid, $batchmastid, $selqty)";
             $resultdb = $conn->query($sqldb);
 
             // Update into `production_batch_master`
             if((double)$qtyrem == 0){
-                $sqlpbm = "UPDATE `production_batch_master` SET `qtyremained`='$qtyrem',`status`='closed' WHERE `batchid`=$batchid";
+                $sqlpbm = "UPDATE `production_batch_master` SET `qtyremained`='$qtyrem',`status`='closed' WHERE `batchmastid`=$batchmastid";
                 $resultpbm = $conn->query($sqlpbm);
             }
             else{
-                $sqlpbm = "UPDATE `production_batch_master` SET `qtyremained`='$qtyrem' WHERE `batchid`=$batchid";
+                $sqlpbm = "UPDATE `production_batch_master` SET `qtyremained`='$qtyrem' WHERE `batchmastid`=$batchmastid";
                 $resultpbm = $conn->query($sqlpbm);
             }
         }
@@ -93,8 +94,8 @@ if($action == "dispatchOrder"){
 }
 
 if($action == "getBatchDispatches"){
-    $batchid = $_GET['batchid'];
-	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchid`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om WHERE `batchid`=$batchid AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid";
+    $batchmastid = $_GET['batchmastid'];
+	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om WHERE db.`batchmastid`=$batchmastid AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -110,7 +111,7 @@ if($action == "getBatchDispatches"){
 		{
 			$tmp[$i]['dispbatid'] = $row['dispbatid'];
 			$tmp[$i]['dispatchid'] = $row['dispatchid'];
-			$tmp[$i]['batchid'] = $row['batchid'];
+			$tmp[$i]['batchmastid'] = $row['batchmastid'];
 			$tmp[$i]['quantity'] = $row['quantity'];
 			$tmp[$i]['orderid'] = $row['orderid'];
 			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];

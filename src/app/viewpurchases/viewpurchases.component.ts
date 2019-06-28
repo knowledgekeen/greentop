@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
 import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
 import { IntervalService } from "../interval.service";
 import { Router } from "@angular/router";
+import { PurchasepayhistoryComponent } from '../purchasepayhistory/purchasepayhistory.component';
 
 @Component({
   selector: "app-viewpurchases",
@@ -18,15 +19,28 @@ export class ViewpurchasesComponent implements OnInit {
   totalqty: number = 0;
   totalbags: number = 0;
   selectedpurchase: any = null;
+  @ViewChild('purchasepayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    private resolver: ComponentFactoryResolver
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  loadPurchasePaymentHistory(supplier) {
+    this.entry.clear();
+    const factory = this.resolver.resolveComponentFactory(PurchasepayhistoryComponent);
+    const componentRef = this.entry.createComponent(factory);
+    componentRef.instance.supplier = supplier;
+  }
+
+  openPurchHistoryModal(purch) {
+    this.loadPurchasePaymentHistory(purch.clientid + "." + purch.name);
+  }
 
   getFromToPurchases(fromdt, todt) {
     //console.log(fromdt, todt);
@@ -40,7 +54,7 @@ export class ViewpurchasesComponent implements OnInit {
       .subscribe(Response => {
         //console.table(Response["data"]);
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           this.allpurchases = Response["data"];
 
           for (let i in this.allpurchases) {
@@ -52,7 +66,7 @@ export class ViewpurchasesComponent implements OnInit {
               totqty += parseFloat(this.allpurchases[i].quantity);
             }
           }
-          console.log("Bags", totbags);
+          //console.log("Bags", totbags);
           this.totalamt = totamt;
           this.totalqty = totqty;
           this.totalbags = totbags;

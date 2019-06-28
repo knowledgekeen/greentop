@@ -1,79 +1,31 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, ComponentFactory } from "@angular/core";
-import { RESTService } from "../rest.service";
-import { GlobalService } from "../global.service";
-import { IntervalService } from "../interval.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { GlobalService } from '../global.service';
+import { RESTService } from '../rest.service';
 import * as moment from "moment";
-import { SalespayhistoryComponent } from '../salespayhistory/salespayhistory.component';
+import { IntervalService } from '../interval.service';
 
 @Component({
-  selector: "app-salepayments",
-  templateUrl: "./salepayments.component.html",
-  styleUrls: ["./salepayments.component.css"]
+  selector: 'app-salespayhistory',
+  templateUrl: './salespayhistory.component.html',
+  styleUrls: ['./salespayhistory.component.css']
 })
-export class SalepaymentsComponent implements OnInit {
+export class SalespayhistoryComponent implements OnInit {
   currfinanyr: any = null;
-  allcustomers: any = null;
-  paydt: string = null;
-  customer: string = null;
-  paymode: string = null;
-  allpaymodes: any = null;
-  particulars: string = null;
-  amtpaid: string = "0";
-  successmsg: any = false;
-  errormsg: any = false;
   payhistory: any = null;
-  disableaddbtn: boolean = false;
-  totalamt: any = null;
-  @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  editpaydate: any = null;
+  editamountpaid: any = null;
+  editparticulars: any = null;
+  selectedorderpayid: any = null;
+  @Input() customer: any;
+  @Input() isEditable: any;
+  successflag: any = false;
+  totalamt: { payin: number; payout: number; balance: number; };
 
-  constructor(
-    private _rest: RESTService,
-    private _global: GlobalService,
-    private _interval: IntervalService,
-    private resolver: ComponentFactoryResolver
-  ) { }
+  constructor(private _global: GlobalService, private _rest: RESTService, private _interval: IntervalService) { }
 
   ngOnInit() {
     this.currfinanyr = this._global.getCurrentFinancialYear();
-    this.getAllCustomers();
-    this.getAllPayModes();
-  }
-
-  loadSalesPaymentHistory(customer) {
-    this.entry.clear();
-    const factory = this.resolver.resolveComponentFactory(SalespayhistoryComponent);
-    const componentRef = this.entry.createComponent(factory);
-    componentRef.instance.customer = customer;
-    componentRef.instance.iseditable = true;
-  }
-
-  getAllCustomers() {
-    let suppdata = "clienttype=2";
-    this._rest
-      .getData("client.php", "getAllClients", suppdata)
-      .subscribe(Response => {
-        if (Response) {
-          //console.log(Response["data"]);
-          this.allcustomers = Response["data"];
-        }
-      });
-  }
-
-  getAllPayModes() {
-    this._rest
-      .getData("payments_common.php", "getAllPayModes", null)
-      .subscribe(Response => {
-        if (Response) {
-          //console.log(Response["data"]);
-          this.allpaymodes = Response["data"];
-        }
-      });
-  }
-
-  autofillPayDt() {
-    if (!this.paydt) return;
-
-    this.paydt = this._global.getAutofillFormattedDt(this.paydt);
+    this.getAllSalesPayments();
   }
 
   getAllSalesPayments() {
@@ -130,6 +82,7 @@ export class SalepaymentsComponent implements OnInit {
             particulars = "Payment done by " + orderpay[i].paymode;
           }
           let tmpobj = {
+            orderpayid: orderpay[i].orderpayid,
             id: tmparr.length,
             dates: orderpay[i].paydate,
             particulars: particulars,
@@ -236,55 +189,51 @@ export class SalepaymentsComponent implements OnInit {
     });
   }
 
-  addPayment() {
-    if (parseFloat(this.amtpaid) == 0) {
-      this.errormsg = "Amount paid cannot be '0'";
-      this._interval.settimer(null).then(resp => {
-        this.errormsg = null;
-      });
-      return;
+  editPaymentHistory(hist) {
+    console.log(hist)
+    this.editpaydate = null;
+    this.editamountpaid = null;
+    this.editparticulars = null;
+    this.editpaydate = moment(parseInt(hist.dates)).format("DD-MM-YYYY");
+    this.editamountpaid = hist.payin;
+    this.editparticulars = hist.particulars;
+    this.selectedorderpayid = hist.orderpayid;
+  }
+
+  updateSalePayment() {
+    let balDate = moment(this.editpaydate, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let postobj = {
+      orderpayid: this.selectedorderpayid,
+      paydate: new Date(balDate).getTime(),
+      amountpaid: this.editamountpaid,
+      particulars: this.editparticulars
     }
-    let myDate = moment(this.paydt, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let tmpObj = {
-      paydt: new Date(myDate).getTime(),
-      custid: this.customer.split(".")[0],
-      amtpaid: this.amtpaid,
-      paymode: this.paymode,
-      particulars: this.particulars
-    };
-    this.disableaddbtn = true;
-    console.log(tmpObj);
-    //return;
-    this._rest
-      .postData("sales_payments.php", "addSalesPayment", tmpObj, null)
+    this._rest.postData("sales_payments.php", "updateSalePayment", postobj)
       .subscribe(Response => {
-        //console.log(Response);
-        this.loadSalesPaymentHistory(this.customer);
-        if (Response) {
-          this.successmsg = "Payment done successfully";
-          this._interval.settimer(null).then(resp => {
-            this.resetForm();
-          });
-        }
+        window.scrollTo(0, 0);
+        this.successflag = "Payment details updated successfully";
+        this.getAllSalesPayments();
+        this._interval.settimer().then(rep => {
+          this.successflag = false;
+        });
       });
   }
 
-  resetForm() {
-    this.successmsg = null;
-    this.disableaddbtn = false;
-    this.paydt = null;
-    this.amtpaid = null;
-    this.paymode = null;
-    this.particulars = null;
-    this.payhistory = null;
+  confirmDel(hist) {
+    this.selectedorderpayid = hist.orderpayid;
   }
 
-  setAutoPayMode() {
-    for (let i in this.allpaymodes) {
-      if (this.paymode == this.allpaymodes[i].paymodeid) {
-        this.particulars = this.allpaymodes[i].paymode;
-        break;
-      }
-    }
+  deleteSalesPayRecord() {
+    let geturl = "orderpayid=" + this.selectedorderpayid;
+    this._rest.getData("sales_payments.php", "deleteSalePayRecord", geturl)
+      .subscribe(Response => {
+        window.scrollTo(0, 0);
+        this.successflag = "Payment details deleted successfully";
+        this.getAllSalesPayments();
+        this._interval.settimer().then(rep => {
+          this.successflag = false;
+        });
+      });
   }
+
 }

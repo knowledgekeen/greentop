@@ -53,11 +53,13 @@ export class ViewbatchComponent implements OnInit {
         }
       });
   }
+
   viewBatchDetails(batch) {
+    //console.log(batch)
     this.batchdispatches = false;
     this.selectedbatch = JSON.parse(JSON.stringify(batch));
     this.originalbatch = JSON.parse(JSON.stringify(batch));
-    let geturl = "batchid=" + batch.batchid;
+    let geturl = "batchmastid=" + batch.batchmastid;
     this.selectedbatch.manufacdate = moment(
       parseInt(this.selectedbatch.manufacdate)
     ).format("DD-MM-YYYY");

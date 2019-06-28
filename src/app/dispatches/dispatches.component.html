@@ -96,7 +96,7 @@
         <div class="col-md-4 col-sm-12 mb-1">
           <label class="m-0">Select Batch</label>
           <select class="form-control" [(ngModel)]="selbatch" (change)="getAllQuantities()" [disabled]="!allbatches">
-            <option value="{{ batch.batchid }}" *ngFor="let batch of allbatches">
+            <option value="{{ batch.batchmastid }}${{batch.batchid}}" *ngFor="let batch of allbatches">
               {{batch.manufacdate | date: 'dd-MM-yyyy'}}, Batch Id: {{ batch.batchid }}</option>
           </select>
           <h6 class="h6 text-secondary mt-1" *ngIf="selbatchquantity">

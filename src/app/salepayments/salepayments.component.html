@@ -19,7 +19,7 @@
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Customer</label>
           <input type="text" class="form-control" placeholder="Select Customer" [(ngModel)]="customer"
-            list="customerlist" (change)="getAllSalesPayments()" />
+            list="customerlist" (change)="loadSalesPaymentHistory(customer)" />
           <datalist id="customerlist">
             <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allcustomers">
               {{ supp.clientid }}.{{ supp.name }}</option>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
-          <select id="paymode" class="form-control" [(ngModel)]="paymode">
+          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoPayMode()">
             <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
           </select>
         </div>
@@ -54,86 +54,6 @@
     </div>
   </div>
 
-  <div class="card my-3" *ngIf="customer && payhistory">
-    <div class="card-body">
-      <h5 class="text-center font-weight-bold">
-        Green Top Organics
-      </h5>
-      <h6 class="text-center">
-        Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune.
-      </h6>
-      <h5 class="text-center mt-3">
-        <span class="font-weight-bold border-bottom border-primary font-italic">
-          {{ customer.split('.').slice(1).join('.') }}
-        </span>
-      </h5>
-      <h6 class="text-center">
-        (Ledger Account)
-      </h6>
-      <h6 class="text-center">
-        <span class="font-weight-bold border-bottom border-primary">
-          {{ currfinanyr.fromdt | date: "dd-MMM-yyyy" }}
-        </span>
-        to
-        <span class="font-weight-bold border-bottom border-primary">
-          {{ currfinanyr.todt | date: "dd-MMM-yyyy" }}
-        </span>
-      </h6>
-
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <div class="table-responsive my-3">
-            <table class="table table-sm">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Particulars</th>
-                  <th scope="col" class="text-right">
-                    Debit (<i class="fa fa-inr" aria-hidden="true"></i>)
-                  </th>
-                  <th scope="col" class="text-right">
-                    Credit (<i class="fa fa-inr" aria-hidden="true"></i>)
-                  </th>
-                  <th scope="col" class="text-right">
-                    Balance (<i class="fa fa-inr" aria-hidden="true"></i>)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let hist of payhistory; let i = index">
-                  <th scope="row">{{ i + 1 }}</th>
-                  <td>{{ hist.dates | date: "dd-MM-yyyy" }}</td>
-                  <td>{{ hist.particulars }}</td>
-                  <td class="text-right">
-                    {{ hist.payout | number: "1.2-2" }}
-                  </td>
-                  <td class="text-right">{{ hist.payin | number: "1.2-2" }}</td>
-                  <td class="text-right">
-                    {{ hist.balance | number: "1.2-2" }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3" class="text-right font-weight-bold">Total</td>
-                  <td class="text-right font-weight-bold border-top border-secondary">
-                    {{ totalamt.payout | number: "1.2-2" }}
-                  </td>
-                  <td class="text-right font-weight-bold border-top border-secondary">
-                    {{ totalamt.payin | number: "1.2-2" }}
-                  </td>
-                  <td></td>
-                </tr>
-                <tr *ngIf="!payhistory">
-                  <h6 class="text-danger my-3">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    No payment records found.
-                  </h6>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Sales payments are dynamically loaded in the following div -->
+  <div class="col-md-12" #salespayhistory></div>
 </div>

@@ -13,7 +13,7 @@ export class FinanyrordersComponent implements OnInit {
   allorders: any = null;
   finanyr: any = null;
   showgraph: boolean = true;
-  constructor(private _global: GlobalService, private _rest: RESTService) {}
+  constructor(private _global: GlobalService, private _rest: RESTService) { }
 
   ngOnInit() {
     this.getOrdersData();
@@ -72,7 +72,6 @@ export class FinanyrordersComponent implements OnInit {
       }
     }
 
-    console.log(dataarr);
     //Sagregating Months and total Quantities
     let data = [];
     let mnts = [];
