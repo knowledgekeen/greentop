@@ -205,9 +205,7 @@ export class DispatchesComponent implements OnInit {
       return;
     }
 
-    let dispatchdate = moment(this.dispatchdate, "DD-MM-YYYY").format(
-      "MM-DD-YYYY"
-    );
+    let dispatchdate = moment(this.dispatchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let paidon = moment(this.dispatchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let partytrans = null;
     if (this.partytransport == true) {

@@ -5,6 +5,7 @@ include 'conn.php';
 $action = $_GET['action'];
 
 if($action == "checkLogin"){
+    date_default_timezone_set("Asia/Calcutta");
     $data = json_decode(file_get_contents("php://input"));
 	$email = $data->email;
 	$passwd = md5($data->passwd);
@@ -18,6 +19,9 @@ if($action == "checkLogin"){
         $tmp[0]['userid'] = $row['userid'];
         $tmp[0]['fullname'] = $row['fullname'];
         $tmp[0]['email'] = $row['email'];
+		$tmp[0]['email'] = $row['email'];
+		$d1 = new Datetime();
+		$tmp[0]['sessiontime'] = $d1->format('U')*1000;
         $datares["status"] = 200;
 		$datares["data"] = $tmp;
 		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.

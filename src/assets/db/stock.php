@@ -131,9 +131,12 @@ if($action == "updateOpeningStock"){
 
 	// $sqlupdt = "UPDATE `stock_master` SET `quantity`='$quantity',`lastmodifieddate`='$stkdt' WHERE `stockid`=$stockid";
 	// $resultqty = $conn->query($sqlupdt);
-	$sqlregupdt = "UPDATE `stock_register` SET `quantity`='$quantity',`date`='$openbaldt' WHERE `stockid`=$stockid AND `remarks`='Opening Balance'";
-	$resultregqty = $conn->query($sqlregupdt);
 	
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlregupdt = "UPDATE `stock_register` SET `quantity`='$quantity',`date`='$openbaldt' WHERE `stockid`=$stockid AND `remarks`='Opening Balance'";
+		$resultregqty = $conn->query($sqlregupdt);
+	}
+
     $data1= array();
     if($result){
         $data1["status"] = 200;
@@ -367,19 +370,55 @@ if($action == "checkRawMatOpenStockForCrntFinanYear"){
 	echo json_encode($data);
 }
 
+if($action == "insertOpeningStock"){
+    $data = json_decode(file_get_contents("php://input"));
+    $stockid = $data->stockid;
+    $quantity = $data->quantity;
+    $stkdt = $data->stkdt;
+    $openbaldt = $data->openbaldt;
+
+	// $sqlupdt = "UPDATE `stock_master` SET `quantity`='$quantity',`lastmodifieddate`='$stkdt' WHERE `stockid`=$stockid";
+	// $resultqty = $conn->query($sqlupdt);
+	
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlregupdt = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stockid,'IN','$quantity','$openbaldt','Opening Balance')";
+		$resultregqty = $conn->query($sqlregupdt);
+	}
+	
+    $data1= array();
+    if($result){
+        $data1["status"] = 200;
+        $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
+
 if($action == "updateCurrentStock"){
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;
     $quantity = $data->quantity;
     $openbaldt = $data->openbaldt;
 
-	$sql = "SELECT * FROM `stock_master` WHERE `stockid`=$stockid";
-	$result = $conn->query($sql);
-	$row = $result->fetch_array(MYSQLI_ASSOC);
-	$totalqty = floatval($row["quantity"]) + floatval($quantity);
-	$sqlregupdt = "UPDATE `stock_master` SET `quantity`='$totalqty',`lastmodifieddate`='$openbaldt' WHERE `stockid`=$stockid";
-	$resultregqty = $conn->query($sqlregupdt);
-	
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "SELECT * FROM `stock_master` WHERE `stockid`=$stockid";
+		$result = $conn->query($sql);
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$totalqty = floatval($row["quantity"]) + floatval($quantity);
+		$sqlregupdt = "UPDATE `stock_master` SET `quantity`='$totalqty',`lastmodifieddate`='$openbaldt' WHERE `stockid`=$stockid";
+		$resultregqty = $conn->query($sqlregupdt);
+	}
     $data1= array();
     if($result){
         $data1["status"] = 200;

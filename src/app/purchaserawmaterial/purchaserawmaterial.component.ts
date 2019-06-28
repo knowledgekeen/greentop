@@ -4,6 +4,7 @@ import { IntervalService } from "../interval.service";
 import * as moment from "moment";
 import { GlobalService } from "../global.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { SessionService } from '../session.service';
 
 @Component({
   selector: "app-purchaserawmaterial",
@@ -54,7 +55,8 @@ export class PurchaserawmaterialComponent implements OnInit {
     private _interval: IntervalService,
     private _global: GlobalService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _session: SessionService
   ) { }
 
   ngOnInit() {
@@ -172,69 +174,122 @@ export class PurchaserawmaterialComponent implements OnInit {
       remark: "Purchase / Party: " + this.supplier.split(".")[1] + " / Bill: " + this.billno,
       purchid: null
     };
-    //console.log(rawObj, stkObj);
-    /**
-     * Before Purchase check if there is any opening balance available for current financial year.
-     */
     let finanyr = this._global.getCurrentFinancialYear();
-    let geturl =
-      "rawmatid=" +
-      this.added_materials[0].rawmatid +
-      "&fromdt=" +
-      finanyr.fromdt +
-      "&todt=" +
-      finanyr.todt;
-    this._rest
-      .getData("stock.php", "checkRawMatOpenStockForCrntFinanYear", geturl)
-      .subscribe(Resp => {
-        if (!Resp) {
-          //There is no opening bal for current year, so get latest stock for raw material
-          //console.log("No opening bal");
-          let newgeturl = "rawmatid=" + this.added_materials[0].rawmatid;
+
+    if (sessionStorage.getItem("userkey")) {
+      this._session.getData("userkey").then(Response => {
+        if (Response[0].sessiontime == finanyr.fromdt) {
+          //When the date is 1st April of every year.
+          /**
+           * Before Purchase check if there is any opening balance available for current financial year.
+           */
+          let geturl =
+            "rawmatid=" +
+            this.added_materials[0].rawmatid +
+            "&fromdt=" +
+            finanyr.fromdt +
+            "&todt=" +
+            finanyr.todt;
           this._rest
-            .getData("stock.php", "getRawMatStock", newgeturl)
-            .subscribe(RespStk => {
-              //console.log(RespStk);
-              if (RespStk) {
-                //Once stock value fetched update Opening Stock for Raw Material
-                let postobj = {
-                  stockid: RespStk["data"].stockid,
-                  quantity: RespStk["data"].quantity,
-                  stkdt: new Date().getTime(),
-                  openbaldt: new Date().getTime()
-                };
+            .getData("stock.php", "checkRawMatOpenStockForCrntFinanYear", geturl)
+            .subscribe(Resp => {
+              if (!Resp) {
+                //There is no opening bal for current year, so get latest stock for raw material
+                let newgeturl = "rawmatid=" + this.added_materials[0].rawmatid;
                 this._rest
-                  .postData("stock.php", "updateOpeningStock", postobj, null)
-                  .subscribe(RespOpenBal => {
-                    //console.log(RespOpenBal);
+                  .getData("stock.php", "getRawMatStock", newgeturl)
+                  .subscribe(RespStk => {
+                    //console.log(RespStk);
+                    if (RespStk) {
+                      //Once stock value fetched insert Opening Stock for Raw Material in current financial year
+                      let postobj = {
+                        stockid: RespStk["data"].stockid,
+                        quantity: RespStk["data"].quantity,
+                        stkdt: new Date().getTime(),
+                        openbaldt: new Date().getTime()
+                      };
+                      this._rest
+                        .postData("stock.php", "insertOpeningStock", postobj, null)
+                        .subscribe(RespOpenBal => {
+                          //If Opening stock is not available then first create an opening stock and later create a purchase request. 
+                          this._rest
+                            .postData("rawmaterial.php", "purchaseRawMaterial", rawObj, null)
+                            .subscribe(Response => {
+                              if (Response) {
+                                stkObj.purchid = Response["data"];
+                                this._rest
+                                  .postData("stock.php", "updateStockRawMaterial", stkObj, null)
+                                  .subscribe(RespStk => {
+                                    if (RespStk) {
+                                      //console.log(RespStk);
+                                      window.scrollTo(0, 0);
+                                      this.successMsg = "Raw Material Purchased Successfully";
+                                      this._interval.settimer(null).then(Resp => {
+                                        this.successMsg = false;
+                                        this.resetForm();
+                                        window.location.reload();
+                                      });
+                                    }
+                                  });
+                              }
+                            });
+                        });
+                    }
+                  });
+              }
+              else {
+                //If Opening stock available create purchase request directly
+                this._rest
+                  .postData("rawmaterial.php", "purchaseRawMaterial", rawObj, null)
+                  .subscribe(Response => {
+                    if (Response) {
+                      stkObj.purchid = Response["data"];
+                      this._rest
+                        .postData("stock.php", "updateStockRawMaterial", stkObj, null)
+                        .subscribe(RespStk => {
+                          if (RespStk) {
+                            //console.log(RespStk);
+                            window.scrollTo(0, 0);
+                            this.successMsg = "Raw Material Purchased Successfully";
+                            this._interval.settimer(null).then(Resp => {
+                              this.successMsg = false;
+                              this.resetForm();
+                              window.location.reload();
+                            });
+                          }
+                        });
+                    }
                   });
               }
             });
         }
-
-        //Irrespective Opening stock available or not, create purchase request. both requests will work simultaneously
-        this._rest
-          .postData("rawmaterial.php", "purchaseRawMaterial", rawObj, null)
-          .subscribe(Response => {
-            if (Response) {
-              stkObj.purchid = Response["data"];
-              this._rest
-                .postData("stock.php", "updateStockRawMaterial", stkObj, null)
-                .subscribe(RespStk => {
-                  if (RespStk) {
-                    //console.log(RespStk);
-                    window.scrollTo(0, 0);
-                    this.successMsg = "Raw Material Purchased Successfully";
-                    this._interval.settimer(null).then(Resp => {
-                      this.successMsg = false;
-                      this.resetForm();
-                      window.location.reload();
-                    });
-                  }
-                });
-            }
-          });
+        else {
+          //When the date its not 1st April of every year.
+          this._rest
+            .postData("rawmaterial.php", "purchaseRawMaterial", rawObj, null)
+            .subscribe(Response => {
+              if (Response) {
+                stkObj.purchid = Response["data"];
+                this._rest
+                  .postData("stock.php", "updateStockRawMaterial", stkObj, null)
+                  .subscribe(RespStk => {
+                    if (RespStk) {
+                      //console.log(RespStk);
+                      window.scrollTo(0, 0);
+                      this.successMsg = "Raw Material Purchased Successfully";
+                      this._interval.settimer(null).then(Resp => {
+                        this.successMsg = false;
+                        this.resetForm();
+                        window.location.reload();
+                      });
+                    }
+                  });
+              }
+            });
+        }
       });
+    }
+    //console.log(rawObj, stkObj);
   }
 
   addRawMaterial() {
@@ -509,7 +564,7 @@ export class PurchaserawmaterialComponent implements OnInit {
     this.rawmattotalamt = null;
     this.product_mismatch_err = null;
     this.client_mismatch_err = null;
-    this.added_materials = null;
+    this.added_materials = new Array();
   }
 
   checkPurchaseBillNoIfPresent() {

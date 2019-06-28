@@ -22,6 +22,12 @@ export class NavbarComponent implements OnInit {
     this._router.events.subscribe((val: any) => {
       if (val instanceof NavigationEnd) {
         if (sessionStorage.getItem("userkey")) {
+          this._session.getData("userkey").then(Response => {
+            let dt = new Date().setHours(0, 0, 0, 0);
+            if (Response[0].sessiontime != dt) {
+              this.logout();
+            }
+          });
         } else {
           this._router.navigate(["/index"]);
         }
@@ -54,6 +60,7 @@ export class NavbarComponent implements OnInit {
         this.spinnerflag = false;
         if (Response) {
           tmpObj = null;
+          Response["data"][0].sessiontime = new Date(Response["data"][0].sessiontime).setHours(0, 0, 0, 0);
           this.userdets = Response["data"][0];
           this._session.setData("userkey", Response["data"]).then(Resp => {
             this._router.navigate(["/dashboard"]);
