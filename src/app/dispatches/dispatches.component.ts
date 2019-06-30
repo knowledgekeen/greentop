@@ -3,6 +3,7 @@ import { RESTService } from "../rest.service";
 import * as moment from "moment";
 import { IntervalService } from "../interval.service";
 import { GlobalService } from "../global.service";
+import { SessionService } from '../session.service';
 
 @Component({
   selector: "app-dispatches",
@@ -34,7 +35,8 @@ export class DispatchesComponent implements OnInit {
   constructor(
     private _rest: RESTService,
     private _interval: IntervalService,
-    private _global: GlobalService
+    private _global: GlobalService,
+    private _session: SessionService
   ) { }
 
   ngOnInit() {
@@ -193,6 +195,9 @@ export class DispatchesComponent implements OnInit {
     this.selbatchquantity = null;
     this.selbatch = null;
     this.selqty = null;
+    setTimeout(function () {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
   }
 
   dispatchOrder() {
@@ -228,33 +233,106 @@ export class DispatchesComponent implements OnInit {
       paidon: new Date(paidon).getTime(),
       partytrans: partytrans,
       addedbatches: this.addedbatches,
-      remarks:
-        "Sales / " +
-        this.orderdetails.name +
-        " / Order No: " +
-        this.orderdetails.orderno
+      remarks: "Sales / " + this.orderdetails.name + " / Order No: " + this.orderdetails.orderno
     };
-    //console.log(this.orderdetails,dispatchObj);
-    this._rest
-      .postData("dispatch.php", "dispatchOrder", dispatchObj, null)
-      .subscribe(
-        Response => {
-          //console.log(Response);
-          if (Response) {
-            window.scrollTo(0, 0);
-            this.successmsg = true;
-            this._interval.settimer(null).then(resp => {
-              this.resetForm();
-              this.initialize();
+
+    let finanyr = this._global.getCurrentFinancialYear();
+
+    if (sessionStorage.getItem("userkey")) {
+      this._session.getData("userkey").then(Response => {
+        if (Response[0].sessiontime == finanyr.fromdt) {
+          //When the date is 1st April of every year.
+          /**
+           * Before Purchase check if there is any opening balance available for current financial year.
+           */
+          let geturl = "prodid=" + this.orderdetails.prodid + "&fromdt=" + finanyr.fromdt + "&todt=" + finanyr.todt;
+          this._rest
+            .getData("stock.php", "checkRawMatOpenStockForCrntFinanYear", geturl)
+            .subscribe(Resp => {
+              if (!Resp) {
+                //There is no opening bal for current year, so get latest stock for raw material
+                let newgeturl = "prodid=" + this.orderdetails.prodid;
+                this._rest
+                  .getData("stock.php", "getProductStock", newgeturl)
+                  .subscribe(RespStk => {
+                    //console.log(RespStk);
+                    if (RespStk) {
+                      let postobj = {
+                        stockid: RespStk["data"].stockid,
+                        quantity: RespStk["data"].quantity,
+                        stkdt: new Date().getTime(),
+                        openbaldt: new Date().getTime()
+                      };
+                      this._rest
+                        .postData("stock.php", "insertOpeningStock", postobj, null)
+                        .subscribe(RespOpenBal => {
+
+                          //console.log(this.orderdetails,dispatchObj);
+                          this._rest
+                            .postData("dispatch.php", "dispatchOrder", dispatchObj, null)
+                            .subscribe(Response => {
+                              //console.log(Response);
+                              if (Response) {
+                                window.scrollTo(0, 0);
+                                this.successmsg = true;
+                                this._interval.settimer(null).then(resp => {
+                                  this.resetForm();
+                                  this.initialize();
+                                });
+                              } else {
+                                alert("Dispatch Failed, Please try again later.");
+                              }
+                            }, err => {
+                              alert("Dispatch Failed, Please try again later.");
+                            });
+                        });
+                    }
+                  });
+              }
+              else {
+                this._rest
+                  .postData("dispatch.php", "dispatchOrder", dispatchObj, null)
+                  .subscribe(Response => {
+                    //console.log(Response);
+                    if (Response) {
+                      window.scrollTo(0, 0);
+                      this.successmsg = true;
+                      this._interval.settimer(null).then(resp => {
+                        this.resetForm();
+                        this.initialize();
+                      });
+                    } else {
+                      alert("Dispatch Failed, Please try again later.");
+                    }
+                  }, err => {
+                    alert("Dispatch Failed, Please try again later.");
+                  });
+              }
             });
-          } else {
-            alert("Dispatch Failed, Please try again later.");
-          }
-        },
-        err => {
-          alert("Dispatch Failed, Please try again later.");
         }
-      );
+        else {
+          //console.log(this.orderdetails,dispatchObj);
+          this._rest
+            .postData("dispatch.php", "dispatchOrder", dispatchObj, null)
+            .subscribe(Response => {
+              //console.log(Response);
+              if (Response) {
+                window.scrollTo(0, 0);
+                this.successmsg = true;
+                this._interval.settimer(null).then(resp => {
+                  this.resetForm();
+                  this.initialize();
+                });
+              } else {
+                alert("Dispatch Failed, Please try again later.");
+              }
+            }, err => {
+              alert("Dispatch Failed, Please try again later.");
+            });
+        }
+      })
+    }
+
   }
 
   resetForm() {
@@ -262,7 +340,7 @@ export class DispatchesComponent implements OnInit {
     this.orderdetails = null;
     this.dispatchdate = null;
     this.dcno = null;
-    this.rate = "0";
+    this.rate = "0"; 2
     this.amount = "0";
     this.advance = "0";
     this.paidon = null;

@@ -370,6 +370,41 @@ if($action == "checkRawMatOpenStockForCrntFinanYear"){
 	echo json_encode($data);
 }
 
+//Check if there is any opening balance created for current financial year
+if($action == "checkProductOpenStockForCrntFinanYear"){
+	$prodid = $_GET["prodid"];
+	$fromdt = $_GET["fromdt"];
+	$todt = $_GET["todt"];
+	$sql = "SELECT * FROM `stock_register` WHERE `remarks`='Opening Balance' AND `stockid`= (SELECT `stockid` FROM `stock_master` WHERE `prodid`= $prodid) AND `date` BETWEEN '$fromdt' AND '$todt'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($result and $row){
+		$tmp['stockid'] = $row['stockid'];
+		$tmp['quantity'] = $row['quantity'];
+		$tmp['date'] = $row['date'];
+		
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
 if($action == "insertOpeningStock"){
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;

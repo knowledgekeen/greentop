@@ -1,0 +1,1747 @@
+Action: Success
+User: ::1 - June 30, 2019, 15:00:02
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:44
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:47
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:47
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:50
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:00:51
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:04:08
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:04:08
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:04:11
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:04:14
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:07:30
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:07:30
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:07:40
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:07:40
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:07:42
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:07:45
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:09:39
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:09:39
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:09:42
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:09:45
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:10:39
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:10:39
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:10:48
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:10:48
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:18
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:18
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:21
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:24
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:51
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:51
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:54
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:11:55
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:12:54
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:12:54
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:12:56
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:12:58
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:15:48
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:15:48
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:16:53
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:16:54
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:18:48
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:18:48
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:18:51
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:18:52
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:01
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:05
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:07
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:23
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:23
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:26
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:21:27
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:24:32
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:42:48
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:43:57
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:44:20
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:44:39
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:45:28
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:46:31
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:49:07
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:49:07
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:49:10
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:49:10
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:51:08
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:51:08
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:51:40
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:51:40
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:51:58
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:51:58
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:53:08
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:53:08
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:53:14
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:54:04
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:54:19
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:27
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:30
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:30
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:34
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:35
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:35
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:41
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"7","clientid":"28","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:46
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"8","clientid":"1","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:49
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"9","clientid":"5","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:49
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:52
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"3","clientid":"8","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:52
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:52
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:55
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"10","clientid":"25","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:55
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:59
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"11","clientid":"23","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:56:59
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:05
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"12","clientid":"10","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:10
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:10
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:15
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:23
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"1","clientid":"3","openbal":"6065","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:27
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:28
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:28
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:32
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:35
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"1","clientid":"3","openbal":"-6065","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:37
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:40
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 15:57:40
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:22:16
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:22:24
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:22:24
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:22:47
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:22:49
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:22:49
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:00
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:09
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:09
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:22
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:25
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:25
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:35
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:23:50
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:24:00
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:24:00
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:24:24
+File: purchase_payments.php - Method: addPurchasePayment
+Data: {"paydt":1560105000000,"suppid":"3","amtpaid":"1000","paymode":"2","particulars":"Netbanking"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:24:24
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:24:24
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:24:24
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:29:21
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:29:26
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:29:28
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:29:28
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:30:50
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:30:50
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:30:54
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:30:56
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:30:56
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:06
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:06
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:09
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:09
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:09
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:09
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:11
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:11
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:15
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 16:31:19
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:09:32
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:05
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:05
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:07
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:18
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:18
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:18
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:18
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:21
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:21
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:24
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:24
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:44
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:44
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:55
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:55
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:58
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:10:58
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:11:38
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:11:38
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:11:41
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:11:41
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:12:58
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:12:58
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:02
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:02
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:09
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:09
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:11
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:11
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:15
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:15
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:13:17
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:14:34
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:14:34
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:14:57
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:14:57
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:06
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:06
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:10
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:21
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:21
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:21
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:21
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:15:24
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:04
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:04
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:04
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:04
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:07
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:54
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:17:54
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:10
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:43
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:55
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:55
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:18:58
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:22:44
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:22:44
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:10
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:10
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:28
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:28
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:33
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:35
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:23:35
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:30:10
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:30:53
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:31:31
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:33:03
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:33:11
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+*******
+Action: Success
+User: ::1 - June 30, 2019, 22:33:17
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:33:17
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:33:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:33:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:33:29
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:34:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:34:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:41:04
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:41:04
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:41:36
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:41:36
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:41:40
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:42:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:42:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:42:01
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:42:01
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:51:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:51:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:51:58
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:51:58
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:53:02
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:53:02
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:53:10
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:53:10
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:54:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:54:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:54:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:54:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:55:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:55:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:55:34
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:55:34
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:15
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:15
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:23
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:24
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:24
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:32
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:58:32
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:59:06
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:59:06
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:59:29
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:59:29
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:59:58
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 22:59:58
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:00:11
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:00:11
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:02:53
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:02:53
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:06
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:06
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:43
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:43
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:48
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:48
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:52
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:03:52
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:07
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:07
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:11
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:11
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:16
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:20
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:20
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:04:27
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:07:38
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:07:38
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:07:49
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:07:49
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:08:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:08:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:08:19
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:08:19
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:09:16
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:09:16
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:09:24
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:09:24
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:09:26
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:09:26
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:10:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:10:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:10:22
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:10:22
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:10:58
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:10:58
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:11:09
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:11:11
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:11:11
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:28
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:31
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:31
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:39
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"10"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:39
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:54
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-11","orderdt":1560105000000,"custid":"16","prodid":"1","qty":"10","consignees":[{"consigneename":"A. Kumar Firms","contactperson":"AAA","contactno":"79878987555","city":"Gadhinglaj","state":"Maharashtra","address":"Gadhinglaj, Maharashtra","quantity":"10","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:56
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:56
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:41:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:44:17
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:44:17
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:45:14
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:45:14
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:45:22
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:45:22
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:49:52
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:49:52
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:51:51
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:51:51
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:52:57
+File: client.php - Method: getClientDetails
+Data: {"clientid":"14","name":"Aiza Pvt ltd","address":"Karad, Maharashtra","contactno":"6868585957","contactperson1":"","contactno1":"","contactperson2":"","contactno2":"","email":"","city":"Karad","state":"Maharashtra","gstno":"","type":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:03
+File: client.php - Method: updateClient
+Data: {"clientid":"14","fname":"Aiza Pvt ltd","cno":"6868585957","gstno":"","email":"","cperson1":"Aiza","cno1":"","cperson2":"","cno2":"","city":"Karad","state":"Maharashtra","address":"Karad, Maharashtra","ctype":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:09
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"11"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:09
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:33
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-12","orderdt":1560105000000,"custid":"14","prodid":"1","qty":"5","consignees":[{"consigneename":"Aiza Pvt ltd","contactperson":"Aiza","contactno":"6868585957","city":"Karad","state":"Maharashtra","address":"Karad, Maharashtra","quantity":"5","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:35
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:35
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"12"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:40
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:40
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:40
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:40
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:42
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - June 30, 2019, 23:53:42
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************

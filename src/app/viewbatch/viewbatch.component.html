@@ -135,10 +135,10 @@
               </a>
             </p>
             <div class="collapse mb-3" id="collapseExample" *ngIf="batchdispatches">
-              <div class="card card-body">
+              <div class="card card-body px-4 py-2">
                 <p class="mb-1">This batch is used for the following dispatches</p>
                 <ul class="list-group">
-                  <li class="list-group-item d-flex align-items-center" *ngFor="let disp of batchdispatches">
+                  <li class="list-group-item d-flex align-items-center p-2" *ngFor="let disp of batchdispatches">
                     Dispatch Date: <span class="font-weight-bold mx-2">{{disp.dispatchdate | date: 'dd-MM-yyyy'}}</span>
                     / ID: <span class="font-weight-bold mx-2">{{disp.dispatchid}}</span>
                     / DC No.: <span class="font-weight-bold mx-2">{{disp.dcno}}</span>

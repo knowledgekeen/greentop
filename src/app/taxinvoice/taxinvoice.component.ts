@@ -36,7 +36,7 @@ export class TaxinvoiceComponent implements OnInit {
     private _rest: RESTService,
     private _global: GlobalService,
     private _interval: IntervalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -118,7 +118,7 @@ export class TaxinvoiceComponent implements OnInit {
       this.sgst == "0" ? 0 : (parseFloat(this.sgst) / 100) * netamt);
     let igst = (this.igstinr =
       this.igst == "0" ? 0 : (parseFloat(this.igst) / 100) * netamt);
-    let rawtotalamt = netamt + cgst + sgst + igst + parseFloat(this.roundoff);
+    let rawtotalamt: any = netamt + cgst + sgst + igst + parseFloat(this.roundoff);
     //console.log(rawtotalamt, netamt, cgst, sgst, igst);
     if (this.cgst && !this.sgst) {
       this.sgst = this.cgst;
@@ -133,7 +133,7 @@ export class TaxinvoiceComponent implements OnInit {
     if (this.rate) {
       this.amount = amount;
       this.amtbeforegst = netamt;
-      this.totalamount = rawtotalamt;
+      this.totalamount = parseFloat(rawtotalamt).toFixed(2);
     }
   }
 

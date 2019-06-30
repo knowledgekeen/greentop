@@ -9,33 +9,23 @@
       <div class="position-relative" [hidden]="opendtp == false">
         <div class="card position-absolute border-secondary dtp-pickerwrapper">
           <div class="card-body">
-            <dl-date-time-picker
-              startView="month"
-              maxView="year"
-              minView="month"
-              [(ngModel)]="selecteddate"
-              (change)="changeDate()"
-            >
+            <dl-date-time-picker startView="month" maxView="year" minView="month" [(ngModel)]="selecteddate"
+              (change)="changeDate()">
             </dl-date-time-picker>
           </div>
         </div>
       </div>
 
       <div class="position-relative">
-        <span class="text-primary font-weight-bold border-bottom border-primary"
-          >Tax Invoices of - {{ selecteddate | date: "MMMM, yyyy" }}</span
-        >
+        <span class="text-primary font-weight-bold border-bottom border-primary">Tax Invoices of -
+          {{ selecteddate | date: "MMMM, yyyy" }}</span>
       </div>
 
       <div class="position-relative text-right dtp-cardwrapper">
         <span class="text-danger mx-3 font-weight-bold" *ngIf="errorMsg">
-          <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span
-        >
-        <i
-          class="fa fa-lg py-3 cursor-pointer text-secondary"
-          [ngClass]="{ 'fa-window-close': opendtp, 'fa-bars': !opendtp }"
-          (click)="toggleDTP()"
-        ></i>
+          <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span>
+        <i class="fa fa-lg py-3 cursor-pointer text-secondary"
+          [ngClass]="{ 'fa-window-close': opendtp, 'fa-bars': !opendtp }" (click)="toggleDTP()"></i>
       </div>
 
       <!-- Table with data -->
@@ -60,24 +50,16 @@
             <tr *ngFor="let bill of allinvoices; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <a
-                  href="javascript:void(0);"
-                  (click)="getOrderDetails(bill.orderid)"
-                  data-toggle="modal"
-                  data-target="#orderDetailsModal"
-                >
+                <a href="javascript:void(0);" (click)="getOrderDetails(bill.orderid)" data-toggle="modal"
+                  data-target="#orderDetailsModal">
                   {{ bill.orderdt | date: "dd-MM-yyyy" }}
                 </a>
               </td>
               <td>{{ bill.orderno }}</td>
               <td>{{ bill.dcno }}</td>
               <td>
-                <a
-                  href="javascript:void(0);"
-                  (click)="getBillDetails(bill)"
-                  data-toggle="modal"
-                  data-target="#billDetailsModal"
-                >
+                <a href="javascript:void(0);" (click)="getBillDetails(bill)" data-toggle="modal"
+                  data-target="#billDetailsModal">
                   {{ bill.billdt | date: "dd-MM-yyyy" }}
                 </a>
               </td>
@@ -89,12 +71,8 @@
                 {{ bill.totalamount | currency: "INR" }}
               </td>
               <td>
-                <a
-                  href="javascript:void(0);"
-                  (click)="getBillDetails(bill)"
-                  data-toggle="modal"
-                  data-target="#billDetailsModal"
-                >
+                <a href="javascript:void(0);" (click)="getBillDetails(bill)" data-toggle="modal"
+                  data-target="#billDetailsModal">
                   Edit
                 </a>
               </td>
@@ -117,10 +95,8 @@
             </tr>
             <tr *ngIf="!allinvoices">
               <th colspan="10">
-                <span class="text-danger"
-                  ><i class="fa fa-exclamation"></i> No records found for this
-                  month</span
-                >
+                <span class="text-danger"><i class="fa fa-exclamation"></i> No records found for this
+                  month</span>
               </th>
             </tr>
           </tbody>
@@ -131,14 +107,8 @@
 </div>
 
 <!-- Order Details Modal -->
-<div
-  class="modal"
-  id="orderDetailsModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content" *ngIf="orderdetails">
       <div class="modal-header">
@@ -148,79 +118,40 @@
             orderdetails.orderid
           }}</span>
         </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body pt-1">
         <div class="row">
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Customer Name</label>
-            <input
-              type="text"
-              class="form-control"
-              [value]="orderdetails.name"
-              readonly
-            />
+            <input type="text" class="form-control" [value]="orderdetails.name" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Order Date</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Contact Number</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.contactno }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.contactno }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Quantity</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.quantity }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.quantity }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Address</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.address }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.address }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Order Sent to</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.remarks }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.remarks }}" readonly />
           </div>
-          <div class="col-md-12 col-sm-12 my-3">
+          <div class="col-md-12 col-sm-12 my-1">
             <h6 class="text-primary">
-              <span *ngIf="orderdetails.remarks == 'SELF'"
-                >Self Order Address</span
-              >
-              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'"
-                >All Consignees</span
-              >
+              <span *ngIf="orderdetails.remarks == 'SELF'">Self Order Address</span>
+              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'">All Consignees</span>
             </h6>
             <table class="table table-sm">
               <thead class="thead-dark">
@@ -258,15 +189,8 @@
 </div>
 
 <!--Bill Details Modal -->
-<div
-  class="modal fade"
-  id="billDetailsModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
-  *ngIf="billdetails"
->
+<div class="modal fade" id="billDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" *ngIf="billdetails">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -278,12 +202,7 @@
             billdetails.billdt | date: "dd-MM-yyyy"
           }}</span>
         </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -294,124 +213,62 @@
         <div class="row">
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Bill Number</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="billno"
-              readonly
-            />
+            <input type="text" class="form-control" [(ngModel)]="billno" readonly />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Bill Date</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="billdt"
-              (blur)="autoFillDt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="billdt" (blur)="autoFillDt()" />
           </div>
           <div class="col-md-12 col-sm-12 mb-3">
             <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="customControlAutosizing"
-                [(ngModel)]="autocalc"
-              />
-              <label class="custom-control-label" for="customControlAutosizing"
-                >Auto-Calculate</label
-              >
+              <input type="checkbox" class="custom-control-input" id="customControlAutosizing" [(ngModel)]="autocalc" />
+              <label class="custom-control-label" for="customControlAutosizing">Auto-Calculate</label>
             </div>
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Rate</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="rate"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="rate" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Amount</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="amount"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="amount" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Discount</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="discount"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="discount" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Amount Before GST</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="amtbeforegst"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="amtbeforegst" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">cgst (%)</label>
             <span class="float-right text-info" *ngIf="cgstinr">
               {{ cgstinr | currency: "INR" }}
             </span>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="cgst"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="cgst" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">sgst (%)</label>
             <span class="float-right text-info" *ngIf="sgstinr">
               {{ sgstinr | currency: "INR" }}
             </span>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="sgst"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="sgst" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">igst (%)</label>
             <span class="float-right text-info" *ngIf="igstinr">
               {{ igstinr | currency: "INR" }}
             </span>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="igst"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="igst" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">Round Off(+/-)</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="roundoff"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="roundoff" (blur)="calculateAmt()" />
           </div>
           <div class="col-md-4 col-sm-12 mb-3">
             <label class="m-0">Total Amount</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="totalamount"
-              (blur)="calculateAmt()"
-            />
+            <input type="text" class="form-control" [(ngModel)]="totalamount" (blur)="calculateAmt()" />
           </div>
         </div>
       </div>
@@ -419,10 +276,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button
-          type="button"
-          class="btn btn-warning"
-          [disabled]="
+        <button type="button" class="btn btn-warning" [disabled]="
             !billdt ||
             !rate ||
             !amount ||
@@ -433,9 +287,7 @@
             !igst ||
             !roundoff ||
             !totalamount
-          "
-          (click)="updateBillDetails()"
-        >
+          " (click)="updateBillDetails()">
           Update Bill
         </button>
       </div>

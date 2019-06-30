@@ -117,19 +117,19 @@
         </div>
         <div class="col-md-3 col-sm-12 mt-3">
           <label class="m-0 w-100">CGST(%)
-            <span class="text-primary float-right" *ngIf="cgstinr">{{ cgstinr }} inr</span>
+            <span class="text-primary float-right" *ngIf="cgstinr">{{ cgstinr | currency: "INR"}} inr</span>
           </label>
           <input type="text" class="form-control" placeholder="CGST" [(ngModel)]="cgst" (blur)="calculateAmt()" />
         </div>
-        <div class="col-md-2 col-sm-12 mt-3">
+        <div class="col-md-3 col-sm-12 mt-3">
           <label class="m-0 w-100">SGST(%)
-            <span class="text-primary float-right" *ngIf="sgstinr">{{ sgstinr }} inr</span>
+            <span class="text-primary float-right" *ngIf="sgstinr">{{ sgstinr | currency: "INR"}} inr</span>
           </label>
           <input type="text" class="form-control" placeholder="SGST" [(ngModel)]="sgst" (blur)="calculateAmt()" />
         </div>
         <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0 w-100">IGST(%)
-            <span class="text-primary float-right" *ngIf="igstinr">{{ igstinr }} inr</span></label>
+            <span class="text-primary float-right" *ngIf="igstinr">{{ igstinr | currency: "INR"}} inr</span></label>
           <input type="text" class="form-control" placeholder="IGST" [(ngModel)]="igst" (blur)="calculateAmt()" />
         </div>
 
@@ -138,7 +138,7 @@
           <input type="text" class="form-control" placeholder="Round Off (+/-)" [(ngModel)]="roundoff"
             (blur)="calculateAmt()" />
         </div>
-        <div class="col-md-3 col-sm-12 mt-3">
+        <div class="col-md-2 col-sm-12 mt-3">
           <label class="m-0">Total Amount</label>
           <input type="text" class="form-control" placeholder="Total Amount" [(ngModel)]="rawmattotalamt" />
         </div>

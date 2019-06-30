@@ -216,10 +216,10 @@ if($action == "getOrderConsignees"){
 }
 
 // Get All Open Orders between dates passed
-if($action == "getOpenOrdersFromToDate"){
+if($action == "getOrdersFromToDate"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,o.`status`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt' ORDER BY o.`orderdt`";
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,o.`status`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt' ORDER BY o.`orderdt`,o.`orderid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -249,13 +249,13 @@ if($action == "getOpenOrdersFromToDate"){
 		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
-		$log  = "File: order.php - Method: getOpenOrdersFromToDate".PHP_EOL;
+		$log  = "File: order.php - Method: getOrdersFromToDate".PHP_EOL;
 		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
-		$log  = "File: order.php - Method: getOpenOrdersFromToDate".PHP_EOL.
+		$log  = "File: order.php - Method: getOrdersFromToDate".PHP_EOL.
 		"Error message: ".$conn->error.PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "error", $conn->error);

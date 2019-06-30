@@ -360,7 +360,7 @@ export class PurchaserawmaterialComponent implements OnInit {
       this.sgst == "0" ? 0 : (parseFloat(this.sgst) / 100) * netamt);
     let igst = (this.igstinr =
       this.igst == "0" ? 0 : (parseFloat(this.igst) / 100) * netamt);
-    let rawtotalamt = netamt + cgst + sgst + igst + parseFloat(this.roundoff);
+    let rawtotalamt: any = netamt + cgst + sgst + igst + parseFloat(this.roundoff);
     //console.log(rawtotalamt, netamt, cgst, sgst, igst);
     if (this.cgst && !this.sgst) {
       this.sgst = this.cgst;
@@ -375,7 +375,7 @@ export class PurchaserawmaterialComponent implements OnInit {
     if (qty) {
       this.amount = amount;
       this.netamount = netamt;
-      this.rawmattotalamt = rawtotalamt;
+      this.rawmattotalamt = parseFloat(rawtotalamt).toFixed(2);;
     }
   }
 

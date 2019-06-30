@@ -8,192 +8,98 @@
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-12 mb-3">
-          <label class="w-100 m-0"
-            >Select Order
-            <span
-              class="float-right btn-link cursor"
-              *ngIf="selectedorder"
-              data-toggle="modal"
-              data-target="#orderDetailsModal"
-              (click)="getOrderConsignees()"
-              >More details
+          <label class="w-100 m-0">Select Order
+            <span class="float-right btn-link cursor" *ngIf="selectedorder" data-toggle="modal"
+              data-target="#orderDetailsModal" (click)="getOrderConsignees()">More details
               <i class="fa fa-info-circle text-primary"></i>
             </span>
           </label>
-          <select
-            class="form-control"
-            [(ngModel)]="selectedorder"
-            (change)="selectOrder()"
-            [disabled]="!openorders"
-          >
-            <option value="{{ order.orderid }}" *ngFor="let order of openorders"
-              >{{ order.orderno }} Dated:
-              {{ order.orderdt | date: "dd-MM-yyyy" }}</option
-            >
+          <select class="form-control" [(ngModel)]="selectedorder" (change)="selectOrder()" [disabled]="!openorders">
+            <option value="{{ order.orderid }}" *ngFor="let order of openorders">{{ order.orderno }} Dated:
+              {{ order.orderdt | date: "dd-MM-yyyy" }}</option>
           </select>
         </div>
         <div class="col-md-3 col-sm-12 mb-3" *ngIf="orderdetails">
           <label class="m-0">DC Number</label>
-          <input
-            type="text"
-            class="form-control"
-            [value]="dcdetails"
-            readonly
-          />
+          <input type="text" class="form-control" [value]="dcdetails" readonly />
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
           <h5 class="m-0 font-weight-bold">
             Invoice Number
           </h5>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="billno"
-            placeholder="Invoice Number"
-          />
+          <input type="text" class="form-control" [(ngModel)]="billno" placeholder="Invoice Number" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <h5 class="m-0 font-weight-bold">Invoice Date</h5>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="billdate"
-            (blur)="autoFillDate()"
-            placeholder="Invoice Date"
-          />
+          <input type="text" class="form-control" [(ngModel)]="billdate" (blur)="autoFillDate()"
+            placeholder="Invoice Date" />
         </div>
         <div class="col-md-12 col-sm-12 mb-3">
           <div class="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              id="customControlAutosizing"
-              [(ngModel)]="autocalc"
-            />
-            <label class="custom-control-label" for="customControlAutosizing"
-              >Auto-Calculate</label
-            >
+            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" [(ngModel)]="autocalc" />
+            <label class="custom-control-label" for="customControlAutosizing">Auto-Calculate</label>
           </div>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Rate </label>
 
-          <span
-            class="float-right text-info font-weight-bold"
-            *ngIf="orderdetails"
-          >
+          <span class="float-right text-info font-weight-bold" *ngIf="orderdetails">
             Quantity: {{ orderdetails.quantity }} tons/bags
           </span>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="rate"
-            placeholder="Rate"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="rate" placeholder="Rate" (blur)="calculateAmt()"
+            [disabled]="!orderdetails" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="amount"
-            placeholder="Amount"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="amount" placeholder="Amount" (blur)="calculateAmt()"
+            [disabled]="!orderdetails" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Discount</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="discount"
-            placeholder="Discount"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="discount" placeholder="Discount" (blur)="calculateAmt()"
+            [disabled]="!orderdetails" />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Amount before GST</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="amtbeforegst"
-            placeholder="Amount Before GST"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="amtbeforegst" placeholder="Amount Before GST"
+            (blur)="calculateAmt()" [disabled]="!orderdetails" />
         </div>
-        <div class="col-md-2 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">CGST (%)</label>
           <span class="float-right text-info" *ngIf="cgstinr">
             {{ cgstinr | currency: "INR" }}
           </span>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="cgst"
-            placeholder="CGST in %"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="cgst" placeholder="CGST in %" (blur)="calculateAmt()"
+            [disabled]="!orderdetails" />
         </div>
-        <div class="col-md-2 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">SGST (%)</label>
           <span class="float-right text-info" *ngIf="sgstinr">
             {{ sgstinr | currency: "INR" }}
           </span>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="sgst"
-            placeholder="SGST in %"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="sgst" placeholder="SGST in %" (blur)="calculateAmt()"
+            [disabled]="!orderdetails" />
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
           <label class="m-0">IGST (%)</label>
           <span class="float-right text-info" *ngIf="igstinr">
             {{ igstinr | currency: "INR" }}
           </span>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="igst"
-            placeholder="IGST in %"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="igst" placeholder="IGST in %" (blur)="calculateAmt()"
+            [disabled]="!orderdetails" />
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
           <label class="m-0">Round Off (+/-)</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Round Off (+/-)"
-            [(ngModel)]="roundoff"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" placeholder="Round Off (+/-)" [(ngModel)]="roundoff"
+            (blur)="calculateAmt()" [disabled]="!orderdetails" />
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
+        <div class="col-md-2 col-sm-12 mb-3">
           <label class="m-0">Total Amount</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="totalamount"
-            placeholder="Total Amount"
-            (blur)="calculateAmt()"
-            [disabled]="!orderdetails"
-          />
+          <input type="text" class="form-control" [(ngModel)]="totalamount" placeholder="Total Amount"
+            (blur)="calculateAmt()" [disabled]="!orderdetails" />
         </div>
         <div class="col-md-12 col-sm 12 mb-3">
-          <button
-            class="btn btn-primary mr-3"
-            title="This button will save the details and will close the order bill"
+          <button class="btn btn-primary mr-3" title="This button will save the details and will close the order bill"
             [disabled]="
               !orderdetails ||
               !billno ||
@@ -202,9 +108,7 @@
               !amount ||
               !amtbeforegst ||
               !totalamount
-            "
-            (click)="saveBillDetails()"
-          >
+            " (click)="saveBillDetails()">
             Save Bill
           </button>
         </div>
@@ -220,14 +124,8 @@
 </div>
 
 <!-- Order Details Modal -->
-<div
-  class="modal"
-  id="orderDetailsModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content" *ngIf="orderdetails">
       <div class="modal-header">
@@ -237,79 +135,40 @@
             orderdetails.orderid
           }}</span>
         </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body pt-1">
         <div class="row">
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Customer Name</label>
-            <input
-              type="text"
-              class="form-control"
-              [value]="orderdetails.name"
-              readonly
-            />
+            <input type="text" class="form-control" [value]="orderdetails.name" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Order Date</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Contact Number</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.contactno }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.contactno }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Quantity</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.quantity }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.quantity }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Address</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.address }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.address }}" readonly />
           </div>
-          <div class="col-md-6 col-sm-12 mb-3">
+          <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Order Sent to</label>
-            <input
-              type="text"
-              class="form-control"
-              value="{{ orderdetails.remarks }}"
-              readonly
-            />
+            <input type="text" class="form-control" value="{{ orderdetails.remarks }}" readonly />
           </div>
-          <div class="col-md-12 col-sm-12 my-3">
+          <div class="col-md-12 col-sm-12 my-1">
             <h6 class="text-primary">
-              <span *ngIf="orderdetails.remarks == 'SELF'"
-                >Self Order Address</span
-              >
-              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'"
-                >All Consignees</span
-              >
+              <span *ngIf="orderdetails.remarks == 'SELF'">Self Order Address</span>
+              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'">All Consignees</span>
             </h6>
             <table class="table table-sm">
               <thead class="thead-dark">

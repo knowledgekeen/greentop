@@ -112,6 +112,9 @@ export class FinanyrordersComponent implements OnInit {
       credits: {
         enabled: false
       },
+      tooltip: {
+        pointFormat: "Total Orders: <b>{point.y: .3f} tons</b>"
+      },
       plotOptions: {
         series: {
           label: {

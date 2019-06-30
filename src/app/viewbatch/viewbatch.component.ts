@@ -195,12 +195,7 @@ export class ViewbatchComponent implements OnInit {
     let vm = this;
     return new Promise(function (resolve, reject) {
       vm._rest
-        .postData(
-          "production.php",
-          "updateProductionMaster",
-          batchprodobj,
-          null
-        )
+        .postData("production.php", "updateProductionMaster", batchprodobj, null)
         .subscribe(Resp => {
           if (Resp) {
             resolve(true);

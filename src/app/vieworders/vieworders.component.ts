@@ -13,10 +13,15 @@ export class ViewordersComponent implements OnInit {
   selecteddate: any = new Date();
   opendtp: boolean = false;
   allorders: any = null;
+  masterorders: any = null;
   selectedorderconsignees: any = null;
   selectedorder: any = null;
+  spinnerflag: any = null;
+  dispatchbatches: any = false;
+
   errorMsg: any = false;
   totalquantity: any = 0;
+  selectedstatus: any = "all";
   @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(
@@ -39,16 +44,17 @@ export class ViewordersComponent implements OnInit {
     this.loadSalesPaymentHistory(order.clientid + "." + order.name);
   }
 
-  getOpenOrdersFromToDate(fromdt, todt) {
+  getOrdersFromToDate(fromdt, todt) {
     this.allorders = null;
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
-    let totqty = 0;
     this._rest
-      .getData("order.php", "getOpenOrdersFromToDate", geturl)
+      .getData("order.php", "getOrdersFromToDate", geturl)
       .subscribe(Response => {
         if (Response) {
           this.allorders = Response["data"];
+          this.masterorders = JSON.parse(JSON.stringify(this.allorders));
 
+          let totqty = 0;
           for (const i in this.allorders) {
             totqty += parseFloat(this.allorders[i].quantity);
           }
@@ -79,7 +85,7 @@ export class ViewordersComponent implements OnInit {
         ).getTime();
 
         //If month from future show details of current month
-        this.getOpenOrdersFromToDate(fromdt, lastdt);
+        this.getOrdersFromToDate(fromdt, lastdt);
         this.errorMsg = "Month cannot be from future.";
         this.selecteddate.setTime(todaydt);
         this.opendtp = !this.opendtp;
@@ -95,7 +101,7 @@ export class ViewordersComponent implements OnInit {
         fromdate.setHours(0, 0, 0, 0);
         let fromdt = fromdate.getTime();
         let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        this.getOpenOrdersFromToDate(fromdt, lastdt);
+        this.getOrdersFromToDate(fromdt, lastdt);
         this.opendtp = !this.opendtp;
         return;
       }
@@ -103,19 +109,50 @@ export class ViewordersComponent implements OnInit {
   }
 
   selectOrder(order) {
+    console.log(order)
     this.selectedorder = order;
     this.getOrderConsignees(order.orderid);
   }
 
   getOrderConsignees(oid) {
+    this.dispatchbatches = false;
     let geturl = "orderid=" + oid;
     this._rest
       .getData("order.php", "getOrderConsignees", geturl)
       .subscribe(Response => {
         if (Response) {
-          //console.log(Response);
           this.selectedorderconsignees = Response["data"];
+
+          this._rest.getData("dispatch.php", "getDispatchBatches", geturl)
+            .subscribe(Resp => {
+              console.log(Resp);
+              if (Resp) {
+                this.dispatchbatches = Resp["data"];
+              }
+              else {
+                this.dispatchbatches = null;
+              }
+            });
         }
       });
+  }
+
+  filterOrders(orderstatus) {
+    this.selectedstatus = orderstatus;
+    this.allorders = JSON.parse(JSON.stringify(this.masterorders));
+    if (orderstatus != "all") {
+      for (let i = 0; i < this.allorders.length; i++) {
+        if (this.allorders[i].status != orderstatus) {
+          this.allorders.splice(i, 1);
+          i--;
+        }
+      }
+    }
+
+    let totqty = 0;
+    for (let i = 0; i < this.allorders.length; i++) {
+      totqty += parseFloat(this.allorders[i].quantity);
+    }
+    this.totalquantity = totqty;
   }
 }

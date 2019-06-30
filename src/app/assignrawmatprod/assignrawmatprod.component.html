@@ -135,7 +135,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let hist of assignhistdata; let i=index;">
+              <tr *ngFor="let hist of assignhistdata; let i=index;"
+                [ngClass]="{'bg-info text-white': hist.highlightrow == true}">
                 <th scope="row">{{i+1}}</th>
                 <td>{{hist.histdate | date: 'dd-MM-yyyy'}}</td>
                 <td>{{hist.name}}</td>

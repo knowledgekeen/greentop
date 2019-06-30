@@ -203,6 +203,22 @@ export class AssignrawmatprodComponent implements OnInit {
         if (Response) {
           this.spinner = false;
           this.assignhistdata = Response["data"];
+
+          for (let i = 0; i < this.assignhistdata.length; i++) {
+            for (let j = i + 1; j < this.assignhistdata.length; j++) {
+              if (this.assignhistdata[i].rawmatid != this.assignhistdata[j].rawmatid) {
+                this.assignhistdata[i].highlightrow = true;
+                break;
+              }
+              else {
+                this.assignhistdata[i].highlightrow = false;
+                break;
+              }
+            }
+          }
+
+          this.assignhistdata[this.assignhistdata.length - 1].highlightrow = true;
+          console.log(this.assignhistdata);
         }
       })
   }

@@ -11,6 +11,7 @@ import { GlobalService } from "../global.service";
 })
 export class NeworderComponent implements OnInit {
   orderno: any = null;
+  btndisabled: any = false;
   orderdt: any = null;
   allcustomers: any = null;
   allproducts: any = null;
@@ -37,7 +38,7 @@ export class NeworderComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -183,6 +184,7 @@ export class NeworderComponent implements OnInit {
   }
 
   createNewOrder() {
+    this.btndisabled = true;
     let tmpqty = 0;
     for (let i in this.allconsignees) {
       tmpqty += parseFloat(this.allconsignees[i].quantity);
@@ -238,6 +240,7 @@ export class NeworderComponent implements OnInit {
     this.allconsignees = new Array();
     this.allcustomers = null;
     this.dateerror = false;
+    this.btndisabled = false;
   }
 
   autoFillDt() {

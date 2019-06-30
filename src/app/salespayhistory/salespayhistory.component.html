@@ -61,7 +61,7 @@
                   {{ hist.balance | number: "1.2-2" }}
                 </td>
                 <td *ngIf="iseditable">
-                  <h6 class="m-0" *ngIf="hist.payin">
+                  <h6 class="m-0" *ngIf="hist.payin && (hist.particulars != 'Opening Balance')">
                     <a href="javascript:void(0);" class="mx-2" title="Edit Payment History" data-toggle="modal"
                       data-target="#editPayHistoryModal" (click)="editPaymentHistory(hist)">
                       <i class="fa fa-pencil text-warning"></i>
