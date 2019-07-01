@@ -571,4 +571,37 @@ if($action == "getStockidFromRawMatId"){
 
 	echo json_encode($data);
 }
+
+if($action == "insertStockRegister"){
+    $data = json_decode(file_get_contents("php://input"));
+    $stockid = $data->stockid;
+    $quantity = $data->quantity;
+    $openbaldt = $data->openbaldt;
+    $INnOut = $data->INnOut;
+    $remarks = $data->remarks;
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlins = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) VALUES ($stockid,'$INnOut','$quantity','$openbaldt','$remarks')";
+		$resultins = $conn->query($sqlins);
+	}
+	
+    $data1= array();
+    if($resultins){
+        $data1["status"] = 200;
+        $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
 ?>

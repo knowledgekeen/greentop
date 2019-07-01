@@ -54,44 +54,60 @@ export class DispatchesComponent implements OnInit {
   getTransportTrucks() {
     let transtruck = new Array();
     this.alltrucks = null;
-    this._rest
-      .getData("transport.php", "getTransportTrucks", null)
-      .subscribe(Response => {
-        if (Response) {
-          for (let i in Response["data"]) {
-            let obj = {
-              lorryno: Response["data"][i].lorryno
+    let promise = new Promise((resolve, reject) => {
+      this._rest
+        .getData("transport.php", "getTransportTrucks", null)
+        .subscribe(Response => {
+          if (Response) {
+            for (let i in Response["data"]) {
+              let obj = {
+                lorryno: Response["data"][i].lorryno
+              }
+              transtruck.push(obj);
             }
-            transtruck.push(obj);
+          }
+
+          this._rest.getData("transport.php", "getDispatchTrucks", null)
+            .subscribe(Response => {
+              if (Response) {
+                for (let j in Response["data"]) {
+                  let obj = {
+                    lorryno: Response["data"][j].vehicalno
+                  }
+                  transtruck.push(obj);
+                }
+              }
+
+              this._rest.getData("transport.php", "getPurchaseTrucks", null)
+                .subscribe(Response => {
+                  if (Response) {
+                    for (let k in Response["data"]) {
+                      let obj = {
+                        lorryno: Response["data"][k].vehicalno
+                      }
+                      transtruck.push(obj);
+                    }
+                  }
+
+                  resolve(transtruck);
+                });
+            });
+        });
+    });
+
+    promise.then((RespTruck: any[]) => {
+      if (RespTruck) {
+        for (let i = 0; i < RespTruck.length; i++) {
+          for (let j = i + 1; j < RespTruck.length; j++) {
+            if (RespTruck[i].lorryno.toLowerCase() === RespTruck[j].lorryno.toLowerCase()) {
+              RespTruck.splice(j, 1);
+              j--;
+            }
           }
         }
-
-        this._rest.getData("transport.php", "getDispatchTrucks", null)
-          .subscribe(Response => {
-            if (Response) {
-              for (let j in Response["data"]) {
-                let obj = {
-                  lorryno: Response["data"][j].vehicalno
-                }
-                transtruck.push(obj);
-              }
-            }
-
-            this._rest.getData("transport.php", "getPurchaseTrucks", null)
-              .subscribe(Response => {
-                if (Response) {
-                  for (let k in Response["data"]) {
-                    let obj = {
-                      lorryno: Response["data"][k].vehicalno
-                    }
-                    transtruck.push(obj);
-                  }
-                }
-              });
-          });
-      });
-
-    this.alltrucks = transtruck;
+      }
+      this.alltrucks = RespTruck;
+    });
   }
 
   getOpenOrders() {

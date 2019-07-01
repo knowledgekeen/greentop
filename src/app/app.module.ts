@@ -61,6 +61,7 @@ import { AddhistoricbatchComponent } from './addhistoricbatch/addhistoricbatch.c
 import { AddwastageComponent } from './addwastage/addwastage.component';
 import { PurchasepayhistoryComponent } from './purchasepayhistory/purchasepayhistory.component';
 import { SalespayhistoryComponent } from './salespayhistory/salespayhistory.component';
+import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { SalespayhistoryComponent } from './salespayhistory/salespayhistory.comp
     AddhistoricbatchComponent,
     AddwastageComponent,
     PurchasepayhistoryComponent,
-    SalespayhistoryComponent
+    SalespayhistoryComponent,
+    AddreprocessproductComponent
   ],
   imports: [
     BrowserModule,

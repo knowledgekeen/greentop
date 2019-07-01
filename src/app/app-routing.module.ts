@@ -31,6 +31,7 @@ import { AddclientopenbalComponent } from "./addclientopenbal/addclientopenbal.c
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { AddhistoricbatchComponent } from "./addhistoricbatch/addhistoricbatch.component";
 import { AddwastageComponent } from "./addwastage/addwastage.component";
+import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: "assignrawmatprod", component: AssignrawmatprodComponent },
   { path: "addbatch", component: AddbatchComponent },
   { path: "addwastage", component: AddwastageComponent },
+  { path: "addreprocessing", component: AddreprocessproductComponent },
   { path: "addhistbatch", component: AddhistoricbatchComponent },
   { path: "viewbatch", component: ViewbatchComponent },
   { path: "neworder", component: NeworderComponent },
@@ -75,4 +77,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

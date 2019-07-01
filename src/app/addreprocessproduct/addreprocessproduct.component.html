@@ -1,0 +1,53 @@
+<div class="container">
+  <h5 class="my-3">Add Finished Product Reprocessing</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successflag">
+        <i class="fa fa-check"></i> Reprocessing of Product successful.
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-12 mb-1">
+          <label class="m-0">Reprocessing Date</label>
+          <input type="text" class="form-control" placeholder="Reprocessing Date" [(ngModel)]="reprocessdate"
+            (blur)="autofillDt()" />
+        </div>
+        <div class="col-md-3 col-sm-12 mb-1">
+          <label class="m-0">From Product</label>
+          <select class="form-control" placeholder="From Product" [(ngModel)]="fromprod"
+            (change)="getProductStock(fromprod, 1)">
+            <option value="{{prod.prodid}}" *ngFor="let prod of products">
+              {{prod.prodid}}.{{prod.prodname}}
+            </option>
+          </select>
+          <label class="m-0 text-primary" *ngIf="fromprodstock">Available quantity:
+            <strong>{{fromprodstock.quantity}}</strong></label>
+        </div>
+        <div class="col-md-3 col-sm-12 mb-1">
+          <label class="m-0">To Product</label>
+          <select class="form-control" placeholder="To Product" [(ngModel)]="toprod"
+            (change)="getProductStock(toprod, 2)">
+            <option value="{{prod.prodid}}" *ngFor="let prod of products">
+              {{prod.prodid}}.{{prod.prodname}}
+            </option>
+          </select>
+          <label class="m-0 text-primary" *ngIf="toprodstock">Available quantity:
+            <strong>{{toprodstock.quantity}}</strong></label>
+        </div>
+        <div class="col-md-3 col-sm-12 mb-1">
+          <label class="m-0">Quantity</label>
+          <input type="text" class="form-control" placeholder="Quantity processed" [(ngModel)]="quantity" />
+        </div>
+        <div class="col-md-12 col-sm-12 mt-3">
+          <button class="btn btn-primary" title="Click to Reprocess product" (click)="reprocessProduct()"
+            [disabled]="!reprocessdate || !fromprod || !toprod || !quantity || disablebtn || (fromprod==toprod) ">Reprocess
+            Product
+          </button>
+          <h6 class="text-danger mt-3" *ngIf="fromprod && toprod && (fromprod==toprod)">
+            <strong>Note: <span class="border-bottom border-danger">From product</span></strong> and <strong>
+              <span class="border-bottom border-danger">To product</span></strong> cannot be same.</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
