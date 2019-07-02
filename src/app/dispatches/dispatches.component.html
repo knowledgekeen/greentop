@@ -60,27 +60,29 @@
 
   <div class="card my-3" *ngIf="selectedorder">
     <div class="card-body">
-      <h6 class="text-info">Transport Payment</h6>
       <div class="row">
-        <div class="col-md-12 col-sm-12 mb-2">
+        <div class="col-md-2 col-sm-12">
+          <h6 class="text-info">Transport Payment</h6>
+        </div>
+        <div class="col-md-10 col-sm-12">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="partytransport" />
             <label class="custom-control-label" for="customCheck1">Party's Transport</label>
           </div>
         </div>
-        <div class="col-md-3 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12" [hidden]="partytransport">
           <label class="m-0">Rate (P.M.T)</label>
           <input type="text" class="form-control" placeholder="rate (P.M.T)" [(ngModel)]="rate" />
         </div>
-        <div class="col-md-3 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12" [hidden]="partytransport">
           <label class="m-0">Amount</label>
           <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amount" />
         </div>
-        <div class="col-md-3 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12" [hidden]="partytransport">
           <label class="m-0">Advance</label>
           <input type="text" class="form-control" placeholder="Advance" [(ngModel)]="advance" />
         </div>
-        <div class="col-md-3 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12" [hidden]="partytransport">
           <label class="m-0">Paid On Date (DD-MM-YYYY)</label>
           <input type="text" class="form-control" placeholder="Paid On Date (DD-MM-YYYY)" [(ngModel)]="paidon"
             (blur)="autoFillPaidOnDate()" />

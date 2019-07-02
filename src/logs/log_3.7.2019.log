@@ -387,3 +387,844 @@ User: ::1 - July 3, 2019, 00:05:09
 File: sales_payments.php - Method: getAllSaleOrderPayments
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:07
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:07
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:07
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:07
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:11
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:11
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:11
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:11
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:06:11
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:20
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:20
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:20
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:21
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:21
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:35
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:35
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:35
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:35
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:36
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:49
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:49
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:49
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:49
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:10:49
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:26:38
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:26:38
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:26:38
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:26:38
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:26:38
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:17
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:17
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:17
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:17
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:17
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:46
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:46
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:46
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:46
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:27:46
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:28:00
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:28:00
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:28:00
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:28:00
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:28:00
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:29:40
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:29:40
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:29:40
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:29:40
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:29:40
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:10
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:10
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:10
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:10
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:10
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:38
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:38
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:38
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:38
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:38
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:56
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:56
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:56
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:57
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:30:57
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:16
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:17
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:17
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:17
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:17
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:29
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:29
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:29
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:29
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:29
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:59
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:59
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:31:59
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:00
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:00
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:10
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:10
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:10
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:11
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:11
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:56
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:56
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:56
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:56
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:32:56
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:33:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:33:26
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:33:26
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:33:26
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:33:30
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:33:33
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:34:20
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"13"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:34:20
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:34:48
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"13"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:34:48
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:35:37
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-15","orderdt":1562005800000,"custid":"16","prodid":"1","qty":"1","consignees":[{"consigneename":"A. Kumar Firms","contactperson":"Kumar","contactno":"79878987555","city":"Gadhinglaj","state":"Maharashtra","address":"Gadhinglaj, Maharashtra","quantity":"1","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:35:40
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:35:40
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:39:06
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:39:06
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:39:47
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:39:47
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:42:02
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:42:02
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:42:16
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:42:16
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:07
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:07
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:26
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+***************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:51
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:51
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:58
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:43:58
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:44:26
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:44:26
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:44:42
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:44:49
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":null}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:44:53
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":null}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:45:16
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:45:16
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:45:18
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:45:26
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"13"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:46:07
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:46:07
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:46:53
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:46:53
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:47:05
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:47:55
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:47:55
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:48:10
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:48:10
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:48:23
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:48:23
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:48:40
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:48:40
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:49:28
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:49:28
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:49:54
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:49:54
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:50:13
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:23
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:23
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:23
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:42
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:42
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:42
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:57
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:57
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:53:57
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:54:29
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-16","orderdt":1562005800000,"custid":"17","prodid":"1","qty":"3","consignees":[{"consigneename":"S. Kumar Wadewale","contactperson":"Wade","contactno":"79878987898","city":"Miraj","state":"Maharashtra","address":"Miraj, Maharashtra","quantity":"3","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:54:31
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"15"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:54:31
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:54:31
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"15"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:55:03
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-14","orderdt":1562092200000,"custid":"21","prodid":"2","qty":"3","consignees":[{"consigneename":"Lucknow Sheti Sang","contactperson":"Shet","contactno":"8585854747","city":"Lucknow","state":"Uttar Pradesh","address":"Lucknow, Uttar Pradesh","quantity":"3","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:55:05
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"16"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:55:06
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************

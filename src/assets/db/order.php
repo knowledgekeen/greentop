@@ -429,4 +429,31 @@ if($action == "updateOrderDetails"){
 	}
 	echo json_encode($data1);
 }
+
+if($action == "checkIfOrderNoPresent"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$orderno=$_GET["orderno"];
+    $sql = "SELECT * FROM `order_master` WHERE `orderno`='$orderno'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if($result && $row['orderid']){
+        $data["status"] = 200;
+		$data["data"] = $row['orderid'];
+		$log  = "File: order.php - Method: checkIfOrderNoPresent".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: order.php - Method: checkIfOrderNoPresent".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
 ?>

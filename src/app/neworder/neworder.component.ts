@@ -33,6 +33,7 @@ export class NeworderComponent implements OnInit {
   clientcities: any = null;
   clientstates: any = null;
   dateerror: boolean = false;
+  ordernopresent: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -95,6 +96,14 @@ export class NeworderComponent implements OnInit {
         } else {
           this.orderno = "GTO-1";
         }
+
+        this.checkIfOrderNoPresent().then(Resp => {
+          //Order no isn't present, so everything is fine
+        }, elsecode => {
+          //Order no already present so try and increment it with 1;
+          this.orderno = "GTO-" + (parseInt(this.orderno.split("-")[1]) + 1);
+          this.ordernopresent = false;
+        });
       });
   }
 
@@ -197,29 +206,34 @@ export class NeworderComponent implements OnInit {
       return;
     }
 
-    let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let orderObj = {
-      orderid: this.orderno,
-      orderdt: new Date(myDate).getTime(),
-      custid: this.selectcust.split(".")[0],
-      prodid: this.selectprod.split(".")[0],
-      qty: this.quantity,
-      consignees: this.allconsignees,
-      remarks: this.remarks
-    };
+    this.checkIfOrderNoPresent().then(Resp => {
+      let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+      let orderObj = {
+        orderid: this.orderno,
+        orderdt: new Date(myDate).getTime(),
+        custid: this.selectcust.split(".")[0],
+        prodid: this.selectprod.split(".")[0],
+        qty: this.quantity,
+        consignees: this.allconsignees,
+        remarks: this.remarks
+      };
 
-    this._rest
-      .postData("order.php", "createNewOrder", orderObj, null)
-      .subscribe(Response => {
-        if (Response) {
-          window.scrollTo(0, 0);
-          this.successMsg = true;
-          this._interval.settimer(null).then(Resp => {
-            this.resetForm();
-            this.initialize();
-          });
-        }
-      });
+      this._rest
+        .postData("order.php", "createNewOrder", orderObj, null)
+        .subscribe(Response => {
+          2
+          if (Response) {
+            window.scrollTo(0, 0);
+            this.successMsg = true;
+            this._interval.settimer(null).then(Resp => {
+              this.resetForm();
+              this.initialize();
+            });
+          }
+        });
+    }, error => {
+      console.log("Order No already present");
+    });
     //console.log(orderObj);
   }
 
@@ -265,5 +279,26 @@ export class NeworderComponent implements OnInit {
 
   removeConsignee(index) {
     this.allconsignees.splice(index, 1);
+  }
+
+  checkIfOrderNoPresent() {
+    if (this.orderno) {
+      let promise = new Promise((resolve, reject) => {
+        let geturl = "orderno=" + this.orderno;
+        this._rest.getData("order.php", "checkIfOrderNoPresent", geturl)
+          .subscribe(Response => {
+            if (Response) {
+              window.scrollTo(0, 0);
+              this.ordernopresent = true;
+              reject(true);
+            }
+            else {
+              this.ordernopresent = false;
+              resolve(false);
+            }
+          });
+      });
+      return promise;
+    }
   }
 }
