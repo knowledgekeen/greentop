@@ -4,8 +4,7 @@
     <div class="card-body">
       <p class="text-right">
         <a [routerLink]="['/addtruck']">
-          <i class="fa fa-truck"></i> Add Truck</a
-        >
+          <i class="fa fa-truck"></i> Add Truck</a>
       </p>
 
       <div class="table-responsive">
@@ -27,6 +26,11 @@
               <td>{{ transport.address }}</td>
               <td>
                 <a href="javascript:void(0);" (click)="editTransport(transport)">Edit</a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5" class="text-danger" *ngIf="!alltransport">
+                <i class="fa fa-exclamation-triangle"></i> No transport's found
               </td>
             </tr>
           </tbody>

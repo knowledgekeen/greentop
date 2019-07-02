@@ -45,8 +45,7 @@ function authenticate($headers){
 		$token = JWT::decode($headauth, $secretkey);
 	}
 	catch (Exception $e) {
-		$log  = "File: client.php - Method: getAllClients".PHP_EOL.
-		"NON AUTHORISED REQUEST".PHP_EOL;
+		$log  = "NON AUTHORISED REQUEST".PHP_EOL;
 		write_log($log, "error", "Non Authorised");
 		header(' ', true, 401);
 		exit(0);

@@ -19,7 +19,7 @@ export class AddtruckComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getActiveTransport();
@@ -61,7 +61,7 @@ export class AddtruckComponent implements OnInit {
 
   getAllTrucks() {
     this._rest
-      .getData("transport.php", "getAllTrucks", null)
+      .getData("transport.php", "getTransportTrucks", null)
       .subscribe(Response => {
         //console.log(Response);
         if (Response) {

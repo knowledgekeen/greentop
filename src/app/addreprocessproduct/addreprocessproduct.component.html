@@ -36,16 +36,20 @@
         </div>
         <div class="col-md-3 col-sm-12 mb-1">
           <label class="m-0">Quantity</label>
-          <input type="text" class="form-control" placeholder="Quantity processed" [(ngModel)]="quantity" />
+          <input type="text" class="form-control" placeholder="Quantity processed" [(ngModel)]="quantity"
+            (blur)="checkForError();" />
         </div>
         <div class="col-md-12 col-sm-12 mt-3">
           <button class="btn btn-primary" title="Click to Reprocess product" (click)="reprocessProduct()"
-            [disabled]="!reprocessdate || !fromprod || !toprod || !quantity || disablebtn || (fromprod==toprod) ">Reprocess
+            [disabled]="!reprocessdate || !fromprod || !toprod || !quantity || disablebtn || (fromprod==toprod) || errormsg">Reprocess
             Product
           </button>
           <h6 class="text-danger mt-3" *ngIf="fromprod && toprod && (fromprod==toprod)">
             <strong>Note: <span class="border-bottom border-danger">From product</span></strong> and <strong>
               <span class="border-bottom border-danger">To product</span></strong> cannot be same.</h6>
+          <h6 class="text-danger mt-3" *ngIf="errormsg">
+            <strong>Note: {{errormsg}}</strong>
+          </h6>
         </div>
       </div>
     </div>

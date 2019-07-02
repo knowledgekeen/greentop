@@ -24,7 +24,7 @@ export class ViewproductComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getActiveProducts();
@@ -66,8 +66,7 @@ export class ViewproductComponent implements OnInit {
       hsncode: prods.hsncode,
       status: status
     };
-    let toupdatestkqty =
-      this.editstockbal.quantity - this.tmpeditstockbal.quantity;
+    let toupdatestkqty = this.editstockbal.quantity - this.tmpeditstockbal.quantity;
 
     this._rest
       .postData("product.php", "updateProduct", prodObj, null)
@@ -172,5 +171,37 @@ export class ViewproductComponent implements OnInit {
     this.editstockbal.date = this._global.getAutofillFormattedDt(
       this.editstockbal.date
     );
+  }
+
+  deactivateProduct(prod) {
+    //console.log("prod", prod)
+    let geturl = "prodid=" + prod.prodid;
+    this._rest.getData("product.php", "deactivateProduct", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.successMsg = "Product deactivated successfully";
+          this.getActiveProducts();
+          this.getDeactiveProducts();
+          this._interval.settimer().then(Resp => {
+            this.successMsg = null;
+          })
+        }
+      })
+  }
+
+  activateProduct(prod) {
+    //console.log("prod", prod)
+    let geturl = "prodid=" + prod.prodid;
+    this._rest.getData("product.php", "activateProduct", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.successMsg = "Product Activated successfully";
+          this.getDeactiveProducts();
+          this.getActiveProducts();
+          this._interval.settimer().then(Resp => {
+            this.successMsg = null;
+          })
+        }
+      })
   }
 }

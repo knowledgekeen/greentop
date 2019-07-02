@@ -1,5 +1,6 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
 include 'jwt_helper.php';
@@ -7,6 +8,8 @@ include 'jwt_helper.php';
 $action = $_GET['action'];
 
 if($action == "dispatchOrder"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $addedbatches = $data->addedbatches;
     $advance = $data->advance;
@@ -96,6 +99,8 @@ if($action == "dispatchOrder"){
 }
 
 if($action == "getBatchDispatches"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $batchmastid = $_GET['batchmastid'];
 	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om WHERE db.`batchmastid`=$batchmastid AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid";
 	$result = $conn->query($sql);
@@ -140,6 +145,8 @@ if($action == "getBatchDispatches"){
 }
 
 if($action == "getDispatchBatches"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $orderid = $_GET['orderid'];
 	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,pbm.`batchid`,pbm.`manufacdate`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om, `production_batch_master` pbm WHERE db.`dispatchid`=(SELECT `dispatchid` from `dispatch_register` WHERE `orderid`=$orderid) AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid AND db.`batchmastid`=pbm.`batchmastid`";
 	$result = $conn->query($sql);

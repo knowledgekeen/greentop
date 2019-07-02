@@ -19,6 +19,7 @@ export class AddreprocessproductComponent implements OnInit {
   toprodstock: any = null;
   disablebtn: any = false;
   successflag: any = false;
+  errormsg: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService, private _interval: IntervalService) { }
 
@@ -52,8 +53,9 @@ export class AddreprocessproductComponent implements OnInit {
           else {
             this.toprodstock = Response["data"];
           }
+          this.checkForError();
         }
-      })
+      });
   }
 
   reprocessProduct() {
@@ -100,5 +102,17 @@ export class AddreprocessproductComponent implements OnInit {
             })
         }
       })
+  }
+
+  checkForError() {
+    this.errormsg = null;
+    if (this.quantity && this.fromprodstock.quantity) {
+      if (parseFloat(this.fromprodstock.quantity) < parseFloat(this.quantity)) {
+        this.errormsg = "From product cannot be less than quantity";
+      }
+      if (this.quantity <= 0) {
+        this.errormsg = "Quantity cannot be less than or equal to ZERO";
+      }
+    }
   }
 }

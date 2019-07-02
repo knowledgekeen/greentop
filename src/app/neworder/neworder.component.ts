@@ -181,6 +181,9 @@ export class NeworderComponent implements OnInit {
     this.consigneeaddress = null;
     this.consigneequantity = 0;
     this.sendtoself = false;
+    setTimeout(function () {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
   }
 
   createNewOrder() {

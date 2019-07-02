@@ -12,7 +12,7 @@ export class ViewtrucksComponent implements OnInit {
   searchtxt: any = null;
   @Output() parentMethod = new EventEmitter<any>();
 
-  constructor(private _rest: RESTService, private _global: GlobalService) {}
+  constructor(private _rest: RESTService, private _global: GlobalService) { }
 
   ngOnInit() {
     this.getAllTrucks();
@@ -23,9 +23,9 @@ export class ViewtrucksComponent implements OnInit {
 
   getAllTrucks() {
     this._rest
-      .getData("transport.php", "getAllTrucks", null)
+      .getData("transport.php", "getTransportTrucks", null)
       .subscribe(Response => {
-        //console.log(Response);
+        console.log(Response);
         if (Response) {
           this._global.updateTrucksData(Response["data"]);
         }

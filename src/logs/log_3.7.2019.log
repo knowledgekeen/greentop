@@ -1,0 +1,389 @@
+Action: Success
+User: ::1 - July 3, 2019, 00:00:26
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-13","orderdt":1561919400000,"custid":"22","prodid":"1","qty":"2","consignees":[{"consigneename":"Nawabi Farms","contactperson":"Nawabs","contactno":"6969696969","city":"Lucknow","state":"Uttar Pradesh","address":"Lucknow, Uttar Pradesh","quantity":"2","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:28
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"13"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:28
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:43
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:43
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:43
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:43
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:51
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:51
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:51
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:51
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:00:51
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:13
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:13
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:16
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:18
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:21
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:21
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:21
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:21
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:01:21
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:41
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:41
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:41
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:41
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:41
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:53
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:53
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:53
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:53
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:53
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:58
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:58
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:58
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:58
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:02:58
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:03
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:03
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:03
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:03
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:03
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:22
+File: dispatch.php - Method: dispatchOrder
+Data: {"todaydt":1562092401536,"orderid":"13","prodid":"1","quantity":"2","dispdate":1561919400000,"dcno":"107","vehicalno":"MH10CS7187","rate":"0","amount":"0","advance":"0","paidon":1561919400000,"partytrans":"Party's Transport","addedbatches":[{"batchmastid":"7","batchid":"50","selqty":"2","qtyrem":0}],"remarks":"Sales \/ Nawabi Farms \/ Order No: GTO-13"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:24
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:24
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:24
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:24
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:25
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:32
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:39
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:03:39
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:03
+File: taxinvoice.php - Method: saveBillDetails
+Data: {"orderid":"13","clientid":"22","billno":"3","billdt":1562005800000,"amount":48000,"discount":0,"rate":"24000","cgst":"2.5","sgst":"2.5","igst":0,"roundoff":0,"totalamount":"50400.00"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:03
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"3"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:03
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:09
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:09
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:10
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:10
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:17
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:17
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:19
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:19
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:35
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:38
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:04:38
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:02
+File: sales_payments.php - Method: addSalesPayment
+Data: {"paydt":1562092200000,"custid":"22","amtpaid":"5000","paymode":"2","particulars":"Netbanking"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:02
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:02
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:02
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:09
+File: sales_payments.php - Method: updateSalePayment
+Data: {"orderpayid":"5","paydate":1562092200000,"amountpaid":"50000","particulars":"Netbanking"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:09
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:09
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:05:09
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************

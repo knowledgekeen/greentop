@@ -19,9 +19,11 @@ export class AddtransportComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getActiveTransport();
+  }
 
   addTransport() {
     let transportObj = {
@@ -49,7 +51,7 @@ export class AddtransportComponent implements OnInit {
 
   getActiveTransport() {
     this._rest
-      .getData("transport.php", "getActiveTransport", null)
+      .getData("transport.php", "getActiveTransport")
       .subscribe(Response => {
         if (Response) {
           this._global.updateTransportData(Response["data"]);
