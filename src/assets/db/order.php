@@ -381,6 +381,7 @@ if($action == "updateOrderDetails"){
 	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $orderid = $data->orderid;
+    $orderno = $data->orderno;
     $orderdt = $data->orderdt;
     $custid = $data->custid;
     $prodid = $data->prodid;
@@ -389,7 +390,7 @@ if($action == "updateOrderDetails"){
     $consignees = $data->consignees;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
-        $sql = "UPDATE `order_master` SET `orderdt`='$orderdt',`clientid`=$custid,`prodid`=$prodid,`quantity`='$qty',`remarks`='$remarks' WHERE `orderid`=$orderid";
+        $sql = "UPDATE `order_master` SET `orderno`='$orderno',`orderdt`='$orderdt',`clientid`=$custid,`prodid`=$prodid,`quantity`='$qty',`remarks`='$remarks' WHERE `orderid`=$orderid";
         $result = $conn->query($sql);
 		
 		//Extra step to remove all consignees for particular order

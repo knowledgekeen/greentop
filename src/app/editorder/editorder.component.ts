@@ -40,7 +40,7 @@ export class EditorderComponent implements OnInit {
     private _route: ActivatedRoute,
     private _global: GlobalService,
     private _interval: IntervalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -232,6 +232,7 @@ export class EditorderComponent implements OnInit {
     let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
     let orderObj = {
       orderid: this.orderid,
+      orderno: this.orderno,
       orderdt: new Date(myDate).getTime(),
       custid: this.selectedcust.split(".")[0],
       prodid: this.selectedprod.split(".")[0],

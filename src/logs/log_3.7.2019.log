@@ -1228,3 +1228,373 @@ User: ::1 - July 3, 2019, 00:55:06
 File: product.php - Method: getActiveProducts
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:29
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:29
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:32
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:32
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:32
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:57
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:57
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:56:57
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:57:31
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:57:31
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:57:31
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:04
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:04
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:04
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:42
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:42
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:42
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:54
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:54
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:54
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 00:59:57
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"14"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:00
+File: order.php - Method: checkIfOrderNoPresent
+Data: {"status":200,"data":"16"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:25
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:25
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:25
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:39
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:39
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:39
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:45
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:45
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:45
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:51
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:51
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:00:51
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:01:47
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:01:47
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:01:47
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:03
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:03
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:03
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:30
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:30
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:30
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:54
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:54
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:02:54
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:00
+File: order.php - Method: updateOrderDetails
+Data: {"orderid":"14","orderno":"GTO-14","orderdt":1562005800000,"custid":"16","prodid":"1","qty":"1","consignees":[{"orderconsignid":"14","consigneename":"A. Kumar Firms","contactperson":"Kumar","contactno":"79878987555","city":"Gadhinglaj","state":"Maharashtra","address":"Gadhinglaj, Maharashtra","quantity":"1","remarks":"SELF"}],"remarks":null}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:02
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:02
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:02
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:03
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:03
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:05
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:05
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:05
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:11
+File: order.php - Method: updateOrderDetails
+Data: {"orderid":"15","orderno":"GTO-15","orderdt":1562005800000,"custid":"17","prodid":"1","qty":"3","consignees":[{"orderconsignid":"15","consigneename":"S. Kumar Wadewale","contactperson":"Wade","contactno":"79878987898","city":"Miraj","state":"Maharashtra","address":"Miraj, Maharashtra","quantity":"3","remarks":"SELF"}],"remarks":null}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:13
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:13
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:13
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:14
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:14
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:16
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:16
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:21
+File: order.php - Method: updateOrderDetails
+Data: {"orderid":"16","orderno":"GTO-16","orderdt":1562092200000,"custid":"21","prodid":"2","qty":"3","consignees":[{"orderconsignid":"16","consigneename":"Lucknow Sheti Sang","contactperson":"Shet","contactno":"8585854747","city":"Lucknow","state":"Uttar Pradesh","address":"Lucknow, Uttar Pradesh","quantity":"3","remarks":"SELF"}],"remarks":null}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:23
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:23
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:23
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:23
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:23
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 01:03:23
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
