@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getLastOrderId"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $sql = "SELECT `orderid` FROM `order_master` ORDER BY `orderid` DESC LIMIT 1";
     $result = $conn->query($sql);
     $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -29,6 +34,8 @@ if($action == "getLastOrderId"){
 }
 
 if($action == "createNewOrder"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $orderid = $data->orderid;
     $orderdt = $data->orderdt;
@@ -79,6 +86,8 @@ if($action == "createNewOrder"){
 
 // Get All orders irrespective of Financial year
 if($action == "getOpenOrders"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`status`='open' AND o.`prodid`=p.`prodid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -125,6 +134,8 @@ if($action == "getOpenOrders"){
 
 // Get All dispatched orders irrespective of Financial year
 if($action == "getDispatchedOrders"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname`, d.`dcno`, d.`dispatchdate` FROM `order_master` o, `client_master` c, `product_master` p, `dispatch_register` d WHERE o.`clientid`=c.`clientid` AND o.`status`='dispatched' AND o.`prodid`=p.`prodid` AND o.`orderid` = d.`orderid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -172,6 +183,8 @@ if($action == "getDispatchedOrders"){
 }
 
 if($action == "getOrderConsignees"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $orderid=$_GET["orderid"];
 	$sql = "SELECT `orderconsignid`,`orderid`,`consigneename`,`contactperson`,`contactnumber` as `contactno`,`city`,`state`,`address`,`quantity`,`remarks` FROM `order_consignees` WHERE `orderid`=$orderid";
 	$result = $conn->query($sql);
@@ -217,6 +230,8 @@ if($action == "getOrderConsignees"){
 
 // Get All Open Orders between dates passed
 if($action == "getOrdersFromToDate"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,o.`status`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt' ORDER BY o.`orderdt`,o.`orderid`";
@@ -267,6 +282,8 @@ if($action == "getOrdersFromToDate"){
 
 // Get All Orders between dates passed, irrespective if its open
 if($action == "getAllOrdersFromToDate"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt'";
@@ -315,6 +332,8 @@ if($action == "getAllOrdersFromToDate"){
 }
 
 if($action == "getOrdersDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$orderid = $_GET["orderid"];
 	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`orderid`=$orderid AND o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid`";
 	$result = $conn->query($sql);
@@ -358,6 +377,8 @@ if($action == "getOrdersDetails"){
 }
 
 if($action == "updateOrderDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $orderid = $data->orderid;
     $orderdt = $data->orderdt;

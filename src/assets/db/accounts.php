@@ -1,7 +1,10 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
+//https://coderwall.com/p/8wrxfw/goodbye-php-sessions-hello-json-web-tokens
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
 $action = $_GET['action'];
 
 if($action == "checkLogin"){
@@ -14,7 +17,9 @@ if($action == "checkLogin"){
 	$row = $result->fetch_array();
 	$tmp = array();
 	$datares = array();
-
+	$token = array();
+	$d1 = new Datetime();
+	$token['email'] = $email.$d1->format('U')*1000;
 	if(count($row)>0){
         $tmp[0]['userid'] = $row['userid'];
         $tmp[0]['fullname'] = $row['fullname'];
@@ -22,6 +27,7 @@ if($action == "checkLogin"){
 		$tmp[0]['email'] = $row['email'];
 		$d1 = new Datetime();
 		$tmp[0]['sessiontime'] = $d1->format('U')*1000;
+		$tmp[0]['token'] = JWT::encode($token, 'greentoporg');
         $datares["status"] = 200;
 		$datares["data"] = $tmp;
 		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
@@ -41,6 +47,8 @@ if($action == "checkLogin"){
 }
 
 if($action == "checkOldPass"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$uid = $data->uid;
 	$oldpass = md5($data->oldpass);
@@ -70,6 +78,8 @@ if($action == "checkOldPass"){
 }
 
 if($action == "changePassword"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$uid = $data->uid;
 	$newpass = md5($data->newpass);
@@ -98,6 +108,8 @@ if($action == "changePassword"){
 }
 
 if($action == "getDBSettings"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT * FROM `dbsetting_master`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -136,6 +148,8 @@ if($action == "getDBSettings"){
 }
 
 if($action == "updateDBSettings"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$dbsettingid = $data->dbsettingid;
 	$state = $data->state;

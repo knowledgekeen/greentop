@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "addTransport"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $transportnm = mysqli_real_escape_string($conn,$data->transportnm);
     $contactno = $data->contactno;
@@ -37,6 +42,8 @@ if($action == "addTransport"){
 }
 
 if($action == "updateTransport"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $transportnm = mysqli_real_escape_string($conn,$data->transportnm);
     $transid = $data->transid;
@@ -69,6 +76,8 @@ if($action == "updateTransport"){
 }
 
 if($action == "getActiveTransport"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT * FROM `transport_master` WHERE `status`=1 ORDER BY `transportname`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -108,6 +117,8 @@ if($action == "getActiveTransport"){
 }
 
 if($action == "getTransportTrucks"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT tr.`truckid`, tr.`lorryno`, tm.`tmid`, tm.`transportname`, tm.`contactno`, tm.`address` FROM `truck_register` tr, `transport_master` tm WHERE tr.`tmid`=tm.`tmid` ORDER BY tr.`lorryno`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -149,6 +160,8 @@ if($action == "getTransportTrucks"){
 }
 
 if($action == "addTruck"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $tmid = $data->tmid;
     $lorryno = $data->lorryno;
@@ -180,6 +193,8 @@ if($action == "addTruck"){
 }
 
 if($action == "updateTruck"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $truckid = $data->truckid;
     $tmid = $data->tmid;
@@ -211,6 +226,8 @@ if($action == "updateTruck"){
 }
 
 if($action == "getDispatchTrucks"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT DISTINCT(`vehicalno`) FROM `dispatch_register`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -247,6 +264,8 @@ if($action == "getDispatchTrucks"){
 }
 
 if($action == "getPurchaseTrucks"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT DISTINCT(`vehicalno`) FROM `purchase_master`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())

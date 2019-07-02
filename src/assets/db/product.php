@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "addProduct"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $pname = mysqli_real_escape_string($conn, $data->pname);
     $hsncode = $data->hsncode;
@@ -38,6 +43,8 @@ if($action == "addProduct"){
 }
 
 if($action == "getActiveProducts"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT * FROM `product_master` WHERE `status` = 1 ORDER BY `prodname`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -76,6 +83,8 @@ if($action == "getActiveProducts"){
 }
 
 if($action == "getDeactiveProducts"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT * FROM `product_master` WHERE `status` = 0 ORDER BY `prodname`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -114,6 +123,8 @@ if($action == "getDeactiveProducts"){
 }
 
 if($action == "updateProduct"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$prodid = $data->prodid;
 	$prodname = mysqli_real_escape_string($conn, $data->prodname);

@@ -5,7 +5,7 @@ import { EncDecService } from "./enc-dec.service";
   providedIn: "root"
 })
 export class SessionService {
-  constructor(private _encdec: EncDecService) {}
+  constructor(private _encdec: EncDecService) { }
 
   getData(key: string) {
     let promise = new Promise((resolve, reject) => {
@@ -34,6 +34,15 @@ export class SessionService {
       }
     });
 
+    return promise;
+  }
+
+  deleteSession() {
+    let promise = new Promise((resolve, reject) => {
+      sessionStorage.removeItem('userdets');
+      sessionStorage.clear();
+      resolve();
+    });
     return promise;
   }
 }

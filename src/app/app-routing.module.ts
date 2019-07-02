@@ -32,6 +32,7 @@ import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { AddhistoricbatchComponent } from "./addhistoricbatch/addhistoricbatch.component";
 import { AddwastageComponent } from "./addwastage/addwastage.component";
 import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
+import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.component';
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -67,6 +68,7 @@ const routes: Routes = [
   { path: "vieworders", component: ViewordersComponent },
   { path: "viewinvoices", component: ViewtaxinvoicesComponent },
   { path: "pagenotfound", component: PagenotfoundComponent },
+  { path: "unauthoriseduser", component: UnauthoriseduserComponent },
   { path: "editorder/:orderid", component: EditorderComponent },
   { path: "addclientopenbal/:ctype", component: AddclientopenbalComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },

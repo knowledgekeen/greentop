@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import {
   DlDateTimeDateModule,
   DlDateTimePickerModule
@@ -62,6 +62,8 @@ import { AddwastageComponent } from './addwastage/addwastage.component';
 import { PurchasepayhistoryComponent } from './purchasepayhistory/purchasepayhistory.component';
 import { SalespayhistoryComponent } from './salespayhistory/salespayhistory.component';
 import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,8 @@ import { AddreprocessproductComponent } from './addreprocessproduct/addreprocess
     AddwastageComponent,
     PurchasepayhistoryComponent,
     SalespayhistoryComponent,
-    AddreprocessproductComponent
+    AddreprocessproductComponent,
+    UnauthoriseduserComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +128,8 @@ import { AddreprocessproductComponent } from './addreprocessproduct/addreprocess
     IntervalService,
     RESTService,
     EncDecService,
-    { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] } // add as factory to your providers
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] }, // add as factory to your providers
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   entryComponents: [PurchasepayhistoryComponent, SalespayhistoryComponent],
   bootstrap: [AppComponent]

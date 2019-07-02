@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getAllOrderInvoicePayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $clientid= $_GET["clientid"];
     $fromdt= $_GET["fromdt"];
     $prevfromdt= $_GET["prevfromdt"];
@@ -49,6 +54,8 @@ if($action == "getAllOrderInvoicePayments"){
 }
 
 if($action == "getAllSaleOrderPayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $clientid= $_GET["clientid"];
     $fromdt= $_GET["fromdt"];
     $todt= $_GET["todt"];
@@ -93,6 +100,8 @@ if($action == "getAllSaleOrderPayments"){
 }
 
 if($action == "addSalesPayment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $paydt = $data->paydt;
     $custid = $data->custid;
@@ -126,6 +135,8 @@ if($action == "addSalesPayment"){
 }
 
 if($action == "updateSalePayment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $orderpayid = $data->orderpayid;
     $paydate = $data->paydate;
@@ -157,6 +168,8 @@ if($action == "updateSalePayment"){
 }
 
 if($action == "deleteSalePayRecord"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $orderpayid = $_GET["orderpayid"];
 	$sql = "DELETE FROM `order_payments` WHERE `orderpayid`=$orderpayid";
 	$result = $conn->query($sql);

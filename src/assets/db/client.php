@@ -1,10 +1,15 @@
 <?php
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
+header("Content-Type: application/json");
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
 $action = $_GET['action'];
 
 if($action == "addClient"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$fname = mysqli_real_escape_string($conn,$data->fname);
 	$cno = $data->cno;
@@ -48,6 +53,8 @@ if($action == "addClient"){
 }
 
 if($action == "getClientCities"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT DISTINCT(`city`) FROM `client_master` ORDER BY `city`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -81,6 +88,8 @@ if($action == "getClientCities"){
 }
 
 if($action == "getClientStates"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT DISTINCT(`state`) FROM `client_master` ORDER BY `state`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -114,6 +123,9 @@ if($action == "getClientStates"){
 }
 
 if($action == "getAllClients"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	
 	$clienttype = ($_GET["clienttype"]);
 	$sql = "SELECT * FROM `client_master` WHERE `type`=$clienttype AND `status`=1 ORDER BY `name`";
 	$result = $conn->query($sql);
@@ -160,6 +172,8 @@ if($action == "getAllClients"){
 }
 
 if($action == "getClientDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$clienttype = ($_GET["clienttype"]);
 	$clientid = ($_GET["clientid"]);
 	$sql = "SELECT * FROM `client_master` WHERE `type`=$clienttype AND `clientid`=$clientid AND `status`=1 ORDER BY `name`";
@@ -203,6 +217,8 @@ if($action == "getClientDetails"){
 }
 
 if($action == "updateClient"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$fname = mysqli_real_escape_string($conn,$data->fname);
 	$clientid = $data->clientid;
@@ -244,6 +260,8 @@ if($action == "updateClient"){
 }
 
 if($action == "getClientPurchaseOpeningBal"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
 	$clientid = ($_GET["clientid"]);
@@ -307,6 +325,8 @@ if($action == "getClientPurchaseOpeningBal"){
 }
 
 if($action == "getClientSaleOpeningBal"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
 	$clientid = ($_GET["clientid"]);
@@ -369,6 +389,8 @@ if($action == "getClientSaleOpeningBal"){
 }
 
 if($action == "updateClientOpeningBalance"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$openbalid = $data->openbalid;
 	$clientid = $data->clientid;
@@ -402,6 +424,8 @@ if($action == "updateClientOpeningBalance"){
 }
 
 if($action == "deleteClient"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$clientid = $_GET["clientid"];
 	$sql = "DELETE FROM `client_master` WHERE `clientid`=$clientid";
 	$result = $conn->query($sql);

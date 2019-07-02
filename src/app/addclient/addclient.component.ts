@@ -27,7 +27,7 @@ export class AddclientComponent implements OnInit {
   allclients: any = null;
   clientnamepresent: boolean = false;
 
-  constructor(private _rest: RESTService, private _interval: IntervalService) {}
+  constructor(private _rest: RESTService, private _interval: IntervalService) { }
 
   ngOnInit() {
     this.getClientCities();
@@ -63,7 +63,6 @@ export class AddclientComponent implements OnInit {
       .getData("client.php", "getAllClients", strObj)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response);
           this.allclients = Response["data"];
         }
       });

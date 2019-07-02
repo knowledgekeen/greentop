@@ -1,11 +1,15 @@
 <?php
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
-include 'session.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getAllStocks"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $sql = "SELECT s.`stockid`, s.`quantity`, r.`rawmatid`, r.`name`, p.`prodid`, p.`prodname` FROM `stock_master` s LEFT JOIN `raw_material_master` r ON s.`rawmatid` = r.`rawmatid` LEFT JOIN `product_master` p ON s.`prodid`=p.`prodid`";
     $result = $conn->query($sql);
 	while($row = $result->fetch_array())

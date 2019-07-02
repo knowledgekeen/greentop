@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "newProductInStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$prodid = $data->prodid;
 	$moddt = $data->moddt;
@@ -43,6 +48,8 @@ if($action == "newProductInStock"){
 }
 
 if($action == "newRawMaterialInStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$rawmatid = $data->rawmatid;
 	$moddt = $data->moddt;
@@ -80,6 +87,8 @@ if($action == "newRawMaterialInStock"){
 }
 
 if($action == "updateStockRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $billdt = $data->billdt;
     $addedmaterials = $data->addedmaterials;
@@ -123,6 +132,8 @@ if($action == "updateStockRawMaterial"){
 }
 
 if($action == "updateOpeningStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;
     $quantity = $data->quantity;
@@ -158,6 +169,8 @@ if($action == "updateOpeningStock"){
 }
 
 if($action == "getRawMatOpeningStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$rawmatid = ($_GET["rawmatid"]);
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
@@ -192,6 +205,8 @@ if($action == "getRawMatOpeningStock"){
 }
 
 if($action == "getProductStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$prodid = ($_GET["prodid"]);
 	$sql = "SELECT * FROM `stock_master` WHERE `prodid`=$prodid";
 	$result = $conn->query($sql);
@@ -224,6 +239,8 @@ if($action == "getProductStock"){
 }
 
 if($action == "getRawMatStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$rawmatid = ($_GET["rawmatid"]);
 	$sql = "SELECT * FROM `stock_master` WHERE `rawmatid`=$rawmatid";
 	$result = $conn->query($sql);
@@ -256,6 +273,8 @@ if($action == "getRawMatStock"){
 }
 
 if($action == "getProdOpeningStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$prodid = ($_GET["prodid"]);
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
@@ -290,6 +309,8 @@ if($action == "getProdOpeningStock"){
 }
 
 if($action == "getStockHistory"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$stockid = $_GET["stockid"];
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
@@ -337,6 +358,8 @@ if($action == "getStockHistory"){
 
 //Check if there is any opening balance created for current financial year
 if($action == "checkRawMatOpenStockForCrntFinanYear"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$rawmatid = $_GET["rawmatid"];
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
@@ -372,6 +395,8 @@ if($action == "checkRawMatOpenStockForCrntFinanYear"){
 
 //Check if there is any opening balance created for current financial year
 if($action == "checkProductOpenStockForCrntFinanYear"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$prodid = $_GET["prodid"];
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
@@ -406,6 +431,8 @@ if($action == "checkProductOpenStockForCrntFinanYear"){
 }
 
 if($action == "insertOpeningStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;
     $quantity = $data->quantity;
@@ -441,6 +468,8 @@ if($action == "insertOpeningStock"){
 }
 
 if($action == "updateCurrentStock"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;
     $quantity = $data->quantity;
@@ -475,6 +504,8 @@ if($action == "updateCurrentStock"){
 }
 
 if($action == "updateStockUsingProdid"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $prodid = $data->prodid;
     $quantity = $data->quantity;
@@ -510,6 +541,8 @@ if($action == "updateStockUsingProdid"){
 }
 
 if($action == "updateStockRegQuantity"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;
     $quantity = $data->quantity;
@@ -542,6 +575,8 @@ if($action == "updateStockRegQuantity"){
 }
 
 if($action == "getStockidFromRawMatId"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$rawmatid = $_GET["rawmatid"];
 	$sql = "SELECT `stockid`, `quantity` FROM `stock_master` WHERE `rawmatid`=$rawmatid";
 	$result = $conn->query($sql);
@@ -573,6 +608,8 @@ if($action == "getStockidFromRawMatId"){
 }
 
 if($action == "insertStockRegister"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $stockid = $data->stockid;
     $quantity = $data->quantity;

@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getFromToPurchases"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $fromdt = $_GET["fromdt"];
     $todt = $_GET["todt"];
     $sql = "SELECT pm.`purcmastid`,pm.`clientid`,pm.`vehicalno`,pm.`dcno`,pm.`billno`,pm.`billdt`,pm.`arrivaldt`,pm.`totalamount`,pm.`totaldiscount`,cm.`name`, pr.`rawmatid`, pr.`quantity`, pr.`rate`, pr.`cgst`, pr.`sgst`, pr.`igst`, pr.`discount`, pr.`roundoff`, pr.`amount` , rm.`name` as `rawmatname` FROM `purchase_master` pm, `client_master` cm, `purchase_register` pr, `raw_material_master` rm WHERE pm.`clientid`=cm.`clientid` AND pr.`purcmastid`=pm.`purcmastid` AND pr.`rawmatid`=rm.`rawmatid` AND `billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY pm.`arrivaldt`";

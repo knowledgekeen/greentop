@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "addWastage"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $rawmatid = $data->rawmatid;
     $quantity = $data->quantity;
@@ -51,6 +56,8 @@ if($action == "addWastage"){
 }
 
 if($action == "getWastageFromTo"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$sql = "SELECT wm.`wastageid`,wm.`rawmatid`,wm.`quantity`,wm.`wastagedt`,rwm.`name` FROM `rawmat_wastage_master` wm,`raw_material_master` rwm WHERE wm.`rawmatid`=rwm.`rawmatid` AND wm.`wastagedt` BETWEEN '$fromdt' AND '$todt'";

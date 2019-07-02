@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "saveBillDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $orderid = $data->orderid;
     $clientid = $data->clientid;
@@ -50,6 +55,8 @@ if($action == "saveBillDetails"){
 }
 
 if($action == "getLastBillId"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $sql = "SELECT `billno` FROM `order_taxinvoice` ORDER BY `otaxinvoiceid` DESC LIMIT 1";
     $result = $conn->query($sql);
     $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -74,6 +81,8 @@ if($action == "getLastBillId"){
 }
 
 if($action == "getInvoicesFromToDt"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$sql = "SELECT ot.`otaxinvoiceid`,ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, cm.`name`,dr.`dcno` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm, `dispatch_register` dr WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid` = dr.`orderid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt'";
@@ -131,6 +140,8 @@ if($action == "getInvoicesFromToDt"){
 }
 
 if($action == "updateBillDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $otaxinvoiceid = $data->otaxinvoiceid;
     $billdt = $data->billdt;

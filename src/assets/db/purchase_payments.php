@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getAllPurchaseMastPayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $clientid= $_GET["clientid"];
     $fromdt= $_GET["fromdt"];
     $todt= $_GET["todt"];
@@ -51,6 +56,8 @@ if($action == "getAllPurchaseMastPayments"){
 }
 
 if($action == "getAllPurchasePayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $clientid= $_GET["clientid"];
     $fromdt= $_GET["fromdt"];
     $todt= $_GET["todt"];
@@ -95,6 +102,8 @@ if($action == "getAllPurchasePayments"){
 }
 
 if($action == "addPurchasePayment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $paydt = $data->paydt;
     $suppid = $data->suppid;
@@ -128,6 +137,8 @@ if($action == "addPurchasePayment"){
 }
 
 if($action == "updatePurchasePayment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $purchpayid = $data->purchpayid;
     $purchdate = $data->purchdate;
@@ -159,6 +170,8 @@ if($action == "updatePurchasePayment"){
 }
 
 if($action == "deletePurchasePayRecord"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $purchpayid = $_GET["purchpayid"];
 	$sql = "DELETE FROM `purchase_payments` WHERE `purchpayid`=$purchpayid";
 	$result = $conn->query($sql);

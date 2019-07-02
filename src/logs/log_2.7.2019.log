@@ -1,0 +1,760 @@
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:38:08
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:38:08
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:39:15
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 12:39:30
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 12:39:30
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 12:40:26
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 12:40:26
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 12:40:26
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:40:27
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:40:27
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:40:27
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:40:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:40:57
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:40:57
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:41:08
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: 127.0.0.1 - July 2, 2019, 12:41:08
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:48:28
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:48:33
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:03
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:03
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:04
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:04
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:22
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:22
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:22
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:22
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:22
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:35
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:35
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:35
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:35
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:35
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 14:49:35
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:21:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:19
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:29:59
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:31:39
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:01
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:01
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:01
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:01
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 17:32:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 18:59:30
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 18:59:30
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 18:59:30
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 18:59:30
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 18:59:30
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:43:17
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:43:17
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:44:42
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:46:21
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:47:58
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:48:12
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:48:48
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 19:49:09
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:07:32
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:17:40
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:18:54
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:21:25
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:21:39
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:21:39
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:17
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:18
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:24
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:24
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:24
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:40
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:40
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:40
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:47
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:23:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:09
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:09
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:09
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:18
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:18
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:18
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:26
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:26
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:26
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:33
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:33
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:33
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:42
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:42
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:42
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:57
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:57
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:24:57
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:09
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:10
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:10
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:17
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:17
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:17
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:44
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:44
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:25:44
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:27:15
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:27:15
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:27:15
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:27:19
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:27:25
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:31:52
+File: client.php - Method: addClient
+Data: {"fname":"ABC Farms","cno":"9900990099","gstno":null,"email":null,"cperson1":"Mr. Abc","cno1":"9900990099","cperson2":null,"cno2":null,"city":"Bijapur","state":"Maharashtra","address":"At Bijapur, Post: Bijapur. Maharashtra.","ctype":"1"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:32:54
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"13","clientid":"30","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:00
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"13","clientid":"30","openbal":"200","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:09
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"13","clientid":"30","openingbal":"200","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:12
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"13","clientid":"30","openbal":"100","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:17
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"13","clientid":"30","openingbal":"100","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:20
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"13","clientid":"30","openbal":"200","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:24
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"7","clientid":"28","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:26
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"7","clientid":"28","openbal":"200","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:32
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"7","clientid":"28","openingbal":"200","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:37
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"8","clientid":"1","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:45
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"8","clientid":"1","openbal":"125","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:50
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"8","clientid":"1","openingbal":"125","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:33:56
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"3","clientid":"8","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:34:00
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"3","clientid":"8","openbal":"175","baldate":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:36:01
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"10","clientid":"25","openingbal":"0","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 2, 2019, 20:36:04
+File: client.php - Method: updateClientOpeningBalance
+Data: {"openbalid":"10","clientid":"25","openbal":"111","baldate":1554057000000}
+
+*******************************************************************************

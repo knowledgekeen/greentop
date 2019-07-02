@@ -2,6 +2,8 @@
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "dispatchOrder"){

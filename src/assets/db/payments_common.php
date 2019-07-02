@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getAllPayModes"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT * FROM `paymode_master` ORDER BY `paymode`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -42,6 +47,8 @@ if($action == "getAllPayModes"){
 }
 
 if($action == "addPayMode"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $paymode = $data->paymode;
     
@@ -72,6 +79,8 @@ if($action == "addPayMode"){
 }
 
 if($action == "updatePayMode"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $paymodeid = $data->paymodeid;
     $paymode = $data->paymode;

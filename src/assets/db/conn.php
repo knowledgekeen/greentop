@@ -26,4 +26,30 @@ function write_log($log, $flag, $errorval){
         }
     }
 }
+
+function authenticate($headers){
+    $secretkey = 'greentoporg';
+	$authorization = NULL;
+	foreach ($headers as $header => $value) {
+		if($header == "Authorization"){
+			$authorization = true;
+			break;
+		}
+	}
+	//print_r($ApacheHeaders);
+	if($authorization == NULL){
+		die(1);
+	}
+	try{
+		$headauth= $headers['Authorization'];
+		$token = JWT::decode($headauth, $secretkey);
+	}
+	catch (Exception $e) {
+		$log  = "File: client.php - Method: getAllClients".PHP_EOL.
+		"NON AUTHORISED REQUEST".PHP_EOL;
+		write_log($log, "error", "Non Authorised");
+		header(' ', true, 401);
+		exit(0);
+	}
+}
 ?>

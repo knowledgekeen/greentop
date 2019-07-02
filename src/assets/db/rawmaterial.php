@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "addRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $name = $data->name;
     $hsncode = $data->hsncode;
@@ -36,6 +41,8 @@ if($action == "addRawMaterial"){
 }
 
 if($action == "getRawMaterials"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT * FROM `raw_material_master` ORDER BY `name`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -74,6 +81,8 @@ if($action == "getRawMaterials"){
 }
 
 if($action == "updateRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $rawmatid = $data->rawmatid;
     $name = $data->name;
@@ -105,6 +114,8 @@ if($action == "updateRawMaterial"){
 }
 
 if($action == "purchaseRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $clientid = $data->clientid;
     $vehicalno = $data->vehicalno;
@@ -160,6 +171,8 @@ if($action == "purchaseRawMaterial"){
 }
 
 if($action == "getPurchaseDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$purcmastid = $_GET["purcmastid"];
 	$sql = "SELECT pm.`purcmastid`, pm.`clientid`, pm.`vehicalno`, pm.`dcno`, pm.`billno`, pm.`billdt`, pm.`arrivaldt`, pm.`totaldiscount`, pm.`totalamount`, cm.`name`, pr.`rawmatid`, pr.`quantity`, pr.`rate`, pr.`cgst`, pr.`sgst`, pr.`igst`, pr.`amount`, pr.`discount`, pr.`roundoff` FROM `purchase_master` pm, `purchase_register` pr, `client_master` cm WHERE pm.`purcmastid` = pr.`purcmastid` AND pm.`clientid` = cm.`clientid` AND pm.`purcmastid`=$purcmastid";
 	$result = $conn->query($sql);
@@ -215,6 +228,8 @@ if($action == "getPurchaseDetails"){
 }
 
 if($action == "updatePurchasesRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $purcmastid = $data->purcmastid;
     $clientid = $data->clientid;
@@ -270,6 +285,8 @@ if($action == "updatePurchasesRawMaterial"){
 }
 
 if($action == "updateRawMaterialsAndStocks"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$prodregid=$data->prodregid;
 	$rawmatid=$data->rawmatid;
@@ -321,6 +338,8 @@ if($action == "updateRawMaterialsAndStocks"){
 }
 
 if($action == "checkPurchaseBillNoIfPresent"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$billno = ($_GET["billno"]);
 	$sql = "SELECT * FROM `purchase_master` WHERE `billno`=$billno";
 	$result = $conn->query($sql);
@@ -352,6 +371,8 @@ if($action == "checkPurchaseBillNoIfPresent"){
 }
 
 if($action == "checkPurchaseDCNoIfPresent"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$dcno = ($_GET["dcno"]);
 	$sql = "SELECT * FROM `purchase_master` WHERE `dcno`=$dcno";
 	$result = $conn->query($sql);

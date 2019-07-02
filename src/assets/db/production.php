@@ -1,10 +1,15 @@
 <?php
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'jwt_helper.php';
+
 $action = $_GET['action'];
 
 if($action == "getAllProdRawmats"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$prodid=$_GET["prodid"];
 	$sql = "SELECT pr.`prodrawid`,pr.`prodid`,pr.`rawmatid`, pr.`defquantity`, rm.`name`, s.`quantity`, s.`stockid` FROM `product_rawmat_register` pr, `raw_material_master` rm, `stock_master` s WHERE pr.`prodid`=$prodid AND pr.`rawmatid`=rm.`rawmatid` AND pr.`rawmatid`=s.`rawmatid`";
 	$result = $conn->query($sql);
@@ -58,6 +63,8 @@ if($action == "getAllProdRawmats"){
 }
 
 if($action == "addProdRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $prodid = $data->prodid;
     $insid = $data->prodid;
@@ -95,6 +102,8 @@ if($action == "addProdRawMaterial"){
 }
 
 if($action == "getTodaysProductionBatch"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	//$batchid = $_GET["batchid"];
 	$sql = "SELECT `batchid` FROM `production_batch_master` where NOT `batchid`='OM'  ORDER BY `batchmastid` DESC LIMIT 1";
 	$result = $conn->query($sql);
@@ -124,6 +133,8 @@ if($action == "getTodaysProductionBatch"){
 }
 
 if($action == "addProductionBatch"){
+	$headers = apache_request_headers();
+	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $batchid = $data->batchid;
     $prodid = $data->prodid;
@@ -189,6 +200,8 @@ if($action == "addProductionBatch"){
 }
 
 if($action == "saveEditRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$prodid = $data->prodid;
 	$rawmatid = $data->rawmatid;
@@ -223,6 +236,8 @@ if($action == "saveEditRawMaterial"){
 }
 
 if($action == "deassignRawMaterial"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$prodrawid = $data->prodrawid;
 	$prodid = $data->prodid;
@@ -257,6 +272,8 @@ if($action == "deassignRawMaterial"){
 }
 
 if($action == "getAllProductionBatches"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$sql = "SELECT pbm.`batchmastid`, pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`status`='open' ORDER BY pbm.`manufacdate`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
@@ -300,6 +317,8 @@ if($action == "getAllProductionBatches"){
 }
 
 if($action == "getProductionBatchesFromToDt"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$sql = "SELECT pbm.`batchmastid`, pbm.`batchid`, pbm.`prodid`, pbm.`qtyproduced`, pbm.`qtyremained`, pbm.`manufacdate`, pm.`prodname` FROM `production_batch_master` pbm, `product_master` pm WHERE pbm.`prodid`=pm.`prodid` AND pbm.`manufacdate` BETWEEN '$fromdt' AND '$todt' ORDER BY pbm.`manufacdate`";
@@ -345,6 +364,8 @@ if($action == "getProductionBatchesFromToDt"){
 }
 
 if($action == "getProductionBatchDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$batchmastid = $_GET["batchmastid"];
 	$sql = "SELECT pbr.`prodregid`,pbr.`rawmatid`,pbr.`rawmatqty`, rm.`name` FROM `production_batch_register` pbr, `raw_material_master` rm WHERE pbr.`batchmastid`=$batchmastid AND pbr.`rawmatid`=rm.`rawmatid`";
 	$result = $conn->query($sql);
@@ -386,6 +407,8 @@ if($action == "getProductionBatchDetails"){
 }
 
 if($action == "updateProductionMaster"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$batchid = $data->batchid;
 	$quantity = $data->quantity;
@@ -417,6 +440,8 @@ if($action == "updateProductionMaster"){
 }
 
 if($action == "addHistoricBatch"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$data = json_decode(file_get_contents("php://input"));
 	$batchid = $data->batchid;
 	$proddate = $data->proddate;
@@ -451,6 +476,8 @@ if($action == "addHistoricBatch"){
 }
 
 if($action == "getRawMatAssignmentHist"){
+	$headers = apache_request_headers();
+	authenticate($headers);
 	$prodid = $_GET["prodid"];
 	$sql = "SELECT arh.`assignrawmatid`, arh.`prodid`, arh.`rawmatid`, arh.`quantity`, arh.`histdate`, rm.`name`, rm.`hsncode` FROM `assign_rawmaterial_history` arh, `raw_material_master` rm WHERE arh.`rawmatid`=rm.`rawmatid` AND arh.`prodid`=$prodid ORDER BY `name`, `histdate`";
 	$result = $conn->query($sql);
