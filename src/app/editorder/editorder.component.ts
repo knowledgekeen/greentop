@@ -34,6 +34,8 @@ export class EditorderComponent implements OnInit {
   clientcities: any = null;
   clientstates: any = null;
   dateerror: boolean = false;
+  ordernopresent: boolean = false;
+  masterorderno: any = null;
 
   constructor(
     private _rest: RESTService,
@@ -50,6 +52,7 @@ export class EditorderComponent implements OnInit {
     this._route.params.subscribe(Resp => {
       if (Resp) {
         this.orderid = Resp.orderid;
+        this.masterorderno = "GTO-" + Resp.orderid;
         this.getOrderDetails();
         this.getOrderConsignees();
       }
@@ -228,32 +231,35 @@ export class EditorderComponent implements OnInit {
       return;
     }
 
-    window.scrollTo(0, 0);
-    let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let orderObj = {
-      orderid: this.orderid,
-      orderno: this.orderno,
-      orderdt: new Date(myDate).getTime(),
-      custid: this.selectedcust.split(".")[0],
-      prodid: this.selectedprod.split(".")[0],
-      qty: this.quantity,
-      consignees: this.allconsignees,
-      remarks: this.remarks
-    };
-    //console.log(orderObj);
 
-    this._rest
-      .postData("order.php", "updateOrderDetails", orderObj, null)
-      .subscribe(Response => {
-        if (Response) {
-          window.scrollTo(0, 0);
-          this.successMsg = true;
-          this._interval.settimer(null).then(Resp => {
-            this.resetForm();
-            this.initialize();
-          });
-        }
-      });
+    this.checkIfOrderNoPresent().then(Resp => {
+      window.scrollTo(0, 0);
+      let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+      let orderObj = {
+        orderid: this.orderid,
+        orderno: this.orderno,
+        orderdt: new Date(myDate).getTime(),
+        custid: this.selectedcust.split(".")[0],
+        prodid: this.selectedprod.split(".")[0],
+        qty: this.quantity,
+        consignees: this.allconsignees,
+        remarks: this.remarks
+      };
+      //console.log(orderObj);
+
+      this._rest
+        .postData("order.php", "updateOrderDetails", orderObj, null)
+        .subscribe(Response => {
+          if (Response) {
+            window.scrollTo(0, 0);
+            this.successMsg = true;
+            this._interval.settimer(null).then(Resp => {
+              this.resetForm();
+              this.initialize();
+            });
+          }
+        });
+    });
   }
 
   resetForm() {
@@ -276,5 +282,32 @@ export class EditorderComponent implements OnInit {
     this.allconsignees = new Array();
     this.allcustomers = null;
     this.dateerror = false;
+  }
+
+  checkIfOrderNoPresent() {
+    if (this.orderno && this.masterorderno) {
+      let promise = new Promise((resolve, reject) => {
+        if (this.orderno == this.masterorderno) {
+          this.ordernopresent = false;
+          resolve(false);
+        } else {
+          let geturl = "orderno=" + this.orderno;
+          this._rest.getData("order.php", "checkIfOrderNoPresent", geturl)
+            .subscribe(Response => {
+              if (Response) {
+                window.scrollTo(0, 0);
+                this.ordernopresent = true;
+                reject(true);
+              }
+              else {
+                this.ordernopresent = false;
+                resolve(false);
+              }
+            });
+        }
+      });
+
+      return promise;
+    }
   }
 }
