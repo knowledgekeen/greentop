@@ -7,6 +7,9 @@
         <i class="fa fa-check"></i> Reprocessing of Product successful.
       </div>
       <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <h6 class="text-danger">NOTE: Add reprocess cautiously, as once added it cannot be modified.</h6>
+        </div>
         <div class="col-md-3 col-sm-12 mb-1">
           <label class="m-0">Reprocessing Date</label>
           <input type="text" class="form-control" placeholder="Reprocessing Date" [(ngModel)]="reprocessdate"
@@ -51,6 +54,33 @@
             <strong>Note: {{errormsg}}</strong>
           </h6>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-2" *ngIf="allreprocessdata">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Reprocess Date</th>
+              <th scope="col">From Product</th>
+              <th scope="col">To Product</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prod of allreprocessdata; let i = index;">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{prod.reprocessdt | date:'dd-MM-yyyy'}}</td>
+              <td>{{prod.fname}}</td>
+              <td>{{prod.tname}}</td>
+              <td>{{prod.quantity}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

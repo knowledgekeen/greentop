@@ -31,6 +31,7 @@ export class TaxinvoiceComponent implements OnInit {
   totalamount: any = 0;
   dcdetails: any = null;
   successmsg: boolean = false;
+  disablesavebtn: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -138,6 +139,7 @@ export class TaxinvoiceComponent implements OnInit {
   }
 
   saveBillDetails() {
+    this.disablesavebtn = true;
     //console.log(this.orderdetails);
     let billdt = moment(this.billdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpobj = {
@@ -163,6 +165,7 @@ export class TaxinvoiceComponent implements OnInit {
           this.resetForm();
           this._interval.settimer().then(Resp => {
             this.successmsg = false;
+            this.disablesavebtn = false;
           });
         }
       });

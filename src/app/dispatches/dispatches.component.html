@@ -157,7 +157,8 @@
           !amount ||
           !advance ||
           !paidon ||
-          addedbatches.length <= 0
+          addedbatches.length <= 0 ||
+          disabledispbtn
         " (click)="dispatchOrder()">
         Dispatch Order
       </button>

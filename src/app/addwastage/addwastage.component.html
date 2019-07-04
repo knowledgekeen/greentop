@@ -7,22 +7,16 @@
         <i class="fa fa-check"></i> {{ successmsg }}
       </div>
       <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <h6 class="text-danger">NOTE: Add Wastage cautiously, as once added it cannot be modified.</h6>
+        </div>
         <div class="col-md-4 col-sm-12">
           <label class="m-0">Raw Material</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Raw Material"
-            [(ngModel)]="rawmat"
-            (change)="getRawMatStock()"
-            list="allrawmat"
-          />
+          <input type="text" class="form-control" placeholder="Raw Material" [(ngModel)]="rawmat"
+            (change)="getRawMatStock()" list="allrawmat" />
           <datalist id="allrawmat">
-            <option
-              value="{{ rawmat.rawmatid }}.{{ rawmat.name }}"
-              *ngFor="let rawmat of allrawmats"
-              >{{ rawmat.rawmatid }}.{{ rawmat.name }}</option
-            >
+            <option value="{{ rawmat.rawmatid }}.{{ rawmat.name }}" *ngFor="let rawmat of allrawmats">
+              {{ rawmat.rawmatid }}.{{ rawmat.name }}</option>
           </datalist>
           <p class="text-primary font-weight-bold" *ngIf="rawmatavailstk">
             Available Stock:
@@ -33,29 +27,15 @@
         </div>
         <div class="col-md-4 col-sm-12">
           <label class="m-0">Quantity</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Quantity"
-            [(ngModel)]="quantity"
-          />
+          <input type="text" class="form-control" placeholder="Quantity" [(ngModel)]="quantity" />
         </div>
         <div class="col-md-4 col-sm-12">
           <label class="m-0">Wastage Date</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Wastage Date"
-            [(ngModel)]="wastagedt"
-            (blur)="autoFillDt()"
-          />
+          <input type="text" class="form-control" placeholder="Wastage Date" [(ngModel)]="wastagedt"
+            (blur)="autoFillDt()" />
         </div>
         <div class="col-md-12 col-sm-12 my-3">
-          <button
-            class="btn btn-primary"
-            [disabled]="!rawmat || !wastagedt || !quantity"
-            (click)="addWastage()"
-          >
+          <button class="btn btn-primary" [disabled]="!rawmat || !wastagedt || !quantity" (click)="addWastage()">
             Add Wastage
           </button>
         </div>
@@ -74,6 +54,7 @@
                   <th scope="col">Raw Material</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Wastage Date</th>
+                  <!-- <th scope="col">Delete</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -82,6 +63,10 @@
                   <td>{{ waste.name }}</td>
                   <td>{{ waste.quantity }}</td>
                   <td>{{ waste.wastagedt | date: "dd-MM-yyyy" }}</td>
+                  <!-- <td>
+                    <a href="javascript:void(0);" (click)="deleteWastage(waste)" class="text-danger">
+                      <i class="fa fa-trash"></i> Delete</a>
+                  </td> -->
                 </tr>
               </tbody>
             </table>

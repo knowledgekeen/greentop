@@ -98,4 +98,31 @@ if($action == "getWastageFromTo"){
 
 	echo json_encode($data);
 }
+
+if($action == "deleteWastage"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $wastageid=$_GET["wastageid"];
+	$sql = "DELETE FROM `rawmat_wastage_master` WHERE `wastageid`=$wastageid";
+	$result = $conn->query($sql);
+
+    $data1= array();
+    if($result){
+        $data1["status"] = 200;
+        $data1["data"] = $wastageid;
+		$log  = "File: wastage.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "success", NULL);
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		$log  = "File: wastage.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
 ?>

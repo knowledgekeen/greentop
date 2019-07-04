@@ -84,7 +84,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="viewBatchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal" id="viewBatchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" *ngIf="selectedbatch">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
@@ -174,7 +174,8 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="saveBatch()">
+        <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="saveBatch()"
+          [disabled]="disablesavebtn">
           Save Batch
         </button>
       </div>

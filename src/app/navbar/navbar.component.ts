@@ -59,7 +59,7 @@ export class NavbarComponent implements OnInit {
       .subscribe(Response => {
         this.spinnerflag = false;
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           tmpObj = null;
           Response["data"][0].sessiontime = new Date(Response["data"][0].sessiontime).setHours(0, 0, 0, 0);
           this.userdets = Response["data"][0];

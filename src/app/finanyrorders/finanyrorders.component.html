@@ -9,7 +9,7 @@
       </span>
     </h5>
     <div class="row">
-      <div class="col-sm-12 text-right" [ngClass]="{ 'col-md-5': showgraph, 'col-md-12': !showgraph }">
+      <div class="col-sm-12 text-right" [ngClass]="{ 'col-md-6': showgraph, 'col-md-12': !showgraph }">
         <!-- Container for Graphs -->
         <a href="javascript:void(0);" (click)="showgraph = !showgraph">
           <span *ngIf="showgraph">Hide Graph</span>
@@ -17,18 +17,12 @@
         </a>
         <div id="orderschart" [hidden]="!showgraph"></div>
       </div>
-      <div class="col-sm-12" [ngClass]="{ 'col-md-7': showgraph, 'col-md-12': !showgraph }">
-        <div class="table-responsive">
-          <table class="table table-sm">
-            <caption>
+      <div class="col-sm-12" [ngClass]="{ 'col-md-6': showgraph, 'col-md-12': !showgraph }">
+        <div class="table-responsive" *ngIf="visibleorders">
+          <table class="table table-sm mb-1">
+            <caption class="py-1">
               All Orders for Current Financial Year:
-              {{
-                finanyr.fromdt | date: "MMM, yyyy"
-              }}
-              -
-              {{
-                finanyr.todt | date: "MMM, yyyy"
-              }}
+              {{finanyr.fromdt | date: "MMM, yyyy"}} - {{finanyr.todt | date: "MMM, yyyy"}}
             </caption>
             <thead class="thead-dark">
               <tr>
@@ -40,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let ord of allorders; let i = index">
+              <tr *ngFor="let ord of (visibleorders[pageno]); let i = index">
                 <th scope="row">{{ i + 1 }}</th>
                 <td>{{ ord.orderno }}</td>
                 <td>{{ ord.orderdt | date: "dd-MM-yyyy" }}</td>
@@ -49,6 +43,29 @@
               </tr>
             </tbody>
           </table>
+          <nav aria-label="..." class="pl-2" *ngIf="pagecount > 1">
+            <ul class="pagination">
+              <li class="page-item" [ngClass]="{ disabled: disableprevbtn }">
+                <a class="page-link" href="javascript:void(0);" aria-label="Previous" (click)="goToPrevPage()">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item" *ngFor="let page of visibleorders; let i = index"
+                [ngClass]="{'active': (pageno==i)}">
+                <a class="page-link" href="javascript:void(0);" (click)="goToPage(i)">{{ i + 1 }}</a>
+              </li>
+              <li class="page-item" [ngClass]="{ disabled: disablenextbtn }">
+                <a class="page-link" href="javascript:void(0);" aria-label="Next" (click)="goToNextPage()">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+            <ul class="pagination">
+              <li class="page-item">
+                <span>Page No: {{ pageno + 1 }}</span>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

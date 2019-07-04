@@ -31,6 +31,7 @@ export class DispatchesComponent implements OnInit {
   qtyremerror: any = false;
   successmsg: any = false;
   addedbatches: any = new Array();
+  disabledispbtn: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -217,6 +218,7 @@ export class DispatchesComponent implements OnInit {
   }
 
   dispatchOrder() {
+    this.disabledispbtn = true;
     let totalqty = 0;
     for (const i in this.addedbatches) {
       totalqty += parseFloat(this.addedbatches[i].selqty);
@@ -293,6 +295,7 @@ export class DispatchesComponent implements OnInit {
                                 this.successmsg = true;
                                 this._interval.settimer(null).then(resp => {
                                   this.resetForm();
+                                  this.disabledispbtn = false;
                                   this.initialize();
                                 });
                               } else {

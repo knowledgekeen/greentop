@@ -43,12 +43,13 @@
         </div>
 
         <div class="col-md-12">
-          <button class="btn btn-primary my-2" [disabled]="!product || !rawmat || !defqty"
+          <button class="btn btn-primary my-2" [disabled]="!product || !rawmat || !defqty || disablesubmitbtn"
             (click)="addProdRawMaterial()" *ngIf="!editqtyrem">
             Add Raw Material
           </button>
 
-          <button class="btn btn-success my-2" (click)="saveEditRawMaterial()" *ngIf="editqtyrem">
+          <button class="btn btn-success my-2" (click)="saveEditRawMaterial()"
+            [disabled]="!product || !rawmat || !defqty || disablesubmitbtn" *ngIf="editqtyrem">
             Save Raw Material
           </button>
         </div>

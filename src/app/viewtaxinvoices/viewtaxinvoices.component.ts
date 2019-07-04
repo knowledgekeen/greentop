@@ -33,6 +33,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
   totalamount: any = 0;
   autocalc: boolean = true;
   successmsg: boolean = false;
+  disableupdatebtn: boolean = false;
   totalmonthamt: any = 0;
   totalmonthqty: any = 0;
 
@@ -40,13 +41,13 @@ export class ViewtaxinvoicesComponent implements OnInit {
     private _interval: IntervalService,
     private _rest: RESTService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
   }
 
-  initialize() {}
+  initialize() { }
 
   getInvoicesFromToDt(fromdt, todt) {
     this.allinvoices = null;
@@ -122,6 +123,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
 
     this.billdt = this._global.getAutofillFormattedDt(this.billdt);
   }
+
   toggleDTP() {
     this.opendtp = !this.opendtp;
   }
@@ -201,6 +203,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
   }
 
   updateBillDetails() {
+    this.disableupdatebtn = true;
     let billdt = moment(this.billdt, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpobj = {
       otaxinvoiceid: this.billdetails.otaxinvoiceid,
@@ -222,6 +225,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
           this.initialize();
           this._interval.settimer().then(Resp => {
             this.successmsg = false;
+            this.disableupdatebtn = false;
           });
         }
       });

@@ -22,6 +22,7 @@ export class ViewbatchComponent implements OnInit {
   selectedDate: any = new Date();
   errorMsg: any = false;
   batchdispatches: any = false;
+  disablesavebtn: boolean = false;
 
   constructor(
     private _rest: RESTService,
@@ -91,8 +92,7 @@ export class ViewbatchComponent implements OnInit {
   }
 
   saveBatch() {
-    //console.log(this.selectedbatch, this.selectedbatchmaterials);
-    //console.log(this.originalbatch, this.selectedbatch);
+    this.disablesavebtn = true;
     let batchqtychange =
       parseFloat(this.selectedbatch.qtyproduced) -
       parseFloat(this.originalbatch.qtyproduced);
@@ -162,6 +162,7 @@ export class ViewbatchComponent implements OnInit {
                         .subscribe(RespTmpProdRegArr => {
                           //console.log("Success", RespTmpProdRegArr);
                           vm.batchsucces = true;
+                          vm.disablesavebtn = false;
                           vm._interval.settimer(null).then(resp => {
                             vm.batchsucces = false;
                           });

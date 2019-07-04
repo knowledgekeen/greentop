@@ -68,7 +68,7 @@
               <span aria-hidden="true">&laquo;</span>
             </a>
           </li>
-          <li class="page-item" *ngFor="let page of visibleclients; let i = index">
+          <li class="page-item" *ngFor="let page of visibleclients; let i = index" [ngClass]="{'active': (pageno==i)}">
             <a class="page-link" href="javascript:void(0);" (click)="goToPage(i)">{{ i + 1 }}</a>
           </li>
           <li class="page-item" [ngClass]="{ disabled: disablenextbtn }">

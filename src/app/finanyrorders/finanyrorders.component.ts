@@ -11,8 +11,15 @@ import * as moment from "moment";
 })
 export class FinanyrordersComponent implements OnInit {
   allorders: any = null;
+  visibleorders: any = null;
   finanyr: any = null;
   showgraph: boolean = true;
+  pageno: number = 0;
+  pagelimit: number = 10;
+  pagecount: number = 0;
+  disableprevbtn: boolean;
+  disablenextbtn: boolean;
+
   constructor(private _global: GlobalService, private _rest: RESTService) { }
 
   ngOnInit() {
@@ -29,6 +36,7 @@ export class FinanyrordersComponent implements OnInit {
         if (Response) {
           this.allorders = Response["data"];
           this.filterDataForChart();
+          this.createPagination();
         }
       });
   }
@@ -60,10 +68,7 @@ export class FinanyrordersComponent implements OnInit {
         mnt: null,
         qty: null
       };
-      if (
-        parseInt(allorderscopy[i].orderdt) >= fromdt &&
-        parseInt(allorderscopy[i].orderdt) <= todt
-      ) {
+      if (parseInt(allorderscopy[i].orderdt) >= fromdt && parseInt(allorderscopy[i].orderdt) <= todt) {
         let tmpdt = new Date(fromdt);
         tmpobj.mnt = moment(tmpdt).format("MMM");
         tmpobj.qty = parseInt(allorderscopy[i].quantity);
@@ -148,5 +153,42 @@ export class FinanyrordersComponent implements OnInit {
         ]
       }
     });
+  }
+
+  createPagination() {
+    this.pagecount = Math.ceil(this.allorders.length / this.pagelimit);
+    let allorderscopy = JSON.parse(JSON.stringify(this.allorders));
+    let tmparr = [];
+    for (let i = 0; i < this.pagecount; i++) {
+      tmparr.push(allorderscopy.splice(0, this.pagelimit));
+    }
+    this.visibleorders = tmparr;
+  }
+
+  goToPage(index) {
+    this.pageno = index;
+    if (this.pageno == 0) {
+      this.disableprevbtn = true;
+    } else {
+      this.disableprevbtn = false;
+    }
+    if (this.pageno == this.pagecount - 1) {
+      this.disablenextbtn = true;
+    } else {
+      this.disablenextbtn = false;
+    }
+  }
+
+  goToPrevPage() {
+    if (this.disableprevbtn) return;
+    let pageno = this.pageno - 1;
+    this.goToPage(pageno);
+  }
+
+  goToNextPage() {
+    if (this.disablenextbtn) return;
+
+    let pageno = this.pageno + 1;
+    this.goToPage(pageno);
   }
 }

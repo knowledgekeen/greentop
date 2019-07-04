@@ -641,4 +641,90 @@ if($action == "insertStockRegister"){
     }
     echo json_encode($data1);
 }
+
+if($action == "insertReprocessing"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $reprocessdt = $data->reprocessdt;
+    $fromprodid = $data->fromprodid;
+    $toprodid = $data->toprodid;
+    $quantity = $data->quantity;
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlins = "INSERT INTO `reprocessed_product`(`reprocessdt`, `fromprodid`, `toprodid`, `quantity`) VALUES ('$reprocessdt', '$fromprodid', '$toprodid', '$quantity')";
+		$resultins = $conn->query($sqlins);
+		$procesid=$conn->insert_id;
+	}
+	
+    $data1= array();
+    if($resultins){
+        $data1["status"] = 200;
+        $data1["data"] = $procesid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
+
+if($action == "allreprocessdata"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$sql = "select _t1.`reprocessid`, _t1.`reprocessdt`, _t1.`quantity`, _t1.`fromprodid`, _t1.`toprodid`, _t2.prodname as fname, _t3.prodname as tname
+	from `reprocessed_product` _t1
+	inner join `product_master` _t2  on _t1.`fromprodid` = _t2.prodid
+	inner join `product_master` _t3  on _t1.`toprodid` = _t3.prodid
+	ORDER BY _t1.`reprocessdt`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	$tmp = array();
+	$data1 = array();
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['reprocessid'] = $row['reprocessid'];
+			$tmp[$i]['reprocessdt'] = $row['reprocessdt'];
+			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['fromprodid'] = $row['fromprodid'];
+			$tmp[$i]['toprodid'] = $row['toprodid'];
+			$tmp[$i]['fname'] = $row['fname'];
+			$tmp[$i]['tname'] = $row['tname'];
+			$i++;
+		}
+		$data1["status"] = 200;
+		$data1["data"] = $tmp;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

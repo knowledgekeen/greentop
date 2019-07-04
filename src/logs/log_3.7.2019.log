@@ -2036,3 +2036,1566 @@ File: order.php - Method: checkIfOrderNoPresent
 Data: {"status":200,"data":"16"}
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 11:49:15
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 11:49:15
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 11:49:15
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 11:58:57
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 11:58:57
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 11:58:57
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:11:50
+File: client.php - Method: addClient
+Data: {"fname":"xyz","cno":"132","gstno":"4565","email":null,"cperson1":null,"cno1":null,"cperson2":null,"cno2":null,"city":"Ajara","state":"Karnataka","address":"aaa","ctype":"1"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:14
+File: transport.php - Method: getActiveTransport
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:15
+File: transport.php - Method: getActiveTransport
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:26
+File: transport.php - Method: addTransport
+Data: {"transportnm":"AAA","contactno":"1212","address":"AAA"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:26
+File: transport.php - Method: getActiveTransport
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:31
+File: transport.php - Method: getActiveTransport
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:31
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:49
+File: transport.php - Method: addTruck
+Data: {"tmid":"3","lorryno":"MH115522"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:49
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:58
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:14:58
+File: product.php - Method: getDeactiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:16:19
+File: product.php - Method: addProduct
+Data: {"pname":"Organic AA","hsncode":"121"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:16:19
+File: stock.php - Method: newProductInStock
+Data: {"prodid":4,"moddt":1562136379042,"openbal":"0","openbaldt":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:16:21
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:18:49
+File: product.php - Method: deactivateProduct
+Data: {"status":200,"data":"4"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:18:49
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:18:49
+File: product.php - Method: getDeactiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:05
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:17
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:20
+File: payments_common.php - Method: addPayMode
+Data: {"paymode":"aa"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:20
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:24
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:24
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:26
+File: stock.php - Method: getRawMatStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:41
+File: wastage.php - Method: addWastage
+Data: {"rawmatid":"1","quantity":"5","wastagedt":1559327400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:41
+File: wastage.php - Method: addWastage
+Data: {"rawmatid":"1","quantity":"5","wastagedt":1559327400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:43
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:19:43
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:20:19
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:20:19
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:21:06
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:21:06
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:22:41
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:22:41
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:23:06
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:23:06
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:23:39
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:23:39
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:24:03
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:24:03
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:24:22
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:24:22
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:24:28
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:24:28
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:25:20
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:25:20
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:25:28
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:25:28
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:25:39
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:25:39
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:26:10
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:26:10
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:28:50
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:28:50
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:29:13
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:29:13
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:29:30
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:29:30
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:32:31
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:32:31
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:32:49
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:32:49
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:30
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:30
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:46
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:46
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:52
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:52
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:59
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:33:59
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:34:08
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:34:08
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:34:09
+File: wastage.php - Method: deleteWastage
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:34:09
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:13
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:13
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:39
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:39
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:46
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:46
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:55:53
+File: stock.php - Method: getRawMatStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:56:00
+File: wastage.php - Method: addWastage
+Data: {"rawmatid":"6","quantity":"-3","wastagedt":1556649000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 12:56:02
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:00:28
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:00:29
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:00:29
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:00:35
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:00:35
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:01:04
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:01:04
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:01:04
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:01
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:01
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:01
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:07
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:07
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:07
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:14
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:15
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:15
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:21
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:21
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:02:21
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:57:14
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:57:14
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:57:14
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:57:22
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:57:22
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 13:57:22
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:01:45
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:01:45
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:01:46
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:02:52
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:02:52
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:02:52
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:03:24
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:03:24
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:03:24
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:03:31
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:03:31
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:03:31
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:39
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:39
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:39
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:56
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:56
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:04:56
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:06
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:06
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:06
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:27
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:27
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:27
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:57
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:57
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:06:57
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:10:05
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:10:05
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:10:05
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:11
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:11
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:11
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:46
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:55
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:55
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:11:55
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:12:09
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:12:09
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:12:09
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:16:31
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:16:31
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:16:31
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:17:14
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:17:14
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:17:14
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:17:41
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:17:41
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:17:41
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:18:29
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:18:29
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:18:30
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:18:41
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:18:41
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:18:41
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:19:56
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:19:56
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:19:56
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:20:07
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:20:07
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:20:07
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:20:30
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:20:31
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:20:31
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:00
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:00
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:00
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:10
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:10
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:11
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:19
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:19
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:19
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:31
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:31
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:31
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:55
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:55
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:21:55
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:22:47
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:22:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:22:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:23:54
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:23:55
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:23:55
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:24:11
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:24:11
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:24:11
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:24:48
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:24:48
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:24:48
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:25:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:25:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:25:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:26:54
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:26:54
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:26:54
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:26:57
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:26:57
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:28:23
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:28:23
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:28:27
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:28:27
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:28:27
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:18
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:18
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:20
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:22
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:23
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"1","quantity":-3,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"7","quantity":3,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"1","quantity":-3,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"1","quantity":3,"openbaldt":1562092200000,"INnOut":"OUT","remarks":"Removed Product for Reprocessing"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"7","quantity":3,"openbaldt":1562092200000,"INnOut":"IN","remarks":"Reprocessed Product"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"1","quantity":3,"openbaldt":1562092200000,"INnOut":"OUT","remarks":"Removed Product for Reprocessing"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"7","quantity":3,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:27
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"7","quantity":3,"openbaldt":1562092200000,"INnOut":"IN","remarks":"Reprocessed Product"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:31
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 14:29:33
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:15
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:40
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:51
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:52
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:54
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:58
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"1","quantity":-1,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:58
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"7","quantity":1,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:58
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"1","quantity":1,"openbaldt":1562092200000,"INnOut":"OUT","remarks":"Removed Product for Reprocessing"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:06:58
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"7","quantity":1,"openbaldt":1562092200000,"INnOut":"IN","remarks":"Reprocessed Product"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:07:04
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:07:05
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:07:05
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:09:27
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:11:06
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:13:03
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:14:58
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:22:38
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:25:24
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:29:52
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:29:57
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:29:57
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:29:57
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:30:57
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:34:19
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:34:53
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:36:01
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:36:45
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:36:55
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:08
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:28
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:32
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:36
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:39
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"7","quantity":-5,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:39
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"1","quantity":5,"openbaldt":1562092200000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:39
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"7","quantity":5,"openbaldt":1562092200000,"INnOut":"OUT","remarks":"Removed Product for Reprocessing"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:39
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"1","quantity":5,"openbaldt":1562092200000,"INnOut":"IN","remarks":"Reprocessed Product"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:37:39
+File: stock.php - Method: insertReprocessing
+Data: {"reprocessdt":1562092200000,"fromprodid":"2","toprodid":"1","quantity":"5"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:19
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:21
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:25
+File: stock.php - Method: getProductStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:34
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"7","quantity":-3,"openbaldt":1562005800000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:34
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"1","quantity":3,"openbaldt":1562005800000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:34
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"7","quantity":3,"openbaldt":1562005800000,"INnOut":"OUT","remarks":"Removed Product for Reprocessing"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:34
+File: stock.php - Method: insertStockRegister
+Data: {"stockid":"1","quantity":3,"openbaldt":1562005800000,"INnOut":"IN","remarks":"Reprocessed Product"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:45:34
+File: stock.php - Method: insertReprocessing
+Data: {"reprocessdt":1562005800000,"fromprodid":"2","toprodid":"1","quantity":"3"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 19:48:11
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:03:50
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:16:23
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:17:24
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:18:09
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:18:31
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:20:10
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:20:10
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:20:33
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:20:33
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:22:42
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:23:21
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:25:05
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:25:05
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:25:17
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:25:17
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:35:54
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:35:54
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:37:25
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 20:37:25
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 23:29:49
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 3, 2019, 23:29:49
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************

@@ -16,12 +16,13 @@ export class AddhistoricbatchComponent implements OnInit {
   prodid: any = null;
   allprods: any = false;
   successMsg: any = false;
+  disableaddbtn: any = false;
 
   constructor(
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -43,7 +44,6 @@ export class AddhistoricbatchComponent implements OnInit {
       .getData("production.php", "getTodaysProductionBatch", null)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response);
           this.batchid = parseInt(Response["data"]) + 1;
         } else {
           this.batchid = "1";
@@ -68,6 +68,7 @@ export class AddhistoricbatchComponent implements OnInit {
   }
 
   addHistoricBatch() {
+    this.disableaddbtn = true;
     let myDate = moment(this.proddate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpobj = {
       batchid: this.batchid,
@@ -83,6 +84,7 @@ export class AddhistoricbatchComponent implements OnInit {
           this._interval.settimer().then(Resp => {
             this.successMsg = null;
             this.initialize();
+            this.disableaddbtn = false;
           });
         }
       });

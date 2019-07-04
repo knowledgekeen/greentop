@@ -18,6 +18,7 @@ export class AddbatchComponent implements OnInit {
   allrawmats: any = null;
   qty: any = [];
   successMsg: any = false;
+  disableaddbtn: any = false;
   prodstk: any;
 
   constructor(
@@ -46,9 +47,8 @@ export class AddbatchComponent implements OnInit {
   }
 
   getTodaysProductionBatch(dt) {
-    //let urldata = "batchid=" + dt;
     this._rest
-      .getData("production.php", "getTodaysProductionBatch", null)
+      .getData("production.php", "getTodaysProductionBatch")
       .subscribe(Response => {
         if (Response) {
           console.log(Response);
@@ -64,7 +64,7 @@ export class AddbatchComponent implements OnInit {
 
   getActiveProducts() {
     this._rest
-      .getData("product.php", "getActiveProducts", null)
+      .getData("product.php", "getActiveProducts")
       .subscribe(Response => {
         if (Response) {
           this.allprods = Response["data"];
@@ -92,7 +92,7 @@ export class AddbatchComponent implements OnInit {
   }
 
   addBatch() {
-    //debugger;
+    this.disableaddbtn = true;
     let dt = this.proddate.split("-");
     let proddt = moment().set({
       y: parseInt(dt[2]),
@@ -151,6 +151,7 @@ export class AddbatchComponent implements OnInit {
           .subscribe(Response => {
             if (Response) {
               this.successMsg = "Batch created successfully.";
+              this.disableaddbtn = false;
               this.initialize();
               this._interval.settimer(null).then(Resp => {
                 this.successMsg = false;
@@ -165,7 +166,6 @@ export class AddbatchComponent implements OnInit {
 
   autoFillDate() {
     if (!this.proddate) return;
-
     this.proddate = this._global.getAutofillFormattedDt(this.proddate);
   }
 }

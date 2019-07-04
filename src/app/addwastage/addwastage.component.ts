@@ -23,7 +23,7 @@ export class AddwastageComponent implements OnInit {
     private _global: GlobalService,
     private _rest: RESTService,
     private _interval: IntervalService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getRawMaterials();
@@ -84,7 +84,7 @@ export class AddwastageComponent implements OnInit {
       .getData("wastage.php", "getWastageFromTo", urldata)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response);
+          //console.log(Response);
           this.allwastages = Response["data"];
           for (const i in this.allwastages) {
             if (this.allwastages[i].name.toLowerCase().indexOf("bag") > -1) {
@@ -93,7 +93,7 @@ export class AddwastageComponent implements OnInit {
               totalstk.rawmat += parseFloat(this.allwastages[i].quantity);
             }
           }
-          console.log(totalstk);
+          //console.log(totalstk);
           this.totalwaste = totalstk;
         }
       });
@@ -113,5 +113,22 @@ export class AddwastageComponent implements OnInit {
           this.rawmatavailstk = Response["data"];
         }
       });
+  }
+
+  // This method is not in use as deleting a wastage will effect in stock
+  deleteWastage(waste) {
+    console.log(waste);
+    this.successmsg = null;
+    let geturl = "wastageid=" + waste.wastageid;
+    this._rest.getData("wastage.php", "deleteWastage", geturl)
+      .subscribe(Response => {
+        if (Response) {
+          this.successmsg = "Wastage deleted successfully";
+          this.getWastageFromTo();
+          this._interval.settimer().then(Resp => {
+            this.successmsg = null;
+          })
+        }
+      })
   }
 }

@@ -52,7 +52,6 @@ export class EditorderComponent implements OnInit {
     this._route.params.subscribe(Resp => {
       if (Resp) {
         this.orderid = Resp.orderid;
-        this.masterorderno = "GTO-" + Resp.orderid;
         this.getOrderDetails();
         this.getOrderConsignees();
       }
@@ -109,6 +108,7 @@ export class EditorderComponent implements OnInit {
           let data = Response["data"];
           //console.log(data);
           this.orderno = data.orderno;
+          this.masterorderno = data.orderno;
           this.selectedprod = data.prodid + "." + data.prodname;
           this.orderdt = moment(parseInt(data.orderdt)).format("DD-MM-YYYY");
           this.selectedcust = data.clientid + "." + data.name;

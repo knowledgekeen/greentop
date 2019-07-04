@@ -20,12 +20,14 @@ export class AddreprocessproductComponent implements OnInit {
   disablebtn: any = false;
   successflag: any = false;
   errormsg: any = null;
+  allreprocessdata: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService, private _interval: IntervalService) { }
 
   ngOnInit() {
     this.reprocessdate = moment(new Date().getTime()).format("DD-MM-YYYY");
     this.getActiveProducts();
+    this.viewReprocessingsData();
   }
 
   autofillDt() {
@@ -59,6 +61,7 @@ export class AddreprocessproductComponent implements OnInit {
   }
 
   reprocessProduct() {
+    this.disablebtn = true;
     let mydate = moment(this.reprocessdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let fromstockdate: any = {
       stockid: this.fromprodstock.stockid,
@@ -81,14 +84,25 @@ export class AddreprocessproductComponent implements OnInit {
           this._rest.postData("stock.php", "updateCurrentStock", tostockdate)
             .subscribe(Resp => {
               if (Resp) {
-                this.successflag = true;
-                this._interval.settimer().then(Res => {
-                  this.successflag = false;
-                });
-
                 tostockdate.INnOut = "IN";
                 tostockdate.remarks = "Reprocessed Product";
                 this._rest.postData("stock.php", "insertStockRegister", tostockdate).subscribe(RespInsStk => { });
+
+                let reprocessobj = {
+                  reprocessdt: new Date(mydate).getTime(),
+                  fromprodid: this.fromprodstock.prodid,
+                  toprodid: this.toprodstock.prodid,
+                  quantity: this.quantity
+                };
+                this._rest.postData("stock.php", "insertReprocessing", reprocessobj).subscribe(RespReprocess => {
+                  this.successflag = true;
+                  this.viewReprocessingsData();
+                  this.disablebtn = false;
+                  this._interval.settimer().then(Res => {
+                    this.successflag = false;
+                  });
+                });
+
                 fromstockdate = null;
                 tostockdate = null;
                 this.fromprodstock = null;
@@ -97,7 +111,6 @@ export class AddreprocessproductComponent implements OnInit {
                 this.fromprod = null;
                 this.toprod = null;
                 this.quantity = null;
-                this.disablebtn = false;
               }
             })
         }
@@ -114,5 +127,16 @@ export class AddreprocessproductComponent implements OnInit {
         this.errormsg = "Quantity cannot be less than or equal to ZERO";
       }
     }
+  }
+
+  viewReprocessingsData() {
+    this.allreprocessdata = null;
+    this._rest.getData("stock.php", "allreprocessdata")
+      .subscribe(Response => {
+        console.log(Response)
+        if (Response) {
+          this.allreprocessdata = Response["data"];
+        }
+      });
   }
 }

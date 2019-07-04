@@ -13,21 +13,12 @@
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Production Date (DD-MM-YYYY)</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="proddate"
-            (blur)="autoFillDate()"
-            placeholder="Production Date (DD-MM-YYYY)"
-          />
+          <input type="text" class="form-control" [(ngModel)]="proddate" (blur)="autoFillDate()"
+            placeholder="Production Date (DD-MM-YYYY)" />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Select Product</label>
-          <select
-            class="form-control"
-            [disabled]="!allprods"
-            [(ngModel)]="prodid"
-          >
+          <select class="form-control" [disabled]="!allprods" [(ngModel)]="prodid">
             <option value="{{ prod.prodid }}" *ngFor="let prod of allprods">{{
               prod.prodname
             }}</option>
@@ -35,19 +26,11 @@
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Quantity Produced (in tons)</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="quantity"
-            placeholder="Quantity Produced"
-          />
+          <input type="text" class="form-control" [(ngModel)]="quantity" placeholder="Quantity Produced" />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
-          <button
-            class="btn btn-primary"
-            [disabled]="!batchid || !proddate || !quantity || !prodid"
-            (click)="addHistoricBatch()"
-          >
+          <button class="btn btn-primary" [disabled]="!batchid || !proddate || !quantity || !prodid || disableaddbtn"
+            (click)="addHistoricBatch()">
             Add Batch
           </button>
         </div>

@@ -7,48 +7,31 @@
         <i class="fa fa-check"></i> {{ successMsg }}
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3 col-sm-12">
           <label class="m-0">Batch Id</label>
           <input type="text" class="form-control" [(ngModel)]="batchid" />
         </div>
-        <div class="col-md-6">
-          <label class="m-0">Production Date (DD-MM-YYYY)</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="proddate"
-            (blur)="autoFillDate()"
-            placeholder="Production Date (DD-MM-YYYY)"
-          />
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Production Date</label>
+          <input type="text" class="form-control" [(ngModel)]="proddate" (blur)="autoFillDate()"
+            placeholder="Production Date" />
         </div>
 
-        <div class="col-md-6 my-3">
-          <label class="m-0"
-            >Select Product
-            <strong class="text-success" *ngIf="prodstk"
-              >(Available stock: {{ prodstk.quantity }} tons)</strong
-            ></label
-          >
-          <select
-            class="form-control"
-            [disabled]="!allprods"
-            [(ngModel)]="prodid"
-            (change)="getAllProdRawmats()"
-          >
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Select Product</label>
+          <select class="form-control" [disabled]="!allprods" [(ngModel)]="prodid" (change)="getAllProdRawmats()">
             <option value="{{ prod.prodid }}" *ngFor="let prod of allprods">{{
               prod.prodname
             }}</option>
           </select>
+          <label class="m-0">
+            <strong class="text-primary" *ngIf="prodstk">Available stock: {{ prodstk.quantity }} tons</strong>
+          </label>
         </div>
 
-        <div class="col-md-6 my-3">
-          <label class="m-0">Quantity Produced (in tons)</label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="quantity"
-            placeholder="Quantity Produced"
-          />
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Quantity Produced</label>
+          <input type="text" class="form-control" [(ngModel)]="quantity" placeholder="Quantity Produced" />
         </div>
 
         <div class="col-md-12 mt-3" *ngIf="prodid">
@@ -59,28 +42,16 @@
       </div>
 
       <div class="row my-0" *ngIf="allrawmats">
-        <div
-          class="col-md-4 mt-0 mb-3"
-          *ngFor="let rawmat of allrawmats; let i = index"
-        >
+        <div class="col-md-4 mt-0 mb-3" *ngFor="let rawmat of allrawmats; let i = index">
           <label class="m-0 text-primary">{{ rawmat.name }}</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter quantity"
-            [(ngModel)]="qty[i]"
-          />
+          <input type="text" class="form-control" placeholder="Enter quantity" [(ngModel)]="qty[i]" />
 
           <p class="my-1">
             Quantity remained:
-            <span
-              class="badge"
-              [ngClass]="{
+            <span class="badge" [ngClass]="{
                 'badge-info': rawmat.quantity != 0,
                 'badge-danger': rawmat.quantity <= 0
-              }"
-              >{{ rawmat.quantity }}</span
-            >
+              }">{{ rawmat.quantity }}</span>
           </p>
         </div>
       </div>
@@ -96,11 +67,8 @@
 
       <div class="row my-0" *ngIf="allrawmats">
         <div class="col-md-12">
-          <button
-            class="btn btn-primary"
-            (click)="addBatch()"
-            [disabled]="!proddate || !prodid || !quantity"
-          >
+          <button class="btn btn-primary" (click)="addBatch()"
+            [disabled]="!proddate || !prodid || !quantity || disableaddbtn">
             Add Batch
           </button>
         </div>
