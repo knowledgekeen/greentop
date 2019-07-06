@@ -4,12 +4,35 @@
       <i class="fa fa-check"></i> {{successmsg}}
     </div>
     <h5 class="text-primary">All Expenditures</h5>
-    <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(0)"
-      [ngClass]="{'btn-primary': selectedstatus == 1, 'btn-outline-primary': selectedstatus != 1}">All</button>
-    <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(1)"
-      [ngClass]="{'btn-primary': selectedstatus == 2, 'btn-outline-primary': selectedstatus != 2}">Cash Expense</button>
-    <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(2)"
-      [ngClass]="{'btn-primary': selectedstatus == 3, 'btn-outline-primary': selectedstatus != 3}">Bank Expense</button>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(0)"
+          [ngClass]="{'btn-primary': selectedstatus == 1, 'btn-outline-primary': selectedstatus != 1}">All</button>
+        <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(1)"
+          [ngClass]="{'btn-primary': selectedstatus == 2, 'btn-outline-primary': selectedstatus != 2}">Cash
+          Expense</button>
+        <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(2)"
+          [ngClass]="{'btn-primary': selectedstatus == 3, 'btn-outline-primary': selectedstatus != 3}">Bank
+          Expense</button>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Select Account Head" aria-label="Select Account Head"
+            aria-describedby="button-addon2" [(ngModel)]="filteraccheadnm" list="accheadfilter">
+          <div class="input-group-append">
+            <button class="btn btn-sm btn-info" type="button" id="button-addon2" [disabled]="!filteraccheadnm"
+              (click)="filterByAccountHead()">
+              <i class="fa fa-filter"></i> Filter</button>
+          </div>
+
+          <datalist id="accheadfilter">
+            <option value="{{ acchead.accheadnm }}" *ngFor="let acchead of allaccheads">
+              {{ acchead.accheadnm }}
+            </option>
+          </datalist>
+        </div>
+      </div>
+    </div>
 
     <div class="table-responsive mt-2">
       <table class="table table-sm">
@@ -58,7 +81,7 @@
           </tr>
           <tr *ngIf="allexpenditures == false">
             <th colspan="7" class="text-danger">
-              <h6>No Expenses yet.</h6>
+              <h6><i class="fa fa-exclamation-triangle"></i> No Expenses Found.</h6>
             </th>
           </tr>
           <tr class="text-right">

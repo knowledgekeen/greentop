@@ -22,6 +22,7 @@ export class ViewexpenditureComponent implements OnInit {
   editparticulars: any = null;
   editamount: any = null;
   successmsg: any = null;
+  filteraccheadnm: any = null;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
 
@@ -51,9 +52,9 @@ export class ViewexpenditureComponent implements OnInit {
   }
 
   filterExpenses(index) {
+    this.filteraccheadnm = null;
     this.selectedstatus = index + 1;
     this.totalamount = 0;
-    console.log(this.allexpenditures, index);
     this.allexpenditures = JSON.parse(JSON.stringify(this.masterexpenditure));
     if (index == 0) {
       let vm = this;
@@ -126,5 +127,18 @@ export class ViewexpenditureComponent implements OnInit {
           });
         }
       });
+  }
+
+  filterByAccountHead() {
+    this.allexpenditures = JSON.parse(JSON.stringify(this.masterexpenditure));
+    this.selectedstatus = 4;
+    this.totalamount = 0;
+    let vm = this;
+    this.allexpenditures = this.allexpenditures.filter(function (number) {
+      return number.accheadnm == vm.filteraccheadnm;
+    });
+    this.allexpenditures.filter(function (value) {
+      vm.totalamount += parseFloat(value.amount);
+    });
   }
 }
