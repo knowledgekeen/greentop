@@ -1,0 +1,154 @@
+<div class="card my-2">
+  <div class="card-body">
+    <div class="alert alert-success" role="alert" *ngIf="successmsg">
+      <i class="fa fa-check"></i> {{successmsg}}
+    </div>
+    <h5 class="text-primary">All Expenditures</h5>
+    <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(0)"
+      [ngClass]="{'btn-primary': selectedstatus == 1, 'btn-outline-primary': selectedstatus != 1}">All</button>
+    <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(1)"
+      [ngClass]="{'btn-primary': selectedstatus == 2, 'btn-outline-primary': selectedstatus != 2}">Cash Expense</button>
+    <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(2)"
+      [ngClass]="{'btn-primary': selectedstatus == 3, 'btn-outline-primary': selectedstatus != 3}">Bank Expense</button>
+
+    <div class="table-responsive mt-2">
+      <table class="table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Particulars</th>
+            <th scope="col">Type</th>
+            <th scope="col">Account Head</th>
+            <th scope="col" class="text-right">Amount</th>
+            <th scope="col">
+              <i class="fa fa-pencil ml-3"></i>
+              <span class="mx-2">/</span>
+              <i class="fa fa-trash mr-3"></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let expenditure of allexpenditures; let i=index">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{expenditure.expdate | date: 'dd-MM-yyyy'}}</td>
+            <td>{{expenditure.particulars}}</td>
+            <td>
+              <span *ngIf="expenditure.exptype == 1">Cash</span>
+              <span *ngIf="expenditure.exptype == 2">Bank</span>
+            </td>
+            <td>{{expenditure.accheadnm}}</td>
+            <td class="text-right">{{expenditure.amount | currency:'INR' }}</td>
+            <td>
+              <a href="javascript:void(0);" class="text-warning ml-3" title="Edit Expenditure" data-toggle="modal"
+                data-target="#editExpenditure" (click)="editExpenditure(expenditure)">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <span class="mx-2">/</span>
+              <a href="javascript:void(0);" class="text-danger mr-3" title="Delete Expenditure" data-toggle="modal"
+                data-target="#deleteModal" (click)="selectedexpenditure = expenditure">
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <tr *ngIf="allexpenditures == null">
+            <th colspan="7" class="text-primary">
+              <h6><i class="fa fa-spinner fa-pulse"></i> Please wait</h6>
+            </th>
+          </tr>
+          <tr *ngIf="allexpenditures == false">
+            <th colspan="7" class="text-danger">
+              <h6>No Expenses yet.</h6>
+            </th>
+          </tr>
+          <tr class="text-right">
+            <th colspan="5" class="text-primary">
+              <h6>Total Amount</h6>
+            </th>
+            <th>{{totalamount | currency:'INR'}}</th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal" id="editExpenditure" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" *ngIf="selectedexpenditure">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="exampleModalLabel">
+          {{selectedexpenditure.expdate | date: 'dd-MM-yyyy'}} | {{selectedexpenditure.particulars}}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <label class="m-0">Date</label>
+            <input type="text" class="form-control" [(ngModel)]="editdate" />
+          </div>
+          <div class="col-md-4">
+            <label class="m-0">Expense Type</label>
+            <select class="form-control" [(ngModel)]="editexptype">
+              <option value="1">Cash Expense</option>
+              <option value="2">Bank Expense</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="m-0">Account Head</label>
+            <input type="text" class="form-control" [(ngModel)]="editaccounthead" list="acchead" />
+
+            <datalist id="acchead">
+              <option value="{{ acchead.accheadid }}.{{ acchead.accheadnm }}" *ngFor="let acchead of allaccheads">
+                {{ acchead.accheadid }}.{{ acchead.accheadnm }}
+              </option>
+            </datalist>
+          </div>
+          <div class="col-md-8">
+            <label class="m-0">Particulars</label>
+            <input type="text" class="form-control" [(ngModel)]="editparticulars" />
+          </div>
+          <div class="col-md-4">
+            <label class="m-0">Amount</label>
+            <input type="text" class="form-control" [(ngModel)]="editamount" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning"
+          [disabled]="!editdate || !editexptype || !editaccounthead || !editparticulars || !editamount"
+          data-dismiss="modal" (click)="updateExpenditure()">
+          Save changes
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 class="text-danger">Are you sure you want to delete?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteExpenditure()">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

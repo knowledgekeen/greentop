@@ -22,29 +22,42 @@ export class CreateaccountheadComponent implements OnInit {
 
   createAccountHead() {
     this.disablebtn = true;
-    this.successmsg = null;
-    let tmpobj = {
-      accheadnm: this.accheadnm
-    };
-    this._rest.postData("expenditure.php", "createAccountHead", tmpobj)
-      .subscribe(Response => {
-        if (Response) {
-          this.successmsg = "Account head created successfully.";
-          this.accheadnm = null;
-          this.disablebtn = false;
-          this.getAllAccountHeads();
-          this._interval.settimer().then(Resp => {
-            this.successmsg = null;
-          });
-        }
-      });
+    let flag = new Array();
+    let vm = this;
+    flag = this.allaccheads.filter(function (value) {
+      if (vm.accheadnm == value.accheadnm) {
+        return true;
+      }
+    });
+
+    if (flag.length <= 0) {
+      this.successmsg = null;
+      let tmpobj = {
+        accheadnm: this.accheadnm
+      };
+      this._rest.postData("expenditure.php", "createAccountHead", tmpobj)
+        .subscribe(Response => {
+          if (Response) {
+            this.successmsg = "Account head created successfully.";
+            this.accheadnm = null;
+            this.disablebtn = false;
+            this.getAllAccountHeads();
+            this._interval.settimer().then(Resp => {
+              this.successmsg = null;
+            });
+          }
+        });
+    }
+    else {
+      alert("Account head already present");
+      this.disablebtn = false;
+    }
   }
 
   getAllAccountHeads() {
     this.allaccheads = null;
     this._rest.getData("expenditure.php", "getAllAccountHeads")
       .subscribe(Response => {
-        console.log(Response)
         if (Response) {
           this.allaccheads = Response["data"];
         }
@@ -78,12 +91,13 @@ export class CreateaccountheadComponent implements OnInit {
       });
   }
 
-  deleteAccountHead(acchead) {
+  deleteAccountHead() {
     this.allaccheads = null;
-    let geturl = "accheadid=" + acchead.accheadid;
+    let geturl = "accheadid=" + this.selectedacchead.accheadid;
     this.successmsg = null;
     this._rest.getData("expenditure.php", "deleteAccountHead", geturl)
       .subscribe(Response => {
+        this.selectedacchead = null;
         this.successmsg = "Account head removed successfully.";
         this.getAllAccountHeads();
         this._interval.settimer().then(Resp => {

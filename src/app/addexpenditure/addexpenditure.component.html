@@ -3,12 +3,16 @@
 
   <div class="card">
     <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> {{successmsg}}
+      </div>
       <div class="row">
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Expenditure Date</label>
-          <input type="text" class="form-control" placeholder="Expenditure Date" [(ngModel)]="expensedate" />
+          <input type="text" class="form-control" placeholder="Expenditure Date" [(ngModel)]="expensedate"
+            (blur)="autofilldt()" />
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
+        <div class=" col-md-4 col-sm-12 mb-3">
           <label class="m-0">Expense Type</label>
           <select class="form-control" [(ngModel)]="expensetype">
             <option value="1">Cash Expense</option>
@@ -25,15 +29,22 @@
             </option>
           </datalist>
         </div>
-        <div class="col-md-12 col-sm-12 mb-3">
+        <div class="col-md-8 col-sm-12 mb-3">
           <label class="m-0">Particulars</label>
           <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
         </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Amount</label>
+          <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amount" />
+        </div>
         <div class="col-md-12 col-sm-12 mb-3">
           <button class="btn btn-primary"
-            [disabled]="!expensedate || !expensetype || !acchead || !particulars || disablebtn">Add Expenditure</button>
+            [disabled]="!expensedate || !expensetype || !acchead || !particulars || !amount || disablebtn"
+            (click)="addExpenditure()">Add Expenditure</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="col-md-12" #viewExpenditure></div>
 </div>

@@ -1,1298 +1,1298 @@
 Action: Success
-User: ::1 - July 6, 2019, 00:18:05
+User: ::1 - July 7, 2019, 00:00:34
 File: accounts.php - Method: checkLogin
 Logged In User: wasim3ace@gmail.com
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:18:05
+User: ::1 - July 7, 2019, 00:00:34
 File: accounts.php - Method: getDBSettings
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:18:05
+User: ::1 - July 7, 2019, 00:00:35
 File: order.php - Method: getAllOrdersFromToDate
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:18:05
+User: ::1 - July 7, 2019, 00:00:35
 File: reports_stock.php - Method: getAllStocks
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:43:01
+User: ::1 - July 7, 2019, 00:00:43
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:46:10
+User: ::1 - July 7, 2019, 00:00:43
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:01:39
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:46:49
+User: ::1 - July 7, 2019, 00:01:39
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:01:46
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:47:48
+User: ::1 - July 7, 2019, 00:01:46
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:02:35
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:47:56
+User: ::1 - July 7, 2019, 00:02:35
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:02:41
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:48:22
+User: ::1 - July 7, 2019, 00:02:41
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:11:39
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:11:39
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:12:03
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:12:03
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:17:28
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:17:28
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:17:58
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:17:58
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:18:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:18:07
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:18:48
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:18:48
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:19:51
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:19:51
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:19:51
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:20:21
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:20:21
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:20:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:20:58
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:20:58
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:20:58
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:23:25
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:23:25
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:23:25
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:32
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:32
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:32
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:46
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:46
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:59
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:24:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:25:46
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:25:46
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:25:46
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:25:55
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:25:55
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:25:55
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:26:02
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:26:02
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:26:02
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:26:25
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:26:25
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:26:25
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:27:54
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:27:54
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:27:54
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:28:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:28:22
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:30:01
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:30:01
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:30:01
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:30:36
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:30:36
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:30:36
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:31:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:31:05
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:31:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:31:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:31:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:31:59
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:10
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"6"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:15
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:15
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:15
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:33
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:33
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:33
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:37
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"6"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:37
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:44
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"6"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:33:44
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:06
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:06
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:06
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:13
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"4"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:13
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:26
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"3"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:26
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:53
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:53
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:53
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:59
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"3"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:34:59
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:05
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:05
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:27
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"6"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:27
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:49
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:49
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:35:59
+File: expenditure.php - Method: updateExpenditure
+Data: {"status":200,"data":"1"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:36:00
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:34
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:34
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:34
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:40
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:40
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:40
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:55
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:55
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:38:55
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:39:41
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:39:41
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:39:41
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:40:56
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:40:56
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:40:56
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:41:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:41:22
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:41:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:41:45
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:41:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:41:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:42:45
+File: expenditure.php - Method: addExpenditure
+Data: {"status":200,"data":7}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:42:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:42:45
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:45:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:45:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:45:10
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:45:23
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:45:23
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:45:23
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:46:56
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:46:56
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:46:56
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:05
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:28
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:28
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:28
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:44
+File: expenditure.php - Method: deleteExpenditure
+Data: {"status":200,"data":"5"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:47:45
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:02
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:02
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:02
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:09
+File: expenditure.php - Method: deleteExpenditure
+Data: {"status":200,"data":"7"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:09
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:42
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:42
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:42
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:52
+File: expenditure.php - Method: getAllExpenditures
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:52
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:48:52
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:49:48
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:49:48
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:00
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:01
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:31
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:31
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:50
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:50
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:50:50
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:52:15
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:52:15
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:52:15
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:52:53
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:52:53
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:52:53
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:53:11
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:53:11
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:53:11
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:53:41
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:53:42
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:53:42
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:55:13
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:55:13
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:55:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:55:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:58:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:58:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:58:47
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:58:47
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:59:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:59:45
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 00:59:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:00:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:00:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+*******
+Action: Success
+User: ::1 - July 7, 2019, 01:08:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:09:29
+File: expenditure.php - Method: deleteAccountHead
+Data: {"status":200,"data":"2"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:09:29
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:09:46
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:09:56
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:10:24
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:13:11
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:13:34
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:15:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:15:18
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:16:09
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:16:44
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:17:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:18:35
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:20:37
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:20:54
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:21:08
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:21:17
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:22:18
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:22:40
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:23:32
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 7, 2019, 01:23:37
 File: expenditure.php - Method: createAccountHead
-Data: {"status":200,"data":6}
+Data: {"status":200,"data":7}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:48:22
+User: ::1 - July 7, 2019, 01:23:37
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:48:28
+User: ::1 - July 7, 2019, 01:23:54
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 00:49:25
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 00:53:03
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 00:53:09
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 00:57:26
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 19:50:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:09:16
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:09:31
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:09:49
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:11:48
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:13:00
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:14:15
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:14:46
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:16:16
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:18:42
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:24:03
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:33:20
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:33:35
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:34:05
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:35:56
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:36:18
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:38:07
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:38:44
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:39:18
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:39:48
-File: expenditure.php - Method: addExpenditure
-Data: {"status":200,"data":1}
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:43:13
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:46:48
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:52:20
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:52:53
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:52:58
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:53:14
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:53:22
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:53:32
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:54:38
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:55:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:59:23
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 20:59:34
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:01:04
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:01:22
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:01:43
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:02:03
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:02:09
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:02:17
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:03:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:03:14
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:04:33
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:04:49
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:05:06
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:05:45
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:06:48
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:07:09
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:07:59
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:08:07
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:08:14
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:08:25
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:11:07
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:11:57
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:12:10
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:13:23
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:14:24
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:14:32
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:14:47
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:15:11
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:15:11
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:16:11
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:16:11
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:16:38
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:16:38
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:19:09
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:19:09
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:20:12
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:20:12
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:21:44
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:21:44
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:21:49
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:21:49
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:22:10
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:22:10
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:22:42
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:22:42
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:22:49
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:22:49
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:23:12
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:23:12
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:23:55
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:23:55
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:30:48
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:30:48
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:31:15
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:31:15
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:31:48
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:31:48
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:32:04
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:32:04
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:35:46
-File: expenditure.php - Method: addExpenditure
-Data: {"status":200,"data":2}
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:35:53
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:35:53
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:36:45
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:36:45
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:37:08
-File: expenditure.php - Method: addExpenditure
-Data: {"status":200,"data":3}
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:37:08
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:37:58
-File: expenditure.php - Method: addExpenditure
-Data: {"status":200,"data":4}
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:37:58
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:38:14
-File: expenditure.php - Method: addExpenditure
-Data: {"status":200,"data":5}
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:38:14
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:38:35
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:38:35
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:39:30
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:39:30
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:40:22
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:40:22
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:42:49
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:42:49
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:43:19
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:43:19
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:43:28
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:43:28
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:06
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:06
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:15
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:15
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:43
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:43
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:49
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:44:49
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:45:15
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:45:15
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:45:47
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:45:47
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:47:58
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:47:58
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:48:21
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:48:21
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:48:30
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:48:30
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:24:07
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":8}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 21:48:59
+User: ::1 - July 7, 2019, 01:24:07
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 21:48:59
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:49:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:49:08
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:49:15
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:49:15
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:50:06
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:50:06
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:50:41
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:50:41
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:51:21
-File: expenditure.php - Method: addExpenditure
-Data: {"status":200,"data":6}
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:51:21
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:51:44
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:51:44
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:54:06
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:54:06
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:54:58
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:54:58
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:55:40
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:55:40
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:56:52
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:56:52
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:57:04
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:57:04
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:57:20
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:57:20
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:57:43
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:57:43
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:58:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:58:08
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:58:15
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:58:15
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:58:48
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:58:48
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:59:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 21:59:08
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:00:21
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:00:21
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:00:26
+User: ::1 - July 7, 2019, 01:25:23
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:00:26
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:01:08
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:01:08
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:06:02
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:06:02
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:06:56
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:06:56
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:07:22
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:07:22
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:07:37
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:07:37
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:09:02
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:09:02
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:09:36
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:09:36
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:09:51
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:09:51
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:10:04
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:10:04
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:10:27
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:10:27
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:10:40
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:10:40
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:11:08
+User: ::1 - July 7, 2019, 01:25:31
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:11:08
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:11:25
-File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:11:25
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:12:36
+User: ::1 - July 7, 2019, 01:25:37
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:12:36
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:12:56
+User: ::1 - July 7, 2019, 01:26:12
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:12:56
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:13:51
+User: ::1 - July 7, 2019, 01:26:22
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:13:51
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:14:12
+User: ::1 - July 7, 2019, 01:26:48
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:14:12
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:14:35
+User: ::1 - July 7, 2019, 01:26:57
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:14:35
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:14:45
+User: ::1 - July 7, 2019, 01:28:28
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:14:45
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:15:55
+User: ::1 - July 7, 2019, 01:29:13
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:15:55
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:29:19
+File: expenditure.php - Method: deleteAccountHead
+Data: {"status":200,"data":"8"}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:16:38
+User: ::1 - July 7, 2019, 01:29:19
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:16:38
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:16:54
+User: ::1 - July 7, 2019, 01:30:48
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:16:54
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:30:52
+File: expenditure.php - Method: deleteAccountHead
+Data: {"status":200,"data":"7"}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:17:03
+User: ::1 - July 7, 2019, 01:30:52
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 22:17:03
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:17:13
+User: ::1 - July 7, 2019, 01:31:14
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:17:13
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:31:20
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":9}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:17:40
+User: ::1 - July 7, 2019, 01:31:21
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:17:40
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:31:30
+File: expenditure.php - Method: deleteAccountHead
+Data: {"status":200,"data":"9"}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:18:57
+User: ::1 - July 7, 2019, 01:31:30
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 22:18:57
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:31:33
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":10}
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:53:36
+User: ::1 - July 7, 2019, 01:31:33
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 23:53:36
-File: expenditure.php - Method: getAllExpenditures
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 23:54:08
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:54:08
-File: order.php - Method: getAllAccountHeads
+User: ::1 - July 7, 2019, 01:31:53
+File: accounts.php - Method: getDBSettings
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:56:13
-File: order.php - Method: getAllAccountHeads
+User: ::1 - July 7, 2019, 01:31:53
+File: reports_stock.php - Method: getAllStocks
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:56:13
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:31:53
+File: order.php - Method: getAllOrdersFromToDate
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:56:30
+User: ::1 - July 7, 2019, 01:32:07
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:56:30
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:32:07
+File: expenditure.php - Method: getExpendituresFromTo
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:56:55
+User: ::1 - July 7, 2019, 01:32:07
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 23:56:55
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:58:06
+User: ::1 - July 7, 2019, 01:32:37
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:58:06
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:32:37
+File: expenditure.php - Method: getExpendituresFromTo
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:58:15
+User: ::1 - July 7, 2019, 01:32:37
 File: order.php - Method: getAllAccountHeads
-
-*******************************************************************************
-Action: Success
-User: ::1 - July 6, 2019, 23:58:15
-File: expenditure.php - Method: getAllExpenditures
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:58:33
+User: ::1 - July 7, 2019, 01:33:00
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:58:33
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:33:00
+File: expenditure.php - Method: getExpendituresFromTo
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:59:23
+User: ::1 - July 7, 2019, 01:33:00
 File: order.php - Method: getAllAccountHeads
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:59:23
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:33:43
+File: accounts.php - Method: getDBSettings
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:59:29
-File: order.php - Method: getAllAccountHeads
+User: ::1 - July 7, 2019, 01:33:43
+File: reports_stock.php - Method: getAllStocks
 
 *******************************************************************************
 Action: Success
-User: ::1 - July 6, 2019, 23:59:29
-File: expenditure.php - Method: getAllExpenditures
+User: ::1 - July 7, 2019, 01:33:43
+File: order.php - Method: getAllOrdersFromToDate
 
 *******************************************************************************

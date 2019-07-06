@@ -19,13 +19,13 @@
       <div class="position-relative text-right dtp-cardwrapper">
         <div class="float-left mt-2">
           <button class="btn btn-sm mr-2" (click)="filterOrders('all');"
-            [ngClass]="{'btn-primary': selectedstatus == 'all'}">All</button>
+            [ngClass]="{'btn-primary': selectedstatus == 'all', 'btn-outline-primary': selectedstatus != 'all'}">All</button>
           <button class="btn btn-sm mx-2" (click)="filterOrders('open');"
-            [ngClass]="{'btn-primary': selectedstatus == 'open'}">Open</button>
+            [ngClass]="{'btn-primary': selectedstatus == 'open', 'btn-outline-primary': selectedstatus != 'open'}">Open</button>
           <button class="btn btn-sm mx-2" (click)="filterOrders('dispatched');"
-            [ngClass]="{'btn-primary': selectedstatus == 'dispatched'}">Dispatched</button>
+            [ngClass]="{'btn-primary': selectedstatus == 'dispatched', 'btn-outline-primary': selectedstatus != 'dispatched'}">Dispatched</button>
           <button class="btn btn-sm mx-2" (click)="filterOrders('closed');"
-            [ngClass]="{'btn-primary': selectedstatus == 'closed'}">Closed</button>
+            [ngClass]="{'btn-primary': selectedstatus == 'closed', 'btn-outline-primary': selectedstatus != 'closed'}">Closed</button>
         </div>
         <span class="text-danger mx-3 font-weight-bold" *ngIf="errorMsg">
           <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span>
