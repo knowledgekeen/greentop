@@ -1795,3 +1795,920 @@ User: ::1 - July 4, 2019, 15:20:35
 File: payments_common.php - Method: getAllPayModes
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:45:59
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:45:59
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:45:59
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:47:37
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:47:50
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:05
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:28
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:34
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:35
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:35
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:42
+File: sales_payments.php - Method: updateSalePayment
+Data: {"orderpayid":"6","paydate":1561919400000,"amountpaid":"500","particulars":"Cash"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:42
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:42
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:42
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:48:57
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:49:43
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:50:20
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:11
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:11
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:11
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:18
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:20
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"7","clientid":"28","openingbal":"200","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:26
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:26
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:26
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:31
+File: purchase_payments.php - Method: updatePurchasePayment
+Data: {"purchpayid":"3","purchdate":1560105000000,"amountpaid":"1000","particulars":"Netbanking"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:31
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:31
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:51:31
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:53:16
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:53:16
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:53:16
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:55:42
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:55:43
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:55:43
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:55:43
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:57:14
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:57:29
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:57:40
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:57:40
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:57:40
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+
+Action: Success
+User: ::1 - July 4, 2019, 15:58:14
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:58:14
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 15:58:14
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:00:49
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:00:49
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:00:49
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:02:41
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:02:41
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:02:41
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:10
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:10
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:10
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:26
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:26
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:26
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:30
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:32
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:32
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:03:32
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:18
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:20
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:20
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:20
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:33
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:34
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:34
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:04:34
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:06:06
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:06:30
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:07:11
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:07:57
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:08:30
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:08:52
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:09:13
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:11:11
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:11:21
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:12:25
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:21:38
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:21:39
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:21:39
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:21:39
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:22:08
+File: accounts.php - Method: updateCompanyAddress
+Data: {"userid":"1","address":"Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune."}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:27:33
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:27:33
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:27:34
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:27:34
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:07
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:07
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:07
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:07
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:24
+File: accounts.php - Method: updateCompanyAddress
+Data: {"userid":"1","address":"Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune."}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:42
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:43
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:43
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:46
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:49
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:49
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:28:49
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:46
+File: accounts.php - Method: updateCompanyAddress
+Data: {"userid":"1","address":"Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:47
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:49
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:50
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:50
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:50
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:29:58
+File: accounts.php - Method: updateCompanyAddress
+Data: {"userid":"1","address":"Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune."}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:30:00
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:30:01
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:30:01
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:30:01
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:30:28
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:40
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:47
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"1","clientid":"3","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:47
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:47
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:55
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:56
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:56
+File: sales_payments.php - Method: getAllOrderInvoicePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:31:56
+File: sales_payments.php - Method: getAllSaleOrderPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:32:08
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:44:56
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:44:56
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 16:44:56
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:22
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:22
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:22
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:30
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:30
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:30
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:30
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:30
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:38
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:38
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:05:38
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:16
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:16
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:16
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:22
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:22
+File: stock.php - Method: allreprocessdata
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:36
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:36
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:09:36
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:10:38
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:10:38
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 18:10:38
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:36:49
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:36:50
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:36:50
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:36:59
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:36:59
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:36:59
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:40:56
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:40:56
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:40:56
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:41:22
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:41:22
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:41:22
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:41:53
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:41:53
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:41:53
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:42:33
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:42:33
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 20:42:33
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:00:11
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:00:11
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:00:11
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:31:36
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:31:36
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:31:40
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:31:42
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:42:25
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:43:22
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:44:04
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:45:03
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:45:15
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:45:25
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 4, 2019, 21:55:17
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************

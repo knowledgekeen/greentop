@@ -1,0 +1,20 @@
+<div class="container">
+  <h5 class="my-3">Update Company Address</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> Company address updated successfully.
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 mb-3">
+          <label for="address" class="m-0">Update Company Address</label>
+          <input type="text" class="form-control" id="address" placeholder="Company Address" [(ngModel)]="address" />
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <button class="btn btn-warning" (click)="updateCompanyAddress()">Update Address</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

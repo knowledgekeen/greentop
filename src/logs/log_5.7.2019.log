@@ -1,0 +1,2718 @@
+Action: Success
+User: ::1 - July 5, 2019, 14:54:59
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:54:59
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:54:59
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:54:59
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:55:15
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:55:15
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:55:18
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:55:18
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:56:04
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:56:04
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 14:59:53
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:15
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:15
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:19
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:19
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:45
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:01:45
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:02:15
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:02:15
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:05:47
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:05:47
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:12:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:12:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:13:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:13:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:13:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:13:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:15:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:15:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:15:52
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:15:52
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:15:52
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:16:20
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:16:20
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:16:21
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:16:21
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:16:21
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:53
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:53
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:19:53
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:54
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:54
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:20:54
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:21:22
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:21:22
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:21:24
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:21:24
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:21:24
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:22:13
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:22:13
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:22:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:22:16
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:22:16
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:23:39
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:23:39
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:23:46
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:23:46
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:23:46
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:24:34
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:24:34
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:24:36
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:24:36
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:24:36
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:25:57
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:25:57
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:26:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:26:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:26:42
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:26:42
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:26:42
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:16
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:16
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:17
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:17
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:17
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:54
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:54
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:56
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:56
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:27:56
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:30:08
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:30:08
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:30:18
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:30:18
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:30:28
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:30:28
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:31:52
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:31:52
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:32:12
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:32:12
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:32:12
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:35:43
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:35:43
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:35:55
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:35:55
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:36:02
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:36:02
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:36:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:36:27
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:36:43
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:36:43
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:38:06
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:38:06
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:38:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:38:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:40
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:40
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:42
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:42
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:42
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:58
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:39:58
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:00
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:00
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:00
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:42
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:42
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:44
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:46
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:40:46
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:41:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:41:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:41:28
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:41:28
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:41:28
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:08
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:08
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:10
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:10
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:10
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:29
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:42:29
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:45:43
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:45:43
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:45:43
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:13
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:13
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:15
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:15
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:15
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:24
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:24
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:26
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:26
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:26
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:39
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:39
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:41
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:41
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:46:41
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:12
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:12
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:14
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:14
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:14
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:32
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:32
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:34
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:34
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:34
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:50
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:50
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:51
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:51
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:47:51
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:48:45
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:48:45
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:48:48
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:48:48
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 15:48:48
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:06:47
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:06:47
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:06:53
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:06:53
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:07:47
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:07:47
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:07:56
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:07:56
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:07:56
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:08:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:08:26
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:08:27
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:08:27
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:08:27
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:09:28
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:09:28
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:09:29
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:09:29
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:09:29
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:11:38
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:11:38
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:11:41
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:11:41
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:11:41
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:37:46
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:20
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:45
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:45
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:47
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:50
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:50
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:38:50
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:07
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:07
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:10
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:30
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:30
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:30
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:40
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:40
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:39:40
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:03
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:05
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:05
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:05
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:51
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:55
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:55
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:42:55
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:06
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:09
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:15
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:15
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:15
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:17
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:17
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:17
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:20
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:48:57
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:49:05
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:49:10
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:49:10
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:49:10
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:49:14
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:50:05
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:50:05
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:50:05
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:50:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:50:16
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:50:16
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:23
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:25
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:25
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:25
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:40
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:40
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:54:40
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:55:07
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:55:07
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:55:07
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:56:40
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:56:41
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:56:41
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:56:41
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:00
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:05
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:08
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:08
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:35
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:37
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:52
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:55
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:56
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 16:57:56
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:00:17
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:00:21
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:00:22
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:00:22
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:09:11
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:10:53
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:16:54
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:17:12
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:17:59
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:18:06
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:18:39
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:18:44
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:19:17
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:20:48
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:20:48
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:32:15
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:32:15
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:40:10
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:40:15
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:43:34
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:43:34
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:43:59
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:44:01
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:44:01
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:45:02
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:45:04
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:45:04
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:04
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:13
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:13
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:20
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:20
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:26
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:26
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:31
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:34
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:36
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:38
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:47:38
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:48:47
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:48:48
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:48:49
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:48:53
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:48:55
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:48:55
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:00
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:03
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:10
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:11
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:11
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:16
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:16
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:18
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:18
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:21
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:21
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:26
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:30
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:35
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+*******
+Action: Success
+User: ::1 - July 5, 2019, 17:49:38
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:49:38
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:50:12
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 17:50:12
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:29
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:29
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:29
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:29
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:29
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:37
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:04:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:17:15
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:17:18
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 18:17:18
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:02
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:03
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:03
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:37
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:39
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:39
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:08:59
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:09:00
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:09:00
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:09:41
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:09:42
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:09:42
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:10:53
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:10:54
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:12:01
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:12:03
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:12:03
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:15:07
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:15:08
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:15:08
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:15:55
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:15:58
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:15:58
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:16:26
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:16:27
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:16:27
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:18:03
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:18:03
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:23:08
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:23:10
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:23:10
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:31:52
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:31:54
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:31:54
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:38:07
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:38:10
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:38:10
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:38:15
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:39:00
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:39:02
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:39:02
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:39:05
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:42:28
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:42:30
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:42:30
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:42:35
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:42:46
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:43:14
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:43:21
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:43:24
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:43:24
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:43:27
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:44:13
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:44:15
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:44:15
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:47:51
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:47:52
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:47:52
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:47:54
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:47:56
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:00
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:00
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:26
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:28
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:28
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:30
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:33
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:48:33
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:49:26
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:49:28
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:49:28
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:49:31
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:49:32
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:50:45
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:50:47
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:50:47
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:50:53
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:50:53
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:50:56
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:51:42
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:51:45
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:51:45
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:52:04
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:52:12
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:52:12
+File: production.php - Method: getProductionBatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:52:14
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:52:36
+File: dispatch.php - Method: getBatchDispatches
+
+*******************************************************************************
+*******
+Action: Success
+User: ::1 - July 5, 2019, 19:52:38
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:52:40
+File: dispatch.php - Method: getInvoiceDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:54:01
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:54:01
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:54:01
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:56:35
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:59:00
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"162"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:59:00
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:59:08
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:59:12
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 19:59:56
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:22:02
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"162"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:22:02
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:41:55
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"162"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:41:55
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:42:01
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:47:39
+File: taxinvoice.php - Method: updateBillDetails
+Data: {"otaxinvoiceid":"13","billdt":1559241000000,"amount":69000,"discount":"0","rate":"17250","cgst":"2.5","sgst":"2.5","igst":"0","roundoff":"0","totalamount":72450}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 20:47:52
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 21:58:14
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:06:45
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:06:45
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:06:45
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:06:54
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:06:54
+File: wastage.php - Method: getWastageFromTo
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:07:28
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:08:34
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:09:03
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:09:41
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:09:52
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:10:20
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:25:58
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":1}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:26:26
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":2}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:35:17
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:35:30
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:36:01
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:36:23
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:36:59
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:37:16
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:37:25
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":3}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:37:25
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:37:39
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":4}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:37:39
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 22:38:04
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:21:21
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:22:03
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:22:53
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:23:31
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:23:48
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:24:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:24:27
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:28:21
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:28:43
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:28:50
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:28:55
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:31:08
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:31:40
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:31:54
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:32:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:32:12
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:32:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:32:27
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:33:05
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:34:09
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:34:45
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:35:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:35:27
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:35:58
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:36:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:36:24
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:36:31
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:36:58
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:37:04
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:37:12
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:38:26
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:38:52
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:39:04
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:39:47
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:04
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:16
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:29
+File: expenditure.php - Method: editAccountHead
+Data: {"status":200,"data":"4"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:29
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:39
+File: expenditure.php - Method: editAccountHead
+Data: {"status":200,"data":"4"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:39
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:55
+File: expenditure.php - Method: editAccountHead
+Data: {"status":200,"data":"4"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:40:55
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:41:17
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:41:34
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:41:40
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:41:54
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:42:14
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:42:18
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:42:27
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:42:49
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:43:10
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":5}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:43:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:43:18
+File: expenditure.php - Method: editAccountHead
+Data: {"status":200,"data":"5"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:43:18
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:44:02
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:44:34
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:45:24
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:45:38
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:45:40
+File: expenditure.php - Method: deleteAccountHead
+Data: {"status":200,"data":"5"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:45:40
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:45:44
+File: expenditure.php - Method: deleteAccountHead
+Data: {"status":200,"data":"1"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 5, 2019, 23:45:44
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************

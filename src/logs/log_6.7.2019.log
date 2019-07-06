@@ -1,0 +1,87 @@
+Action: Success
+User: ::1 - July 6, 2019, 00:18:05
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:18:05
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:18:05
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:18:05
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:43:01
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:46:10
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:46:49
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:47:48
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:47:56
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:48:22
+File: expenditure.php - Method: createAccountHead
+Data: {"status":200,"data":6}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:48:22
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:48:28
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:49:25
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:53:03
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:53:09
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 00:57:26
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 6, 2019, 19:50:08
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************

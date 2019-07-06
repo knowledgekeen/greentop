@@ -33,6 +33,9 @@ import { AddhistoricbatchComponent } from "./addhistoricbatch/addhistoricbatch.c
 import { AddwastageComponent } from "./addwastage/addwastage.component";
 import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
 import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.component';
+import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecompanyaddress.component';
+import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
+import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -71,6 +74,9 @@ const routes: Routes = [
   { path: "unauthoriseduser", component: UnauthoriseduserComponent },
   { path: "editorder/:orderid", component: EditorderComponent },
   { path: "addclientopenbal/:ctype", component: AddclientopenbalComponent },
+  { path: "updatecompadd", component: UpdatecompanyaddressComponent },
+  { path: "createacchead", component: CreateaccountheadComponent },
+  { path: "addexpenditure", component: AddexpenditureComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" }
 ];

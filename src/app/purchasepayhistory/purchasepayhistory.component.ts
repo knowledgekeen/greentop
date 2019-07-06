@@ -20,6 +20,7 @@ export class PurchasepayhistoryComponent implements OnInit {
   @Input() supplier: any;
   @Input() isEditable: any;
   successflag: any = false;
+  disableupdatebtn: any = false;
 
   constructor(private _rest: RESTService, private _global: GlobalService, private _interval: IntervalService) { }
 
@@ -189,6 +190,7 @@ export class PurchasepayhistoryComponent implements OnInit {
   }
 
   updatePurchasePayment() {
+    this.disableupdatebtn = true;
     let balDate = moment(this.editpurchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let postobj = {
       purchpayid: this.selectedpurchpayid,
@@ -203,6 +205,7 @@ export class PurchasepayhistoryComponent implements OnInit {
         this.getAllPurchasePayments();
         this._interval.settimer().then(rep => {
           this.successflag = false;
+          this.disableupdatebtn = false;
         });
       });
   }

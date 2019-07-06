@@ -102,7 +102,7 @@ if($action == "getBatchDispatches"){
 	$headers = apache_request_headers();
 	authenticate($headers);
     $batchmastid = $_GET['batchmastid'];
-	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om WHERE db.`batchmastid`=$batchmastid AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid";
+    $sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om WHERE db.`batchmastid`=$batchmastid AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -147,8 +147,8 @@ if($action == "getBatchDispatches"){
 if($action == "getDispatchBatches"){
 	$headers = apache_request_headers();
 	authenticate($headers);
-    $orderid = $_GET['orderid'];
-	$sql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,pbm.`batchid`,pbm.`manufacdate`,db.`quantity`, dr.`orderid`, dr.`dispatchdate`, dr.`dcno`, om.`orderno` FROM `dispatches_batches` db, `dispatch_register` dr,`order_master` om, `production_batch_master` pbm WHERE db.`dispatchid`=(SELECT `dispatchid` from `dispatch_register` WHERE `orderid`=$orderid) AND db.`dispatchid`=dr.`dispatchid` AND dr.orderid=om.orderid AND db.`batchmastid`=pbm.`batchmastid`";
+    $dispatchid = $_GET['dispatchid'];
+	$sql = "SELECT db.`dispbatid`,db.`quantity`,pbm.`batchid`,pbm.`manufacdate`,pbm.`status` FROM `dispatches_batches` db, `production_batch_master` pbm WHERE db.`dispatchid`=$dispatchid AND db.`batchmastid`=pbm.`batchmastid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -163,16 +163,45 @@ if($action == "getDispatchBatches"){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['dispbatid'] = $row['dispbatid'];
-			$tmp[$i]['dispatchid'] = $row['dispatchid'];
-			$tmp[$i]['batchmastid'] = $row['batchmastid'];
+			$tmp[$i]['batchid'] = $row['batchid'];
 			$tmp[$i]['quantity'] = $row['quantity'];
-			$tmp[$i]['orderid'] = $row['orderid'];
-			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
 			$tmp[$i]['manufacdate'] = $row['manufacdate'];
-			$tmp[$i]['dcno'] = $row['dcno'];
-			$tmp[$i]['orderno'] = $row['orderno'];
 			$i++;
 		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;
+        write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Error message: ".$conn->error.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "getDispatchDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $orderid = $_GET['orderid'];
+	$sql = "SELECT * FROM `dispatch_register` WHERE `orderid`=$orderid";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($result){		
+        $tmp['dispatchid'] = $row['dispatchid'];
+        $tmp['dispatchdate'] = $row['dispatchdate'];
+        $tmp['dcno'] = $row['dcno'];
+        $tmp['vehicalno'] = $row['vehicalno'];
 		$data["status"] = 200;
 		$data["data"] = $tmp;
         $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;

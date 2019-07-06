@@ -1,0 +1,58 @@
+<div class="container">
+  <h5 class="my-3">Create Account Head</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        {{successmsg}}
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-sm-12">
+          <label class="m-0">Account Head Name</label>
+          <input type="text" class="form-control" placeholder="Account Head Name" [(ngModel)]="accheadnm" />
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <button class="btn btn-primary mt-4" [disabled]="!accheadnm || disablebtn" (click)="createAccountHead()"
+            *ngIf="!selectedacchead">
+            Create Account Head
+          </button>
+          <button class="btn btn-warning mt-4" [disabled]="!accheadnm || disablebtn" (click)="updateAccountHead()"
+            *ngIf="selectedacchead">
+            Update Account Head
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-3" *ngIf="allaccheads">
+    <div class="card-body">
+      <table class="table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Account Head</th>
+            <th scope="col">Edit / Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acchead of allaccheads; let i=index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{acchead.accheadnm}}</td>
+            <td>
+              <span class="mx-3">
+                <a href="javascript:void(0);" title="Edit Account Head" (click)="editAccountHead(acchead)">
+                  <i class="fa fa-pencil text-warning"></i></a>
+              </span>
+              <span>/</span>
+              <span class="mx-3">
+                <a href="javascript:void(0);" title="Delete Account Head" (click)="deleteAccountHead(acchead)">
+                  <i class="fa fa-trash text-danger"></i></a>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

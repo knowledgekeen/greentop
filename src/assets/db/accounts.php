@@ -25,6 +25,7 @@ if($action == "checkLogin"){
         $tmp[0]['fullname'] = $row['fullname'];
         $tmp[0]['email'] = $row['email'];
 		$tmp[0]['email'] = $row['email'];
+		$tmp[0]['address'] = $row['address'];
 		$d1 = new Datetime();
 		$tmp[0]['sessiontime'] = $d1->format('U')*1000;
 		$tmp[0]['token'] = JWT::encode($token, 'greentoporg');
@@ -161,6 +162,36 @@ if($action == "updateDBSettings"){
     if($result){
         $data1["status"] = 200;
 		$data1["data"] = $dbsettingid;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data1);
+}
+
+if($action == "updateCompanyAddress"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$data = json_decode(file_get_contents("php://input"));
+	$userid = $data->userid;
+	$address = $data->address;
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `user_register` SET `address`='$address' WHERE `userid`=$userid";
+		$result = $conn->query($sql);
+	}
+	$data1 = array();
+    if($result){
+        $data1["status"] = 200;
+		$data1["data"] = $userid;
 		$log  = "File: accounts.php - Method: ".$action.PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "success", NULL);

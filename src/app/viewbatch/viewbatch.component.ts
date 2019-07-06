@@ -84,6 +84,9 @@ export class ViewbatchComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.batchdispatches = Response['data'];
+          for (let i = 0; i < this.batchdispatches.length; i++) {
+            this.batchdispatches[i].invoicedetails = null;
+          }
         }
         else {
           this.batchdispatches = null;
@@ -260,5 +263,19 @@ export class ViewbatchComponent implements OnInit {
         return;
       }
     }
+  }
+
+  getInvoiceDetails(disp, index) {
+    this.batchdispatches[index].invoicedetails = false;
+    let invoiceurl = "orderid=" + disp.orderid;
+    this._rest.getData("taxinvoice.php", "getInvoiceDetails", invoiceurl)
+      .subscribe(Response => {
+        if (Response) {
+          this.batchdispatches[index].invoicedetails = Response["data"];
+        }
+        else {
+          this.batchdispatches[index].invoicedetails = "nodata";
+        }
+      })
   }
 }

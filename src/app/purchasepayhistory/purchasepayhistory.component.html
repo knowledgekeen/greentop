@@ -7,7 +7,7 @@
       Green Top Organics
     </h5>
     <h6 class="text-center">
-      Milkat No. 3990, Gat No. 1081, Wadki, Tal: Haveli, Dist: Pune.
+      <companyaddress></companyaddress>
     </h6>
     <h5 class="text-center mt-3">
       <span class="font-weight-bold border-bottom border-primary font-italic">
@@ -129,7 +129,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" (click)="updatePurchasePayment();"
-          [disabled]="!editpurchdate || !editamountpaid || !editparticulars" data-dismiss="modal">
+          [disabled]="!editpurchdate || !editamountpaid || !editparticulars || disableupdatebtn" data-dismiss="modal">
           Update payment details
         </button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

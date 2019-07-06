@@ -19,6 +19,7 @@ export class SalespayhistoryComponent implements OnInit {
   @Input() customer: any;
   @Input() iseditable: any;
   successflag: any = false;
+  disableupdatebtn: any = false;
   totalamt: { payin: number; payout: number; balance: number; };
 
   constructor(private _global: GlobalService, private _rest: RESTService, private _interval: IntervalService) { }
@@ -201,6 +202,7 @@ export class SalespayhistoryComponent implements OnInit {
   }
 
   updateSalePayment() {
+    this.disableupdatebtn = true;
     let balDate = moment(this.editpaydate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let postobj = {
       orderpayid: this.selectedorderpayid,
@@ -215,6 +217,7 @@ export class SalespayhistoryComponent implements OnInit {
         this.getAllSalesPayments();
         this._interval.settimer().then(rep => {
           this.successflag = false;
+          this.disableupdatebtn = false;
         });
       });
   }

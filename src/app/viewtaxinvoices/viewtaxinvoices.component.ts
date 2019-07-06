@@ -57,7 +57,6 @@ export class ViewtaxinvoicesComponent implements OnInit {
     this._rest
       .getData("taxinvoice.php", "getInvoicesFromToDt", geturl)
       .subscribe(Response => {
-        //console.log(Response);
         if (Response) {
           this.allinvoices = Response["data"];
           for (let i in this.allinvoices) {

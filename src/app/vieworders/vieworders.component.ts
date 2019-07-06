@@ -3,6 +3,7 @@ import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
 import { IntervalService } from "../interval.service";
 import { SalespayhistoryComponent } from '../salespayhistory/salespayhistory.component';
+import * as moment from "moment";
 
 @Component({
   selector: "app-vieworders",
@@ -18,6 +19,8 @@ export class ViewordersComponent implements OnInit {
   selectedorder: any = null;
   spinnerflag: any = null;
   dispatchbatches: any = false;
+  dispatchdetails: any = null;
+  viewdispatcheddate: any = null;
 
   errorMsg: any = false;
   totalquantity: any = 0;
@@ -69,6 +72,7 @@ export class ViewordersComponent implements OnInit {
   }
 
   changeDate() {
+    this.selectedstatus = "all";
     if (this.selecteddate) {
       //console.log(this.selecteddate.getTime());
       let todaydt = new Date().getTime();
@@ -109,13 +113,13 @@ export class ViewordersComponent implements OnInit {
   }
 
   selectOrder(order) {
-    console.log(order)
     this.selectedorder = order;
     this.getOrderConsignees(order.orderid);
   }
 
   getOrderConsignees(oid) {
     this.dispatchbatches = false;
+    this.dispatchdetails = null;
     let geturl = "orderid=" + oid;
     this._rest
       .getData("order.php", "getOrderConsignees", geturl)
@@ -123,16 +127,29 @@ export class ViewordersComponent implements OnInit {
         if (Response) {
           this.selectedorderconsignees = Response["data"];
 
-          this._rest.getData("dispatch.php", "getDispatchBatches", geturl)
-            .subscribe(Resp => {
-              console.log(Resp);
-              if (Resp) {
-                this.dispatchbatches = Resp["data"];
-              }
-              else {
-                this.dispatchbatches = null;
-              }
-            });
+          if (this.selectedorder.status != "open") {
+            this._rest.getData("dispatch.php", "getDispatchDetails", geturl)
+              .subscribe(RespDisp => {
+                if (RespDisp) {
+                  this.dispatchdetails = RespDisp["data"];
+                  let mydate = moment(parseInt(this.dispatchdetails.dispatchdate)).format("DD-MM-YYYY");
+                  this.viewdispatcheddate = mydate;
+                  let dispurl = "dispatchid=" + this.dispatchdetails.dispatchid;
+                  this._rest.getData("dispatch.php", "getDispatchBatches", dispurl)
+                    .subscribe(Resp => {
+                      console.log(Resp)
+                      if (Resp) {
+                        this.dispatchbatches = Resp["data"];
+                      }
+                      else {
+                        this.dispatchbatches = null;
+                      }
+                    });
+                }
+              })
+          } else {
+            this.dispatchbatches = null;
+          }
         }
       });
   }
@@ -140,7 +157,7 @@ export class ViewordersComponent implements OnInit {
   filterOrders(orderstatus) {
     this.selectedstatus = orderstatus;
     this.allorders = JSON.parse(JSON.stringify(this.masterorders));
-    if (orderstatus != "all") {
+    if (orderstatus != "all" && this.allorders) {
       for (let i = 0; i < this.allorders.length; i++) {
         if (this.allorders[i].status != orderstatus) {
           this.allorders.splice(i, 1);
@@ -150,8 +167,10 @@ export class ViewordersComponent implements OnInit {
     }
 
     let totqty = 0;
-    for (let i = 0; i < this.allorders.length; i++) {
-      totqty += parseFloat(this.allorders[i].quantity);
+    if (this.allorders) {
+      for (let i = 0; i < this.allorders.length; i++) {
+        totqty += parseFloat(this.allorders[i].quantity);
+      }
     }
     this.totalquantity = totqty;
   }

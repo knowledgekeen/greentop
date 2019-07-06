@@ -117,7 +117,7 @@
               [(ngModel)]="selectedbatch.qtyproduced" [disabled]="
                 originalbatch.qtyproduced != originalbatch.qtyremained
               " />
-            <label class="h6 m-0 text-muted">Quantity Remained:
+            <label class="h6 m-0 text-primary">Quantity Remained:
               <span class="font-weight-bold">
                 {{selectedbatch.qtyremained}}
               </span>
@@ -135,14 +135,40 @@
               </a>
             </p>
             <div class="collapse mb-3" id="collapseExample" *ngIf="batchdispatches">
-              <div class="card card-body px-4 py-2">
+              <div class="card card-body px-4 py-2 bg-light">
                 <p class="mb-1">This batch is used for the following dispatches</p>
                 <ul class="list-group">
-                  <li class="list-group-item d-flex align-items-center p-2" *ngFor="let disp of batchdispatches">
-                    Dispatch Date: <span class="font-weight-bold mx-2">{{disp.dispatchdate | date: 'dd-MM-yyyy'}}</span>
-                    / ID: <span class="font-weight-bold mx-2">{{disp.dispatchid}}</span>
-                    / DC No.: <span class="font-weight-bold mx-2">{{disp.dcno}}</span>
+                  <li class="list-group-item d-flex align-items-center p-2"
+                    *ngFor="let disp of batchdispatches; let i=index">
+                    Dispatch Date:
+                    <span class="font-weight-bold badge badge-info badge-pill mx-2">
+                      {{disp.dispatchdate | date: 'dd-MM-yyyy'}}
+                    </span>
+                    / DC No.: <span class="font-weight-bold badge badge-danger badge-pill mx-2">{{disp.dcno}}</span>
                     / Quantity: <span class="badge badge-primary badge-pill ml-1">{{disp.quantity}} tons</span>
+                    <span class="mx-3 font-weight-bold">-</span>
+                    <span *ngIf="disp.invoicedetails == null">
+                      <a href="javascript:void(0);" (click)="getInvoiceDetails(disp, i)">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i> Get Invoice Details
+                      </a>
+                    </span>
+                    <span *ngIf="disp.invoicedetails == false">
+                      <i class="fa fa-pulse fa-spinner" aria-hidden="true"></i> Please wait...
+                    </span>
+                    <span *ngIf="disp.invoicedetails && disp.invoicedetails != 'nodata'">
+                      Invoice Date:
+                      <span class="font-weight-bold badge badge-info badge-pill mx-2">
+                        {{disp.invoicedetails.billdt | date: 'dd-MM-yyyy'}}
+                      </span>
+                      / Invoice No: <span
+                        class="font-weight-bold badge badge-danger badge-pill mx-2">{{disp.invoicedetails.billno}}</span>
+                      / Total Amount:
+                      <span class="badge badge-primary badge-pill ml-1">{{disp.invoicedetails.totalamount}}</span>
+                    </span>
+                    <span *ngIf="disp.invoicedetails && disp.invoicedetails == 'nodata'"
+                      class="text-danger font-weight-bold">
+                      No Invoice Created Yet
+                    </span>
                   </li>
                 </ul>
               </div>

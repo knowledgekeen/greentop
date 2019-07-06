@@ -18,11 +18,11 @@ function write_log($log, $flag, $errorval){
     $log = $log. "\n*******************************************************************************".PHP_EOL;
     "******************************************************************\n".PHP_EOL;
     if($flag == "success"){
-        file_put_contents('../../logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+        file_put_contents('../logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     }
     else{
         if($errorval != NULL){
-            file_put_contents('../../logs/error_log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+            file_put_contents('../logs/error_log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
         }
     }
 }
