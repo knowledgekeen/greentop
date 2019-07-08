@@ -69,6 +69,8 @@ import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecomp
 import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
 import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
 import { ViewexpenditureComponent } from './viewexpenditure/viewexpenditure.component';
+import { AddreceiptComponent } from './addreceipt/addreceipt.component';
+import { ViewreceiptComponent } from './viewreceipt/viewreceipt.component';
 
 @NgModule({
   declarations: [
@@ -122,7 +124,9 @@ import { ViewexpenditureComponent } from './viewexpenditure/viewexpenditure.comp
     UpdatecompanyaddressComponent,
     CreateaccountheadComponent,
     AddexpenditureComponent,
-    ViewexpenditureComponent
+    ViewexpenditureComponent,
+    AddreceiptComponent,
+    ViewreceiptComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +145,7 @@ import { ViewexpenditureComponent } from './viewexpenditure/viewexpenditure.comp
     { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] }, // add as factory to your providers
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  entryComponents: [PurchasepayhistoryComponent, SalespayhistoryComponent, ViewexpenditureComponent],
+  entryComponents: [PurchasepayhistoryComponent, SalespayhistoryComponent, ViewexpenditureComponent, ViewreceiptComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

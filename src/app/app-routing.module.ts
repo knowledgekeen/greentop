@@ -36,6 +36,7 @@ import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.c
 import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecompanyaddress.component';
 import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
 import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
+import { AddreceiptComponent } from './addreceipt/addreceipt.component';
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: "updatecompadd", component: UpdatecompanyaddressComponent },
   { path: "createacchead", component: CreateaccountheadComponent },
   { path: "addexpenditure", component: AddexpenditureComponent },
+  { path: "addreceipt", component: AddreceiptComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" }
 ];

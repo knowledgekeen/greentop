@@ -1,0 +1,50 @@
+<div class="container">
+  <h5 class="my-3">Add Receipt Amount</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> {{successmsg}}
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Receipt Date</label>
+          <input type="text" class="form-control" placeholder="Receipt Date" [(ngModel)]="receiptdate"
+            (blur)="autofilldt()" />
+        </div>
+        <div class=" col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Receipt Type</label>
+          <select class="form-control" [(ngModel)]="receipttype">
+            <option value="1">Cash Receipt</option>
+            <option value="2">Bank Receipt</option>
+          </select>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Account Head</label>
+          <input type="text" class="form-control" placeholder="Account Head" [(ngModel)]="acchead" list="acchead" />
+
+          <datalist id="acchead">
+            <option value="{{ acchead.accheadid }}.{{ acchead.accheadnm }}" *ngFor="let acchead of allaccheads">
+              {{ acchead.accheadid }}.{{ acchead.accheadnm }}
+            </option>
+          </datalist>
+        </div>
+        <div class="col-md-8 col-sm-12 mb-3">
+          <label class="m-0">Particulars</label>
+          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Amount</label>
+          <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amount" />
+        </div>
+        <div class="col-md-12 col-sm-12 mb-3">
+          <button class="btn btn-primary"
+            [disabled]="!receiptdate || !receipttype || !acchead || !particulars || !amount || disablebtn"
+            (click)="addReceipt()">Add Receipt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12" #viewReceipt></div>
+</div>
