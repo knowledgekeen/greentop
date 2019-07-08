@@ -85,7 +85,7 @@ if($action == "getInvoicesFromToDt"){
 	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT DISTINCT(ot.`otaxinvoiceid`),ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, cm.`name`,dr.`dcno`,dr.`dispatchdate` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm, `dispatch_register` dr WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid` = dr.`orderid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY ot.`otaxinvoiceid`,ot.`billno`";
+	$sql = "SELECT DISTINCT(ot.`otaxinvoiceid`),ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, cm.`name`,dr.`dcno`,dr.`dispatchdate`,dr.`vehicalno` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm, `dispatch_register` dr WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid` = dr.`orderid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY ot.`otaxinvoiceid`,ot.`billno`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -120,6 +120,7 @@ if($action == "getInvoicesFromToDt"){
 			$tmp[$i]['name'] = $row['name'];
 			$tmp[$i]['dcno'] = $row['dcno'];
 			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
+			$tmp[$i]['vehicalno'] = $row['vehicalno'];
 			$i++;
 		}
 		$data["status"] = 200;

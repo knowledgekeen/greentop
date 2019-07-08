@@ -50,7 +50,7 @@
             <tr *ngFor="let bill of allinvoices; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <a href="javascript:void(0);" (click)="getOrderDetails(bill.orderid)" data-toggle="modal"
+                <a href="javascript:void(0);" (click)="getOrderDetails(bill)" data-toggle="modal"
                   data-target="#orderDetailsModal">
                   {{ bill.dispatchdate | date: "dd-MM-yyyy" }}
                 </a>
@@ -112,11 +112,11 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content" *ngIf="orderdetails">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          Order Id:
-          <span class="text-info font-weight-bold">{{
-            orderdetails.orderno
-          }} | {{orderdetails.name}}</span>
+        <h5 class="modal-title w-100" id="exampleModalLabel">
+          <span class="text-primary font-weight-bold"> {{ orderdetails.orderno }} |
+            {{orderdetails.orderdt | date: 'dd-MM-yyyy'}}</span>
+          <span class="text-danger float-right font-weight-bold mx-3">Invoice No.: {{ selectedinvoice.billno }} |
+            Invoice Date: {{selectedinvoice.billdt | date: 'dd-MM-yyyy'}}</span>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -129,24 +129,37 @@
             <input type="text" class="form-control" [value]="orderdetails.name" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
-            <label class="m-0">Order Date</label>
-            <input type="text" class="form-control" value="{{ orderdetails.orderdt | date: 'dd-MM-yyyy' }}" readonly />
+            <label class="m-0">Address</label>
+            <input type="text" class="form-control" value="{{ orderdetails.address }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Contact Number</label>
             <input type="text" class="form-control" value="{{ orderdetails.contactno }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
+            <label class="m-0">Product Name</label>
+            <input type="text" class="form-control" value="{{ orderdetails.prodname }}" readonly />
+          </div>
+          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Quantity</label>
             <input type="text" class="form-control" value="{{ orderdetails.quantity }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
-            <label class="m-0">Address</label>
-            <input type="text" class="form-control" value="{{ orderdetails.address }}" readonly />
-          </div>
-          <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Order Sent to</label>
             <input type="text" class="form-control" value="{{ orderdetails.remarks }}" readonly />
+          </div>
+          <div class="col-md-4 col-sm-12 mb-2">
+            <label class="m-0">DC. No.</label>
+            <input type="text" class="form-control" value="{{ selectedinvoice.dcno }}" readonly />
+          </div>
+          <div class="col-md-4 col-sm-12 mb-2">
+            <label class="m-0">Dispatch Date</label>
+            <input type="text" class="form-control" value="{{ selectedinvoice.dispatchdate | date: 'dd-MM-yyyy' }}"
+              readonly />
+          </div>
+          <div class="col-md-4 col-sm-12 mb-2">
+            <label class="m-0">Vehicle No.</label>
+            <input type="text" class="form-control" value="{{ selectedinvoice.vehicalno }}" readonly />
           </div>
           <div class="col-md-12 col-sm-12 my-1">
             <h6 class="text-primary">
@@ -189,15 +202,14 @@
 </div>
 
 <!--Bill Details Modal -->
-<div class="modal fade" id="billDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal" id="billDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" *ngIf="billdetails">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          Bill Number -
-          <span class="text-primary">{{ billdetails.billno }}</span> | Bill Date
-          -
+          Invoice No.:
+          <span class="text-primary">{{ billdetails.billno }}</span> | Invoice Date:
           <span class="text-primary">{{
             billdetails.billdt | date: "dd-MM-yyyy"
           }}</span>

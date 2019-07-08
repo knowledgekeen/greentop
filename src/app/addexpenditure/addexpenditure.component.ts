@@ -15,6 +15,7 @@ export class AddexpenditureComponent implements OnInit {
   allaccheads: any = null;
   expensedate: any = null;
   expensetype: any = null;
+  dirindirexp: any = null;
   acchead: any = null;
   particulars: any = null;
   amount: any = null;

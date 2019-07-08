@@ -126,7 +126,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-primary" id="exampleModalLabel">
-          {{ selectedorder.orderno }} | {{ selectedorder.name }}
+          {{ selectedorder.orderno }} | {{ selectedorder.orderdt | date: 'dd-MM-yyyy' }}
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -139,27 +139,27 @@
             <input type="text" class="form-control" [value]="selectedorder.name" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
-            <label class="m-0">Order Date</label>
-            <input type="text" class="form-control" value="{{ selectedorder.orderdt | date: 'dd-MM-yyyy' }}" readonly />
+            <label class="m-0">Address</label>
+            <input type="text" class="form-control" value="{{ selectedorder.address }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Contact Number</label>
             <input type="text" class="form-control" value="{{ selectedorder.contactno }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
-            <label class="m-0">Quantity</label>
-            <input type="text" class="form-control" value="{{ selectedorder.quantity }}" readonly />
+            <label class="m-0">Product Name</label>
+            <input type="text" class="form-control" value="{{ selectedorder.prodname }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
-            <label class="m-0">Address</label>
-            <input type="text" class="form-control" value="{{ selectedorder.address }}" readonly />
+            <label class="m-0">Quantity</label>
+            <input type="text" class="form-control" value="{{ selectedorder.quantity }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Order Sent to</label>
             <input type="text" class="form-control" value="{{ selectedorder.remarks }}" readonly />
           </div>
           <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
-            <label class="m-0">Dispatch No.</label>
+            <label class="m-0">DC. No.</label>
             <input type="text" class="form-control" [(ngModel)]="dispatchdetails.dcno" readonly />
           </div>
           <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
@@ -167,7 +167,7 @@
             <input type="text" class="form-control" [(ngModel)]="viewdispatcheddate" readonly />
           </div>
           <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
-            <label class="m-0">Vehical No.</label>
+            <label class="m-0">Vehicle No.</label>
             <input type="text" class="form-control" [(ngModel)]="dispatchdetails.vehicalno" readonly />
           </div>
           <div class="col-md-12 col-sm-12 my-1">

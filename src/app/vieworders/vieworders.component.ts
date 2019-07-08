@@ -54,6 +54,7 @@ export class ViewordersComponent implements OnInit {
       .getData("order.php", "getOrdersFromToDate", geturl)
       .subscribe(Response => {
         if (Response) {
+          //console.log(Response)
           this.allorders = Response["data"];
           this.masterorders = JSON.parse(JSON.stringify(this.allorders));
 
@@ -120,16 +121,19 @@ export class ViewordersComponent implements OnInit {
   getOrderConsignees(oid) {
     this.dispatchbatches = false;
     this.dispatchdetails = null;
+    this.selectedorderconsignees = null;
     let geturl = "orderid=" + oid;
     this._rest
       .getData("order.php", "getOrderConsignees", geturl)
       .subscribe(Response => {
+        //console.log(Response)
         if (Response) {
           this.selectedorderconsignees = Response["data"];
 
           if (this.selectedorder.status != "open") {
             this._rest.getData("dispatch.php", "getDispatchDetails", geturl)
               .subscribe(RespDisp => {
+                //console.log(RespDisp)
                 if (RespDisp) {
                   this.dispatchdetails = RespDisp["data"];
                   let mydate = moment(parseInt(this.dispatchdetails.dispatchdate)).format("DD-MM-YYYY");
@@ -137,7 +141,7 @@ export class ViewordersComponent implements OnInit {
                   let dispurl = "dispatchid=" + this.dispatchdetails.dispatchid;
                   this._rest.getData("dispatch.php", "getDispatchBatches", dispurl)
                     .subscribe(Resp => {
-                      console.log(Resp)
+                      //console.log(Resp)
                       if (Resp) {
                         this.dispatchbatches = Resp["data"];
                       }

@@ -24,11 +24,13 @@ export class CreateaccountheadComponent implements OnInit {
     this.disablebtn = true;
     let flag = new Array();
     let vm = this;
-    flag = this.allaccheads.filter(function (value) {
-      if (vm.accheadnm == value.accheadnm) {
-        return true;
-      }
-    });
+    if (this.allaccheads) {
+      flag = this.allaccheads.filter(function (value) {
+        if (vm.accheadnm == value.accheadnm) {
+          return true;
+        }
+      });
+    }
 
     if (flag.length <= 0) {
       this.successmsg = null;

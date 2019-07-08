@@ -1,0 +1,36 @@
+Action: Success
+User: ::1 - July 8, 2019, 12:33:00
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 8, 2019, 12:33:00
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 8, 2019, 12:33:00
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 8, 2019, 12:33:00
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 8, 2019, 12:33:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 8, 2019, 12:33:07
+File: order.php - Method: getAllAccountHeads
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 8, 2019, 12:33:07
+File: expenditure.php - Method: getExpendituresFromTo
+
+*******************************************************************************

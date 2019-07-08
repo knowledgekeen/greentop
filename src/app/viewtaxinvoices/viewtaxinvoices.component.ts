@@ -12,6 +12,7 @@ import { GlobalService } from "../global.service";
 export class ViewtaxinvoicesComponent implements OnInit {
   opendtp: boolean = false;
   selecteddate: any = new Date();
+  selectedinvoice: any = new Date();
   errorMsg: any = false;
   allinvoices: any = null;
   billdetails: any = null;
@@ -72,10 +73,12 @@ export class ViewtaxinvoicesComponent implements OnInit {
       });
   }
 
-  getOrderDetails(orderid) {
+  getOrderDetails(bill) {
+    console.log(bill);
+    this.selectedinvoice = bill;
     this.orderdetails = null;
     this.allconsignees = null;
-    let urldata = "orderid=" + orderid;
+    let urldata = "orderid=" + bill.orderid;
     this._rest
       .getData("order.php", "getOrdersDetails", urldata)
       .subscribe(Response => {
