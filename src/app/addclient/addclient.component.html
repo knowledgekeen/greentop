@@ -81,7 +81,7 @@
       </div>
       <div class="col-sm-12 col-xs-12 mb-3">
         <button class="btn btn-sm btn-success" (click)="addClient()"
-          [disabled]="!fname || !cno || !city || !state || clientnamepresent">
+          [disabled]="!fname || !cno || !city || !state || clientnamepresent || disablebtn">
           Add
           <span *ngIf="clienttype == '1'">Supplier</span>
           <span *ngIf="clienttype == '2'">Customer</span>

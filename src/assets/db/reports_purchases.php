@@ -12,7 +12,7 @@ if($action == "getFromToPurchases"){
 	authenticate($headers);
     $fromdt = $_GET["fromdt"];
     $todt = $_GET["todt"];
-    $sql = "SELECT pm.`purcmastid`,pm.`clientid`,pm.`vehicalno`,pm.`dcno`,pm.`billno`,pm.`billdt`,pm.`arrivaldt`,pm.`totalamount`,pm.`totaldiscount`,cm.`name`, pr.`rawmatid`, pr.`quantity`, pr.`rate`, pr.`cgst`, pr.`sgst`, pr.`igst`, pr.`discount`, pr.`roundoff`, pr.`amount` , rm.`name` as `rawmatname` FROM `purchase_master` pm, `client_master` cm, `purchase_register` pr, `raw_material_master` rm WHERE pm.`clientid`=cm.`clientid` AND pr.`purcmastid`=pm.`purcmastid` AND pr.`rawmatid`=rm.`rawmatid` AND `billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY pm.`arrivaldt`";
+    $sql = "SELECT pm.`purcmastid`,pm.`clientid`,pm.`vehicalno`,pm.`dcno`,pm.`billno`,pm.`billdt`,pm.`arrivaldt`,pm.`totalamount`,pm.`totaldiscount`,cm.`name`,cm.`city`,cm.`gstno`, pr.`rawmatid`, pr.`quantity`, pr.`rate`, pr.`cgst`, pr.`sgst`, pr.`igst`, pr.`discount`, pr.`roundoff`, pr.`amount` , rm.`name` as `rawmatname`,rm.`hsncode` FROM `purchase_master` pm, `client_master` cm, `purchase_register` pr, `raw_material_master` rm WHERE pm.`clientid`=cm.`clientid` AND pr.`purcmastid`=pm.`purcmastid` AND pr.`rawmatid`=rm.`rawmatid` AND `billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY pm.`arrivaldt`";
     $result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -36,6 +36,8 @@ if($action == "getFromToPurchases"){
 			$tmp[$i]['totaldiscount'] = $row['totaldiscount'];
 			$tmp[$i]['totalamount'] = $row['totalamount'];
 			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['city'] = $row['city'];
+			$tmp[$i]['gstno'] = $row['gstno'];
 			$tmp[$i]['rawmatid'] = $row['rawmatid'];
 			$tmp[$i]['quantity'] = $row['quantity'];
 			$tmp[$i]['rate'] = $row['rate'];
@@ -45,6 +47,7 @@ if($action == "getFromToPurchases"){
 			$tmp[$i]['discount'] = $row['discount'];
 			$tmp[$i]['amount'] = $row['amount'];
 			$tmp[$i]['rawmatname'] = $row['rawmatname'];
+			$tmp[$i]['hsncode'] = $row['hsncode'];
 			$tmp[$i]['roundoff'] = $row['roundoff'];
 			$i++;
 		}

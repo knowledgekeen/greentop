@@ -1,0 +1,112 @@
+<div class="container-fluid">
+  <div class="card my-1">
+    <div class="card-body">
+      <h5 class="text-uppercase text-center">
+        <span class="border-bottom border-secondary">Purchase Reports For the F.Y.
+          {{ finanyr.fromdt | date: "yyyy" }} - {{ finanyr.todt | date: "yyyy" }}</span>
+      </h5>
+      <hr class="my-3">
+      <h6>
+        Report for:
+        <span class="font-weight-bold border-bottom border-secondary"
+          *ngIf="!customfrom || !customto">{{monthlabel}}</span>
+        <span class="font-weight-bold border-bottom border-secondary"
+          *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
+          {{customto | date: 'dd-MMM, yyyy'}}</span>
+      </h6>
+      <h6>
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-1">Period:</div>
+          <div class="col-md-2">
+            <label class="m-0">From</label>
+            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()" />
+          </div>
+          <div class="col-md-2">
+            <label class="m-0">To</label>
+            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
+              (blur)="autofilltodt()" />
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-info mt-3" (click)="filterData()"><i class="fa fa-filter"></i> Filter</button>
+          </div>
+        </div>
+      </h6>
+      <div class="table-responsive" id="monthlypurchasereport">
+        <table class="table table-striped table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date Of Receipt</th>
+              <th scope="col">Supplier</th>
+              <th scope="col">Place</th>
+              <th scope="col">GST No.</th>
+              <th scope="col">Particulars</th>
+              <th scope="col">HSN Code</th>
+              <th scope="col" class="text-right">Quantity (M.T)</th>
+              <th scope="col">Invoice Date</th>
+              <th scope="col">BoS/Invoice No.</th>
+              <th scope="col" class="text-right">Bill Amount</th>
+              <th scope="col" class="text-right">Rate of GST</th>
+              <th scope="col" class="text-right">CGST</th>
+              <th scope="col" class="text-right">SGST</th>
+              <th scope="col" class="text-right">IGST</th>
+              <th scope="col" class="text-right">Roundoff</th>
+              <th scope="col" class="text-right">Total GST</th>
+              <th scope="col" class="text-right">Grand Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="18" class="text-primary" *ngIf="!allpurchases">
+                <h6><i class="fa fa-pulse fa-spinner"></i> Please wait, loading data...</h6>
+              </td>
+            </tr>
+            <tr *ngFor="let purchase of allpurchases; let i=index;">
+              <th scope="row">{{i+1}}</th>
+              <td>{{purchase.arrivaldt | date: 'dd-MM-yyyy'}}</td>
+              <td>{{purchase.name}}</td>
+              <td>{{purchase.city}}</td>
+              <td>
+                <span *ngIf="purchase.gstno">{{purchase.gstno}}</span>
+                <span *ngIf="!purchase.gstno">Not Applicable</span>
+
+              </td>
+              <td>{{purchase.rawmatname}}</td>
+              <td>{{purchase.hsncode}}</td>
+              <td class="text-right">
+                <span *ngIf="purchase.rawmatname != 'HDPE Bags'">{{purchase.quantity | number: '1.3-3'}}</span>
+                <span *ngIf="purchase.rawmatname == 'HDPE Bags'">{{purchase.quantity }}</span>
+              </td>
+              <td>{{purchase.billdt | date: 'dd-MM-yyyy'}}</td>
+              <td>{{purchase.billno}}</td>
+              <td class="text-right">{{((purchase.rate * purchase.quantity) - purchase.discount) | currency : "INR"}}
+              </td>
+              <td class="text-right">{{purchase.rateofgst}}%</td>
+              <td class="text-right">{{purchase.cgstinr | currency : "INR"}}</td>
+              <td class="text-right">{{purchase.sgstinr | currency : "INR"}}</td>
+              <td class="text-right">{{purchase.igstinr | currency : "INR"}}</td>
+              <td class="text-right">{{purchase.roundoff | currency : "INR"}}</td>
+              <td class="text-right">{{purchase.totalgst | currency: "INR"}}</td>
+              <td class="text-right">{{purchase.totalamount | currency : "INR"}}</td>
+            </tr>
+            <tr>
+              <td colspan="6">&nbsp;</td>
+              <td class="text-right font-weight-bold">Total</td>
+              <td class="text-right font-weight-bold">{{finalquantity | number : '1.3-3'}}</td>
+              <td colspan="2">&nbsp;</td>
+              <td class="text-right font-weight-bold">{{finalbillamt | currency : "INR"}}</td>
+              <td>&nbsp;</td>
+              <td class="text-right font-weight-bold">{{finalcgst | currency : "INR"}}</td>
+              <td class="text-right font-weight-bold">{{finalsgst | currency : "INR"}}</td>
+              <td class="text-right font-weight-bold">{{finaligst | currency : "INR"}}</td>
+              <td class="text-right font-weight-bold">{{finalroundoff | currency : "INR"}}</td>
+              <td class="text-right font-weight-bold">{{finaltotalgst | currency : "INR"}}</td>
+              <td class="text-right font-weight-bold">{{finalgrandtotal | currency : "INR"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

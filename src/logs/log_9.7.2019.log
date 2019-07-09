@@ -1,0 +1,816 @@
+Action: Success
+User: ::1 - July 9, 2019, 00:00:49
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:00:49
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:00:49
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:00:49
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:00:58
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:03:17
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:03:56
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:04:45
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:07:55
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:09:17
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:09:31
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:09:52
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:09:58
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:10:03
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:12:24
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:13:24
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:13:24
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:13:24
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 00:13:51
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:16:47
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:16:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:16:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:20:18
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:26:03
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:52:35
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:53:15
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:53:22
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:55:34
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:55:53
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 09:56:23
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:01:11
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:01:31
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:20:47
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:21:19
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:25:38
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:25:52
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:29:58
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:01
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:28
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:38
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:59
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:59
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:59
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:40:59
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:41:04
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:41:50
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:41:58
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:43:27
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:43:39
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:44:18
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:44:38
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:45:25
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:45:36
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:46:19
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:54:46
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:56:06
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:57:15
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:58:47
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 10:59:52
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:00:03
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:00:51
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:01:04
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:17:34
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:17:44
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:01
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:07
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:10
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:15
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:27
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:37
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:18:57
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:19:42
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:19:51
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:20:24
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:21:01
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:21:18
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:22:26
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:35:14
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:36:08
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:36:59
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:37:13
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:37:50
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:37:59
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:38:20
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:38:38
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:38:55
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:39:26
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:40:02
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:40:13
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:40:39
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:40:47
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:41:02
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:41:35
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:41:53
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:42:08
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:42:27
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:42:42
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:42:52
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:43:49
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:44:06
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:44:25
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:44:38
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:44:53
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:45:19
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:45:34
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:45:44
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:45:56
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:46:02
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:53:37
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:53:37
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:53:37
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:53:40
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 11:56:03
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 12:04:33
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:22:01
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:22:27
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:22:49
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:23:32
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:35:10
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:36:47
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:40:45
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:42:06
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:42:37
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:44:21
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:44:23
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:46:02
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:46:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:46:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:46:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:46:10
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:46:48
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:47:07
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:48:11
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:50:28
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:53:29
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:54:40
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:55:21
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:56:59
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:57:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:58:40
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 13:58:57
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:00:21
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:00:47
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:00:59
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:01:25
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:02:37
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:02:48
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:03:07
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:03:53
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:05:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:09:25
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:10:31
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:13:09
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:14:29
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:15:45
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:17:50
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:22:17
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:24:19
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:26:12
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:28:58
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:29:17
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:29:51
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 14:55:27
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************

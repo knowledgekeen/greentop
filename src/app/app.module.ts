@@ -71,6 +71,7 @@ import { AddexpenditureComponent } from './addexpenditure/addexpenditure.compone
 import { ViewexpenditureComponent } from './viewexpenditure/viewexpenditure.component';
 import { AddreceiptComponent } from './addreceipt/addreceipt.component';
 import { ViewreceiptComponent } from './viewreceipt/viewreceipt.component';
+import { ReportsModule } from './reports/reports.module';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { ViewreceiptComponent } from './viewreceipt/viewreceipt.component';
   ],
   imports: [
     BrowserModule,
+    ReportsModule,  //This Module should be loaded before App Routing as this module contains child routing
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

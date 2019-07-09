@@ -235,3 +235,27 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 /* SWITCH CSS ENDS */
+
+/* To Print */
+/* @media print{
+  @page{
+      size: 297mm 210mm;
+      margin: 0; 
+  }
+  html,body{
+    font-size: 11px;
+    overflow: visible;
+  }
+} */
+
+@media print {
+  @page{
+    size: auto;
+    margin: 0;
+  }
+  #monthlypurchasereport, #monthlypurchasereport *, #allsalesreports, #allsalesreports *{
+    visibility: visible;
+    overflow: visible;
+    font-size: 9px;
+  }
+}

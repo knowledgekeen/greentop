@@ -26,6 +26,7 @@ export class AddclientComponent implements OnInit {
   allstates: any = null;
   allclients: any = null;
   clientnamepresent: boolean = false;
+  disablebtn: boolean = false;
 
   constructor(private _rest: RESTService, private _interval: IntervalService) { }
 
@@ -69,6 +70,7 @@ export class AddclientComponent implements OnInit {
   }
 
   addClient() {
+    this.disablebtn = true;
     let address = null;
     if (!this.address) {
       address = this.city + ", " + this.state;
@@ -98,6 +100,8 @@ export class AddclientComponent implements OnInit {
           window.scrollTo(0, 0);
           this.getClientCities();
           this.getClientStates();
+
+          this.disablebtn = false;
           if (this.clienttype == "1") {
             this.successMsg = "Supplier added successfully";
           } else {
