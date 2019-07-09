@@ -203,6 +203,7 @@ export class NeworderComponent implements OnInit {
     }
     if (tmpqty != parseFloat(this.quantity)) {
       alert("Order quantity mismatched with the total consignee quantity.");
+      this.btndisabled = false;
       return;
     }
 
@@ -233,6 +234,7 @@ export class NeworderComponent implements OnInit {
         });
     }, error => {
       console.log("Order No already present");
+      this.btndisabled = false;
     });
     //console.log(orderObj);
   }

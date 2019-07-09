@@ -188,7 +188,8 @@
               <td>{{ mat.discount | currency: "INR" }}</td>
               <td>{{ mat.netamt | currency: "INR" }}</td>
               <td>
-                {{ mat.cgstinr }} / {{ mat.sgstinr }} / {{ mat.igstinr }}
+                {{ mat.cgstinr | currency: "INR" }} / {{ mat.sgstinr | currency: "INR" }} /
+                {{ mat.igstinr | currency: "INR" }}
                 <span class="badge badge-warning">{{ mat.totalgst }} %</span>
               </td>
               <td>{{ mat.rawtotalamt | currency: "INR" }}</td>
