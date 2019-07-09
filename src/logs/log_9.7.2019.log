@@ -814,3 +814,183 @@ User: ::1 - July 9, 2019, 14:55:27
 File: reports_purchases.php - Method: getFromToPurchases
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 15:38:30
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:01:00
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:01:33
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:02:18
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:03:35
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:03:54
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:04:13
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:08:11
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:10:18
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:11:00
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"5","clientid":"7","openingbal":"4160","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:11:01
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:11:01
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:13:59
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:17:05
+File: accounts.php - Method: checkLogin
+Logged In User: wasim3ace@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:17:05
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:17:05
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:17:05
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:17:15
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:25:43
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:26:25
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:26:44
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:28:33
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:29:03
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:30:28
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:33:01
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:38:18
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:11
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"4","clientid":"10","openingbal":"-6065","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:13
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:13
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:35
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"3","clientid":"9","openingbal":"500","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:35
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:35
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:39
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"5","clientid":"7","openingbal":"4160","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:39
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:40:39
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************

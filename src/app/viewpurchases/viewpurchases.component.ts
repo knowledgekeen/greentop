@@ -4,6 +4,7 @@ import { GlobalService } from "../global.service";
 import { IntervalService } from "../interval.service";
 import { Router } from "@angular/router";
 import { PurchasepayhistoryComponent } from '../purchasepayhistory/purchasepayhistory.component';
+import * as moment from "moment";
 
 @Component({
   selector: "app-viewpurchases",
@@ -12,7 +13,12 @@ import { PurchasepayhistoryComponent } from '../purchasepayhistory/purchasepayhi
 })
 export class ViewpurchasesComponent implements OnInit {
   allpurchases: any = null;
-  opendtp: boolean = false;
+  finanyr: any = null;
+  fromdt: any = null;
+  todt: any = null;
+  customfrom: any = null;
+  customto: any = null;
+  monthlabel: string = "Full year";
   selectedDate: any = new Date();
   errorMsg: any = false;
   totalamt: number = 0;
@@ -29,7 +35,10 @@ export class ViewpurchasesComponent implements OnInit {
     private resolver: ComponentFactoryResolver
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.finanyr = this._global.getCurrentFinancialYear();
+    this.getFromToPurchases(this.finanyr.fromdt, this.finanyr.todt);
+  }
 
   loadPurchasePaymentHistory(supplier) {
     this.entry.clear();
@@ -52,7 +61,7 @@ export class ViewpurchasesComponent implements OnInit {
     this._rest
       .getData("reports_purchases.php", "getFromToPurchases", purchurl)
       .subscribe(Response => {
-        //console.table(Response["data"]);
+        //console.table(Response);
         if (Response) {
           //console.log(Response["data"]);
           this.allpurchases = Response["data"];
@@ -74,57 +83,29 @@ export class ViewpurchasesComponent implements OnInit {
       });
   }
 
-  toggleDTP() {
-    this.opendtp = !this.opendtp;
+  autofillfromdt() {
+    this.fromdt = this._global.getAutofillFormattedDt(this.fromdt);
   }
 
-  changeDate() {
-    if (this.selectedDate) {
-      //console.log(this.selectedDate.getTime());
-      let todaydt = new Date().getTime();
-      if (this.selectedDate.getTime() > todaydt) {
-        let fromdt: any = new Date();
-        fromdt.setDate(1);
-        fromdt = fromdt.getTime();
-        let todt = new Date();
-        let lastdt = new Date(
-          todt.getFullYear(),
-          todt.getMonth() + 1,
-          0
-        ).getTime();
+  autofilltodt() {
+    this.todt = this._global.getAutofillFormattedDt(this.todt);
+  }
 
-        //If month from future show details of current month
-        this.getFromToPurchases(fromdt, lastdt);
-        this.errorMsg = "Month cannot be from future.";
-        this.selectedDate.setTime(todaydt);
-        this.opendtp = !this.opendtp;
-        this._interval.settimer(null).then(Resp => {
-          this.errorMsg = false;
-        });
-        return;
-      } else {
-        let dt = new Date();
-        dt.setTime(this.selectedDate);
-        let fromdate = new Date(parseInt(this.selectedDate.getTime()));
-        fromdate.setDate(1);
-        fromdate.setHours(0, 0, 0, 0);
-        let fromdt = fromdate.getTime();
-        let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        //console.log(fromdt, lastdt);
-        this.getFromToPurchases(fromdt, lastdt);
-        this.opendtp = !this.opendtp;
-        return;
-      }
-    }
+  filterData() {
+    let myfromdate = moment(this.fromdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let fromtm = new Date(myfromdate).getTime();
+    this.customfrom = fromtm;
+    let mytodate = moment(this.todt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let totm = new Date(mytodate).getTime();
+    this.customto = totm;
+    this.getFromToPurchases(fromtm, totm);
   }
 
   editPurchase(purch) {
     this._router.navigate(["/purchaserawmat", purch.purcmastid]);
-    //[routerLink]="['/purchaserawmat', purch.purcmastid]"
   }
 
   viewPurchaseDetails(purch) {
-    //console.log(purch);
     this.selectedpurchase = purch;
   }
 }
