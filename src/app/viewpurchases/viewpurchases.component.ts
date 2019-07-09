@@ -19,8 +19,6 @@ export class ViewpurchasesComponent implements OnInit {
   customfrom: any = null;
   customto: any = null;
   monthlabel: string = "Full year";
-  selectedDate: any = new Date();
-  errorMsg: any = false;
   totalamt: number = 0;
   totalqty: number = 0;
   totalbags: number = 0;

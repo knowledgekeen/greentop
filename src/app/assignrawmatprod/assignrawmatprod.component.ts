@@ -24,6 +24,7 @@ export class AssignrawmatprodComponent implements OnInit {
   productadded: boolean = false;
   spinner: boolean = true;
   disablesubmitbtn: boolean = false;
+  disableeditsubmitbtn: boolean = false;
   assignhistdata: any = null;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
@@ -129,10 +130,12 @@ export class AssignrawmatprodComponent implements OnInit {
     this.editqtyrem = true;
     this.rawmatnm = rawmat.rawmatid + "." + rawmat.name;
     this.defqty = rawmat.defquantity;
+    this.disableeditsubmitbtn = false;
+    console.log(this.product, this.rawmat, this.defqty, this.disableeditsubmitbtn)
   }
 
   saveEditRawMaterial() {
-    this.disablesubmitbtn = true;
+    this.disableeditsubmitbtn = true;
     let myDate = moment(this.moddate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let tmpObj = {
       prodid: this.selected_prod.prodid,
@@ -145,7 +148,7 @@ export class AssignrawmatprodComponent implements OnInit {
       .postData("production.php", "saveEditRawMaterial", tmpObj, null)
       .subscribe(Response => {
         if (Response) {
-          this.disablesubmitbtn = false;
+          this.disableeditsubmitbtn = false;
           this.successMsg = "Raw material quantity updated successfully";
           let prod = this.product;
           this.product = null;

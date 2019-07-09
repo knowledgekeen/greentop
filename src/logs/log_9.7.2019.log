@@ -994,3 +994,355 @@ User: ::1 - July 9, 2019, 17:40:39
 File: purchase_payments.php - Method: getAllPurchasePayments
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:53:37
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:53:50
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:58:53
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:40
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"5","clientid":"7","openingbal":"4160","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:40
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:40
+File: purchase_payments.php - Method: getAllPurchasePayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:42
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:42
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:42
+File: rawmaterial.php - Method: getPurchaseDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:42
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 17:59:42
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:11:03
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:11:03
+File: production.php - Method: getTodaysProductionBatch
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:11:07
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:11:07
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:11:09
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:15:33
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:15:33
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:15:36
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:17:12
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:17:12
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:17:48
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:17:48
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:17:50
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:18:53
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:18:53
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:18:56
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:18:58
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:21:05
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:21:05
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:21:07
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:21:32
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:21:32
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:21:48
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+
+Action: Success
+User: ::1 - July 9, 2019, 18:22:24
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:22:24
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:22:42
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:22:42
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:23:54
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:23:54
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:26:58
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:26:58
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:27:01
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:29:43
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:29:43
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:31:32
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:31:37
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:32:26
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:32:51
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:34:10
+File: production.php - Method: getProductionBatchesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:39:32
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:39:50
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:46:23
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:46:35
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:46:41
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:46:41
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:16
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:25
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:28
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:29
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:47:56
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:48:04
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:48:14
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:48:23
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:49:17
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:49:46
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:49:52
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 18:50:00
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************

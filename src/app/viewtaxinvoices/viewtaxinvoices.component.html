@@ -6,27 +6,34 @@
       <div class="alert alert-success" role="alert" *ngIf="batchsucces">
         <i class="fa fa-check"></i> Invoice updated successful.
       </div>
-      <div class="position-relative" [hidden]="opendtp == false">
-        <div class="card position-absolute border-secondary dtp-pickerwrapper">
-          <div class="card-body">
-            <dl-date-time-picker startView="month" maxView="year" minView="month" [(ngModel)]="selecteddate"
-              (change)="changeDate()">
-            </dl-date-time-picker>
+      <h6>
+        <span class="border-bottom border-primary">Invoices For -
+          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{monthlabel}}</span>
+          <span class="font-weight-bold" *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
+            {{customto | date: 'dd-MMM, yyyy'}}</span>
+        </span>
+      </h6>
+      <h6>
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-1">Period:</div>
+          <div class="col-md-2">
+            <label class="m-0">From</label>
+            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()" />
+          </div>
+          <div class="col-md-2">
+            <label class="m-0">To</label>
+            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
+              (blur)="autofilltodt()" />
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-info mt-3" (click)="filterData()"><i class="fa fa-filter"></i>
+              Filter</button>
           </div>
         </div>
-      </div>
+      </h6>
 
-      <div class="position-relative">
-        <span class="text-primary font-weight-bold border-bottom border-primary">Tax Invoices of -
-          {{ selecteddate | date: "MMMM, yyyy" }}</span>
-      </div>
-
-      <div class="position-relative text-right dtp-cardwrapper">
-        <span class="text-danger mx-3 font-weight-bold" *ngIf="errorMsg">
-          <i class="fa fa-exclamation-triangle"></i> {{ errorMsg }}</span>
-        <i class="fa fa-lg py-3 cursor-pointer text-secondary"
-          [ngClass]="{ 'fa-window-close': opendtp, 'fa-bars': !opendtp }" (click)="toggleDTP()"></i>
-      </div>
 
       <!-- Table with data -->
       <div class="table-responsive">

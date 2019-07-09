@@ -18,11 +18,15 @@ export class ViewbatchComponent implements OnInit {
   allproducts: any = null;
   isbatchused: any = false;
   batchsucces: any = false;
-  opendtp: boolean = false;
   selectedDate: any = new Date();
   errorMsg: any = false;
   batchdispatches: any = false;
   disablesavebtn: boolean = false;
+  monthlabel: string = "Full year";
+  fromdt: any = null;
+  todt: any = null;
+  customfrom: any = null;
+  customto: any = null;
 
   constructor(
     private _rest: RESTService,
@@ -35,12 +39,8 @@ export class ViewbatchComponent implements OnInit {
   }
 
   initialize() {
-    let fromdt: any = new Date();
-    fromdt.setDate(1);
-    fromdt.setHours(0, 0, 0, 0);
-    fromdt = fromdt.getTime();
-    let todt = new Date().getTime();
-    this.getProductionBatchesFromToDt(fromdt, todt);
+    let finanyr = this._global.getCurrentFinancialYear();
+    this.getProductionBatchesFromToDt(finanyr.fromdt, finanyr.todt);
   }
 
   getProductionBatchesFromToDt(fromdt, todt) {
@@ -229,42 +229,6 @@ export class ViewbatchComponent implements OnInit {
     });
   }
 
-  toggleDTP() {
-    this.opendtp = !this.opendtp;
-  }
-
-  changeDate() {
-    if (this.selectedDate) {
-      //console.log(this.selectedDate.getTime());
-      let todaydt = new Date().getTime();
-      if (this.selectedDate.getTime() > todaydt) {
-        let fromdt: any = new Date();
-        fromdt.setDate(1);
-        fromdt.setHours(0, 0, 0, 0);
-        fromdt = fromdt.getTime();
-        let todt = new Date().getTime();
-        //If month from future show details of current month
-        this.getProductionBatchesFromToDt(fromdt, todt);
-        this.errorMsg = "Month cannot be from future.";
-        this.selectedDate.setTime(todaydt);
-        this.opendtp = !this.opendtp;
-        this._interval.settimer(null).then(Resp => {
-          this.errorMsg = false;
-        });
-        return;
-      } else {
-        let dt = new Date();
-        dt.setTime(this.selectedDate);
-        let fromdt = this.selectedDate.getTime();
-        let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        //console.log(fromdt, lastdt);
-        this.getProductionBatchesFromToDt(fromdt, lastdt);
-        this.opendtp = !this.opendtp;
-        return;
-      }
-    }
-  }
-
   getInvoiceDetails(disp, index) {
     this.batchdispatches[index].invoicedetails = false;
     let invoiceurl = "orderid=" + disp.orderid;
@@ -277,5 +241,23 @@ export class ViewbatchComponent implements OnInit {
           this.batchdispatches[index].invoicedetails = "nodata";
         }
       })
+  }
+
+  autofillfromdt() {
+    this.fromdt = this._global.getAutofillFormattedDt(this.fromdt);
+  }
+
+  autofilltodt() {
+    this.todt = this._global.getAutofillFormattedDt(this.todt);
+  }
+
+  filterData() {
+    let myfromdate = moment(this.fromdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let fromtm = new Date(myfromdate).getTime();
+    this.customfrom = fromtm;
+    let mytodate = moment(this.todt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let totm = new Date(mytodate).getTime();
+    this.customto = totm;
+    this.getProductionBatchesFromToDt(fromtm, totm);
   }
 }

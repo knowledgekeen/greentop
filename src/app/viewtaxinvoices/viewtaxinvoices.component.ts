@@ -10,8 +10,6 @@ import { GlobalService } from "../global.service";
   styleUrls: ["./viewtaxinvoices.component.css"]
 })
 export class ViewtaxinvoicesComponent implements OnInit {
-  opendtp: boolean = false;
-  selecteddate: any = new Date();
   selectedinvoice: any = new Date();
   errorMsg: any = false;
   allinvoices: any = null;
@@ -37,6 +35,11 @@ export class ViewtaxinvoicesComponent implements OnInit {
   disableupdatebtn: boolean = false;
   totalmonthamt: any = 0;
   totalmonthqty: any = 0;
+  monthlabel: string = "Full year";
+  fromdt: any = null;
+  todt: any = null;
+  customfrom: any = null;
+  customto: any = null;
 
   constructor(
     private _interval: IntervalService,
@@ -48,7 +51,10 @@ export class ViewtaxinvoicesComponent implements OnInit {
     this.initialize();
   }
 
-  initialize() { }
+  initialize() {
+    let finanyr = this._global.getCurrentFinancialYear();
+    this.getInvoicesFromToDt(finanyr.fromdt, finanyr.todt);
+  }
 
   getInvoicesFromToDt(fromdt, todt) {
     this.allinvoices = null;
@@ -126,51 +132,6 @@ export class ViewtaxinvoicesComponent implements OnInit {
     this.billdt = this._global.getAutofillFormattedDt(this.billdt);
   }
 
-  toggleDTP() {
-    this.opendtp = !this.opendtp;
-  }
-
-  changeDate() {
-    //console.log(this.selecteddate);
-    if (this.selecteddate) {
-      //console.log(this.selecteddate.getTime());
-      let todaydt = new Date().getTime();
-      if (this.selecteddate.getTime() > todaydt) {
-        let fromdt: any = new Date();
-        fromdt.setDate(1);
-        fromdt.setHours(0, 0, 0, 0);
-        fromdt = fromdt.getTime();
-        let todt = new Date();
-        let lastdt = new Date(
-          todt.getFullYear(),
-          todt.getMonth() + 1,
-          0
-        ).getTime();
-        //If month from future show details of current month
-        this.getInvoicesFromToDt(fromdt, lastdt);
-        this.errorMsg = "Month cannot be from future.";
-        this.selecteddate.setTime(todaydt);
-        this.opendtp = !this.opendtp;
-        this._interval.settimer(null).then(Resp => {
-          this.errorMsg = false;
-        });
-        return;
-      } else {
-        let dt = new Date();
-        dt.setTime(this.selecteddate);
-        let fromdate = new Date(this.selecteddate.getTime());
-        fromdate.setDate(1);
-        fromdate.setHours(0, 0, 0, 0);
-        let fromdt = fromdate.getTime();
-        let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        //console.log(fromdt, lastdt);
-        this.getInvoicesFromToDt(fromdt, lastdt);
-        this.opendtp = !this.opendtp;
-        return;
-      }
-    }
-  }
-
   calculateAmt() {
     if (!this.autocalc) {
       return false;
@@ -231,5 +192,23 @@ export class ViewtaxinvoicesComponent implements OnInit {
           });
         }
       });
+  }
+
+  autofillfromdt() {
+    this.fromdt = this._global.getAutofillFormattedDt(this.fromdt);
+  }
+
+  autofilltodt() {
+    this.todt = this._global.getAutofillFormattedDt(this.todt);
+  }
+
+  filterData() {
+    let myfromdate = moment(this.fromdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let fromtm = new Date(myfromdate).getTime();
+    this.customfrom = fromtm;
+    let mytodate = moment(this.todt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let totm = new Date(mytodate).getTime();
+    this.customto = totm;
+    this.getInvoicesFromToDt(fromtm, totm);
   }
 }

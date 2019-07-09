@@ -11,8 +11,6 @@ import * as moment from "moment";
   styleUrls: ["./vieworders.component.css"]
 })
 export class ViewordersComponent implements OnInit {
-  selecteddate: any = new Date();
-  opendtp: boolean = false;
   allorders: any = null;
   masterorders: any = null;
   selectedorderconsignees: any = null;
@@ -21,6 +19,11 @@ export class ViewordersComponent implements OnInit {
   dispatchbatches: any = false;
   dispatchdetails: any = null;
   viewdispatcheddate: any = null;
+  monthlabel: string = "Full year";
+  fromdt: any = null;
+  todt: any = null;
+  customfrom: any = null;
+  customto: any = null;
 
   errorMsg: any = false;
   totalquantity: any = 0;
@@ -34,7 +37,10 @@ export class ViewordersComponent implements OnInit {
     private resolver: ComponentFactoryResolver
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    let finanyr = this._global.getCurrentFinancialYear();
+    this.getOrdersFromToDate(finanyr.fromdt, finanyr.todt);
+  }
 
   loadSalesPaymentHistory(customer) {
     this.entry.clear();
@@ -68,7 +74,7 @@ export class ViewordersComponent implements OnInit {
       });
   }
 
-  toggleDTP() {
+  /* toggleDTP() {
     this.opendtp = !this.opendtp;
   }
 
@@ -111,7 +117,7 @@ export class ViewordersComponent implements OnInit {
         return;
       }
     }
-  }
+  } */
 
   selectOrder(order) {
     this.selectedorder = order;
@@ -177,5 +183,25 @@ export class ViewordersComponent implements OnInit {
       }
     }
     this.totalquantity = totqty;
+  }
+
+
+  autofillfromdt() {
+    this.fromdt = this._global.getAutofillFormattedDt(this.fromdt);
+  }
+
+  autofilltodt() {
+    this.todt = this._global.getAutofillFormattedDt(this.todt);
+  }
+
+  filterData() {
+    this.selectedstatus = "all";
+    let myfromdate = moment(this.fromdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let fromtm = new Date(myfromdate).getTime();
+    this.customfrom = fromtm;
+    let mytodate = moment(this.todt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let totm = new Date(mytodate).getTime();
+    this.customto = totm;
+    this.getOrdersFromToDate(fromtm, totm);
   }
 }
