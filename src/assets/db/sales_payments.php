@@ -193,4 +193,5 @@ if($action == "deleteSalePayRecord"){
 
 	echo json_encode($data1);
 }
+
 ?>

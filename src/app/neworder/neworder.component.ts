@@ -48,6 +48,7 @@ export class NeworderComponent implements OnInit {
   initialize() {
     //let now = moment().format("DD-MM-YYYY");
     //this.orderdt = now;
+    //this.orderno.nativeElement.focus();
     this.getLastOrderId();
     this.getAllCustomers();
     this.getAllProducts();

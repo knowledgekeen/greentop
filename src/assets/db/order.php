@@ -51,12 +51,12 @@ if($action == "createNewOrder"){
         $ordid = $conn->insert_id;
         
         for($i=0; $i<count($consignees); $i++) {
-            $consigneename = $consignees[$i]->consigneename;
-            $contactperson = $consignees[$i]->contactperson;
+            $consigneename = mysqli_real_escape_string($conn, $consignees[$i]->consigneename);
+            $contactperson = mysqli_real_escape_string($conn, $consignees[$i]->contactperson);
             $contactno = $consignees[$i]->contactno;
             $city = $consignees[$i]->city;
             $state = $consignees[$i]->state;
-            $address = $consignees[$i]->address;
+            $address = mysqli_real_escape_string($conn,$consignees[$i]->address);
             $remarks = $consignees[$i]->remarks;
             $quantity = $consignees[$i]->quantity;
 

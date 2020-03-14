@@ -1406,3 +1406,133 @@ User: ::1 - July 9, 2019, 18:54:52
 File: payments_common.php - Method: getAllPayModes
 
 *******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:10:07
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:11:31
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:11:47
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:12:41
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:12:47
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:12:47
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:12:47
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:12:47
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:14:51
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:14:56
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:33:13
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"28"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:33:13
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:37:14
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"28"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:37:14
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:37:43
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"28"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:37:43
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:49:50
+File: order.php - Method: createNewOrder
+Data: {"orderid":"GTO-29","orderdt":1562610600000,"custid":"24","prodid":"1","qty":"2","consignees":[{"consigneename":"Kirti Agro Sales & Services","contactperson":"Shelke","contactno":"9921169824","city":"Alibag","state":"Maharashtra","address":"Opp: RCF Gate, At: Thal Vaishet. Tal: Alibag. Dist: Raigad","quantity":"2","remarks":"SELF"}],"remarks":"SELF"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:49:52
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"29"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:49:52
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:49:57
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:50:02
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:50:48
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:51:08
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:51:10
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - July 9, 2019, 19:51:38
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************

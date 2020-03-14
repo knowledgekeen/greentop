@@ -248,6 +248,44 @@ input:checked + .slider:before {
   }
 } */
 
+.col-print-1 {width:8.3333%;  float:left;}
+.col-print-2 {width:16.6666%; float:left;}
+.col-print-3 {width:25%; float:left;}
+.col-print-4 {width:33.3332%; float:left;}
+.col-print-5 {width:41.6665%; float:left;}
+.col-print-6 {width:50%; float:left;}
+.col-print-7 {width:58.3331%; float:left;}
+.col-print-8 {width:66.6664%; float:left;}
+.col-print-9 {width:75%; float:left;}
+.col-print-10{width:83.333%; float:left;}
+.col-print-11{width:91.6663%; float:left;}
+.col-print-12{width:100%; float:left;}
+
+.invoiceno{
+  font-size: 1.2rem;
+}
+
+.tablebox{
+  border: 1px solid #dee2e6;
+  /* height: 400px; */
+}
+.tablecol{
+  border-right: 1px solid #dee2e6;
+  text-align: center;
+}
+.tablecol:last-child{
+  border-right: 0px;
+  text-align: right;
+}
+
+.bordertop{
+  border-top: 1px solid #dee2e6;
+}
+
+.tableheadrow{
+  border-bottom: 1px solid #dee2e6;
+}
+
 @media print {
   @page{
     size: auto;
@@ -258,4 +296,18 @@ input:checked + .slider:before {
     overflow: visible;
     font-size: 9px;
   }
+
+  .card{
+    border:0px;
+  }
+  
+  div.header-content{
+    margin-left: 230px;
+  }
+
+  .companyheader img{
+      position: absolute; 
+      top: 0;
+  }
+  
 }

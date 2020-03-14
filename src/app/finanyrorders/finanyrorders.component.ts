@@ -71,7 +71,7 @@ export class FinanyrordersComponent implements OnInit {
       if (parseInt(allorderscopy[i].orderdt) >= fromdt && parseInt(allorderscopy[i].orderdt) <= todt) {
         let tmpdt = new Date(fromdt);
         tmpobj.mnt = moment(tmpdt).format("MMM");
-        tmpobj.qty = parseInt(allorderscopy[i].quantity);
+        tmpobj.qty = parseFloat(allorderscopy[i].quantity);
         dataarr.push(tmpobj);
       } else {
       }

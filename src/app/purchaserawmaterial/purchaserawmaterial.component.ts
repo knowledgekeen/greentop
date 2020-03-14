@@ -635,6 +635,10 @@ export class PurchaserawmaterialComponent implements OnInit {
       this.alltrucks = RespTruck;
     });
   }
+
+  formatVehicalNo() {
+    this.vehicalno = this._global.formatVehicalNo(this.vehicalno)
+  }
   /*   checkPurchaseDCNoIfPresent() {
       if (!this.dcno) return;
   

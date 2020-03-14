@@ -32,7 +32,8 @@
         </div>
         <div class="col-md-2 col-sm-12">
           <label class="m-0">Vehicle Number</label>
-          <input type="text" class="form-control" placeholder="Vehicle Number" [(ngModel)]="vehicalno" list="lorries" />
+          <input type="text" class="form-control" placeholder="Vehicle Number" [(ngModel)]="vehicalno"
+            (blur)="formatVehicalNo()" list="lorries" />
           <datalist id="lorries">
             <option value="{{ lorry.lorryno }}" *ngFor="let lorry of alltrucks">{{ lorry.lorryno }}</option>
           </datalist>
@@ -170,7 +171,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Raw Material</th>
-              <th scope="col">Qty</th>
+              <th scope="col" class="text-right">Qty</th>
               <th scope="col">Amount</th>
               <th scope="col">Discount</th>
               <th scope="col">Amount before GST</th>
@@ -183,7 +184,7 @@
             <tr *ngFor="let mat of added_materials; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ mat.rawmatnm }}</td>
-              <td>{{ mat.qty }}</td>
+              <td class="text-right">{{ mat.qty | number: "1.3-3" }}</td>
               <td>{{ mat.amount | currency: "INR" }}</td>
               <td>{{ mat.discount | currency: "INR" }}</td>
               <td>{{ mat.netamt | currency: "INR" }}</td>

@@ -1,0 +1,1256 @@
+Action: Success
+User: ::1 - March 10, 2020, 12:12:01
+File: accounts.php - Method: checkLogin
+Logged In User: greentoporganics@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:12:02
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:12:02
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:12:02
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:12:30
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:12:37
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:12:39
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:13:49
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:13:49
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:13:49
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:14:24
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:14:24
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:14:24
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:14:46
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:15:04
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:15:04
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:16:53
+File: production.php - Method: addProdRawMaterial
+Data: {"prodid":"1","rawmatid":"3","defqty":"1","moddate":1588271400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:16:53
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:16:58
+File: production.php - Method: addProdRawMaterial
+Data: {"prodid":"1","rawmatid":"4","defqty":"1","moddate":1588271400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:16:59
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:08
+File: production.php - Method: addProdRawMaterial
+Data: {"prodid":"1","rawmatid":"5","defqty":"100","moddate":1588271400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:08
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:16
+File: production.php - Method: addProdRawMaterial
+Data: {"prodid":"1","rawmatid":"2","defqty":"1","moddate":1588271400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:16
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:20
+File: production.php - Method: addProdRawMaterial
+Data: {"prodid":"1","rawmatid":"1","defqty":"1","moddate":1588271400000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:20
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:24
+File: production.php - Method: getRawMatAssignmentHist
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:32
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:32
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:32
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:42
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:17:46
+File: production.php - Method: getAllProdRawmats
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:01
+File: production.php - Method: addProductionBatch
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:01
+File: production.php - Method: getTodaysProductionBatch
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:01
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:11
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:11
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:11
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:11
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:25
+File: dispatch.php - Method: dispatchOrder
+Data: {"todaydt":1583822905180,"orderid":"1","prodid":"1","quantity":"2","dispdate":1588271400000,"dcno":"101","vehicalno":"MH12HD8771","rate":"0","amount":"0","advance":"0","paidon":1588271400000,"partytrans":"Party's Transport","addedbatches":[{"batchmastid":"1","batchid":"1","selqty":"2","qtyrem":18}],"remarks":"Sales \/ Ovhal Trading Co. Pvt. Ltd. \/ Order No: GTO-1"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:27
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:27
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:27
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:27
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:27
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:31
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:39
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:39
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:39
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:41
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:18:54
+File: order.php - Method: getDispatchedOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:16
+File: taxinvoice.php - Method: saveBillDetails
+Data: {"orderid":"1","clientid":"13","billno":"100","billdt":1588271400000,"amount":200,"discount":0,"rate":"100","cgst":0,"sgst":0,"igst":0,"roundoff":0,"totalamount":"200.00"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:17
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:27
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:49
+File: taxinvoice.php - Method: updateBillDetails
+Data: {"otaxinvoiceid":"1","billdt":1556649000000,"amount":"200","discount":"0","rate":"100","cgst":"0","sgst":"0","igst":"0","roundoff":"0","totalamount":"200.00"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:49
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:53
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:53
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:59
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:59
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:59
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:59
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:19:59
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:20:05
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:20:09
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:20:09
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:20:09
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:24:00
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:24:03
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:24:10
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:24:12
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:24:12
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:32:59
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:33:05
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:33:12
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:33:19
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:33:40
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:33:50
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:34:00
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:34:09
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:34:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:34:21
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:34:41
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:35:00
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:35:24
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:35:35
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:35:54
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:35:57
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:09
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:17
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:17
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:17
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:17
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:25
+File: rawmaterial.php - Method: getRawMaterials
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:25
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:25
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:25
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:36:27
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:43:33
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:44:24
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:44:27
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 12:44:30
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:06:24
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:07:02
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:16:36
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:16:48
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:18:16
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:19:10
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:19:42
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:22:58
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:23:34
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:24:27
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:27:05
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:30:05
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:31:02
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:31:21
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:32:28
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 13:32:49
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 14:03:55
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:12:47
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:12:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:12:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:14:32
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:19:26
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:19:26
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:19:26
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:19:30
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:36
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:36
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:36
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:37
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:44
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:47
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:47
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:21:47
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:48:51
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:48:51
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:48:51
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:53:10
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:53:13
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:53:15
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:53:15
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:54:08
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 15:54:09
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:11
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:14
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:16
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:16
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:16
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:20
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:24
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:31
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:31
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:05:32
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:49:58
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:50:00
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:50:04
+File: order.php - Method: getOrdersDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:50:04
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:50:51
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:54:54
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 16:54:55
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:15:40
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:35:57
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:19
+File: order.php - Method: getLastOrderId
+Data: {"status":200,"data":"32"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:19
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:25
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:25
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:25
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:25
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:37:25
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:38:03
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:38:11
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:38:47
+File: accounts.php - Method: updateCompanyAddress
+Data: {"userid":"2","address":"Milkat No.3990, Gat No. 1081, Wadki, Tal: Haveli. Dist: Pune. 412308"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:38:51
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:43:53
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:43:55
+File: stock.php - Method: getProdOpeningStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:04
+File: product.php - Method: updateProduct
+Data: {"prodid":"1","prodname":"ECHOMEAL - Organic Manure","hsncode":"3101","status":1}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:04
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"1","quantity":0,"openbaldt":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:04
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:07
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:07
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:07
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:10
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:21
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:23
+File: stock.php - Method: getProdOpeningStock
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:29
+File: product.php - Method: updateProduct
+Data: {"prodid":"2","prodname":"Organic Manure (Non Branded)","hsncode":"3103","status":1}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:29
+File: stock.php - Method: updateCurrentStock
+Data: {"stockid":"7","quantity":0,"openbaldt":1554057000000}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:29
+File: product.php - Method: getActiveProducts
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:44:32
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:46:01
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:46:01
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:46:02
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:46:02
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:46:02
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:46:05
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 17:47:41
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:09:34
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:09:52
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:36:40
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:36:48
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:36:52
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:38:34
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:38:35
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:39:51
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:39:51
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:39:51
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:39:51
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:39:51
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:41:28
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:41:28
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:41:28
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:41:30
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:41:48
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:42:01
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:45:44
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:45:46
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"5","clientid":"7","openingbal":"4160","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:45:46
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:46:01
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:46:05
+File: reports_purchases.php - Method: getFromToPurchases
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:46:07
+File: client.php - Method: getClientPurchaseOpeningBal
+Data: {"openbalid":"3","clientid":"9","openingbal":"500","baldate":"1554057000000"}
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:46:07
+File: purchase_payments.php - Method: getAllPurchaseMastPayments
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:46:35
+File: payments_common.php - Method: getAllPayModes
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:46:38
+File: client.php - Method: getClientSaleOpeningBal
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:09
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:09
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:09
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:28
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:36
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:52
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:47:56
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:48:07
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:48:26
+File: stock.php - Method: getStockHistory
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 18:51:52
+File: taxinvoice.php - Method: getInvoicesFromToDt
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:01:28
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:01:28
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:01:28
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:01:43
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:01:43
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:01:43
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:08:44
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:08:44
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:08:44
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:08:44
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:08:44
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 10, 2020, 19:08:46
+File: taxinvoice.php - Method: getLastBillId
+Data: {"status":200,"data":"100"}
+
+*******************************************************************************

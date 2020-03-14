@@ -73,7 +73,7 @@ export class GlobalService {
   /**
    * Pass milliseconds from 1 April to 31 March of year and it will return financial year
    */
-  getSpecificFinancialYear(ms: any = new Date().getTime()) {
+  getSpecificFinancialYear(ms: any = new Date()) {
     let dt = new Date(ms);
     if (dt.getMonth() > 2) {
       //2019-2020
@@ -88,8 +88,8 @@ export class GlobalService {
       };
     } else {
       //2018-2019
-      let fromdt: any = new Date(),
-        todt: any = new Date();
+      let fromdt: any = new Date(ms),
+        todt: any = new Date(ms);
       fromdt = moment(fromdt.getFullYear() - 1 + "-04-01 00:00");
       todt = moment(todt.getFullYear() + "-03-31 23:59");
       //console.log(fromdt.unix() * 1000, todt.getTime());
@@ -101,6 +101,7 @@ export class GlobalService {
   }
 
   getAutofillFormattedDt(dt) {
+    if (!dt) { return }
     let aridt = dt;
     let day = null;
     let mnth = null;
@@ -184,5 +185,10 @@ export class GlobalService {
       }
       return order == "desc" ? comparison * -1 : comparison;
     };
+  }
+
+  formatVehicalNo(vehicalno) {
+    if (vehicalno)
+      return vehicalno.replace(/[^A-Z0-9]/ig, "");
   }
 }

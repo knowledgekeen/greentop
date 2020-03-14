@@ -1,0 +1,121 @@
+Action: Success
+User: ::1 - March 14, 2020, 19:09:06
+File: accounts.php - Method: checkLogin
+Logged In User: greentoporganics@gmail.com
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:09:06
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:09:06
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:09:06
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:09:38
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:09:38
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:09:38
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:01
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:02
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:02
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:02
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:02
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:10
+File: order.php - Method: getOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:17
+File: order.php - Method: getOrderConsignees
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:17
+File: dispatch.php - Method: getDispatchDetails
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:17
+File: dispatch.php - Method: getDispatchBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:26
+File: accounts.php - Method: getDBSettings
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:26
+File: reports_stock.php - Method: getAllStocks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:26
+File: order.php - Method: getAllOrdersFromToDate
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:50
+File: order.php - Method: getOpenOrders
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:50
+File: transport.php - Method: getTransportTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:50
+File: production.php - Method: getAllProductionBatches
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:50
+File: transport.php - Method: getDispatchTrucks
+
+*******************************************************************************
+Action: Success
+User: ::1 - March 14, 2020, 19:10:50
+File: transport.php - Method: getPurchaseTrucks
+
+*******************************************************************************

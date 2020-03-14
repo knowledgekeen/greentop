@@ -1,0 +1,167 @@
+<div class="container">
+  <div class="card my-1 p-3">
+    <div class="card-body">
+      <app-letterhead></app-letterhead>
+      <div class="row my-5 pl-5">
+        <div class="col-md-4 col-print-4">
+          M/s. <strong *ngIf="invoicedata">{{invoicedata[0].name}}</strong> <br>
+          <span *ngIf="invoicedata">{{invoicedata[0].address}}</span><br>
+          <strong>State: </strong> <span *ngIf="invoicedata">{{invoicedata[0].state}}</span> <br>
+          <strong *ngIf="invoicedata && invoicedata[0].gstno">State Code: </strong>
+          <span *ngIf="invoicedata && invoicedata[0].gstno">{{invoicedata[0].gstno.substring(0,2)}} <br></span>
+          <strong>GST No. </strong> <span *ngIf="invoicedata && invoicedata[0].gstno">{{invoicedata[0].gstno}}</span>
+          <span *ngIf="invoicedata && !invoicedata[0].gstno">URP</span>
+        </div>
+
+        <div class="col-md-5 col-print-5">
+          <strong>Description: </strong><span *ngIf="invoicedata">{{invoicedata[0].prodname}}</span><br>
+          <strong>HSN Code: </strong> <span *ngIf="invoicedata">{{invoicedata[0].hsncode}}</span> <br>
+          <strong>UOM: </strong> MTs
+        </div>
+
+        <div class="col-md-3 col-print-3">
+          <h5 class="text-danger font-weight-bold">TAX INVOICE</h5>
+          <strong>Invoice No. </strong> <span class="float-right font-weight-bold invoiceno">{{invoiceno}}</span>
+          <br>
+          <br>
+          <strong>Date: </strong> <span class="float-right" *ngIf="invoicedata">{{billdt | date:"dd/MM/yyyy"}}</span>
+        </div>
+      </div>
+
+
+      <div class="row my-5 pl-5">
+        <div class="col-md-12 tablebox">
+          <div class="tableheadrow row">
+            <div class="col-md-2 col-print-2 tablecol">Delivery <br /> Challan No.</div>
+            <div class="col-md-2 col-print-2 tablecol">Delivery <br /> Challan Date</div>
+            <div class="col-md-2 col-print-2 tablecol">Vehicle No.</div>
+            <div class="col-md-2 col-print-2 tablecol">Quantity <br>(MTs)</div>
+            <div class="col-md-2 col-print-2 tablecol">Rate <br>(P.M.T.)</div>
+            <div class="col-md-2 col-print-2 tablecol">Amount <br>(Rs.)</div>
+          </div>
+          <div class="row" *ngFor="let invoice of invoicedata">
+            <div class="col-md-2 col-print-2 tablecol">{{invoice.dcno}}</div>
+            <div class="col-md-2 col-print-2 tablecol">{{invoice.dispatchdate | date: 'dd/MM/yyyy'}}</div>
+            <div class="col-md-2 col-print-2 tablecol">{{invoice.vehicalno}}</div>
+            <div class="col-md-2 col-print-2 tablecol">{{invoice.quantity | number:'1.3-3'}}</div>
+            <div class="col-md-2 col-print-2 tablecol">{{invoice.rate | number:'1.2-2'}}</div>
+            <div class="col-md-2 col-print-2 tablecol">{{invoice.amount | number: '1.2-2'}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-print-2 tablecol bordertop">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol bordertop">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol font-weight-bold bordertop text-right">Total</div>
+            <div class="col-md-2 col-print-2 tablecol font-weight-bold bordertop">{{totaldcqty | number: '1.3-3'}}</div>
+            <div class="col-md-2 col-print-2 tablecol bordertop">&nbsp;</div>
+            <div class="col-md-2 col-print-2 tablecol font-weight-bold bordertop">{{totaldcamt | number: '1.2-2'}}</div>
+          </div>
+        </div>
+
+        <table class="my-3 table table-bordered">
+          <tbody>
+
+            <tr class="text-right" *ngIf="finaldiscount>0">
+              <td class="py-1" colspan="5">Sub Total</td>
+              <td class="py-1" style="width: 16.9%;">{{totaldcamt | number: '1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="finaldiscount>0">
+              <td class="py-1" colspan="5">Discount</td>
+              <td class="py-1">{{finaldiscount | number:'1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="finalamtb4tax">
+              <td class="py-1" colspan="5">Amount Before Tax</td>
+              <td class="py-1">{{finalamtb4tax | number: '1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="invoicedata">
+              <td class="py-1" colspan="5">CGST @
+                <span>{{invoicedata[0].cgst}}</span>%</td>
+              <td class="py-1">{{cgstamt | number: '1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="invoicedata">
+              <td class="py-1" colspan="5">SGST @
+                <span>{{invoicedata[0].sgst}}</span>%</td>
+              <td class="py-1">{{sgstamt | number: '1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="invoicedata">
+              <td class="py-1" colspan="5">IGST @
+                <span>{{invoicedata[0].igst}}</span>%</td>
+              <td class="py-1">{{igstamt | number: '1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="invoicedata">
+              <td class="py-1" colspan="5">Round Off (+/-)</td>
+              <td class="py-1">{{totalroundoff | number:'1.2-2'}}</td>
+            </tr>
+            <tr class="text-right" *ngIf="invoicedata">
+              <td class="py-1 font-weight-bold" colspan="5">Total Amount</td>
+              <td class="py-1 font-weight-bold">{{finalamount | number: '1.2-2'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td style="width: 200px;">Total Amount in Words: </td>
+              <!-- <td>Rupees <span>Two Lakh Twenty One Thousand Seven Hundren Sixty</span> Only.</td> -->
+              <td>Rupees <span>{{amtinwords | titlecase}}</span> Only.</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td><strong><u>Subject to Pune Jurisdiction.</u></strong> <span class="float-right">Amount of Tax subject
+                  to
+                  Reverse Charge.</span>
+                <p>Goods once sold will not be taken back or exchanged. <br>
+                  Interest will be charged extra for delayed payments.</p>
+                <h5 class="text-danger">
+                  <strong>Bank Details:</strong> Indian Overseas Bank, AFMC Branch Pune. <br>
+                  <strong>IFSC CODE:</strong> IOBA0001831, <strong>A/c No.</strong> 1831 02 0000 00204
+                </h5>
+                <p>Certified that the particulars given above are true and correct.</p>
+              </td>
+              <td class="text-center">
+                <h5>For Green Top Organics</h5>
+                <br><br><br><br>
+                <p>Authorised Signatory</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
