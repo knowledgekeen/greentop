@@ -32,6 +32,7 @@ export class TaxinvoiceComponent implements OnInit {
   dcdetails: any = null;
   successmsg: boolean = false;
   disablesavebtn: boolean = false;
+  discountremarks: string = null;
 
   constructor(
     private _rest: RESTService,
@@ -66,7 +67,7 @@ export class TaxinvoiceComponent implements OnInit {
     this._rest
       .getData("order.php", "getDispatchedOrders", null)
       .subscribe(Response => {
-        //console.log(Response);
+        console.log(Response["data"]);
         if (Response) {
           this.openorders = Response["data"];
         }
@@ -154,7 +155,8 @@ export class TaxinvoiceComponent implements OnInit {
       sgst: this.sgst,
       igst: this.igst,
       roundoff: this.roundoff,
-      totalamount: this.totalamount
+      totalamount: this.totalamount,
+      discountremarks: this.discountremarks
     };
 
     this._rest

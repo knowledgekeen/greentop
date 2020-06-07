@@ -28,7 +28,6 @@ textarea {
 .dropdown-item:active {
   background: none;
 }
-
 /* Index Page */
 .banner {
   background-image: url("assets/images/banner.jpg");
@@ -64,7 +63,7 @@ textarea {
   height: 300px;
 }
 
-.overlaybg {
+.overlaybg,.overlaybg-white {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -72,6 +71,22 @@ textarea {
   height: 100%;
   background: rgba(25, 25, 25, 0.55);
 }
+
+.overlaybg-white{
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.spinner{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+}
+
+.overlaybg .spinner-text, .overlaybg-white .spinner-text{
+  margin-left: -30px;
+}
+
 .certprods {
   background-image: url("assets/images/2.jpg");
 }

@@ -34,6 +34,8 @@ export class NeworderComponent implements OnInit {
   clientstates: any = null;
   dateerror: boolean = false;
   ordernopresent: boolean = false;
+  deliveryperson: string = null;
+  deliveryaddress: string = null;
 
   constructor(
     private _rest: RESTService,
@@ -144,10 +146,12 @@ export class NeworderComponent implements OnInit {
         //console.log(cust);
         this.consigneename = cust.name;
         this.consigneecontactperson = cust.contactperson1;
+        this.deliveryperson = cust.contactperson1;
         this.consigneecontactno = cust.contactno;
         this.consigneecity = cust.city;
         this.consigneestate = cust.state;
         this.consigneeaddress = cust.address;
+        this.deliveryaddress = cust.address;
         this.consigneequantity = this.quantity ? this.quantity : 0;
       }
     } else {
@@ -157,6 +161,8 @@ export class NeworderComponent implements OnInit {
       this.consigneecity = null;
       this.consigneestate = null;
       this.consigneeaddress = null;
+      this.deliveryperson = null;
+      this.deliveryaddress = null;
       this.consigneequantity = 0;
     }
   }
@@ -174,6 +180,8 @@ export class NeworderComponent implements OnInit {
       state: this.consigneestate,
       address: this.consigneeaddress,
       quantity: this.consigneequantity,
+      deliveryperson: this.deliveryperson,
+      deliveryaddress: this.deliveryaddress,
       remarks: null
     };
     if (this.sendtoself == true) {
@@ -190,6 +198,8 @@ export class NeworderComponent implements OnInit {
     this.consigneestate = null;
     this.consigneeaddress = null;
     this.consigneequantity = 0;
+    this.deliveryperson = null;
+    this.deliveryaddress = null;
     this.sendtoself = false;
     setTimeout(function () {
       window.scrollTo(0, document.body.scrollHeight);

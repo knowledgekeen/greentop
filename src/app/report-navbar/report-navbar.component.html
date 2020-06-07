@@ -8,14 +8,21 @@
     </div>
     <div class="col-sm-3">
       <ul class="py-2 px-4 my-2 list-unstyled menus">
-        <li>Purchases</li>
+        <li class="text-uppercase">Purchases</li>
         <li><a [routerLink]="['/reports/monthwisepurchases']">All Purchases</a></li>
       </ul>
       <div class="dropdown-divider"></div>
       <ul class="py-2 px-4 my-2 list-unstyled menus">
-        <li>SALES</li>
+        <li class="text-uppercase">SALES</li>
         <li><a [routerLink]="['/reports/allsales']">All Sales</a></li>
-        <li><a [routerLink]="['/reports/searchinvoice']">Sale Invoice</a></li>
+        <li><a [routerLink]="['/reports/searchinvoice']">Search Sale Invoices</a></li>
+      </ul>
+      <div class="dropdown-divider"></div>
+    </div>
+    <div class="col-sm-3">
+      <ul class="py-2 px-4 my-2 list-unstyled menus">
+        <li class="text-uppercase">Delivery</li>
+        <li><a [routerLink]="['/reports/searchdc']">Search Delivery Challans</a></li>
       </ul>
       <div class="dropdown-divider"></div>
     </div>

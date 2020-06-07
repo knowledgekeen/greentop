@@ -9,7 +9,7 @@ export class GlobalService {
   serverpath: string = null;
   constructor() {
     if (window.location.hostname == "localhost") {
-      if (window.location.port != "4200") {
+      if (window.location.port == "") {
         // For Xampp n All
         this.serverpath = "./assets/db/";
       } else {

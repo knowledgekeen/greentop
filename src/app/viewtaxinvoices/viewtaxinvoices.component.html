@@ -66,7 +66,10 @@
               </td>
               <td>{{ bill.orderno }}</td>
               <td>
-                <a [routerLink]="[ '/reports/printdispatchchallan' ]">
+                <a [routerLink]="[ '/reports/printdispatchchallan', bill.dcno, 0 ]" *ngIf="bill.dcno!='0'">
+                  {{ bill.dcno }}
+                </a>
+                <a [routerLink]="[ '/reports/printdispatchchallan', bill.dcno, bill.orderno ]" *ngIf="bill.dcno=='0'">
                   {{ bill.dcno }}
                 </a>
               </td>

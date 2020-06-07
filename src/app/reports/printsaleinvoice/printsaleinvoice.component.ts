@@ -22,6 +22,7 @@ export class PrintsaleinvoiceComponent implements OnInit {
   finalamount: number = null;
   amtinwords: string = null;
   billdt: string = null;
+  discountremarks: string;
 
   constructor(private _route: ActivatedRoute, private _rest: RESTService) { }
 
@@ -48,6 +49,7 @@ export class PrintsaleinvoiceComponent implements OnInit {
   }
 
   calculateAmounts() {
+    this.discountremarks = "";
     this.billdt = this.invoicedata[this.invoicedata.length - 1].billdt;
     this.totaldcamt = 0;
     this.totaldcqty = 0;
@@ -60,6 +62,7 @@ export class PrintsaleinvoiceComponent implements OnInit {
     this.finalamount = 0;
     this.amtinwords = null;
     for (let i in this.invoicedata) {
+      this.discountremarks += this.invoicedata[i].discountremarks + ", ";
       this.totaldcamt += parseFloat(this.invoicedata[i].amount);
       this.totaldcqty += parseFloat(this.invoicedata[i].quantity);
       this.finaldiscount += parseFloat(this.invoicedata[i].discount);

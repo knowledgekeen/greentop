@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RESTService } from '../rest.service';
 import { Router } from '@angular/router';
+import { RESTService } from 'src/app/rest.service';
 
 @Component({
   selector: 'app-searchinvoice',

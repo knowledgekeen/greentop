@@ -3,50 +3,80 @@
     <div class="card-body">
       <app-letterhead></app-letterhead>
       <div class="row my-5 pl-5">
-        <div class="col-md-4 col-print-4">
-          M/s. <strong>Abcd</strong> <br>
-          <span>XYZ, lmn</span><br>
-          <strong>State: </strong> <span>Maharashtra</span> <br>
-          <strong>State Code: </strong><span>27</span> <br>
-          <strong>GST No. </strong> <span>27ABEPT8141AA</span>
+        <div class="col-md-4 col-print-4" *ngIf="dcdata">
+          M/s. <strong>{{dcdata[0].name}}</strong> <br>
+          <span>{{dcdata[0].address}}</span><br>
+          <strong>State: </strong> <span>{{dcdata[0].state}}</span> <br>
+          <strong *ngIf="dcdata[0].gstno">State Code: </strong><span>{{dcdata[0].gstno.substring(0,2)}}</span> <br>
+          <strong *ngIf="dcdata[0].gstno">GST No. </strong> <span>{{dcdata[0].gstno}}</span>
         </div>
 
         <div class="col-md-5 col-print-5">
-          <strong>Order No.: </strong><span>GTO-100</span><br>
-          <strong>Order Date: </strong> <span>13/03/2020</span> <br>
-          <strong>Vehicle No.: </strong> <strong>MH12LL1212</strong> <br>
+          <strong>Order No.: </strong>
+          <span *ngIf="dcdata && dcdata.length == 1">
+            {{dcdata[0].orderno}}
+          </span>
+          <span *ngIf="dcdata && dcdata.length > 1">
+            {{ordernos}}
+          </span>
+          <br>
+          <strong>Order Date: </strong>
+          <span *ngIf="!orderdate">
+            <span *ngFor="let orderdata of dcdata">
+              {{orderdata.orderdt | date: 'dd/MM/yyyy'}}
+            </span>
+          </span>
+          <span *ngIf="orderdate">
+            {{dcdata[0].orderdt | date: 'dd/MM/yyyy'}}
+          </span>
+          <br>
+          <strong>Vehicle No.: </strong>
+          <strong *ngIf="!vehno">
+            <span *ngFor="let veh of dcdata">{{veh.vehicalno}} </span>
+          </strong>
+          <strong *ngIf="vehno">{{dcdata[0].vehicalno}}</strong>
+          <br>
         </div>
 
         <div class="col-md-3 col-print-3">
           <h5 class="text-danger font-weight-bold text-center mb-0">DELIVERY CHALLAN</h5>
           <h6 class="text-danger font-weight-bold text-center subhead">CUM PROFORMA INVOICE</h6>
-          <strong>Challan No. </strong> <span class="float-right font-weight-bold invoiceno">101</span>
+          <strong>Challan No. </strong> <span class="float-right font-weight-bold invoiceno">{{dcno}}</span>
           <br>
           <br>
-          <strong>Date: </strong> <span class="float-right">01/01/2019</span>
+          <strong>Date: </strong> <span class="float-right" *ngIf="dcdata">
+            {{dcdata[0].dispatchdate | date: 'dd/MM/yyyy'}}
+          </span>
         </div>
       </div>
 
       <div class="row pl-5">
-        <div class="col-md-4 col-print-4">
-          <h6 class="font-weight-bold text-dark"><u>Consignee:</u></h6>
-          M/s. <strong>Abcd</strong> <br>
-          <span>XYZ, lmn</span><br>
-          <strong>City: </strong> <span>Pune</span> <br>
-          <strong>State: </strong> <span>Maharashtra</span> <br>
+        <div class="col-md-4 col-print-4" *ngIf="dcdata">
+          <h6 class="font-weight-bold text-dark"><u>Consignee: </u></h6>
+          <div *ngIf="dcdata[0].consigneestatus != 'SELF'">
+            M/s. <strong>{{dcdata[0].consigneename}}</strong> <br>
+            <span>{{dcdata[0].consigneeaddress}}</span><br>
+            <strong>City: </strong> <span>{{dcdata[0].consigneecity}}</span> <br>
+            <strong>State: </strong> <span>{{dcdata[0].consigneestate}}</span> <br>
+          </div>
+          <div *ngIf="dcdata[0].consigneestatus == 'SELF'">
+            {{dcdata[0].consigneestatus}}
+          </div>
         </div>
 
-        <div class="col-md-4 col-print-4">
+        <div class="col-md-4 col-print-4" *ngIf="dcdata">
           <h6 class="font-weight-bold text-dark"><u>Delivery To:</u></h6>
-          M/s. <strong>Abcd</strong> <br>
-          <span>XYZ, lmn</span><br>
-          <strong>City: </strong> <span>Pune</span> <br>
-          <strong>State: </strong> <span>Maharashtra</span> <br>
+          <div *ngIf="dcdata[0].consigneestatus != 'SELF'">
+            <span>{{dcdata[0].deliveryaddress}}</span><br>
+          </div>
+          <div *ngIf="dcdata[0].consigneestatus == 'SELF'">
+            Same as above.
+          </div>
         </div>
 
         <div class="col-md-4 col-print-4">
           <h6 class="font-weight-bold text-dark"><u>Remarks:</u></h6>
-          <strong>To Call from Vangaon Petrol Pune</strong> <br>
+          <strong *ngFor="let remarks of dcdata">{{remarks.deliveryremarks}}<br></strong>
         </div>
       </div>
 
@@ -72,15 +102,27 @@
             <div class="col-md-1 col-print-1 tablecol">Rate <br>(P.M.T.)</div>
             <div class="col-md-1 col-print-1 tablecol"><span class="text-small">Amount</span> <br>(Rs.)</div>
           </div>
-          <div class="row">
+          <div class="row" *ngFor="let data of dcdata">
             <div class="col-md-5 col-print-5 tablecol">
-              <span> ECHOMEAL - Organic Manure</span>
+              <span> {{data.prodname}}</span>
             </div>
-            <div class="col-md-1 col-print-1 tablecol">3101</div>
-            <div class="col-md-1 col-print-1 tablecol">50</div>
-            <div class="col-md-1 col-print-1 tablecol">90</div>
-            <div class="col-md-1 col-print-1 tablecol">4.500</div>
-            <div class="col-md-1 col-print-1 tablecol">34</div>
+            <div class="col-md-1 col-print-1 tablecol">{{data.hsncode}}</div>
+            <div class="col-md-1 col-print-1 tablecol">{{data.packingkgs}}</div>
+            <div class="col-md-1 col-print-1 tablecol">{{data.noofbags}}</div>
+            <div class="col-md-1 col-print-1 tablecol">{{data.quantity | number :'1.3-3'}}</div>
+            <div class="col-md-1 col-print-1 tablecol">
+              <span *ngIf="data.batchdata && data.batchdata.length == 1">{{data.batchdata[0]}}</span>
+              <span *ngIf="data.batchdata && data.batchdata.length > 1">
+                <span *ngFor="let batch of data.batchdata; let i=index">
+                  <span *ngIf="(i<(data.batchdata.length-2)) && (data.batchdata.length>2); else elsepart">{{batch}}, </span>  
+                  <ng-template #elsepart>
+                  <span *ngIf="(i<(data.batchdata.length-1)) && (data.batchdata.length>2)">{{batch}} </span>  
+                </ng-template>
+                  <span *ngIf="(i<(data.batchdata.length-1)) && (data.batchdata.length==2)">{{batch}} </span>  
+                  <span *ngIf="i==(data.batchdata.length-1)">& {{batch}}</span>  
+                </span>
+              </span>
+            </div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
           </div>
@@ -130,8 +172,8 @@
             <div class="col-md-5 col-print-5 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop text-right">Total</div>
-            <div class="col-md-1 col-print-1 tablecol bordertop">90</div>
-            <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">4.500</div>
+            <div class="col-md-1 col-print-1 tablecol bordertop">{{totalnoofbags}}</div>
+            <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">{{totalqty | number:'1.3-3'}}</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">&nbsp;</div>
@@ -163,4 +205,11 @@
 
     </div>
   </div>
+</div>
+
+<div class="overlaybg-white" *ngIf="!dcdata">
+  <span class="spinner">
+    <i class="fa fa-pulse fa-3x fa-spinner text-primary"></i>
+    <h5 class="text-primary spinner-text">Please Wait...</h5>
+  </span>
 </div>

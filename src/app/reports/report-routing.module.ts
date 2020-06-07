@@ -3,15 +3,17 @@ import { Routes, RouterModule } from "@angular/router";
 import { MonthwisepurchasesComponent } from './monthwisepurchases/monthwisepurchases.component';
 import { AllsalesComponent } from './allsales/allsales.component';
 import { PrintsaleinvoiceComponent } from './printsaleinvoice/printsaleinvoice.component';
-import { SearchinvoiceComponent } from '../searchinvoice/searchinvoice.component';
 import { PrintdispatchchallanComponent } from './printdispatchchallan/printdispatchchallan.component';
+import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component';
+import { SearchdispatchchallanComponent } from './searchdispatchchallan/searchdispatchchallan.component';
 
 const secondaryRoutes: Routes = [
     { path: "reports/monthwisepurchases", component: MonthwisepurchasesComponent },
     { path: "reports/allsales", component: AllsalesComponent },
     { path: "reports/printsaleinvoice/:invoiceno", component: PrintsaleinvoiceComponent },
     { path: "reports/searchinvoice", component: SearchinvoiceComponent },
-    { path: "reports/printdispatchchallan", component: PrintdispatchchallanComponent },
+    { path: "reports/printdispatchchallan/:dcno/:orderno", component: PrintdispatchchallanComponent },
+    { path: "reports/searchdc", component: SearchdispatchchallanComponent },
 ];
 
 @NgModule({
