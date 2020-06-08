@@ -341,7 +341,7 @@ if($action == "checkPurchaseBillNoIfPresent"){
 	$headers = apache_request_headers();
 	authenticate($headers);
 	$billno = ($_GET["billno"]);
-	$sql = "SELECT * FROM `purchase_master` WHERE `billno`=$billno";
+	$sql = "SELECT * FROM `purchase_master` WHERE `billno`='$billno'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 

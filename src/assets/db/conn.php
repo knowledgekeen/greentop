@@ -1,7 +1,7 @@
 <?php
 //Create a connection
 header('Access-Control-Allow-Origin: *');
-//$conn = new mysqli("localhost", "assasate_gto", "Assasa@123", "assasate_greentop");
+// $conn = new mysqli("localhost", "assasate_gto", "Assasa@123", "assasate_greentop");
 $conn = new mysqli("localhost", "root", "", "greentop");
 
 function write_log($log, $flag, $errorval){

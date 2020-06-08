@@ -49,6 +49,7 @@ export class NavbarComponent implements OnInit {
   }
 
   checkLogin() {
+    // Temp password is "Assasa"
     this.spinnerflag = true;
     let tmpObj = {
       email: this.email,

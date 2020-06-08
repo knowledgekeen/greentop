@@ -26,28 +26,7 @@
               aria-haspopup="true" aria-expanded="false">
               All Reports
             </a>
-            <div class="w-100 dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
-              <div class="row">
-                <div class="col-sm-12">
-                  <span class="dropdown-item pt-3 font-weight-bold text-danger" href="javascript:void(0)">
-                    <span class="text-uppercase">Reports</span>
-                  </span>
-                  <div class="dropdown-divider"></div>
-                </div>
-                <div class="col-sm-3">
-                  <ul class="py-2 px-4 my-2 list-unstyled menus">
-                    <li>Purchases</li>
-                    <li><a [routerLink]="['/monthwisepurchases']">All Purchases</a></li>
-                  </ul>
-                  <div class="dropdown-divider"></div>
-                  <ul class="py-2 px-4 my-2 list-unstyled menus">
-                    <li>SALES</li>
-                    <li><a [routerLink]="['/allsales']">All Sales</a></li>
-                  </ul>
-                  <div class="dropdown-divider"></div>
-                </div>
-              </div>
-            </div>
+            <app-report-navbar></app-report-navbar>
           </li>
           <!-- If user is logged in then below menu -->
           <li class="nav-item dropdown position-static" *ngIf="userdets">

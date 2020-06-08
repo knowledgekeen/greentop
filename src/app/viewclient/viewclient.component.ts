@@ -8,7 +8,7 @@ import { IntervalService } from '../interval.service';
   styleUrls: ["./viewclient.component.css"]
 })
 export class ViewclientComponent implements OnInit {
-  @Input() clienttype: string;
+  @Input() clienttype: any;
   allclients: any;
   visibleclients: any = null;
   searchbox: any = null;

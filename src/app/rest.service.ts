@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { GlobalService } from "./global.service";
-import { SessionService } from './session.service';
 import { EncDecService } from './enc-dec.service';
 
 @Injectable({

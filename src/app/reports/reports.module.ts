@@ -4,9 +4,24 @@ import { MonthwisepurchasesComponent } from './monthwisepurchases/monthwisepurch
 import { ReportRoutingModule } from './report-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AllsalesComponent } from './allsales/allsales.component';
+import { PrintdocComponent } from './printdoc/printdoc.component';
+import { PrintsaleinvoiceComponent } from './printsaleinvoice/printsaleinvoice.component';
+import { LetterheadComponent } from '../letterhead/letterhead.component';
+import { SearchdispatchchallanComponent } from './searchdispatchchallan/searchdispatchchallan.component';
+import { PrintdispatchchallanComponent } from './printdispatchchallan/printdispatchchallan.component';
+import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component';
 
 @NgModule({
-  declarations: [MonthwisepurchasesComponent, AllsalesComponent],
+  declarations: [
+    MonthwisepurchasesComponent,
+    AllsalesComponent,
+    PrintdocComponent,
+    PrintsaleinvoiceComponent,
+    LetterheadComponent,
+    SearchinvoiceComponent,
+    SearchdispatchchallanComponent,
+    PrintdispatchchallanComponent
+  ],
   imports: [
     CommonModule,
     ReportRoutingModule,

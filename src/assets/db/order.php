@@ -51,16 +51,18 @@ if($action == "createNewOrder"){
         $ordid = $conn->insert_id;
         
         for($i=0; $i<count($consignees); $i++) {
-            $consigneename = $consignees[$i]->consigneename;
-            $contactperson = $consignees[$i]->contactperson;
+            $consigneename = mysqli_real_escape_string($conn, $consignees[$i]->consigneename);
+            $contactperson = mysqli_real_escape_string($conn, $consignees[$i]->contactperson);
             $contactno = $consignees[$i]->contactno;
             $city = $consignees[$i]->city;
             $state = $consignees[$i]->state;
-            $address = $consignees[$i]->address;
+            $address = mysqli_real_escape_string($conn,$consignees[$i]->address);
+            $deliveryperson = mysqli_real_escape_string($conn,$consignees[$i]->deliveryperson);
+            $deliveryaddress = mysqli_real_escape_string($conn,$consignees[$i]->deliveryaddress);
             $remarks = $consignees[$i]->remarks;
             $quantity = $consignees[$i]->quantity;
 
-            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `remarks`) VALUES ($ordid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$remarks')";
+            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `deliveryperson`, `deliveryaddress`, `remarks`) VALUES ($ordid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$deliveryperson', '$deliveryaddress', '$remarks')";
             $resultqty = $conn->query($sqlins);
         }
     }
@@ -88,7 +90,7 @@ if($action == "createNewOrder"){
 if($action == "getOpenOrders"){
 	$headers = apache_request_headers();
 	authenticate($headers);
-	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`status`='open' AND o.`prodid`=p.`prodid`";
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`status`='open' AND o.`prodid`=p.`prodid` ORDER BY o.`orderno`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -136,7 +138,7 @@ if($action == "getOpenOrders"){
 if($action == "getDispatchedOrders"){
 	$headers = apache_request_headers();
 	authenticate($headers);
-	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname`, d.`dcno`, d.`dispatchdate` FROM `order_master` o, `client_master` c, `product_master` p, `dispatch_register` d WHERE o.`clientid`=c.`clientid` AND o.`status`='dispatched' AND o.`prodid`=p.`prodid` AND o.`orderid` = d.`orderid`";
+	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname`, d.`dcno`, d.`dispatchdate`, d.`packingkgs`, d.`noofbags`, d.`deliveryremarks` FROM `order_master` o, `client_master` c, `product_master` p, `dispatch_register` d WHERE o.`clientid`=c.`clientid` AND o.`status`='dispatched' AND o.`prodid`=p.`prodid` AND o.`orderid` = d.`orderid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -163,6 +165,9 @@ if($action == "getDispatchedOrders"){
 			$tmp[$i]['contactno'] = $row['contactno'];
 			$tmp[$i]['dcno'] = $row['dcno'];
 			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
+			$tmp[$i]['packingkgs'] = $row['packingkgs'];
+			$tmp[$i]['noofbags'] = $row['noofbags'];
+			$tmp[$i]['deliveryremarks'] = $row['deliveryremarks'];
 			$i++;
 		}
 		$data["status"] = 200;

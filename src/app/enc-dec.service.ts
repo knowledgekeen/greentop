@@ -6,7 +6,7 @@ import SimpleCrypto from "simple-crypto-js";
 })
 export class EncDecService {
   _secretKey = "gt0rg$nics";
-  constructor() {}
+  constructor() { }
 
   encrypt(obj) {
     let simpleCrypto = new SimpleCrypto(this._secretKey);

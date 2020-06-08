@@ -32,6 +32,9 @@ export class DispatchesComponent implements OnInit {
   successmsg: any = false;
   addedbatches: any = new Array();
   disabledispbtn: boolean = false;
+  packing: string = null;
+  noofbags: string = null;
+  deliveryremarks: string = null;
 
   constructor(
     private _rest: RESTService,
@@ -232,7 +235,7 @@ export class DispatchesComponent implements OnInit {
     let paidon = moment(this.dispatchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let partytrans = null;
     if (this.partytransport == true) {
-      partytrans = "Party's Transport";
+      partytrans = "Party Transport";
     } else {
       partytrans = "Self Transport";
     }
@@ -245,6 +248,9 @@ export class DispatchesComponent implements OnInit {
       dispdate: new Date(dispatchdate).getTime(),
       dcno: this.dcno,
       vehicalno: this.vehicalno,
+      packing: this.packing,
+      noofbags: this.noofbags,
+      deliveryremarks: this.deliveryremarks,
       rate: this.rate,
       amount: this.amount,
       advance: this.advance,

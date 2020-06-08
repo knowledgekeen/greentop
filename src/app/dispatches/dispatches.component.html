@@ -30,13 +30,13 @@
           </select>
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">Dispatch Date (DD-MM-YYYY)</label>
+          <label class="m-0">Delivery Date (DD-MM-YYYY)</label>
           <input type="text" class="form-control" [(ngModel)]="dispatchdate" (blur)="autoFillDate()"
-            placeholder="Dispatch Date (DD-MM-YYYY)" />
+            placeholder="Delivery Date (DD-MM-YYYY)" />
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
-          <label class="m-0">DC Number</label>
-          <input type="text" class="form-control" [(ngModel)]="dcno" placeholder="Enter DC Number" />
+          <label class="m-0">Delivery Challan Number</label>
+          <input type="text" class="form-control" [(ngModel)]="dcno" placeholder="Enter Delivery Challan Number" />
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Vehicle Number</label>
@@ -53,6 +53,18 @@
         <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
           <label class="m-0">Product Ordered</label>
           <input type="text" class="form-control" [(ngModel)]="orderdetails.prodname" readonly />
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
+          <label class="m-0">Packing (Kg)</label>
+          <input type="text" class="form-control" [(ngModel)]="packing" placeholder="Enter packing details in Kg" />
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
+          <label class="m-0">No. of Bags</label>
+          <input type="text" class="form-control" [(ngModel)]="noofbags" placeholder="Enter No. of Bags" />
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3" *ngIf="orderdetails">
+          <label class="m-0">Remarks</label>
+          <input type="text" class="form-control" [(ngModel)]="deliveryremarks" placeholder="Enter Delivery Remarks" />
         </div>
       </div>
     </div>

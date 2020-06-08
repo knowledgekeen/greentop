@@ -25,11 +25,14 @@ if($action == "dispatchOrder"){
     $vehicalno = $data->vehicalno;
     $todaydt = $data->todaydt;
     $remarks = $data->remarks;
+    $packing = $data->packing;
+    $noofbags = $data->noofbags;
+    $deliveryremarks = mysqli_real_escape_string($conn,$data->deliveryremarks);;
     $dispatchid = -1;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         // Insert into `dispatch_register`
-        $sql = "INSERT INTO `dispatch_register`(`orderid`, `dispatchdate`, `dcno`, `vehicalno`) VALUES ($orderid, '$dispdate', '$dcno', '$vehicalno')";
+        $sql = "INSERT INTO `dispatch_register`(`orderid`, `dispatchdate`, `dcno`, `vehicalno`, `packingkgs`, `noofbags`, `deliveryremarks`) VALUES ($orderid, '$dispdate', '$dcno', '$vehicalno', '$packing','$noofbags','$deliveryremarks')";
         $result = $conn->query($sql);
         $dispatchid = $conn->insert_id;
 
@@ -202,6 +205,237 @@ if($action == "getDispatchDetails"){
         $tmp['dispatchdate'] = $row['dispatchdate'];
         $tmp['dcno'] = $row['dcno'];
         $tmp['vehicalno'] = $row['vehicalno'];
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;
+        write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Error message: ".$conn->error.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "getDeliveryChallanDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $dcno = $_GET['dcno'];
+	$sql = "SELECT dr.`dispatchid`,dr.`orderid`,dr.`dispatchdate`,dr.`dcno`,dr.`vehicalno`,dr.`packingkgs`,dr.`noofbags`,dr.`deliveryremarks`, om.`orderno`, om.`orderdt`, om.`clientid`, om.`prodid`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, pm.`prodname`, pm.`hsncode`, oc.`consigneename`, oc.`contactperson`,oc.`contactnumber`, oc.`address` as `consigneeaddress`,oc.`state` as `consigneestate`, oc.`city` as `consigneecity`, oc.`deliveryperson`, oc.`deliveryaddress`, oc.`remarks` as `consigneestatus` FROM `dispatch_register` dr, `order_master` om, `client_master` cm, `product_master` pm, `order_consignees` oc WHERE dr.`dcno`='$dcno' AND dr.`orderid`=om.`orderid` AND om.`clientid`=cm.`clientid` AND om.`prodid`=pm.`prodid` AND dr.`orderid`=oc.`orderid`";
+	$result = $conn->query($sql);
+    while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+	$tmp = array();
+	$data = array();
+    $i = 0;
+	if(count($rows)>0){ 
+		foreach($rows as $row)
+		{
+            $tmp[$i]['dispatchid'] = $row['dispatchid'];
+            $tmp[$i]['orderid'] = $row['orderid'];
+            $tmp[$i]['dispatchdate'] = $row['dispatchdate'];
+            $tmp[$i]['dcno'] = $row['dcno'];
+            $tmp[$i]['vehicalno'] = $row['vehicalno'];
+            $tmp[$i]['packingkgs'] = $row['packingkgs'];
+            $tmp[$i]['noofbags'] = $row['noofbags'];
+            $tmp[$i]['deliveryremarks'] = $row['deliveryremarks'];
+            $tmp[$i]['orderno'] = $row['orderno'];
+            $tmp[$i]['orderdt'] = $row['orderdt'];
+            $tmp[$i]['clientid'] = $row['clientid'];
+            $tmp[$i]['prodid'] = $row['prodid'];
+            $tmp[$i]['quantity'] = $row['quantity'];
+            $tmp[$i]['name'] = $row['name'];
+            $tmp[$i]['address'] = $row['address'];
+            $tmp[$i]['state'] = $row['state'];
+            $tmp[$i]['gstno'] = $row['gstno'];
+            $tmp[$i]['prodname'] = $row['prodname'];
+            $tmp[$i]['hsncode'] = $row['hsncode'];
+            $tmp[$i]['consigneename'] = $row['consigneename'];
+            $tmp[$i]['contactperson'] = $row['contactperson'];
+            $tmp[$i]['contactnumber'] = $row['contactnumber'];
+            $tmp[$i]['consigneeaddress'] = $row['consigneeaddress'];
+            $tmp[$i]['consigneecity'] = $row['consigneecity'];
+            $tmp[$i]['consigneestate'] = $row['consigneestate'];
+            $tmp[$i]['deliveryperson'] = $row['deliveryperson'];
+            $tmp[$i]['deliveryaddress'] = $row['deliveryaddress'];
+            $tmp[$i]['consigneestatus'] = $row['consigneestatus'];
+
+            $dispid = $row['dispatchid'];;
+            $subsql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,db.`quantity`, pbm.`batchid` FROM `dispatches_batches` db, `production_batch_master` pbm WHERE db.`dispatchid`=$dispid AND db.`batchmastid`=pbm.`batchmastid`";
+            $subrows = array();
+            $subresult = $conn->query($subsql);
+            while($subrow = $subresult->fetch_array())
+            {
+                $subrows[] = $subrow;
+            }
+            $subtmp = array();
+            $subdata = array();
+            $j = 0;
+            if(count($subrows)>0){ 
+                foreach($subrows as $subrow)
+                {
+                    $subtmp[$j] = $subrow["batchid"];
+                    $j++;
+                }
+            }
+            $tmp[$i]['batchdata'] = $subtmp;
+            $i++;
+        }
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;
+        write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Error message: ".$conn->error.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "getDeliveryChallanDetailsWithOrderno"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $dcno = $_GET['dcno'];
+    $orderno = $_GET['orderno'];
+	$sql = "SELECT dr.`dispatchid`,dr.`orderid`,dr.`dispatchdate`,dr.`dcno`,dr.`vehicalno`,dr.`packingkgs`,dr.`noofbags`,dr.`deliveryremarks`, om.`orderno`, om.`orderdt`, om.`clientid`, om.`prodid`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, pm.`prodname`, pm.`hsncode`, oc.`consigneename`, oc.`contactperson`,oc.`contactnumber`, oc.`address` as `consigneeaddress`,oc.`state` as `consigneestate`, oc.`city` as `consigneecity`, oc.`deliveryperson`, oc.`deliveryaddress`, oc.`remarks` as `consigneestatus` FROM `dispatch_register` dr, `order_master` om, `client_master` cm, `product_master` pm, `order_consignees` oc WHERE dr.`dcno`=$dcno AND dr.`orderid`=om.`orderid` AND om.`clientid`=cm.`clientid` AND om.`prodid`=pm.`prodid` AND dr.`orderid`=oc.`orderid` AND om.`orderno`='$orderno'";
+	$result = $conn->query($sql);
+    while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+	$tmp = array();
+	$data = array();
+    $i = 0;
+	if(count($rows)>0){ 
+		foreach($rows as $row)
+		{
+            $tmp[$i]['dispatchid'] = $row['dispatchid'];
+            $tmp[$i]['orderid'] = $row['orderid'];
+            $tmp[$i]['dispatchdate'] = $row['dispatchdate'];
+            $tmp[$i]['dcno'] = $row['dcno'];
+            $tmp[$i]['vehicalno'] = $row['vehicalno'];
+            $tmp[$i]['packingkgs'] = $row['packingkgs'];
+            $tmp[$i]['noofbags'] = $row['noofbags'];
+            $tmp[$i]['deliveryremarks'] = $row['deliveryremarks'];
+            $tmp[$i]['orderno'] = $row['orderno'];
+            $tmp[$i]['orderdt'] = $row['orderdt'];
+            $tmp[$i]['clientid'] = $row['clientid'];
+            $tmp[$i]['prodid'] = $row['prodid'];
+            $tmp[$i]['quantity'] = $row['quantity'];
+            $tmp[$i]['name'] = $row['name'];
+            $tmp[$i]['address'] = $row['address'];
+            $tmp[$i]['state'] = $row['state'];
+            $tmp[$i]['gstno'] = $row['gstno'];
+            $tmp[$i]['prodname'] = $row['prodname'];
+            $tmp[$i]['hsncode'] = $row['hsncode'];
+            $tmp[$i]['consigneename'] = $row['consigneename'];
+            $tmp[$i]['contactperson'] = $row['contactperson'];
+            $tmp[$i]['contactnumber'] = $row['contactnumber'];
+            $tmp[$i]['consigneeaddress'] = $row['consigneeaddress'];
+            $tmp[$i]['consigneecity'] = $row['consigneecity'];
+            $tmp[$i]['consigneestate'] = $row['consigneestate'];
+            $tmp[$i]['deliveryperson'] = $row['deliveryperson'];
+            $tmp[$i]['deliveryaddress'] = $row['deliveryaddress'];
+            $tmp[$i]['consigneestatus'] = $row['consigneestatus'];
+
+            $dispid = $row['dispatchid'];;
+            $subsql = "SELECT db.`dispbatid`,db.`dispatchid`,db.`batchmastid`,db.`quantity`, pbm.`batchid` FROM `dispatches_batches` db, `production_batch_master` pbm WHERE db.`dispatchid`=6 AND db.`batchmastid`=pbm.`batchmastid`";
+            $subresult = $conn->query($subsql);
+            while($subrow = $subresult->fetch_array())
+            {
+                $subrows[] = $subrow;
+            }
+            $subtmp = array();
+            $subdata = array();
+            $j = 0;
+            if(count($subrows)>0){ 
+                foreach($subrows as $subrow)
+                {
+                    $subtmp[$j] = $subrow["batchid"];
+                    $j++;
+                }
+            }
+            $tmp[$i]['batchdata'] = $subtmp;
+            $i++;
+        }
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;
+        write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Error message: ".$conn->error.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "checkIfDCPresent"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $dcno = $_GET['dcno'];
+    $sql = "SELECT * FROM `dispatch_register` WHERE `dcno`='$dcno'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+
+	if($result && $row['dcno']){
+        $tmp['dcno'] = $row['dcno'];
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;
+        write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Error message: ".$conn->error.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
+
+if($action == "checkIfDCPresentWithOrderNo"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $dcno = $_GET['dcno'];
+    $orderno = $_GET['orderno'];
+    $sql = "SELECT dr.`dispatchid`,dr.`dcno` FROM `dispatch_register` dr, `order_master` om WHERE dr.`dcno`='$dcno' AND om.`orderno`='$orderno' AND dr.`orderid`=om.`orderid`";
+	$result = $conn->query($sql);
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+
+	$tmp = array();
+	$data = array();
+    if($result && $row['dispatchid']){
+        $tmp['dispatchid'] = $row['dispatchid'];
+        $tmp['dcno'] = $row['dcno'];
 		$data["status"] = 200;
 		$data["data"] = $tmp;
         $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;

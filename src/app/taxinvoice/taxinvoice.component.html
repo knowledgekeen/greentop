@@ -20,7 +20,7 @@
           </select>
         </div>
         <div class="col-md-3 col-sm-12 mb-3" *ngIf="orderdetails">
-          <label class="m-0">DC Number</label>
+          <label class="m-0">Delivery Challan No.</label>
           <input type="text" class="form-control" [value]="dcdetails" readonly />
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
@@ -39,13 +39,14 @@
             <input type="checkbox" class="custom-control-input" id="customControlAutosizing" [(ngModel)]="autocalc" />
             <label class="custom-control-label" for="customControlAutosizing">Auto-Calculate</label>
           </div>
+          <span class="float-left text-primary font-weight-bold" *ngIf="orderdetails">
+            <span>Order Quantity: <u>{{ orderdetails.quantity }} tons</u> &nbsp;</span>
+            <span *ngIf="orderdetails.packingkgs">| Packing (Kg): <u>{{ orderdetails.packingkgs }}</u> &nbsp;</span>
+            <span *ngIf="orderdetails.noofbags">| No. of Bags: <u>{{ orderdetails.noofbags }}</u></span>
+          </span>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Rate </label>
-
-          <span class="float-right text-info font-weight-bold" *ngIf="orderdetails">
-            Quantity: {{ orderdetails.quantity }} tons/bags
-          </span>
           <input type="text" class="form-control" [(ngModel)]="rate" placeholder="Rate" (blur)="calculateAmt()"
             [disabled]="!orderdetails" />
         </div>
@@ -97,6 +98,11 @@
           <label class="m-0">Total Amount</label>
           <input type="text" class="form-control" [(ngModel)]="totalamount" placeholder="Total Amount"
             (blur)="calculateAmt()" [disabled]="!orderdetails" />
+        </div>
+        <div class="col-md-12 col-sm-12 mb-3">
+          <label class="m-0">Discount Remarks</label>
+          <input type="text" class="form-control" [(ngModel)]="discountremarks" placeholder="Discount Remarks"
+            [disabled]="!orderdetails" />
         </div>
         <div class="col-md-12 col-sm 12 mb-3">
           <button class="btn btn-primary mr-3" title="This button will save the details and will close the order bill"

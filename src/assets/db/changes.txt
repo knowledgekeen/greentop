@@ -1,0 +1,5 @@
+Print Display Challan
+ - GST number for consignee if present or URP, (add a new field in New Order)
+ 
+Edit Order
+ - Consignee is not similar to new Order - check

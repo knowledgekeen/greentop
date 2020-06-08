@@ -14,7 +14,7 @@ export class MonthwisepurchasesComponent implements OnInit {
   todt: any = null;
   customfrom: any = null;
   customto: any = null;
-  monthlabel: string = "Full Year";
+  monthlabel: string = "Current Financial Year";
   allpurchases: any = null;
   finalquantity: number = 0;
   finalbillamt: number = 0;
@@ -24,6 +24,7 @@ export class MonthwisepurchasesComponent implements OnInit {
   finalroundoff: number = 0;
   finaltotalgst: number = 0;
   finalgrandtotal: number = 0;
+  showfilter: boolean = false;
 
   constructor(private _global: GlobalService, private _rest: RESTService) { }
 
@@ -44,11 +45,11 @@ export class MonthwisepurchasesComponent implements OnInit {
 
     this.allpurchases = null;
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
-    console.log(geturl);
+    //console.log(geturl);
     this._rest.getData("reports_purchases.php", "getFromToPurchases", geturl)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response["data"]);
+          //console.log(Response["data"]);
           this.allpurchases = Response["data"];
           for (let i = 0; i < this.allpurchases.length; i++) {
             this.allpurchases[i].cgstinr = (this.allpurchases[i].cgst / 100) * (this.allpurchases[i].rate * this.allpurchases[i].quantity);
@@ -89,6 +90,8 @@ export class MonthwisepurchasesComponent implements OnInit {
     let mytodate = moment(this.todt, "DD-MM-YYYY").format("MM-DD-YYYY");
     let totm = new Date(mytodate).getTime();
     this.customto = totm;
+    this.finanyr = this._global.getSpecificFinancialYear(fromtm);
     this.getFromToPurchases(fromtm, totm);
+    this.showfilter = false;
   }
 }

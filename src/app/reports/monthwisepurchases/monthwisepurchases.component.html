@@ -1,9 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid" id="MonthwisepurchasesComponentID">
   <div class="card my-1">
     <div class="card-body">
       <h5 class="text-uppercase text-center">
         <span class="border-bottom border-secondary">Purchase Reports For the F.Y.
           {{ finanyr.fromdt | date: "yyyy" }} - {{ finanyr.todt | date: "yyyy" }}</span>
+
+        <printdoc printcomponentid="MonthwisepurchasesComponentID"></printdoc>
       </h5>
       <hr class="my-3">
       <h6>
@@ -13,9 +15,11 @@
         <span class="font-weight-bold border-bottom border-secondary"
           *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
           {{customto | date: 'dd-MMM, yyyy'}}</span>
+        <i class="fa fa-filter text-danger mx-2 cursor-pointer" title="Filter From and To Dates"
+          (click)="showfilter = !showfilter"></i>
       </h6>
       <h6>
-        <div class="row">
+        <div class="row" [hidden]="!showfilter">
           <div class="col-md-5"></div>
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">

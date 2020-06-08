@@ -1,0 +1,28 @@
+<div class="container">
+  <h5 class="my-3">Search Display Challan</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-12"></div>
+        <div class="col-md-4 col-lg-4 col-sm-12 my-5">
+          <h6 class="text-danger" *ngIf="challanerror">
+            <i class="fa fa-exclamation"></i> Invalid Challan No.
+          </h6>
+          <label for="challanno">Search by Challan No:</label>
+          <input type="text" name="challanno" [(ngModel)]="challanno" class="form-control"
+            placeholder="Enter Challan No." />
+
+          <div class="my-2" *ngIf="challanno =='0'">
+            <label for="challanno">Enter Order No:</label>
+            <input type="text" name="challanno" [(ngModel)]="orderno" class="form-control"
+              placeholder="Enter Order No." />
+          </div>
+          <button class="btn btn-primary my-2" [disabled]="!challanno" (click)="searchChallan()">
+            Search Challan</button>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-12"></div>
+      </div>
+    </div>
+  </div>
+</div>
