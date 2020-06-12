@@ -5,3 +5,11 @@
 .text-small{
     font-size: 0.8rem;
 }
+
+.tablecol{
+    padding: 1px 2px;
+}
+
+.consigneebar{
+    min-height: 100px;
+}

@@ -312,6 +312,12 @@ input:checked + .slider:before {
     font-size: 9px;
   }
 
+  #printDispatchChallan{
+    visibility: visible;
+    overflow: visible;
+    /* font-size: 11px; */
+  }
+
   .card{
     border:0px;
   }

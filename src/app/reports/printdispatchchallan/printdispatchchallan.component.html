@@ -51,7 +51,7 @@
       </div>
 
       <div class="row pl-5">
-        <div class="col-md-4 col-print-4" *ngIf="dcdata">
+        <div class="col-md-4 col-print-4 consigneebar" *ngIf="dcdata">
           <h6 class="font-weight-bold text-dark"><u>Consignee: </u></h6>
           <div *ngIf="dcdata[0].consigneestatus != 'SELF'">
             M/s. <strong>{{dcdata[0].consigneename}}</strong> <br>
@@ -91,19 +91,18 @@
       </div>
 
       <div class="row mb-5 pl-5">
-        <div class="col-md-12 tablebox">
+        <div class="col-md-12 tablebox" id="printDispatchChallan">
           <div class="tableheadrow row">
-            <div class="col-md-5 col-print-5 tablecol">Description</div>
+            <div class="col-md-6 col-print-6 tablecol">Description</div>
             <div class="col-md-1 col-print-1 tablecol">HSN Code</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="text-small">Packing</span><br>Kg</div>
+            <div class="col-md-1 col-print-1 tablecol"><span class="">Packing</span><br>Kg</div>
             <div class="col-md-1 col-print-1 tablecol">No. of <br>Bags</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="text-small">Quantity</span> <br>(MTs)</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="text-small">Batch No.</span></div>
-            <div class="col-md-1 col-print-1 tablecol">Rate <br>(P.M.T.)</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="text-small">Amount</span> <br>(Rs.)</div>
+            <div class="col-md-1 col-print-1 tablecol"><span class="">Quantity</span> <br>(MTs)</div>
+            <div class="col-md-1 col-print-1 tablecol"><span class="">Batch No.</span></div>
+            <div class="col-md-1 col-print-1 tablecol"><span class="">Total <br>Amount</span> <br>(Rs.)</div>
           </div>
           <div class="row" *ngFor="let data of dcdata">
-            <div class="col-md-5 col-print-5 tablecol">
+            <div class="col-md-6 col-print-6 tablecol">
               <span> {{data.prodname}}</span>
             </div>
             <div class="col-md-1 col-print-1 tablecol">{{data.hsncode}}</div>
@@ -124,21 +123,9 @@
               </span>
             </div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
           </div>
           <div class="row">
-            <div class="col-md-5 col-print-5 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-          </div>
-          <div class="row">
-            <div class="col-md-5 col-print-5 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-6 col-print-6 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
@@ -147,8 +134,7 @@
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
           </div>
           <div class="row">
-            <div class="col-md-5 col-print-5 tablecol"></div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-6 col-print-6 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
@@ -157,7 +143,16 @@
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
           </div>
           <div class="row">
-            <div class="col-md-5 col-print-5 tablecol">
+            <div class="col-md-6 col-print-6 tablecol"></div>
+            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-print-6 tablecol">
               <h3 class="font-weight-bold border border-dark">FREIGHT PAID</h3>
             </div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
@@ -166,15 +161,13 @@
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol">&nbsp;</div>
           </div>
           <div class="row">
-            <div class="col-md-5 col-print-5 tablecol bordertop">&nbsp;</div>
+            <div class="col-md-6 col-print-6 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop text-right">Total</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">{{totalnoofbags}}</div>
             <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">{{totalqty | number:'1.3-3'}}</div>
-            <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">&nbsp;</div>
           </div>

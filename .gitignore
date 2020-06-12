@@ -41,5 +41,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-src/assets/db/*.log
+src/logs/*.log
 src/assets/db/conn.php

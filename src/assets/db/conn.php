@@ -5,6 +5,9 @@ header('Access-Control-Allow-Origin: *');
 $conn = new mysqli("localhost", "root", "", "greentop");
 
 function write_log($log, $flag, $errorval){
+    if (!file_exists('../../logs')) {
+        mkdir('../../logs', 0777, true);
+    }
     date_default_timezone_set("Asia/Calcutta");
     $log = "User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, H:i:s").PHP_EOL.$log;
     if($flag == "success"){

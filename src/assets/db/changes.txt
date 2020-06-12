@@ -2,4 +2,19 @@ Print Display Challan
  - GST number for consignee if present or URP, (add a new field in New Order)
  
 Edit Order
- - Consignee is not similar to new Order - check
+ - Consignee page is not similar to new Order - check
+
+View Order (Rectify)
+ - Sort by Order No isn't working for similar dates, that is because of "-" in order no, need to check and rectify
+
+Order (New Feature)
+    - Add a Cancel Order button
+
+Sundry Debtors (New Feature)
+    - Final balance by all customers from ledger(sale payments) should be shown here. 
+
+Sundry Creditors (New Feature)
+    - Final balance of all suppliers from ledger(purchase payments) should be shown here. 
+
+Bills & Collectiosn (New Feature)
+    - 
