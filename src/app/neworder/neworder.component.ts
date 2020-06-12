@@ -34,7 +34,7 @@ export class NeworderComponent implements OnInit {
   clientstates: any = null;
   dateerror: boolean = false;
   ordernopresent: boolean = false;
-  deliveryperson: string = null;
+  consigneegst: string = null;
   deliveryaddress: string = null;
 
   constructor(
@@ -143,10 +143,10 @@ export class NeworderComponent implements OnInit {
       }
 
       if (cust) {
-        //console.log(cust);
+        console.log(cust);
         this.consigneename = cust.name;
         this.consigneecontactperson = cust.contactperson1;
-        this.deliveryperson = cust.contactperson1;
+        this.consigneegst = cust.gstno;
         this.consigneecontactno = cust.contactno;
         this.consigneecity = cust.city;
         this.consigneestate = cust.state;
@@ -161,7 +161,7 @@ export class NeworderComponent implements OnInit {
       this.consigneecity = null;
       this.consigneestate = null;
       this.consigneeaddress = null;
-      this.deliveryperson = null;
+      this.consigneegst = null;
       this.deliveryaddress = null;
       this.consigneequantity = 0;
     }
@@ -180,7 +180,7 @@ export class NeworderComponent implements OnInit {
       state: this.consigneestate,
       address: this.consigneeaddress,
       quantity: this.consigneequantity,
-      deliveryperson: this.deliveryperson,
+      consigneegst: this.consigneegst,
       deliveryaddress: this.deliveryaddress,
       remarks: null
     };
@@ -198,7 +198,7 @@ export class NeworderComponent implements OnInit {
     this.consigneestate = null;
     this.consigneeaddress = null;
     this.consigneequantity = 0;
-    this.deliveryperson = null;
+    this.consigneegst = null;
     this.deliveryaddress = null;
     this.sendtoself = false;
     setTimeout(function () {

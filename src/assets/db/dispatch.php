@@ -227,7 +227,7 @@ if($action == "getDeliveryChallanDetails"){
 	$headers = apache_request_headers();
 	authenticate($headers);
     $dcno = $_GET['dcno'];
-	$sql = "SELECT dr.`dispatchid`,dr.`orderid`,dr.`dispatchdate`,dr.`dcno`,dr.`vehicalno`,dr.`packingkgs`,dr.`noofbags`,dr.`deliveryremarks`, om.`orderno`, om.`orderdt`, om.`clientid`, om.`prodid`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, pm.`prodname`, pm.`hsncode`, oc.`consigneename`, oc.`contactperson`,oc.`contactnumber`, oc.`address` as `consigneeaddress`,oc.`state` as `consigneestate`, oc.`city` as `consigneecity`, oc.`deliveryperson`, oc.`deliveryaddress`, oc.`remarks` as `consigneestatus` FROM `dispatch_register` dr, `order_master` om, `client_master` cm, `product_master` pm, `order_consignees` oc WHERE dr.`dcno`='$dcno' AND dr.`orderid`=om.`orderid` AND om.`clientid`=cm.`clientid` AND om.`prodid`=pm.`prodid` AND dr.`orderid`=oc.`orderid`";
+	$sql = "SELECT dr.`dispatchid`,dr.`orderid`,dr.`dispatchdate`,dr.`dcno`,dr.`vehicalno`,dr.`packingkgs`,dr.`noofbags`,dr.`deliveryremarks`, om.`orderno`, om.`orderdt`, om.`clientid`, om.`prodid`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, pm.`prodname`, pm.`hsncode`, oc.`consigneename`, oc.`contactperson`,oc.`contactnumber`, oc.`address` as `consigneeaddress`,oc.`state` as `consigneestate`, oc.`city` as `consigneecity`, oc.`consigneegst`, oc.`deliveryaddress`, oc.`remarks` as `consigneestatus` FROM `dispatch_register` dr, `order_master` om, `client_master` cm, `product_master` pm, `order_consignees` oc WHERE dr.`dcno`='$dcno' AND dr.`orderid`=om.`orderid` AND om.`clientid`=cm.`clientid` AND om.`prodid`=pm.`prodid` AND dr.`orderid`=oc.`orderid`";
 	$result = $conn->query($sql);
     while($row = $result->fetch_array())
 	{
@@ -264,7 +264,7 @@ if($action == "getDeliveryChallanDetails"){
             $tmp[$i]['consigneeaddress'] = $row['consigneeaddress'];
             $tmp[$i]['consigneecity'] = $row['consigneecity'];
             $tmp[$i]['consigneestate'] = $row['consigneestate'];
-            $tmp[$i]['deliveryperson'] = $row['deliveryperson'];
+            $tmp[$i]['consigneegst'] = $row['consigneegst'];
             $tmp[$i]['deliveryaddress'] = $row['deliveryaddress'];
             $tmp[$i]['consigneestatus'] = $row['consigneestatus'];
 
@@ -312,7 +312,7 @@ if($action == "getDeliveryChallanDetailsWithOrderno"){
 	authenticate($headers);
     $dcno = $_GET['dcno'];
     $orderno = $_GET['orderno'];
-	$sql = "SELECT dr.`dispatchid`,dr.`orderid`,dr.`dispatchdate`,dr.`dcno`,dr.`vehicalno`,dr.`packingkgs`,dr.`noofbags`,dr.`deliveryremarks`, om.`orderno`, om.`orderdt`, om.`clientid`, om.`prodid`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, pm.`prodname`, pm.`hsncode`, oc.`consigneename`, oc.`contactperson`,oc.`contactnumber`, oc.`address` as `consigneeaddress`,oc.`state` as `consigneestate`, oc.`city` as `consigneecity`, oc.`deliveryperson`, oc.`deliveryaddress`, oc.`remarks` as `consigneestatus` FROM `dispatch_register` dr, `order_master` om, `client_master` cm, `product_master` pm, `order_consignees` oc WHERE dr.`dcno`=$dcno AND dr.`orderid`=om.`orderid` AND om.`clientid`=cm.`clientid` AND om.`prodid`=pm.`prodid` AND dr.`orderid`=oc.`orderid` AND om.`orderno`='$orderno'";
+	$sql = "SELECT dr.`dispatchid`,dr.`orderid`,dr.`dispatchdate`,dr.`dcno`,dr.`vehicalno`,dr.`packingkgs`,dr.`noofbags`,dr.`deliveryremarks`, om.`orderno`, om.`orderdt`, om.`clientid`, om.`prodid`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, pm.`prodname`, pm.`hsncode`, oc.`consigneename`, oc.`contactperson`,oc.`contactnumber`, oc.`address` as `consigneeaddress`,oc.`state` as `consigneestate`, oc.`city` as `consigneecity`, oc.`consigneegst`, oc.`deliveryaddress`, oc.`remarks` as `consigneestatus` FROM `dispatch_register` dr, `order_master` om, `client_master` cm, `product_master` pm, `order_consignees` oc WHERE dr.`dcno`=$dcno AND dr.`orderid`=om.`orderid` AND om.`clientid`=cm.`clientid` AND om.`prodid`=pm.`prodid` AND dr.`orderid`=oc.`orderid` AND om.`orderno`='$orderno'";
 	$result = $conn->query($sql);
     while($row = $result->fetch_array())
 	{
@@ -349,7 +349,7 @@ if($action == "getDeliveryChallanDetailsWithOrderno"){
             $tmp[$i]['consigneeaddress'] = $row['consigneeaddress'];
             $tmp[$i]['consigneecity'] = $row['consigneecity'];
             $tmp[$i]['consigneestate'] = $row['consigneestate'];
-            $tmp[$i]['deliveryperson'] = $row['deliveryperson'];
+            $tmp[$i]['consigneegst'] = $row['consigneegst'];
             $tmp[$i]['deliveryaddress'] = $row['deliveryaddress'];
             $tmp[$i]['consigneestatus'] = $row['consigneestatus'];
 

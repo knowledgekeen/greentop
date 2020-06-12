@@ -57,12 +57,12 @@ if($action == "createNewOrder"){
             $city = $consignees[$i]->city;
             $state = $consignees[$i]->state;
             $address = mysqli_real_escape_string($conn,$consignees[$i]->address);
-            $deliveryperson = mysqli_real_escape_string($conn,$consignees[$i]->deliveryperson);
+            $consigneegst = mysqli_real_escape_string($conn,$consignees[$i]->consigneegst);
             $deliveryaddress = mysqli_real_escape_string($conn,$consignees[$i]->deliveryaddress);
             $remarks = $consignees[$i]->remarks;
             $quantity = $consignees[$i]->quantity;
 
-            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `deliveryperson`, `deliveryaddress`, `remarks`) VALUES ($ordid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$deliveryperson', '$deliveryaddress', '$remarks')";
+            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `consigneegst`, `deliveryaddress`, `remarks`) VALUES ($ordid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$consigneegst', '$deliveryaddress', '$remarks')";
             $resultqty = $conn->query($sqlins);
         }
     }
@@ -408,11 +408,13 @@ if($action == "updateOrderDetails"){
             $contactno = $consignees[$i]->contactno;
             $city = $consignees[$i]->city;
             $state = $consignees[$i]->state;
-            $address = $consignees[$i]->address;
-            $remarks = $consignees[$i]->remarks;
+            $address = mysqli_real_escape_string($conn,$consignees[$i]->address);
+            $remarks = mysqli_real_escape_string($conn,$consignees[$i]->remarks);
             $quantity = $consignees[$i]->quantity;
+            $consigneegst = mysqli_real_escape_string($conn,$consignees[$i]->consigneegst);
+            $deliveryaddress = mysqli_real_escape_string($conn,$consignees[$i]->deliveryaddress);
 
-            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`, `remarks`) VALUES ($orderid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity', '$remarks')";
+            $sqlins="INSERT INTO `order_consignees`(`orderid`, `consigneename`,`contactperson`, `contactnumber`, `city`, `state`, `address`, `quantity`,`consigneegst`, `deliveryaddress`,`remarks`) VALUES ($orderid, '$consigneename', '$contactperson', '$contactno', '$city', '$state', '$address', '$quantity','$consigneegst','$deliveryaddress', '$remarks')";
             $resultqty = $conn->query($sqlins);
         }
     }

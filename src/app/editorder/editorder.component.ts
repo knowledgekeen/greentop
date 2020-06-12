@@ -36,6 +36,8 @@ export class EditorderComponent implements OnInit {
   dateerror: boolean = false;
   ordernopresent: boolean = false;
   masterorderno: any = null;
+  consigneegst: string = null;
+  deliveryaddress: string = null;
 
   constructor(
     private _rest: RESTService,
@@ -164,14 +166,16 @@ export class EditorderComponent implements OnInit {
       }
 
       if (cust) {
-        //console.log(cust);
+        console.log(cust);
         this.consigneename = cust.name;
         this.consigneecontactperson = cust.contactperson1;
         this.consigneecontactno = cust.contactno;
         this.consigneecity = cust.city;
         this.consigneestate = cust.state;
         this.consigneeaddress = cust.address;
+        this.deliveryaddress = cust.address;
         this.consigneequantity = this.quantity ? this.quantity : 0;
+        this.consigneegst = cust.gstno;
       }
     } else {
       this.consigneename = null;
@@ -181,6 +185,8 @@ export class EditorderComponent implements OnInit {
       this.consigneestate = null;
       this.consigneeaddress = null;
       this.consigneequantity = 0;
+      this.consigneegst = null;
+      this.deliveryaddress = null;
     }
   }
 
@@ -197,6 +203,8 @@ export class EditorderComponent implements OnInit {
       state: this.consigneestate,
       address: this.consigneeaddress,
       quantity: this.consigneequantity,
+      consigneegst: this.consigneegst,
+      deliveryaddress: this.deliveryaddress,
       remarks: null
     };
     if (this.sendtoself == true) {
@@ -212,6 +220,8 @@ export class EditorderComponent implements OnInit {
     this.consigneecity = null;
     this.consigneestate = null;
     this.consigneeaddress = null;
+    this.consigneegst= null;
+    this.deliveryaddress= null;
     this.sendtoself = false;
     this.consigneequantity = 0;
   }

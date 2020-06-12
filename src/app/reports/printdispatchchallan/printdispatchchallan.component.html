@@ -58,6 +58,9 @@
             <span>{{dcdata[0].consigneeaddress}}</span><br>
             <strong>City: </strong> <span>{{dcdata[0].consigneecity}}</span> <br>
             <strong>State: </strong> <span>{{dcdata[0].consigneestate}}</span> <br>
+            <strong>GST: </strong> 
+              <span *ngIf="dcdata && dcdata[0].consigneegst">{{dcdata[0].consigneegst}}</span>
+              <span *ngIf="dcdata && !dcdata[0].consigneegst">URP</span> <br>
           </div>
           <div *ngIf="dcdata[0].consigneestatus == 'SELF'">
             {{dcdata[0].consigneestatus}}

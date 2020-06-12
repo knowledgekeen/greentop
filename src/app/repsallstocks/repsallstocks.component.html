@@ -113,10 +113,31 @@
             <tr *ngFor="let hist of this.histarr; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ hist.date | date: "dd-MM-yyyy" }}</td>
-              <td>{{ hist.openingstock | number: "1.3-3" }}</td>
+              <td class="text-right px-3">
+                <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') != -1;">
+                  {{ hist.openingstock }}
+                </span>
+                <span *ngIf="(selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags')  == -1) || (selectedmat.prodname)">
+                  {{ hist.openingstock | number: "1.3-3" }}
+                </span>
+              </td>
               <td>{{ hist.inout }}</td>
-              <td>{{ hist.quantity | number: "1.3-3" }}</td>
-              <td>{{ hist.closingstock | number: "1.3-3" }}</td>
+              <td class="text-right px-3">
+                <span *ngIf="selectedmat.name && (selectedmat.name.toLowerCase().indexOf('bags') != -1);">
+                  {{ hist.quantity }}
+                </span>
+                <span *ngIf="selectedmat.name && (selectedmat.name.toLowerCase().indexOf('bags') == -1) || (selectedmat.prodname)">
+                  {{ hist.quantity | number: "1.3-3" }}
+                </span>
+              </td>
+              <td class="text-right px-3">
+                <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') != -1;">
+                  {{ hist.closingstock }}
+                </span>
+                <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') == -1 || (selectedmat.prodname)">
+                  {{ hist.closingstock | number: "1.3-3" }}
+                </span>
+              </td>
               <td>{{ hist.remarks }}</td>
             </tr>
             <tr *ngIf="this.histarr.length <= 0">
