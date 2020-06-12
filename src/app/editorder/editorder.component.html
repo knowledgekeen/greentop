@@ -4,7 +4,7 @@
   <div class="card">
     <div class="card-body">
       <div class="alert alert-success" role="alert" *ngIf="successMsg">
-        <i class="fa fa-check"></i> Order Updated successfully.
+        <i class="fa fa-check"></i> {{successMsg}}
       </div>
       <div class="row">
         <div class="col-md-3 col-sm-12">
@@ -136,7 +136,9 @@
             <th scope="col">Consignee Name</th>
             <th scope="col">Quantity</th>
             <th scope="col">City</th>
-            <th scope="col">Remove</th>
+            <th scope="col">Remove 
+              <i class="fa fa-question-circle-o mx-1 text-primary" title="This will remove consignee, and you can add more consignees from above"></i>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -147,7 +149,7 @@
             <td>{{ consignee.quantity }}</td>
             <td>{{ consignee.city }}</td>
             <td>
-              <a href="javascript:void(0);" (click)="removeConsignee(i)" class="text-danger">Remove</a>
+              <a href="javascript:void(0);" (click)="removeConsignee(i)" class="text-danger" title="This will remove consignee, and you can add more consignees from above">Remove</a>
             </td>
           </tr>
         </tbody>
@@ -163,7 +165,10 @@
         Update Order
       </button>
       <button class="btn btn-secondary ml-3" [routerLink]="['/vieworders']">
-        Cancel
+        Exit
+      </button>
+      <button class="btn btn-outline-danger ml-3" (click)="cancelOrder()">
+        Cancel Order
       </button>
     </div>
   </div>

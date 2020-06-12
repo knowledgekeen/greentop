@@ -252,7 +252,7 @@ export class EditorderComponent implements OnInit {
         .subscribe(Response => {
           if (Response) {
             window.scrollTo(0, 0);
-            this.successMsg = true;
+            this.successMsg = "Order Updated successfully";
             this._interval.settimer(null).then(Resp => {
               this.resetForm();
               this.initialize();
@@ -263,7 +263,7 @@ export class EditorderComponent implements OnInit {
   }
 
   resetForm() {
-    this.successMsg = false;
+    this.successMsg = null;
     this.consigneename = null;
     this.consigneecontactperson = null;
     this.consigneequantity = 0;
@@ -309,5 +309,25 @@ export class EditorderComponent implements OnInit {
 
       return promise;
     }
+  }
+
+  cancelOrder(){
+    if(confirm("Are you sure you want to CANCEL this order?")){
+      this.confirmCancelOrder()
+    }
+  }
+
+  confirmCancelOrder(){
+    console.log("Order Id: ", this.orderid);
+    const urldata = "orderid="+ this.orderid;
+    this._rest.getData("order.php", "confirmCancelOrder", urldata)
+      .subscribe(Resp=>{
+        window.scrollTo(0,0);
+        this.successMsg = "Order cancelled successfully !!!";
+        this._interval.settimer(null).then(Resp => {
+          this.resetForm();
+          this.initialize();
+        });
+      })
   }
 }

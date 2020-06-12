@@ -60,9 +60,16 @@ export class ViewordersComponent implements OnInit {
       .getData("order.php", "getOrdersFromToDate", geturl)
       .subscribe(Response => {
         if (Response) {
-          //console.log(Response)
+          console.log(Response)
           this.allorders = Response["data"];
           this.masterorders = JSON.parse(JSON.stringify(this.allorders));
+
+          for (let j=0; j<this.allorders.length;j++) {
+            if(this.allorders[j].status == 'cancelled'){
+              this.allorders.splice(j,1);
+              j--;
+            }
+          }
 
           let totqty = 0;
           for (const i in this.allorders) {
@@ -73,51 +80,6 @@ export class ViewordersComponent implements OnInit {
         }
       });
   }
-
-  /* toggleDTP() {
-    this.opendtp = !this.opendtp;
-  }
-
-  changeDate() {
-    this.selectedstatus = "all";
-    if (this.selecteddate) {
-      //console.log(this.selecteddate.getTime());
-      let todaydt = new Date().getTime();
-      if (this.selecteddate.getTime() > todaydt) {
-        let fromdt: any = new Date();
-        fromdt.setDate(1);
-        fromdt.setHours(0, 0, 0, 0);
-        fromdt = fromdt.getTime();
-        let todt = new Date();
-        let lastdt = new Date(
-          todt.getFullYear(),
-          todt.getMonth() + 1,
-          0
-        ).getTime();
-
-        //If month from future show details of current month
-        this.getOrdersFromToDate(fromdt, lastdt);
-        this.errorMsg = "Month cannot be from future.";
-        this.selecteddate.setTime(todaydt);
-        this.opendtp = !this.opendtp;
-        this._interval.settimer(null).then(Resp => {
-          this.errorMsg = false;
-        });
-        return;
-      } else {
-        let dt = new Date();
-        dt.setTime(this.selecteddate);
-        let fromdate = new Date(parseInt(this.selecteddate.getTime()));
-        fromdate.setDate(1);
-        fromdate.setHours(0, 0, 0, 0);
-        let fromdt = fromdate.getTime();
-        let lastdt = new Date(dt.getFullYear(), dt.getMonth() + 1, 0).getTime();
-        this.getOrdersFromToDate(fromdt, lastdt);
-        this.opendtp = !this.opendtp;
-        return;
-      }
-    }
-  } */
 
   selectOrder(order) {
     this.selectedorder = order;
@@ -178,13 +140,23 @@ export class ViewordersComponent implements OnInit {
 
     let totqty = 0;
     if (this.allorders) {
+      
+      if(orderstatus == "all"){
+        for (let j=0; j<this.allorders.length;j++) {
+          if(this.allorders[j].status == 'cancelled'){
+            console.log(this.allorders)
+            this.allorders.splice(j,1);
+            j--;
+          }
+        }
+      }
+
       for (let i = 0; i < this.allorders.length; i++) {
         totqty += parseFloat(this.allorders[i].quantity);
       }
     }
     this.totalquantity = totqty;
   }
-
 
   autofillfromdt() {
     this.fromdt = this._global.getAutofillFormattedDt(this.fromdt);

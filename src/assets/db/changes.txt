@@ -7,9 +7,6 @@ Edit Order
 View Order (Rectify)
  - Sort by Order No isn't working for similar dates, that is because of "-" in order no, need to check and rectify
 
-Order (New Feature)
-    - Add a Cancel Order button
-
 Sundry Debtors (New Feature)
     - Final balance by all customers from ledger(sale payments) should be shown here. 
 
