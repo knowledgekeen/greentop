@@ -29,14 +29,20 @@
               {{ order.orderdt | date: "dd-MM-yyyy" }}</option>
           </select>
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Delivery Date (DD-MM-YYYY)</label>
           <input type="text" class="form-control" [(ngModel)]="dispatchdate" (blur)="autoFillDate()"
             placeholder="Delivery Date (DD-MM-YYYY)" />
         </div>
-        <div class="col-md-4 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Delivery Challan Number</label>
-          <input type="text" class="form-control" [(ngModel)]="dcno" placeholder="Enter Delivery Challan Number" />
+          <input type="text" class="form-control" [(ngModel)]="dcno" placeholder="Enter DC Number" />
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3">
+          <div class="custom-control custom-checkbox mt-4">
+            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+            <label class="custom-control-label" for="customControlAutosizing">No Challan</label>
+          </div>
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Vehicle Number</label>

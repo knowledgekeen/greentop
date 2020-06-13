@@ -11,6 +11,7 @@ export class SearchdispatchchallanComponent implements OnInit {
   challanno: string = null;
   orderno: string = null;
   challanerror: boolean = false;
+  spinner:boolean = false;
 
   constructor(private _rest: RESTService, private _router: Router) { }
 
@@ -19,6 +20,7 @@ export class SearchdispatchchallanComponent implements OnInit {
   }
 
   searchChallan() {
+    this.spinner = true;
     if (this.challanno === '0' && !this.orderno) {
       alert("Order number is compulsory, when challan no. is 0");
     }
@@ -32,6 +34,7 @@ export class SearchdispatchchallanComponent implements OnInit {
           else {
             this.challanerror = true;
           }
+          this.spinner = false;
         });
       }
       else {
@@ -45,6 +48,7 @@ export class SearchdispatchchallanComponent implements OnInit {
           else {
             this.challanerror = true;
           }
+          this.spinner = false;
         });
       }
     }

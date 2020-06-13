@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="my-3">Search Display Challan</h5>
+  <h5 class="my-3">Search Delivery Challan</h5>
 
   <div class="card">
     <div class="card-body">
@@ -14,14 +14,15 @@
             <input type="text" name="challanno" [(ngModel)]="challanno" class="form-control"
               placeholder="Enter Challan No." />
 
-            <div class="my-2" *ngIf="challanno =='0'">
-              <label for="challanno">Enter Order No:</label>
-              <input type="text" name="challanno" [(ngModel)]="orderno" class="form-control"
+            <div class="my-2" *ngIf="challanno=='0'">
+              <label for="orderno">Enter Order No:</label>
+              <input type="text" name="orderno" [(ngModel)]="orderno" class="form-control"
                 placeholder="Enter Order No." />
             </div>
             <button class="btn btn-primary my-2" [disabled]="!challanno">
               Search Challan
             </button>
+            <span class="text-primary" *ngIf="spinner"><i class="fa fa-circle-o-notch fa-spin ml-2"></i> Please wait...</span>
           </form>
         </div>
         <div class="col-md-4 col-lg-4 col-sm-12"></div>

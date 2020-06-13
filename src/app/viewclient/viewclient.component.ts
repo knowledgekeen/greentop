@@ -36,6 +36,9 @@ export class ViewclientComponent implements OnInit {
           this.allclients = Response["data"];
           this.createNavigation();
         }
+        else{
+          this.allclients = [];
+        }
       });
   }
 

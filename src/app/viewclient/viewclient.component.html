@@ -6,6 +6,8 @@
     <h5 class="text-info">
       <span *ngIf="clienttype == 1">All Suppliers</span>
       <span *ngIf="clienttype == 2">All Customers</span>
+      <span class="text-success" *ngIf="!allclients"> <i class="fa fa-circle-o-notch fa-spin text-primary fa-2x"></i></span>
+      <span class="text-success" *ngIf="allclients"> (Total - {{allclients.length}})</span>
     </h5>
     <div class="table-responsive">
       <div class="input-group flex-nowrap mb-3">

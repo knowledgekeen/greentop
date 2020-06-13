@@ -6,13 +6,15 @@
       <div class="row">
         <div class="col-md-4 col-lg-4 col-sm-12"></div>
         <div class="col-md-4 col-lg-4 col-sm-12 my-5">
-          <label for="invno">Search by Invoice No:</label>
-          <input type="text" name="invno" [(ngModel)]="invoiceno" class="form-control"
-            placeholder="Enter Invoice No." />
-          <h6 class="text-danger" *ngIf="invoiceerror">
-            <i class="fa fa-exclamation"></i> Invalid Invoice No.
-          </h6>
-          <button class="btn btn-primary my-2" [disabled]="!invoiceno" (click)="searchInvoice()">Search Invoice</button>
+          <form (submit)="searchInvoice()">
+            <label for="invno">Search by Invoice No:</label>
+            <input type="text" name="invno" [(ngModel)]="invoiceno" class="form-control"
+              placeholder="Enter Invoice No." />
+            <h6 class="text-danger" *ngIf="invoiceerror">
+              <i class="fa fa-exclamation"></i> Invalid Invoice No.
+            </h6>
+            <button class="btn btn-primary my-2" [disabled]="!invoiceno">Search Invoice</button>
+          </form>
         </div>
         <div class="col-md-4 col-lg-4 col-sm-12"></div>
       </div>

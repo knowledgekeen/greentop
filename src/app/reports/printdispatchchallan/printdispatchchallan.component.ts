@@ -58,7 +58,6 @@ export class PrintdispatchchallanComponent implements OnInit {
     this.totalnoofbags = 0;
     this.totalqty = 0;
     for (let i in this.dcdata) {
-      console.log(this.dcdata[i]);
       this.ordernos += this.dcdata[i].orderno + ", ";
       if (this.orderdate && (this.orderdate != this.dcdata[i].orderdt)) {
         this.orderdate = null;
