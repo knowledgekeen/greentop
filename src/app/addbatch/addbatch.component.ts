@@ -51,7 +51,6 @@ export class AddbatchComponent implements OnInit {
       .getData("production.php", "getTodaysProductionBatch")
       .subscribe(Response => {
         if (Response) {
-          console.log(Response);
           if (isNaN(parseInt(Response["data"]) + 1)) {
             console.log("Test")
           }

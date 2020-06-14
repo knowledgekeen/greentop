@@ -122,9 +122,26 @@ export class SalespayhistoryComponent implements OnInit {
       }
       this.payhistory[i].balance = tmpobj.balance + tmpdebit - tmpcredit;
     }
-    //console.log(tmpobj);
     tmpobj.balance = tmpobj.payout - tmpobj.payin;
     this.totalamt = tmpobj;
+
+    if(this.payhistory[this.payhistory.length-1].dates && tmpobj.balance && this.customer.split(".")[0]){
+      const sundrydata={
+        baldate: this.payhistory[this.payhistory.length-1].dates,
+        balance: tmpobj.balance,
+        clientid: this.customer.split(".")[0]
+      };
+
+      this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
+        if(Resp){
+          this.successflag = true;
+          this._interval.settimer().then(Resp => {
+            this.successflag = false;
+          });
+        }
+      });
+    }
+    // console.log(this.payhistory[this.payhistory.length-1].dates,tmpobj.balance, this.customer.split(".")[0]);
     tmpobj = null;
   }
 

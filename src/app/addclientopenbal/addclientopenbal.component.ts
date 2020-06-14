@@ -126,12 +126,21 @@ export class AddclientopenbalComponent implements OnInit {
       .postData("client.php", "updateClientOpeningBalance", cldata)
       .subscribe(Response => {
         if (Response) {
-          this.successmsg = true;
-          this.client = null;
-          this.openbal = "0";
-          this.openbaldt = null;
-          this._interval.settimer().then(Resp => {
-            this.successmsg = false;
+          const sundrydata={
+            clientid: this.client.split(".")[0],
+            balance: this.openbal,
+            baldate: new Date(myDate).getTime()
+          };
+          this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
+            if(Resp){
+              this.successmsg = true;
+              this.client = null;
+              this.openbal = "0";
+              this.openbaldt = null;
+              this._interval.settimer().then(Resp => {
+                this.successmsg = false;
+              });
+            }
           });
         }
       });

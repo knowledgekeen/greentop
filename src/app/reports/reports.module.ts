@@ -10,6 +10,7 @@ import { LetterheadComponent } from '../letterhead/letterhead.component';
 import { SearchdispatchchallanComponent } from './searchdispatchchallan/searchdispatchchallan.component';
 import { PrintdispatchchallanComponent } from './printdispatchchallan/printdispatchchallan.component';
 import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component';
+import { SundrydebitorsComponent } from './sundrydebitors/sundrydebitors.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component'
     LetterheadComponent,
     SearchinvoiceComponent,
     SearchdispatchchallanComponent,
-    PrintdispatchchallanComponent
+    PrintdispatchchallanComponent,
+    SundrydebitorsComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,59 @@
+<div class="container">
+  <h5 class="my-3">Sundry Debtors</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="text-black text-center">SUNDRY DEBTORS</h4>
+      <h6 class="text-black text-center">AS ON 
+        <span class="font-weight-bold text-primary">{{todaydate | date:'dd/MM/yyyy'}}</span>
+      </h6>
+      <!-- <app-letterhead></app-letterhead> -->
+      <div class="table-responsive mt-4 mb-1">
+        <table class="table table-sm">
+          <thead class="thead-light">
+            <tr class="text-uppercase">
+              <th scope="col">Sr. No.</th>
+              <th scope="col">Name of the party</th>
+              <th scope="col" class="text-right pr-5">Amount (Rs.)</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="alldebtors">
+            <tr *ngFor="let debtor of alldebtors;let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td >
+                <i class="fa fa-question-circle text-primary cursor-pointer" title="Last transaction date: {{debtor.balancedt | date:'dd/MM/yyyy'}} "></i> {{debtor.name}}
+              </td>
+              <td class="pr-5">
+                <div class="text-right">
+                  <span class="float-left" *ngIf="debtor.outstander">*</span>
+                  {{debtor.balance | number: '1.2-2'}}
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="alldebtors && alldebtors.length==0">
+              <th scope="row" colspan="3" class="text-primary">
+                <i class="fa fa-pulse fa-spinner"></i> Please wait...
+              </th>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr *ngIf="alldebtors==null">
+              <th scope="row" colspan="3" class="text-danger">
+                <i class="fa fa-exclamation-triangle"></i> No Debtors found in this current financial year.
+              </th>
+            </tr>
+            <tr class="bg-dark text-white" *ngIf="alldebtors">
+              <th colspan="2" class="text-right">
+                <span class="font-weight-bold">Total</span>
+              </th>
+              <th class="text-right pr-5">
+                {{totalbalance | number: '1.2-2'}}
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <h6 class="text-primary font-weight-bold"><strong>*</strong> Outstandings for more than 90 days</h6>
+    </div>
+  </div>
+</div>
