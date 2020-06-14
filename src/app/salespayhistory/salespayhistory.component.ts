@@ -133,11 +133,8 @@ export class SalespayhistoryComponent implements OnInit {
       };
 
       this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
-        if(Resp){
-          this.successflag = true;
-          this._interval.settimer().then(Resp => {
-            this.successflag = false;
-          });
+        if(!Resp){
+          alert("Failed to update sundry debtor, kindly open this page again later.");
         }
       });
     }

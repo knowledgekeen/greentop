@@ -10,7 +10,7 @@
       <!-- <app-letterhead></app-letterhead> -->
       <div class="table-responsive mt-4 mb-1">
         <table class="table table-sm">
-          <thead class="thead-light">
+          <thead class="thead-dark">
             <tr class="text-uppercase">
               <th scope="col">Sr. No.</th>
               <th scope="col">Name of the party</th>
@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody *ngIf="alldebtors">
-            <tr *ngFor="let debtor of alldebtors;let i=index">
+            <tr *ngFor="let debtor of alldebtors;let i=index" [ngClass]="{'bg-danger text-white': debtor.outstander}">
               <th scope="row">{{i+1}}</th>
               <td >
                 <i class="fa fa-question-circle text-primary cursor-pointer" title="Last transaction date: {{debtor.balancedt | date:'dd/MM/yyyy'}} "></i> {{debtor.name}}

@@ -67,10 +67,13 @@ if($action == "updateSundryData"){
 }
 
 // Get All Sundry Debtors details
-if($action == "getSundryDebtorsDetails"){
+if($action == "getSundryDetails"){
 	$headers = apache_request_headers();
 	authenticate($headers);
-	$sql = "SELECT csr.`sundryid`,csr.`clientid`,csr.`balance`,csr.`balancedt`,cm.`type`,cm.`name` FROM `client_sundry_register` csr, `client_master` cm WHERE csr.`clientid`=cm.`clientid` AND cm.`type`=2 ORDER BY cm.`name` ASC";
+	$fromdt = $_GET["fromdt"];
+	$todt = $_GET["todt"];
+	$ctype = $_GET["ctype"];
+	$sql = "SELECT csr.`sundryid`,csr.`clientid`,csr.`balance`,csr.`balancedt`,cm.`type`,cm.`name` FROM `client_sundry_register` csr, `client_master` cm WHERE csr.`clientid`=cm.`clientid` AND cm.`type`=$ctype AND csr.`balancedt` BETWEEN $fromdt AND $todt ORDER BY cm.`name` ASC";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

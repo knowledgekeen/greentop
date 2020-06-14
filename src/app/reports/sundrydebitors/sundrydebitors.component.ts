@@ -24,8 +24,8 @@ export class SundrydebitorsComponent implements OnInit {
   getSundryDebtorsDetails(){
     this.alldebtors = [];
     const currfinanyr = this._global.getCurrentFinancialYear();
-    let urldata = "fromdt="+currfinanyr.fromdt+"&todt="+currfinanyr.todt;
-    this._rest.getData("sundry.php", "getSundryDebtorsDetails", urldata)
+    let urldata = "fromdt="+currfinanyr.fromdt+"&todt="+currfinanyr.todt+"&ctype=2";
+    this._rest.getData("sundry.php", "getSundryDetails", urldata)
       .subscribe(Response=>{
         if(Response && Response["data"]){
           this.alldebtors = Response["data"];
