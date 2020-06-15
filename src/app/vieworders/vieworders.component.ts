@@ -60,7 +60,6 @@ export class ViewordersComponent implements OnInit {
       .getData("order.php", "getOrdersFromToDate", geturl)
       .subscribe(Response => {
         if (Response) {
-          console.log(Response)
           this.allorders = Response["data"];
           this.masterorders = JSON.parse(JSON.stringify(this.allorders));
 

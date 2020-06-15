@@ -21,7 +21,9 @@
             <tr *ngFor="let creditor of allcreditors;let i=index" [ngClass]="{'bg-danger text-white': creditor.outstander}">
               <th scope="row">{{i+1}}</th>
               <td >
-                <i class="fa fa-question-circle text-primary cursor-pointer" title="Last transaction date: {{creditor.balancedt | date:'dd/MM/yyyy'}} "></i> {{creditor.name}}
+                <span data-toggle="tooltip" data-placement="right" title="Last transaction date: {{creditor.balancedt | date:'dd/MM/yyyy'}}" class="text-primary">
+                  {{creditor.name}}
+                </span>
               </td>
               <td class="pr-5">
                 <div class="text-right">
@@ -53,6 +55,7 @@
           </tfoot>
         </table>
       </div>
+      <h6 class="text-info noprint mt-4"><strong>Note: </strong>Mouse over Party name for more info.</h6>
     </div>
   </div>
 </div>

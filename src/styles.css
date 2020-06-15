@@ -331,4 +331,7 @@ input:checked + .slider:before {
       top: 0;
   }
   
+  .noprint{
+    display: none;
+  }
 }

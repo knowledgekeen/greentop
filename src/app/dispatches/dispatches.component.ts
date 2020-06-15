@@ -34,6 +34,7 @@ export class DispatchesComponent implements OnInit {
   disabledispbtn: boolean = false;
   packing: string = null;
   noofbags: string = null;
+  nochallan: boolean = false;
   deliveryremarks: string = null;
 
   constructor(
@@ -251,6 +252,7 @@ export class DispatchesComponent implements OnInit {
       packing: this.packing,
       noofbags: this.noofbags,
       deliveryremarks: this.deliveryremarks,
+      nochallan: this.nochallan,
       rate: this.rate,
       amount: this.amount,
       advance: this.advance,
@@ -376,6 +378,10 @@ export class DispatchesComponent implements OnInit {
     this.partytransport = false;
     this.qtyremerror = false;
     this.successmsg = false;
+    this.noofbags = null;
+    this.nochallan = false;
+    this.packing = null;
+    this.deliveryremarks = null;
     this.addedbatches = new Array();
   }
 
