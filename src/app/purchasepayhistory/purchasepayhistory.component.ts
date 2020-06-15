@@ -175,7 +175,22 @@ export class PurchasepayhistoryComponent implements OnInit {
       }
       this.payhistory[i].balance = tmpobj.balance + tmpcredit - tmpdebit;
     }
+    tmpobj.balance = tmpobj.credit-tmpobj.debit;
     this.totalamt = tmpobj;
+    // this.payhistory.length>=2, here its greater then equal to 2 because, the opening balance should not be updated to sundry, considering the following case: If the user has last transaction in March 1 and if we update the customer transaction at 1st April then the outstander concept would change here.
+    if(this.payhistory.length>=2 && this.payhistory[this.payhistory.length-1].dates && tmpobj.balance && this.supplier.split(".")[0]){
+      const sundrydata={
+        baldate: this.payhistory[this.payhistory.length-1].dates,
+        balance: tmpobj.balance,
+        clientid: this.supplier.split(".")[0]
+      };
+
+      this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
+        if(!Resp){
+          alert("Failed to update sundry debtor, kindly open this page again later.");
+        }
+      });
+    }
     tmpobj = null;
   }
 

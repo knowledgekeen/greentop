@@ -45,6 +45,16 @@ export class PurchasepaymentsComponent implements OnInit {
 
   loadPurchasePaymentHistory(supplier) {
     this.entry.clear();
+    let flag = false;
+    for (const i in this.allsuppliers) {
+      if ((this.allsuppliers[i].clientid+"."+this.allsuppliers[i].name) == supplier) {
+        flag = true;
+        break;
+      }
+    }
+    if(flag === false){
+      return;
+    }
     const factory = this.resolver.resolveComponentFactory(PurchasepayhistoryComponent);
     const componentRef = this.entry.createComponent(factory);
     componentRef.instance.supplier = supplier;

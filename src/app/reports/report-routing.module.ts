@@ -7,6 +7,7 @@ import { PrintdispatchchallanComponent } from './printdispatchchallan/printdispa
 import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component';
 import { SearchdispatchchallanComponent } from './searchdispatchchallan/searchdispatchchallan.component';
 import { SundrydebitorsComponent } from './sundrydebitors/sundrydebitors.component';
+import { SundrycreditorsComponent } from './sundrycreditors/sundrycreditors.component';
 
 const secondaryRoutes: Routes = [
     { path: "reports/monthwisepurchases", component: MonthwisepurchasesComponent },
@@ -16,6 +17,7 @@ const secondaryRoutes: Routes = [
     { path: "reports/printdispatchchallan/:dcno/:orderno", component: PrintdispatchchallanComponent },
     { path: "reports/searchdc", component: SearchdispatchchallanComponent },
     { path: "reports/sundrydebt", component: SundrydebitorsComponent },
+    { path: "reports/sundrycredit", component: SundrycreditorsComponent },
 ];
 
 @NgModule({

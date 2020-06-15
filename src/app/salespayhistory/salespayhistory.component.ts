@@ -124,8 +124,8 @@ export class SalespayhistoryComponent implements OnInit {
     }
     tmpobj.balance = tmpobj.payout - tmpobj.payin;
     this.totalamt = tmpobj;
-
-    if(this.payhistory[this.payhistory.length-1].dates && tmpobj.balance && this.customer.split(".")[0]){
+    // this.payhistory.length>=2, here its greater then equal to 2 because, the opening balance should not be updated to sundry, considering the following case: If the user has last transaction in March 1 and if we update the customer transaction at 1st April then the outstander concept would change here.
+    if(this.payhistory.length>=2 && this.payhistory[this.payhistory.length-1].dates && tmpobj.balance && this.customer.split(".")[0]){
       const sundrydata={
         baldate: this.payhistory[this.payhistory.length-1].dates,
         balance: tmpobj.balance,

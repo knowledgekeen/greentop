@@ -11,6 +11,7 @@ import { SearchdispatchchallanComponent } from './searchdispatchchallan/searchdi
 import { PrintdispatchchallanComponent } from './printdispatchchallan/printdispatchchallan.component';
 import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component';
 import { SundrydebitorsComponent } from './sundrydebitors/sundrydebitors.component';
+import { SundrycreditorsComponent } from './sundrycreditors/sundrycreditors.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SundrydebitorsComponent } from './sundrydebitors/sundrydebitors.compone
     SearchinvoiceComponent,
     SearchdispatchchallanComponent,
     PrintdispatchchallanComponent,
-    SundrydebitorsComponent
+    SundrydebitorsComponent,
+    SundrycreditorsComponent
   ],
   imports: [
     CommonModule,

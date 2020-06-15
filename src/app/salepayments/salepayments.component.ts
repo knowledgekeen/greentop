@@ -51,7 +51,6 @@ export class SalepaymentsComponent implements OnInit {
     if(flag === false){
       return;
     }
-    this.entry.clear();
     const factory = this.resolver.resolveComponentFactory(SalespayhistoryComponent);
     const componentRef = this.entry.createComponent(factory);
     componentRef.instance.customer = customer;

@@ -52,6 +52,13 @@
           </button>
         </div>
       </div>
+      <h6 class="my-3 text-danger"><strong><u>Note:</u> </strong> Updating opening balance will reset Sundry 
+        <span *ngIf="ctype==1">Creditor</span>
+        <span *ngIf="ctype==2">Debtor</span>
+        for the selected {{ctypenm}}. Kindly visit 
+        <span *ngIf="ctype==1">Purchase</span>
+        <span *ngIf="ctype==2">Sale</span>
+        payments page and open selected {{ctypenm}}, which would update his Sundry data.</h6>
     </div>
   </div>
 </div>
