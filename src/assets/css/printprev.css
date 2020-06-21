@@ -1,0 +1,34 @@
+@media print {
+    @page{
+      size: auto;
+      margin: 0;
+    }
+    #monthlypurchasereport, #monthlypurchasereport *, #allsalesreports, #allsalesreports *{
+      visibility: visible;
+      overflow: visible;
+      font-size: 9px;
+    }
+  
+    #printDispatchChallan{
+      visibility: visible;
+      overflow: visible;
+      /* font-size: 11px; */
+    }
+  
+    .card{
+      border:0px;
+    }
+    
+    div.header-content{
+      margin-left: 230px;
+    }
+  
+    .companyheader img{
+        position: absolute; 
+        top: 0;
+    }
+    
+    .noprint{
+      display: none;
+    }
+  }

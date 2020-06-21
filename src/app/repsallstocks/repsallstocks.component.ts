@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as Highcharts from "highcharts";
 import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
+import { IntervalService } from '../interval.service';
 
 @Component({
   selector: "app-repsallstocks",
@@ -13,12 +14,13 @@ export class RepsallstocksComponent implements OnInit {
   chartdata: any = null;
   selectedmat: any = null;
   histarr = new Array();
-  hidegraph = false;
-  constructor(private _rest: RESTService, private _global: GlobalService) { }
+  hidegraph:boolean = false;
+  editStockReg: any = null;
+  successStkDetsMsg: any = null;
+  constructor(private _rest: RESTService, private _global: GlobalService, private _interval: IntervalService) { }
 
   ngOnInit() {
     this.getAllStocks();
-    //this.plot_chart();
   }
 
   getAllStocks() {
@@ -95,32 +97,6 @@ export class RepsallstocksComponent implements OnInit {
         {
           type: "pie",
           data: this.chartdata
-          /*[
-            {
-              name: "Chrome",
-              y: 61.41
-            },
-            {
-              name: "Internet Explorer",
-              y: 11.84
-            },
-            {
-              name: "Firefox",
-              y: 10.85
-            },
-            {
-              name: "Edge",
-              y: 4.67
-            },
-            {
-              name: "Safari",
-              y: 4.18
-            },
-            {
-              name: "Other",
-              y: 7.05
-            }
-          ]*/
         }
       ]
     });
@@ -175,5 +151,21 @@ export class RepsallstocksComponent implements OnInit {
           //console.log(this.histarr);
         } //Response
       });
+  }
+
+  editStockDetails(hist){
+    console.log("editStockReg", hist)
+    // this.selectedmat = false;
+    this.editStockReg = hist;
+  }
+
+  saveStockRegDetails(stkDets){
+    this._rest.postData("stock.php", "updateStockDetails", this.editStockReg)
+    .subscribe(Response=>{
+      this.successStkDetsMsg ="Updated Stock Details";
+      this._interval.settimer().then(Resp=>{
+        this.successStkDetsMsg = null;
+      })
+    });
   }
 }

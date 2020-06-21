@@ -83,7 +83,7 @@
 </div>
 
 <!-- Stock History for Raw Materials -->
-<div class="modal fade" id="stockHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal" id="stockHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" *ngIf="selectedmat">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
@@ -107,12 +107,13 @@
               <th scope="col">Quantity</th>
               <th scope="col">Closing Stock</th>
               <th scope="col">Remarks</th>
+              <th scope="col">Edit</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let hist of this.histarr; let i = index">
               <th scope="row">{{ i + 1 }}</th>
-              <td>{{ hist.date | date: "dd-MM-yyyy" }}</td>
+              <td class="datewidth">{{ hist.date | date: "dd-MM-yyyy" }}</td>
               <td class="text-right px-3">
                 <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') != -1;">
                   {{ hist.openingstock }}
@@ -139,9 +140,12 @@
                 </span>
               </td>
               <td>{{ hist.remarks }}</td>
+              <td>
+                <span class="text-primary cursor-pointer" title="Edit Stock History" data-toggle="modal" data-target="#editStockRegModal" (click)="editStockDetails(hist)"><i class="fa fa-pencil"></i></span>
+              </td>
             </tr>
             <tr *ngIf="this.histarr.length <= 0">
-              <td colspan="7" class="text-danger">
+              <td colspan="8" class="text-danger">
                 <i class="fa fa-exclamation-triangle"></i> There isn't any
                 history available for this
                 <span *ngIf="selectedmat.rawmatid">Raw Material</span>
@@ -153,9 +157,44 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="selectedmat=null;">
           Close
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal editStockRegModal" id="editStockRegModal" tabindex="-1" role="dialog" aria-labelledby="editStockReg" aria-hidden="true" *ngIf="editStockReg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editStockReg">Edit Stock Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="successStkDetsMsg">
+              <i class="fa fa-check"></i> {{successStkDetsMsg}}.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="stkDetQuantity">Quantity</label>
+            <input type="text" class="form-control" [(ngModel)]="editStockReg.quantity">
+          </div>
+          <div class="col-md-6">
+            <label for="stkDetQuantity">Remarks</label>
+            <input type="text" class="form-control" [(ngModel)]="editStockReg.remarks">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="editStockReg=null">Back</button>
+        <button type="button" class="btn btn-primary" (click)="saveStockRegDetails()">Save changes</button>
       </div>
     </div>
   </div>

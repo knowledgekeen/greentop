@@ -105,7 +105,15 @@
       <div class="modal-body">
         <dl class="row">
           <dt class="col-sm-3">GST</dt>
-          <dd class="col-sm-9">{{ selectedclient.gstno }}</dd>
+          <dd class="col-sm-9">
+            <ng-container *ngIf="selectedclient.gstno; else noGST">
+              {{ selectedclient.gstno }}
+            </ng-container>
+            <ng-template #noGST>
+              URP
+            </ng-template>
+            
+          </dd>
           <dt class="col-sm-3">Contact Number</dt>
           <dd class="col-sm-9">{{ selectedclient.contactno }}</dd>
           <dt class="col-sm-3">Email</dt>

@@ -224,7 +224,7 @@ if($action == "getInvoiceDetailsFromInvoiceNo"){
 	$headers = apache_request_headers();
 	authenticate($headers);
     $invoiceno = $_GET["invoiceno"];
-	$sql = "SELECT ot.`otaxinvoiceid`, ot.`orderid`, ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderdt`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, dr.`dcno`, dr.`dispatchdate`, dr.`vehicalno`,pm.`prodname`, pm.`hsncode`, ot.`discountremarks`, dt.`remarks` FROM `order_taxinvoice` ot, `order_master` om,`client_master` cm, `dispatch_register` dr, `product_master` pm, `dispatch_transport` dt WHERE ot.`billno`=$invoiceno AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid`=dr.`orderid` AND om.`prodid` = pm.`prodid` AND dr.`dispatchid`=dt.`dispatchid`";
+	$sql = "SELECT ot.`otaxinvoiceid`, ot.`orderid`, ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderdt`, om.`quantity`, cm.`name`, cm.`address`, cm.`state`, cm.`gstno`, dr.`dcno`, dr.`dispatchdate`, dr.`vehicalno`,dr.`nochallan` ,pm.`prodname`, pm.`hsncode`, ot.`discountremarks` FROM `order_taxinvoice` ot, `order_master` om,`client_master` cm, `dispatch_register` dr, `product_master` pm WHERE ot.`billno`=$invoiceno AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid`=dr.`orderid` AND om.`prodid` = pm.`prodid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -258,12 +258,12 @@ if($action == "getInvoiceDetailsFromInvoiceNo"){
 			$tmp[$i]['gstno'] = $row['gstno'];
 			$tmp[$i]['dcno'] = $row['dcno'];
 			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
+			$tmp[$i]['nochallan'] = $row['nochallan'];
 			$tmp[$i]['vehicalno'] = $row['vehicalno'];
 			$tmp[$i]['totalamount'] = $row['totalamount'];
 			$tmp[$i]['prodname'] = $row['prodname'];
 			$tmp[$i]['hsncode'] = $row['hsncode'];
 			$tmp[$i]['discountremarks'] = $row['discountremarks'];
-			$tmp[$i]['remarks'] = $row['remarks'];
 			$i++;
 		}
 		$data["status"] = 200;

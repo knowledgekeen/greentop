@@ -73,7 +73,7 @@ if($action == "getSundryDetails"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$ctype = $_GET["ctype"];
-	$sql = "SELECT csr.`sundryid`,csr.`clientid`,csr.`balance`,csr.`balancedt`,cm.`type`,cm.`name` FROM `client_sundry_register` csr, `client_master` cm WHERE csr.`clientid`=cm.`clientid` AND cm.`type`=$ctype AND csr.`balancedt` BETWEEN $fromdt AND $todt ORDER BY cm.`name` ASC";
+	$sql = "SELECT csr.`sundryid`,csr.`clientid`,csr.`balance`,csr.`balancedt`,cm.`type`,cm.`name` FROM `client_sundry_register` csr, `client_master` cm WHERE csr.`clientid`=cm.`clientid` AND cm.`type`=$ctype AND csr.`balance` <> 0 AND csr.`balancedt` BETWEEN $fromdt AND $todt ORDER BY cm.`name` ASC";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

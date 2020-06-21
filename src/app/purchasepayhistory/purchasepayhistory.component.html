@@ -45,7 +45,7 @@
                 <th scope="col" class="text-right">
                   Balance (<i class="fa fa-inr" aria-hidden="true"></i>)
                 </th>
-                <th *ngIf="isEditable">Edit / Delete</th>
+                <th *ngIf="isEditable" class="noprint">Edit / Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -60,7 +60,7 @@
                 <td class="text-right">
                   {{ hist.balance | number: "1.2-2" }}
                 </td>
-                <td *ngIf="isEditable">
+                <td *ngIf="isEditable" class="noprint">
                   <h6 class="m-0" *ngIf="hist.debit && (hist.particulars != 'Opening Balance')">
                     <a href="javascript:void(0);" class="mx-2" title="Edit Payment History" data-toggle="modal"
                       data-target="#editPayHistoryModal" (click)="editPaymentHistory(hist)">

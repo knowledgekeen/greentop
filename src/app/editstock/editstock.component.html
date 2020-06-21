@@ -1,0 +1,42 @@
+<div class="container">
+  <h5 class="my-3">Edit Stocks</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{successMsg}}
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of allstock; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>
+                <ng-container *ngIf="stock.name; else elseFinishProd">
+                  {{stock.name}}
+                </ng-container>
+                <ng-template #elseFinishProd>
+                  {{stock.prodname}}
+                </ng-template>
+              </td>
+              <td>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="stock.quantity" placeholder="There should be a quantity present" />
+              </td>
+              <td>
+                <button class="btn btn-sm btn-primary" (click)="updateStock(stock)">Update</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

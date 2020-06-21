@@ -37,6 +37,7 @@ import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecomp
 import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
 import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
 import { AddreceiptComponent } from './addreceipt/addreceipt.component';
+import { EditstockComponent } from './editstock/editstock.component';
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -79,6 +80,7 @@ const routes: Routes = [
   { path: "createacchead", component: CreateaccountheadComponent },
   { path: "addexpenditure", component: AddexpenditureComponent },
   { path: "addreceipt", component: AddreceiptComponent },
+  { path: "editstock", component: EditstockComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" }
 ];

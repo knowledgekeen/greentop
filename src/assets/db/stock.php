@@ -727,4 +727,38 @@ if($action == "allreprocessdata"){
 
 	echo json_encode($data1);
 }
+
+
+if($action == "updateStockDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+	$stockregid = $data->stockregid;
+	$quantity = $data->quantity;
+	$remarks = mysqli_real_escape_string($conn,$data->remarks);
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `stock_register` SET `quantity`='$quantity',`remarks`='$remarks' WHERE `stockregid`=$stockregid";
+        $result = $conn->query($sql);
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $stockregid;
+		$log  = "File: stock.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: stock.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

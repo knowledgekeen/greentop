@@ -69,6 +69,7 @@ import { AddreceiptComponent } from './addreceipt/addreceipt.component';
 import { ViewreceiptComponent } from './viewreceipt/viewreceipt.component';
 import { ReportsModule } from './reports/reports.module';
 import { ReportNavbarComponent } from './report-navbar/report-navbar.component';
+import { EditstockComponent } from './editstock/editstock.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { ReportNavbarComponent } from './report-navbar/report-navbar.component';
     ViewexpenditureComponent,
     AddreceiptComponent,
     ViewreceiptComponent,
-    ReportNavbarComponent
+    ReportNavbarComponent,
+    EditstockComponent
   ],
   imports: [
     BrowserModule,

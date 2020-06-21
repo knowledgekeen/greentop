@@ -120,9 +120,7 @@
           <div class="col-md-3 col-sm-12">
             <label class="m-0">Quantity Produced</label>
             <input type="text" class="form-control" placeholder="Quantity Produced"
-              [(ngModel)]="selectedbatch.qtyproduced" [disabled]="
-                originalbatch.qtyproduced != originalbatch.qtyremained
-              " />
+              [(ngModel)]="selectedbatch.qtyproduced"/>
             <label class="h6 m-0 text-primary">Quantity Remained:
               <span class="font-weight-bold">
                 {{selectedbatch.qtyremained}}

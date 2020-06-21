@@ -40,7 +40,6 @@ export class SundrydebitorsComponent implements OnInit {
   calculateTotalBalance(){
     //1 Day=86400000 && 90Days=7776000000
     let maxoutstanddays = 7776000000;
-    console.log(this.todaydate-maxoutstanddays)
     this.totalbalance = 0;
     for (const i in this.alldebtors) {
       this.totalbalance += parseFloat(this.alldebtors[i].balance);
