@@ -191,4 +191,16 @@ export class GlobalService {
     if (vehicalno)
       return vehicalno.replace(/[^A-Z0-9]/ig, "");
   }
+
+  /**
+   * This function will return the month last date according to the date timestamp passed to it
+   * For. E.g if 1578140891000 is passed then it will return 31 as Jan has the last date 31st.
+   */
+  getFirstNLastDateOfMonth(timestamp){
+    let date = new Date(parseInt(timestamp));
+    return({
+      firstDay:new Date(date.getFullYear(), date.getMonth(), 1).getTime(),
+      lastDay:new Date(date.getFullYear(), date.getMonth() + 1, 0).getTime()
+    });
+  }
 }

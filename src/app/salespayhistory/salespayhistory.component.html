@@ -1,5 +1,9 @@
 <div class="card my-3" *ngIf="customer && payhistory">
   <div class="card-body">
+    <p class="text-right text-sm noprint" *ngIf="updtsundryflag==true || updtsundryflag==false">
+      <span class="text-primary" *ngIf="!updtsundryflag"><i class="fa fa-refresh fa-spin"></i> Updating sundry...</span>
+      <span class="text-success" *ngIf="updtsundryflag"><i class="fa fa-check"></i> Updating sundry successful...</span>
+    </p>
     <div class="alert alert-success" role="alert" *ngIf="successflag">
       <i class="fa fa-check"></i> {{successflag}}
     </div>

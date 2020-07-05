@@ -11,58 +11,49 @@ if($action == "updateSundryData"){
 	$headers = apache_request_headers();
     authenticate($headers);
     $data1 = json_decode(file_get_contents("php://input"));
-    $clientid = $data1->clientid;
-    $balance = $data1->balance;
-    $baldate = $data1->baldate;
-    $sql = "SELECT * FROM `client_sundry_register` WHERE `clientid`=$clientid";
-    $result = $conn->query($sql);
-    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $sundrydets = $data1->sundrydets;
     $data= array();
-    if($result && $row['sundryid']){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $sqlupdate="UPDATE `client_sundry_register` SET `balance`='$balance',`balancedt`='$baldate' WHERE `clientid`=$clientid";
-            $resultupdate = $conn->query($sqlupdate);
-            if($resultupdate){
-                $data["status"] = 200;
-                $data["data"] = $row['sundryid'];
-                $log  = "File: syndry.php - Method: $action".PHP_EOL.
-                "Data: ".json_encode($data).PHP_EOL;
-                write_log($log, "success", NULL);
-                header(' ', true, 200);
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        for($i=0; $i<count($sundrydets); $i++) {
+            $balance = $sundrydets[$i]->balance;
+            $baldate = $sundrydets[$i]->dates;
+            $clientid = $sundrydets[$i]->clientid;
+            $sql = "SELECT * FROM `client_sundry_register` WHERE `clientid`=$clientid AND `balancedt`=$baldate";
+            $result = $conn->query($sql);
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            if($result && $row['sundryid']){
+                $sqlupdate="UPDATE `client_sundry_register` SET `balance`='$balance' WHERE `clientid`=$clientid AND `balancedt`=$baldate";
+                $resultupdate = $conn->query($sqlupdate);
+                if($resultupdate){
+                    $data[$i]["status"] = 200;
+                    $data[$i]["data"] = $row['sundryid'];
+                    $data[$i]["query"] = "update success";
+                }
+                else{
+                    $data[$i]["status"] = 204;
+                    $data[$i]["query"] = "update failed";
+                }
             }
             else{
-                $data["status"] = 204;
-                $log  = "File: syndry.php - Method: $action".PHP_EOL.
-                "Error message: ".$conn->error.PHP_EOL.
-                "Data: ".json_encode($data).PHP_EOL;
-                write_log($log, "error", $conn->error);
-                header(' ', true, 204);
+                $sqlinsert="INSERT INTO `client_sundry_register`(`clientid`, `balance`, `balancedt`) VALUES ($clientid,'$balance','$baldate')";
+                $resultinsert = $conn->query($sqlinsert);
+                $sundryid = $conn->insert_id;
+                if($resultinsert){
+                    $data[$i]["status"] = 200;
+                    $data[$i]["data"] = $sundryid;
+                    $data[$i]["query"] = "insert success";
+                }
+                else{
+                    $data[$i]["status"] = 204;
+                    $data[$i]["query"] = "insert failed";
+                }
             }
-        }
-	}
-	else{
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $sqlinsert="INSERT INTO `client_sundry_register`(`clientid`, `balance`, `balancedt`) VALUES ($clientid,'$balance','$baldate')";
-            $resultinsert = $conn->query($sqlinsert);
-            $sundryid = $conn->insert_id;
-            if($resultinsert){
-                $data["status"] = 200;
-                $data["data"] = $sundryid;
-                $log  = "File: syndry.php - Method: $action".PHP_EOL.
-                "Data: ".json_encode($data).PHP_EOL;
-                write_log($log, "success", NULL);
-                header(' ', true, 200);
-            }
-            else{
-                $data["status"] = 204;
-                $log  = "File: syndry.php - Method: $action".PHP_EOL.
-                "Error message: ".$conn->error.PHP_EOL.
-                "Data: ".json_encode($data).PHP_EOL;
-                write_log($log, "error", $conn->error);
-                header(' ', true, 204);
-            }
-        }
-    }
+        }   //For
+    }   //if
+    $log  = "File: sundry.php - Method: $action".PHP_EOL.
+    "Data: ".json_encode($data).PHP_EOL;
+    write_log($log, "success", NULL);
+    header(' ', true, 200);
 	echo json_encode($data);
 }
 
@@ -73,7 +64,7 @@ if($action == "getSundryDetails"){
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
 	$ctype = $_GET["ctype"];
-	$sql = "SELECT csr.`sundryid`,csr.`clientid`,csr.`balance`,csr.`balancedt`,cm.`type`,cm.`name` FROM `client_sundry_register` csr, `client_master` cm WHERE csr.`clientid`=cm.`clientid` AND cm.`type`=$ctype AND csr.`balance` <> 0 AND csr.`balancedt` BETWEEN $fromdt AND $todt ORDER BY cm.`name` ASC";
+	$sql = "SELECT csr.*,cm.`type`,cm.`name` FROM `client_sundry_register` csr, `client_master` cm WHERE csr.`clientid`=cm.`clientid` AND cm.`type`=$ctype AND csr.`balancedt` BETWEEN $fromdt AND $todt ORDER BY cm.`name` ASC, csr.`balancedt` ASC";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

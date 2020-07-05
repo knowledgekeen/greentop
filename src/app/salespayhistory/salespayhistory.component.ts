@@ -20,6 +20,7 @@ export class SalespayhistoryComponent implements OnInit {
   @Input() iseditable: any;
   successflag: any = false;
   disableupdatebtn: any = false;
+  updtsundryflag: any = false;
   totalamt: { payin: number; payout: number; balance: number; };
 
   constructor(private _global: GlobalService, private _rest: RESTService, private _interval: IntervalService) { }
@@ -41,7 +42,7 @@ export class SalespayhistoryComponent implements OnInit {
       orderpay = Response["orderpay"];
       openbal = Response["openingbal"];
       let tmparr = [];
-      //console.log(openbal, ordermast, orderpay);
+      // console.log(openbal, ordermast, orderpay);
 
       if (openbal) {
         let tmpobj = {
@@ -124,22 +125,39 @@ export class SalespayhistoryComponent implements OnInit {
     }
     tmpobj.balance = tmpobj.payout - tmpobj.payin;
     this.totalamt = tmpobj;
+
+    const calcsundrydata = this.calculateSundryData();
+    this.updtsundryflag = false;
     // this.payhistory.length>=2, here its greater then equal to 2 because, the opening balance should not be updated to sundry, considering the following case: If the user has last transaction in March 1 and if we update the customer transaction at 1st April then the outstander concept would change here.
-    if(this.payhistory.length>=2 && this.payhistory[this.payhistory.length-1].dates && this.customer.split(".")[0]){
+    if(calcsundrydata.length>0 && this.customer.split(".")[0]){
       const sundrydata={
-        baldate: this.payhistory[this.payhistory.length-1].dates,
-        balance: tmpobj.balance,
-        clientid: this.customer.split(".")[0]
+        sundrydets: calcsundrydata
       };
 
       this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
         if(!Resp){
-          alert("Failed to update sundry debtor, kindly open this page again later.");
+          alert("Failed to update sundry debtor, kindly open this page again later, to update sundry details.");
         }
+        else{
+          this.updtsundryflag = true;
+        }
+        this._interval.settimer(1000).then(timer=>{
+          this.updtsundryflag = null;
+        });
       });
     }
     // console.log(this.payhistory[this.payhistory.length-1].dates,tmpobj.balance, this.customer.split(".")[0]);
     tmpobj = null;
+  }
+
+  calculateSundryData(){
+    // console.log(this.payhistory);
+    let payhistorycopy = JSON.parse(JSON.stringify(this.payhistory));
+    // console.log(payhistorycopy);
+    payhistorycopy.map(dt=>{
+      dt.clientid= this.customer.split(".")[0]
+    });
+    return payhistorycopy;
   }
 
   fetchAllPaymentData() {

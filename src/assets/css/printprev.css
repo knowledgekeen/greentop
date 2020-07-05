@@ -28,6 +28,10 @@
         top: 0;
     }
     
+    .text-white{
+      color:#000 !important;
+    }
+
     .noprint{
       display: none;
     }

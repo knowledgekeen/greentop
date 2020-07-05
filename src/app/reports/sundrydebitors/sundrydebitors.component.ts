@@ -12,10 +12,8 @@ export class SundrydebitorsComponent implements OnInit {
   todaydate: number = null;
   alldebtors: any = [];
   totalbalance: number = 0;
-  totalnoprintbal: number = 0;
   filterdt: string = null;
-  noprintarr: any = [];
-
+  
   constructor(private _global:GlobalService, private _rest:RESTService) { }
 
   ngOnInit() {
@@ -41,6 +39,23 @@ export class SundrydebitorsComponent implements OnInit {
       .subscribe(Response=>{
         if(Response && Response["data"]){
           this.alldebtors = Response["data"];
+          // console.log(this.alldebtors)
+          // This loop will filter out all the duplicate debtors and will keep only the latest transaction details
+          for(let i=0; i<this.alldebtors.length-1;i++){
+            if(this.alldebtors[i].clientid === this.alldebtors[i+1].clientid){
+              this.alldebtors.splice(i,1);
+              i--;
+            }
+          }
+
+          // This loop is to remove all the debtors with '0' balance
+          for(let j=0; j<this.alldebtors.length;j++){
+            if(parseInt(this.alldebtors[j].balance) === 0){
+              this.alldebtors.splice(j,1);
+              j--;
+            }
+          }
+
           this.calculateTotalBalance();
         }
         else{
@@ -50,36 +65,15 @@ export class SundrydebitorsComponent implements OnInit {
   }
 
   calculateTotalBalance(){
-    //1 Day=86400000 && 90Days=7776000000
-    let maxoutstanddays = 7776000000;
     this.totalbalance = 0;
     for (const i in this.alldebtors) {
       this.totalbalance += parseFloat(this.alldebtors[i].balance);
-      if(parseFloat(this.alldebtors[i].balancedt) <= (this.todaydate-maxoutstanddays)){
-        this.alldebtors[i].outstander = true;
-      }
-      else{
         this.alldebtors[i].outstander = false;
-      }
-    }
-
-    // Total for noprint table
-    this.totalnoprintbal = 0;
-    for (const j in this.noprintarr) {
-      this.totalnoprintbal += parseFloat(this.noprintarr[j].balance);
     }
   }
 
-  pushToNoPrint(debtor, index){
-    this.noprintarr.push(debtor);
-    this.alldebtors.splice(index,1);
-    this.calculateTotalBalance();
-  }
-
-  addBackToPrint(debtor, index){
-    this.alldebtors.push(debtor);
-    this.noprintarr.splice(index,1);
-    this.calculateTotalBalance();
+  pushToOutstander(index){
+    this.alldebtors[index].outstander = !this.alldebtors[index].outstander;
   }
 
   filterData(){

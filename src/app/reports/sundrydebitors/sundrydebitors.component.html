@@ -3,6 +3,11 @@
 
   <div class="card">
     <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 my-3">
+          <app-letterhead></app-letterhead>
+        </div>
+      </div>
       <div class="row noprint">
         <div class="col-md-4">
           <span>Filter data Upto Date:</span>
@@ -10,14 +15,13 @@
           <button class="btn btn-sm btn-primary my-2" [disabled]='!filterdt' (click)="filterData()">Filter</button>
         </div>
       </div>
-      <h4 class="text-black text-center">SUNDRY DEBTORS</h4>
+      <h4 class="text-black text-center mt-2">SUNDRY DEBTORS</h4>
       <h6 class="text-black text-center">AS ON 
         <span class="font-weight-bold text-primary">{{todaydate | date:'dd/MM/yyyy'}}</span>
       </h6>
-      <!-- <app-letterhead></app-letterhead> -->
       <div class="table-responsive mt-4 mb-1">
         <table class="table table-sm">
-          <thead class="thead-dark">
+          <thead class="thead-dark font-weight-bold">
             <tr class="text-uppercase">
               <th scope="col">Sr. No.</th>
               <th scope="col" class="noprint">
@@ -38,7 +42,7 @@
               <th scope="row">{{i+1}}</th>
               <th scope="row" class="noprint">
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck-{{i}}" (click)="pushToNoPrint(debtor, i)">
+                  <input type="checkbox" class="custom-control-input" id="customCheck-{{i}}" (click)="pushToOutstander(i)">
                   <label class="custom-control-label" for="customCheck-{{i}}"></label>
                 </div>
               </th>
@@ -74,53 +78,6 @@
               </th>
             </tr>
           </tfoot>
-        </table>
-      </div>
-      
-      <h5 class="text-danger mt-4 mb-2 noprint" *ngIf="noprintarr && noprintarr.length>0">Below table will not be printed</h5>
-      <div class="table-responsive noprint" *ngIf="noprintarr && noprintarr.length>0">
-        <table class="table table-sm">
-          <thead class="thead-light">
-            <tr class="text-uppercase">
-              <th scope="col">SR. NO.</th>
-              <th scope="col" class="noprint">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Add to Print</label>
-                </div>
-              </th>
-              <th scope="col">NAME OF THE PARTY</th>
-              <th scope="col">Last Transaction Date</th>
-              <th scope="col">AMOUNT (RS.)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let npr of noprintarr; let i=index">
-              <th scope="row">{{i+1}}</th>
-              <td class="noprint">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheckNew-{{i}}" (click)="addBackToPrint(npr, i)">
-                  <label class="custom-control-label" for="customCheckNew-{{i}}"></label>
-                </div>
-              </td>
-              <td>{{npr.name}}</td>
-              <td>{{npr.balancedt | date:'dd/MM/yyyy'}}</td>
-              <td class="pr-5">
-                <div class="text-right">
-                  <span class="float-left" *ngIf="npr.outstander">*</span>
-                  {{npr.balance | number: '1.2-2'}}
-                </div>
-              </td>
-            </tr>
-            <tr class="bg-light" *ngIf="noprintarr">
-              <th colspan="4" class="text-right">
-                <span class="font-weight-bold">Total</span>
-              </th>
-              <th class="text-right pr-5">
-                {{totalnoprintbal | number: '1.2-2'}}
-              </th>
-            </tr>
-          </tbody>
         </table>
       </div>
       
