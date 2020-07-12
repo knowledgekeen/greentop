@@ -18,8 +18,15 @@
         </div>
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Supplier</label>
-          <input type="text" class="form-control" placeholder="Select Supplier" [(ngModel)]="supplier"
-            list="supplierlist" (change)="loadPurchasePaymentHistory(supplier)" />
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Select Supplier" [(ngModel)]="supplier"
+              list="supplierlist" (change)="loadPurchasePaymentHistory(supplier)" />
+            <div class="input-group-append">
+              <button class="btn btn-sm btn-secondary" [disabled]="!supplier" (click)="supplier=null; loadPurchasePaymentHistory(null)" title="Clear Supplier field">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
           <!-- (change)=getAllPurchasePayments() -->
           <datalist id="supplierlist">
             <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allsuppliers">
