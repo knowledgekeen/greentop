@@ -21,6 +21,7 @@ export class PurchasepayhistoryComponent implements OnInit {
   @Input() isEditable: any;
   successflag: any = false;
   disableupdatebtn: any = false;
+  updtsundryflag: any = false;
 
   constructor(private _rest: RESTService, private _global: GlobalService, private _interval: IntervalService) { }
 
@@ -177,21 +178,39 @@ export class PurchasepayhistoryComponent implements OnInit {
     }
     tmpobj.balance = tmpobj.credit-tmpobj.debit;
     this.totalamt = tmpobj;
-    // this.payhistory.length>=2, here its greater then equal to 2 because, the opening balance should not be updated to sundry, considering the following case: If the user has last transaction in March 1 and if we update the customer transaction at 1st April then the outstander concept would change here.
-    if(this.payhistory.length>=2 && this.payhistory[this.payhistory.length-1].dates && this.supplier.split(".")[0]){
+    
+    const calcsundrydata = this.calculateSundryData();
+    this.updtsundryflag = false;
+    
+    if(calcsundrydata.length>0 && this.supplier.split(".")[0]){
       const sundrydata={
-        baldate: this.payhistory[this.payhistory.length-1].dates,
-        balance: tmpobj.balance,
-        clientid: this.supplier.split(".")[0]
+        sundrydets: calcsundrydata
       };
 
       this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
         if(!Resp){
           alert("Failed to update sundry debtor, kindly open this page again later.");
         }
+        else{
+          this.updtsundryflag = true;
+        }
+        this._interval.settimer(1000).then(timer=>{
+          this.updtsundryflag = null;
+        });
       });
     }
     tmpobj = null;
+  }
+
+  
+  calculateSundryData(){
+    // console.log(this.payhistory);
+    let payhistorycopy = JSON.parse(JSON.stringify(this.payhistory));
+    // console.log(payhistorycopy);
+    payhistorycopy.map(dt=>{
+      dt.clientid= this.supplier.split(".")[0]
+    });
+    return payhistorycopy;
   }
 
   editPaymentHistory(hist) {

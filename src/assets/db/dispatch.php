@@ -12,16 +12,11 @@ if($action == "dispatchOrder"){
 	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $addedbatches = $data->addedbatches;
-    $advance = $data->advance;
-    $amount = $data->amount;
     $dcno = $data->dcno;
     $dispdate = $data->dispdate;
     $orderid = $data->orderid;
     $prodid = $data->prodid;
     $quantity = $data->quantity;
-    $paidon = $data->paidon;
-    $partytrans = $data->partytrans;
-    $rate = $data->rate;
     $vehicalno = $data->vehicalno;
     $todaydt = $data->todaydt;
     $remarks = $data->remarks;
@@ -36,11 +31,6 @@ if($action == "dispatchOrder"){
         $sql = "INSERT INTO `dispatch_register`(`orderid`, `dispatchdate`, `dcno`, `vehicalno`, `packingkgs`, `noofbags`, `nochallan`, `deliveryremarks`) VALUES ($orderid, '$dispdate', '$dcno', '$vehicalno', '$packing','$noofbags','$nochallan','$deliveryremarks')";
         $result = $conn->query($sql);
         $dispatchid = $conn->insert_id;
-
-        // Insert into `dispatch_transport`
-        $_partytrans = mysqli_real_escape_string ($conn, $partytrans);
-        $sqldt = "INSERT INTO `dispatch_transport`(`dispatchid`, `rate`, `amount`, `advance`, `paidondate`, `remarks`) VALUES ($dispatchid, '$rate', '$amount', '$advance', '$paidon', '$_partytrans')";
-        $resultdt = $conn->query($sqldt);
 
         for($i=0; $i<count($addedbatches); $i++) {
             $batchmastid = $addedbatches[$i]->batchmastid;

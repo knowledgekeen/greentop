@@ -17,17 +17,12 @@ export class DispatchesComponent implements OnInit {
   allconsignees: any = null;
   dispatchdate: any = null;
   dcno: any = null;
-  rate: any = "0";
-  amount: any = "0";
-  advance: any = "0";
-  paidon: any = null;
   vehicalno: any = null;
   alltrucks: any = null;
   allbatches: any = null;
   selbatch: any = null;
   selqty: any = null;
   selbatchquantity: any = null;
-  partytransport: any = false;
   qtyremerror: any = false;
   successmsg: any = false;
   addedbatches: any = new Array();
@@ -233,14 +228,7 @@ export class DispatchesComponent implements OnInit {
     }
 
     let dispatchdate = moment(this.dispatchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let paidon = moment(this.dispatchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let partytrans = null;
-    if (this.partytransport == true) {
-      partytrans = "Party Transport";
-    } else {
-      partytrans = "Self Transport";
-    }
-
+    
     let dispatchObj = {
       todaydt: new Date().getTime(),
       orderid: this.orderdetails.orderid,
@@ -253,11 +241,6 @@ export class DispatchesComponent implements OnInit {
       noofbags: this.noofbags,
       deliveryremarks: this.deliveryremarks,
       nochallan: this.nochallan,
-      rate: this.rate,
-      amount: this.amount,
-      advance: this.advance,
-      paidon: new Date(paidon).getTime(),
-      partytrans: partytrans,
       addedbatches: this.addedbatches,
       remarks: "Sales / " + this.orderdetails.name + " / Order No: " + this.orderdetails.orderno
     };
@@ -367,15 +350,10 @@ export class DispatchesComponent implements OnInit {
     this.orderdetails = null;
     this.dispatchdate = null;
     this.dcno = null;
-    this.rate = "0"; 2
-    this.amount = "0";
-    this.advance = "0";
-    this.paidon = null;
     this.vehicalno = null;
     this.selbatch = null;
     this.selqty = null;
     this.selbatchquantity = null;
-    this.partytransport = false;
     this.qtyremerror = false;
     this.successmsg = false;
     this.noofbags = null;
@@ -389,12 +367,5 @@ export class DispatchesComponent implements OnInit {
     if (!this.dispatchdate) return;
 
     this.dispatchdate = this._global.getAutofillFormattedDt(this.dispatchdate);
-    this.paidon = this.dispatchdate;
-  }
-
-  autoFillPaidOnDate() {
-    if (!this.paidon) return;
-
-    this.paidon = this._global.getAutofillFormattedDt(this.paidon);
   }
 }

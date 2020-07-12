@@ -10,16 +10,19 @@ import * as moment from "moment";
 })
 export class SundrydebitorsComponent implements OnInit {
   todaydate: number = null;
+  printdate: any = null;
   alldebtors: any = [];
   totalbalance: number = 0;
   filterdt: string = null;
-  
+  nocreditors: boolean = true;
+
   constructor(private _global:GlobalService, private _rest:RESTService) { }
 
   ngOnInit() {
     let dt = new Date();
     dt.setHours(0,0,0,0);
     this.todaydate = dt.getTime();
+    this.printdate = moment(dt).format("DD/MM/YYYY");
     this.getSundryDebtorsDetails();
   }
 
@@ -61,7 +64,7 @@ export class SundrydebitorsComponent implements OnInit {
         else{
           this.alldebtors=null;
         }
-      })
+      });
   }
 
   calculateTotalBalance(){

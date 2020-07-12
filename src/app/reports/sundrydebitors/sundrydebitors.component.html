@@ -8,11 +8,15 @@
           <app-letterhead></app-letterhead>
         </div>
       </div>
-      <div class="row noprint">
-        <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-4 noprint">
           <span>Filter data Upto Date:</span>
           <input type="text" class="form-control form-control-sm" placeholder="Enter date in DD/MM/YYYY" [(ngModel)]="filterdt" (change)="autoFillDt()">
           <button class="btn btn-sm btn-primary my-2" [disabled]='!filterdt' (click)="filterData()">Filter</button>
+        </div>
+        <div class="col-md-8 text-right">
+            <span class="font-weight-bold">Printed on: </span>
+            <span contenteditable="true">{{printdate}}</span>
         </div>
       </div>
       <h4 class="text-black text-center mt-2">SUNDRY DEBTORS</h4>
@@ -28,7 +32,7 @@
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="headertable">
                   <label class="custom-control-label" for="headertable">
-                    <i class="fa fa-trash"></i>
+                    <i class="fa fa-asterisk"></i>
                   </label>
                 </div>
               </th>
@@ -82,6 +86,36 @@
       </div>
       
       <h6 class="text-primary font-weight-bold"><strong>*</strong> Outstandings for more than 90 days</h6>
+
+      <div class="custom-control custom-checkbox noprint">
+        <input type="checkbox" class="custom-control-input" id="customCheckForNoCreditors" [(ngModel)]="nocreditors">
+        <label class="custom-control-label" for="customCheckForNoCreditors">Tick it if No Creditors</label>
+      </div>
+      <div *ngIf="nocreditors">
+        <h4 class="text-black text-center mt-4">SUNDRY CREDITORS</h4>
+        <h6 class="text-black text-center">AS ON 
+          <span class="font-weight-bold text-primary">{{todaydate | date:'dd/MM/yyyy'}}</span>
+        </h6>
+        <div class="table-responsive mt-4 mb-1">
+          <table class="table table-sm">
+            <thead class="thead-dark">
+              <tr class="text-uppercase">
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Name of the party</th>
+                <th scope="col" class="noprint">Last Transaction Date</th>
+                <th scope="col" class="text-right pr-5">Amount (Rs.)</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="5" class="text-danger">
+                  <i class="fa fa-exclamation-triangle"></i> No Creditors.
+                </th>
+              </tr>
+            </tfoot> 
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
