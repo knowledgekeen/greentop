@@ -9,7 +9,7 @@ import { PurchasepayhistoryComponent } from 'src/app/purchasepayhistory/purchase
 })
 export class LedgerpurchaseComponent implements OnInit {
   allsuppliers: any = null;
-  filtercust: any = null;
+  filtersupp: any = null;
   @ViewChild('purchasepayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(private _rest:RESTService, private resolver: ComponentFactoryResolver) { }
