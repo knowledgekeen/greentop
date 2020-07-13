@@ -12,6 +12,11 @@ import { PrintdispatchchallanComponent } from './printdispatchchallan/printdispa
 import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component';
 import { SundrydebitorsComponent } from './sundrydebitors/sundrydebitors.component';
 import { SundrycreditorsComponent } from './sundrycreditors/sundrycreditors.component';
+import { BillsandcollectionComponent } from './billsandcollection/billsandcollection.component';
+import { LedgersalesComponent } from './ledgersales/ledgersales.component';
+import { GeneralModule } from '../general/general.module';
+import { SearchclientPipe } from '../searchclient.pipe';
+import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +29,13 @@ import { SundrycreditorsComponent } from './sundrycreditors/sundrycreditors.comp
     SearchdispatchchallanComponent,
     PrintdispatchchallanComponent,
     SundrydebitorsComponent,
-    SundrycreditorsComponent
+    SundrycreditorsComponent,
+    BillsandcollectionComponent,
+    LedgersalesComponent,
+    LedgerpurchaseComponent
   ],
   imports: [
+    GeneralModule,
     CommonModule,
     ReportRoutingModule,
     FormsModule

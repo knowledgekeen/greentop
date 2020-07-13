@@ -194,4 +194,50 @@ if($action == "deleteSalePayRecord"){
 	echo json_encode($data1);
 }
 
+
+if($action == "getAllOrderPaymentsFromToDt"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt= $_GET["fromdt"];
+    $todt= $_GET["todt"];
+	$sql = "SELECT op.*,cm.*,pm.* FROM `order_payments` op,`client_master` cm, `paymode_master` pm WHERE op.`clientid`=cm.`clientid` AND `paydate` BETWEEN '$fromdt' AND '$todt' AND op.paymodeid=pm.paymodeid";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['orderpayid'] = $row['orderpayid'];
+			$tmp[$i]['paydate'] = $row['paydate'];
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['amount'] = $row['amount'];
+			$tmp[$i]['particulars'] = $row['particulars'];
+			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['paymode'] = $row['paymode'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+	echo json_encode($data);
+}
+
 ?>

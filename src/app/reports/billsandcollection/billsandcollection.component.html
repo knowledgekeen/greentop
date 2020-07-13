@@ -1,0 +1,45 @@
+<div class="container">
+  <h5 class="my-3 noprint">Bills And Collections</h5>
+
+<div class="card">
+  <div class="card-body">
+    <h4 class="text-center text-primary">BILLS AND COLLECTIONS</h4>
+    <h5 class="text-center text-primary">F.Y {{finanyr.fromdt | date: 'yyyy'}} - {{finanyr.todt | date: 'yyyy'}}</h5>
+    <div class="row my-2">
+      <div class="col-md-12 table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date</th>
+              <th scope="col">Bill No</th>
+              <th scope="col" class="text-center">Particulars</th>
+              <th scope="col" class="text-right">Bill Amount</th>
+              <th scope="col" class="text-right">Amount Received</th>
+              <th scope="col" class="text-right">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bill of allbillsncollection; let i = index;" [ngClass]="{'bg-light': bill.billamt!=0}">
+              <th scope="row">{{i+1}}</th>
+              <td>{{bill.dated | date:'dd-MM-yyyy'}}</td>
+              <td>{{bill.billno}}</td>
+              <td>{{bill.particulars}}</td>
+              <td class="text-right">{{bill.billamt | number:'1.2-2' }}</td>
+              <td class="text-right">{{bill.amtreceived | number:'1.2-2'}}</td>
+              <td class="text-right">{{bill.balance | number: '1.2-2'}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="4" class="text-right">Total</th>
+              <th class="text-right">{{totalbillamt | number: '1.2-2'}}</th>
+              <th class="text-right">{{totalamtreceived | number: '1.2-2'}}</th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,9 @@ import { SearchinvoiceComponent } from './searchinvoice/searchinvoice.component'
 import { SearchdispatchchallanComponent } from './searchdispatchchallan/searchdispatchchallan.component';
 import { SundrydebitorsComponent } from './sundrydebitors/sundrydebitors.component';
 import { SundrycreditorsComponent } from './sundrycreditors/sundrycreditors.component';
+import { BillsandcollectionComponent } from './billsandcollection/billsandcollection.component';
+import { LedgersalesComponent } from './ledgersales/ledgersales.component';
+import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
 
 const secondaryRoutes: Routes = [
     { path: "reports/monthwisepurchases", component: MonthwisepurchasesComponent },
@@ -18,6 +21,9 @@ const secondaryRoutes: Routes = [
     { path: "reports/searchdc", component: SearchdispatchchallanComponent },
     { path: "reports/sundrydebt", component: SundrydebitorsComponent },
     { path: "reports/sundrycredit", component: SundrycreditorsComponent },
+    { path: "reports/billsncollection", component: BillsandcollectionComponent },
+    { path: "reports/salesledger", component: LedgersalesComponent },
+    { path: "reports/purchaseledger", component: LedgerpurchaseComponent },
 ];
 
 @NgModule({

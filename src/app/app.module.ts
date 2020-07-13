@@ -23,7 +23,7 @@ import { AddcustomerComponent } from "./addcustomer/addcustomer.component";
 import { ViewclientComponent } from "./viewclient/viewclient.component";
 import { ViewsupplierComponent } from "./viewsupplier/viewsupplier.component";
 import { ViewcustomerComponent } from "./viewcustomer/viewcustomer.component";
-import { SearchclientPipe } from "./searchclient.pipe";
+// import { SearchclientPipe } from "./searchclient.pipe";
 import { AddproductComponent } from "./addproduct/addproduct.component";
 import { ViewproductComponent } from "./viewproduct/viewproduct.component";
 import { AddtransportComponent } from "./addtransport/addtransport.component";
@@ -70,6 +70,7 @@ import { ViewreceiptComponent } from './viewreceipt/viewreceipt.component';
 import { ReportsModule } from './reports/reports.module';
 import { ReportNavbarComponent } from './report-navbar/report-navbar.component';
 import { EditstockComponent } from './editstock/editstock.component';
+import { GeneralModule } from './general/general.module';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,7 @@ import { EditstockComponent } from './editstock/editstock.component';
     ViewclientComponent,
     ViewsupplierComponent,
     ViewcustomerComponent,
-    SearchclientPipe,
+    // SearchclientPipe,
     AddproductComponent,
     ViewproductComponent,
     AddtransportComponent,
@@ -131,7 +132,8 @@ import { EditstockComponent } from './editstock/editstock.component';
   ],
   imports: [
     BrowserModule,
-    ReportsModule,  //This Module should be loaded before App Routing as this module contains child routing
+    GeneralModule,  // This is a Generic module for all the common components to be shared between different modules
+    ReportsModule,  // This Module should be loaded before App Routing as this module contains child routing
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

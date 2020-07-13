@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <h5 class="my-3 noprint">Purchase Ledger</h5>
+
+  <div class="row">
+    <div class="col-3 noprint">
+      <div class="card">
+        <div class="card-header">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Supplier" aria-label="Search Supplier" aria-describedby="basic-addon2" [(ngModel)]="filtersupp">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2" *ngIf="!filtersupp">
+                <i class="fa fa-search"></i>
+              </span>
+              <span class="input-group-text cursor-pointer" id="basic-addon2" *ngIf="filtersupp" (click)="filtersupp=null;" title="Clear Search Box">
+                <i class="fa fa-times"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="card-body suppliercard">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-1" *ngFor="let supp of (allsuppliers | searchclient: filtersupp:allsuppliers)">
+              <a href="javascript:void(0);" (click)="loadPurchasePaymentHistory(supp.clientid, supp.name)">{{supp.name}}</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body py-0">
+          <div #purchasepayhistory></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

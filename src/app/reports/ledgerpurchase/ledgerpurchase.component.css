@@ -1,0 +1,5 @@
+.suppliercard{
+    max-height: 25rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
