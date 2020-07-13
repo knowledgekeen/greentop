@@ -56,6 +56,7 @@ export class ViewexpenditureComponent implements OnInit {
     this.selectedstatus = index + 1;
     this.totalamount = 0;
     this.allexpenditures = JSON.parse(JSON.stringify(this.masterexpenditure));
+    if(!this.allexpenditures) return;
     if (index == 0) {
       let vm = this;
       this.allexpenditures.filter(function (value) {

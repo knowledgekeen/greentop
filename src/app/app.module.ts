@@ -71,6 +71,7 @@ import { ReportsModule } from './reports/reports.module';
 import { ReportNavbarComponent } from './report-navbar/report-navbar.component';
 import { EditstockComponent } from './editstock/editstock.component';
 import { GeneralModule } from './general/general.module';
+import { AccountsNavbarComponent } from './accounts-navbar/accounts-navbar.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { GeneralModule } from './general/general.module';
     AddreceiptComponent,
     ViewreceiptComponent,
     ReportNavbarComponent,
-    EditstockComponent
+    EditstockComponent,
+    AccountsNavbarComponent
   ],
   imports: [
     BrowserModule,

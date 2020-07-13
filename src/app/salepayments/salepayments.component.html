@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="my-3 noprint">Sales Payments</h5>
+  <h5 class="my-3 noprint">Sales Receipts</h5>
 
   <div class="card noprint">
     <div class="card-body">
@@ -35,13 +35,13 @@
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
-          <label class="m-0">Date of Payment</label>
-          <input type="text" class="form-control" placeholder="Date of Payment" [(ngModel)]="paydt"
+          <label class="m-0">Date of Receipt</label>
+          <input type="text" class="form-control" placeholder="Date of Receipt" [(ngModel)]="paydt"
             (blur)="autofillPayDt()" />
         </div>
         <div class="col-md-3 col-sm-12">
-          <label class="m-0">Amount Paid</label>
-          <input type="text" class="form-control" placeholder="Amount Paid" [(ngModel)]="amtpaid" />
+          <label class="m-0">Amount Received</label>
+          <input type="text" class="form-control" placeholder="Amount Received" [(ngModel)]="amtpaid" />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>

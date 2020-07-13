@@ -24,7 +24,14 @@
           <li class="nav-item dropdown position-static" *ngIf="userdets">
             <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              All Reports
+              Accounts
+            </a>
+            <app-accounts-navbar></app-accounts-navbar>
+          </li>
+          <li class="nav-item dropdown position-static" *ngIf="userdets">
+            <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Reports
             </a>
             <app-report-navbar></app-report-navbar>
           </li>
@@ -128,15 +135,6 @@
                     <li>
                       <a [routerLink]="['/addreprocessing']">Add Product Reprocessing</a>
                     </li>
-                    <li>
-                      <a [routerLink]="['/createacchead']">Create Account Head</a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['/addexpenditure']">Add / View Expenditures</a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['/addreceipt']">Add / View Receipts</a>
-                    </li>
                   </ul>
                   <div class="dropdown-divider"></div>
                 </div>
@@ -190,7 +188,7 @@
                       <a [routerLink]="['/viewinvoices']">View Invoices</a>
                     </li>
                     <li>
-                      <a [routerLink]="['/salepayments']">Sale Payments</a>
+                      <a [routerLink]="['/salepayments']">Sales Receipts</a>
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>

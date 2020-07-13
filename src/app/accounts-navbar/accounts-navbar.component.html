@@ -1,0 +1,25 @@
+<div class="w-100 dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
+  <div class="row">
+    <div class="col-sm-12">
+      <span class="dropdown-item pt-3 font-weight-bold text-danger" href="javascript:void(0)">
+        <span class="text-uppercase">Accounts</span>
+      </span>
+      <div class="dropdown-divider"></div>
+    </div>
+    <div class="col-sm-3">
+      <ul class="py-2 px-4 my-2 list-unstyled menus">
+        <!-- <li class="text-uppercase">Purchases</li> -->
+        <li>
+          <a [routerLink]="['/createacchead']">Create Account Head</a>
+        </li>
+        <li>
+          <a [routerLink]="['/addexpenditure']">Add / View Expenditures</a>
+        </li>
+        <li>
+          <a [routerLink]="['/addreceipt']">Add / View Receipts</a>
+        </li>
+      </ul>
+      <div class="dropdown-divider"></div>
+    </div>
+  </div>
+</div>
