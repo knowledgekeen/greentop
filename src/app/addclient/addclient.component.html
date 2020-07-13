@@ -15,7 +15,7 @@
           </a>
         </p>
       </div>
-      <div class="col-sm-6 col-xs-12 mb-3">
+      <div class="col-sm-4 col-xs-12 mb-3">
         <label class="m-0">
           Company Name <sup class="text-danger font-weight-bold">*</sup>
         </label>
@@ -28,7 +28,7 @@
           </option>
         </datalist>
       </div>
-      <div class="col-sm-3 col-xs-12 mb-3">
+      <div class="col-sm-2 col-xs-12 mb-3">
         <label class="m-0">Contact Number
           <sup class="text-danger font-weight-bold">*</sup></label>
         <input type="text" class="form-control" placeholder="Contact Number" [(ngModel)]="cno" />
@@ -37,7 +37,7 @@
         <label class="m-0">GST Number</label>
         <input type="text" class="form-control" placeholder="GST No." [(ngModel)]="gstno" />
       </div>
-      <div class="col-sm-6 col-xs-12 mb-3">
+      <div class="col-sm-3 col-xs-12 mb-3">
         <label class="m-0">Email Address</label>
         <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="email" />
       </div>
@@ -57,7 +57,7 @@
         <label class="m-0">Contact Person 2 Number</label>
         <input type="text" class="form-control" placeholder="Contact Person No. 2" [(ngModel)]="cno2" />
       </div>
-      <div class="col-sm-3 col-xs-12 mb-3">
+      <div class="col-sm-4 col-xs-12 mb-3">
         <label class="m-0">City <sup class="text-danger font-weight-bold">*</sup></label>
         <input type="text" class="form-control" placeholder="City" [(ngModel)]="city" list="cities" />
         <datalist id="cities">
@@ -66,7 +66,16 @@
           }}</option>
         </datalist>
       </div>
-      <div class="col-sm-3 col-xs-12 mb-3">
+      <div class="col-sm-4 col-xs-12 mb-3">
+        <label class="m-0">District <sup class="text-danger font-weight-bold">*</sup></label>
+        <input type="text" class="form-control" placeholder="District" [(ngModel)]="district" list="district" />
+        <datalist id="district">
+          <option value="{{ dist.district }}" *ngFor="let dist of alldistricts">{{
+            dist.district
+          }}</option>
+        </datalist>
+      </div>
+      <div class="col-sm-4 col-xs-12 mb-3">
         <label class="m-0">State <sup class="text-danger font-weight-bold">*</sup></label>
         <input type="text" class="form-control" placeholder="State" [(ngModel)]="state" list="states" />
         <datalist id="states">

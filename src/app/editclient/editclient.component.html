@@ -12,11 +12,11 @@
             Fields marked with asterisk (*) are compulsary
           </p>
         </div>
-        <div class="col-sm-6 col-xs-12 mb-3">
-          <label class="m-0"
-            >Company Name
-            <sup class="text-danger font-weight-bold">*</sup></label
-          >
+        <div class="col-sm-4 col-xs-12 mb-3">
+          <label class="m-0">
+            Company Name
+            <sup class="text-danger font-weight-bold">*</sup>
+          </label>
           <input
             type="text"
             class="form-control"
@@ -24,7 +24,7 @@
             [(ngModel)]="fname"
           />
         </div>
-        <div class="col-sm-3 col-xs-12 mb-3">
+        <div class="col-sm-2 col-xs-12 mb-3">
           <label class="m-0"
             >Contact Number
             <sup class="text-danger font-weight-bold">*</sup></label
@@ -45,7 +45,7 @@
             [(ngModel)]="gstno"
           />
         </div>
-        <div class="col-sm-6 col-xs-12 mb-3">
+        <div class="col-sm-3 col-xs-12 mb-3">
           <label class="m-0">Email Address</label>
           <input
             type="email"
@@ -90,7 +90,7 @@
             [(ngModel)]="cno2"
           />
         </div>
-        <div class="col-sm-3 col-xs-12 mb-3">
+        <div class="col-sm-4 col-xs-12 mb-3">
           <label class="m-0"
             >City <sup class="text-danger font-weight-bold">*</sup></label
           >
@@ -107,7 +107,16 @@
             }}</option>
           </datalist>
         </div>
-        <div class="col-sm-3 col-xs-12 mb-3">
+        <div class="col-sm-4 col-xs-12 mb-3">
+          <label class="m-0">District <sup class="text-danger font-weight-bold">*</sup></label>
+          <input type="text" class="form-control" placeholder="District" [(ngModel)]="district" list="district" />
+          <datalist id="district">
+            <option value="{{ dist.district }}" *ngFor="let dist of alldistricts">{{
+              dist.district
+            }}</option>
+          </datalist>
+        </div>
+        <div class="col-sm-4 col-xs-12 mb-3">
           <label class="m-0"
             >State <sup class="text-danger font-weight-bold">*</sup></label
           >

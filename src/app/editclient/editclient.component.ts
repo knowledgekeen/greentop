@@ -20,10 +20,12 @@ export class EditclientComponent implements OnInit {
   cperson2: string = null;
   cno2: string = null;
   city: string = null;
+  district: string = null;
   state: string = null;
   address: string = null;
   successMsg: any = false;
   allcities: any = null;
+  alldistricts: any = null;
   allstates: any = null;
   clientdata: any = null;
 
@@ -41,6 +43,7 @@ export class EditclientComponent implements OnInit {
       this.getClientDetails();
     });
     this.getClientCities();
+    this.getClientDistricts();
     this.getClientStates();
   }
 
@@ -51,6 +54,17 @@ export class EditclientComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allcities = Response["data"];
+        }
+      });
+  }
+
+  getClientDistricts() {
+    this.alldistricts = null;
+    this._rest
+      .getData("client.php", "getClientDistricts", null)
+      .subscribe(Response => {
+        if (Response) {
+          this.alldistricts = Response["data"];
         }
       });
   }
@@ -90,6 +104,7 @@ export class EditclientComponent implements OnInit {
     this.cperson2 = this.clientdata.contactperson2;
     this.cno2 = this.clientdata.contactno2;
     this.city = this.clientdata.city;
+    this.district = this.clientdata.district;
     this.state = this.clientdata.state;
     this.address = this.clientdata.address;
   }
@@ -112,6 +127,7 @@ export class EditclientComponent implements OnInit {
       cperson2: this.cperson2,
       cno2: this.cno2,
       city: this.city,
+      district: this.district,
       state: this.state,
       address: address,
       ctype: this.clienttype

@@ -19,10 +19,12 @@ export class AddclientComponent implements OnInit {
   cperson2: string = null;
   cno2: string = null;
   city: string = null;
+  district: string = null;
   state: string = null;
   address: string = null;
   successMsg: any = false;
   allcities: any = null;
+  alldistricts: any = null;
   allstates: any = null;
   allclients: any = null;
   clientnamepresent: boolean = false;
@@ -32,6 +34,7 @@ export class AddclientComponent implements OnInit {
 
   ngOnInit() {
     this.getClientCities();
+    this.getClientDistricts();
     this.getClientStates();
     this.getAllClients();
   }
@@ -54,6 +57,17 @@ export class AddclientComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allstates = Response["data"];
+        }
+      });
+  }
+
+  getClientDistricts() {
+    this.alldistricts = null;
+    this._rest
+      .getData("client.php", "getClientDistricts", null)
+      .subscribe(Response => {
+        if (Response) {
+          this.alldistricts = Response["data"];
         }
       });
   }
@@ -87,6 +101,7 @@ export class AddclientComponent implements OnInit {
       cperson2: this.cperson2,
       cno2: this.cno2,
       city: this.city,
+      district: this.district,
       state: this.state,
       address: address,
       ctype: this.clienttype
@@ -99,6 +114,7 @@ export class AddclientComponent implements OnInit {
           this.resetForm();
           window.scrollTo(0, 0);
           this.getClientCities();
+          this.getClientDistricts();
           this.getClientStates();
 
           this.disablebtn = false;
@@ -124,6 +140,7 @@ export class AddclientComponent implements OnInit {
     this.cperson2 = null;
     this.cno2 = null;
     this.city = null;
+    this.district = null;
     this.state = null;
     this.address = null;
   }

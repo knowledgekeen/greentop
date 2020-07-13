@@ -20,13 +20,14 @@ if($action == "addClient"){
 	$cperson2 = $data->cperson2;
 	$cno2 = $data->cno2;
 	$city = $data->city;
+	$district = $data->district;
 	$state = $data->state;
 	$address = mysqli_real_escape_string($conn,$data->address);
     $ctype = $data->ctype;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         //Status: 1 == 'active'
-		$sql = "INSERT INTO `client_master`(`name`, `address`, `contactno`, `contactperson1`, `contactno1`, `contactperson2`, `contactno2`, `email`, `city`, `state`, `gstno`, `type`, `status`) VALUES ('$fname','$address','$cno','$cperson1','$cno1','$cperson2','$cno2','$email','$city','$state','$gstno',$ctype,1)";
+		$sql = "INSERT INTO `client_master`(`name`, `address`, `contactno`, `contactperson1`, `contactno1`, `contactperson2`, `contactno2`, `email`, `city`, `district`, `state`, `gstno`, `type`, `status`) VALUES ('$fname','$address','$cno','$cperson1','$cno1','$cperson2','$cno2','$email','$city','$district','$state','$gstno',$ctype,1)";
         $result = $conn->query($sql);
         $userid = $conn->insert_id;
 	}
@@ -36,12 +37,12 @@ if($action == "addClient"){
 		$data1["data"] = $userid;
 		header(' ', true, 200);
 		//Logging
-		$log  = "File: client.php - Method: addClient".PHP_EOL.
+		$log  = "File: client.php - Method: $action".PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "success", NULL);
 	}
 	else{
-		$log  = "File: client.php - Method: addClient".PHP_EOL.
+		$log  = "File: client.php - Method: $action".PHP_EOL.
 		"Error message: ".$conn->error.PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "error", $conn->error);
@@ -50,6 +51,41 @@ if($action == "addClient"){
 	}
 
 	echo json_encode($data1);
+}
+
+if($action == "getClientDistricts"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$sql = "SELECT DISTINCT(`district`) FROM `client_master` ORDER BY `district`";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['district'] = $row['district'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		header(' ', true, 200);
+	}
+	else{
+		$log  = "File: client.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL;
+		write_log($log, "error", $conn->error);
+		$data["status"] = 204;
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
 }
 
 if($action == "getClientCities"){
@@ -194,20 +230,21 @@ if($action == "getClientDetails"){
 		$tmp['contactno2'] = $row['contactno2'];
 		$tmp['email'] = $row['email'];
 		$tmp['city'] = $row['city'];
+		$tmp['district'] = $row['district'];
 		$tmp['state'] = $row['state'];
 		$tmp['gstno'] = $row['gstno'];
 		$tmp['type'] = $row['type'];
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
-		$log  = "File: client.php - Method: getClientDetails".PHP_EOL.
+		$log  = "File: client.php - Method: $action".PHP_EOL.
 		"Data: ".json_encode($tmp).PHP_EOL;
 		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
-		$log  = "File: client.php - Method: getClientDetails".PHP_EOL.
+		$log  = "File: client.php - Method: $action".PHP_EOL.
 		"Error message: ".$conn->error.PHP_EOL;
 		write_log($log, "error", $conn->error);
 		header(' ', true, 204);
@@ -230,26 +267,27 @@ if($action == "updateClient"){
 	$cperson2 = $data->cperson2;
 	$cno2 = $data->cno2;
 	$city = $data->city;
+	$district = $data->district;
 	$state = $data->state;
 	$address = mysqli_real_escape_string($conn,$data->address);
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         //Status: 1 == 'active'
-		$sql = "UPDATE `client_master` SET `name`='$fname',`address`='$address',`contactno`='$cno',`contactperson1`='$cperson1',`contactno1`='$cno1',`contactperson2`='$cperson2',`contactno2`='$cno2',`email`='$email',`city`='$city',`state`='$state',`gstno`='$gstno' WHERE `clientid`=$clientid";
+		$sql = "UPDATE `client_master` SET `name`='$fname',`address`='$address',`contactno`='$cno',`contactperson1`='$cperson1',`contactno1`='$cno1',`contactperson2`='$cperson2',`contactno2`='$cno2',`email`='$email',`city`='$city',`district`='$district',`state`='$state',`gstno`='$gstno' WHERE `clientid`=$clientid";
         $result = $conn->query($sql);
 	}
     $data1= array();
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $clientid;
-		$log  = "File: client.php - Method: updateClient".PHP_EOL.
+		$log  = "File: client.php - Method: $action".PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
-		$log  = "File: client.php - Method: updateClient".PHP_EOL.
+		$log  = "File: client.php - Method: $action".PHP_EOL.
 		"Error message: ".$conn->error.PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "error", $conn->error);
