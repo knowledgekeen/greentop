@@ -11,6 +11,7 @@ import { SundrycreditorsComponent } from './sundrycreditors/sundrycreditors.comp
 import { BillsandcollectionComponent } from './billsandcollection/billsandcollection.component';
 import { LedgersalesComponent } from './ledgersales/ledgersales.component';
 import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
+import { DistrictwisesalesComponent } from './districtwisesales/districtwisesales.component';
 
 const secondaryRoutes: Routes = [
     { path: "reports/monthwisepurchases", component: MonthwisepurchasesComponent },
@@ -24,6 +25,7 @@ const secondaryRoutes: Routes = [
     { path: "reports/billsncollection", component: BillsandcollectionComponent },
     { path: "reports/salesledger", component: LedgersalesComponent },
     { path: "reports/purchaseledger", component: LedgerpurchaseComponent },
+    { path: "reports/districtwisesales", component: DistrictwisesalesComponent },
 ];
 
 @NgModule({

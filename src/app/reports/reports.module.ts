@@ -17,6 +17,7 @@ import { LedgersalesComponent } from './ledgersales/ledgersales.component';
 import { GeneralModule } from '../general/general.module';
 import { SearchclientPipe } from '../searchclient.pipe';
 import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
+import { DistrictwisesalesComponent } from './districtwisesales/districtwisesales.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.compone
     SundrycreditorsComponent,
     BillsandcollectionComponent,
     LedgersalesComponent,
-    LedgerpurchaseComponent
+    LedgerpurchaseComponent,
+    DistrictwisesalesComponent
   ],
   imports: [
     GeneralModule,

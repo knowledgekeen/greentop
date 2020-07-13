@@ -81,4 +81,44 @@ if($action == "updateStock"){
 
 	echo json_encode($data1);
 }
+
+if($action == "getDistrictWiseSales"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $sql = "SELECT cm.*,SUM(om.quantity) as totalquantity FROM `order_master` om, `client_master` cm WHERE om.`clientid`=cm.`clientid` GROUP BY cm.`district` ORDER BY cm.`district`";
+    $result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['district'] = $row['district'];
+			$tmp[$i]['totalquantity'] = $row['totalquantity'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: reports_stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: reports_stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
 ?>
