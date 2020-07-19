@@ -288,11 +288,12 @@ if($action == "addReceipt"){
     $receiptdate = $data->receiptdate;
     $receipttype = $data->receipttype;
     $acchead = $data->acchead;
+    $personalaccid = $data->personalaccid;
     $particulars = $data->particulars;
     $amount = $data->amount;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sql = "INSERT INTO `receipt_register`(`receiptdate`, `receipttype`, `accheadid`, `particulars`, `amount`) VALUES ('$receiptdate',$receipttype,$acchead,'$particulars', '$amount')";
+		$sql = "INSERT INTO `receipt_register`(`receiptdate`, `receipttype`, `accheadid`, `personalaccid`, `particulars`, `amount`) VALUES ('$receiptdate',$receipttype,$acchead,$personalaccid,'$particulars', '$amount')";
         $result = $conn->query($sql);
         $expid = $conn->insert_id;
 	}

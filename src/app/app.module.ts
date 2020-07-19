@@ -74,8 +74,6 @@ import { GeneralModule } from './general/general.module';
 import { AccountsNavbarComponent } from './accounts-navbar/accounts-navbar.component';
 import { AccountsModule } from './accounts/accounts/accounts.module';
 import { CreatepersonalaccComponent } from './accounts/createpersonalacc/createpersonalacc.component';
-import { PersonalaccledgerComponent } from './accounts/personalaccledger/personalaccledger.component';
-import { AccheadledgerComponent } from './accounts/accheadledger/accheadledger.component';
 
 @NgModule({
   declarations: [
@@ -136,8 +134,6 @@ import { AccheadledgerComponent } from './accounts/accheadledger/accheadledger.c
     EditstockComponent,
     AccountsNavbarComponent,
     CreatepersonalaccComponent,
-    PersonalaccledgerComponent,
-    AccheadledgerComponent
   ],
   imports: [
     BrowserModule,

@@ -54,7 +54,6 @@ export class AddexpenditureComponent implements OnInit {
   addExpenditure() {
     const personalaccount = this.personalacc ? this.allpersonalaccs.filter(res=>{ return res.personalaccnm === this.personalacc}) : null; 
     const personalaccid = personalaccount && personalaccount.length>0 ? personalaccount[0].personalaccid : 0;
-    console.log(personalaccount);
     if (this.acchead && this.acchead.split(".").length >= 2) {
       let mydate = moment(this.expensedate, "DD-MM-YYYY").format("MM-DD-YYYY");
       let expobj = {
@@ -70,7 +69,7 @@ export class AddexpenditureComponent implements OnInit {
           if (Response) {
             this.loadPurchasePaymentHistory();
             this.successmsg = "Expenditure added successfully";
-            this.expensetype = null;
+            this.expensetype = 1;
             this.acchead = null;
             this.particulars = null;
             this.personalacc = null;
