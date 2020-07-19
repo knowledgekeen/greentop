@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getDBSettings() {
-    this._rest.getData("accounts.php", "getDBSettings").subscribe(Response => {
+    this._rest.getData("users.php", "getDBSettings").subscribe(Response => {
       if (Response) {
         this.dbsettings = Response["data"];
         this.checkAllSettings();
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
     //console.log(setting);
     setting.state = setting.state == 1 ? 0 : 1;
     this._rest
-      .postData("accounts.php", "updateDBSettings", setting)
+      .postData("users.php", "updateDBSettings", setting)
       .subscribe(Response => {
         if (Response) {
           this.successmsg = true;

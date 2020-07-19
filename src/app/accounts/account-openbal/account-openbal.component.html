@@ -1,0 +1,34 @@
+<div class="container">
+  <h5 class="my-2">Account Opening Balance</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{successMsg}}.
+      </div>
+      <div class="row">
+        <div class="col-12">
+          Opening Balance Dated: <span class="font-weight-bold">{{currenty_finan_yr.fromdt | date:'dd/MM/yyyy'}}</span>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-6">
+          <label for="bankopenbal">Bank Opening Balance</label>
+          <input type="text" id="bankopenbal" class="form-control" placeholder="Enter Bank Opening Balance" [(ngModel)]="bankopenbal"/>
+        </div>
+        <div class="col-6">
+          <label for="cashopenbal">Cash Opening Balance</label>
+          <input type="text" id="cashopenbal" class="form-control" placeholder="Enter Cash Opening Balance" [(ngModel)]="cashopenbal"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button class="btn btn-primary" *ngIf="isbalancepresent == false;" (click)="addAccOpeningBalance()">
+            Add Opening Balances
+          </button>
+          <button class="btn btn-warning" *ngIf="isbalancepresent == true;" (click)="updateAccOpeningBalance()">Update Opening Balances</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

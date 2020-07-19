@@ -72,6 +72,10 @@ import { ReportNavbarComponent } from './report-navbar/report-navbar.component';
 import { EditstockComponent } from './editstock/editstock.component';
 import { GeneralModule } from './general/general.module';
 import { AccountsNavbarComponent } from './accounts-navbar/accounts-navbar.component';
+import { AccountsModule } from './accounts/accounts/accounts.module';
+import { CreatepersonalaccComponent } from './accounts/createpersonalacc/createpersonalacc.component';
+import { PersonalaccledgerComponent } from './accounts/personalaccledger/personalaccledger.component';
+import { AccheadledgerComponent } from './accounts/accheadledger/accheadledger.component';
 
 @NgModule({
   declarations: [
@@ -130,12 +134,16 @@ import { AccountsNavbarComponent } from './accounts-navbar/accounts-navbar.compo
     ViewreceiptComponent,
     ReportNavbarComponent,
     EditstockComponent,
-    AccountsNavbarComponent
+    AccountsNavbarComponent,
+    CreatepersonalaccComponent,
+    PersonalaccledgerComponent,
+    AccheadledgerComponent
   ],
   imports: [
     BrowserModule,
     GeneralModule,  // This is a Generic module for all the common components to be shared between different modules
     ReportsModule,  // This Module should be loaded before App Routing as this module contains child routing
+    AccountsModule,  // This Module should be loaded before App Routing as this module contains child routing
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

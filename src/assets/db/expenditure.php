@@ -144,11 +144,12 @@ if($action == "addExpenditure"){
     $expdate = $data->expdate;
     $exptype = $data->exptype;
     $acchead = $data->acchead;
+    $personalaccid = $data->personalaccid;
     $particulars = $data->particulars;
     $amount = $data->amount;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sql = "INSERT INTO `expenditure_register`(`expdate`, `exptype`, `accheadid`, `particulars`, `amount`) VALUES ('$expdate',$exptype,$acchead,'$particulars', '$amount')";
+		$sql = "INSERT INTO `expenditure_register`(`expdate`, `exptype`, `accheadid`, `personalaccid`, `particulars`, `amount`) VALUES ('$expdate',$exptype,$acchead,$personalaccid,'$particulars', '$amount')";
         $result = $conn->query($sql);
         $expid = $conn->insert_id;
 	}

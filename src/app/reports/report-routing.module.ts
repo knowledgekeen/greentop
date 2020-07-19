@@ -13,7 +13,7 @@ import { LedgersalesComponent } from './ledgersales/ledgersales.component';
 import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
 import { DistrictwisesalesComponent } from './districtwisesales/districtwisesales.component';
 
-const secondaryRoutes: Routes = [
+const reportRoutes: Routes = [
     { path: "reports/monthwisepurchases", component: MonthwisepurchasesComponent },
     { path: "reports/allsales", component: AllsalesComponent },
     { path: "reports/printsaleinvoice/:invoiceno", component: PrintsaleinvoiceComponent },
@@ -29,7 +29,7 @@ const secondaryRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(secondaryRoutes)],
+    imports: [RouterModule.forChild(reportRoutes)],
     exports: [RouterModule]
 })
 export class ReportRoutingModule { }

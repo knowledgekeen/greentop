@@ -8,7 +8,14 @@
     </div>
     <div class="col-sm-3">
       <ul class="py-2 px-4 my-2 list-unstyled menus">
-        <!-- <li class="text-uppercase">Purchases</li> -->
+        <li class="text-uppercase">Opening Balance</li>
+        <li>
+          <a [routerLink]="['/accounts/openingbal']">Account Open Bal</a>
+        </li>
+      </ul>
+      <div class="dropdown-divider"></div>
+      <ul class="py-2 px-4 my-2 list-unstyled menus">
+        <li class="text-uppercase">Expenditure / Receipts</li>
         <li>
           <a [routerLink]="['/createacchead']">Create Account Head</a>
         </li>
@@ -20,6 +27,15 @@
         </li>
       </ul>
       <div class="dropdown-divider"></div>
+    </div>
+    
+    <div class="col-sm-3">
+      <ul class="py-2 px-4 my-2 list-unstyled menus">
+        <li class="text-uppercase">Personal Account</li>
+        <li>
+          <a [routerLink]="['/accounts/createpersonalacc']">Create Personal Account</a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

@@ -13,9 +13,11 @@ import { GlobalService } from '../global.service';
 })
 export class AddexpenditureComponent implements OnInit {
   allaccheads: any = null;
+  allpersonalaccs: any = null;
   expensedate: any = null;
   expensetype: any = null;
   dirindirexp: any = null;
+  personalacc: any = null;
   acchead: any = null;
   particulars: any = null;
   amount: any = null;
@@ -27,7 +29,9 @@ export class AddexpenditureComponent implements OnInit {
 
   ngOnInit() {
     this.expensedate = moment(new Date().getTime()).format("DD-MM-YYYY");
+    this.expensetype = 1;
     this.getAllAccountHeads();
+    this.getAllPersonalAccounts();
     this.loadPurchasePaymentHistory();
   }
 
@@ -48,12 +52,16 @@ export class AddexpenditureComponent implements OnInit {
   }
 
   addExpenditure() {
+    const personalaccount = this.personalacc ? this.allpersonalaccs.filter(res=>{ return res.personalaccnm === this.personalacc}) : null; 
+    const personalaccid = personalaccount && personalaccount.length>0 ? personalaccount[0].personalaccid : 0;
+    console.log(personalaccount);
     if (this.acchead && this.acchead.split(".").length >= 2) {
       let mydate = moment(this.expensedate, "DD-MM-YYYY").format("MM-DD-YYYY");
       let expobj = {
         expdate: new Date(mydate).getTime(),
         exptype: this.expensetype,
         acchead: this.acchead.split(".")[0],
+        personalaccid: personalaccid,
         particulars: this.particulars,
         amount: this.amount
       };
@@ -65,6 +73,7 @@ export class AddexpenditureComponent implements OnInit {
             this.expensetype = null;
             this.acchead = null;
             this.particulars = null;
+            this.personalacc = null;
             this.amount = null;
             this._interval.settimer().then(Resp => {
               this.successmsg = null;
@@ -82,5 +91,13 @@ export class AddexpenditureComponent implements OnInit {
 
   autofilldt() {
     this.expensedate = this._global.getAutofillFormattedDt(this.expensedate);
+  }
+
+  getAllPersonalAccounts(){
+    this.allpersonalaccs = null;
+    this._rest.getData("accounts.php", "getAllPersonalAccounts")
+      .subscribe(Response=>{
+        this.allpersonalaccs = Response && Response["data"] ? Response["data"] : null;
+      });
   }
 }

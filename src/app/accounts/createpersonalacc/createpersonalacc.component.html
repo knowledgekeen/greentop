@@ -1,0 +1,55 @@
+<div class="container">
+  <h5 class="my-2">Create Personal Account</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successMsg">
+        <i class="fa fa-check"></i> {{successMsg}}.
+      </div>
+      <div class="row">
+        <div class="col-9">
+          <label for="personalaccnm">Personal Account Name</label>
+          <input type="text" id="personalaccnm" class="form-control" placeholder="Enter Personal Account Name"  list="personalacclist" [(ngModel)]="personalaccnm"/>
+          <datalist id="personalacclist">
+            <option value="{{ acc.personalaccnm }}" *ngFor="let acc of allpersonalaccs">{{
+              acc.personalaccnm
+            }}</option>
+          </datalist>
+        </div>
+        <div class="col-3">
+          <p></p>
+          <button class="btn btn-primary mt-3" (click)="createPersonalAccount()" [disabled]="!personalaccnm" *ngIf="!selectedPersonalAccount">
+            Add Personal Account
+          </button>
+          <button class="btn btn-warning mt-3" (click)="updatePersonalAccount()" [disabled]="!personalaccnm" *ngIf="selectedPersonalAccount">
+            Update Personal Account
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body table-responsive">
+      <table class="table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Personal Account</th>
+            <th scope="col">Edit / Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acc of allpersonalaccs; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{acc.personalaccnm}}</td>
+            <td>
+              <i class="fa fa-pencil mx-3 text-warning cursor-pointer" title="Edit Personal Account" (click)="editPersonalAccount(acc)"></i>
+              <i class="fa fa-trash text-danger cursor-pointer" title="Delete Personal Account" (click)="deletePersonalAccount(acc)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

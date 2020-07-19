@@ -56,7 +56,7 @@ export class NavbarComponent implements OnInit {
       passwd: this.password
     };
     this._rest
-      .postData("accounts.php", "checkLogin", tmpObj, null)
+      .postData("users.php", "checkLogin", tmpObj, null)
       .subscribe(Response => {
         this.spinnerflag = false;
         if (Response) {

@@ -37,7 +37,7 @@ export class ChangepassComponent implements OnInit {
       oldpass: this.oldpass
     };
     this._rest
-      .postData("accounts.php", "checkOldPass", userObj, null)
+      .postData("users.php", "checkOldPass", userObj, null)
       .subscribe(Response => {
         if (Response) {
           if (!Response["data"]) {
@@ -71,7 +71,7 @@ export class ChangepassComponent implements OnInit {
       newpass: this.newpass
     };
     this._rest
-      .postData("accounts.php", "changePassword", userObj, null)
+      .postData("users.php", "changePassword", userObj, null)
       .subscribe(Response => {
         if (Response) {
           this.successflag = true;

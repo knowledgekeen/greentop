@@ -29,7 +29,16 @@
             </option>
           </datalist>
         </div>
-        <div class="col-md-8 col-sm-12 mb-3">
+        <div class="col-md-4 col-sm-12 mb-3">
+          <label class="m-0">Personal Account</label>
+          <input type="text" class="form-control" placeholder="Select Personal Account" [(ngModel)]="personalacc" list="personalacclist"/>
+          <datalist id="personalacclist">
+            <option value="{{ acc.personalaccnm }}" *ngFor="let acc of allpersonalaccs">
+              {{acc.personalaccnm}}
+          </option>
+          </datalist>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Particulars</label>
           <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
         </div>
@@ -37,7 +46,7 @@
           <label class="m-0">Amount</label>
           <input type="text" class="form-control" placeholder="Amount" [(ngModel)]="amount" />
         </div>
-        <div class="col-md-12 col-sm-12 mb-3">
+        <div class="col-md-12 col-sm-12">
           <button class="btn btn-primary"
             [disabled]="!expensedate || !expensetype || !acchead || !particulars || !amount || disablebtn"
             (click)="addExpenditure()">Add Expenditure</button>

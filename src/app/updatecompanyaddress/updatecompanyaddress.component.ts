@@ -27,7 +27,7 @@ export class UpdatecompanyaddressComponent implements OnInit {
       userid: this.userdets[0].userid,
       address: this.address
     };
-    this._rest.postData("accounts.php", "updateCompanyAddress", userdata)
+    this._rest.postData("users.php", "updateCompanyAddress", userdata)
       .subscribe(Response => {
         if (Response) {
           this.successmsg = true;
