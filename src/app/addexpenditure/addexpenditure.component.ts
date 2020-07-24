@@ -69,7 +69,6 @@ export class AddexpenditureComponent implements OnInit {
           if (Response) {
             this.loadPurchasePaymentHistory();
             this.successmsg = "Expenditure added successfully";
-            this.expensetype = 1;
             this.acchead = null;
             this.particulars = null;
             this.personalacc = null;

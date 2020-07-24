@@ -11,7 +11,8 @@ if($action == "getFinanYrAccOpeningBalance"){
 	$headers = apache_request_headers();
     authenticate($headers);
     $fromdt = $_GET["fromdt"];
-    $sql = "SELECT * FROM `account_openingbal` WHERE `yeardt`='$fromdt' ORDER BY `cashorbank`";
+    $todt = $_GET["todt"];
+    $sql = "SELECT * FROM `account_openingbal` WHERE `yeardt` BETWEEN '$fromdt' AND '$todt' ORDER BY `cashorbank`";
     $result = $conn->query($sql);
     $tmp = array();
     if($result){

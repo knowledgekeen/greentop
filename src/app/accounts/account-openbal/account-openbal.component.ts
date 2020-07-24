@@ -23,7 +23,7 @@ export class AccountOpenbalComponent implements OnInit {
   }
 
   getFinanYrAccOpeningBalance(){
-    const urldata = "fromdt="+ this.currenty_finan_yr.fromdt;
+    const urldata = "fromdt="+ this.currenty_finan_yr.fromdt+"&todt="+this.currenty_finan_yr.todt;
     this._rest.getData("accounts.php", "getFinanYrAccOpeningBalance", urldata)
       .subscribe(Response=>{
         if(Response && Response["data"]){

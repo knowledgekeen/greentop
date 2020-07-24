@@ -4,16 +4,18 @@ import { AccountRoutingModule } from '../account-routing/account-routing.module'
 import { FormsModule } from '@angular/forms';
 import { AccountOpenbalComponent } from '../account-openbal/account-openbal.component';
 import { PersonalaccledgerComponent } from '../personalaccledger/personalaccledger.component';
+import { BankaccledgerComponent } from '../bankaccledger/bankaccledger.component';
 
 @NgModule({
   declarations: [
     AccountOpenbalComponent,
-    PersonalaccledgerComponent
+    PersonalaccledgerComponent,
+    BankaccledgerComponent
   ],
   imports: [
     CommonModule,
     AccountRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class AccountsModule { }
