@@ -39,6 +39,7 @@ export class ViewexpenditureComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allexpenditures = Response["data"];
+          // console.log(this.allexpenditures);
           this.masterexpenditure = JSON.parse(JSON.stringify(Response["data"]));
           let vm = this;
           this.allexpenditures.filter(function (value) {

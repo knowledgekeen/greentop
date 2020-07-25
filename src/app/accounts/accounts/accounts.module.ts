@@ -5,12 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { AccountOpenbalComponent } from '../account-openbal/account-openbal.component';
 import { PersonalaccledgerComponent } from '../personalaccledger/personalaccledger.component';
 import { BankaccledgerComponent } from '../bankaccledger/bankaccledger.component';
+import { GraphexpenditureComponent } from '../graphexpenditure/graphexpenditure.component';
+import { AddexpenditureComponent } from 'src/app/addexpenditure/addexpenditure.component';
+import { CashaccledgerComponent } from '../cashaccledger/cashaccledger.component';
 
 @NgModule({
   declarations: [
     AccountOpenbalComponent,
     PersonalaccledgerComponent,
-    BankaccledgerComponent
+    AddexpenditureComponent,
+    BankaccledgerComponent,
+    GraphexpenditureComponent,
+    CashaccledgerComponent
   ],
   imports: [
     CommonModule,

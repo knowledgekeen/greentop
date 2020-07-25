@@ -215,7 +215,7 @@ export class BankaccledgerComponent implements OnInit {
       this.totaldeposit += parseFloat(this.ledgerhist[j].deposit);
       this.totalpayments += parseFloat(this.ledgerhist[j].payments);
     }
-    console.log(this.ledgerhist)
+    // console.log(this.ledgerhist)
   }
 
 }

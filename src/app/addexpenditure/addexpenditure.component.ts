@@ -22,6 +22,8 @@ export class AddexpenditureComponent implements OnInit {
   particulars: any = null;
   amount: any = null;
   disablebtn: any = false;
+  showhidegraph: boolean = false;
+  showhideform: boolean = false;
   successmsg: any = null;
   @ViewChild('viewExpenditure', { read: ViewContainerRef }) entry: ViewContainerRef;
 

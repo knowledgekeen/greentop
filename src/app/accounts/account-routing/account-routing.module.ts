@@ -4,12 +4,16 @@ import { AccountOpenbalComponent } from '../account-openbal/account-openbal.comp
 import { CreatepersonalaccComponent } from '../createpersonalacc/createpersonalacc.component';
 import { PersonalaccledgerComponent } from '../personalaccledger/personalaccledger.component';
 import { BankaccledgerComponent } from '../bankaccledger/bankaccledger.component';
+import { GraphexpenditureComponent } from '../graphexpenditure/graphexpenditure.component';
+import { CashaccledgerComponent } from '../cashaccledger/cashaccledger.component';
 
 const accountsRoutes: Routes = [
   {path:'accounts/openingbal', component:AccountOpenbalComponent},
   {path:'accounts/createpersonalacc', component:CreatepersonalaccComponent},
   {path:'accounts/bankaccledger', component:BankaccledgerComponent},
   {path:'accounts/personalaccledger', component:PersonalaccledgerComponent},
+  {path:'accounts/graphexpenditure', component:GraphexpenditureComponent},
+  {path:'accounts/cashaccledger', component:CashaccledgerComponent},
 ]
 
 @NgModule({

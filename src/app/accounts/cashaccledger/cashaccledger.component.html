@@ -1,0 +1,59 @@
+<div class="container">
+  <h5 class="my-2">Cash Account Ledger</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="text-center">
+        Cash Account
+      </h4>
+      <h5 class="text-center">(Ledger)</h5>
+      <h6 class="text-center">
+        <span class="font-weight-bold border-bottom border-primary">
+          {{ finanyr.fromdt | date: "dd-MMM-yyyy" }}
+        </span>
+        to
+        <span class="font-weight-bold border-bottom border-primary">
+          {{ finanyr.todt | date: "dd-MMM-yyyy" }}
+        </span>
+      </h6>
+
+      <div class="table-responsive">
+        <table class="table table-sm my-3">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date</th>
+              <th scope="col">Particular</th>
+              <th scope="col" class="text-right">Deposit</th>
+              <th scope="col" class="text-right">Payments</th>
+              <th scope="col" class="text-right">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let acc of ledgerhist; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{acc.dated | date:'dd/MM/yyyy'}}</td>
+              <td>{{acc.particular}}</td>
+              <td class="text-right">{{acc.deposit | number: '1.2-2'}}</td>
+              <td class="text-right">{{acc.payments | number: '1.2-2'}}</td>
+              <td class="text-right">{{acc.balance | number: '1.2-2'}}</td>
+            </tr>
+            <tr>
+              <td colspan="6" class="text-primary" *ngIf="!ledgerhist">
+                <i class="fa fa-spinner fa-pulse"></i> Please wait ...
+              </td>
+            </tr>
+          </tbody>
+          <tfoot class="thead-dark">
+            <tr>
+              <th scope="col" colspan="3" class="text-right">Total</th>
+              <th scope="col" class="text-right">{{totaldeposit | number: '1.2-2'}}</th>
+              <th scope="col" class="text-right">{{totalpayments | number: '1.2-2'}}</th>
+              <th scope="col" class="text-right"></th>
+            </tr>
+          </tfoot>
+        </table>        
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'constants.php';
 include 'jwt_helper.php';
 
 $action = $_GET['action'];
@@ -243,5 +244,44 @@ if($action == "deletePersonalAccount"){
 		header(' ', true, 204);
 	}
 	echo json_encode($data1);
+}
+
+if($action == "getCashAccountExpenditure"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $sql = "SELECT er.*, am.* FROM `expenditure_register` er, `accounthead_master` am WHERE er.`accheadid`=am.`accheadid` AND am.`accheadnm`='$CASH_ACCOUNT' AND er.`exptype`='2' AND er.`expdate` BETWEEN '$fromdt' AND '$todt'";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["expid"]= $row["expid"];
+            $tmp[$i]["expdate"]= $row["expdate"];
+            $tmp[$i]["exptype"]= $row["exptype"];
+            $tmp[$i]["particulars"]= $row["particulars"];
+            $tmp[$i]["amount"]= $row["amount"];
+            $tmp[$i]["accheadnm"]= $row["accheadnm"];
+            $i++;
+        }
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
 }
 ?>

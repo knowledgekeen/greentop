@@ -63,7 +63,6 @@ import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.c
 import { CompanyaddressComponent } from './companyaddress/companyaddress.component';
 import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecompanyaddress.component';
 import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
-import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
 import { ViewexpenditureComponent } from './viewexpenditure/viewexpenditure.component';
 import { AddreceiptComponent } from './addreceipt/addreceipt.component';
 import { ViewreceiptComponent } from './viewreceipt/viewreceipt.component';
@@ -126,7 +125,6 @@ import { CreatepersonalaccComponent } from './accounts/createpersonalacc/createp
     CompanyaddressComponent,
     UpdatecompanyaddressComponent,
     CreateaccountheadComponent,
-    AddexpenditureComponent,
     ViewexpenditureComponent,
     AddreceiptComponent,
     ViewreceiptComponent,

@@ -1,7 +1,26 @@
-<div class="container">
-  <h5 class="my-3">Add Payment / Expenditure Amount</h5>
+<div class="container-fluid">
+  <h5 class="my-3">Add Payment / Expenditure Amount
+    <button class="btn btn-sm btn-warning float-right" (click)="showhidegraph = !showhidegraph">
+      <ng-container *ngIf="showhidegraph; else elseTemplate">
+        Hide
+      </ng-container>
+      <ng-template #elseTemplate>
+        Show
+      </ng-template>
+      Graph
+    </button>
+    <button class="btn btn-sm btn-primary float-right mx-2" (click)="showhideform = !showhideform">
+      <ng-container *ngIf="showhideform; else elseShowHideForm">
+        Show
+      </ng-container>
+      <ng-template #elseShowHideForm>
+        Hide
+      </ng-template>
+      Form
+    </button>
+  </h5>
 
-  <div class="card">
+  <div class="card" [hidden]="showhideform">
     <div class="card-body">
       <div class="alert alert-success" role="alert" *ngIf="successmsg">
         <i class="fa fa-check"></i> {{successmsg}}
@@ -53,6 +72,10 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="showhidegraph">
+    <app-graphexpenditure></app-graphexpenditure>
   </div>
 
   <div class="col-md-12" #viewExpenditure></div>
