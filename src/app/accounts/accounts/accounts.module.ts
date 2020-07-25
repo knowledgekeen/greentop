@@ -8,6 +8,7 @@ import { BankaccledgerComponent } from '../bankaccledger/bankaccledger.component
 import { GraphexpenditureComponent } from '../graphexpenditure/graphexpenditure.component';
 import { AddexpenditureComponent } from 'src/app/addexpenditure/addexpenditure.component';
 import { CashaccledgerComponent } from '../cashaccledger/cashaccledger.component';
+import { GeneralModule } from 'src/app/general/general.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CashaccledgerComponent } from '../cashaccledger/cashaccledger.component
   ],
   imports: [
     CommonModule,
+    GeneralModule,
     AccountRoutingModule,
     FormsModule,
   ]

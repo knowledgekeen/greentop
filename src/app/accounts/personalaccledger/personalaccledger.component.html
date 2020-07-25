@@ -1,3 +1,117 @@
-<p>
-  personalaccledger works!
-</p>
+<div class="container-fluid">
+  <h5 class="my-2 noprint">Personal Accounts</h5>
+
+  <div class="row">
+    <div class="col-3 noprint">
+      <div class="card">
+        <div class="card-header">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Personal Account By Name" aria-label="Search Personal Account By Name" aria-describedby="basic-addon2" [(ngModel)]="filtercust">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2" *ngIf="!filtercust">
+                <i class="fa fa-search"></i>
+              </span>
+              <span class="input-group-text cursor-pointer" id="basic-addon2" *ngIf="filtercust" (click)="filtercust=null;" title="Clear Search Box">
+                <i class="fa fa-times"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="card-body customercard">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-1 py-2" *ngFor="let acc of (personalaccs | searchclient: filtercust:personalaccs)">
+              <a href="javascript:void(0);" (click)="fetchPersonalAccountDetails(acc)">{{acc.name}}</a>
+            </li>
+            <li class="list-group-item text-primary" *ngIf="!personalaccs">
+              <i class="fa fa-spin fa-circle-o-notch"></i> Please wait...
+            </li>
+            <li class="list-group-item text-danger" *ngIf="personalaccs && personalaccs.length==0">
+              <i class="fa fa-exclamation"></i> No Personal Account found.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card" *ngIf="selectedacc && ledgerhist">
+        <div class="card-body">
+          <h5 class="text-center font-weight-bold">
+            Green Top Organics
+          </h5>
+          <h6 class="text-center">
+            <companyaddress></companyaddress>
+          </h6>
+          <h5 class="text-center mt-3">
+            <span class="font-weight-bold border-bottom border-primary font-italic">
+              {{ selectedacc }}
+            </span>
+          </h5>
+          <h6 class="text-center">
+            (Ledger Account)
+          </h6>
+          <h6 class="text-center">
+            <span class="font-weight-bold border-bottom border-primary">
+              {{ finanyr.fromdt | date: "dd-MMM-yyyy" }}
+            </span>
+            to
+            <span class="font-weight-bold border-bottom border-primary">
+              {{ finanyr.todt | date: "dd-MMM-yyyy" }}
+            </span>
+          </h6>
+      
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="table-responsive my-3">
+                <table class="table table-sm">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Particulars</th>
+                      <th scope="col" class="text-right">
+                        Debit (<i class="fa fa-inr" aria-hidden="true"></i>)
+                      </th>
+                      <th scope="col" class="text-right">
+                        Credit (<i class="fa fa-inr" aria-hidden="true"></i>)
+                      </th>
+                      <th scope="col" class="text-right">
+                        Balance (<i class="fa fa-inr" aria-hidden="true"></i>)
+                      </th>
+                      <th *ngIf="iseditable" class="noprint">Edit / Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let acc of ledgerhist; let i=index">
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{acc.dated | date:'dd/MM/yyyy'}}</td>
+                      <td>{{acc.particular}}</td>
+                      <td class="text-right">{{acc.debit | number: '1.2-2'}}</td>
+                      <td class="text-right">{{acc.credit | number: '1.2-2'}}</td>
+                      <td class="text-right">{{acc.balance | number: '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="6" class="text-primary" *ngIf="!ledgerhist">
+                        <i class="fa fa-spinner fa-pulse"></i> Please wait ...
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot class="thead-dark">
+                    <tr>
+                      <th scope="col" colspan="3" class="text-right">Total</th>
+                      <th scope="col" class="text-right">{{totaldebit | number: '1.2-2'}}</th>
+                      <th scope="col" class="text-right">{{totalcredit | number: '1.2-2'}}</th>
+                      <th scope="col" class="text-right"></th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

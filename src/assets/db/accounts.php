@@ -284,4 +284,130 @@ if($action == "getCashAccountExpenditure"){
     }
 	echo json_encode($data);
 }
+
+if($action == "getDistinctPersonalAccs"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $sql = "SELECT DISTINCT(er.`personalaccid`),pam.`personalaccnm` as name FROM `expenditure_register` er, `personal_account_master` pam WHERE NOT er.`personalaccid`='0' AND er.`personalaccid`=pam.`personalaccid` AND er.`expdate` BETWEEN '$fromdt' AND '$todt'";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["personalaccid"]= $row["personalaccid"];
+            $tmp[$i]["name"]= $row["name"];
+            $i++;
+        }
+
+		$sql1 = "SELECT DISTINCT(rr.`personalaccid`),pam.`personalaccnm` as name FROM `receipt_register` rr, `personal_account_master` pam WHERE NOT rr.`personalaccid`='0' AND rr.`personalaccid`=pam.`personalaccid` AND rr.`receiptdate` BETWEEN '$fromdt' AND '$todt'";
+		$result1 = $conn->query($sql1);
+		if($result1){
+			while($row1 = $result1->fetch_array())
+			{
+				$tmp[$i]["personalaccid"]= $row1["personalaccid"];
+				$tmp[$i]["name"]= $row1["name"];
+				$i++;
+			}
+		}
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
+
+if($action == "getExpendituresOfPersonalAcc"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $personalaccid = $_GET["personalaccid"];
+    $sql = "SELECT * FROM `expenditure_register` WHERE `personalaccid`='$personalaccid' AND `expdate` BETWEEN '$fromdt' AND '$todt'";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["expid"]= $row["expid"];
+            $tmp[$i]["expdate"]= $row["expdate"];
+            $tmp[$i]["exptype"]= $row["exptype"];
+            $tmp[$i]["personalaccid"]= $row["personalaccid"];
+            $tmp[$i]["particulars"]= $row["particulars"];
+            $tmp[$i]["amount"]= $row["amount"];
+            $i++;
+        }
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
+
+if($action == "getReceiptsOfPersonalAcc"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $personalaccid = $_GET["personalaccid"];
+    $sql = "SELECT * FROM `receipt_register` WHERE `personalaccid`='$personalaccid' AND `receiptdate` BETWEEN '$fromdt' AND '$todt'";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["receiptid"]= $row["receiptid"];
+            $tmp[$i]["receiptdate"]= $row["receiptdate"];
+            $tmp[$i]["receipttype"]= $row["receipttype"];
+            $tmp[$i]["personalaccid"]= $row["personalaccid"];
+            $tmp[$i]["particulars"]= $row["particulars"];
+            $tmp[$i]["amount"]= $row["amount"];
+            $i++;
+        }
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
 ?>

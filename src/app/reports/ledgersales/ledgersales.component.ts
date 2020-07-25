@@ -26,7 +26,6 @@ export class LedgersalesComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allcustomers = Response["data"];
-          console.log(this.allcustomers)
         }
         else{
           this.allcustomers = [];

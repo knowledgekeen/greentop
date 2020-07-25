@@ -60,7 +60,6 @@ import { SalespayhistoryComponent } from './salespayhistory/salespayhistory.comp
 import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.component';
-import { CompanyaddressComponent } from './companyaddress/companyaddress.component';
 import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecompanyaddress.component';
 import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
 import { ViewexpenditureComponent } from './viewexpenditure/viewexpenditure.component';
@@ -122,7 +121,6 @@ import { CreatepersonalaccComponent } from './accounts/createpersonalacc/createp
     SalespayhistoryComponent,
     AddreprocessproductComponent,
     UnauthoriseduserComponent,
-    CompanyaddressComponent,
     UpdatecompanyaddressComponent,
     CreateaccountheadComponent,
     ViewexpenditureComponent,

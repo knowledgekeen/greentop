@@ -26,7 +26,6 @@ export class LedgerpurchaseComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allsuppliers = Response["data"];
-          console.log(this.allsuppliers)
         }
         else{
           this.allsuppliers = [];
