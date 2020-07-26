@@ -27,7 +27,7 @@ export class GraphexpenditureComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           this.allexpenditures = Response["data"];
-          console.log(this.allexpenditures);
+          // console.log(this.allexpenditures);
           this.filterDataForGraph();
         }
         else {
@@ -61,7 +61,7 @@ export class GraphexpenditureComponent implements OnInit {
       }
       let mastobj = {
         name: copyexp[i].accheadnm,
-        y: total,
+        y: parseFloat(total.toFixed(2)),
         type: "column",
         drilldown: copyexp[i].accheadnm
       }
@@ -73,7 +73,7 @@ export class GraphexpenditureComponent implements OnInit {
 
   plotExpenditureGraph(mastseries, drilldownseries){
     // Create the chart
-    
+    console.log(mastseries)
     Highcharts.chart("container", {
       chart: {
         type: "column"
