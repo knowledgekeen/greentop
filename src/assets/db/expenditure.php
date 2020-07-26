@@ -3,6 +3,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Accept');
 //account.php?action=signUp
 include 'conn.php';
+include 'constants.php';
 include 'jwt_helper.php';
 
 $action = $_GET['action'];
@@ -14,6 +15,15 @@ if($action == "createAccountHead"){
     $accheadnm = $data->accheadnm;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlsel = "SELECT * FROM `accounthead_master` WHERE `accheadnm`='$CASH_ACCOUNT'";
+		$resultsel = $conn->query($sqlsel);
+		$rowsel = $resultsel->fetch_array();
+		$count = mysqli_num_rows($resultsel);
+		if($resultsel && $count==0){
+			$sqlins = "INSERT INTO `accounthead_master`(`accheadnm`) VALUES ('$CASH_ACCOUNT')";
+			$resultins = $conn->query($sqlins);
+		}
+
 		$sql = "INSERT INTO `accounthead_master`(`accheadnm`) VALUES ('$accheadnm')";
         $result = $conn->query($sql);
         $accheadid = $conn->insert_id;
@@ -179,7 +189,7 @@ if($action == "getExpendituresFromTo"){
     authenticate($headers);
     $fromdt = $_GET["fromdt"];
     $todt = $_GET["todt"];
-	$sql = "SELECT er.`expid`,er.`expdate`,er.accheadid,er.`exptype`,er.`particulars`,er.`amount`,am.`accheadnm` FROM `expenditure_register` er, `accounthead_master` am WHERE er.`accheadid`=am.`accheadid` AND er.`expdate` BETWEEN '$fromdt' AND '$todt' ORDER BY er.`expdate`";
+	$sql = "SELECT er.*,am.`accheadnm`,pam.`personalaccnm` FROM `expenditure_register` er, `accounthead_master` am, `personal_account_master` pam WHERE er.`accheadid`=am.`accheadid` AND er.`personalaccid`=pam.`personalaccid` AND er.`expdate` BETWEEN '$fromdt' AND '$todt' ORDER BY er.`expdate`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -198,6 +208,7 @@ if($action == "getExpendituresFromTo"){
 			$tmp[$i]['exptype'] = $row['exptype'];
 			$tmp[$i]['particulars'] = $row['particulars'];
 			$tmp[$i]['amount'] = $row['amount'];
+			$tmp[$i]['personalaccnm'] = $row['personalaccnm'];
 			$tmp[$i]['accheadnm'] = $row['accheadnm'];
 			$i++;
 		}

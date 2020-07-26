@@ -22,6 +22,7 @@ export class CashaccledgerComponent implements OnInit {
     this.finanyr = this._global.getCurrentFinancialYear();
     this.getFinanYrAccOpeningBalance().then(cashaccbal=>{
       this.getExpendituresFromTo().then(cashexp=>{
+        console.log(cashexp)
         this.getCashAccountExpenditure().then(cashacc=>{
           this.filterData();
         }).catch(error=>{
@@ -115,10 +116,11 @@ export class CashaccledgerComponent implements OnInit {
     //Payments - Expenditure Payments
     if(this.cashexpenditures && this.cashexpenditures.length>0){
       for(let i=0;i<this.cashexpenditures.length;i++){
+        const tmpparticular = this.cashexpenditures[i].personalaccnm != "NA"? `${this.cashexpenditures[i].particulars} - ${this.cashexpenditures[i].personalaccnm}`:`${this.cashexpenditures[i].particulars}`;
         let tmpobj = {
           id:tmparr.length,
           dated: this.cashexpenditures[i].expdate,
-          particular: this.cashexpenditures[i].particulars,
+          particular: tmpparticular,
           deposit: 0,
           payments: this.cashexpenditures[i].amount,
           balance: 0 

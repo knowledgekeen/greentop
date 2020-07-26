@@ -44,17 +44,17 @@
             <th scope="col">Type</th>
             <th scope="col">Account Head</th>
             <th scope="col" class="text-right">Amount</th>
-            <th scope="col">
-              <i class="fa fa-pencil ml-3"></i>
-              <span class="mx-2">/</span>
-              <i class="fa fa-trash mr-3"></i>
+            <th scope="col" class="text-center" style="width: 50px;">
+              <i class="fa fa-pencil"></i>
+              <span class="mx-1">/</span>
+              <i class="fa fa-trash"></i>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let receipt of allreceipts; let i=index">
             <th scope="row">{{ i+1 }}</th>
-            <td>{{receipt.receiptdate | date: 'dd-MM-yyyy'}}</td>
+            <td style="width: 100px;">{{receipt.receiptdate | date: 'dd-MM-yyyy'}}</td>
             <td>{{receipt.particulars}}</td>
             <td>
               <span *ngIf="receipt.receipttype == 1">Cash</span>
@@ -62,13 +62,13 @@
             </td>
             <td>{{receipt.accheadnm}}</td>
             <td class="text-right">{{receipt.amount | currency:'INR' }}</td>
-            <td>
-              <a href="javascript:void(0);" class="text-warning ml-3" title="Edit Receipt" data-toggle="modal"
+            <td class="text-center" style="width: 50px;">
+              <a href="javascript:void(0);" class="text-warning" title="Edit Receipt" data-toggle="modal"
                 data-target="#editReceipt" (click)="editReceipt(receipt)">
                 <i class="fa fa-pencil"></i>
               </a>
-              <span class="mx-2">/</span>
-              <a href="javascript:void(0);" class="text-danger mr-3" title="Delete Receipt" data-toggle="modal"
+              <span class="mx-1">/</span>
+              <a href="javascript:void(0);" class="text-danger" title="Delete Receipt" data-toggle="modal"
                 data-target="#deleteModal" (click)="selectedreceipt = receipt">
                 <i class="fa fa-trash"></i>
               </a>

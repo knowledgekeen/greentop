@@ -10,10 +10,10 @@
           [ngClass]="{'btn-primary': selectedstatus == 1, 'btn-outline-primary': selectedstatus != 1}">All</button>
         <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(1)"
           [ngClass]="{'btn-primary': selectedstatus == 2, 'btn-outline-primary': selectedstatus != 2}">Cash
-          Expense</button>
+          Expenses</button>
         <button class="btn btn-sm mr-3 my-1" (click)="filterExpenses(2)"
           [ngClass]="{'btn-primary': selectedstatus == 3, 'btn-outline-primary': selectedstatus != 3}">Bank
-          Expense</button>
+          Expenses</button>
       </div>
       <div class="col-md-6 col-sm-12">
         <div class="input-group mb-3">
@@ -35,40 +35,43 @@
     </div>
 
     <div class="table-responsive mt-2">
-      <table class="table table-sm">
+      <table class="table table-sm text-sm">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
-            <th scope="col">Particulars</th>
+            <th scope="col" class="width-less">Particulars</th>
             <th scope="col">Type</th>
             <th scope="col">Account Head</th>
             <th scope="col" class="text-right">Amount</th>
-            <th scope="col">
-              <i class="fa fa-pencil ml-3"></i>
-              <span class="mx-2">/</span>
-              <i class="fa fa-trash mr-3"></i>
+            <th scope="col" class="text-center" style="width: 50px;">
+              <i class="fa fa-pencil"></i>
+              <span class="mx-1">/</span>
+              <i class="fa fa-trash"></i>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let expenditure of allexpenditures; let i=index">
             <th scope="row">{{ i+1 }}</th>
-            <td>{{expenditure.expdate | date: 'dd-MM-yyyy'}}</td>
-            <td>{{expenditure.particulars}}</td>
+            <td style="width: 100px;">{{expenditure.expdate | date: 'dd-MM-yyyy'}}</td>
+            <td>
+                {{expenditure.particulars}}
+                <span *ngIf="expenditure.personalaccnm != constNA" class="text-primary"> - {{expenditure.personalaccnm}}</span>
+            </td>
             <td>
               <span *ngIf="expenditure.exptype == 1">Cash</span>
               <span *ngIf="expenditure.exptype == 2">Bank</span>
             </td>
             <td>{{expenditure.accheadnm}}</td>
             <td class="text-right">{{expenditure.amount | currency:'INR' }}</td>
-            <td>
-              <a href="javascript:void(0);" class="text-warning ml-3" title="Edit Expenditure" data-toggle="modal"
+            <td class="text-center" style="width: 50px;">
+              <a href="javascript:void(0);" class="text-warning" title="Edit Expenditure" data-toggle="modal"
                 data-target="#editExpenditure" (click)="editExpenditure(expenditure)">
                 <i class="fa fa-pencil"></i>
               </a>
-              <span class="mx-2">/</span>
-              <a href="javascript:void(0);" class="text-danger mr-3" title="Delete Expenditure" data-toggle="modal"
+              <span class="mx-1">/</span>
+              <a href="javascript:void(0);" class="text-danger" title="Delete Expenditure" data-toggle="modal"
                 data-target="#deleteModal" (click)="selectedexpenditure = expenditure">
                 <i class="fa fa-trash"></i>
               </a>

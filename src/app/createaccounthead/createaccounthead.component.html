@@ -47,16 +47,18 @@
             <th scope="row">{{i+1}}</th>
             <td>{{acchead.accheadnm}}</td>
             <td>
-              <span class="mx-3">
-                <a href="javascript:void(0);" title="Edit Account Head" (click)="editAccountHead(acchead)">
-                  <i class="fa fa-pencil text-warning"></i></a>
-              </span>
-              <span>/</span>
-              <span class="mx-3">
-                <a href="javascript:void(0);" title="Delete Account Head" data-toggle="modal" data-target="#deleteModal"
-                  (click)="selectedacchead = acchead">
-                  <i class="fa fa-trash text-danger"></i></a>
-              </span>
+              <div *ngIf="acchead.accheadnm != cashacctitle">
+                <span class="mx-3">
+                  <a href="javascript:void(0);" title="Edit Account Head" (click)="editAccountHead(acchead)">
+                    <i class="fa fa-pencil text-warning"></i></a>
+                </span>
+                <span>/</span>
+                <span class="mx-3">
+                  <a href="javascript:void(0);" title="Delete Account Head" data-toggle="modal" data-target="#deleteModal"
+                    (click)="selectedacchead = acchead">
+                    <i class="fa fa-trash text-danger"></i></a>
+                </span>
+              </div>
             </td>
           </tr>
         </tbody>

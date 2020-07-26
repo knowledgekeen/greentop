@@ -3,6 +3,7 @@ import { RESTService } from '../rest.service';
 import * as moment from "moment";
 import { IntervalService } from '../interval.service';
 import { GlobalService } from '../global.service';
+import { CONSTANTS } from '../app.constants';
 
 @Component({
   selector: 'app-viewexpenditure',
@@ -22,6 +23,7 @@ export class ViewexpenditureComponent implements OnInit {
   editparticulars: any = null;
   editamount: any = null;
   successmsg: any = null;
+  constNA: string = CONSTANTS.NA;
   filteraccheadnm: any = null;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }

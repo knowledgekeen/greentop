@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RESTService } from '../rest.service';
 import { IntervalService } from '../interval.service';
+import { CONSTANTS } from '../app.constants';
 
 @Component({
   selector: 'app-createaccounthead',
@@ -13,7 +14,8 @@ export class CreateaccountheadComponent implements OnInit {
   successmsg: any = null;
   selectedacchead: any = null;
   disablebtn: boolean = false;
-
+  cashacctitle: string = CONSTANTS.CASH_ACCOUNT;
+  
   constructor(private _rest: RESTService, private _interval: IntervalService) { }
 
   ngOnInit() {
@@ -69,6 +71,7 @@ export class CreateaccountheadComponent implements OnInit {
   editAccountHead(acchead) {
     this.selectedacchead = acchead;
     this.accheadnm = this.selectedacchead.accheadnm;
+    window.scrollTo(0,0);
   }
 
   updateAccountHead() {
@@ -94,6 +97,7 @@ export class CreateaccountheadComponent implements OnInit {
   }
 
   deleteAccountHead() {
+    window.scrollTo(0,0);
     this.allaccheads = null;
     let geturl = "accheadid=" + this.selectedacchead.accheadid;
     this.successmsg = null;

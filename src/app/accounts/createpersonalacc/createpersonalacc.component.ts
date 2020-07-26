@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RESTService } from 'src/app/rest.service';
 import { IntervalService } from 'src/app/interval.service';
+import { CONSTANTS } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-createpersonalacc',
@@ -24,6 +25,11 @@ export class CreatepersonalaccComponent implements OnInit {
     this._rest.getData("accounts.php", "getAllPersonalAccounts")
       .subscribe(Response=>{
         this.allpersonalaccs = Response && Response["data"] ? Response["data"] : null;
+        if(this.allpersonalaccs){
+          this.allpersonalaccs = this.allpersonalaccs.filter(x=>{
+            return (x.personalaccnm != CONSTANTS.NA)
+          });
+        }
       });
   }
 
@@ -51,6 +57,7 @@ export class CreatepersonalaccComponent implements OnInit {
   editPersonalAccount(acc){
     this.selectedPersonalAccount = acc;
     this.personalaccnm = acc.personalaccnm;
+    window.scrollTo(0,0);
   }
 
   updatePersonalAccount(){
@@ -73,6 +80,7 @@ export class CreatepersonalaccComponent implements OnInit {
   }
 
   deletePersonalAccount(acc){
+    window.scrollTo(0,0);
     if(confirm(`Are you sure to delete Personal Account for ${acc.personalaccnm}`)){
       const postdata = {
         personalaccid: acc.personalaccid,

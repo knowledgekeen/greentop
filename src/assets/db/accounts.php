@@ -124,7 +124,7 @@ if($action == "updateAccOpeningBalance"){
 if($action == "getAllPersonalAccounts"){
 	$headers = apache_request_headers();
     authenticate($headers);
-    $sql = "SELECT * FROM `personal_account_master`";
+    $sql = "SELECT * FROM `personal_account_master` ORDER BY `personalaccnm`";
     $result = $conn->query($sql);
     $tmp = array();
     if($result){
@@ -161,6 +161,18 @@ if($action == "createPersonalAccount"){
     $personalaccnm = $data->personalaccnm;
     $tmp = array();
     if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlsel = "SELECT * FROM `personal_account_master` WHERE `personalaccnm`='$NA'";
+		$resultsel = $conn->query($sqlsel);
+		$rowsel = $resultsel->fetch_array();
+		$count = mysqli_num_rows($resultsel);
+		if($resultsel && $count==0){
+			$sqlins = "INSERT INTO `personal_account_master`(`personalaccid`,`personalaccnm`) VALUES (0,'$NA')";
+			$resultins = $conn->query($sqlins);
+			$tmpid = $conn->insert_id;
+			$sqlupt = "UPDATE `personal_account_master` SET `personalaccid`=0 WHERE `personalaccid`=$tmpid";
+			$resultupt = $conn->query($sqlupt);
+		}
+
         $sql = "INSERT INTO `personal_account_master`(`personalaccnm`) VALUES ('$personalaccnm')";
         $result = $conn->query($sql);
         $personalaccnmid = $conn->insert_id;
