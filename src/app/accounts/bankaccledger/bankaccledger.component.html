@@ -33,7 +33,7 @@
             <tr *ngFor="let acc of ledgerhist; let i=index">
               <th scope="row">{{i+1}}</th>
               <td>{{acc.dated | date:'dd/MM/yyyy'}}</td>
-              <td>{{acc.particular}}</td>
+              <td><span [innerHTML]="acc.particular"></span></td>
               <td class="text-right">{{acc.deposit | number: '1.2-2'}}</td>
               <td class="text-right">{{acc.payments | number: '1.2-2'}}</td>
               <td class="text-right">{{acc.balance | number: '1.2-2'}}</td>

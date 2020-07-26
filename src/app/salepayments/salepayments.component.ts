@@ -20,11 +20,17 @@ export class SalepaymentsComponent implements OnInit {
   particulars: string = null;
   amtpaid: string = "0";
   successmsg: any = false;
+  custpaysuccessmsg: any = false;
   errormsg: any = false;
   payhistory: any = null;
   disableaddbtn: boolean = false;
   totalamt: any = null;
   showhideform: boolean = false;
+  showmakepay: boolean = false;
+  // Make Customer Pay fields
+  custpaydate: string =  null; 
+  customeramtpaid: string = "0"; 
+
   @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(
@@ -82,14 +88,15 @@ export class SalepaymentsComponent implements OnInit {
   }
 
   autofillPayDt() {
-    if (!this.paydt) return;
-
+    if (this.paydt)
     this.paydt = this._global.getAutofillFormattedDt(this.paydt);
+    if (this.custpaydate)
+    this.custpaydate = this._global.getAutofillFormattedDt(this.custpaydate);
   }
 
   addPayment() {
     if (parseFloat(this.amtpaid) == 0) {
-      this.errormsg = "Amount paid cannot be '0'";
+      this.errormsg = "Amount received cannot be '0'";
       this._interval.settimer(null).then(resp => {
         this.errormsg = null;
       });
@@ -122,12 +129,15 @@ export class SalepaymentsComponent implements OnInit {
 
   resetForm() {
     this.successmsg = null;
+    this.custpaysuccessmsg = null;
     this.disableaddbtn = false;
     this.paydt = null;
-    this.amtpaid = null;
+    this.amtpaid = "0";
     this.paymode = null;
     this.particulars = null;
     this.payhistory = null;
+    this.custpaydate = null;
+    this.customeramtpaid="0";
   }
 
   setAutoPayMode() {
@@ -137,5 +147,36 @@ export class SalepaymentsComponent implements OnInit {
         break;
       }
     }
+  }
+
+  
+  makeCustomerPayment() {
+    if (parseFloat(this.customeramtpaid) == 0) {
+      this.errormsg = "Amount paid cannot be '0'";
+      this._interval.settimer(null).then(resp => {
+        this.errormsg = null;
+      });
+      return;
+    }
+    let myDate = moment(this.custpaydate, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let tmpObj = {
+      custpaydate: new Date(myDate).getTime(),
+      custid: this.customer.split(".")[0],
+      customeramtpaid: this.customeramtpaid,
+      paymode: this.paymode,
+      particulars: this.particulars
+    };
+    this.disableaddbtn = true;
+    this._rest
+      .postData("sales_payments.php", "makeCustomerPayments", tmpObj)
+      .subscribe(Response => {
+        this.loadSalesPaymentHistory(this.customer);
+        if (Response) {
+          this.custpaysuccessmsg = "Payment done successfully";
+          this._interval.settimer(null).then(resp => {
+            this.resetForm();
+          });
+        }
+      });
   }
 }

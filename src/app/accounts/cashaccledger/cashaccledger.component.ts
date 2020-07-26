@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { RESTService } from 'src/app/rest.service';
+import { CONSTANTS } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-cashaccledger',
@@ -13,6 +14,7 @@ export class CashaccledgerComponent implements OnInit {
   cashopenbal: any = null;
   cashexpenditures: any = null;
   cashacctrans: any = null;
+  custmakepays: any = null;
   totaldeposit: number = 0;
   totalpayments: number = 0;
 
@@ -22,12 +24,15 @@ export class CashaccledgerComponent implements OnInit {
     this.finanyr = this._global.getCurrentFinancialYear();
     this.getFinanYrAccOpeningBalance().then(cashaccbal=>{
       this.getExpendituresFromTo().then(cashexp=>{
-        console.log(cashexp)
         this.getCashAccountExpenditure().then(cashacc=>{
-          this.filterData();
+          this.getAllCustMakePayments().then(custmakepays =>{
+            this.filterData();
+          }).catch(err=>{
+            alert("Cannot get Customer Make Payments");
+          });
         }).catch(error=>{
           alert("Cannot get Cash Account Transactions, please try again later.")
-        })
+        });
       }).catch(err=>{
         alert("Cannot find cash expenditures, kindly try again.");
       });
@@ -85,6 +90,23 @@ export class CashaccledgerComponent implements OnInit {
     return promise
   }
 
+  // Payments - Get Customer Make Payments
+  getAllCustMakePayments(){
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
+      _this._rest.getData("accounts.php", "getAllCustMakePayments", urldata)
+        .subscribe(Response=>{
+          _this.custmakepays= Response && Response["data"] ? Response["data"] : null;
+          _this.custmakepays= _this.custmakepays ? _this.custmakepays.filter(res=>{ return res.paymode === CONSTANTS.CASH}):null;
+          resolve(_this.custmakepays);
+        },err=>{
+          reject(err);
+        });
+    });
+    return promise
+  }
+
   filterData(){
     let tmparr = [];
     //Deposit - Opening Balance
@@ -116,13 +138,28 @@ export class CashaccledgerComponent implements OnInit {
     //Payments - Expenditure Payments
     if(this.cashexpenditures && this.cashexpenditures.length>0){
       for(let i=0;i<this.cashexpenditures.length;i++){
-        const tmpparticular = this.cashexpenditures[i].personalaccnm != "NA"? `${this.cashexpenditures[i].particulars} - ${this.cashexpenditures[i].personalaccnm}`:`${this.cashexpenditures[i].particulars}`;
+        const tmpparticular = this.cashexpenditures[i].personalaccnm != CONSTANTS.NA? `${this.cashexpenditures[i].particulars} - <span class="text-primary">${this.cashexpenditures[i].personalaccnm}</span>`:`${this.cashexpenditures[i].particulars}`;
         let tmpobj = {
           id:tmparr.length,
           dated: this.cashexpenditures[i].expdate,
           particular: tmpparticular,
           deposit: 0,
           payments: this.cashexpenditures[i].amount,
+          balance: 0 
+        };
+        tmparr.push(tmpobj);
+      }
+    }
+
+    //Payments - Customer Made payments
+    if(this.custmakepays && this.custmakepays.length>0){
+      for(let i=0;i<this.custmakepays.length;i++){
+        let tmpobj = {
+          id:tmparr.length,
+          dated: this.custmakepays[i].paydate,
+          particular: `${this.custmakepays[i].particulars} - ${this.custmakepays[i].name}`,
+          deposit: 0,
+          payments: this.custmakepays[i].amountpaid,
           balance: 0 
         };
         tmparr.push(tmpobj);

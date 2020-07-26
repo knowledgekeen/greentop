@@ -167,6 +167,39 @@ if($action == "updateSalePayment"){
 	echo json_encode($data1);
 }
 
+if($action == "updateMakeCustSalePayment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $id = $data->id;
+    $paydate = $data->paydate;
+    $amountpaid = $data->amountpaid;
+    $particulars = $data->particulars;
+   	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `make_cust_payments` SET `paydate`='$paydate',`amountpaid`='$amountpaid',`particulars`='$particulars' WHERE `makecustpayid`=$id";
+        $result = $conn->query($sql);
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $id;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
 if($action == "deleteSalePayRecord"){
 	$headers = apache_request_headers();
 	authenticate($headers);
@@ -177,6 +210,33 @@ if($action == "deleteSalePayRecord"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $orderpayid;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
+if($action == "deleteMakeCustPayRecord"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $makecustpayid = $_GET["makecustpayid"];
+	$sql = "DELETE FROM `make_cust_payments` WHERE `makecustpayid`=$makecustpayid";
+	$result = $conn->query($sql);
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $makecustpayid;
 		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
 		"Data: ".json_encode($data1).PHP_EOL;
 		write_log($log, "success", NULL);
@@ -239,4 +299,77 @@ if($action == "getAllOrderPaymentsFromToDt"){
 	echo json_encode($data);
 }
 
+if($action == "makeCustomerPayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $custpaydate = $data->custpaydate;
+    $custid = $data->custid;
+    $customeramtpaid = $data->customeramtpaid;
+    $paymode = $data->paymode;
+    $particulars = $data->particulars;
+   	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "INSERT INTO `make_cust_payments`(`clientid`, `paydate`, `amountpaid`, `paymodeid`, `particulars`) VALUES ('$custid','$custpaydate','$customeramtpaid','$paymode','$particulars')";
+        $result = $conn->query($sql);
+        $salepayid = $conn->insert_id;
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $salepayid;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
+if($action == "getAllClientCustMadePayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $clientid= $_GET["clientid"];
+    $fromdt= $_GET["fromdt"];
+    $todt= $_GET["todt"];
+	$sql = "SELECT mcp.*,pm.paymode FROM `make_cust_payments` mcp, `paymode_master` pm WHERE mcp.`paymodeid`=pm.`paymodeid` AND `clientid`='$clientid' AND `paydate` BETWEEN '$fromdt' AND '$todt'";
+	$result = $conn->query($sql);
+	$tmp = array();
+	$data = array();
+	if($result){
+		$i=0;
+        while($row = $result->fetch_array())
+        {
+			$tmp[$i]['makecustpayid'] = $row['makecustpayid'];
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['paydate'] = $row['paydate'];
+			$tmp[$i]['amountpaid'] = $row['amountpaid'];
+			$tmp[$i]['paymodeid'] = $row['paymodeid'];
+			$tmp[$i]['particulars'] = $row['particulars'];
+			$tmp[$i]['paymode'] = $row['paymode'];
+			$i++;
+        }
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+	echo json_encode($data);
+}
 ?>

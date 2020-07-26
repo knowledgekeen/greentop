@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { RESTService } from 'src/app/rest.service';
+import { CONSTANTS } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-bankaccledger',
@@ -14,6 +15,7 @@ export class BankaccledgerComponent implements OnInit {
   bankexpenditures: any = null;
   bankreceipts: any = null;
   salereceipts: any = null;
+  custmakepays: any = null;
   ledgerhist: any = null;
   totaldeposit: any = null;
   totalpayments: any = null;
@@ -27,7 +29,11 @@ export class BankaccledgerComponent implements OnInit {
         this.getExpendituresFromTo().then(expenditure =>{
           this.getBankReceiptsFromTo().then(bankreceipts=>{
             this.getAllOrderPaymentsFromToDt().then(orderpays=>{
-              this.filterData();
+              this.getAllCustMakePayments().then(custmakepays =>{
+                this.filterData();
+              }).catch(err=>{
+                alert("Cannot get Customer Make Payments");
+              });
             }).catch(errorderpays=>{
               alert("Cannot fetch All order payments")
             });
@@ -119,13 +125,30 @@ export class BankaccledgerComponent implements OnInit {
       _this._rest.getData("sales_payments.php", "getAllOrderPaymentsFromToDt", urldata)
         .subscribe(Response=>{
           _this.salereceipts= Response && Response["data"] ? Response["data"] : null;
-          _this.salereceipts = _this.salereceipts && _this.salereceipts.length>0 ? _this.salereceipts.filter(res=> res.paymode!=="CASH" && res.paymode!=="ADJUSTMENT"): null;
+          _this.salereceipts = _this.salereceipts && _this.salereceipts.length>0 ? _this.salereceipts.filter(res=> res.paymode!==CONSTANTS.CASH && res.paymode!==CONSTANTS.ADJUSTMENT): null;
           resolve(_this.salereceipts);
         },err=>{
           reject(err);
         });
     });
     return promise;
+  }
+
+  // Payments - Get Customer Make Payments
+  getAllCustMakePayments(){
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
+      _this._rest.getData("accounts.php", "getAllCustMakePayments", urldata)
+        .subscribe(Response=>{
+          _this.custmakepays= Response && Response["data"] ? Response["data"] : null;
+          _this.custmakepays= _this.custmakepays ? _this.custmakepays.filter(res=>{ return res.paymode !== CONSTANTS.CASH}):null;
+          resolve(_this.custmakepays);
+        },err=>{
+          reject(err);
+        });
+    });
+    return promise
   }
 
   filterData(){
@@ -190,12 +213,28 @@ export class BankaccledgerComponent implements OnInit {
     //Payments - Expenditure Payments
     if(this.bankexpenditures && this.bankexpenditures.length>0){
       for(let i=0;i<this.bankexpenditures.length;i++){
+      const tmpparticular = this.bankexpenditures[i].personalaccnm != CONSTANTS.NA? `${this.bankexpenditures[i].particulars} - <span class="text-primary">${this.bankexpenditures[i].personalaccnm}</span>`:`${this.bankexpenditures[i].particulars}`;
         let tmpobj = {
           id:tmparr.length,
           dated: this.bankexpenditures[i].expdate,
-          particular: this.bankexpenditures[i].particulars,
+          particular: tmpparticular,
           deposit: 0,
           payments: this.bankexpenditures[i].amount,
+          balance: 0 
+        };
+        tmparr.push(tmpobj);
+      }
+    }
+
+    //Payments - Customer Made payments
+    if(this.custmakepays && this.custmakepays.length>0){
+      for(let i=0;i<this.custmakepays.length;i++){
+        let tmpobj = {
+          id:tmparr.length,
+          dated: this.custmakepays[i].paydate,
+          particular: `${this.custmakepays[i].particulars} - ${this.custmakepays[i].name}`,
+          deposit: 0,
+          payments: this.custmakepays[i].amountpaid,
           balance: 0 
         };
         tmparr.push(tmpobj);
