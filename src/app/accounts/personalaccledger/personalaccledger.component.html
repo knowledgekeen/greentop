@@ -19,7 +19,7 @@
         </div>
         <div class="card-body customercard">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item px-1 py-2" *ngFor="let acc of (personalaccs | searchclient: filtercust:personalaccs)">
+            <li class="list-group-item px-1 py-2" *ngFor="let acc of (personalaccs | searchclient: filtercust && filtercust.toLowerCase():personalaccs)">
               <a href="javascript:void(0);" (click)="fetchPersonalAccountDetails(acc)">{{acc.name}}</a>
             </li>
             <li class="list-group-item text-primary" *ngIf="!personalaccs">

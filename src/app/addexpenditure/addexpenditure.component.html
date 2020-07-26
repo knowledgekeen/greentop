@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h5 class="my-3">Add Payment / Expenditure Amount
+  <h5 class="my-3 noprint">Add Payment / Expenditure Amount
     <button class="btn btn-sm btn-warning float-right" (click)="showhidegraph = !showhidegraph">
       <i class="fa fa-bar-chart" aria-hidden="true"></i>
       <ng-container *ngIf="showhidegraph; else elseTemplate">
@@ -22,7 +22,7 @@
     </button>
   </h5>
 
-  <div class="card" [hidden]="showhideform">
+  <div class="card noprint" [hidden]="showhideform">
     <div class="card-body">
       <div class="alert alert-success" role="alert" *ngIf="successmsg">
         <i class="fa fa-check"></i> {{successmsg}}

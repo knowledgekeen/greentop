@@ -102,7 +102,7 @@ export class BillsandcollectionComponent implements OnInit {
     this.allbillsncollection.push({
       dated: this._global.getCurrentFinancialYear().fromdt,
       billno:'-',
-      particulars: `OPENING BALANCE AS ON `+ moment(new Date(this._global.getCurrentFinancialYear().fromdt)).format('MM-DD-YYYY'),
+      particulars: `OPENING BALANCE AS ON `+ moment(new Date(this._global.getCurrentFinancialYear().fromdt)).format('DD-MM-YYYY'),
       billamt: 0,
       amtreceived: 0,
       balance:this.totalopenbal

@@ -1,7 +1,18 @@
 <div class="container">
-  <h5 class="my-3 noprint">Purchase Payments</h5>
+  <h5 class="my-3 noprint">Purchase Payments
+    <button class="btn btn-sm btn-primary float-right mx-4" (click)="showhideform = !showhideform">
+      <i class="fa " aria-hidden="true" [ngClass]="{'fa-check-square-o': showhideform, 'fa-square-o': !showhideform}"></i>
+      <ng-container *ngIf="showhideform; else elseShowHideForm">
+        Show
+      </ng-container>
+      <ng-template #elseShowHideForm>
+        Hide
+      </ng-template>
+      Form
+    </button>
+  </h5>
 
-  <div class="card noprint">
+  <div class="card noprint" [hidden]="showhideform">
     <div class="card-body">
       <div class="row">
         <div class="col-md-12 col-sm-12" *ngIf="successmsg">

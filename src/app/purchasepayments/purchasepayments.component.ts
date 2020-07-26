@@ -27,6 +27,8 @@ export class PurchasepaymentsComponent implements OnInit {
   payhistory: any = null;
   disableaddbtn: boolean = false;
   totalamt: any = null;
+  showhideform: boolean = false;
+  
   @ViewChild('purchasepayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(

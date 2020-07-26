@@ -12,7 +12,7 @@ if($action == "createAccountHead"){
 	$headers = apache_request_headers();
 	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
-    $accheadnm = $data->accheadnm;
+    $accheadnm = mysqli_real_escape_string($conn,$data->accheadnm);
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$sqlsel = "SELECT * FROM `accounthead_master` WHERE `accheadnm`='$CASH_ACCOUNT'";
@@ -91,7 +91,7 @@ if($action == "editAccountHead"){
     authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
 	$accheadid = $data->accheadid;
-    $accheadnm = $data->accheadnm;
+    $accheadnm = mysqli_real_escape_string($conn,$data->accheadnm);
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $sql = "UPDATE `accounthead_master` SET `accheadnm`='$accheadnm' WHERE `accheadid`=$accheadid";
@@ -155,7 +155,7 @@ if($action == "addExpenditure"){
     $exptype = $data->exptype;
     $acchead = $data->acchead;
     $personalaccid = $data->personalaccid;
-    $particulars = $data->particulars;
+    $particulars = mysqli_real_escape_string($conn,$data->particulars);
     $amount = $data->amount;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -189,7 +189,7 @@ if($action == "getExpendituresFromTo"){
     authenticate($headers);
     $fromdt = $_GET["fromdt"];
     $todt = $_GET["todt"];
-	$sql = "SELECT er.*,am.`accheadnm`,pam.`personalaccnm` FROM `expenditure_register` er, `accounthead_master` am, `personal_account_master` pam WHERE er.`accheadid`=am.`accheadid` AND er.`personalaccid`=pam.`personalaccid` AND er.`expdate` BETWEEN '$fromdt' AND '$todt' ORDER BY er.`expdate`";
+	$sql = "SELECT er.*,am.`accheadnm`,pam.`personalaccnm` FROM `expenditure_register` er, `accounthead_master` am, `personal_account_master` pam WHERE er.`accheadid`=am.`accheadid` AND er.`personalaccid`=pam.`personalaccid` AND er.`expdate` BETWEEN '$fromdt' AND '$todt' ORDER BY er.`expdate`,er.`amount`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -236,12 +236,13 @@ if($action == "updateExpenditure"){
     $expid = $data->expid;
     $expdate = $data->expdate;
     $exptype = $data->exptype;
-    $acchead = $data->acchead;
+	$acchead = $data->acchead;
+	$personalaccid = $data->personalaccid;
     $particulars = $data->particulars;
     $amount = $data->amount;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sql = "UPDATE `expenditure_register` SET `expdate`='$expdate',`exptype`=$exptype,`accheadid`=$acchead,`particulars`='$particulars',`amount`='$amount' WHERE `expid`=$expid";
+		$sql = "UPDATE `expenditure_register` SET `expdate`='$expdate',`exptype`=$exptype,`accheadid`=$acchead,`personalaccid`=$personalaccid,`particulars`='$particulars',`amount`='$amount' WHERE `expid`=$expid";
         $result = $conn->query($sql);
 	}
     $data1= array();
@@ -300,7 +301,7 @@ if($action == "addReceipt"){
     $receipttype = $data->receipttype;
     $acchead = $data->acchead;
     $personalaccid = $data->personalaccid;
-    $particulars = $data->particulars;
+    $particulars = mysqli_real_escape_string($conn,$data->particulars);
     $amount = $data->amount;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -334,7 +335,8 @@ if($action == "getReceiptsFromTo"){
     authenticate($headers);
     $fromdt = $_GET["fromdt"];
     $todt = $_GET["todt"];
-	$sql = "SELECT er.`receiptid`,er.`receiptdate`,er.accheadid,er.`receipttype`,er.`particulars`,er.`amount`,am.`accheadnm` FROM `receipt_register` er, `accounthead_master` am WHERE er.`accheadid`=am.`accheadid` AND er.`receiptdate` BETWEEN '$fromdt' AND '$todt' ORDER BY er.`receiptdate`";
+	$sql = "SELECT er.*,am.`accheadnm`,pam.`personalaccnm` FROM `receipt_register` er, `accounthead_master` am,`personal_account_master` pam WHERE er.`accheadid`=am.`accheadid` AND er.`personalaccid`=pam.`personalaccid` AND er.`receiptdate` BETWEEN '$fromdt' AND '$todt' ORDER BY er.`receiptdate`,er.`amount`";
+
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -352,6 +354,7 @@ if($action == "getReceiptsFromTo"){
 			$tmp[$i]['accheadid'] = $row['accheadid'];
 			$tmp[$i]['receipttype'] = $row['receipttype'];
 			$tmp[$i]['particulars'] = $row['particulars'];
+			$tmp[$i]['personalaccnm'] = $row['personalaccnm'];
 			$tmp[$i]['amount'] = $row['amount'];
 			$tmp[$i]['accheadnm'] = $row['accheadnm'];
 			$i++;
@@ -380,12 +383,13 @@ if($action == "updateReceipt"){
     $receiptid = $data->receiptid;
     $receiptdate = $data->receiptdate;
     $receipttype = $data->receipttype;
-    $acchead = $data->acchead;
-    $particulars = $data->particulars;
+	$acchead = $data->acchead;
+	$personalaccid = $data->personalaccid;
+    $particulars = mysqli_real_escape_string($conn,$data->particulars);
     $amount = $data->amount;
 
    	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sql = "UPDATE `receipt_register` SET `receiptdate`='$receiptdate',`receipttype`=$receipttype,`accheadid`=$acchead,`particulars`='$particulars',`amount`='$amount' WHERE `receiptid`=$receiptid";
+		$sql = "UPDATE `receipt_register` SET `receiptdate`='$receiptdate',`receipttype`=$receipttype,`accheadid`=$acchead,`personalaccid`=$personalaccid,`particulars`='$particulars',`amount`='$amount' WHERE `receiptid`=$receiptid";
         $result = $conn->query($sql);
 	}
     $data1= array();

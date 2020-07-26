@@ -124,7 +124,7 @@ if($action == "updateAccOpeningBalance"){
 if($action == "getAllPersonalAccounts"){
 	$headers = apache_request_headers();
     authenticate($headers);
-    $sql = "SELECT * FROM `personal_account_master` ORDER BY `personalaccnm`";
+    $sql = "SELECT * FROM `personal_account_master` WHERE NOT `personalaccnm`='$NA' ORDER BY `personalaccnm`";
     $result = $conn->query($sql);
     $tmp = array();
     if($result){

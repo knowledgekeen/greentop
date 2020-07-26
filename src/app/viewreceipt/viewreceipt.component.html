@@ -3,8 +3,8 @@
     <div class="alert alert-success" role="alert" *ngIf="successmsg">
       <i class="fa fa-check"></i> {{successmsg}}
     </div>
-    <h5 class="text-primary">All Receipts</h5>
-    <div class="row">
+    <h5 class="text-primary">All Receipts (Except Sales Receipts)</h5>
+    <div class="row noprint">
       <div class="col-md-6 col-sm-12">
         <button class="btn btn-sm mr-3 my-1" (click)="filterReceipts(0)"
           [ngClass]="{'btn-primary': selectedstatus == 1, 'btn-outline-primary': selectedstatus != 1}">All</button>
@@ -44,7 +44,7 @@
             <th scope="col">Type</th>
             <th scope="col">Account Head</th>
             <th scope="col" class="text-right">Amount</th>
-            <th scope="col" class="text-center" style="width: 50px;">
+            <th scope="col" class="text-center noprint" style="width: 50px;">
               <i class="fa fa-pencil"></i>
               <span class="mx-1">/</span>
               <i class="fa fa-trash"></i>
@@ -55,14 +55,16 @@
           <tr *ngFor="let receipt of allreceipts; let i=index">
             <th scope="row">{{ i+1 }}</th>
             <td style="width: 100px;">{{receipt.receiptdate | date: 'dd-MM-yyyy'}}</td>
-            <td>{{receipt.particulars}}</td>
+            <td>{{receipt.particulars}}
+              <span *ngIf="receipt.personalaccnm != constNA" class="text-primary"> - {{receipt.personalaccnm}}</span>
+            </td>
             <td>
               <span *ngIf="receipt.receipttype == 1">Cash</span>
               <span *ngIf="receipt.receipttype == 2">Bank</span>
             </td>
             <td>{{receipt.accheadnm}}</td>
             <td class="text-right">{{receipt.amount | currency:'INR' }}</td>
-            <td class="text-center" style="width: 50px;">
+            <td class="text-center noprint" style="width: 50px;">
               <a href="javascript:void(0);" class="text-warning" title="Edit Receipt" data-toggle="modal"
                 data-target="#editReceipt" (click)="editReceipt(receipt)">
                 <i class="fa fa-pencil"></i>
@@ -133,7 +135,16 @@
               </option>
             </datalist>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4 col-sm-12 mb-3">
+            <label class="m-0">Personal Account</label>
+            <input type="text" class="form-control" placeholder="Select Personal Account" [(ngModel)]="editpersonalacc" list="personalacclist"/>
+            <datalist id="personalacclist">
+              <option value="{{ acc.personalaccnm }}" *ngFor="let acc of allpersonalaccs">
+                {{acc.personalaccnm}}
+            </option>
+            </datalist>
+          </div>
+          <div class="col-md-4">
             <label class="m-0">Particulars</label>
             <input type="text" class="form-control" [(ngModel)]="editparticulars" />
           </div>

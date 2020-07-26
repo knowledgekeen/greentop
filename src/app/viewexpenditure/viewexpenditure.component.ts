@@ -12,6 +12,7 @@ import { CONSTANTS } from '../app.constants';
 })
 export class ViewexpenditureComponent implements OnInit {
   allaccheads: any = null;
+  allpersonalaccs: any = null;
   selectedstatus: any = 1;
   allexpenditures: any = null;
   totalamount: number = 0;
@@ -21,6 +22,7 @@ export class ViewexpenditureComponent implements OnInit {
   editexptype: any = null;
   editaccounthead: any = null;
   editparticulars: any = null;
+  editpersonalacc: any = null;
   editamount: any = null;
   successmsg: any = null;
   constNA: string = CONSTANTS.NA;
@@ -29,6 +31,7 @@ export class ViewexpenditureComponent implements OnInit {
   constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
 
   ngOnInit() {
+    this.getAllPersonalAccounts();
     this.getAllAccountHeads();
     this.getExpendituresFromTo();
   }
@@ -82,6 +85,7 @@ export class ViewexpenditureComponent implements OnInit {
     this.editexptype = this.selectedexpenditure.exptype;
     this.editaccounthead = this.selectedexpenditure.accheadid + "." + this.selectedexpenditure.accheadnm;
     this.editparticulars = this.selectedexpenditure.particulars;
+    this.editpersonalacc = this.selectedexpenditure.personalaccnm != this.constNA? this.selectedexpenditure.personalaccnm:null;
     this.editamount = this.selectedexpenditure.amount;
   }
 
@@ -96,12 +100,15 @@ export class ViewexpenditureComponent implements OnInit {
   }
 
   updateExpenditure() {
+    const personalaccount = this.editpersonalacc ? this.allpersonalaccs.filter(res=>{ return res.personalaccnm === this.editpersonalacc}) : null; 
+    const personalaccid = personalaccount && personalaccount.length>0 ? personalaccount[0].personalaccid : 0;
     let mydate = moment(this.editdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let expobj = {
       expid: this.selectedexpenditure.expid,
       expdate: new Date(mydate).getTime(),
       exptype: this.editexptype,
       acchead: this.editaccounthead.split(".")[0],
+      personalaccid: personalaccid,
       particulars: this.editparticulars,
       amount: this.editamount
     };
@@ -144,5 +151,17 @@ export class ViewexpenditureComponent implements OnInit {
     this.allexpenditures.filter(function (value) {
       vm.totalamount += parseFloat(value.amount);
     });
+  }
+  
+  autofilldt() {
+    this.editdate = this._global.getAutofillFormattedDt(this.editdate);
+  }
+
+  getAllPersonalAccounts(){
+    this.allpersonalaccs = null;
+    this._rest.getData("accounts.php", "getAllPersonalAccounts")
+      .subscribe(Response=>{
+        this.allpersonalaccs = Response && Response["data"] ? Response["data"] : null;
+      });
   }
 }

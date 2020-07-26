@@ -3,6 +3,7 @@ import { RESTService } from '../rest.service';
 import * as moment from "moment";
 import { IntervalService } from '../interval.service';
 import { GlobalService } from '../global.service';
+import { CONSTANTS } from '../app.constants';
 
 @Component({
   selector: 'app-viewreceipt',
@@ -11,6 +12,7 @@ import { GlobalService } from '../global.service';
 })
 export class ViewreceiptComponent implements OnInit {
   allaccheads: any = null;
+  allpersonalaccs: any = null;
   selectedstatus: any = 1;
   allreceipts: any = null;
   totalamount: number = 0;
@@ -19,14 +21,17 @@ export class ViewreceiptComponent implements OnInit {
   editdate: any = null;
   editreceipttype: any = null;
   editaccounthead: any = null;
+  editpersonalacc: any = null;
   editparticulars: any = null;
   editamount: any = null;
   successmsg: any = null;
   filteraccheadnm: any = null;
+  constNA: string = CONSTANTS.NA;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
 
   ngOnInit() {
+    this.getAllPersonalAccounts();
     this.getAllAccountHeads();
     this.getReceiptsFromTo();
   }
@@ -96,22 +101,25 @@ export class ViewreceiptComponent implements OnInit {
   }
 
   editReceipt(exp) {
-    console.log(exp)
     this.selectedreceipt = exp;
     this.editdate = moment(parseInt(this.selectedreceipt.receiptdate)).format("DD-MM-YYYY");;
     this.editreceipttype = this.selectedreceipt.receipttype;
     this.editaccounthead = this.selectedreceipt.accheadid + "." + this.selectedreceipt.accheadnm;
+    this.editpersonalacc = this.selectedreceipt.personalaccnm != this.constNA? this.selectedreceipt.personalaccnm:null;
     this.editparticulars = this.selectedreceipt.particulars;
     this.editamount = this.selectedreceipt.amount;
   }
 
   updateReceipt() {
+    const personalaccount = this.editpersonalacc ? this.allpersonalaccs.filter(res=>{ return res.personalaccnm === this.editpersonalacc}) : null; 
+    const personalaccid = personalaccount && personalaccount.length>0 ? personalaccount[0].personalaccid : 0;
     let mydate = moment(this.editdate, "DD-MM-YYYY").format("MM-DD-YYYY");
     let expobj = {
       receiptid: this.selectedreceipt.receiptid,
       receiptdate: new Date(mydate).getTime(),
       receipttype: this.editreceipttype,
       acchead: this.editaccounthead.split(".")[0],
+      personalaccid: personalaccid,
       particulars: this.editparticulars,
       amount: this.editamount
     };
@@ -140,6 +148,14 @@ export class ViewreceiptComponent implements OnInit {
             this.successmsg = null;
           });
         }
+      });
+  }
+
+  getAllPersonalAccounts(){
+    this.allpersonalaccs = null;
+    this._rest.getData("accounts.php", "getAllPersonalAccounts")
+      .subscribe(Response=>{
+        this.allpersonalaccs = Response && Response["data"] ? Response["data"] : null;
       });
   }
 }
