@@ -12,7 +12,9 @@ body {
   background-color: #dedede;
   font-size: 14px;
 }
-
+.dropdown-menu, .form-control{
+  font-size: 14px;
+}
 .btn,
 .form-control {
   border-radius: 0px;
