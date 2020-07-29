@@ -23,7 +23,7 @@ export class AddreceiptComponent implements OnInit {
   successmsg: any = null;
   personalacc: any = null;
 
-  @ViewChild('viewReceipt', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('viewReceipt', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private resolver: ComponentFactoryResolver, private _global: GlobalService) { }
 

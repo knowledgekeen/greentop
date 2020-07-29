@@ -7,7 +7,11 @@
         <i class="fa fa-check"></i> {{successMsg}}
       </div>
       <div class="row">
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-1 col-sm-12 mb-3 text-right p-0">
+          <label class="m-0"></label>
+          <input type="text" class="form-control text-right border-white p-0 pr-1" value="GTO-">
+        </div>
+        <div class="col-md-2 col-sm-12">
           <label class="m-0">Order No.</label>
           <input type="text" class="form-control" placeholder="Order No." [(ngModel)]="orderno"
             (blur)="checkIfOrderNoPresent()" />

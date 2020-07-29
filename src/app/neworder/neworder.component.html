@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="my-3">New Order</h5>
+  <h5 class="my-2">New Order</h5>
 
   <div class="card">
     <div class="card-body">
@@ -10,7 +10,11 @@
         <div class="col-md-12 col-sm-12 mb-2 text-danger">
           <i class="fa fa-exclamation"></i> All fields are compulsary
         </div>
-        <div class="col-md-3 col-sm-12 mb-3">
+        <div class="col-md-1 col-sm-12 mb-3 text-right p-0">
+          <label class="m-0"></label>
+          <input type="text" class="form-control text-right border-white p-0 pr-1" value="GTO-">
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3 pl-0">
           <label class="m-0">Order No.</label>
           <input type="text" class="form-control" placeholder="Order No." [(ngModel)]="orderno"
             (blur)="checkIfOrderNoPresent()" />

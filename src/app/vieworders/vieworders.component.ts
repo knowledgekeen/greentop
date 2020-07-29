@@ -28,7 +28,7 @@ export class ViewordersComponent implements OnInit {
   errorMsg: any = false;
   totalquantity: any = 0;
   selectedstatus: any = "all";
-  @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('salespayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,

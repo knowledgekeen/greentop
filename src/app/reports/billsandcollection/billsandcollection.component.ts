@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import { RESTService } from 'src/app/rest.service';
 import * as moment from 'moment';
+import { CONSTANTS } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-billsandcollection',
@@ -15,6 +16,7 @@ export class BillsandcollectionComponent implements OnInit {
   totalbillamt: number = 0;
   totalamtreceived: number = 0;
   allbillsncollection:any = null;
+  custmakepays: any = null;
   finanyr: any = null;
 
   constructor(private _global:GlobalService, private _rest:RESTService) { }
@@ -26,7 +28,11 @@ export class BillsandcollectionComponent implements OnInit {
     this.getTotalCustomerOpenBal().then(openbal=>{
       this.getInvoicesFromToDt(geturl).then(resp=>{
         this.getAllOrderPaymentsFromToDt(geturl).then(payments=>{
-          this.filterBCdata();
+          this.getAllCustMakePayments().then(custmakepays =>{
+            this.filterBCdata();
+          }).catch(err=>{
+            alert("Cannot get Customer Make Payments");
+          });
         });
       });
     });
@@ -64,7 +70,6 @@ export class BillsandcollectionComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           _this.allinvoices = Response["data"];
-          console.log(_this.allinvoices)
           resolve(_this.allinvoices);
         }
       },err=>{
@@ -75,7 +80,6 @@ export class BillsandcollectionComponent implements OnInit {
   }
 
   getAllOrderPaymentsFromToDt(geturl){
-    console.log(geturl);
     const _this = this;
     const promise = new Promise((resolve, reject) => {
     _this.allpayments = null;
@@ -84,7 +88,6 @@ export class BillsandcollectionComponent implements OnInit {
       .subscribe(Response => {
         if (Response) {
           _this.allpayments = Response["data"];
-          console.log(_this.allpayments)
           resolve(_this.allpayments);
         }
       },err=>{
@@ -92,6 +95,22 @@ export class BillsandcollectionComponent implements OnInit {
       });
     });
     return promise;
+  }
+
+  // Payments - Get Customer Make Payments
+  getAllCustMakePayments(){
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
+      _this._rest.getData("accounts.php", "getAllCustMakePayments", urldata)
+        .subscribe(Response=>{
+          _this.custmakepays= Response && Response["data"] ? Response["data"] : null;
+          resolve(_this.custmakepays);
+        },err=>{
+          reject(err);
+        });
+    });
+    return promise
   }
 
   filterBCdata(){
@@ -132,6 +151,19 @@ export class BillsandcollectionComponent implements OnInit {
         balance:0
       });
       this.totalamtreceived += parseFloat(this.allpayments[j].amount)
+    }
+
+    // For Cash Amounts Received From Customers(Credit)
+    for(let k in this.custmakepays){
+      this.allbillsncollection.push({
+        dated: this.custmakepays[k].paydate,
+        billno:'-',
+        particulars: `${this.custmakepays[k].particulars} - ${this.custmakepays[k].name}`,
+        billamt: 0,
+        amtreceived: parseFloat(this.custmakepays[k].amountpaid)*-1,
+        balance:0
+      });
+      this.totalamtreceived += parseFloat(this.custmakepays[k].amountpaid)
     }
 
     this.allbillsncollection.sort(this._global.sortArr("dated"));

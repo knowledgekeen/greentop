@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h5 class="my-3">View Invoices</h5>
+  <h5 class="my-2">View Invoices</h5>
 
   <div class="card">
     <div class="card-body">
@@ -64,7 +64,7 @@
                   {{ bill.dispatchdate | date: "dd-MM-yyyy" }}
                 </a>
               </td>
-              <td>{{ bill.orderno }}</td>
+              <td>GTO-{{ bill.orderno }}</td>
               <td>
                 <a [routerLink]="[ '/reports/printdispatchchallan', bill.dcno, 0 ]" *ngIf="bill.dcno!='0'">
                   {{ bill.dcno }}
@@ -133,7 +133,7 @@
     <div class="modal-content" *ngIf="orderdetails">
       <div class="modal-header">
         <h5 class="modal-title w-100" id="exampleModalLabel">
-          <span class="text-primary font-weight-bold"> {{ orderdetails.orderno }} |
+          <span class="text-primary font-weight-bold"> GTO-{{ orderdetails.orderno }} |
             {{orderdetails.orderdt | date: 'dd-MM-yyyy'}}</span>
           <span class="text-danger float-right font-weight-bold mx-3">Invoice No.: {{ selectedinvoice.billno }} |
             Invoice Date: {{selectedinvoice.billdt | date: 'dd-MM-yyyy'}}</span>

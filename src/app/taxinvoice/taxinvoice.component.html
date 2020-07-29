@@ -15,7 +15,7 @@
             </span>
           </label>
           <select class="form-control" [(ngModel)]="selectedorder" (change)="selectOrder()" [disabled]="!openorders">
-            <option value="{{ order.orderid }}" *ngFor="let order of openorders">{{ order.orderno }} Dated:
+            <option value="{{ order.orderid }}" *ngFor="let order of openorders">GTO-{{ order.orderno }} Dated:
               {{ order.orderdt | date: "dd-MM-yyyy" }}</option>
           </select>
         </div>
@@ -138,8 +138,8 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           Order Id:
-          <span class="text-info font-weight-bold">{{
-            orderdetails.orderid
+          <span class="text-info font-weight-bold">GTO-{{
+            orderdetails.orderno
           }}</span>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

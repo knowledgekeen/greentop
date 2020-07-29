@@ -13,6 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies":[
+              "highcharts/highcharts-more.src",
+              "simple-crypto-js",
+              "highcharts/modules/exporting.src",
+              "highcharts",
+              "crypto-js"
+            ],
             "outputPath": "dist/greentop",
             "index": "src/index.html",
             "main": "src/main.ts",

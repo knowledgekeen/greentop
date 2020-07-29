@@ -87,26 +87,18 @@ export class NeworderComponent implements OnInit {
 
   getLastOrderId() {
     this._rest
-      .getData("order.php", "getLastOrderId", null)
+      .getData("order.php", "getLastOrderNo", null)
       .subscribe(Response => {
-        //console.log(Response);
+        console.log(Response);
         if (Response) {
           if (Response["data"]) {
-            this.orderno = "GTO-" + (parseInt(Response["data"]) + 1);
+            this.orderno = (parseInt(Response["data"]) + 1);
           } else {
-            this.orderno = "GTO-1";
+            this.orderno = "1";
           }
         } else {
-          this.orderno = "GTO-1";
+          this.orderno = "1";
         }
-
-        this.checkIfOrderNoPresent().then(Resp => {
-          //Order no isn't present, so everything is fine
-        }, elsecode => {
-          //Order no already present so try and increment it with 1;
-          this.orderno = "GTO-" + (parseInt(this.orderno.split("-")[1]) + 1);
-          this.ordernopresent = false;
-        });
       });
   }
 
@@ -217,36 +209,29 @@ export class NeworderComponent implements OnInit {
       this.btndisabled = false;
       return;
     }
+    let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let orderObj = {
+      orderid: this.orderno,
+      orderdt: new Date(myDate).getTime(),
+      custid: this.selectcust.split(".")[0],
+      prodid: this.selectprod.split(".")[0],
+      qty: this.quantity,
+      consignees: this.allconsignees,
+      remarks: this.remarks
+    };
 
-    this.checkIfOrderNoPresent().then(Resp => {
-      let myDate = moment(this.orderdt, "DD-MM-YYYY").format("MM-DD-YYYY");
-      let orderObj = {
-        orderid: this.orderno,
-        orderdt: new Date(myDate).getTime(),
-        custid: this.selectcust.split(".")[0],
-        prodid: this.selectprod.split(".")[0],
-        qty: this.quantity,
-        consignees: this.allconsignees,
-        remarks: this.remarks
-      };
-
-      this._rest
-        .postData("order.php", "createNewOrder", orderObj, null)
-        .subscribe(Response => {
-          2
-          if (Response) {
-            window.scrollTo(0, 0);
-            this.successMsg = true;
-            this._interval.settimer(null).then(Resp => {
-              this.resetForm();
-              this.initialize();
-            });
-          }
-        });
-    }, error => {
-      console.log("Order No already present");
-      this.btndisabled = false;
-    });
+    this._rest
+      .postData("order.php", "createNewOrder", orderObj)
+      .subscribe(Response => {
+        if (Response) {
+          window.scrollTo(0, 0);
+          this.successMsg = true;
+          this._interval.settimer(null).then(Resp => {
+            this.resetForm();
+            this.initialize();
+          });
+        }
+      });
     //console.log(orderObj);
   }
 

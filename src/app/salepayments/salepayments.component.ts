@@ -31,7 +31,7 @@ export class SalepaymentsComponent implements OnInit {
   custpaydate: string =  null; 
   customeramtpaid: string = "0"; 
 
-  @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('salespayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,

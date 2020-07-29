@@ -1,5 +1,5 @@
-<div class="container">
-  <h5 class="my-3 noprint">Bills And Collections</h5>
+<div class="container-fluid">
+  <h5 class="my-2 noprint">Bills And Collections</h5>
 
 <div class="card">
   <div class="card-body">
@@ -29,15 +29,13 @@
               <td class="text-right">{{bill.amtreceived | number:'1.2-2'}}</td>
               <td class="text-right">{{bill.balance | number: '1.2-2'}}</td>
             </tr>
-          </tbody>
-          <tfoot>
             <tr>
               <th colspan="4" class="text-right">Total</th>
               <th class="text-right">{{totalbillamt | number: '1.2-2'}}</th>
               <th class="text-right">{{totalamtreceived | number: '1.2-2'}}</th>
               <th></th>
             </tr>
-          </tfoot>
+          </tbody>
         </table>
       </div>
     </div>

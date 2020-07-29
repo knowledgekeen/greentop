@@ -3,6 +3,7 @@ import * as Highcharts from "highcharts";
 import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
 import { IntervalService } from '../interval.service';
+import { CONSTANTS } from '../app.constants';
 
 @Component({
   selector: "app-repsallstocks",
@@ -27,8 +28,16 @@ export class RepsallstocksComponent implements OnInit {
     this._rest
       .getData("reports_stock.php", "getAllStocks", null)
       .subscribe(Response => {
+        let removedbags = null;
         if (Response) {
-          this.allstock = Response["data"];
+          this.allstock = Response["data"]?Response["data"]:null;
+          for(let i in this.allstock){
+            if(this.allstock[i].name === CONSTANTS.HDPE_BAGS){
+              removedbags = this.allstock.splice(i,1);
+              break;
+            }
+          }
+          this.allstock.push(removedbags[0]);
           this.filterDataForChart();
         }
       });

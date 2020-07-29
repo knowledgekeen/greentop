@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="my-3">Dispatch Order</h5>
+  <h5 class="my-2">Dispatch Order</h5>
 
   <div class="card">
     <div class="card-body">
@@ -25,8 +25,8 @@
             </span>
           </label>
           <select class="form-control" [(ngModel)]="selectedorder" (change)="selectOrder()" [disabled]="!openorders">
-            <option value="{{ order.orderid }}" *ngFor="let order of openorders">Order: {{ order.orderno }} Dated:
-              {{ order.orderdt | date: "dd-MM-yyyy" }}</option>
+            <option value="{{ order.orderid }}" *ngFor="let order of openorders">Order: GTO-{{ order.orderno }} 
+              Dated: {{ order.orderdt | date: "dd-MM-yyyy" }}</option>
           </select>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
@@ -155,9 +155,8 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           Order Id:
-          <span class="text-info font-weight-bold">{{
-            orderdetails.orderid
-          }}</span>
+          <span class="text-info font-weight-bold">
+            GTO-{{orderdetails.orderno}}</span>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

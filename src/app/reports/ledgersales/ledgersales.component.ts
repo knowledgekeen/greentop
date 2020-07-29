@@ -10,7 +10,7 @@ import { SalespayhistoryComponent } from 'src/app/salespayhistory/salespayhistor
 export class LedgersalesComponent implements OnInit {
   allcustomers: any = null;
   filtercust: any = null;
-  @ViewChild('salespayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('salespayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(private _rest:RESTService, private resolver: ComponentFactoryResolver) { }
 

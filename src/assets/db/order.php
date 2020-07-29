@@ -17,14 +17,40 @@ if($action == "getLastOrderId"){
     if($result){
         $data["status"] = 200;
 		$data["data"] = $row['orderid'];
-		$log  = "File: order.php - Method: getLastOrderId".PHP_EOL.
+		$log  = "File: order.php - Method: $action".PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data["status"] = 204;
-		$log  = "File: order.php - Method: getLastOrderId".PHP_EOL.
+		$log  = "File: order.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
+
+if($action == "getLastOrderNo"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $sql = "SELECT `orderno` FROM `order_master` ORDER BY `orderid` DESC LIMIT 1";
+    $result = $conn->query($sql);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if($result){
+        $data["status"] = 200;
+		$data["data"] = $row['orderno'];
+		$log  = "File: order.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: order.php - Method: $action".PHP_EOL.
 		"Error message: ".$conn->error.PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "error", $conn->error);
@@ -70,14 +96,14 @@ if($action == "createNewOrder"){
     if($result){
 		$data1["status"] = 200;
 		$data1["data"] = $ordid;
-		$log  = "File: order.php - Method: createNewOrder".PHP_EOL.
+		$log  = "File: order.php - Method: $action".PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "success", NULL);
 		header(' ', true, 200);
 	}
 	else{
 		$data1["status"] = 204;
-		$log  = "File: order.php - Method: createNewOrder".PHP_EOL.
+		$log  = "File: order.php - Method: $action".PHP_EOL.
 		"Error message: ".$conn->error.PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "error", $conn->error);
@@ -239,7 +265,7 @@ if($action == "getOrdersFromToDate"){
 	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT o.`orderid`, o.`orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,o.`status`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt' ORDER BY o.`orderdt`,o.`orderid`";
+	$sql = "SELECT o.`orderid`, CAST(o.`orderno` as SIGNED) as `orderno`, o.`orderdt`,o.`prodid`, o.`quantity`,o.`remarks`,o.`status`,c.`clientid`,c.`name`,c.`address`,c.`contactno`, p.`prodname` FROM `order_master` o, `client_master` c, `product_master` p WHERE o.`clientid`=c.`clientid` AND o.`prodid`=p.`prodid` AND o.`orderdt` BETWEEN '$fromdt' AND '$todt' ORDER BY o.`orderdt`,`orderno`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

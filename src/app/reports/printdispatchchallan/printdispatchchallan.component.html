@@ -14,7 +14,7 @@
         <div class="col-md-5 col-print-5">
           <strong>Order No.: </strong>
           <span *ngIf="dcdata && dcdata.length == 1">
-            {{dcdata[0].orderno}}
+            GTO-{{dcdata[0].orderno}}
           </span>
           <span *ngIf="dcdata && dcdata.length > 1">
             {{ordernos}}

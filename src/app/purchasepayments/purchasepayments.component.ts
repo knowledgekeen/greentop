@@ -29,7 +29,7 @@ export class PurchasepaymentsComponent implements OnInit {
   totalamt: any = null;
   showhideform: boolean = false;
   
-  @ViewChild('purchasepayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('purchasepayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(
     private _global: GlobalService,

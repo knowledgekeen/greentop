@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RESTService } from '../rest.service';
 import { IntervalService } from '../interval.service';
+import { CONSTANTS } from '../app.constants';
 
 @Component({
   selector: 'app-editstock',
@@ -22,8 +23,15 @@ export class EditstockComponent implements OnInit {
       .getData("reports_stock.php", "getAllStocks", null)
       .subscribe(Response => {
         if (Response) {
+          let removedbags = null;
           this.allstock = Response["data"];
-          console.log(this.allstock)
+          for(let i in this.allstock){
+            if(this.allstock[i].name === CONSTANTS.HDPE_BAGS){
+              removedbags = this.allstock.splice(i,1);
+              break;
+            }
+          }
+          this.allstock.push(removedbags[0]);
         }
       });
   };

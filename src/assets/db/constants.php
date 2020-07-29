@@ -3,4 +3,5 @@
     $NA = 'NA';
     $CASH = 'CASH';
     $ADJUSTMENT = 'ADJUSTMENT';
+    $HDPE_BAGS = 'HDPE Bags';
 ?>

@@ -3,6 +3,7 @@ import { RESTService } from "../rest.service";
 import { IntervalService } from "../interval.service";
 import { GlobalService } from "../global.service";
 import * as moment from "moment";
+import { CONSTANTS } from '../app.constants';
 
 @Component({
   selector: "app-addrawmaterial",
@@ -81,7 +82,15 @@ export class AddrawmaterialComponent implements OnInit {
       .getData("rawmaterial.php", "getRawMaterials", null)
       .subscribe(Response => {
         if (Response) {
+          let removedbags = null;
           this.allrawmats = Response["data"];
+          for(let i in this.allrawmats){
+            if(this.allrawmats[i].name === CONSTANTS.HDPE_BAGS){
+              removedbags = this.allrawmats.splice(i,1);
+              break;
+            }
+          }
+          this.allrawmats.push(removedbags[0]);
         }
       });
   }

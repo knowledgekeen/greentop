@@ -25,7 +25,7 @@ export class AddexpenditureComponent implements OnInit {
   showhidegraph: boolean = false;
   showhideform: boolean = false;
   successmsg: any = null;
-  @ViewChild('viewExpenditure', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('viewExpenditure', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private resolver: ComponentFactoryResolver, private _global: GlobalService) { }
 

@@ -23,7 +23,7 @@ export class ViewpurchasesComponent implements OnInit {
   totalqty: number = 0;
   totalbags: number = 0;
   selectedpurchase: any = null;
-  @ViewChild('purchasepayhistory', { read: ViewContainerRef }) entry: ViewContainerRef;
+  @ViewChild('purchasepayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,
