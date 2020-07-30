@@ -17,6 +17,7 @@ export class PurchasepayhistoryComponent implements OnInit {
   editamountpaid: any = null;
   editparticulars: any = null;
   selectedpurchpayid: any = null;
+  selectedrecievepurchpay: any = null;
   @Input() supplier: any;
   @Input() isEditable: any;
   successflag: any = false;
@@ -36,12 +37,14 @@ export class PurchasepayhistoryComponent implements OnInit {
     this.payhistory = null;
     let purchmast;
     let purchpay;
+    let salepay;
     let openbal;
     this.fetchAllPaymentData().then(Response => {
       if (!Response) return;
 
       purchmast = Response["purchmast"];
       purchpay = Response["purchpay"];
+      salepay = Response["salepay"];
       openbal = Response["openingbal"];
       let tmparr = [];
       //console.log(openbal, purchmast, purchpay);
@@ -92,6 +95,22 @@ export class PurchasepayhistoryComponent implements OnInit {
           tmparr.push(tmpobj);
         }
       }
+
+      if (salepay) {
+        for (let i in salepay) {
+          let tmpobj = {
+            iseditable: true,
+            recievepayid: salepay[i].receivesupppayid,
+            id: tmparr.length,
+            dates: salepay[i].paydate,
+            particulars: salepay[i].particulars,
+            debit: null,
+            credit: salepay[i].amountpaid,
+            balance: 0
+          };
+          tmparr.push(tmpobj);
+        }
+      }
       tmparr.sort(this._global.sortArr("dates"));
       this.payhistory = tmparr;
       this.calculateTotalDebitCredit();
@@ -117,6 +136,7 @@ export class PurchasepayhistoryComponent implements OnInit {
     //console.log(geturl);
     let purchmast = null;
     let purchpay = null;
+    let salepay = null;
     let vm = this;
     return new Promise(function (resolve, reject) {
       vm._rest
@@ -140,14 +160,24 @@ export class PurchasepayhistoryComponent implements OnInit {
                     purchpay = Resp["data"];
                   }
 
+                  
+                  vm._rest.getData("purchase_payments.php","getAllClientSuppMadePayments",geturl)
+                    .subscribe(supppay => {
+                    if (supppay) {
+                      salepay = supppay["data"];
+                      console.log(salepay);
+                    }
+
                   let tmpobj = {
                     purchmast: purchmast,
                     purchpay: purchpay,
+                    salepay: salepay,
                     openingbal: CResp["data"]
                   };
 
                   resolve(tmpobj);
-                  tmpobj = purchpay = purchmast = null;
+                  tmpobj = salepay = purchpay = purchmast = null;
+                  }); //getAllClientCustMadePayments Ends here
                 });
             });
         });
@@ -213,51 +243,94 @@ export class PurchasepayhistoryComponent implements OnInit {
     return payhistorycopy;
   }
 
-  editPaymentHistory(hist) {
+  editPaymentHistory(hist, caneditsupppay) {
     this.editpurchdate = null;
     this.editamountpaid = null;
     this.editparticulars = null;
     this.editpurchdate = moment(parseInt(hist.dates)).format("DD-MM-YYYY");
-    this.editamountpaid = hist.debit;
+    this.editamountpaid = hist.debit?hist.debit:hist.credit;
     this.editparticulars = hist.particulars;
-    this.selectedpurchpayid = hist.purchpayid;
+    if(!caneditsupppay){
+      this.selectedpurchpayid = hist.purchpayid;
+    }
+    else{
+      this.selectedrecievepurchpay = hist.recievepayid;
+    }
   }
 
   updatePurchasePayment() {
     this.disableupdatebtn = true;
     let balDate = moment(this.editpurchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
-    let postobj = {
-      purchpayid: this.selectedpurchpayid,
-      purchdate: new Date(balDate).getTime(),
-      amountpaid: this.editamountpaid,
-      particulars: this.editparticulars
-    }
-    this._rest.postData("purchase_payments.php", "updatePurchasePayment", postobj)
-      .subscribe(Response => {
-        window.scrollTo(0, 0);
-        this.successflag = "Payment details updated successfully";
-        this.getAllPurchasePayments();
-        this._interval.settimer().then(rep => {
-          this.successflag = false;
-          this.disableupdatebtn = false;
+
+    if(this.selectedpurchpayid){
+      let postobj = {
+        purchpayid: this.selectedpurchpayid,
+        purchdate: new Date(balDate).getTime(),
+        amountpaid: this.editamountpaid,
+        particulars: this.editparticulars
+      }
+      this._rest.postData("purchase_payments.php", "updatePurchasePayment", postobj)
+        .subscribe(Response => {
+          window.scrollTo(0, 0);
+          this.successflag = "Payment details updated successfully";
+          this.getAllPurchasePayments();
+          this._interval.settimer().then(rep => {
+            this.successflag = false;
+            this.disableupdatebtn = false;
+          });
         });
-      });
+    }
+    else{
+      let postobj = {
+        id: this.selectedrecievepurchpay,
+        paydate: new Date(balDate).getTime(),
+        amountpaid: this.editamountpaid,
+        particulars: this.editparticulars
+      }
+      this._rest.postData("purchase_payments.php", "updateReceivePurchasePayment", postobj)
+        .subscribe(Response => {
+          window.scrollTo(0, 0);
+          this.successflag = "Payment details updated successfully";
+          this.getAllPurchasePayments();
+          this._interval.settimer().then(rep => {
+            this.successflag = false;
+            this.disableupdatebtn = false;
+          });
+        });
+    }
   }
 
-  confirmDel(hist) {
-    this.selectedpurchpayid = hist.purchpayid;
+  confirmDel(hist, cansdeletesupppay) {
+    if(cansdeletesupppay){
+      this.selectedrecievepurchpay = hist.recievepayid;
+    }else{
+      this.selectedpurchpayid = hist.purchpayid;
+    }
   }
 
   deletePurchasePayRecord() {
-    let geturl = "purchpayid=" + this.selectedpurchpayid;
-    this._rest.getData("purchase_payments.php", "deletePurchasePayRecord", geturl)
-      .subscribe(Response => {
-        window.scrollTo(0, 0);
-        this.successflag = "Payment details deleted successfully";
-        this.getAllPurchasePayments();
-        this._interval.settimer().then(rep => {
-          this.successflag = false;
+    if(this.selectedpurchpayid){
+      let geturl = "purchpayid=" + this.selectedpurchpayid;
+      this._rest.getData("purchase_payments.php", "deletePurchasePayRecord", geturl)
+        .subscribe(Response => {
+          window.scrollTo(0, 0);
+          this.successflag = "Payment details deleted successfully";
+          this.getAllPurchasePayments();
+          this._interval.settimer().then(rep => {
+            this.successflag = false;
+          });
         });
-      });
+    }else{
+      let geturl = "recievepayid=" + this.selectedrecievepurchpay;
+      this._rest.getData("purchase_payments.php", "deleteReceivePayRecord", geturl)
+        .subscribe(Response => {
+          window.scrollTo(0, 0);
+          this.successflag = "Payment details deleted successfully";
+          this.getAllPurchasePayments();
+          this._interval.settimer().then(rep => {
+            this.successflag = false;
+          });
+        });
+    }
   }
 }

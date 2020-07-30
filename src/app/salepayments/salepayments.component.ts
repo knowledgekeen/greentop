@@ -148,7 +148,6 @@ export class SalepaymentsComponent implements OnInit {
       }
     }
   }
-
   
   makeCustomerPayment() {
     if (parseFloat(this.customeramtpaid) == 0) {

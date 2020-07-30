@@ -463,4 +463,45 @@ if($action == "getAllCustMakePayments"){
     }
 	echo json_encode($data);
 }
+
+if($action == "getAllReceiveSupplierPayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $sql = "SELECT rsp.*,cm.`name`,pm.`paymode` FROM `receive_supplier_payments` rsp, `client_master` cm, `paymode_master` pm WHERE rsp.`clientid` = cm.`clientid` AND rsp.`paymodeid`=pm.`paymodeid` AND `paydate` BETWEEN '$fromdt' AND '$todt'";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["receivesupppayid"]= $row["receivesupppayid"];
+            $tmp[$i]["clientid"]= $row["clientid"];
+            $tmp[$i]["paydate"]= $row["paydate"];
+            $tmp[$i]["amountpaid"]= $row["amountpaid"];
+            $tmp[$i]["paymodeid"]= $row["paymodeid"];
+            $tmp[$i]["particulars"]= $row["particulars"];
+            $tmp[$i]["name"]= $row["name"];
+            $tmp[$i]["paymode"]= $row["paymode"];
+            $i++;
+        }
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
 ?>

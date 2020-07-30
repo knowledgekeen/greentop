@@ -15,6 +15,7 @@ export class CashaccledgerComponent implements OnInit {
   cashexpenditures: any = null;
   cashacctrans: any = null;
   custmakepays: any = null;
+  supprecpays: any = null;
   totaldeposit: number = 0;
   totalpayments: number = 0;
 
@@ -26,7 +27,11 @@ export class CashaccledgerComponent implements OnInit {
       this.getExpendituresFromTo().then(cashexp=>{
         this.getCashAccountExpenditure().then(cashacc=>{
           this.getAllCustMakePayments().then(custmakepays =>{
-            this.filterData();
+            this.getAllReceiveSupplierPayments().then(supprecpay=>{
+              this.filterData();
+            }).catch(err=>{
+              alert("Cannot get Supplier Receipt Payments");
+            });
           }).catch(err=>{
             alert("Cannot get Customer Make Payments");
           });
@@ -107,6 +112,23 @@ export class CashaccledgerComponent implements OnInit {
     return promise
   }
 
+  // Receipts - Get Receive Payments From Supplier
+  getAllReceiveSupplierPayments(){
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
+      _this._rest.getData("accounts.php", "getAllReceiveSupplierPayments", urldata)
+        .subscribe(Response=>{
+          _this.supprecpays= Response && Response["data"] ? Response["data"] : null;
+          _this.supprecpays= _this.supprecpays ? _this.supprecpays.filter(res=>{ return res.paymode === CONSTANTS.CASH}):null;
+          resolve(_this.supprecpays);
+        },err=>{
+          reject(err);
+        });
+    });
+    return promise
+  }
+
   filterData(){
     let tmparr = [];
     //Deposit - Opening Balance
@@ -160,6 +182,21 @@ export class CashaccledgerComponent implements OnInit {
           particular: `${this.custmakepays[i].particulars} - ${this.custmakepays[i].name}`,
           deposit: 0,
           payments: this.custmakepays[i].amountpaid,
+          balance: 0 
+        };
+        tmparr.push(tmpobj);
+      }
+    }
+    
+    //Receipts - Supplier Receipt payments
+    if(this.supprecpays && this.supprecpays.length>0){
+      for(let i=0;i<this.supprecpays.length;i++){
+        let tmpobj = {
+          id:tmparr.length,
+          dated: this.supprecpays[i].paydate,
+          particular: `${this.supprecpays[i].particulars} - ${this.supprecpays[i].name}`,
+          deposit: this.supprecpays[i].amountpaid,
+          payments: 0,
           balance: 0 
         };
         tmparr.push(tmpobj);

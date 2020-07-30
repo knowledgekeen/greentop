@@ -1,6 +1,6 @@
 <div class="container">
   <h5 class="my-3 noprint">Purchase Payments
-    <button class="btn btn-sm btn-primary float-right mx-4" (click)="showhideform = !showhideform">
+    <button class="btn btn-sm btn-primary float-right mx-4" (click)="showhideform = !showhideform;showreceivepay=false;particulars=null">
       <i class="fa " aria-hidden="true" [ngClass]="{'fa-check-square-o': showhideform, 'fa-square-o': !showhideform}"></i>
       <ng-container *ngIf="showhideform; else elseShowHideForm">
         Show
@@ -9,6 +9,16 @@
         Hide
       </ng-template>
       Form
+    </button>
+    <button class="btn btn-sm btn-danger float-right mx-3" (click)="showreceivepay = !showreceivepay;showhideform = true;particulars=null">
+      <i class="fa " aria-hidden="true" [ngClass]="{'fa-square-o': showreceivepay, 'fa-check-square-o': !showreceivepay}"></i>
+      <ng-container *ngIf="showreceivepay; else elseshowreceivepay">
+        Hide
+      </ng-container>
+      <ng-template #elseshowreceivepay>
+        Show
+      </ng-template>
+      Receiver Supplier Payment
     </button>
   </h5>
 
@@ -73,6 +83,62 @@
     </div>
   </div>
 
+  <div class="card bg-light" [hidden]="!showreceivepay">
+    <div class="card-body">
+      <h6 class="text-primary font-weight-bold">Receive Supplier Payment</h6>
+      <div class="row">
+        <div class="col-md-12 col-sm-12" *ngIf="supppaysuccessmsg">
+          <div class="alert alert-success" role="alert">
+            <i class="fa fa-check"></i> {{ supppaysuccessmsg }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        
+        <div class="col-md-6 col-sm-12">
+          <label class="m-0">Supplier</label>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Select Supplier" [(ngModel)]="supplier"
+              list="supplierlist" (change)="loadPurchasePaymentHistory(supplier)" />
+            <div class="input-group-append">
+              <button class="btn btn-sm btn-secondary" [disabled]="!supplier" (click)="supplier=null; loadPurchasePaymentHistory(null)" title="Clear Supplier field">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <datalist id="supplierlist">
+            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allsuppliers">
+              {{ supp.clientid }}.{{ supp.name }}</option>
+          </datalist>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Date of Payment</label>
+          <input type="text" class="form-control" placeholder="Date of Payment" [(ngModel)]="supppaydt"
+            (blur)="autofillPayDt()" />
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Amount Paid</label>
+          <input type="text" class="form-control" placeholder="Amount Paid" [(ngModel)]="suppamtpaid" />
+        </div>
+        <div class="col-md-3 col-sm-12 my-3">
+          <label for="paymode" class="m-0">Mode of Payment</label>
+          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoParticulars(paymode)">
+            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
+          </select>
+        </div>
+        <div class="col-md-9 col-sm-12 my-3">
+          <label class="m-0">Particulars</label>
+          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <button class="btn btn-sm btn-primary" [disabled]="!supppaydt || !suppamtpaid || !supplier || !paymode || disableaddbtn"
+            (click)="receiveSupplierPayment()">
+            Receive Supplier Payment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Purchase payments are dynamically loaded in the following div -->
   <div class="col-md-12" #purchasepayhistory></div>
 </div>

@@ -195,4 +195,138 @@ if($action == "deletePurchasePayRecord"){
 
 	echo json_encode($data1);
 }
+
+if($action == "receiveSupplierPayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $supppaydt = $data->supppaydt;
+    $suppid = $data->suppid;
+    $suppamtpaid = $data->suppamtpaid;
+    $paymode = $data->paymode;
+    $particulars = $data->particulars;
+   	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "INSERT INTO `receive_supplier_payments`(`clientid`, `paydate`, `amountpaid`, `paymodeid`, `particulars`) VALUES ('$suppid','$supppaydt','$suppamtpaid','$paymode','$particulars')";
+        $result = $conn->query($sql);
+        $purchpayid = $conn->insert_id;
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $purchpayid;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
+if($action == "getAllClientSuppMadePayments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $clientid= $_GET["clientid"];
+    $fromdt= $_GET["fromdt"];
+    $todt= $_GET["todt"];
+	$sql = "SELECT rsp.*,pm.paymode FROM `receive_supplier_payments` rsp, `paymode_master` pm WHERE rsp.`paymodeid`=pm.`paymodeid` AND `clientid`='$clientid' AND `paydate` BETWEEN '$fromdt' AND '$todt'";
+	$result = $conn->query($sql);
+	$tmp = array();
+	$data = array();
+	if($result){
+		$i=0;
+        while($row = $result->fetch_array())
+        {
+			$tmp[$i]['receivesupppayid'] = $row['receivesupppayid'];
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['paydate'] = $row['paydate'];
+			$tmp[$i]['amountpaid'] = $row['amountpaid'];
+			$tmp[$i]['paymodeid'] = $row['paymodeid'];
+			$tmp[$i]['particulars'] = $row['particulars'];
+			$tmp[$i]['paymode'] = $row['paymode'];
+			$i++;
+        }
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+	echo json_encode($data);
+}
+
+if($action == "updateReceivePurchasePayment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $id = $data->id;
+    $paydate = $data->paydate;
+    $amountpaid = $data->amountpaid;
+    $particulars = $data->particulars;
+   	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "UPDATE `receive_supplier_payments` SET `paydate`='$paydate',`amountpaid`='$amountpaid',`particulars`='$particulars' WHERE `receivesupppayid`=$id";
+        $result = $conn->query($sql);
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $id;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
+if($action == "deleteReceivePayRecord"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $recievepayid = $_GET["recievepayid"];
+	$sql = "DELETE FROM `receive_supplier_payments` WHERE `receivesupppayid`=$recievepayid";
+	$result = $conn->query($sql);
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $recievepayid;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: purchase_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>

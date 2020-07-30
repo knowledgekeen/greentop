@@ -17,6 +17,8 @@ export class PurchasepaymentsComponent implements OnInit {
   currfinanyr: any = null;
   allsuppliers: any = null;
   paydt: string = null;
+  supppaydt: string = null;
+  suppamtpaid: string = null;
   supplier: string = null;
   paymode: string = null;
   allpaymodes: any = null;
@@ -24,6 +26,7 @@ export class PurchasepaymentsComponent implements OnInit {
   amtpaid: string = "0";
   errormsg: any = false;
   successmsg: any = false;
+  supppaysuccessmsg: any = false;
   payhistory: any = null;
   disableaddbtn: boolean = false;
   totalamt: any = null;
@@ -87,9 +90,11 @@ export class PurchasepaymentsComponent implements OnInit {
   }
 
   autofillPayDt() {
-    if (!this.paydt) return;
+    if (this.paydt)
+      this.paydt = this._global.getAutofillFormattedDt(this.paydt);
 
-    this.paydt = this._global.getAutofillFormattedDt(this.paydt);
+    if (this.supppaydt)
+      this.supppaydt = this._global.getAutofillFormattedDt(this.supppaydt);
   }
 
   getAllPurchasePayments() {
@@ -286,6 +291,8 @@ export class PurchasepaymentsComponent implements OnInit {
     this.disableaddbtn = false;
     this.paydt = null;
     this.amtpaid = null;
+    this.supppaydt = null;
+    this.suppamtpaid = null;
     this.paymode = null;
     this.particulars = null;
     this.payhistory = null;
@@ -298,5 +305,35 @@ export class PurchasepaymentsComponent implements OnInit {
         break;
       }
     }
+  }
+
+  receiveSupplierPayment() {
+    if (parseFloat(this.suppamtpaid) == 0) {
+      this.errormsg = "Amount paid cannot be '0'";
+      this._interval.settimer(null).then(resp => {
+        this.errormsg = null;
+      });
+      return;
+    }
+    let myDate = moment(this.supppaydt, "DD-MM-YYYY").format("MM-DD-YYYY");
+    let tmpObj = {
+      supppaydt: new Date(myDate).getTime(),
+      suppid: this.supplier.split(".")[0],
+      suppamtpaid: this.suppamtpaid,
+      paymode: this.paymode,
+      particulars: this.particulars
+    };
+    this.disableaddbtn = true;
+    this._rest
+      .postData("purchase_payments.php", "receiveSupplierPayments", tmpObj)
+      .subscribe(Response => {
+        this.loadPurchasePaymentHistory(this.supplier);
+        if (Response) {
+          this.supppaysuccessmsg = "Payment received successfully";
+          this._interval.settimer(null).then(resp => {
+            this.resetForm();
+          });
+        }
+      });
   }
 }
