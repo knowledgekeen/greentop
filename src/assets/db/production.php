@@ -105,7 +105,7 @@ if($action == "getTodaysProductionBatch"){
 	$headers = apache_request_headers();
 	authenticate($headers);
 	//$batchid = $_GET["batchid"];
-	$sql = "SELECT `batchid` FROM `production_batch_master` where NOT `batchid`='OM'  ORDER BY `batchmastid` DESC LIMIT 1";
+	$sql = "SELECT `batchid` FROM `production_batch_master` where NOT `batchid` LIKE 'OM%' ORDER BY `batchmastid` DESC LIMIT 1";
 	$result = $conn->query($sql);
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -479,7 +479,7 @@ if($action == "getRawMatAssignmentHist"){
 	$headers = apache_request_headers();
 	authenticate($headers);
 	$prodid = $_GET["prodid"];
-	$sql = "SELECT arh.`assignrawmatid`, arh.`prodid`, arh.`rawmatid`, arh.`quantity`, arh.`histdate`, rm.`name`, rm.`hsncode` FROM `assign_rawmaterial_history` arh, `raw_material_master` rm WHERE arh.`rawmatid`=rm.`rawmatid` AND arh.`prodid`=$prodid ORDER BY `name`, `histdate`";
+	$sql = "SELECT arh.`assignrawmatid`, arh.`prodid`, arh.`rawmatid`, arh.`quantity`, arh.`histdate`, rm.`name`, rm.`hsncode` FROM `assign_rawmaterial_history` arh, `raw_material_master` rm WHERE arh.`rawmatid`=rm.`rawmatid` AND arh.`prodid`=$prodid ORDER BY `name`, `histdate`,`assignrawmatid`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

@@ -82,6 +82,9 @@ export class RepsallstocksComponent implements OnInit {
         plotShadow: false,
         type: "pie"
       },
+      colors: this.chartdata.map(res=>{
+        return this.getRandomColor()
+      }),
       exporting: { enabled: false },
       title: {
         text: null
@@ -176,5 +179,14 @@ export class RepsallstocksComponent implements OnInit {
         this.successStkDetsMsg = null;
       })
     });
+  }
+
+  getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 }

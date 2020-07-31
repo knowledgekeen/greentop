@@ -3,6 +3,7 @@ import { RESTService } from "../rest.service";
 import { IntervalService } from "../interval.service";
 import * as moment from "moment";
 import { GlobalService } from '../global.service';
+import { CONSTANTS } from 'src/app/app.constants';
 
 @Component({
   selector: "app-assignrawmatprod",
@@ -26,6 +27,8 @@ export class AssignrawmatprodComponent implements OnInit {
   disablesubmitbtn: boolean = false;
   disableeditsubmitbtn: boolean = false;
   assignhistdata: any = null;
+  totalquantity: number = 0;
+  HDPEBags: string = CONSTANTS.HDPE_BAGS;
 
   constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
 
@@ -72,7 +75,18 @@ export class AssignrawmatprodComponent implements OnInit {
         .subscribe(Response => {
           //console.log(Response);
           if (Response) {
+            let removedbags = null;
+            this.totalquantity = 0
             this.prod_rawmats = Response["data"];
+            for(let i=0;i<this.prod_rawmats.length;i++){
+              if(this.prod_rawmats[i].name === CONSTANTS.HDPE_BAGS){
+                removedbags = this.prod_rawmats.splice(i,1);
+                i--;
+              }else{
+                this.totalquantity += parseFloat(this.prod_rawmats[i].defquantity);
+              }
+            }
+            this.prod_rawmats.push(removedbags[0]);
           }
         });
     }

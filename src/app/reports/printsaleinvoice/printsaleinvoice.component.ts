@@ -22,11 +22,13 @@ export class PrintsaleinvoiceComponent implements OnInit {
   finalamount: number = null;
   amtinwords: string = null;
   billdt: string = null;
+  blankrows: any = null;
   discountremarks: string;
 
   constructor(private _route: ActivatedRoute, private _rest: RESTService) { }
 
   ngOnInit() {
+    this.blankrows = [1,2,3,4,5,6,7,8,9,10,11,12];
     this._route.params.subscribe(Response => {
       this.invoiceno = Response.invoiceno;
       this.getInvoiceDetailsFromInvoiceNo();
@@ -37,7 +39,11 @@ export class PrintsaleinvoiceComponent implements OnInit {
     let geturl = "invoiceno=" + this.invoiceno;
     this._rest.getData("taxinvoice.php", "getInvoiceDetailsFromInvoiceNo", geturl).subscribe(Response => {
       if (Response) {
+        this.blankrows = [];
         this.invoicedata = Response["data"];
+        for(let i=0;i<12-this.invoicedata.length;i++){
+          this.blankrows.push(i);
+        }
         this.calculateAmounts();
       }
       else {

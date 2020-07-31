@@ -48,7 +48,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let batch of allbatches; let i = index">
+            <tr *ngFor="let batch of allbatches; let i = index" [ngClass]="{'bg-light': batch.qtyremained != 0}">
               <th scope="row">{{ i + 1 }}</th>
               <td>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#viewBatchModal"
