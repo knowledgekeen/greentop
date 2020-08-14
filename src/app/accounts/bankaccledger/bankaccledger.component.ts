@@ -80,6 +80,7 @@ export class BankaccledgerComponent implements OnInit {
       _this._rest.getData("reports_purchases.php", "getFromToPurchasesForAccounts", urldata)
         .subscribe(Response=>{
           _this.purchaseacs= Response && Response["data"] ? Response["data"] : 0;
+          _this.purchaseacs= _this.purchaseacs ? _this.purchaseacs.filter(res=>{ return (res.paymode !== CONSTANTS.CASH && res.paymode !== CONSTANTS.OTHERS)}):null;
           resolve(_this.purchaseacs);
         },err=>{
           reject(err);
@@ -130,7 +131,7 @@ export class BankaccledgerComponent implements OnInit {
       _this._rest.getData("sales_payments.php", "getAllOrderPaymentsFromToDt", urldata)
         .subscribe(Response=>{
           _this.salereceipts= Response && Response["data"] ? Response["data"] : null;
-          _this.salereceipts = _this.salereceipts && _this.salereceipts.length>0 ? _this.salereceipts.filter(res=> res.paymode!==CONSTANTS.CASH && res.paymode!==CONSTANTS.ADJUSTMENT): null;
+          _this.salereceipts = _this.salereceipts && _this.salereceipts.length>0 ? _this.salereceipts.filter(res=> res.paymode!==CONSTANTS.CASH && res.paymode!==CONSTANTS.OTHERS): null;
           resolve(_this.salereceipts);
         },err=>{
           reject(err);
@@ -147,7 +148,7 @@ export class BankaccledgerComponent implements OnInit {
       _this._rest.getData("accounts.php", "getAllCustMakePayments", urldata)
         .subscribe(Response=>{
           _this.custmakepays= Response && Response["data"] ? Response["data"] : null;
-          _this.custmakepays= _this.custmakepays ? _this.custmakepays.filter(res=>{ return res.paymode !== CONSTANTS.CASH}):null;
+          _this.custmakepays= _this.custmakepays ? _this.custmakepays.filter(res=>{ return (res.paymode !== CONSTANTS.CASH && res.paymode !== CONSTANTS.OTHERS)}):null;
           resolve(_this.custmakepays);
         },err=>{
           reject(err);

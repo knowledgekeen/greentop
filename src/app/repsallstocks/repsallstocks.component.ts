@@ -119,13 +119,7 @@ export class RepsallstocksComponent implements OnInit {
     this.selectedmat = stock;
     let finanyear = this._global.getCurrentFinancialYear();
     //console.log(finanyear);
-    let geturl =
-      "stockid=" +
-      stock.stockid +
-      "&fromdt=" +
-      finanyear.fromdt +
-      "&todt=" +
-      finanyear.todt;
+    let geturl = "stockid=" + stock.stockid + "&fromdt=" + finanyear.fromdt + "&todt=" + finanyear.todt;
     this._rest
       .getData("stock.php", "getStockHistory", geturl)
       .subscribe(Response => {
@@ -143,7 +137,8 @@ export class RepsallstocksComponent implements OnInit {
             };
 
             if (i == 0) {
-              tmpObj.openingstock = 0;
+              tmpObj.openingstock = parseFloat(data[i].quantity);
+              tmpObj.quantity = 0;
               tmpObj.closingstock = parseFloat(data[i].quantity);
             } else {
               tmpObj.openingstock = this.histarr[i - 1].closingstock;

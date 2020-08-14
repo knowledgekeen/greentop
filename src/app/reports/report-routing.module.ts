@@ -12,6 +12,7 @@ import { BillsandcollectionComponent } from './billsandcollection/billsandcollec
 import { LedgersalesComponent } from './ledgersales/ledgersales.component';
 import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
 import { DistrictwisesalesComponent } from './districtwisesales/districtwisesales.component';
+import { StockstatementComponent } from './stockstatement/stockstatement.component';
 
 const reportRoutes: Routes = [
     { path: "reports/monthwisepurchases", component: MonthwisepurchasesComponent },
@@ -26,6 +27,7 @@ const reportRoutes: Routes = [
     { path: "reports/salesledger", component: LedgersalesComponent },
     { path: "reports/purchaseledger", component: LedgerpurchaseComponent },
     { path: "reports/districtwisesales", component: DistrictwisesalesComponent },
+    { path: "reports/stockstatement", component: StockstatementComponent },
 ];
 
 @NgModule({

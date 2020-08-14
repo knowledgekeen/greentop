@@ -315,7 +315,7 @@ if($action == "getStockHistory"){
 	$fromdt = ($_GET["fromdt"]);
 	$todt = ($_GET["todt"]);
 	
-	$sql = "SELECT * FROM `stock_register` WHERE `stockid`=$stockid AND `date` BETWEEN '$fromdt' AND '$todt' ORDER BY `date`";
+	$sql = "SELECT * FROM `stock_register` WHERE `stockid`=$stockid AND `date` BETWEEN '$fromdt' AND '$todt' ORDER BY `date`,`INorOUT`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -354,6 +354,111 @@ if($action == "getStockHistory"){
 
 	echo json_encode($data);
 
+}
+
+if($action == "getFromToStockHistory"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$stockid = $_GET["stockid"];
+	$fromdt = ($_GET["fromdt"]);
+	$todt = ($_GET["todt"]);
+	$sql = "SELECT * FROM `stock_register` WHERE `stockid`=$stockid AND `date` BETWEEN '$fromdt' AND '$todt' ORDER BY `date`,`INorOUT`";
+	$result = $conn->query($sql);
+	$i = 0;
+	$tmp = array();
+	$data = array();
+	while($row = $result->fetch_array())
+	{
+		$tmp[$i]['stockregid'] = $row['stockregid'];
+		$tmp[$i]['stockid'] = $row['stockid'];
+		$tmp[$i]['INorOUT'] = $row['INorOUT'];
+		$tmp[$i]['quantity'] = $row['quantity'];
+		$tmp[$i]['closingstock'] = $row['closingstock'];
+		$tmp[$i]['date'] = $row['date'];
+		$tmp[$i]['remarks'] = $row['remarks'];
+		$i++;
+	}
+
+	if($result){
+		if(count($tmp)>0){
+			$firststkid=floatval($tmp[0]['stockregid'])-1;
+			$sql = "SELECT * FROM `stock_register` WHERE `stockregid`=$firststkid AND `stockid`=$stockid";
+			$resultsel = $conn->query($sql);
+			$rowsel = $resultsel->fetch_array();
+			$tmpsel=array();
+			// echo $firststkid."-".$rowsel['stockregid']."-".$sql;
+			// exit(0);
+			if($rowsel && count($rowsel)>0){
+				$tmpsel['stockregid'] = $rowsel['stockregid'];
+				$tmpsel['stockid'] = $rowsel['stockid'];
+				$tmpsel['INorOUT'] = $rowsel['INorOUT'];
+				$tmpsel['quantity'] = $rowsel['quantity'];
+				$tmpsel['closingstock'] = $rowsel['closingstock'];
+				$tmpsel['date'] = $rowsel['date'];
+				$tmpsel['remarks'] = $rowsel['remarks'];
+			}
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$data["openstk"] = $tmpsel;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+
+}
+
+if($action == "updateDataToStockHistory"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $stockid = $data->stockid;
+    $fromdt = $data->fromdt;
+    $todt = $data->todt;
+    $stockhist = $data->stockhist;
+	
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "DELETE FROM `stock_register` WHERE `stockid`=$stockid AND `date` BETWEEN '$fromdt' AND '$todt'";
+		$result = $conn->query($sql);
+		for($i=0; $i<count($stockhist); $i++) {
+            $inout = $stockhist[$i]->inout;
+            $quantity = $stockhist[$i]->quantity;
+            $closingstock = $stockhist[$i]->closingstock;
+            $date = $stockhist[$i]->date;
+            $remarks = $stockhist[$i]->remarks;
+
+            $sqlins="INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `closingstock`, `date`, `remarks`) VALUES ($stockid,'$inout','$quantity','$closingstock','$date','$remarks')";
+            $resultqty = $conn->query($sqlins);
+        }
+	}
+    $data1= array();
+    if($result){
+        $data1["status"] = 200;
+        $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
 }
 
 //Check if there is any opening balance created for current financial year
@@ -727,7 +832,6 @@ if($action == "allreprocessdata"){
 
 	echo json_encode($data1);
 }
-
 
 if($action == "updateStockDetails"){
 	$headers = apache_request_headers();

@@ -3,5 +3,7 @@ export const CONSTANTS = {
     NA: 'NA',
     CASH: 'CASH',
     ADJUSTMENT: 'ADJUSTMENT',
+    OTHERS: 'Others',
     HDPE_BAGS: 'HDPE Bags',
+    IN: 'IN',
 }  

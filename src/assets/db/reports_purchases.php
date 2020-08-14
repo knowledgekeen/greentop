@@ -74,7 +74,7 @@ if($action == "getFromToPurchasesForAccounts"){
 	authenticate($headers);
     $fromdt = $_GET["fromdt"];
     $todt = $_GET["todt"];
-    $sql = "SELECT pp.*, cm.* FROM `purchase_payments` pp, `client_master` cm WHERE pp.`clientid`=cm.`clientid` AND `paydate` BETWEEN '$fromdt' AND '$todt'";
+    $sql = "SELECT pp.*, cm.*, pm.* FROM `purchase_payments` pp, `client_master` cm, `paymode_master` pm WHERE pp.`clientid`=cm.`clientid` AND pp.`paymodeid`=pm.`paymodeid` AND `paydate` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
 	$tmp = array();
 	$data = array();
@@ -85,6 +85,7 @@ if($action == "getFromToPurchasesForAccounts"){
 		$tmp[$i]["paydate"] = $row["paydate"];
 		$tmp[$i]["amount"] = $row["amount"];
 		$tmp[$i]["particulars"] = $row["particulars"];
+		$tmp[$i]["paymode"] = $row["paymode"];
 		$tmp[$i]["name"] = $row["name"];
 		$i++;
 	}
