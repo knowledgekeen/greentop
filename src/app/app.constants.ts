@@ -1,10 +1,12 @@
 export const CONSTANTS = {
-    CASH_ACCOUNT: 'Cash Account',
-    NA: 'NA',
-    CASH: 'CASH',
-    ADJUSTMENT: 'ADJUSTMENT',
-    OTHERS: 'Others',
-    HDPE_BAGS: 'HDPE Bags',
-    IN: 'IN',
-    OUT: 'OUT',
-}  
+  CASH_ACCOUNT: "Cash Account",
+  NA: "NA",
+  CASH: "CASH",
+  ADJUSTMENT: "ADJUSTMENT",
+  OTHERS: "Others",
+  HDPE_BAGS: "HDPE Bags",
+  IN: "IN",
+  OUT: "OUT",
+  CREDIT: "Credit",
+  DEBIT: "Debit",
+};

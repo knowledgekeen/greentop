@@ -504,4 +504,79 @@ if($action == "getAllReceiveSupplierPayments"){
     }
 	echo json_encode($data);
 }
+
+if($action == "addPersonalAccAdjustment"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $adjustdt = $data->adjustdt;
+    $personalacc = $data->personalacc;
+    $creditdebit = $data->creditdebit;
+    $amount = $data->amount;
+    $particulars = mysqli_real_escape_string($conn,$data->particulars);
+    $tmp = array();
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "INSERT INTO `personal_account_adjustment`(`personalaccid`, `adjustdate`,`creddebt`, `amount`, `particulars`) VALUES ($personalacc,'$adjustdt','$creditdebit','$amount','$particulars')";
+        $result = $conn->query($sql);
+        $personalaccnmid = $conn->insert_id;
+    }
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $personalaccnmid;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+	echo json_encode($data1);
+}
+
+if($action == "getAllPersonalAccAdjustments"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $personalaccid = $_GET["personalaccid"];
+    $sql = "SELECT * FROM `personal_account_adjustment` WHERE `personalaccid`='$personalaccid' AND `adjustdate` BETWEEN '$fromdt' AND '$todt'";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["personalaccadjid"]= $row["personalaccadjid"];
+            $tmp[$i]["personalaccid"]= $row["personalaccid"];
+            $tmp[$i]["adjustdate"]= $row["adjustdate"];
+            $tmp[$i]["creddebt"]= $row["creddebt"];
+            $tmp[$i]["amount"]= $row["amount"];
+            $tmp[$i]["particulars"]= $row["particulars"];
+            $i++;
+        }
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: accounts.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
 ?>

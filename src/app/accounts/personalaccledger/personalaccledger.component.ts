@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { GlobalService } from "src/app/global.service";
 import { RESTService } from "src/app/rest.service";
+import { CONSTANTS } from "src/app/app.constants";
 
 @Component({
   selector: "app-personalaccledger",
@@ -13,6 +14,7 @@ export class PersonalaccledgerComponent implements OnInit {
   finanyr: any = null;
   allexpenditures: any = null;
   allreceipts: any = null;
+  alladjustments: any = null;
   ledgerhist: any = null;
   totaldebit: number = null;
   totalcredit: number = null;
@@ -66,7 +68,12 @@ export class PersonalaccledgerComponent implements OnInit {
         this.getReceiptsOfPersonalAcc(acc.personalaccid)
           .then((receipts) => {
             // console.log(receipts);
-            this.filterData();
+            this.getAllPersonalAccAdjustments(acc.personalaccid).then(
+              (adjusts) => {
+                console.log(adjusts);
+                this.filterData();
+              }
+            );
           })
           .catch((errrec) => {
             alert(
@@ -123,6 +130,28 @@ export class PersonalaccledgerComponent implements OnInit {
     return promise;
   }
 
+  // Debit & Credit both entries are present filtered in filterData
+  getAllPersonalAccAdjustments(personalaccid) {
+    this.alladjustments = null;
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+      const urldata = `fromdt=${_this.finanyr.fromdt}&todt=${_this.finanyr.todt}&personalaccid=${personalaccid}`;
+      _this._rest
+        .getData("accounts.php", "getAllPersonalAccAdjustments", urldata)
+        .subscribe(
+          (Response) => {
+            _this.alladjustments =
+              Response && Response["data"] ? Response["data"] : null;
+            resolve(_this.alladjustments);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
   filterData() {
     this.ledgerhist = null;
     this.totalcredit = 0;
@@ -133,6 +162,7 @@ export class PersonalaccledgerComponent implements OnInit {
     if (this.allexpenditures && this.allexpenditures.length > 0) {
       for (let i = 0; i < this.allexpenditures.length; i++) {
         let tmpobj = {
+          isadjustment: false,
           id: tmparr.length,
           dated: this.allexpenditures[i].expdate,
           particular: this.allexpenditures[i].particulars,
@@ -148,6 +178,7 @@ export class PersonalaccledgerComponent implements OnInit {
     if (this.allreceipts && this.allreceipts.length > 0) {
       for (let i = 0; i < this.allreceipts.length; i++) {
         let tmpobj = {
+          isadjustment: false,
           id: tmparr.length,
           dated: this.allreceipts[i].receiptdate,
           particular: this.allreceipts[i].particulars,
@@ -159,13 +190,48 @@ export class PersonalaccledgerComponent implements OnInit {
       }
     }
 
+    //Debit - Adjustment Payments
+    if (this.alladjustments && this.alladjustments.length > 0) {
+      for (let i = 0; i < this.alladjustments.length; i++) {
+        if (this.alladjustments[i].creddebt === CONSTANTS.DEBIT) {
+          let tmpobj = {
+            isadjustment: true,
+            id: tmparr.length,
+            dated: this.alladjustments[i].adjustdate,
+            particular: this.alladjustments[i].particulars,
+            debit: this.alladjustments[i].amount,
+            credit: 0,
+            balance: 0,
+          };
+          tmparr.push(tmpobj);
+        }
+      }
+    }
+
+    //Credit - Adjustment Payments
+    if (this.alladjustments && this.alladjustments.length > 0) {
+      for (let i = 0; i < this.alladjustments.length; i++) {
+        if (this.alladjustments[i].creddebt === CONSTANTS.CREDIT) {
+          let tmpobj = {
+            isadjustment: true,
+            id: tmparr.length,
+            dated: this.alladjustments[i].adjustdate,
+            particular: this.alladjustments[i].particulars,
+            debit: 0,
+            credit: this.alladjustments[i].amount,
+            balance: 0,
+          };
+          tmparr.push(tmpobj);
+        }
+      }
+    }
+
     tmparr.sort(this._global.sortArr("dated"));
     this.ledgerhist = tmparr;
 
     let tmpbalance =
-      parseFloat(this.ledgerhist[0].debit) > 0
-        ? parseFloat(this.ledgerhist[0].debit)
-        : parseFloat(this.ledgerhist[0].credit);
+      parseFloat(this.ledgerhist[0].debit) -
+      parseFloat(this.ledgerhist[0].credit);
     this.ledgerhist[0].balance = tmpbalance;
     for (let k = 1; k < this.ledgerhist.length; k++) {
       this.ledgerhist[k].balance =
