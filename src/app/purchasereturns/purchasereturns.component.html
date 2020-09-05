@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <h5 class="my-2">Purchase Returns</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> Purchase Returns created successfully.
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-sm-12">
+          <label class="m-0">Returns Date</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Returns Date"
+            [(ngModel)]="returnsdt"
+            (blur)="autoFillReturnDt()"
+            autofocus
+          />
+        </div>
+        <div class="col-md-2 col-sm-12">
+          <label class="m-0">PRN / Debit Note No.</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="PRN / Debit Note No."
+            [(ngModel)]="debitnoteno"
+          />
+        </div>
+        <div class="col-md-2 col-sm-12">
+          <label class="m-0">Bill No.</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Bill No."
+            [(ngModel)]="billno"
+            readonly
+          />
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Supplier</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Supplier"
+            [(ngModel)]="name"
+            readonly
+          />
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <label class="m-0">Raw Material</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Raw Material"
+            [(ngModel)]="rawmatname"
+            readonly
+          />
+        </div>
+        <div class="col-md-3 col-sm-12 my-3">
+          <label class="m-0">Quantity (tons/bags)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Quantity"
+            [(ngModel)]="quantity"
+          />
+        </div>
+        <div class="col-md-3 col-sm-12 my-3">
+          <label class="m-0">Amount</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Amount"
+            [(ngModel)]="amount"
+          />
+        </div>
+        <div class="col-md col-sm-12 my-3">
+          <label class="m-0">Particulars</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Particulars"
+            [(ngModel)]="particulars"
+          />
+        </div>
+        <div class="col-md-12 col-sm-12 my-3">
+          <button
+            class="btn btn-primary"
+            (click)="addPurchaseReturns()"
+            [disabled]="
+              !returnsdt || !debitnoteno || !quantity || !amount || !particulars
+            "
+          >
+            Add Purchase Returns
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

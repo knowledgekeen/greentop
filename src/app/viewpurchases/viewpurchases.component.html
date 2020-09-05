@@ -3,39 +3,55 @@
 
   <div class="card">
     <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="successmsg">
+        <i class="fa fa-check"></i> Record Deleted Successfully.
+      </div>
       <h6>
-        <span class="border-bottom border-primary">Purchase A/c For -
-          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{monthlabel}}</span>
-          <span class="font-weight-bold" *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
-            {{customto | date: 'dd-MMM, yyyy'}}</span>
+        <span class="border-bottom border-primary"
+          >Purchase A/c For -
+          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{
+            monthlabel
+          }}</span>
+          <span class="font-weight-bold" *ngIf="customfrom && customto"
+            >{{ customfrom | date: "dd-MMM, yyyy" }} -
+            {{ customto | date: "dd-MMM, yyyy" }}</span
+          >
         </span>
       </h6>
       <h6>
-        <div class="row">
+        <div class="row noprint">
           <div class="col-md-5"></div>
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">
             <label class="m-0">From</label>
-            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
-              (blur)="autofillfromdt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="From Date"
+              [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()"
+            />
           </div>
           <div class="col-md-2">
             <label class="m-0">To</label>
-            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
-              (blur)="autofilltodt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="To Date"
+              [(ngModel)]="todt"
+              (blur)="autofilltodt()"
+            />
           </div>
           <div class="col-md-2">
-            <button class="btn btn-info mt-3" (click)="filterData()"><i class="fa fa-filter"></i>
-              Filter</button>
+            <button class="btn btn-info mt-3" (click)="filterData()">
+              <i class="fa fa-filter"></i> Filter
+            </button>
           </div>
         </div>
       </h6>
 
       <div class="table-responsive my-2">
         <table class="table table-sm">
-          <caption *ngIf="totalbags > 0">
-            Total Number of Bags purchased between these dates are: {{ totalbags }} Bags
-          </caption>
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -46,33 +62,52 @@
               <th scope="col">Raw Material</th>
               <th scope="col" class="text-right">Quantity</th>
               <th scope="col" class="text-right pr-3">Amount</th>
-              <th scope="col">Edit</th>
+              <th scope="col">
+                <i class="fa fa-pencil"></i>
+                <span class="mx-2"></span>
+                <i class="fa fa-trash"></i>
+              </th>
+              <th scope="col">
+                <i class="fa fa-reply"></i>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let purch of allpurchases; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#detailsModal"
-                  (click)="viewPurchaseDetails(purch)">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#detailsModal"
+                  (click)="viewPurchaseDetails(purch)"
+                >
                   {{ purch.arrivaldt | date: "dd-MM-yyyy" }}
                 </a>
               </td>
               <td>{{ purch.billno }}</td>
               <td>{{ purch.billdt | date: "dd-MM-yyyy" }}</td>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#purchasepayhist"
-                  (click)="openPurchHistoryModal(purch)">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#purchasepayhist"
+                  (click)="openPurchHistoryModal(purch)"
+                >
                   {{ purch.name }}
                 </a>
               </td>
-              <td>{{purch.rawmatname}}</td>
+              <td>{{ purch.rawmatname }}</td>
               <td class="text-right">
-                <span *ngIf="purch.rawmatname.toLowerCase().indexOf('bag') > -1">
+                <span
+                  *ngIf="purch.rawmatname.toLowerCase().indexOf('bag') > -1"
+                >
                   {{ purch.quantity }} Bags
                 </span>
 
-                <span *ngIf="purch.rawmatname.toLowerCase().indexOf('bag') == -1">
+                <span
+                  *ngIf="purch.rawmatname.toLowerCase().indexOf('bag') == -1"
+                >
                   {{ purch.quantity | number: "1.3-3" }}
                 </span>
               </td>
@@ -80,24 +115,112 @@
                 {{ purch.totalamount | currency: "INR" }}
               </td>
               <td>
-                <a href="javascript:void(0);" (click)="editPurchase(purch)">Edit</a>
+                <a
+                  href="javascript:void(0);"
+                  (click)="editPurchase(purch)"
+                  title="Edit Purchase"
+                >
+                  <i class="fa fa-pencil text-warning"></i>
+                </a>
+                <span class="mx-2"></span>
+                <a
+                  href="javascript:void(0);"
+                  (click)="deletePurchase(purch)"
+                  title="Delete Purchase"
+                >
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+              <td>
+                <a
+                  [routerLink]="['/purchasereturns', purch.purcmastid]"
+                  title="Purchase Returns"
+                  ><i class="fa fa-reply text-primary"></i
+                ></a>
               </td>
             </tr>
             <tr *ngIf="allpurchases" class="text-primary">
-              <td colspan="6" class="text-right font-weight-bold">
-                Total </td>
+              <td colspan="5">
+                <span class="text-secondary" *ngIf="totalbags > 0">
+                  Total Number of Bags purchased between these dates are:
+                  <span class="font-weight-bold text-info"
+                    >{{ totalbags }} Bags</span
+                  >
+                </span>
+              </td>
+              <td class="text-right font-weight-bold">Total Purchases</td>
               <td class="font-weight-bold text-right">
                 {{ totalqty | number: "1.3-3" }}
               </td>
               <td class="font-weight-bold text-right pr-3">
                 {{ totalamt | currency: "INR" }}
               </td>
-              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr *ngIf="purchreturns" class="font-weight-bold text-primary">
+              <td colspan="6" class="text-right">Total Returns</td>
+              <td class="text-right">{{ totalretqty | number: "1.3-3" }}</td>
+              <td class="text-right pr-3">
+                {{ totalretamt | currency: "INR" }}
+              </td>
+              <td colspan="2"></td>
+            </tr>
+            <tr
+              *ngIf="allpurchases && purchreturns"
+              class="font-weight-bold text-primary"
+            >
+              <td colspan="6" class="text-right">Grand Total</td>
+              <td class="text-right">{{ grandtotalqty | number: "1.3-3" }}</td>
+              <td class="text-right pr-3">
+                {{ grandtotalamt | currency: "INR" }}
+              </td>
+              <td colspan="2"></td>
             </tr>
             <tr *ngIf="!allpurchases" class="text-danger">
-              <td colspan="9">
+              <td colspan="10">
                 <i class="fa fa-exclamation-triangle"></i> There aren't any
                 reports available for selected date
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive my-2" *ngIf="purchreturns">
+        <h6 class="text-primary text-uppercase"><u>Purchase Returns</u></h6>
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Returns Date</th>
+              <th scope="col">PRN / Debit Note No.</th>
+              <th scope="col">Bill No.</th>
+              <th scope="col">Bill Date</th>
+              <th scope="col">Supplier</th>
+              <th scope="col">Raw Material</th>
+              <th scope="col" class="text-right">Quantity</th>
+              <th scope="col" class="text-right pr-3">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rets of purchreturns; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ rets.returnsdate | date: "dd-MM-yyyy" }}</td>
+              <td>{{ rets.debitnoteno }}</td>
+              <td>{{ rets.billno }}</td>
+              <td>{{ rets.billdt | date: "dd-MM-yyyy" }}</td>
+              <td>{{ rets.name }}</td>
+              <td>{{ rets.rawmatname }}</td>
+              <td class="text-right">{{ rets.quantity | number: "1.3-3" }}</td>
+              <td class="text-right pr-3">
+                {{ rets.amount | currency: "INR" }}
+              </td>
+            </tr>
+            <tr class="font-weight-bold text-primary">
+              <td colspan="7" class="text-right">Total Returns</td>
+              <td class="text-right">{{ totalretqty | number: "1.3-3" }}</td>
+              <td class="text-right pr-3">
+                {{ totalretamt | currency: "INR" }}
               </td>
             </tr>
           </tbody>
@@ -108,18 +231,34 @@
 </div>
 
 <!-- Modal Purchase Payment History -->
-<div class="modal" id="purchasepayhist" tabindex="-1" role="dialog" aria-hidden="true">
+<div
+  class="modal"
+  id="purchasepayhist"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Supplier Payment History</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Supplier Payment History
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h6 class="text-secondary">To edit payment details, please go to <a [routerLink]="[ '/purchasepayments']"
-            data-dismiss="modal">"Purchase Payments"</a>
+        <h6 class="text-secondary">
+          To edit payment details, please go to
+          <a [routerLink]="['/purchasepayments']" data-dismiss="modal"
+            >"Purchase Payments"</a
+          >
         </h6>
         <div class="col-md-12" #purchasepayhistory></div>
       </div>
@@ -128,8 +267,15 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  *ngIf="selectedpurchase">
+<div
+  class="modal"
+  id="detailsModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedpurchase"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -137,7 +283,12 @@
           {{ selectedpurchase.arrivaldt | date: "dd-MM-yyyy" }} -
           {{ selectedpurchase.name }}
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -145,28 +296,57 @@
         <div class="row">
           <div class="col-md-4">
             <label class="m-0">Arrival Date: </label>
-            <input type="text" [value]="selectedpurchase.arrivaldt | date: 'dd-MM-yyyy'" class="form-control"
-              readonly />
+            <input
+              type="text"
+              [value]="selectedpurchase.arrivaldt | date: 'dd-MM-yyyy'"
+              class="form-control"
+              readonly
+            />
           </div>
           <div class="col-md-4">
             <label class="m-0">Bill Date: </label>
-            <input type="text" [value]="selectedpurchase.billdt | date: 'dd-MM-yyyy'" class="form-control" readonly />
+            <input
+              type="text"
+              [value]="selectedpurchase.billdt | date: 'dd-MM-yyyy'"
+              class="form-control"
+              readonly
+            />
           </div>
           <div class="col-md-4">
             <label class="m-0">Bill Number: </label>
-            <input type="text" [value]="selectedpurchase.billno" class="form-control" readonly />
+            <input
+              type="text"
+              [value]="selectedpurchase.billno"
+              class="form-control"
+              readonly
+            />
           </div>
           <div class="col-md-3 mt-3">
             <label class="m-0">DC Number: </label>
-            <input type="text" [value]="selectedpurchase.dcno" class="form-control" readonly />
+            <input
+              type="text"
+              [value]="selectedpurchase.dcno"
+              class="form-control"
+              readonly
+            />
           </div>
           <div class="col-md-3 mt-3">
             <label class="m-0">Vehical Number: </label>
-            <input type="text" [value]="selectedpurchase.vehicalno" class="form-control" readonly />
+            <input
+              type="text"
+              [value]="selectedpurchase.vehicalno"
+              class="form-control"
+              readonly
+            />
           </div>
           <div class="col-md-6 mt-3">
             <label class="m-0">Supplier: </label>
-            <input type="text" [value]="selectedpurchase.name" class="form-control" readonly />
+            <input
+              type="text"
+              [value]="selectedpurchase.name"
+              class="form-control"
+              readonly
+            />
           </div>
         </div>
         <div class="row mt-3">

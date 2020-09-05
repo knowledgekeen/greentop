@@ -174,7 +174,7 @@ if($action == "getPurchaseDetails"){
 	$headers = apache_request_headers();
 	authenticate($headers);
 	$purcmastid = $_GET["purcmastid"];
-	$sql = "SELECT pm.`purcmastid`, pm.`clientid`, pm.`vehicalno`, pm.`dcno`, pm.`billno`, pm.`billdt`, pm.`arrivaldt`, pm.`totaldiscount`, pm.`totalamount`, cm.`name`, pr.`rawmatid`, pr.`quantity`, pr.`rate`, pr.`cgst`, pr.`sgst`, pr.`igst`, pr.`amount`, pr.`discount`, pr.`roundoff` FROM `purchase_master` pm, `purchase_register` pr, `client_master` cm WHERE pm.`purcmastid` = pr.`purcmastid` AND pm.`clientid` = cm.`clientid` AND pm.`purcmastid`=$purcmastid";
+	$sql = "SELECT pm.`purcmastid`, pm.`clientid`, pm.`vehicalno`, pm.`dcno`, pm.`billno`, pm.`billdt`, pm.`arrivaldt`, pm.`totaldiscount`, pm.`totalamount`, cm.`name`, pr.`rawmatid`, pr.`quantity`, pr.`rate`, pr.`cgst`, pr.`sgst`, pr.`igst`, pr.`amount`, pr.`discount`, pr.`roundoff`, rmm.`name` as `rawmatname` FROM `purchase_master` pm, `purchase_register` pr, `client_master` cm, `raw_material_master` rmm WHERE pm.`purcmastid` = pr.`purcmastid` AND pm.`clientid` = cm.`clientid` AND pr.`rawmatid`=rmm.`rawmatid` AND pm.`purcmastid`=$purcmastid";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -198,6 +198,7 @@ if($action == "getPurchaseDetails"){
 			$tmp[$i]['totaldiscount'] = $row['totaldiscount'];
 			$tmp[$i]['totalamount'] = $row['totalamount'];
 			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['rawmatname'] = $row['rawmatname'];
 			$tmp[$i]['rawmatid'] = $row['rawmatid'];
 			$tmp[$i]['quantity'] = $row['quantity'];
 			$tmp[$i]['rate'] = $row['rate'];
@@ -401,5 +402,75 @@ if($action == "checkPurchaseDCNoIfPresent"){
 	}
 
 	echo json_encode($data);
+}
+
+if($action == "deletePurchase"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $purcmastid = $data->purcmastid;
+    
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "DELETE FROM `purchase_master` WHERE `purcmastid`=$purcmastid";
+        $result = $conn->query($sql);
+		$sqldel = "DELETE FROM `purchase_register` WHERE `purcmastid`=$purcmastid";
+        $resultdel = $conn->query($sqldel);
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $purcmastid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
+
+if($action == "addPurchaseReturns"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $purcmastid = $data->purcmastid;
+    $debitnoteno = $data->debitnoteno;
+    $returnsdate = $data->returnsdate;
+    $quantity = $data->quantity;
+    $amount = $data->amount;
+    $particulars = mysqli_real_escape_string($conn,$data->particulars);
+    
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sql = "INSERT INTO `purchase_returns`(`purcmastid`, `debitnoteno`, `returnsdate`, `quantity`, `amount`, `particulars`) VALUES ($purcmastid,'$debitnoteno','$returnsdate','$quantity','$amount','$particulars')";
+        $result = $conn->query($sql);
+        $returnsid = $conn->insert_id;
+	}
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $returnsid;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: rawmaterial.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
 }
 ?>

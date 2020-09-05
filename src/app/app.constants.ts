@@ -6,4 +6,5 @@ export const CONSTANTS = {
     OTHERS: 'Others',
     HDPE_BAGS: 'HDPE Bags',
     IN: 'IN',
+    OUT: 'OUT',
 }  

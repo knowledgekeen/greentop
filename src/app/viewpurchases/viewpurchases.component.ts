@@ -1,18 +1,25 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+  ComponentFactoryResolver,
+} from "@angular/core";
 import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
 import { IntervalService } from "../interval.service";
 import { Router } from "@angular/router";
-import { PurchasepayhistoryComponent } from '../purchasepayhistory/purchasepayhistory.component';
+import { PurchasepayhistoryComponent } from "../purchasepayhistory/purchasepayhistory.component";
 import * as moment from "moment";
 
 @Component({
   selector: "app-viewpurchases",
   templateUrl: "./viewpurchases.component.html",
-  styleUrls: ["./viewpurchases.component.css"]
+  styleUrls: ["./viewpurchases.component.css"],
 })
 export class ViewpurchasesComponent implements OnInit {
   allpurchases: any = null;
+  purchreturns: any = null;
   finanyr: any = null;
   fromdt: any = null;
   todt: any = null;
@@ -22,8 +29,15 @@ export class ViewpurchasesComponent implements OnInit {
   totalamt: number = 0;
   totalqty: number = 0;
   totalbags: number = 0;
+  totalretamt: number = 0;
+  totalretqty: number = 0;
+  grandtotalamt: number = 0;
+  grandtotalqty: number = 0;
   selectedpurchase: any = null;
-  @ViewChild('purchasepayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
+  selecteddelpurch: any = null;
+  successmsg: boolean = false;
+  @ViewChild("purchasepayhistory", { read: ViewContainerRef, static: true })
+  entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,
@@ -31,7 +45,7 @@ export class ViewpurchasesComponent implements OnInit {
     private _global: GlobalService,
     private _router: Router,
     private resolver: ComponentFactoryResolver
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.finanyr = this._global.getCurrentFinancialYear();
@@ -40,7 +54,9 @@ export class ViewpurchasesComponent implements OnInit {
 
   loadPurchasePaymentHistory(supplier) {
     this.entry.clear();
-    const factory = this.resolver.resolveComponentFactory(PurchasepayhistoryComponent);
+    const factory = this.resolver.resolveComponentFactory(
+      PurchasepayhistoryComponent
+    );
     const componentRef = this.entry.createComponent(factory);
     componentRef.instance.supplier = supplier;
   }
@@ -56,9 +72,11 @@ export class ViewpurchasesComponent implements OnInit {
     let totamt = 0;
     let totqty = 0;
     let totbags = 0;
+    this.totalretamt = 0;
+    this.totalretqty = 0;
     this._rest
       .getData("reports_purchases.php", "getFromToPurchases", purchurl)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         //console.table(Response);
         if (Response) {
           //console.log(Response["data"]);
@@ -79,6 +97,21 @@ export class ViewpurchasesComponent implements OnInit {
           this.totalbags = totbags;
         }
       });
+
+    this._rest
+      .getData("reports_purchases.php", "getFromToPurchaseReturns", purchurl)
+      .subscribe((Resp) => {
+        this.purchreturns = Resp && Resp["data"] ? Resp["data"] : null;
+        for (let i in this.purchreturns) {
+          this.totalretamt += parseFloat(this.purchreturns[i].amount);
+          this.totalretqty += parseFloat(this.purchreturns[i].quantity);
+        }
+      });
+
+    this._interval.settimer().then((tot) => {
+      this.grandtotalamt = this.totalamt - this.totalretamt;
+      this.grandtotalqty = this.totalqty - this.totalretqty;
+    });
   }
 
   autofillfromdt() {
@@ -105,5 +138,70 @@ export class ViewpurchasesComponent implements OnInit {
 
   viewPurchaseDetails(purch) {
     this.selectedpurchase = purch;
+  }
+
+  deletePurchase(purch) {
+    if (
+      confirm(
+        `Are you sure you want to delete PURCHASE ENTRY for "${purch.name} / ${purch.rawmatname} / QTY: ${purch.quantity}"`
+      )
+    ) {
+      this.confirmDeletePurchase(purch);
+    }
+  }
+
+  confirmDeletePurchase(purch) {
+    // console.log(purch);
+    this.successmsg = false;
+    const geturl = `rawmatid=${purch.rawmatid}`;
+    this._rest.getData("stock.php", "getRawMatStock", geturl).subscribe(
+      (RawMatStock) => {
+        // console.log(RawMatStock);
+        const stk =
+          RawMatStock && RawMatStock["data"] ? RawMatStock["data"] : null;
+        if (stk) {
+          const updatednewqty =
+            parseFloat(stk.quantity) - parseFloat(purch.quantity);
+          const stkqtyobj = {
+            stockid: stk.stockid,
+            quantity: updatednewqty,
+          };
+          this._rest
+            .postData("stock.php", "updateStockQuantity", stkqtyobj)
+            .subscribe(
+              (UpdStk) => {
+                // console.log("Stock Updated Successfully");
+                const delpurch = {
+                  purcmastid: purch.purcmastid,
+                };
+                this._rest
+                  .postData("rawmaterial.php", "deletePurchase", delpurch)
+                  .subscribe((DelPur) => {
+                    this.successmsg = true;
+                    window.scrollTo(0, 0);
+                    this._interval.settimer().then((Resp) => {
+                      this.successmsg = false;
+                      window.location.reload();
+                    });
+                  });
+              },
+              (err) => {
+                alert(
+                  "Unable to update the Raw Material Stock, Kindly Try Again Later"
+                );
+              }
+            );
+        } else {
+          alert(
+            "Unable to find the Raw Material Stock, Kindly Try Again Later"
+          );
+          return;
+        }
+      },
+      (err) => {
+        alert("Unable to find the Raw Material Stock, Kindly Try Again Later");
+        return;
+      }
+    );
   }
 }

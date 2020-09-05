@@ -865,4 +865,35 @@ if($action == "updateStockDetails"){
 
 	echo json_encode($data1);
 }
+
+if($action == "updateStockQuantity"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $stockid = $data->stockid;
+    $quantity = $data->quantity;
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+		$sqlregupdt = "UPDATE `stock_master` SET `quantity`='$quantity' WHERE `stockid`=$stockid";
+		$resultregqty = $conn->query($sqlregupdt);
+	}
+    $data1= array();
+    if($resultregqty){
+        $data1["status"] = 200;
+        $data1["data"] = $stockid;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+        header(' ', true, 200);
+    }
+    else{
+        $data1["status"] = 204;
+		$log  = "File: stock.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+    echo json_encode($data1);
+}
 ?>

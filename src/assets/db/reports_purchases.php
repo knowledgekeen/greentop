@@ -109,4 +109,56 @@ if($action == "getFromToPurchasesForAccounts"){
 
 	echo json_encode($data);
 }
+
+if($action == "getFromToPurchaseReturns"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $sql = "SELECT prts.*, pm.`purcmastid`,pm.`clientid`,pm.`billno`,pm.`billdt`,cm.`name`,pr.`rawmatid`, rm.`name` as `rawmatname` FROM `purchase_returns` prts, `purchase_master` pm, `client_master` cm, `purchase_register` pr, `raw_material_master` rm WHERE prts.`purcmastid`=pm.`purcmastid` AND pm.`clientid`=cm.`clientid` AND pr.`purcmastid`=pm.`purcmastid` AND pr.`rawmatid`=rm.`rawmatid` AND `returnsdate` BETWEEN '$fromdt' AND '$todt' ORDER BY prts.`returnsdate`";
+    $result = $conn->query($sql);
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
+
+	$tmp = array();
+	$data = array();
+	$i = 0;
+
+	if(count($rows)>0){
+		foreach($rows as $row)
+		{
+			$tmp[$i]['purchreturnsid'] = $row['purchreturnsid'];
+			$tmp[$i]['debitnoteno'] = $row['debitnoteno'];
+			$tmp[$i]['returnsdate'] = $row['returnsdate'];
+			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['amount'] = $row['amount'];
+			$tmp[$i]['particulars'] = $row['particulars'];
+			$tmp[$i]['clientid'] = $row['clientid'];
+			$tmp[$i]['billno'] = $row['billno'];
+			$tmp[$i]['billdt'] = $row['billdt'];
+			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['rawmatid'] = $row['rawmatid'];
+			$tmp[$i]['rawmatname'] = $row['rawmatname'];
+			$tmp[$i]['purcmastid'] = $row['purcmastid'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: reports_purchases.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: reports_purchases.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data);
+}
 ?>

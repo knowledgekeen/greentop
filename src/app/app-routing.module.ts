@@ -38,6 +38,7 @@ import { CreateaccountheadComponent } from './createaccounthead/createaccounthea
 import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
 import { AddreceiptComponent } from './addreceipt/addreceipt.component';
 import { EditstockComponent } from './editstock/editstock.component';
+import { PurchasereturnsComponent } from './purchasereturns/purchasereturns.component';
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -81,6 +82,7 @@ const routes: Routes = [
   { path: "addexpenditure", component: AddexpenditureComponent },
   { path: "addreceipt", component: AddreceiptComponent },
   { path: "editstock", component: EditstockComponent },
+  { path: "purchasereturns/:purcmastid", component: PurchasereturnsComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" }
 ];
