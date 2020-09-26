@@ -7,7 +7,7 @@ import { GlobalService } from "../global.service";
 @Component({
   selector: "app-viewtaxinvoices",
   templateUrl: "./viewtaxinvoices.component.html",
-  styleUrls: ["./viewtaxinvoices.component.css"]
+  styleUrls: ["./viewtaxinvoices.component.css"],
 })
 export class ViewtaxinvoicesComponent implements OnInit {
   selectedinvoice: any = new Date();
@@ -46,7 +46,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
     private _interval: IntervalService,
     private _rest: RESTService,
     private _global: GlobalService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.initialize();
@@ -64,7 +64,7 @@ export class ViewtaxinvoicesComponent implements OnInit {
     let geturl = "fromdt=" + fromdt + "&todt=" + todt;
     this._rest
       .getData("taxinvoice.php", "getInvoicesFromToDt", geturl)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allinvoices = Response["data"];
           for (let i in this.allinvoices) {
@@ -88,13 +88,13 @@ export class ViewtaxinvoicesComponent implements OnInit {
     let urldata = "orderid=" + bill.orderid;
     this._rest
       .getData("order.php", "getOrdersDetails", urldata)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         //console.log(Response);
         if (Response) {
           this.orderdetails = Response["data"];
           this._rest
             .getData("order.php", "getOrderConsignees", urldata)
-            .subscribe(Resp => {
+            .subscribe((Resp) => {
               if (Resp) {
                 this.allconsignees = Resp["data"];
               }
@@ -109,22 +109,28 @@ export class ViewtaxinvoicesComponent implements OnInit {
     this.billno = billdet.billno;
     this.billdt = moment(parseInt(billdet.billdt)).format("DD-MM-YYYY");
 
-    this.amount = billdet.amount;
-    this.rate = billdet.rate;
-    this.discount = billdet.discount;
+    this.amount = parseFloat(parseFloat(billdet.amount).toFixed(2));
+    this.rate = parseFloat(parseFloat(billdet.rate).toFixed(2));
+    this.discount = parseFloat(parseFloat(billdet.discount).toFixed(2));
     let netamt = parseFloat(this.amount) - parseFloat(this.discount);
     this.amtbeforegst = netamt;
-    this.cgst = billdet.cgst;
-    this.sgst = billdet.sgst;
-    this.igst = billdet.igst;
-    this.roundoff = billdet.roundoff;
-    this.totalamount = billdet.totalamount;
+    this.cgst = parseFloat(parseFloat(billdet.cgst).toFixed(2));
+    this.sgst = parseFloat(parseFloat(billdet.sgst).toFixed(2));
+    this.igst = parseFloat(parseFloat(billdet.igst).toFixed(2));
+    this.roundoff = parseFloat(parseFloat(billdet.roundoff).toFixed(2));
+    this.totalamount = parseFloat(parseFloat(billdet.totalamount).toFixed(2));
     this.cgstinr =
-      this.cgst == "0" ? 0 : (parseFloat(this.cgst) / 100) * netamt;
+      this.cgst == "0"
+        ? 0
+        : parseFloat(((parseFloat(this.cgst) / 100) * netamt).toFixed(2));
     this.sgstinr =
-      this.sgst == "0" ? 0 : (parseFloat(this.cgst) / 100) * netamt;
+      this.sgst == "0"
+        ? 0
+        : parseFloat(((parseFloat(this.cgst) / 100) * netamt).toFixed(2));
     this.igstinr =
-      this.igst == "0" ? 0 : (parseFloat(this.cgst) / 100) * netamt;
+      this.igst == "0"
+        ? 0
+        : parseFloat(((parseFloat(this.cgst) / 100) * netamt).toFixed(2));
   }
 
   autoFillDt() {
@@ -138,31 +144,42 @@ export class ViewtaxinvoicesComponent implements OnInit {
       return false;
     }
     let qty = this.billdetails.quantity;
+    this.rate = parseFloat(parseFloat(this.rate).toFixed(2));
     let amount = parseFloat(qty) * parseFloat(this.rate);
-    let discount = parseFloat(this.discount);
+    let discount = parseFloat(parseFloat(this.discount).toFixed(2));
     let netamt = amount - discount;
     let cgst = (this.cgstinr =
-      this.cgst == "0" ? 0 : (parseFloat(this.cgst) / 100) * netamt);
+      this.cgst == "0"
+        ? 0
+        : parseFloat(((parseFloat(this.cgst) / 100) * netamt).toFixed(2)));
     let sgst = (this.sgstinr =
-      this.sgst == "0" ? 0 : (parseFloat(this.sgst) / 100) * netamt);
+      this.sgst == "0"
+        ? 0
+        : parseFloat(((parseFloat(this.sgst) / 100) * netamt).toFixed(2)));
     let igst = (this.igstinr =
-      this.igst == "0" ? 0 : (parseFloat(this.igst) / 100) * netamt);
-    let rawtotalamt = netamt + cgst + sgst + igst + parseFloat(this.roundoff);
-    //console.log(rawtotalamt, netamt, cgst, sgst, igst);
+      this.igst == "0"
+        ? 0
+        : parseFloat(((parseFloat(this.igst) / 100) * netamt).toFixed(2)));
+    let rawtotalamt =
+      parseFloat(netamt.toFixed(2)) +
+      parseFloat(cgst.toFixed(2)) +
+      parseFloat(sgst.toFixed(2)) +
+      parseFloat(igst.toFixed(2)) +
+      parseFloat(parseFloat(this.roundoff).toFixed(2));
     if (this.cgst && !this.sgst) {
       this.sgst = this.cgst;
       this.sgstinr = this.cgstinr;
-      rawtotalamt += parseFloat(this.sgstinr);
+      rawtotalamt += parseFloat(parseFloat(this.sgstinr).toFixed(2));
     }
     if (this.sgst && !this.cgst) {
       this.cgst = this.sgst;
       this.cgstinr = this.sgstinr;
-      rawtotalamt += parseFloat(this.cgstinr);
+      rawtotalamt += parseFloat(parseFloat(this.cgstinr).toFixed(2));
     }
     if (this.rate) {
       this.amount = amount;
       this.amtbeforegst = netamt;
-      this.totalamount = rawtotalamt;
+      this.totalamount = parseFloat(rawtotalamt.toFixed(2));
     }
   }
 
@@ -179,15 +196,15 @@ export class ViewtaxinvoicesComponent implements OnInit {
       sgst: this.sgst,
       igst: this.igst,
       roundoff: this.roundoff,
-      totalamount: this.totalamount
+      totalamount: this.totalamount,
     };
     this._rest
       .postData("taxinvoice.php", "updateBillDetails", tmpobj)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.successmsg = true;
           this.initialize();
-          this._interval.settimer().then(Resp => {
+          this._interval.settimer().then((Resp) => {
             this.successmsg = false;
             this.disableupdatebtn = false;
           });
