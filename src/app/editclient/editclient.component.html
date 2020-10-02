@@ -8,9 +8,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12 col-xs-12 text-danger">
-          <p>
-            Fields marked with asterisk (*) are compulsary
-          </p>
+          <p>Fields marked with asterisk (*) are compulsary</p>
         </div>
         <div class="col-sm-4 col-xs-12 mb-3">
           <label class="m-0">
@@ -102,18 +100,29 @@
             list="cities"
           />
           <datalist id="cities">
-            <option value="{{ city.city }}" *ngFor="let city of allcities">{{
-              city.city
-            }}</option>
+            <option value="{{ city.city }}" *ngFor="let city of allcities">
+              {{ city.city }}
+            </option>
           </datalist>
         </div>
         <div class="col-sm-4 col-xs-12 mb-3">
-          <label class="m-0">District <sup class="text-danger font-weight-bold">*</sup></label>
-          <input type="text" class="form-control" placeholder="District" [(ngModel)]="district" list="district" />
+          <label class="m-0"
+            >District <sup class="text-danger font-weight-bold">*</sup></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="District"
+            [(ngModel)]="district"
+            list="district"
+          />
           <datalist id="district">
-            <option value="{{ dist.district }}" *ngFor="let dist of alldistricts">{{
-              dist.district
-            }}</option>
+            <option
+              value="{{ dist.district }}"
+              *ngFor="let dist of alldistricts"
+            >
+              {{ dist.district }}
+            </option>
           </datalist>
         </div>
         <div class="col-sm-4 col-xs-12 mb-3">
@@ -128,9 +137,9 @@
             list="states"
           />
           <datalist id="states">
-            <option value="{{ state.state }}" *ngFor="let state of allstates">{{
-              state.state
-            }}</option>
+            <option value="{{ state.state }}" *ngFor="let state of allstates">
+              {{ state.state }}
+            </option>
           </datalist>
         </div>
         <div class="col-sm-12 col-xs-12 mb-3">
@@ -141,6 +150,44 @@
             placeholder="Address"
             [(ngModel)]="address"
           ></textarea>
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">License Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="License Number"
+            [(ngModel)]="licenseno"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">Date of Issue</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Issue"
+            [(ngModel)]="licenseissuedt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">Date of Expiry</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Expiry"
+            [(ngModel)]="licenseexpirydt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">Issuing Authority</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Issuing Authority"
+            [(ngModel)]="licenseauthority"
+          />
         </div>
         <div class="col-sm-6 col-xs-12 mb-3">
           <button

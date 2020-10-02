@@ -72,6 +72,7 @@ import { AccountsNavbarComponent } from "./accounts-navbar/accounts-navbar.compo
 import { AccountsModule } from "./accounts/accounts/accounts.module";
 import { CreatepersonalaccComponent } from "./accounts/createpersonalacc/createpersonalacc.component";
 import { PurchasereturnsComponent } from "./purchasereturns/purchasereturns.component";
+import { OformComponent } from './oform/oform.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { PurchasereturnsComponent } from "./purchasereturns/purchasereturns.comp
     AccountsNavbarComponent,
     CreatepersonalaccComponent,
     PurchasereturnsComponent,
+    OformComponent,
   ],
   imports: [
     BrowserModule,

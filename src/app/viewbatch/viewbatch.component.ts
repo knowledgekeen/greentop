@@ -7,7 +7,7 @@ import { GlobalService } from "../global.service";
 @Component({
   selector: "app-viewbatch",
   templateUrl: "./viewbatch.component.html",
-  styleUrls: ["./viewbatch.component.css"]
+  styleUrls: ["./viewbatch.component.css"],
 })
 export class ViewbatchComponent implements OnInit {
   allbatches: any = null;
@@ -32,7 +32,7 @@ export class ViewbatchComponent implements OnInit {
     private _rest: RESTService,
     private _interval: IntervalService,
     private _global: GlobalService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.initialize();
@@ -48,7 +48,7 @@ export class ViewbatchComponent implements OnInit {
     let urldata = "fromdt=" + fromdt + "&todt=" + todt;
     this._rest
       .getData("production.php", "getProductionBatchesFromToDt", urldata)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allbatches = Response["data"];
         }
@@ -68,7 +68,7 @@ export class ViewbatchComponent implements OnInit {
       this.selectedbatch.prodid + "." + this.selectedbatch.prodname;
     this._rest
       .getData("production.php", "getProductionBatchDetails", geturl)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.selectedbatchmaterials = Response["data"];
           this.originalbatchmaterials = JSON.parse(
@@ -81,17 +81,16 @@ export class ViewbatchComponent implements OnInit {
     //Get batch dispathes details
     this._rest
       .getData("dispatch.php", "getBatchDispatches", geturl)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
-          this.batchdispatches = Response['data'];
+          this.batchdispatches = Response["data"];
           for (let i = 0; i < this.batchdispatches.length; i++) {
             this.batchdispatches[i].invoicedetails = null;
           }
-        }
-        else {
+        } else {
           this.batchdispatches = null;
         }
-      })
+      });
   }
 
   saveBatch() {
@@ -102,7 +101,7 @@ export class ViewbatchComponent implements OnInit {
     let batchstkobj = {
       prodid: this.originalbatch.prodid,
       quantity: batchqtychange,
-      qtydt: new Date().getTime()
+      qtydt: new Date().getTime(),
     };
     let balDate = moment(this.selectedbatch.manufacdate, "DD-MM-YYYY").format(
       "MM-DD-YYYY"
@@ -110,21 +109,22 @@ export class ViewbatchComponent implements OnInit {
     let batchprodobj = {
       batchid: this.selectedbatch.batchid,
       quantity: this.selectedbatch.qtyproduced,
-      manufacdate: new Date(balDate).getTime()
+      quantityrem: this.selectedbatch.qtyremained,
+      manufacdate: new Date(balDate).getTime(),
     };
     //console.log(batchstkobj, batchprodobj);
-    this.updateStockUsingProdid(batchstkobj).then(Response => {
+    this.updateStockUsingProdid(batchstkobj).then((Response) => {
       //Gets Stock id in Response
       let stkregobj = {
         stockid: Response["data"],
         quantity: this.selectedbatch.qtyproduced,
         manufacdate: this.originalbatch.manufacdate,
-        newdate: new Date(balDate).getTime()
+        newdate: new Date(balDate).getTime(),
       };
       //console.log(Response, stkregobj);
-      this.updateProductionMaster(batchprodobj).then(Resp => {
+      this.updateProductionMaster(batchprodobj).then((Resp) => {
         this.updateStockRegQuantity(stkregobj)
-          .then(Respstkreg => {
+          .then((Respstkreg) => {
             //console.log("Success");
             this.allbatches = null;
             this.initialize();
@@ -141,7 +141,7 @@ export class ViewbatchComponent implements OnInit {
                   stockid: null,
                   changeqty: null,
                   stkdate: vm.originalbatch.manufacdate,
-                  newdate: new Date(balDate).getTime()
+                  newdate: new Date(balDate).getTime(),
                 };
                 tmpprodregobj.changeqty =
                   parseFloat(vm.selectedbatchmaterials[e].rawmatqty) -
@@ -149,7 +149,7 @@ export class ViewbatchComponent implements OnInit {
                 let url = "rawmatid=" + vm.originalbatchmaterials[e].rawmatid;
                 vm._rest
                   .getData("stock.php", "getStockidFromRawMatId", url)
-                  .subscribe(resgetstock => {
+                  .subscribe((resgetstock) => {
                     if (resgetstock) {
                       //console.log(resgetstock);
                       tmpprodregobj.stockid = resgetstock["data"]["stockid"];
@@ -162,11 +162,11 @@ export class ViewbatchComponent implements OnInit {
                           tmpprodregobj,
                           null
                         )
-                        .subscribe(RespTmpProdRegArr => {
+                        .subscribe((RespTmpProdRegArr) => {
                           //console.log("Success", RespTmpProdRegArr);
                           vm.batchsucces = true;
                           vm.disablesavebtn = false;
-                          vm._interval.settimer(null).then(resp => {
+                          vm._interval.settimer(null).then((resp) => {
                             vm.batchsucces = false;
                           });
                         });
@@ -175,7 +175,7 @@ export class ViewbatchComponent implements OnInit {
               })(i);
             }
           })
-          .catch(Respstkregerr => {
+          .catch((Respstkregerr) => {
             console.log("Error", Respstkregerr);
           });
       });
@@ -187,7 +187,7 @@ export class ViewbatchComponent implements OnInit {
     return new Promise(function (resolve, reject) {
       vm._rest
         .postData("stock.php", "updateStockUsingProdid", batchstkobj, null)
-        .subscribe(Response => {
+        .subscribe((Response) => {
           if (Response) {
             resolve(Response);
           }
@@ -199,8 +199,13 @@ export class ViewbatchComponent implements OnInit {
     let vm = this;
     return new Promise(function (resolve, reject) {
       vm._rest
-        .postData("production.php", "updateProductionMaster", batchprodobj, null)
-        .subscribe(Resp => {
+        .postData(
+          "production.php",
+          "updateProductionMaster",
+          batchprodobj,
+          null
+        )
+        .subscribe((Resp) => {
           if (Resp) {
             resolve(true);
           }
@@ -215,14 +220,14 @@ export class ViewbatchComponent implements OnInit {
       vm._rest
         .postData("stock.php", "updateStockRegQuantity", stkregobj, null)
         .subscribe(
-          Respstkreg => {
+          (Respstkreg) => {
             if (Respstkreg) {
               resolve(true);
             } else {
               reject(false);
             }
           },
-          err => {
+          (err) => {
             reject(err);
           }
         );
@@ -232,15 +237,15 @@ export class ViewbatchComponent implements OnInit {
   getInvoiceDetails(disp, index) {
     this.batchdispatches[index].invoicedetails = false;
     let invoiceurl = "orderid=" + disp.orderid;
-    this._rest.getData("taxinvoice.php", "getInvoiceDetails", invoiceurl)
-      .subscribe(Response => {
+    this._rest
+      .getData("taxinvoice.php", "getInvoiceDetails", invoiceurl)
+      .subscribe((Response) => {
         if (Response) {
           this.batchdispatches[index].invoicedetails = Response["data"];
-        }
-        else {
+        } else {
           this.batchdispatches[index].invoicedetails = "nodata";
         }
-      })
+      });
   }
 
   autofillfromdt() {

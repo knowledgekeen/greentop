@@ -412,10 +412,11 @@ if($action == "updateProductionMaster"){
 	$data = json_decode(file_get_contents("php://input"));
 	$batchid = $data->batchid;
 	$quantity = $data->quantity;
+	$quantityrem = $data->quantityrem;
 	$manufacdate = $data->manufacdate;
 	
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sql = "UPDATE `production_batch_master` SET `qtyproduced`='$quantity', `qtyremained`='$quantity',`manufacdate`='$manufacdate' WHERE `batchid`=$batchid";
+		$sql = "UPDATE `production_batch_master` SET `qtyproduced`='$quantity', `qtyremained`='$quantityrem',`manufacdate`='$manufacdate' WHERE `batchid`=$batchid";
 		$result = $conn->query($sql);
 	}
 	$data1= array();

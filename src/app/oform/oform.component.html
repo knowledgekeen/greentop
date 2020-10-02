@@ -1,0 +1,355 @@
+<div class="container">
+  <h5 class="my-2 noprint">O Form</h5>
+
+  <div class="card position-relative">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <img
+            src="./assets/images/logo.jpg"
+            alt="Green Top Organics"
+            width="150px"
+            class="position-absolute"
+          />
+          <h5 class="text-center font-weight-bold mt-3">FORM "O"</h5>
+          <p class="text-center font-weight-bold">[See Clause 8 and 11]</p>
+          <p class="text-center font-weight-bold">
+            CERTIFICATE OF SOURCE FOR CARRYING ON THE BUSINESS OF SELLING <br />
+            FERTILISERS IN WHOLESALE/RETAIL/FOR INDUSTRIAL USE
+          </p>
+        </div>
+      </div>
+      <div class="row mt-5 ml-5">
+        <div class="col-md-1 col-sm-1 text-right">No:</div>
+        <div
+          class="col-md-2 col-sm-2 border-dark border-bottom"
+          contenteditable="true"
+        ></div>
+        <div class="col"></div>
+        <div class="col-md-1 col-sm-1 text-right">Date:</div>
+        <div
+          class="col-md-2 col-sm-2 border-dark border-bottom"
+          contenteditable="true"
+        ></div>
+      </div>
+      <div class="row mt-3 ml-5">
+        <div class="col-md-12">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  <span class="font-weight-bold">
+                    1. Particulars of the concern issuing the certificate of
+                    source.</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>(a) Name and full address:</td>
+                <td>
+                  <h6 class="font-weight-bold">
+                    Green Top Organics <br />{{ companyaddress }}. <br />
+                    State: Maharashtra.
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td>(b) Status:</td>
+                <td>
+                  <ol type="i">
+                    <li>State Government</li>
+                    <li>
+                      Manufacturer
+                      <span class="float-right">
+                        <i class="fa fa-check text-primary"></i>
+                        Self Manufacturer
+                      </span>
+                    </li>
+                    <li>Pool handling agency</li>
+                    <li>Wholesale dealer</li>
+                    <li>Importer</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  (c) If manufacturer of mixture of fertilisers, the details of
+                  certificate of manufacture of mixture of fertilisers
+                  possessed:
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <ol type="i">
+                    <li>
+                      Number
+                      <div class="float-right font-weight-bold">LCFD100158</div>
+                    </li>
+                    <li>
+                      Date of Issue
+                      <div class="float-right font-weight-bold">
+                        12 May 2020
+                      </div>
+                    </li>
+                    <li>
+                      Date of expiry
+                      <div class="float-right font-weight-bold">
+                        11 May 2025
+                      </div>
+                    </li>
+                    <li>
+                      Grades of mixturers of fertilisers <br />
+                      allowed to be manufactured
+                      <div class="float-right font-weight-bold">
+                        Organic Manure (N+P+K > 3.0%)
+                      </div>
+                    </li>
+                    <li>
+                      Authority by whom issued
+                      <div class="float-right font-weight-bold">
+                        Commissionerate Of Agriculture, <br />
+                        Maharashtra State, Pune.
+                      </div>
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  (d) Details of certificate of registration :
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <ol type="i">
+                    <li>
+                      Number
+                      <div class="float-right font-weight-bold">LCFD100158</div>
+                    </li>
+                    <li>
+                      Date of Issue
+                      <div class="float-right font-weight-bold">
+                        12 May 2020
+                      </div>
+                    </li>
+                    <li>
+                      Date of expiry
+                      <div class="float-right font-weight-bold">
+                        11 May 2025
+                      </div>
+                    </li>
+                    <li>
+                      Authority by whom issued
+                      <div class="float-right font-weight-bold">
+                        Commissionerate Of Agriculture, <br />
+                        Maharashtra State, Pune.
+                      </div>
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <span class="font-weight-bold">
+                    2. Particulars of the person to whom the certificate of
+                    source is being issued.
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>(a) Name and full address:</td>
+                <td>
+                  <h6 class="font-weight-bold" *ngIf="custdetails">
+                    {{ custdetails.name }} <br />{{ custdetails.address }}.
+                    <br />
+                    State: {{ custdetails.state }}.
+                  </h6>
+                </td>
+              </tr>
+              <tr>
+                <td>(b) Status:</td>
+                <td>
+                  <ol type="i" class="float-left">
+                    <li>
+                      <input
+                        type="checkbox"
+                        class="noprint"
+                        (change)="wholesale_dealer = !wholesale_dealer"
+                      />
+                      Wholesale dealer
+                      <span *ngIf="wholesale_dealer" class="mx-3">
+                        <i class="fa fa-check text-primary"></i>
+                      </span>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        class="noprint"
+                        (change)="retail_dealer = !retail_dealer"
+                      />
+                      Retail dealer
+                      <span *ngIf="retail_dealer" class="mx-3">
+                        <i class="fa fa-check text-primary"></i>
+                      </span>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        class="noprint"
+                        (change)="industrial_dealer = !industrial_dealer"
+                      />
+                      Industrial dealer
+                      <span *ngIf="industrial_dealer" class="mx-3">
+                        <i class="fa fa-check text-primary"></i>
+                      </span>
+                    </li>
+                  </ol>
+                  <div class="float-right"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  (c) If holds a valid certificate of registration, the details
+                  thereof:
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <ol type="i">
+                    <li>
+                      Number
+                      <div class="float-right" *ngIf="custdetails">
+                        {{ custdetails.licenseno }}
+                      </div>
+                    </li>
+                    <li>
+                      Date of Issue
+                      <div class="float-right" *ngIf="custdetails">
+                        {{ custdetails.licenseissuedt | date: "dd/MM/yyyy" }}
+                      </div>
+                    </li>
+                    <li>
+                      Date of expiry
+                      <div class="float-right" *ngIf="custdetails">
+                        {{ custdetails.licenseexpirydt | date: "dd/MM/yyyy" }}
+                      </div>
+                    </li>
+                    <li>
+                      Authority by whom issued
+                      <div
+                        class="float-right"
+                        *ngIf="custdetails"
+                        style="max-width: 300px"
+                      >
+                        {{ custdetails.licenseauthority }}
+                      </div>
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  (d) Purpose of obtaining the certificate of source:
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <ol type="i">
+                    <li>
+                      <input
+                        type="checkbox"
+                        class="noprint"
+                        (change)="fresh_cert = !fresh_cert"
+                      />
+                      For obtaining a fresh certificate of registration
+                      <span *ngIf="fresh_cert" class="mx-3">
+                        <i class="fa fa-check text-primary"></i>
+                      </span>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        class="noprint"
+                        (change)="renew_cert = !renew_cert"
+                      />
+                      For Renewal of the certificate of registration
+                      <span *ngIf="renew_cert" class="mx-3">
+                        <i class="fa fa-check text-primary"></i>
+                      </span>
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <span class="font-weight-bold">
+                    3. Details of fertiliser(s) to be supplied:
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pt-0">
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th class="pt-0 text-center">S. No. <br />(1)</th>
+                        <th class="pt-0 text-center">
+                          Name of fertilisers<br />(2)
+                        </th>
+                        <th class="pt-0 text-center">
+                          Trade mark / Brand name<br />(3)
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">(1)</td>
+                        <td class="text-center">Organic Manure</td>
+                        <td class="text-center">
+                          <span contenteditable="true">ECHOMEAL</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">(2)</td>
+                        <td></td>
+                        <td><span contenteditable="true"></span></td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">(3)</td>
+                        <td></td>
+                        <td><span contenteditable="true"></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <span class="font-weight-bold">4. Declaration:</span> Declared
+                  that the fertilisers mentioned above will be supplied
+                  conforming to the standards laid down under the Fertiliser
+                  (Control)Order, 1985 and, as the case may be,
+                  grades/formulations (of mixtures of fertilisers) notified by
+                  the Central/State Government and packed and marked in
+                  container as provided under clause 21 of the Fertiliser
+                  (Control) Order, 1985
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <br /><br /><br />
+                  Signature with stamp of the <br />
+                  <strong>Authorised Officer</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

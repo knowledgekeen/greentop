@@ -31,14 +31,15 @@ import { AddclientopenbalComponent } from "./addclientopenbal/addclientopenbal.c
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { AddhistoricbatchComponent } from "./addhistoricbatch/addhistoricbatch.component";
 import { AddwastageComponent } from "./addwastage/addwastage.component";
-import { AddreprocessproductComponent } from './addreprocessproduct/addreprocessproduct.component';
-import { UnauthoriseduserComponent } from './unauthoriseduser/unauthoriseduser.component';
-import { UpdatecompanyaddressComponent } from './updatecompanyaddress/updatecompanyaddress.component';
-import { CreateaccountheadComponent } from './createaccounthead/createaccounthead.component';
-import { AddexpenditureComponent } from './addexpenditure/addexpenditure.component';
-import { AddreceiptComponent } from './addreceipt/addreceipt.component';
-import { EditstockComponent } from './editstock/editstock.component';
-import { PurchasereturnsComponent } from './purchasereturns/purchasereturns.component';
+import { AddreprocessproductComponent } from "./addreprocessproduct/addreprocessproduct.component";
+import { UnauthoriseduserComponent } from "./unauthoriseduser/unauthoriseduser.component";
+import { UpdatecompanyaddressComponent } from "./updatecompanyaddress/updatecompanyaddress.component";
+import { CreateaccountheadComponent } from "./createaccounthead/createaccounthead.component";
+import { AddexpenditureComponent } from "./addexpenditure/addexpenditure.component";
+import { AddreceiptComponent } from "./addreceipt/addreceipt.component";
+import { EditstockComponent } from "./editstock/editstock.component";
+import { PurchasereturnsComponent } from "./purchasereturns/purchasereturns.component";
+import { OformComponent } from "./oform/oform.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -55,7 +56,7 @@ const routes: Routes = [
   { path: "addrawmat", component: AddrawmaterialComponent },
   {
     path: "purchaserawmat/:purcmastid",
-    component: PurchaserawmaterialComponent
+    component: PurchaserawmaterialComponent,
   },
   { path: "assignrawmatprod", component: AssignrawmatprodComponent },
   { path: "addbatch", component: AddbatchComponent },
@@ -83,12 +84,13 @@ const routes: Routes = [
   { path: "addreceipt", component: AddreceiptComponent },
   { path: "editstock", component: EditstockComponent },
   { path: "purchasereturns/:purcmastid", component: PurchasereturnsComponent },
+  { path: "oform/:clientid", component: OformComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },
-  { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" }
+  { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -2,11 +2,13 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { RESTService } from "../rest.service";
 import { IntervalService } from "../interval.service";
+import { GlobalService } from "../global.service";
+import * as moment from "moment";
 
 @Component({
   selector: "app-editclient",
   templateUrl: "./editclient.component.html",
-  styleUrls: ["./editclient.component.css"]
+  styleUrls: ["./editclient.component.css"],
 })
 export class EditclientComponent implements OnInit {
   clienttype: string = null;
@@ -28,15 +30,20 @@ export class EditclientComponent implements OnInit {
   alldistricts: any = null;
   allstates: any = null;
   clientdata: any = null;
+  licenseno: string = null;
+  licenseissuedt: string = null;
+  licenseexpirydt: string = null;
+  licenseauthority: string = null;
 
   constructor(
     private _route: ActivatedRoute,
     private _rest: RESTService,
-    private _interval: IntervalService
+    private _interval: IntervalService,
+    private _global: GlobalService
   ) {}
 
   ngOnInit() {
-    this._route.params.subscribe(Resp => {
+    this._route.params.subscribe((Resp) => {
       //console.log(Resp);
       this.clienttype = Resp.clienttype;
       this.clientid = Resp.clientid;
@@ -51,7 +58,7 @@ export class EditclientComponent implements OnInit {
     this.allcities = null;
     this._rest
       .getData("client.php", "getClientCities", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allcities = Response["data"];
         }
@@ -62,7 +69,7 @@ export class EditclientComponent implements OnInit {
     this.alldistricts = null;
     this._rest
       .getData("client.php", "getClientDistricts", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.alldistricts = Response["data"];
         }
@@ -73,7 +80,7 @@ export class EditclientComponent implements OnInit {
     this.allstates = null;
     this._rest
       .getData("client.php", "getClientStates", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allstates = Response["data"];
         }
@@ -85,7 +92,7 @@ export class EditclientComponent implements OnInit {
       "clienttype=" + this.clienttype + "&clientid=" + this.clientid;
     this._rest
       .getData("client.php", "getClientDetails", clientdata)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           //console.log(Response["data"]);
           this.clientdata = Response["data"];
@@ -116,6 +123,12 @@ export class EditclientComponent implements OnInit {
     } else {
       address = this.address;
     }
+    const issueDt = moment(this.licenseissuedt, "DD-MM-YYYY").format(
+      "MM-DD-YYYY"
+    );
+    const expDt = moment(this.licenseexpirydt, "DD-MM-YYYY").format(
+      "MM-DD-YYYY"
+    );
     let clientObj = {
       clientid: this.clientid,
       fname: this.fname,
@@ -130,12 +143,16 @@ export class EditclientComponent implements OnInit {
       district: this.district,
       state: this.state,
       address: address,
-      ctype: this.clienttype
+      ctype: this.clienttype,
+      licenseno: this.licenseno,
+      licenseissuedt: new Date(issueDt).getTime(),
+      licenseexpirydt: new Date(expDt).getTime(),
+      licenseauthority: this.licenseauthority,
     };
 
     this._rest
       .postData("client.php", "updateClient", clientObj, null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         //console.log(Response);
         if (Response) {
           this.successMsg = true;
@@ -147,10 +164,20 @@ export class EditclientComponent implements OnInit {
           } else {
             this.successMsg = "Customer updated successfully";
           }
-          this._interval.settimer(null).then(RespInt => {
+          this._interval.settimer(null).then((RespInt) => {
             this.successMsg = false;
           });
         }
       });
+  }
+
+  autoFillDt() {
+    this.licenseissuedt = this.licenseissuedt
+      ? this._global.getAutofillFormattedDt(this.licenseissuedt)
+      : this.licenseissuedt;
+
+    this.licenseexpirydt = this.licenseexpirydt
+      ? this._global.getAutofillFormattedDt(this.licenseexpirydt)
+      : this.licenseexpirydt;
   }
 }

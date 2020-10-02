@@ -7,10 +7,15 @@
         <i class="fa fa-check"></i> Batch updated successful.
       </div>
       <h6>
-        <span class="border-bottom border-primary">Batches For -
-          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{monthlabel}}</span>
-          <span class="font-weight-bold" *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
-            {{customto | date: 'dd-MMM, yyyy'}}</span>
+        <span class="border-bottom border-primary"
+          >Batches For -
+          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{
+            monthlabel
+          }}</span>
+          <span class="font-weight-bold" *ngIf="customfrom && customto"
+            >{{ customfrom | date: "dd-MMM, yyyy" }} -
+            {{ customto | date: "dd-MMM, yyyy" }}</span
+          >
         </span>
       </h6>
       <h6>
@@ -19,17 +24,28 @@
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">
             <label class="m-0">From</label>
-            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
-              (blur)="autofillfromdt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="From Date"
+              [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()"
+            />
           </div>
           <div class="col-md-2">
             <label class="m-0">To</label>
-            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
-              (blur)="autofilltodt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="To Date"
+              [(ngModel)]="todt"
+              (blur)="autofilltodt()"
+            />
           </div>
           <div class="col-md-2">
-            <button class="btn btn-info mt-3" (click)="filterData()"><i class="fa fa-filter"></i>
-              Filter</button>
+            <button class="btn btn-info mt-3" (click)="filterData()">
+              <i class="fa fa-filter"></i> Filter
+            </button>
           </div>
         </div>
       </h6>
@@ -48,17 +64,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let batch of allbatches; let i = index" [ngClass]="{'bg-light': batch.qtyremained != 0}">
+            <tr
+              *ngFor="let batch of allbatches; let i = index"
+              [ngClass]="{ 'bg-light': batch.qtyremained != 0 }"
+            >
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#viewBatchModal"
-                  (click)="viewBatchDetails(batch)">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#viewBatchModal"
+                  (click)="viewBatchDetails(batch)"
+                >
                   {{ batch.batchid }}
                 </a>
               </td>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#viewBatchModal"
-                  (click)="viewBatchDetails(batch)">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#viewBatchModal"
+                  (click)="viewBatchDetails(batch)"
+                >
                   {{ batch.manufacdate | date: "dd-MM-yyyy" }}
                 </a>
               </td>
@@ -70,15 +97,22 @@
                 {{ batch.qtyremained | number: "1.3-3" }}
               </td>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#viewBatchModal"
-                  (click)="viewBatchDetails(batch)">Edit</a>
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#viewBatchModal"
+                  (click)="viewBatchDetails(batch)"
+                  *ngIf="batch.qtyremained != 0"
+                  >Edit</a
+                >
               </td>
             </tr>
 
             <tr *ngIf="!allbatches">
               <td colspan="7">
                 <h6 class="text-danger mt-3">
-                  <i class="fa fa-exclamation-triangle"></i> There are no batches yet
+                  <i class="fa fa-exclamation-triangle"></i> There are no
+                  batches yet
                 </h6>
               </td>
             </tr>
@@ -90,94 +124,174 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" id="viewBatchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" *ngIf="selectedbatch">
+<div
+  class="modal"
+  id="viewBatchModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedbatch"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           {{ selectedbatch.prodname.split(".")[1] }}
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-3 col-sm-12">
+          <div class="col-md-2 col-sm-12">
             <label class="m-0">Batch Id</label>
-            <input type="text" class="form-control" placeholder="Batch Id" [value]="selectedbatch.batchid" readonly />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Batch Id"
+              [value]="selectedbatch.batchid"
+              readonly
+            />
           </div>
           <div class="col-md-3 col-sm-12">
             <label class="m-0">Product Name</label>
-            <input type="text" class="form-control" placeholder="Product Name" [(ngModel)]="selectedbatch.prodname"
-              disabled />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Product Name"
+              [(ngModel)]="selectedbatch.prodname"
+              disabled
+            />
           </div>
           <div class="col-md-3 col-sm-12">
             <label class="m-0">Manufacture Date</label>
-            <input type="text" class="form-control" placeholder="Batch Id" [(ngModel)]="selectedbatch.manufacdate" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Batch Id"
+              [(ngModel)]="selectedbatch.manufacdate"
+            />
           </div>
-          <div class="col-md-3 col-sm-12">
+          <div class="col-md-2 col-sm-12">
             <label class="m-0">Quantity Produced</label>
-            <input type="text" class="form-control" placeholder="Quantity Produced"
-              [(ngModel)]="selectedbatch.qtyproduced"/>
-            <label class="h6 m-0 text-primary">Quantity Remained:
-              <span class="font-weight-bold">
-                {{selectedbatch.qtyremained}}
-              </span>
-              tons
-            </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Quantity Produced"
+              [(ngModel)]="selectedbatch.qtyproduced"
+            />
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <label class="m-0">Quantity Remained</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Quantity Remained"
+              [(ngModel)]="selectedbatch.qtyremained"
+            />
           </div>
           <div class="col-md-12 col-sm-12">
-            <p class="text-primary" *ngIf="batchdispatches==false">
-              <i class="fa fa-pulse fa-spinner"></i> Please wait, checking for dispatches...
+            <p class="text-primary" *ngIf="batchdispatches == false">
+              <i class="fa fa-pulse fa-spinner"></i> Please wait, checking for
+              dispatches...
             </p>
             <p class="mb-1" *ngIf="batchdispatches">
-              <a class="btn-link font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
-                aria-expanded="false" aria-controls="collapseExample">
-                <i class="fa fa-truck"></i> Click to view "Dispatches" for this batch
+              <a
+                class="btn-link font-weight-bold"
+                data-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <i class="fa fa-truck"></i> Click to view "Dispatches" for this
+                batch
               </a>
             </p>
-            <div class="collapse mb-3" id="collapseExample" *ngIf="batchdispatches">
+            <div
+              class="collapse mb-3"
+              id="collapseExample"
+              *ngIf="batchdispatches"
+            >
               <div class="card card-body px-4 py-2 bg-light">
-                <p class="mb-1">This batch is used for the following dispatches</p>
+                <p class="mb-1">
+                  This batch is used for the following dispatches
+                </p>
                 <ul class="list-group">
-                  <li class="list-group-item d-flex align-items-center p-2"
-                    *ngFor="let disp of batchdispatches; let i=index">
+                  <li
+                    class="list-group-item d-flex align-items-center p-2"
+                    *ngFor="let disp of batchdispatches; let i = index"
+                  >
                     Dispatch Date:
-                    <span class="font-weight-bold badge badge-info badge-pill mx-2">
-                      {{disp.dispatchdate | date: 'dd-MM-yyyy'}}
+                    <span
+                      class="font-weight-bold badge badge-info badge-pill mx-2"
+                    >
+                      {{ disp.dispatchdate | date: "dd-MM-yyyy" }}
                     </span>
-                    / DC No.: <span class="font-weight-bold badge badge-danger badge-pill mx-2">{{disp.dcno}}</span>
-                    / Quantity: <span class="badge badge-primary badge-pill ml-1">{{disp.quantity}} tons</span>
+                    / DC No.:
+                    <span
+                      class="font-weight-bold badge badge-danger badge-pill mx-2"
+                      >{{ disp.dcno }}</span
+                    >
+                    / Quantity:
+                    <span class="badge badge-primary badge-pill ml-1"
+                      >{{ disp.quantity }} tons</span
+                    >
                     <span class="mx-3 font-weight-bold">-</span>
                     <span *ngIf="disp.invoicedetails == null">
-                      <a href="javascript:void(0);" (click)="getInvoiceDetails(disp, i)">
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i> Get Invoice Details
+                      <a
+                        href="javascript:void(0);"
+                        (click)="getInvoiceDetails(disp, i)"
+                      >
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        Get Invoice Details
                       </a>
                     </span>
                     <span *ngIf="disp.invoicedetails == false">
-                      <i class="fa fa-pulse fa-spinner" aria-hidden="true"></i> Please wait...
+                      <i class="fa fa-pulse fa-spinner" aria-hidden="true"></i>
+                      Please wait...
                     </span>
-                    <span *ngIf="disp.invoicedetails && disp.invoicedetails != 'nodata'">
+                    <span
+                      *ngIf="
+                        disp.invoicedetails && disp.invoicedetails != 'nodata'
+                      "
+                    >
                       Invoice Date:
-                      <span class="font-weight-bold badge badge-info badge-pill mx-2">
-                        {{disp.invoicedetails.billdt | date: 'dd-MM-yyyy'}}
+                      <span
+                        class="font-weight-bold badge badge-info badge-pill mx-2"
+                      >
+                        {{ disp.invoicedetails.billdt | date: "dd-MM-yyyy" }}
                       </span>
-                      / Invoice No: <span
-                        class="font-weight-bold badge badge-danger badge-pill mx-2">{{disp.invoicedetails.billno}}</span>
+                      / Invoice No:
+                      <span
+                        class="font-weight-bold badge badge-danger badge-pill mx-2"
+                        >{{ disp.invoicedetails.billno }}</span
+                      >
                       / Total Amount:
-                      <span class="badge badge-primary badge-pill ml-1">{{disp.invoicedetails.totalamount}}</span>
+                      <span class="badge badge-primary badge-pill ml-1">{{
+                        disp.invoicedetails.totalamount
+                      }}</span>
                     </span>
-                    <span *ngIf="disp.invoicedetails && disp.invoicedetails == 'nodata'"
-                      class="text-danger font-weight-bold">
+                    <span
+                      *ngIf="
+                        disp.invoicedetails && disp.invoicedetails == 'nodata'
+                      "
+                      class="text-danger font-weight-bold"
+                    >
                       No Invoice Created Yet
                     </span>
                   </li>
                 </ul>
               </div>
             </div>
-            <hr *ngIf="batchdispatches">
+            <hr *ngIf="batchdispatches" />
             <h5 class="text-info">All Raw Materials Used</h5>
             <table class="table table-sm">
               <thead class="thead-light">
@@ -188,11 +302,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let rawmat of selectedbatchmaterials; let i = index">
+                <tr
+                  *ngFor="let rawmat of selectedbatchmaterials; let i = index"
+                >
                   <th scope="row">{{ i + 1 }}</th>
                   <td>{{ rawmat.name }}</td>
                   <td>
-                    <input type="text" class="form-control" [(ngModel)]="rawmat.rawmatqty" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="rawmat.rawmatqty"
+                    />
                   </td>
                 </tr>
               </tbody>
@@ -204,8 +324,13 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="saveBatch()"
-          [disabled]="disablesavebtn">
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-dismiss="modal"
+          (click)="saveBatch()"
+          [disabled]="disablesavebtn"
+        >
           Save Batch
         </button>
       </div>

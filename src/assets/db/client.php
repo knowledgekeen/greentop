@@ -234,6 +234,10 @@ if($action == "getClientDetails"){
 		$tmp['state'] = $row['state'];
 		$tmp['gstno'] = $row['gstno'];
 		$tmp['type'] = $row['type'];
+		$tmp['licenseno'] = $row['licenseno'];
+		$tmp['licenseissuedt'] = $row['licenseissuedt'];
+		$tmp['licenseexpirydt'] = $row['licenseexpirydt'];
+		$tmp['licenseauthority'] = $row['licenseauthority'];
 		
 		$data["status"] = 200;
 		$data["data"] = $tmp;
@@ -269,11 +273,15 @@ if($action == "updateClient"){
 	$city = $data->city;
 	$district = $data->district;
 	$state = $data->state;
+	$licenseno = $data->licenseno;
+	$licenseissuedt = $data->licenseissuedt;
+	$licenseexpirydt = $data->licenseexpirydt;
 	$address = mysqli_real_escape_string($conn,$data->address);
+	$licenseauthority = mysqli_real_escape_string($conn,$data->licenseauthority);
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         //Status: 1 == 'active'
-		$sql = "UPDATE `client_master` SET `name`='$fname',`address`='$address',`contactno`='$cno',`contactperson1`='$cperson1',`contactno1`='$cno1',`contactperson2`='$cperson2',`contactno2`='$cno2',`email`='$email',`city`='$city',`district`='$district',`state`='$state',`gstno`='$gstno' WHERE `clientid`=$clientid";
+		$sql = "UPDATE `client_master` SET `name`='$fname',`address`='$address',`contactno`='$cno',`contactperson1`='$cperson1',`contactno1`='$cno1',`contactperson2`='$cperson2',`contactno2`='$cno2',`email`='$email',`city`='$city',`district`='$district',`state`='$state',`gstno`='$gstno',`licenseno`='$licenseno',`licenseissuedt`='$licenseissuedt',`licenseexpirydt`='$licenseexpirydt',`licenseauthority`='$licenseauthority' WHERE `clientid`=$clientid";
         $result = $conn->query($sql);
 	}
     $data1= array();
