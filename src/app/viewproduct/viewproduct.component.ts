@@ -63,6 +63,7 @@ export class ViewproductComponent implements OnInit {
     let prodObj = {
       prodid: prods.prodid,
       prodname: prods.prodname,
+      brandname: prods.brandname,
       hsncode: prods.hsncode,
       status: status
     };

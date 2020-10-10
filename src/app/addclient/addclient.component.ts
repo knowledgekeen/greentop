@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RESTService } from "../rest.service";
 import { IntervalService } from "../interval.service";
+import * as moment from "moment";
+import { GlobalService } from "../global.service";
 
 @Component({
   selector: "app-addclient",
   templateUrl: "./addclient.component.html",
-  styleUrls: ["./addclient.component.css"]
+  styleUrls: ["./addclient.component.css"],
 })
 export class AddclientComponent implements OnInit {
   //Supplier type == 1 AND Customer type == 2
@@ -29,8 +31,16 @@ export class AddclientComponent implements OnInit {
   allclients: any = null;
   clientnamepresent: boolean = false;
   disablebtn: boolean = false;
+  licenseno: string = null;
+  licenseissuedt: string = null;
+  licenseexpirydt: string = null;
+  licenseauthority: string = null;
 
-  constructor(private _rest: RESTService, private _interval: IntervalService) { }
+  constructor(
+    private _rest: RESTService,
+    private _interval: IntervalService,
+    private _global: GlobalService
+  ) {}
 
   ngOnInit() {
     this.getClientCities();
@@ -43,7 +53,7 @@ export class AddclientComponent implements OnInit {
     this.allcities = null;
     this._rest
       .getData("client.php", "getClientCities", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allcities = Response["data"];
         }
@@ -54,7 +64,7 @@ export class AddclientComponent implements OnInit {
     this.allstates = null;
     this._rest
       .getData("client.php", "getClientStates", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allstates = Response["data"];
         }
@@ -65,7 +75,7 @@ export class AddclientComponent implements OnInit {
     this.alldistricts = null;
     this._rest
       .getData("client.php", "getClientDistricts", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.alldistricts = Response["data"];
         }
@@ -76,7 +86,7 @@ export class AddclientComponent implements OnInit {
     let strObj = "clienttype=" + this.clienttype;
     this._rest
       .getData("client.php", "getAllClients", strObj)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allclients = Response["data"];
         }
@@ -84,6 +94,12 @@ export class AddclientComponent implements OnInit {
   }
 
   addClient() {
+    const issueDt = moment(this.licenseissuedt, "DD-MM-YYYY").format(
+      "MM-DD-YYYY"
+    );
+    const expDt = moment(this.licenseexpirydt, "DD-MM-YYYY").format(
+      "MM-DD-YYYY"
+    );
     this.disablebtn = true;
     let address = null;
     if (!this.address) {
@@ -104,12 +120,16 @@ export class AddclientComponent implements OnInit {
       district: this.district,
       state: this.state,
       address: address,
-      ctype: this.clienttype
+      ctype: this.clienttype,
+      licenseno: this.licenseno,
+      licenseissuedt: new Date(issueDt).getTime(),
+      licenseexpirydt: new Date(expDt).getTime(),
+      licenseauthority: this.licenseauthority,
     };
 
     this._rest
       .postData("client.php", "addClient", clientObj, null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.resetForm();
           window.scrollTo(0, 0);
@@ -123,7 +143,7 @@ export class AddclientComponent implements OnInit {
           } else {
             this.successMsg = "Customer added successfully";
           }
-          this._interval.settimer(null).then(RespInt => {
+          this._interval.settimer(null).then((RespInt) => {
             this.successMsg = false;
           });
         }
@@ -153,5 +173,15 @@ export class AddclientComponent implements OnInit {
         break;
       }
     }
+  }
+
+  autoFillDt() {
+    this.licenseissuedt = this.licenseissuedt
+      ? this._global.getAutofillFormattedDt(this.licenseissuedt)
+      : this.licenseissuedt;
+
+    this.licenseexpirydt = this.licenseexpirydt
+      ? this._global.getAutofillFormattedDt(this.licenseexpirydt)
+      : this.licenseexpirydt;
   }
 }

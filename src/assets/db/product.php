@@ -12,11 +12,12 @@ if($action == "addProduct"){
 	authenticate($headers);
     $data = json_decode(file_get_contents("php://input"));
     $pname = mysqli_real_escape_string($conn, $data->pname);
+    $brandname = mysqli_real_escape_string($conn, $data->brandname);
     $hsncode = $data->hsncode;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         //Status: 1 == 'active'
-		$sql = "INSERT INTO `product_master`(`prodname`, `hsncode`, `status`) VALUES ('$pname', '$hsncode', 1)";
+		$sql = "INSERT INTO `product_master`(`prodname`, `brandname`, `hsncode`, `status`) VALUES ('$pname', '$brandname', '$hsncode', 1)";
         $result = $conn->query($sql);
         $prodid = $conn->insert_id;
     }
@@ -61,6 +62,7 @@ if($action == "getActiveProducts"){
 		{
 			$tmp[$i]['prodid'] = $row['prodid'];
 			$tmp[$i]['prodname'] = $row['prodname'];
+			$tmp[$i]['brandname'] = $row['brandname'];
 			$tmp[$i]['hsncode'] = $row['hsncode'];
 			$i++;
 		}
@@ -101,6 +103,7 @@ if($action == "getDeactiveProducts"){
 		{
 			$tmp[$i]['prodid'] = $row['prodid'];
 			$tmp[$i]['prodname'] = $row['prodname'];
+			$tmp[$i]['brandname'] = $row['brandname'];
 			$tmp[$i]['hsncode'] = $row['hsncode'];
 			$i++;
 		}
@@ -128,11 +131,12 @@ if($action == "updateProduct"){
 	$data = json_decode(file_get_contents("php://input"));
 	$prodid = $data->prodid;
 	$prodname = mysqli_real_escape_string($conn, $data->prodname);
+	$brandname = mysqli_real_escape_string($conn, $data->brandname);
 	$hsncode = $data->hsncode;
 	$status = $data->status;
 	$result = false;
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sql = "UPDATE `product_master` SET `prodname`='$prodname', `hsncode`='$hsncode', `status`=$status WHERE `prodid`=$prodid";
+		$sql = "UPDATE `product_master` SET `prodname`='$prodname',`brandname`='$brandname', `hsncode`='$hsncode', `status`=$status WHERE `prodid`=$prodid";
 		$result = $conn->query($sql);
 	}
 	$data1= array();

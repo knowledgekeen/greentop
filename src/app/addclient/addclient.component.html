@@ -88,6 +88,45 @@
         <label class="m-0">Address</label>
         <textarea class="form-control" rows="3" placeholder="Address" [(ngModel)]="address"></textarea>
       </div>
+      <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+        <label class="m-0">License Number</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="License Number"
+          [(ngModel)]="licenseno"
+        />
+      </div>
+      <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+        <label class="m-0">Date of Issue</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Date of Issue"
+          [(ngModel)]="licenseissuedt"
+          (blur)="autoFillDt()"
+        />
+      </div>
+      <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+        <label class="m-0">Date of Expiry</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Date of Expiry"
+          [(ngModel)]="licenseexpirydt"
+          (blur)="autoFillDt()"
+        />
+      </div>
+      <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+        <label class="m-0">Issuing Authority</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Issuing Authority"
+          [(ngModel)]="licenseauthority"
+        />
+      </div>
+      
       <div class="col-sm-12 col-xs-12 mb-3">
         <button class="btn btn-sm btn-success" (click)="addClient()"
           [disabled]="!fname || !cno || !city || !state || clientnamepresent || disablebtn">

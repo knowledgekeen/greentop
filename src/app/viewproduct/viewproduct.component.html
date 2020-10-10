@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-3">View Product</h5>
   <div class="card">
     <div class="card-body">
@@ -7,12 +7,22 @@
       </div>
       <ul class="nav nav-tabs mb-3">
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" (click)="activetab = 1"
-            [ngClass]="{ active: activetab == 1 }">Active Products</a>
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            (click)="activetab = 1"
+            [ngClass]="{ active: activetab == 1 }"
+            >Active Products</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" (click)="activetab = 2"
-            [ngClass]="{ active: activetab == 2 }">Deactive Products</a>
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            (click)="activetab = 2"
+            [ngClass]="{ active: activetab == 2 }"
+            >Deactive Products</a
+          >
         </li>
       </ul>
 
@@ -21,6 +31,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Product Name</th>
+            <th scope="col">Brand Name</th>
             <th scope="col">HSN Code</th>
             <th scope="col">Deactive</th>
           </tr>
@@ -29,13 +40,25 @@
           <tr *ngFor="let prods of allproducts; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ prods.prodname }}</td>
+            <td>{{ prods.brandname }}</td>
             <td>{{ prods.hsncode }}</td>
             <td>
-              <a href="javascript:void(0);" class="text-primary mr-3" data-toggle="modal"
-                data-target="#editProductModal" (click)="selectProduct(prods)">
-                <i class="fa fa-pencil"></i> Edit</a>
-              <a href="javascript:void(0);" class="text-danger" (click)="deactivateProduct(prods)">
-                <i class="fa fa-eye-slash"></i> Deactivate</a>
+              <a
+                href="javascript:void(0);"
+                class="text-primary mr-3"
+                data-toggle="modal"
+                data-target="#editProductModal"
+                (click)="selectProduct(prods)"
+              >
+                <i class="fa fa-pencil"></i> Edit</a
+              >
+              <a
+                href="javascript:void(0);"
+                class="text-danger"
+                (click)="deactivateProduct(prods)"
+              >
+                <i class="fa fa-eye-slash"></i> Deactivate</a
+              >
             </td>
           </tr>
         </tbody>
@@ -46,6 +69,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Product Name</th>
+            <th scope="col">Brand Name</th>
             <th scope="col">HSN Code</th>
             <th scope="col">Deactive</th>
           </tr>
@@ -54,19 +78,28 @@
           <tr *ngFor="let prods of all_deactive_products; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ prods.prodname }}</td>
+            <td>{{ prods.brandname }}</td>
             <td>{{ prods.hsncode }}</td>
             <td>
-              <a href="javascript:void(0);" class="text-success" (click)="activateProduct(prods)">
-                <i class="fa fa-eye"></i> Activate</a>
+              <a
+                href="javascript:void(0);"
+                class="text-success"
+                (click)="activateProduct(prods)"
+              >
+                <i class="fa fa-eye"></i> Activate</a
+              >
             </td>
           </tr>
         </tbody>
       </table>
 
-      <strong *ngIf="
+      <strong
+        *ngIf="
           (!allproducts && activetab == 1) ||
           (!all_deactive_products && activetab == 2)
-        " class="text-danger font-weight-bold">
+        "
+        class="text-danger font-weight-bold"
+      >
         <i class="fa fa-times"></i> There are no products as of now.
         <a [routerLink]="['/addproduct']">Add New</a>
       </strong>
@@ -75,13 +108,25 @@
 </div>
 
 <!-- Product Edit Modal -->
-<div class="modal" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" *ngIf="selectedprod">
+<div
+  class="modal"
+  id="editProductModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedprod"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -89,26 +134,56 @@
         <div class="row">
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Edit Product Name</label>
-            <input type="text" class="form-control" placeholder="Enter Product Name"
-              [(ngModel)]="selectedprod.prodname" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Product Name"
+              [(ngModel)]="selectedprod.prodname"
+            />
+          </div>
+          <div class="col-md-3 col-sm-12 mb-3">
+            <label class="m-0">Edit Brand Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Brand Name"
+              [(ngModel)]="selectedprod.brandname"
+            />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Edit HSN Code</label>
-            <input type="text" class="form-control" placeholder="Edit HSN Code" [(ngModel)]="selectedprod.hsncode" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Edit HSN Code"
+              [(ngModel)]="selectedprod.hsncode"
+            />
           </div>
           <div class="col-sm-12 col-md-3 mb-3" *ngIf="editstockbal">
             <label class="m-0">Opening Stock Balance</label>
-            <input type="text" class="form-control" placeholder="This field cannot be empty."
-              [(ngModel)]="editstockbal.quantity" [disabled]="disable_editbal" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="This field cannot be empty."
+              [(ngModel)]="editstockbal.quantity"
+              [disabled]="disable_editbal"
+            />
           </div>
-          8 <div class="col-sm-12 col-md-3 mb-3" *ngIf="editstockbal">
+          <div class="col-sm-12 col-md-3 mb-3" *ngIf="editstockbal">
             <label class="m-0">Opening Stock Date</label>
-            <input type="text" class="form-control" placeholder="This field cannot be empty."
-              [(ngModel)]="editstockbal.date" (blur)="autoFillDt()" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="This field cannot be empty."
+              [(ngModel)]="editstockbal.date"
+              (blur)="autoFillDt()"
+            />
           </div>
           <div class="col-sm-12 col-md-12 text-primary" *ngIf="!editstockbal">
-            <span><i class="fa fa-pulse fa-spinner"></i> Please wait, loading stock
-              quantity.</span>
+            <span
+              ><i class="fa fa-pulse fa-spinner"></i> Please wait, loading stock
+              quantity.</span
+            >
           </div>
           <div class="col-sm-12 col-md-12 text-danger" *ngIf="!openbalfound">
             <span>
@@ -123,10 +198,16 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" (click)="updateProduct(selectedprod, 1)" data-dismiss="modal"
-          aria-label="Close" [disabled]="
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="updateProduct(selectedprod, 1)"
+          data-dismiss="modal"
+          aria-label="Close"
+          [disabled]="
             !editstockbal || !selectedprod.hsncode || !selectedprod.prodname
-          ">
+          "
+        >
           Update Product
         </button>
       </div>

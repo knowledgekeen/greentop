@@ -24,10 +24,14 @@ if($action == "addClient"){
 	$state = $data->state;
 	$address = mysqli_real_escape_string($conn,$data->address);
     $ctype = $data->ctype;
+	$licenseno = $data->licenseno;
+	$licenseissuedt = $data->licenseissuedt;
+	$licenseexpirydt = $data->licenseexpirydt;
+	$licenseauthority = mysqli_real_escape_string($conn,$data->licenseauthority);
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
         //Status: 1 == 'active'
-		$sql = "INSERT INTO `client_master`(`name`, `address`, `contactno`, `contactperson1`, `contactno1`, `contactperson2`, `contactno2`, `email`, `city`, `district`, `state`, `gstno`, `type`, `status`) VALUES ('$fname','$address','$cno','$cperson1','$cno1','$cperson2','$cno2','$email','$city','$district','$state','$gstno',$ctype,1)";
+		$sql = "INSERT INTO `client_master`(`name`, `address`, `contactno`, `contactperson1`, `contactno1`, `contactperson2`, `contactno2`, `email`, `city`, `district`, `state`, `gstno`, `licenseno`, `licenseissuedt`, `licenseexpirydt`, `licenseauthority`, `type`, `status`) VALUES ('$fname','$address','$cno','$cperson1','$cno1','$cperson2','$cno2','$email','$city','$district','$state','$gstno', '$licenseno', '$licenseissuedt', '$licenseexpirydt', '$licenseauthority',$ctype,1)";
         $result = $conn->query($sql);
         $userid = $conn->insert_id;
 	}

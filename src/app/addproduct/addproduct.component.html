@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-3">Add Product</h5>
   <div class="card">
     <div class="card-body">
@@ -6,7 +6,7 @@
         <i class="fa fa-check"></i> Product added successfully.
       </div>
       <div class="row">
-        <div class="col-sm-4 col-xs-12">
+        <div class="col-sm-3 col-xs-12">
           <label class="m-0">Product Name</label>
           <input
             type="text"
@@ -16,6 +16,15 @@
           />
         </div>
         <div class="col-sm-3 col-xs-12">
+          <label class="m-0">Brand Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Brand Name"
+            [(ngModel)]="brandname"
+          />
+        </div>
+        <div class="col-sm-2 col-xs-12">
           <label class="m-0">Opening balance</label>
           <input
             type="text"
@@ -33,7 +42,7 @@
             [(ngModel)]="hsncode"
           />
         </div>
-        <div class="col-sm-3 col-xs-12">
+        <div class="col-sm-2 col-xs-12">
           <label class="m-0">Opening Balance Date</label>
           <input
             type="text"

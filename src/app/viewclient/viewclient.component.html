@@ -151,7 +151,7 @@
   aria-hidden="true"
   *ngIf="selectedclient"
 >
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-primary w-100" id="exampleModalLabel">
@@ -161,6 +161,7 @@
             [routerLink]="['/oform', selectedclient.clientid]"
             class="float-right"
             data-dismiss="modal"
+            *ngIf="clienttype == 2"
           >
             <i class="fa fa-file-pdf-o"></i> O-Form
           </a>

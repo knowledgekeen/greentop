@@ -7,10 +7,11 @@ import * as moment from "moment";
 @Component({
   selector: "app-addproduct",
   templateUrl: "./addproduct.component.html",
-  styleUrls: ["./addproduct.component.css"]
+  styleUrls: ["./addproduct.component.css"],
 })
 export class AddproductComponent implements OnInit {
   productnm: string = null;
+  brandname: string = null;
   successMsg: boolean = false;
   openbal: string = "0";
   openbaldt: any = null;
@@ -32,11 +33,12 @@ export class AddproductComponent implements OnInit {
     }
     let tmpObj = {
       pname: this.productnm,
-      hsncode: this.hsncode
+      brandname: this.brandname,
+      hsncode: this.hsncode,
     };
     this._rest
       .postData("product.php", "addProduct", tmpObj, null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.successMsg = true;
           this.productnm = null;
@@ -49,19 +51,19 @@ export class AddproductComponent implements OnInit {
             prodid: Response["data"],
             moddt: new Date().getTime(),
             openbal: this.openbal,
-            openbaldt: new Date(balDate).getTime()
+            openbaldt: new Date(balDate).getTime(),
           };
 
           this._rest
             .postData("stock.php", "newProductInStock", objStock, null)
-            .subscribe(RespStock => {
+            .subscribe((RespStock) => {
               //console.log(RespStock);
               this.openbal = "0";
               this.hsncode = null;
               this.openbaldt = null;
             });
 
-          this._interval.settimer(null).then(resp => {
+          this._interval.settimer(null).then((resp) => {
             this.successMsg = false;
             this.getActiveProducts();
           });
@@ -75,7 +77,7 @@ export class AddproductComponent implements OnInit {
     //this.allproducts = null;
     this._rest
       .getData("product.php", "getActiveProducts", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         //console.log(Response);
         if (Response) {
           this._global.updateData(Response["data"]);

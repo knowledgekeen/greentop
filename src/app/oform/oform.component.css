@@ -5,3 +5,9 @@
 .form-control {
   border: none;
 }
+.issuedStatus {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  transform: rotate(330deg);
+}
