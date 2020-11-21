@@ -5,6 +5,7 @@
 body,
 html {
   font-family: "Nunito", sans-serif !important;
+  color: #000000;
   /* <-- fonts */
 }
 
@@ -12,7 +13,8 @@ body {
   background-color: #dedede;
   font-size: 14px;
 }
-.dropdown-menu, .form-control{
+.dropdown-menu,
+.form-control {
   font-size: 14px;
 }
 .btn,
@@ -28,11 +30,11 @@ textarea {
   resize: none;
 }
 
-.text-sm{
+.text-sm {
   font-size: 0.875rem;
 }
 
-.text-md{
+.text-md {
   font-size: 1rem;
 }
 
@@ -75,7 +77,8 @@ textarea {
   height: 300px;
 }
 
-.overlaybg,.overlaybg-white {
+.overlaybg,
+.overlaybg-white {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -84,18 +87,19 @@ textarea {
   background: rgba(25, 25, 25, 0.55);
 }
 
-.overlaybg-white{
+.overlaybg-white {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.spinner{
+.spinner {
   position: absolute;
   top: 45%;
   left: 50%;
 }
 
-.overlaybg .spinner-text, .overlaybg-white .spinner-text{
+.overlaybg .spinner-text,
+.overlaybg-white .spinner-text {
   margin-left: -30px;
 }
 
@@ -200,7 +204,6 @@ textarea {
   cursor: pointer;
 }
 
-
 /* Switch ON-OFF button CSS */
 .switch {
   position: relative;
@@ -209,7 +212,7 @@ textarea {
   height: 18px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -223,8 +226,8 @@ textarea {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -235,16 +238,16 @@ textarea {
   left: 2px;
   bottom: 2px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
@@ -275,48 +278,91 @@ input:checked + .slider:before {
   }
 } */
 
-.col-print-1 {width:8.3333%;  float:left;}
-.col-print-2 {width:16.6666%; float:left;}
-.col-print-3 {width:25%; float:left;}
-.col-print-4 {width:33.3332%; float:left;}
-.col-print-5 {width:41.6665%; float:left;}
-.col-print-6 {width:50%; float:left;}
-.col-print-7 {width:58.3331%; float:left;}
-.col-print-8 {width:66.6664%; float:left;}
-.col-print-9 {width:75%; float:left;}
-.col-print-10{width:83.333%; float:left;}
-.col-print-11{width:91.6663%; float:left;}
-.col-print-12{width:100%; float:left;}
+.col-print-1 {
+  width: 8.3333%;
+  float: left;
+}
+.col-print-2 {
+  width: 16.6666%;
+  float: left;
+}
+.col-print-3 {
+  width: 25%;
+  float: left;
+}
+.col-print-4 {
+  width: 33.3332%;
+  float: left;
+}
+.col-print-5 {
+  width: 41.6665%;
+  float: left;
+}
+.col-print-6 {
+  width: 50%;
+  float: left;
+}
+.col-print-7 {
+  width: 58.3331%;
+  float: left;
+}
+.col-print-8 {
+  width: 66.6664%;
+  float: left;
+}
+.col-print-9 {
+  width: 75%;
+  float: left;
+}
+.col-print-10 {
+  width: 83.333%;
+  float: left;
+}
+.col-print-11 {
+  width: 91.6663%;
+  float: left;
+}
+.col-print-12 {
+  width: 100%;
+  float: left;
+}
 
-.invoiceno{
+.invoiceno {
   font-size: 1.2rem;
 }
 
-.tablebox{
+.tablebox {
   border: 1px solid #dee2e6;
   /* height: 400px; */
 }
-.tablecol{
+.tablecol {
   border-right: 1px solid #dee2e6;
   text-align: center;
 }
-.tablecol:last-child{
+.tablecol:last-child {
   border-right: 0px;
   text-align: right;
 }
 
-.bordertop{
+.bordertop {
   border-top: 1px solid #dee2e6;
 }
 
-.tableheadrow{
+.tableheadrow {
   border-bottom: 1px solid #dee2e6;
 }
 
-.datewidth{
+.datewidth {
   width: 120px;
 }
 
-.input-group>.input-group-append>.btn, .input-group>.input-group-append>.input-group-text, .input-group>.input-group-prepend:first-child>.btn:not(:first-child), .input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child), .input-group>.input-group-prepend:not(:first-child)>.btn, .input-group>.input-group-prepend:not(:first-child)>.input-group-text{
+.input-group > .input-group-append > .btn,
+.input-group > .input-group-append > .input-group-text,
+.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+.input-group
+  > .input-group-prepend:first-child
+  > .input-group-text:not(:first-child),
+.input-group > .input-group-prepend:not(:first-child) > .btn,
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text {
   border-radius: 0;
 }
