@@ -1,23 +1,44 @@
-<div class="container">
-  <h5 class="my-3 noprint">Sales Receipts
-    <button class="btn btn-sm btn-primary float-right" (click)="showhideform = !showhideform;showmakepay=false;particulars=null">
-      <i class="fa " aria-hidden="true" [ngClass]="{'fa-check-square-o': showhideform, 'fa-square-o': !showhideform}"></i>
+<div class="container-fluid">
+  <h5 class="my-3 noprint">
+    Sales Receipts
+    <button
+      class="btn btn-sm btn-primary float-right"
+      (click)="
+        showhideform = !showhideform; showmakepay = false; particulars = null
+      "
+    >
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="{
+          'fa-check-square-o': showhideform,
+          'fa-square-o': !showhideform
+        }"
+      ></i>
       <ng-container *ngIf="showhideform; else elseShowHideForm">
         Show
       </ng-container>
-      <ng-template #elseShowHideForm>
-        Hide
-      </ng-template>
+      <ng-template #elseShowHideForm> Hide </ng-template>
       Form
     </button>
-    <button class="btn btn-sm btn-danger float-right mx-3" (click)="showmakepay = !showmakepay;showhideform = true;particulars=null">
-      <i class="fa " aria-hidden="true" [ngClass]="{'fa-square-o': showmakepay, 'fa-check-square-o': !showmakepay}"></i>
+    <button
+      class="btn btn-sm btn-danger float-right mx-3"
+      (click)="
+        showmakepay = !showmakepay; showhideform = true; particulars = null
+      "
+    >
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="{
+          'fa-square-o': showmakepay,
+          'fa-check-square-o': !showmakepay
+        }"
+      ></i>
       <ng-container *ngIf="showmakepay; else elseshowmakepay">
         Hide
       </ng-container>
-      <ng-template #elseshowmakepay>
-        Show
-      </ng-template>
+      <ng-template #elseshowmakepay> Show </ng-template>
       Make Customer Payment
     </button>
   </h5>
@@ -40,41 +61,84 @@
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Customer</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Select Customer" [(ngModel)]="customer"
-            list="customerlist" (change)="loadSalesPaymentHistory(customer)" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Select Customer"
+              [(ngModel)]="customer"
+              list="customerlist"
+              (change)="loadSalesPaymentHistory(customer)"
+            />
             <div class="input-group-append">
-              <button class="btn btn-sm btn-secondary" [disabled]="!customer" (click)="customer=null; loadSalesPaymentHistory(null)" title="Clear customer field">
+              <button
+                class="btn btn-sm btn-secondary"
+                [disabled]="!customer"
+                (click)="customer = null; loadSalesPaymentHistory(null)"
+                title="Clear customer field"
+              >
                 <i class="fa fa-times"></i>
               </button>
             </div>
           </div>
           <datalist id="customerlist">
-            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allcustomers">
-              {{ supp.clientid }}.{{ supp.name }}</option>
+            <option
+              value="{{ supp.clientid }}.{{ supp.name }}"
+              *ngFor="let supp of allcustomers"
+            >
+              {{ supp.clientid }}.{{ supp.name }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Date of Receipt</label>
-          <input type="text" class="form-control" placeholder="Date of Receipt" [(ngModel)]="paydt"
-            (blur)="autofillPayDt()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Receipt"
+            [(ngModel)]="paydt"
+            (blur)="autofillPayDt()"
+          />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Amount Received</label>
-          <input type="text" class="form-control" placeholder="Amount Received" [(ngModel)]="amtpaid" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Amount Received"
+            [(ngModel)]="amtpaid"
+          />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
-          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoPayMode()">
-            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
+          <select
+            id="paymode"
+            class="form-control"
+            [(ngModel)]="paymode"
+            (change)="setAutoPayMode()"
+          >
+            <option
+              value="{{ mode.paymodeid }}"
+              *ngFor="let mode of allpaymodes"
+            >
+              {{ mode.paymode }}
+            </option>
           </select>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
-          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Particulars"
+            [(ngModel)]="particulars"
+          />
         </div>
         <div class="col-md-12 col-sm-12">
-          <button class="btn btn-sm btn-primary" [disabled]="!paydt || !customer || !paymode || disableaddbtn"
-            (click)="addPayment()">
+          <button
+            class="btn btn-sm btn-primary"
+            [disabled]="!paydt || !customer || !paymode || disableaddbtn"
+            (click)="addPayment()"
+          >
             Add Payment
           </button>
         </div>
@@ -96,41 +160,90 @@
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Customer</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Select Customer" [(ngModel)]="customer"
-            list="customerlist" (change)="loadSalesPaymentHistory(customer)" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Select Customer"
+              [(ngModel)]="customer"
+              list="customerlist"
+              (change)="loadSalesPaymentHistory(customer)"
+            />
             <div class="input-group-append">
-              <button class="btn btn-sm btn-secondary" [disabled]="!customer" (click)="customer=null; loadSalesPaymentHistory(null)" title="Clear customer field">
+              <button
+                class="btn btn-sm btn-secondary"
+                [disabled]="!customer"
+                (click)="customer = null; loadSalesPaymentHistory(null)"
+                title="Clear customer field"
+              >
                 <i class="fa fa-times"></i>
               </button>
             </div>
           </div>
           <datalist id="customerlist">
-            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allcustomers">
-              {{ supp.clientid }}.{{ supp.name }}</option>
+            <option
+              value="{{ supp.clientid }}.{{ supp.name }}"
+              *ngFor="let supp of allcustomers"
+            >
+              {{ supp.clientid }}.{{ supp.name }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Date of Payment</label>
-          <input type="text" class="form-control" placeholder="Date of Payment" [(ngModel)]="custpaydate"
-            (blur)="autofillPayDt()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Payment"
+            [(ngModel)]="custpaydate"
+            (blur)="autofillPayDt()"
+          />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Amount Paid</label>
-          <input type="text" class="form-control" placeholder="Amount Paid" [(ngModel)]="customeramtpaid" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Amount Paid"
+            [(ngModel)]="customeramtpaid"
+          />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
-          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoPayMode()">
-            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
+          <select
+            id="paymode"
+            class="form-control"
+            [(ngModel)]="paymode"
+            (change)="setAutoPayMode()"
+          >
+            <option
+              value="{{ mode.paymodeid }}"
+              *ngFor="let mode of allpaymodes"
+            >
+              {{ mode.paymode }}
+            </option>
           </select>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
-          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Particulars"
+            [(ngModel)]="particulars"
+          />
         </div>
         <div class="col-md-12 col-sm-12">
-          <button class="btn btn-sm btn-primary" [disabled]="!custpaydate || !customer || !paymode || !customeramtpaid || disableaddbtn"
-            (click)="makeCustomerPayment()">
+          <button
+            class="btn btn-sm btn-primary"
+            [disabled]="
+              !custpaydate ||
+              !customer ||
+              !paymode ||
+              !customeramtpaid ||
+              disableaddbtn
+            "
+            (click)="makeCustomerPayment()"
+          >
             Make Customer Payment
           </button>
         </div>

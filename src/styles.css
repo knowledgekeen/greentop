@@ -4,7 +4,8 @@
 @import "./assets/css/printprev.css";
 body,
 html {
-  font-family: "Nunito", sans-serif !important;
+  /* Garamond, Bookman, Tahoma, Arial, Palatino */
+  font-family: "Bookman", "Arial", sans-serif !important;
   color: #000000;
   /* <-- fonts */
 }
@@ -365,4 +366,8 @@ input:checked + .slider:before {
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text {
   border-radius: 0;
+}
+
+.titlecase {
+  text-transform: capitalize;
 }

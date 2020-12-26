@@ -114,6 +114,15 @@ export class EditclientComponent implements OnInit {
     this.district = this.clientdata.district;
     this.state = this.clientdata.state;
     this.address = this.clientdata.address;
+    console.log(this.clientdata);
+    this.licenseno = this.clientdata.licenseno;
+    this.licenseissuedt = moment(
+      parseInt(this.clientdata.licenseissuedt)
+    ).format("DD-MM-YYYY");
+    this.licenseexpirydt = moment(
+      parseInt(this.clientdata.licenseexpirydt)
+    ).format("DD-MM-YYYY");
+    this.licenseauthority = this.clientdata.licenseauthority;
   }
 
   updateClient() {

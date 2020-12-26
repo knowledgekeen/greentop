@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-2 noprint">O Form</h5>
 
   <div class="card position-relative">
@@ -17,22 +17,42 @@
             CERTIFICATE OF SOURCE FOR CARRYING ON THE BUSINESS OF SELLING <br />
             FERTILISERS IN WHOLESALE/RETAIL/FOR INDUSTRIAL USE
           </p>
-          <h1 class="issuedStatus text-primary noprint">ISSUED</h1>
-          <h6 class="text-right text-muted noprint p-0 m-0">
-            Last Issued on: 10/10/2020
+          <h1
+            class="issuedStatus text-primary noprint"
+            *ngIf="cust_oforms && cust_oforms.length > 0"
+          >
+            ISSUED
+          </h1>
+          <h6
+            class="text-right noprint p-0 m-0"
+            *ngIf="cust_oforms && cust_oforms.length > 0"
+          >
+            <strong>Last Issued OForms</strong>
+          </h6>
+          <h6
+            class="text-right noprint p-0 my-2"
+            *ngFor="let prevoforms of cust_oforms"
+          >
+            No: {{ prevoforms.oformno }} - Date :
+            <a
+              href="javascript:void(0)"
+              title="Click to view details"
+              (click)="getOformDetails(prevoforms)"
+            >
+              {{ prevoforms.oformdt | date: "dd-MM-yyyy" }}
+            </a>
           </h6>
           <button
             class="btn btn-primary btn-sm float-right noprint"
             data-toggle="modal"
             data-target="#oformconfirmation"
-            (click)="issueOFormConfirmation()"
-            disabled
+            [disabled]="isviewoform"
           >
             Issue O-Form
           </button>
           <button
             class="btn btn-warning btn-sm float-right noprint mx-5"
-            disabled
+            (click)="reloadbrowser()"
           >
             New O-Form
           </button>
@@ -45,6 +65,7 @@
             type="text"
             class="form-control form-control-sm mb-1"
             [(ngModel)]="oformno"
+            [disabled]="isviewoform"
           />
         </div>
         <div class="col"></div>
@@ -55,6 +76,7 @@
             class="form-control form-control-sm mb-1"
             [(ngModel)]="oformdate"
             (blur)="autoFillDt()"
+            [disabled]="isviewoform"
           />
         </div>
       </div>
@@ -203,6 +225,7 @@
                           wholesale_dealer = !wholesale_dealer;
                           updateWholesaleDealerStatus()
                         "
+                        [disabled]="isviewoform"
                       />
                       {{ wholesale_dealer_text }}
                       <span *ngIf="wholesale_dealer" class="mx-3">
@@ -217,6 +240,7 @@
                           retail_dealer = !retail_dealer;
                           updateRetailDealerStatus()
                         "
+                        [disabled]="isviewoform"
                       />
                       {{ retail_dealer_text }}
                       <span *ngIf="retail_dealer" class="mx-3">
@@ -231,6 +255,7 @@
                           industrial_dealer = !industrial_dealer;
                           updateIndustrialDealerStatus()
                         "
+                        [disabled]="isviewoform"
                       />
                       {{ industrial_dealer_text }}
                       <span *ngIf="industrial_dealer" class="mx-3">
@@ -296,8 +321,9 @@
                         type="checkbox"
                         class="noprint"
                         (change)="fresh_cert = !fresh_cert"
+                        [disabled]="isviewoform"
                       />
-                      For obtaining a fresh certificate of registration
+                      For obtaining a Fresh certificate of registration
                       <span *ngIf="fresh_cert" class="mx-3">
                         <i class="fa fa-check text-primary"></i>
                       </span>
@@ -307,6 +333,7 @@
                         type="checkbox"
                         class="noprint"
                         (change)="renew_cert = !renew_cert"
+                        [disabled]="isviewoform"
                       />
                       For Renewal of the certificate of registration
                       <span *ngIf="renew_cert" class="mx-3">
@@ -348,7 +375,7 @@
                           <span class="float-right">
                             <a
                               href="javascript:void(0);"
-                              (click)="removeProductFromList(index)"
+                              (click)="removeProductFromList(i)"
                               class="noprint"
                             >
                               <i class="fa fa-times text-danger"></i>
@@ -423,6 +450,10 @@
               <span class="text-danger">Please select date</span>
             </ng-template>
           </div>
+          <div class="col-md-6">
+            Customer:
+            <strong *ngIf="custdetails">{{ custdetails.name }}</strong>
+          </div>
           <div class="col-md-12 mt-3">
             <p class="p-0 m-0">
               2. Particulars of the person to whom the certificate of source is
@@ -437,21 +468,40 @@
               <div *ngFor="let stat of status">{{ stat }}</div>
             </ng-container>
             <ng-template #statusTemplate>
-              <span class="text-danger">Atleast select 1 status</span>
+              <span class="text-danger">Select atleast 1 status</span>
             </ng-template>
+          </div>
+          <div class="col-md-6 mt-3">PURPOSE:</div>
+          <div class="col-md-6 mt-3">
+            <div *ngIf="fresh_cert">Fresh</div>
+            <div *ngIf="renew_cert">Renewal</div>
+            <span *ngIf="!fresh_cert && !renew_cert" class="text-danger">
+              Select atleast 1 purpose
+            </span>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <!-- <button
-          type="button"
-          class="btn btn-warning"
-          (click)="updateProduct(selectedprod, 1)"
+        <button
+          class="btn btn-primary"
+          data-dismiss="modal"
+          [disabled]="
+            !status ||
+            (status && status.length <= 0) ||
+            !oformdate ||
+            (!fresh_cert && !renew_cert)
+          "
+          (click)="issueOFormConfirmation()"
+        >
+          Issue O-Form
+        </button>
+        <button
+          class="btn btn-secondary"
           data-dismiss="modal"
           aria-label="Close"
         >
-          Update Product
-        </button> -->
+          Cancel
+        </button>
       </div>
     </div>
   </div>

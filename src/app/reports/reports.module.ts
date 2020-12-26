@@ -19,6 +19,7 @@ import { SearchclientPipe } from '../searchclient.pipe';
 import { LedgerpurchaseComponent } from './ledgerpurchase/ledgerpurchase.component';
 import { DistrictwisesalesComponent } from './districtwisesales/districtwisesales.component';
 import { StockstatementComponent } from './stockstatement/stockstatement.component';
+import { AlloformsComponent } from './alloforms/alloforms.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { StockstatementComponent } from './stockstatement/stockstatement.compone
     LedgersalesComponent,
     LedgerpurchaseComponent,
     DistrictwisesalesComponent,
-    StockstatementComponent
+    StockstatementComponent,
+    AlloformsComponent
   ],
   imports: [
     GeneralModule,

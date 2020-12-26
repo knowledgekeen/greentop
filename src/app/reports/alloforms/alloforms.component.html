@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <h5 class="my-2">View all issued Form "O"</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <h6 class="text-primary">
+        Total Form "O" issued:
+        <strong *ngIf="alloforms">{{ alloforms.length }}</strong>
+      </h6>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Form "O" No</th>
+              <th scope="col">Form "O" Date</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="text-right">
+                <i class="fa fa-trash"></i>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let oform of alloforms; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                <a [routerLink]="['/oform', oform.clientid]">
+                  {{ oform.oformno }}
+                </a>
+              </td>
+              <td>{{ oform.oformdt | date: "dd-MM-yyyy" }}</td>
+              <td>{{ oform.name }}</td>
+              <td class="titlecase">{{ oform.oformstatus }}</td>
+              <td class="text-right">
+                <i
+                  class="fa fa-trash text-danger cursor-pointer"
+                  title='Delete this Form "O" from the system'
+                  (click)="deleteOForm(oform)"
+                ></i>
+              </td>
+            </tr>
+            <tr *ngIf="alloforms && alloforms.length == 0">
+              <td colspan="6" class="text-danger">O Forms cannot be found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-3">Add Historic Batch</h5>
 
   <div class="card">
@@ -13,31 +13,48 @@
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Production Date (DD-MM-YYYY)</label>
-          <input type="text" class="form-control" [(ngModel)]="proddate" (blur)="autoFillDate()"
-            placeholder="Production Date (DD-MM-YYYY)" />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="proddate"
+            (blur)="autoFillDate()"
+            placeholder="Production Date (DD-MM-YYYY)"
+          />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Select Product</label>
-          <select class="form-control" [disabled]="!allprods" [(ngModel)]="prodid">
-            <option value="{{ prod.prodid }}" *ngFor="let prod of allprods">{{
-              prod.prodname
-            }}</option>
+          <select
+            class="form-control"
+            [disabled]="!allprods"
+            [(ngModel)]="prodid"
+          >
+            <option value="{{ prod.prodid }}" *ngFor="let prod of allprods">
+              {{ prod.prodname }}
+            </option>
           </select>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Quantity Produced (in tons)</label>
-          <input type="text" class="form-control" [(ngModel)]="quantity" placeholder="Quantity Produced" />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="quantity"
+            placeholder="Quantity Produced"
+          />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
-          <button class="btn btn-primary" [disabled]="!batchid || !proddate || !quantity || !prodid || disableaddbtn"
-            (click)="addHistoricBatch()">
+          <button
+            class="btn btn-primary"
+            [disabled]="
+              !batchid || !proddate || !quantity || !prodid || disableaddbtn
+            "
+            (click)="addHistoricBatch()"
+          >
             Add Batch
           </button>
         </div>
         <div class="col-md-12 col-sm-12 mb-3 text-danger">
-          <span class="font-weight-bold">
-            Note:
-          </span>
+          <span class="font-weight-bold"> Note: </span>
           <i class="fa fa-exclamation"></i> Adding a Historic batch will not
           affect any existing product or raw material stock.
         </div>

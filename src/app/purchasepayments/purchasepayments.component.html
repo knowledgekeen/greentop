@@ -1,23 +1,46 @@
-<div class="container">
-  <h5 class="my-3 noprint">Purchase Payments
-    <button class="btn btn-sm btn-primary float-right mx-4" (click)="showhideform = !showhideform;showreceivepay=false;particulars=null">
-      <i class="fa " aria-hidden="true" [ngClass]="{'fa-check-square-o': showhideform, 'fa-square-o': !showhideform}"></i>
+<div class="container-fluid">
+  <h5 class="my-3 noprint">
+    Purchase Payments
+    <button
+      class="btn btn-sm btn-primary float-right mx-4"
+      (click)="
+        showhideform = !showhideform; showreceivepay = false; particulars = null
+      "
+    >
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="{
+          'fa-check-square-o': showhideform,
+          'fa-square-o': !showhideform
+        }"
+      ></i>
       <ng-container *ngIf="showhideform; else elseShowHideForm">
         Show
       </ng-container>
-      <ng-template #elseShowHideForm>
-        Hide
-      </ng-template>
+      <ng-template #elseShowHideForm> Hide </ng-template>
       Form
     </button>
-    <button class="btn btn-sm btn-danger float-right mx-3" (click)="showreceivepay = !showreceivepay;showhideform = true;particulars=null">
-      <i class="fa " aria-hidden="true" [ngClass]="{'fa-square-o': showreceivepay, 'fa-check-square-o': !showreceivepay}"></i>
+    <button
+      class="btn btn-sm btn-danger float-right mx-3"
+      (click)="
+        showreceivepay = !showreceivepay;
+        showhideform = true;
+        particulars = null
+      "
+    >
+      <i
+        class="fa"
+        aria-hidden="true"
+        [ngClass]="{
+          'fa-square-o': showreceivepay,
+          'fa-check-square-o': !showreceivepay
+        }"
+      ></i>
       <ng-container *ngIf="showreceivepay; else elseshowreceivepay">
         Hide
       </ng-container>
-      <ng-template #elseshowreceivepay>
-        Show
-      </ng-template>
+      <ng-template #elseshowreceivepay> Show </ng-template>
       Receiver Supplier Payment
     </button>
   </h5>
@@ -40,42 +63,85 @@
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Supplier</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Select Supplier" [(ngModel)]="supplier"
-              list="supplierlist" (change)="loadPurchasePaymentHistory(supplier)" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Select Supplier"
+              [(ngModel)]="supplier"
+              list="supplierlist"
+              (change)="loadPurchasePaymentHistory(supplier)"
+            />
             <div class="input-group-append">
-              <button class="btn btn-sm btn-secondary" [disabled]="!supplier" (click)="supplier=null; loadPurchasePaymentHistory(null)" title="Clear Supplier field">
+              <button
+                class="btn btn-sm btn-secondary"
+                [disabled]="!supplier"
+                (click)="supplier = null; loadPurchasePaymentHistory(null)"
+                title="Clear Supplier field"
+              >
                 <i class="fa fa-times"></i>
               </button>
             </div>
           </div>
           <!-- (change)=getAllPurchasePayments() -->
           <datalist id="supplierlist">
-            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allsuppliers">
-              {{ supp.clientid }}.{{ supp.name }}</option>
+            <option
+              value="{{ supp.clientid }}.{{ supp.name }}"
+              *ngFor="let supp of allsuppliers"
+            >
+              {{ supp.clientid }}.{{ supp.name }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Date of Payment</label>
-          <input type="text" class="form-control" placeholder="Date of Payment" [(ngModel)]="paydt"
-            (blur)="autofillPayDt()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Payment"
+            [(ngModel)]="paydt"
+            (blur)="autofillPayDt()"
+          />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Amount Paid</label>
-          <input type="text" class="form-control" placeholder="Amount Paid" [(ngModel)]="amtpaid" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Amount Paid"
+            [(ngModel)]="amtpaid"
+          />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
-          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoParticulars(paymode)">
-            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
+          <select
+            id="paymode"
+            class="form-control"
+            [(ngModel)]="paymode"
+            (change)="setAutoParticulars(paymode)"
+          >
+            <option
+              value="{{ mode.paymodeid }}"
+              *ngFor="let mode of allpaymodes"
+            >
+              {{ mode.paymode }}
+            </option>
           </select>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
-          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Particulars"
+            [(ngModel)]="particulars"
+          />
         </div>
         <div class="col-md-12 col-sm-12">
-          <button class="btn btn-sm btn-primary" [disabled]="!paydt || !supplier || !paymode || disableaddbtn"
-            (click)="addPayment()">
+          <button
+            class="btn btn-sm btn-primary"
+            [disabled]="!paydt || !supplier || !paymode || disableaddbtn"
+            (click)="addPayment()"
+          >
             Add Payment
           </button>
         </div>
@@ -94,45 +160,93 @@
         </div>
       </div>
       <div class="row">
-        
         <div class="col-md-6 col-sm-12">
           <label class="m-0">Supplier</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Select Supplier" [(ngModel)]="supplier"
-              list="supplierlist" (change)="loadPurchasePaymentHistory(supplier)" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Select Supplier"
+              [(ngModel)]="supplier"
+              list="supplierlist"
+              (change)="loadPurchasePaymentHistory(supplier)"
+            />
             <div class="input-group-append">
-              <button class="btn btn-sm btn-secondary" [disabled]="!supplier" (click)="supplier=null; loadPurchasePaymentHistory(null)" title="Clear Supplier field">
+              <button
+                class="btn btn-sm btn-secondary"
+                [disabled]="!supplier"
+                (click)="supplier = null; loadPurchasePaymentHistory(null)"
+                title="Clear Supplier field"
+              >
                 <i class="fa fa-times"></i>
               </button>
             </div>
           </div>
           <datalist id="supplierlist">
-            <option value="{{ supp.clientid }}.{{ supp.name }}" *ngFor="let supp of allsuppliers">
-              {{ supp.clientid }}.{{ supp.name }}</option>
+            <option
+              value="{{ supp.clientid }}.{{ supp.name }}"
+              *ngFor="let supp of allsuppliers"
+            >
+              {{ supp.clientid }}.{{ supp.name }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Date of Receipt</label>
-          <input type="text" class="form-control" placeholder="Date of Receipt" [(ngModel)]="supppaydt"
-            (blur)="autofillPayDt()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Receipt"
+            [(ngModel)]="supppaydt"
+            (blur)="autofillPayDt()"
+          />
         </div>
         <div class="col-md-3 col-sm-12">
           <label class="m-0">Amount Received</label>
-          <input type="text" class="form-control" placeholder="Amount Received" [(ngModel)]="suppamtpaid" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Amount Received"
+            [(ngModel)]="suppamtpaid"
+          />
         </div>
         <div class="col-md-3 col-sm-12 my-3">
           <label for="paymode" class="m-0">Mode of Payment</label>
-          <select id="paymode" class="form-control" [(ngModel)]="paymode" (change)="setAutoParticulars(paymode)">
-            <option value="{{ mode.paymodeid }}" *ngFor="let mode of allpaymodes">{{ mode.paymode }}</option>
+          <select
+            id="paymode"
+            class="form-control"
+            [(ngModel)]="paymode"
+            (change)="setAutoParticulars(paymode)"
+          >
+            <option
+              value="{{ mode.paymodeid }}"
+              *ngFor="let mode of allpaymodes"
+            >
+              {{ mode.paymode }}
+            </option>
           </select>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
-          <input type="text" class="form-control" placeholder="Particulars" [(ngModel)]="particulars" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Particulars"
+            [(ngModel)]="particulars"
+          />
         </div>
         <div class="col-md-12 col-sm-12">
-          <button class="btn btn-sm btn-primary" [disabled]="!supppaydt || !suppamtpaid || !supplier || !paymode || disableaddbtn"
-            (click)="receiveSupplierPayment()">
+          <button
+            class="btn btn-sm btn-primary"
+            [disabled]="
+              !supppaydt ||
+              !suppamtpaid ||
+              !supplier ||
+              !paymode ||
+              disableaddbtn
+            "
+            (click)="receiveSupplierPayment()"
+          >
             Receive Supplier Payment
           </button>
         </div>

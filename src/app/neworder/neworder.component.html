@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-2">New Order</h5>
 
   <div class="card">
@@ -12,46 +12,85 @@
         </div>
         <div class="col-md-1 col-sm-12 mb-3 text-right p-0">
           <label class="m-0"></label>
-          <input type="text" class="form-control text-right border-white p-0 pr-1" value="GTO-">
+          <input
+            type="text"
+            class="form-control text-right border-white p-0 pr-1"
+            value="GTO-"
+          />
         </div>
         <div class="col-md-2 col-sm-12 mb-3 pl-0">
           <label class="m-0">Order No.</label>
-          <input type="text" class="form-control" placeholder="Order No." [(ngModel)]="orderno"
-            (blur)="checkIfOrderNoPresent()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Order No."
+            [(ngModel)]="orderno"
+            (blur)="checkIfOrderNoPresent()"
+          />
           <label class="m-0 text-danger" *ngIf="ordernopresent">
-            <i class="fa fa-exclamation-triangle"></i> Order No. already present.
+            <i class="fa fa-exclamation-triangle"></i> Order No. already
+            present.
           </label>
         </div>
         <div class="col-md-6 col-sm-12 mb-3">
           <label class="m-0">Select Product</label>
-          <input type="text" class="form-control" placeholder="Select Product" [(ngModel)]="selectprod"
-            list="prodlist" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Select Product"
+            [(ngModel)]="selectprod"
+            list="prodlist"
+          />
           <datalist id="prodlist">
-            <option value="{{ prod.prodid }}.{{ prod.prodname }}" *ngFor="let prod of allproducts">
-              {{ prod.prodid }}.{{ prod.prodname }}</option>
+            <option
+              value="{{ prod.prodid }}.{{ prod.prodname }}"
+              *ngFor="let prod of allproducts"
+            >
+              {{ prod.prodid }}.{{ prod.prodname }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Order Date</label>
-          <input type="text" class="form-control" placeholder="Order Date(DD-MM-YYYY)" [(ngModel)]="orderdt"
-            (blur)="autoFillDt()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Order Date(DD-MM-YYYY)"
+            [(ngModel)]="orderdt"
+            (blur)="autoFillDt()"
+          />
           <h6 class="m-0 text-danger" *ngIf="dateerror">
             <i class="fa fa-exclamation"></i> Warning: Date is from future.
           </h6>
         </div>
         <div class="col-md-8 col-sm-12 mb-3">
           <label class="m-0">Select Customer</label>
-          <input type="text" class="form-control" placeholder="Select Customer" [(ngModel)]="selectcust" list="custlist"
-            [disabled]="!allcustomers" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Select Customer"
+            [(ngModel)]="selectcust"
+            list="custlist"
+            [disabled]="!allcustomers"
+          />
           <datalist id="custlist">
-            <option value="{{ cust.clientid }}.{{ cust.name }}" *ngFor="let cust of allcustomers">
-              {{ cust.clientid }}.{{ cust.name }}</option>
+            <option
+              value="{{ cust.clientid }}.{{ cust.name }}"
+              *ngFor="let cust of allcustomers"
+            >
+              {{ cust.clientid }}.{{ cust.name }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Quantity(tons)</label>
-          <input type="text" class="form-control" placeholder="Quantity" [(ngModel)]="quantity"
-            (blur)="sendtoself=true;sendOrderToSelf();" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Quantity"
+            [(ngModel)]="quantity"
+            (blur)="sendtoself = true; sendOrderToSelf()"
+          />
         </div>
       </div>
     </div>
@@ -66,75 +105,151 @@
       <div class="row">
         <div class="col-md-3 col-sm-12 mb-3">
           <div class="custom-control custom-checkbox mt-4">
-            <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" [(ngModel)]="sendtoself"
-              (change)="sendOrderToSelf()" [disabled]="nocusterr" />
-            <label class="custom-control-label" for="customControlAutosizing2">Send order to SELF</label>
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="customControlAutosizing2"
+              [(ngModel)]="sendtoself"
+              (change)="sendOrderToSelf()"
+              [disabled]="nocusterr"
+            />
+            <label class="custom-control-label" for="customControlAutosizing2"
+              >Send order to SELF</label
+            >
           </div>
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">
-            <span *ngIf="!sendtoself">Consignee</span> Name</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneename" placeholder="Consignee Name"
-            [disabled]="nocusterr" />
+            <span *ngIf="!sendtoself">Consignee</span> Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneename"
+            placeholder="Consignee Name"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">
-            <span *ngIf="!sendtoself">Consignee</span> Contact Person</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneecontactperson"
-            placeholder="Consignee Contact Person" [disabled]="nocusterr" />
+            <span *ngIf="!sendtoself">Consignee</span> Contact Person</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneecontactperson"
+            placeholder="Consignee Contact Person"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-3 col-sm-12 mb-3">
-          <label class="m-0"><span *ngIf="!sendtoself">Consignee</span> Contact Number</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneecontactno"
-            placeholder="Consignee Contact Number" [disabled]="nocusterr" />
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> Contact Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneecontactno"
+            placeholder="Consignee Contact Number"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-6 col-sm-12 mb-3">
-          <label class="m-0"><span *ngIf="!sendtoself">Consignee</span> Address</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneeaddress" placeholder="Consignee Address"
-            [disabled]="nocusterr" />
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneeaddress"
+            placeholder="Consignee Address"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
-          <label class="m-0"><span *ngIf="!sendtoself">Consignee</span> City</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneecity" placeholder="Consignee City"
-            [disabled]="nocusterr" list="cities" />
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> City</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneecity"
+            placeholder="Consignee City"
+            [disabled]="nocusterr"
+            list="cities"
+          />
           <datalist id="cities">
-            <option value="{{ city.city }}" *ngFor="let city of clientcities">{{
-              city.city
-            }}</option>
+            <option value="{{ city.city }}" *ngFor="let city of clientcities">
+              {{ city.city }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
-          <label class="m-0"><span *ngIf="!sendtoself">Consignee</span> State</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneestate" placeholder="Consignee State"
-            [disabled]="nocusterr" list="states" />
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> State</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneestate"
+            placeholder="Consignee State"
+            [disabled]="nocusterr"
+            list="states"
+          />
           <datalist id="states">
-            <option value="{{ state.state }}" *ngFor="let state of clientstates">{{ state.state }}</option>
+            <option
+              value="{{ state.state }}"
+              *ngFor="let state of clientstates"
+            >
+              {{ state.state }}
+            </option>
           </datalist>
         </div>
         <div class="col-md-2 col-sm-12 mb-3">
-          <label class="m-0"><span *ngIf="!sendtoself">Consignee</span> Quantity</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneequantity" placeholder="Consignee Quantity"
-            [disabled]="nocusterr" />
+          <label class="m-0"
+            ><span *ngIf="!sendtoself">Consignee</span> Quantity</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneequantity"
+            placeholder="Consignee Quantity"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-4 col-sm-12 mb-3">
           <label class="m-0">Consignee GST</label>
-          <input type="text" class="form-control" [(ngModel)]="consigneegst" placeholder="Consignee GST"
-            [disabled]="nocusterr" />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="consigneegst"
+            placeholder="Consignee GST"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-8 col-sm-12 mb-3">
           <label class="m-0">Delivery Address</label>
-          <input type="text" class="form-control" [(ngModel)]="deliveryaddress" placeholder="Delivery Address"
-            [disabled]="nocusterr" />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="deliveryaddress"
+            placeholder="Delivery Address"
+            [disabled]="nocusterr"
+          />
         </div>
         <div class="col-md-12 col-sm-12 mb-3">
-          <button class="btn btn-sm btn-info" [disabled]="
+          <button
+            class="btn btn-sm btn-info"
+            [disabled]="
               nocusterr ||
               !consigneecontactperson ||
               !consigneecontactno ||
               !consigneecity ||
               !consigneestate ||
               !consigneeaddress
-            " (click)="addConsignee()">
+            "
+            (click)="addConsignee()"
+          >
             Add <span *ngIf="!sendtoself">Consignee</span>
           </button>
         </div>
@@ -161,18 +276,33 @@
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ consignee.remarks }}</td>
             <td>{{ consignee.consigneename }}</td>
-            <td class="text-right">{{ consignee.quantity | number: '1.3-3' }}</td>
+            <td class="text-right">
+              {{ consignee.quantity | number: "1.3-3" }}
+            </td>
             <td>{{ consignee.city }}</td>
             <td>
-              <a href="javascript:void(0);" (click)="removeConsignee(i)" class="text-danger">Remove</a>
+              <a
+                href="javascript:void(0);"
+                (click)="removeConsignee(i)"
+                class="text-danger"
+                >Remove</a
+              >
             </td>
           </tr>
         </tbody>
       </table>
 
-      <button class="btn btn-primary" [disabled]="
-          !quantity || !selectprod || !selectcust || allconsignees.length <= 0 || btndisabled
-        " (click)="createNewOrder()">
+      <button
+        class="btn btn-primary"
+        [disabled]="
+          !quantity ||
+          !selectprod ||
+          !selectcust ||
+          allconsignees.length <= 0 ||
+          btndisabled
+        "
+        (click)="createNewOrder()"
+      >
         Place Order
       </button>
     </div>

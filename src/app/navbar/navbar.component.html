@@ -1,15 +1,25 @@
 <header class="shadow-sm">
-  <div class="container">
+  <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light row">
       <a class="navbar-brand" [routerLink]="['/index']">
         <img src="assets/images/logo.jpg" width="60" alt="Green Top Organics" />
         Green Top Organics
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
         <ul class="navbar-nav">
           <li class="nav-item dropdown position-static" *ngIf="userdets">
             <a class="nav-link active" [routerLink]="['/index']">Home</a>
@@ -22,45 +32,84 @@
 
           <!-- If user is logged in then below menu -->
           <li class="nav-item dropdown position-static" *ngIf="userdets">
-            <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+            <a
+              class="nav-link dropdown-toggle active"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Accounts
             </a>
             <app-accounts-navbar></app-accounts-navbar>
           </li>
           <li class="nav-item dropdown position-static" *ngIf="userdets">
-            <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+            <a
+              class="nav-link dropdown-toggle active"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Reports
             </a>
             <app-report-navbar></app-report-navbar>
           </li>
           <!-- If user is logged in then below menu -->
           <li class="nav-item dropdown position-static" *ngIf="userdets">
-            <a class="nav-link dropdown-toggle text-primary" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+            <a
+              class="nav-link dropdown-toggle text-primary"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               {{ userdets.fullname }}
             </a>
-            <div class="w-100 dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
+            <div
+              class="w-100 dropdown-menu dropdown-menu-right p-0"
+              aria-labelledby="navbarDropdown"
+            >
               <div class="row">
                 <div class="col-sm-12">
-                  <span class="dropdown-item pt-3 font-weight-bold text-danger" href="javascript:void(0)">
+                  <span
+                    class="dropdown-item pt-3 font-weight-bold text-danger"
+                    href="javascript:void(0)"
+                  >
                     <span class="text-uppercase">{{ userdets.fullname }}</span>
 
                     <div class="float-right">
-                      <a href="javascript:void(0)" (click)="logout()" class="text-danger">
+                      <a
+                        href="javascript:void(0)"
+                        (click)="logout()"
+                        class="text-danger"
+                      >
                         <i class="fa fa-power-off" aria-hidden="true"></i>
-                        Logout</a>
+                        Logout</a
+                      >
                     </div>
                     <div class="float-right mr-3">
-                      <a href="javascript:void(0)" [routerLink]="['/changepwd']" class="text-secondary">
+                      <a
+                        href="javascript:void(0)"
+                        [routerLink]="['/changepwd']"
+                        class="text-secondary"
+                      >
                         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                        Change Password</a>
+                        Change Password</a
+                      >
                     </div>
                     <div class="float-right mr-3">
-                      <a href="javascript:void(0)" [routerLink]="['/updatecompadd']" class="text-secondary">
+                      <a
+                        href="javascript:void(0)"
+                        [routerLink]="['/updatecompadd']"
+                        class="text-secondary"
+                      >
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        Change Address</a>
+                        Change Address</a
+                      >
                     </div>
                   </span>
                   <div class="dropdown-divider"></div>
@@ -95,7 +144,9 @@
                   <ul class="py-2 px-4 my-2 list-unstyled menus">
                     <li>Transport</li>
                     <li>
-                      <a [routerLink]="['/addtransport']">Add / View Transport</a>
+                      <a [routerLink]="['/addtransport']"
+                        >Add / View Transport</a
+                      >
                     </li>
                     <li>
                       <a [routerLink]="['/addtruck']">Add / View Truck</a>
@@ -113,7 +164,9 @@
                   <ul class="py-2 px-4 my-2 list-unstyled menus">
                     <li>Raw Material</li>
                     <li>
-                      <a [routerLink]="['/addrawmat']">Add/View Raw Materials</a>
+                      <a [routerLink]="['/addrawmat']"
+                        >Add/View Raw Materials</a
+                      >
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>
@@ -127,13 +180,19 @@
                   <ul class="py-2 px-4 my-2 list-unstyled menus">
                     <li>MISC.</li>
                     <li>
-                      <a [routerLink]="['/addpaymode']">Add/View Payment Modes</a>
+                      <a [routerLink]="['/addpaymode']"
+                        >Add/View Payment Modes</a
+                      >
                     </li>
                     <li>
-                      <a [routerLink]="['/addwastage']">Add Raw Material Wastage</a>
+                      <a [routerLink]="['/addwastage']"
+                        >Add Raw Material Wastage</a
+                      >
                     </li>
                     <li>
-                      <a [routerLink]="['/addreprocessing']">Add Product Reprocessing</a>
+                      <a [routerLink]="['/addreprocessing']"
+                        >Add Product Reprocessing</a
+                      >
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>
@@ -143,20 +202,26 @@
                   <ul class="py-2 px-4 my-2 list-unstyled menus">
                     <li>Purchase</li>
                     <li>
-                      <a [routerLink]="['/purchaserawmat', 0]">Purchase Material</a>
+                      <a [routerLink]="['/purchaserawmat', 0]"
+                        >Purchase Material</a
+                      >
                     </li>
                     <li>
                       <a [routerLink]="['/viewpurchases']">View Purchases</a>
                     </li>
                     <li>
-                      <a [routerLink]="['/purchasepayments']">Purchase Payments</a>
+                      <a [routerLink]="['/purchasepayments']"
+                        >Purchase Payments</a
+                      >
                     </li>
                   </ul>
                   <div class="dropdown-divider"></div>
                   <ul class="py-2 px-4 my-2 list-unstyled menus">
                     <li>Manufacture</li>
                     <li>
-                      <a [routerLink]="['/assignrawmatprod']">Assign Raw Material</a>
+                      <a [routerLink]="['/assignrawmatprod']"
+                        >Assign Raw Material</a
+                      >
                     </li>
                     <li>
                       <a [routerLink]="['/addbatch']">Add Batch</a>
@@ -201,22 +266,45 @@
 
           <!-- If user is not logged in then below menu -->
           <li class="nav-item dropdown position-static" *ngIf="!userdets">
-            <a class="nav-link dropdown-toggle colorgreen" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+            <a
+              class="nav-link dropdown-toggle colorgreen"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Login
             </a>
-            <div class="loginform dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
+            <div
+              class="loginform dropdown-menu dropdown-menu-right p-0"
+              aria-labelledby="navbarDropdown"
+            >
               <div class="row">
                 <div class="col-sm-12 col-xs-12">
                   <div class="p-3 position-relative">
                     <label class="mb-0">Email Id</label>
-                    <input type="text" class="form-control" placeholder="Email Address" [(ngModel)]="email" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Email Address"
+                      [(ngModel)]="email"
+                    />
                     <label class="mt-2 mb-0">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
-                      (keyup)="clickPwd($event)" />
-                    <button class="btn btn-sm btn-block btn-primary mt-3" (click)="checkLogin()" [disabled]="
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      [(ngModel)]="password"
+                      (keyup)="clickPwd($event)"
+                    />
+                    <button
+                      class="btn btn-sm btn-block btn-primary mt-3"
+                      (click)="checkLogin()"
+                      [disabled]="
                         !email || !password || (password && password.length < 6)
-                      ">
+                      "
+                    >
                       SIGN IN
                     </button>
                     <div class="loginoverlay" *ngIf="spinnerflag">

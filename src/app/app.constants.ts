@@ -9,4 +9,7 @@ export const CONSTANTS = {
   OUT: "OUT",
   CREDIT: "Credit",
   DEBIT: "Debit",
+  WHOLESALE_DEALER: "Wholesale dealer",
+  RETAIL_DEALER: "Retail dealer",
+  INDUSTRIAL_DEALER: "Industrial dealer",
 };

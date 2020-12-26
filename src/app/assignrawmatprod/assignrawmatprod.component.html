@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-3">Assign Raw Material To Production</h5>
   <div class="card">
     <div class="card-body">
@@ -8,9 +8,14 @@
       <div class="row">
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Select a Product</label>
-          <select class="form-control" [(ngModel)]="product" [disabled]="!allproducts || editqtyrem"
-            (change)="getAllProdRawmats()">
-            <option value="{{ prod.prodid }}" *ngFor="let prod of allproducts">{{ prod.prodid }}.{{ prod.prodname }}
+          <select
+            class="form-control"
+            [(ngModel)]="product"
+            [disabled]="!allproducts || editqtyrem"
+            (change)="getAllProdRawmats()"
+          >
+            <option value="{{ prod.prodid }}" *ngFor="let prod of allproducts">
+              {{ prod.prodid }}.{{ prod.prodname }}
             </option>
           </select>
           <h6 class="h6 text-danger" *ngIf="!allproducts">
@@ -20,12 +25,27 @@
 
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Select Raw Material</label>
-          <select class="form-control" [(ngModel)]="rawmat" [disabled]="!allratmats" *ngIf="!editqtyrem">
-            <option value="{{ rawmat.rawmatid }}" *ngFor="let rawmat of allratmats">
-              {{ rawmat.rawmatid }}.{{ rawmat.name }}</option>
+          <select
+            class="form-control"
+            [(ngModel)]="rawmat"
+            [disabled]="!allratmats"
+            *ngIf="!editqtyrem"
+          >
+            <option
+              value="{{ rawmat.rawmatid }}"
+              *ngFor="let rawmat of allratmats"
+            >
+              {{ rawmat.rawmatid }}.{{ rawmat.name }}
+            </option>
           </select>
 
-          <input type="text" class="form-control" [(ngModel)]="rawmatnm" *ngIf="editqtyrem" readonly />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="rawmatnm"
+            *ngIf="editqtyrem"
+            readonly
+          />
           <h6 class="h6 text-danger" *ngIf="!allratmats">
             No Raw Materials to add, Please add one.
           </h6>
@@ -33,23 +53,43 @@
 
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Default Quantity Used</label>
-          <input type="text" class="form-control" [(ngModel)]="defqty" placeholder="Default Quantity Used" />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="defqty"
+            placeholder="Default Quantity Used"
+          />
         </div>
 
         <div class="col-md-3 col-sm-12 mb-3">
           <label class="m-0">Quantity Modified Date</label>
-          <input type="text" class="form-control" [(ngModel)]="moddate" placeholder="Quantity changed date"
-            (change)="changeDate()" />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="moddate"
+            placeholder="Quantity changed date"
+            (change)="changeDate()"
+          />
         </div>
 
         <div class="col-md-12">
-          <button class="btn btn-primary my-2" [disabled]="!product || !rawmat || !defqty || disablesubmitbtn"
-            (click)="addProdRawMaterial()" *ngIf="!editqtyrem">
+          <button
+            class="btn btn-primary my-2"
+            [disabled]="!product || !rawmat || !defqty || disablesubmitbtn"
+            (click)="addProdRawMaterial()"
+            *ngIf="!editqtyrem"
+          >
             Add Raw Material
           </button>
 
-          <button class="btn btn-warning my-2" (click)="saveEditRawMaterial()"
-            [disabled]="!product || !rawmatnm || !defqty || disableeditsubmitbtn" *ngIf="editqtyrem">
+          <button
+            class="btn btn-warning my-2"
+            (click)="saveEditRawMaterial()"
+            [disabled]="
+              !product || !rawmatnm || !defqty || disableeditsubmitbtn
+            "
+            *ngIf="editqtyrem"
+          >
             Update Raw Material
           </button>
         </div>
@@ -57,7 +97,10 @@
       </div>
 
       <div class="row mt-3">
-        <div class="col-md-12" *ngIf="selected_prod && prod_rawmats && prod_rawmats.length > 0">
+        <div
+          class="col-md-12"
+          *ngIf="selected_prod && prod_rawmats && prod_rawmats.length > 0"
+        >
           <p class="m-0 text-danger" *ngIf="productadded">
             <i class="fa fa-exclamation-triangle"></i> This product is already
             added
@@ -69,8 +112,12 @@
             }}</span>
           </h5>
           <h6 class="float-right">
-            <a href="javascript:void(0);" data-toggle="modal" data-target="#historyModal"
-              (click)="getRawMatAssignmentHist()">
+            <a
+              href="javascript:void(0);"
+              data-toggle="modal"
+              data-target="#historyModal"
+              (click)="getRawMatAssignmentHist()"
+            >
               <i class="fa fa-line-chart"></i> Assignment history
             </a>
           </h6>
@@ -88,23 +135,35 @@
                 <th scope="row">{{ i + 1 }}</th>
                 <td>{{ prod.name }}</td>
                 <td class="text-right">
-                  <ng-container *ngIf="prod.name != HDPEBags; else elseTemplate">
-                    {{ prod.defquantity | number: '1.3-3' }}
+                  <ng-container
+                    *ngIf="prod.name != HDPEBags; else elseTemplate"
+                  >
+                    {{ prod.defquantity | number: "1.3-3" }}
                   </ng-container>
                   <ng-template #elseTemplate>
-                    {{ prod.defquantity}}
+                    {{ prod.defquantity }}
                   </ng-template>
                 </td>
                 <td>
-                  <a href="javascript:void(0);" class="text-info mr-3" (click)="editQuantityRem(prod)"><i
-                      class="fa fa-pencil"></i> Edit</a>
-                  <a href="javascript:void(0);" class="text-danger" (click)="deassignRawMaterial(prod)"><i
-                      class="fa fa-trash"></i> Delete</a>
+                  <a
+                    href="javascript:void(0);"
+                    class="text-info mr-3"
+                    (click)="editQuantityRem(prod)"
+                    ><i class="fa fa-pencil"></i> Edit</a
+                  >
+                  <a
+                    href="javascript:void(0);"
+                    class="text-danger"
+                    (click)="deassignRawMaterial(prod)"
+                    ><i class="fa fa-trash"></i> Delete</a
+                  >
                 </td>
               </tr>
               <tr class="thead-dark">
                 <th colspan="2" class="text-right">Total</th>
-                <th class="text-right">{{totalquantity | number: '1.3-3'}}</th>
+                <th class="text-right">
+                  {{ totalquantity | number: "1.3-3" }}
+                </th>
                 <th></th>
               </tr>
             </tbody>
@@ -116,22 +175,36 @@
 </div>
 
 <!-- History Modal -->
-<div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" *ngIf="selected_prod">
+<div
+  class="modal fade"
+  id="historyModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selected_prod"
+>
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          Raw Material Assignment History for <span class="text-primary font-weight-bold">
-            {{selected_prod.prodname}}
+          Raw Material Assignment History for
+          <span class="text-primary font-weight-bold">
+            {{ selected_prod.prodname }}
           </span>
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h5 class="text-primary" *ngIf="spinner"><i class="fa fa-pulse fa-spinner"></i> Please wait, loading raw
+        <h5 class="text-primary" *ngIf="spinner">
+          <i class="fa fa-pulse fa-spinner"></i> Please wait, loading raw
           material history...
         </h5>
         <div class="table-responsive" *ngIf="!spinner && assignhistdata">
@@ -146,20 +219,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let hist of assignhistdata; let i=index;"
-                [ngClass]="{'bg-info text-white': hist.highlightrow == true}">
-                <th scope="row">{{i+1}}</th>
-                <td>{{hist.histdate | date: 'dd-MM-yyyy'}}</td>
-                <td>{{hist.name}}</td>
-                <td>{{hist.hsncode}}</td>
-                <td>{{hist.quantity}}</td>
+              <tr
+                *ngFor="let hist of assignhistdata; let i = index"
+                [ngClass]="{ 'bg-info text-white': hist.highlightrow == true }"
+              >
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ hist.histdate | date: "dd-MM-yyyy" }}</td>
+                <td>{{ hist.name }}</td>
+                <td>{{ hist.hsncode }}</td>
+                <td>{{ hist.quantity }}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>

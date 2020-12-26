@@ -1,7 +1,13 @@
-<div class="w-100 dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
+<div
+  class="w-100 dropdown-menu dropdown-menu-right p-0"
+  aria-labelledby="navbarDropdown"
+>
   <div class="row">
     <div class="col-sm-12">
-      <span class="dropdown-item pt-3 font-weight-bold text-danger" href="javascript:void(0)">
+      <span
+        class="dropdown-item pt-3 font-weight-bold text-danger"
+        href="javascript:void(0)"
+      >
         <span class="text-uppercase">Reports</span>
       </span>
       <div class="dropdown-divider"></div>
@@ -9,49 +15,74 @@
     <div class="col-sm-3">
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">Purchases</li>
-        <li><a [routerLink]="['/reports/monthwisepurchases']">All Purchases</a></li>
+        <li>
+          <a [routerLink]="['/reports/monthwisepurchases']">All Purchases</a>
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">SALES</li>
         <li><a [routerLink]="['/reports/allsales']">All Sales</a></li>
-        <li><a [routerLink]="['/reports/searchinvoice']">Search Sale Invoices</a></li>
+        <li>
+          <a [routerLink]="['/reports/searchinvoice']">Search Sale Invoices</a>
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">Ledgers</li>
         <li><a [routerLink]="['/reports/salesledger']">Sales Ledger</a></li>
-        <li><a [routerLink]="['/reports/purchaseledger']">Purchase Ledger</a></li>
+        <li>
+          <a [routerLink]="['/reports/purchaseledger']">Purchase Ledger</a>
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
     </div>
     <div class="col-sm-3">
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">Delivery</li>
-        <li><a [routerLink]="['/reports/searchdc']">Search Delivery Challans</a></li>
+        <li>
+          <a [routerLink]="['/reports/searchdc']">Search Delivery Challans</a>
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">Sundry</li>
         <li><a [routerLink]="['/reports/sundrydebt']">Sundry Debtors</a></li>
-        <li><a [routerLink]="['/reports/sundrycredit']">Sundry Creditors</a></li>
+        <li>
+          <a [routerLink]="['/reports/sundrycredit']">Sundry Creditors</a>
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">Bills & Collections</li>
-        <li><a [routerLink]="['/reports/billsncollection']">Bills & Collections</a></li>
+        <li>
+          <a [routerLink]="['/reports/billsncollection']"
+            >Bills & Collections</a
+          >
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
     </div>
     <div class="col-sm-3">
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">DISTRICT SALES</li>
-        <li><a [routerLink]="['/reports/districtwisesales']">District Wise Sales</a></li>
+        <li>
+          <a [routerLink]="['/reports/districtwisesales']"
+            >District Wise Sales</a
+          >
+        </li>
       </ul>
       <div class="dropdown-divider"></div>
       <ul class="py-2 px-4 my-2 list-unstyled menus">
         <li class="text-uppercase">Stocks</li>
-        <li><a [routerLink]="['/reports/stockstatement']">Stock Statement</a></li>
+        <li>
+          <a [routerLink]="['/reports/stockstatement']">Stock Statement</a>
+        </li>
+      </ul>
+      <div class="dropdown-divider"></div>
+      <ul class="py-2 px-4 my-2 list-unstyled menus">
+        <li class="text-uppercase">O-FORMS</li>
+        <li><a [routerLink]="['/reports/alloforms']">View O-Forms</a></li>
       </ul>
       <div class="dropdown-divider"></div>
     </div>

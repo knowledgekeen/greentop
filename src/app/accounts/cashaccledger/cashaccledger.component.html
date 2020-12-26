@@ -1,11 +1,9 @@
-<div class="container">
+<div class="container-fluid">
   <h5 class="my-2">Cash Account Ledger</h5>
 
   <div class="card">
     <div class="card-body">
-      <h4 class="text-center">
-        Cash Account
-      </h4>
+      <h4 class="text-center">Cash Account</h4>
       <h5 class="text-center">(Ledger)</h5>
       <h6 class="text-center">
         <span class="font-weight-bold border-bottom border-primary">
@@ -30,13 +28,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let acc of ledgerhist; let i=index">
-              <th scope="row">{{i+1}}</th>
-              <td>{{acc.dated | date:'dd/MM/yyyy'}}</td>
+            <tr *ngFor="let acc of ledgerhist; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ acc.dated | date: "dd/MM/yyyy" }}</td>
               <td><span [innerHTML]="acc.particular"></span></td>
-              <td class="text-right">{{acc.deposit | number: '1.2-2'}}</td>
-              <td class="text-right">{{acc.payments | number: '1.2-2'}}</td>
-              <td class="text-right">{{acc.balance | number: '1.2-2'}}</td>
+              <td class="text-right">{{ acc.deposit | number: "1.2-2" }}</td>
+              <td class="text-right">{{ acc.payments | number: "1.2-2" }}</td>
+              <td class="text-right">{{ acc.balance | number: "1.2-2" }}</td>
             </tr>
             <tr>
               <td colspan="6" class="text-primary" *ngIf="!ledgerhist">
@@ -45,12 +43,16 @@
             </tr>
             <tr class="thead-dark">
               <th scope="col" colspan="3" class="text-right">Total</th>
-              <th scope="col" class="text-right">{{totaldeposit | number: '1.2-2'}}</th>
-              <th scope="col" class="text-right">{{totalpayments | number: '1.2-2'}}</th>
+              <th scope="col" class="text-right">
+                {{ totaldeposit | number: "1.2-2" }}
+              </th>
+              <th scope="col" class="text-right">
+                {{ totalpayments | number: "1.2-2" }}
+              </th>
               <th scope="col" class="text-right"></th>
             </tr>
           </tbody>
-        </table>        
+        </table>
       </div>
     </div>
   </div>
