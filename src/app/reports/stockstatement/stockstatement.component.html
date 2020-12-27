@@ -16,7 +16,12 @@
               >
                 <span>{{ stk.name }}</span>
                 <span class="float-right text-danger">
-                  <ng-container *ngIf="stk.name === bags; else elseTemplate">
+                  <ng-container
+                    *ngIf="
+                      stk.name.toLowerCase().indexOf('bags') != -1;
+                      else elseTemplate
+                    "
+                  >
                     {{ stk.quantity }}
                   </ng-container>
                   <ng-template #elseTemplate>
@@ -75,8 +80,7 @@
             </div>
             <h6 class="my-2 text-right">
               <span
-                ><span class="noprint">
-                  <i class="fa fa-pencil mx-2"></i> </span
+                ><span class="noprint"> <i class="fa fa-pencil mx-2"></i> </span
                 >Printed On:
                 <span contenteditable="true">{{
                   todaydt | date: "dd/MM/yyyy"

@@ -123,7 +123,7 @@ export class StockstatementComponent implements OnInit {
             !this.prevrecfromfilter ||
             (this.prevrecfromfilter && this.prevrecfromfilter.length <= 0)
           ) {
-            console.log("If", data[0]);
+            // console.log("If", data[0]);
             tmpObj.openingstock = data[i].closingstock
               ? data[i].closingstock
               : parseFloat(data[i].quantity);
@@ -132,7 +132,7 @@ export class StockstatementComponent implements OnInit {
               ? data[i].closingstock
               : parseFloat(data[i].quantity);
           } else {
-            console.log("Else");
+            // console.log("Else");
             tmpObj.openingstock = parseFloat(
               this.prevrecfromfilter.closingstock
             );
@@ -235,16 +235,36 @@ export class StockstatementComponent implements OnInit {
 
     // Step 1
     const fromdtfinanyr = this._global.getSpecificFinancialYear(fromdt);
-    /* let geturl = `stockid=${stock.stockid}&fromdt=${fromdt}&todt=${todt}`;
+    const geturl = `stockid=${stock.stockid}&fromdt=${fromdtfinanyr.fromdt}&todt=${fromdtfinanyr.todt}`;
     this._rest
       .getData("stock.php", "getStockHistory", geturl)
       .subscribe((Response) => {
         const data = Response && Response["data"] ? Response["data"] : null;
-        this.prevrecfromfilter =
-          Response && Response["openstk"] ? Response["openstk"] : null;
         this.filterData(data).then((Response) => {
-          this.isLoading = false;
+          const annualdata: any = Response;
+          // console.log(annualdata);
+          let geturl = `stockid=${stock.stockid}&fromdt=${fromdt}&todt=${todt}`;
+          this._rest
+            .getData("stock.php", "getStockHistory", geturl)
+            .subscribe((ResponseFilter) => {
+              const data =
+                ResponseFilter && ResponseFilter["data"]
+                  ? ResponseFilter["data"]
+                  : null;
+
+              let prevdata = null;
+              for (let i = 0; i < annualdata.length; i++) {
+                if (annualdata[i].stockregid === data[0].stockregid) {
+                  prevdata = annualdata[i - 1];
+                  break;
+                }
+              }
+              this.prevrecfromfilter = prevdata ? prevdata : null;
+              this.filterData(data).then((Response) => {
+                this.isLoading = false;
+              });
+            });
         });
-      }); */
+      });
   }
 }
