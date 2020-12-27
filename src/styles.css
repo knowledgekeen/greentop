@@ -35,6 +35,10 @@ textarea {
   font-size: 0.875rem;
 }
 
+.text-top {
+  vertical-align: text-top !important;
+}
+
 .text-md {
   font-size: 1rem;
 }

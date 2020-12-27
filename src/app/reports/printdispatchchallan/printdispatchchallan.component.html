@@ -4,51 +4,69 @@
       <app-letterhead></app-letterhead>
       <div class="row my-5 pl-5">
         <div class="col-md-4 col-print-4" *ngIf="dcdata">
-          M/s. <strong>{{dcdata[0].name}}</strong> <br>
-          <span>{{dcdata[0].address}}</span><br>
-          <strong>State: </strong> <span>{{dcdata[0].state}}</span> <br>
-          <strong *ngIf="dcdata[0].gstno">State Code: </strong><span>{{dcdata[0].gstno.substring(0,2)}}</span> <br>
-          <strong *ngIf="dcdata[0].gstno">GST No. </strong> <span>{{dcdata[0].gstno}}</span>
+          M/s. <strong>{{ dcdata[0].name }}</strong> <br />
+          <span>{{ dcdata[0].address }}</span
+          ><br />
+          <strong>State: </strong> <span>{{ dcdata[0].state }}</span> <br />
+          <strong *ngIf="dcdata[0].gstno">State Code: </strong
+          ><span>{{ dcdata[0].gstno.substring(0, 2) }}</span> <br />
+          <strong *ngIf="dcdata[0].gstno">GST No. </strong>
+          <span>{{ dcdata[0].gstno }}</span>
         </div>
 
         <div class="col-md-5 col-print-5">
           <strong>Order No.: </strong>
           <span *ngIf="dcdata && dcdata.length == 1">
-            GTO-{{dcdata[0].orderno}}
+            GTO-{{ dcdata[0].orderno }}
           </span>
           <span *ngIf="dcdata && dcdata.length > 1">
-            {{ordernos}}
+            {{ ordernos }}
           </span>
-          <br>
+          <br />
           <strong>Order Date: </strong>
           <span *ngIf="!orderdate">
             <span *ngFor="let orderdata of dcdata">
-              {{orderdata.orderdt | date: 'dd/MM/yyyy'}}
+              {{ orderdata.orderdt | date: "dd/MM/yyyy" }}
             </span>
           </span>
           <span *ngIf="orderdate">
-            {{dcdata[0].orderdt | date: 'dd/MM/yyyy'}}
+            {{ dcdata[0].orderdt | date: "dd/MM/yyyy" }}
           </span>
-          <br>
+          <br />
           <strong>Vehicle No.: </strong>
           <strong *ngIf="!vehno">
-            <span *ngFor="let veh of dcdata">{{veh.vehicalno}} </span>
+            <span *ngFor="let veh of dcdata">{{ veh.vehicalno }} </span>
           </strong>
-          <strong *ngIf="vehno">{{dcdata[0].vehicalno}}</strong>
-          <br>
+          <strong *ngIf="vehno">{{ dcdata[0].vehicalno }}</strong>
+          <br />
         </div>
 
         <div class="col-md-3 col-print-3">
-          <h5 class="text-danger font-weight-bold text-center mb-0">DELIVERY CHALLAN</h5>
-          <h6 class="text-danger font-weight-bold text-center subhead">CUM PROFORMA INVOICE</h6>
-          <strong>Challan No. </strong> 
-            <span class="float-right font-weight-bold invoiceno" *ngIf="dcdata && (dcdata[0].nochallan == '0')">{{dcno}}</span>
-            <span class="float-right font-weight-bold invoiceno" *ngIf="dcdata && (dcdata[0].nochallan == '1')">-</span>
-          <br>
-          <br>
-          <strong>Date: </strong> <span class="float-right" *ngIf="dcdata">
-            <span *ngIf="dcdata && (dcdata[0].nochallan == '0')">{{dcdata[0].dispatchdate | date: 'dd/MM/yyyy'}}</span>
-            <span *ngIf="dcdata && (dcdata[0].nochallan == '1')">-</span>
+          <h5 class="text-danger font-weight-bold text-center mb-0">
+            DELIVERY CHALLAN
+          </h5>
+          <h6 class="text-danger font-weight-bold text-center subhead">
+            CUM PROFORMA INVOICE
+          </h6>
+          <strong>Challan No. </strong>
+          <span
+            class="float-right font-weight-bold invoiceno"
+            *ngIf="dcdata && dcdata[0].nochallan == '0'"
+            >{{ dcno }}</span
+          >
+          <span
+            class="float-right font-weight-bold invoiceno"
+            *ngIf="dcdata && dcdata[0].nochallan == '1'"
+            >-</span
+          >
+          <br />
+          <br />
+          <strong>Date: </strong>
+          <span class="float-right" *ngIf="dcdata">
+            <span *ngIf="dcdata && dcdata[0].nochallan == '0'">{{
+              dcdata[0].dispatchdate | date: "dd/MM/yyyy"
+            }}</span>
+            <span *ngIf="dcdata && dcdata[0].nochallan == '1'">-</span>
           </span>
         </div>
       </div>
@@ -57,41 +75,49 @@
         <div class="col-md-4 col-print-4 consigneebar" *ngIf="dcdata">
           <h6 class="font-weight-bold text-dark"><u>Consignee: </u></h6>
           <div *ngIf="dcdata[0].consigneestatus != 'SELF'">
-            M/s. <strong>{{dcdata[0].consigneename}}</strong> <br>
-            <span>{{dcdata[0].consigneeaddress}}</span><br>
-            <strong>City: </strong> <span>{{dcdata[0].consigneecity}}</span> <br>
-            <strong>State: </strong> <span>{{dcdata[0].consigneestate}}</span> <br>
-            <strong>GST No. </strong> 
-              <span *ngIf="dcdata && dcdata[0].consigneegst">{{dcdata[0].consigneegst}}</span>
-              <span *ngIf="dcdata && !dcdata[0].consigneegst">URP</span> <br>
+            M/s. <strong>{{ dcdata[0].consigneename }}</strong> <br />
+            <span>{{ dcdata[0].consigneeaddress }}</span
+            ><br />
+            <strong>City: </strong> <span>{{ dcdata[0].consigneecity }}</span>
+            <br />
+            <strong>State: </strong>
+            <span>{{ dcdata[0].consigneestate }}</span> <br />
+            <strong>GST No. </strong>
+            <span *ngIf="dcdata && dcdata[0].consigneegst">{{
+              dcdata[0].consigneegst
+            }}</span>
+            <span *ngIf="dcdata && !dcdata[0].consigneegst">URP</span> <br />
           </div>
           <div *ngIf="dcdata[0].consigneestatus == 'SELF'">
-            {{dcdata[0].consigneestatus}}
+            {{ dcdata[0].consigneestatus }}
           </div>
         </div>
 
         <div class="col-md-4 col-print-4" *ngIf="dcdata">
           <h6 class="font-weight-bold text-dark"><u>Delivery To:</u></h6>
           <div *ngIf="dcdata[0].consigneestatus != 'SELF'">
-            <span>{{dcdata[0].deliveryaddress}}</span><br>
+            <span>{{ dcdata[0].deliveryaddress }}</span
+            ><br />
           </div>
-          <div *ngIf="dcdata[0].consigneestatus == 'SELF'">
-            Same as above.
-          </div>
+          <div *ngIf="dcdata[0].consigneestatus == 'SELF'">Same as above.</div>
         </div>
 
         <div class="col-md-4 col-print-4">
           <h6 class="font-weight-bold text-dark"><u>Remarks:</u></h6>
-          <strong *ngFor="let remarks of dcdata">{{remarks.deliveryremarks}}<br></strong>
+          <strong *ngFor="let remarks of dcdata"
+            >{{ remarks.deliveryremarks }}<br
+          /></strong>
         </div>
       </div>
 
       <div class="row mt-3 pl-5">
         <div class="col-md-12">
           <hr class="my-0" />
-          <p class="text-small">Dear Sir, <br>
-            We have despatched the following goods to you. <br>
-            Kindly acknowledge the receipt & return the copy duly signed to the transporter.
+          <p class="text-small">
+            Dear Sir, <br />
+            We have despatched the following goods to you. <br />
+            Kindly acknowledge the receipt & return the copy duly signed to the
+            transporter.
           </p>
         </div>
       </div>
@@ -101,30 +127,65 @@
           <div class="tableheadrow row">
             <div class="col-md-6 col-print-6 tablecol">Description</div>
             <div class="col-md-1 col-print-1 tablecol">HSN Code</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="">Packing</span><br>Kg</div>
-            <div class="col-md-1 col-print-1 tablecol">No. of <br>Bags</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="">Quantity</span> <br>(MTs)</div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="">Batch No.</span></div>
-            <div class="col-md-1 col-print-1 tablecol"><span class="">Total <br>Amount</span> <br>(Rs.)</div>
+            <div class="col-md-1 col-print-1 tablecol">
+              <span class="">Packing</span><br />Kg
+            </div>
+            <div class="col-md-1 col-print-1 tablecol">No. of <br />Bags</div>
+            <div class="col-md-1 col-print-1 tablecol">
+              <span class="">Quantity</span> <br />(MTs)
+            </div>
+            <div class="col-md-1 col-print-1 tablecol">
+              <span class="">Batch No.</span>
+            </div>
+            <div class="col-md-1 col-print-1 tablecol">
+              <span class="">Total <br />Amount</span> <br />(Rs.)
+            </div>
           </div>
           <div class="row" *ngFor="let data of dcdata">
             <div class="col-md-6 col-print-6 tablecol">
-              <span> {{data.prodname}}</span>
+              <span> {{ data.prodname }}</span>
             </div>
-            <div class="col-md-1 col-print-1 tablecol">{{data.hsncode}}</div>
-            <div class="col-md-1 col-print-1 tablecol">{{data.packingkgs}}</div>
-            <div class="col-md-1 col-print-1 tablecol">{{data.noofbags}}</div>
-            <div class="col-md-1 col-print-1 tablecol">{{data.quantity | number :'1.3-3'}}</div>
+            <div class="col-md-1 col-print-1 tablecol">{{ data.hsncode }}</div>
             <div class="col-md-1 col-print-1 tablecol">
-              <span *ngIf="data.batchdata && data.batchdata.length == 1">{{data.batchdata[0]}}</span>
+              {{ data.packingkgs }}
+            </div>
+            <div class="col-md-1 col-print-1 tablecol">{{ data.noofbags }}</div>
+            <div class="col-md-1 col-print-1 tablecol">
+              {{ data.quantity | number: "1.3-3" }}
+            </div>
+            <div class="col-md-1 col-print-1 tablecol">
+              <span *ngIf="data.batchdata && data.batchdata.length == 1">{{
+                data.batchdata[0]
+              }}</span>
               <span *ngIf="data.batchdata && data.batchdata.length > 1">
-                <span *ngFor="let batch of data.batchdata; let i=index">
-                  <span *ngIf="(i<(data.batchdata.length-2)) && (data.batchdata.length>2); else elsepart">{{batch}}, </span>  
+                <span *ngFor="let batch of data.batchdata; let i = index">
+                  <span
+                    *ngIf="
+                      i < data.batchdata.length - 2 &&
+                        data.batchdata.length > 2;
+                      else elsepart
+                    "
+                    >{{ batch }},
+                  </span>
                   <ng-template #elsepart>
-                  <span *ngIf="(i<(data.batchdata.length-1)) && (data.batchdata.length>2)">{{batch}} </span>  
-                </ng-template>
-                  <span *ngIf="(i<(data.batchdata.length-1)) && (data.batchdata.length==2)">{{batch}} </span>  
-                  <span *ngIf="i==(data.batchdata.length-1)">& {{batch}}</span>  
+                    <span
+                      *ngIf="
+                        i < data.batchdata.length - 1 &&
+                        data.batchdata.length > 2
+                      "
+                      >{{ batch }}
+                    </span>
+                  </ng-template>
+                  <span
+                    *ngIf="
+                      i < data.batchdata.length - 1 &&
+                      data.batchdata.length == 2
+                    "
+                    >{{ batch }}
+                  </span>
+                  <span *ngIf="i == data.batchdata.length - 1"
+                    >& {{ batch }}</span
+                  >
                 </span>
               </span>
             </div>
@@ -171,37 +232,56 @@
           <div class="row">
             <div class="col-md-6 col-print-6 tablecol bordertop">&nbsp;</div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop text-right">Total</div>
-            <div class="col-md-1 col-print-1 tablecol bordertop">{{totalnoofbags}}</div>
-            <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">{{totalqty | number:'1.3-3'}}</div>
+            <div
+              class="col-md-1 col-print-1 tablecol font-weight-bold bordertop text-right"
+            >
+              Total
+            </div>
+            <div
+              class="col-md-1 col-print-1 tablecol font-weight-bold bordertop"
+            >
+              {{ totalnoofbags }}
+            </div>
+            <div
+              class="col-md-1 col-print-1 tablecol font-weight-bold bordertop"
+            >
+              {{ totalqty | number: "1.3-3" }}
+            </div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
-            <div class="col-md-1 col-print-1 tablecol font-weight-bold bordertop">&nbsp;</div>
+            <div
+              class="col-md-1 col-print-1 tablecol font-weight-bold bordertop"
+            >
+              &nbsp;
+            </div>
           </div>
         </div>
 
         <table class="table mt-5 table-bordered">
           <tbody>
             <tr>
-              <td><strong><u>Subject to Pune Jurisdiction.</u></strong>
-                <p class="m-0">Goods once sold will not be taken back or exchanged. <br>
-                  Interest will be charged extra for delayed payments. <br>
-                  Certified that the particulars given above are true and correct.</p>
+              <td>
+                <strong><u>Subject to Pune Jurisdiction.</u></strong>
+                <p class="m-0">
+                  Goods once sold will not be taken back or exchanged. <br />
+                  Interest will be charged extra for delayed payments. <br />
+                  Certified that the particulars given above are true and
+                  correct.
+                </p>
               </td>
               <td class="text-center">
                 <h5>For Green Top Organics</h5>
-                <br><br>
+                <br /><br />
                 <p class="m-0">Authorised Signatory</p>
               </td>
             </tr>
           </tbody>
         </table>
         <div class="col-md-12">
-          <h6>Received goods in good condition.
-          </h6> <br><br><br><br>
+          <h6>Received goods in good condition.</h6>
+          <br /><br /><br /><br />
           <h6>Receiver's Signature with Stamp.</h6>
         </div>
       </div>
-
     </div>
   </div>
 </div>

@@ -136,7 +136,10 @@
                 <td>{{ prod.name }}</td>
                 <td class="text-right">
                   <ng-container
-                    *ngIf="prod.name != HDPEBags; else elseTemplate"
+                    *ngIf="
+                      prod.name.toLowerCase().indexOf('bags') == -1;
+                      else elseTemplate
+                    "
                   >
                     {{ prod.defquantity | number: "1.3-3" }}
                   </ng-container>

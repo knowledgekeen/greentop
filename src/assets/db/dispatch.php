@@ -196,6 +196,10 @@ if($action == "getDispatchDetails"){
         $tmp['dispatchdate'] = $row['dispatchdate'];
         $tmp['dcno'] = $row['dcno'];
         $tmp['vehicalno'] = $row['vehicalno'];
+        $tmp['packingkgs'] = $row['packingkgs'];
+        $tmp['noofbags'] = $row['noofbags'];
+        $tmp['nochallan'] = $row['nochallan'];
+        $tmp['deliveryremarks'] = $row['deliveryremarks'];
 		$data["status"] = 200;
 		$data["data"] = $tmp;
         $log  = "File: dispatch.php - Method: ".$action.PHP_EOL;
@@ -445,5 +449,43 @@ if($action == "checkIfDCPresentWithOrderNo"){
 	}
 
 	echo json_encode($data);
+}
+
+
+if($action == "updateDispatchDetails"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $vehicleno = $data->vehicleno;
+    $packing = $data->packing;
+    $noofbags = $data->noofbags;
+    $dispatchid = $data->dispatchid;
+    $dcno = $data->dcno;
+    $dispatchdate = $data->dispatchdate;
+    $remarks = mysqli_real_escape_string($conn,$data->remarks);;
+    
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $sql = "UPDATE `dispatch_register` SET `vehicalno`='$vehicleno',`packingkgs`='$packing',`noofbags`='$noofbags',`deliveryremarks`='$remarks',`dispatchdate`='$dispatchdate',`dcno`='$dcno' WHERE `dispatchid`=$dispatchid";
+        $result = $conn->query($sql);
+    }
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $dispatchid;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+        $log  = "File: dispatch.php - Method: ".$action.PHP_EOL.
+        "Error message: ".$conn->error.PHP_EOL.
+        "Data: ".json_encode($data).PHP_EOL;
+        write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
 }
 ?>

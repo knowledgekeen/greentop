@@ -4,44 +4,100 @@
   <div class="card">
     <div class="card-body">
       <h6>
-        <span class="border-bottom border-primary">Orders -
-          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{monthlabel}}</span>
-          <span class="font-weight-bold" *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
-            {{customto | date: 'dd-MMM, yyyy'}}</span>
+        <span class="border-bottom border-primary"
+          >Orders -
+          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{
+            monthlabel
+          }}</span>
+          <span class="font-weight-bold" *ngIf="customfrom && customto"
+            >{{ customfrom | date: "dd-MMM, yyyy" }} -
+            {{ customto | date: "dd-MMM, yyyy" }}</span
+          >
         </span>
       </h6>
       <h6>
         <div class="row">
           <div class="col-md-6 my-2">
-            <button class="btn btn-sm mr-2" (click)="filterOrders('all');"
-              [ngClass]="{'btn-primary': selectedstatus == 'all', 'btn-outline-primary': selectedstatus != 'all'}">Actual</button>
-              <span>=</span>
-            <button class="btn btn-sm mx-2" (click)="filterOrders('open');"
-              [ngClass]="{'btn-primary': selectedstatus == 'open', 'btn-outline-primary': selectedstatus != 'open'}">Open</button>
-              <span>+</span>
-            <button class="btn btn-sm mx-2" (click)="filterOrders('dispatched');"
-              [ngClass]="{'btn-primary': selectedstatus == 'dispatched', 'btn-outline-primary': selectedstatus != 'dispatched'}">Dispatched</button>
-              <span>+</span>
-            <button class="btn btn-sm mx-2" (click)="filterOrders('closed');"
-              [ngClass]="{'btn-primary': selectedstatus == 'closed', 'btn-outline-primary': selectedstatus != 'closed'}">Closed</button>
-              <span>-</span>
-            <button class="btn btn-sm mx-2" (click)="filterOrders('cancelled');"
-              [ngClass]="{'btn-primary': selectedstatus == 'cancelled', 'btn-outline-primary': selectedstatus != 'cancelled'}">Cancelled</button>
+            <button
+              class="btn btn-sm mr-2"
+              (click)="filterOrders('all')"
+              [ngClass]="{
+                'btn-primary': selectedstatus == 'all',
+                'btn-outline-primary': selectedstatus != 'all'
+              }"
+            >
+              Actual
+            </button>
+            <span>=</span>
+            <button
+              class="btn btn-sm mx-2"
+              (click)="filterOrders('open')"
+              [ngClass]="{
+                'btn-primary': selectedstatus == 'open',
+                'btn-outline-primary': selectedstatus != 'open'
+              }"
+            >
+              Open
+            </button>
+            <span>+</span>
+            <button
+              class="btn btn-sm mx-2"
+              (click)="filterOrders('dispatched')"
+              [ngClass]="{
+                'btn-primary': selectedstatus == 'dispatched',
+                'btn-outline-primary': selectedstatus != 'dispatched'
+              }"
+            >
+              Dispatched
+            </button>
+            <span>+</span>
+            <button
+              class="btn btn-sm mx-2"
+              (click)="filterOrders('closed')"
+              [ngClass]="{
+                'btn-primary': selectedstatus == 'closed',
+                'btn-outline-primary': selectedstatus != 'closed'
+              }"
+            >
+              Closed
+            </button>
+            <span>-</span>
+            <button
+              class="btn btn-sm mx-2"
+              (click)="filterOrders('cancelled')"
+              [ngClass]="{
+                'btn-primary': selectedstatus == 'cancelled',
+                'btn-outline-primary': selectedstatus != 'cancelled'
+              }"
+            >
+              Cancelled
+            </button>
           </div>
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">
             <label class="m-0">From</label>
-            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
-              (blur)="autofillfromdt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="From Date"
+              [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()"
+            />
           </div>
           <div class="col-md-2">
             <label class="m-0">To</label>
-            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
-              (blur)="autofilltodt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="To Date"
+              [(ngModel)]="todt"
+              (blur)="autofilltodt()"
+            />
           </div>
           <div class="col-md-1">
             <button class="btn btn-info mt-3 btn-sm" (click)="filterData()">
-              Filter</button>
+              Filter
+            </button>
           </div>
         </div>
       </h6>
@@ -60,23 +116,34 @@
               </th>
               <th scope="col">Order Status</th>
               <th scope="col">
-                <i class="fa fa-pencil mx-1"></i> / 
-              <i class="fa fa-times mx-1"></i></th>
+                <i class="fa fa-pencil mx-1"></i> /
+                <i class="fa fa-times mx-1"></i>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let order of allorders; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal"
-                  (click)="selectOrder(order)" title="Open Order's Details">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  (click)="selectOrder(order)"
+                  title="View Order and Update Dispatch Details"
+                >
                   {{ order.orderdt | date: "dd-MM-yyyy" }}
                 </a>
               </td>
               <td>GTO-{{ order.orderno }}</td>
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#salespayhist"
-                  (click)="openSaleHistoryModal(order)" title="Open Customer's Ledger">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#salespayhist"
+                  (click)="openSaleHistoryModal(order)"
+                  title="Open Customer's Ledger"
+                >
                   {{ order.name }}
                 </a>
               </td>
@@ -86,8 +153,12 @@
               </td>
               <td class="text-capitalize">{{ order.status }}</td>
               <td>
-                <a href="javascript:void(0);" [routerLink]="['/editorder', order.orderid]"
-                  *ngIf="order.status == 'open'" title="Edit Order">
+                <a
+                  href="javascript:void(0);"
+                  [routerLink]="['/editorder', order.orderid]"
+                  *ngIf="order.status == 'open'"
+                  title="Edit Order"
+                >
                   <i class="fa fa-pencil text-warning"></i>
                 </a>
                 <a href="javascript:void(0);" title="Cancel Order">
@@ -118,18 +189,34 @@
 </div>
 
 <!-- Modal Sale Payment History -->
-<div class="modal" id="salespayhist" tabindex="-1" role="dialog" aria-hidden="true">
+<div
+  class="modal"
+  id="salespayhist"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Customer Payment History</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Customer Payment History
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body py-1">
-        <h6 class="text-secondary py-0 m-0">To edit payment details, please go to <a [routerLink]="[ '/salepayments']"
-            data-dismiss="modal">"Sales Receipts"</a>
+        <h6 class="text-secondary py-0 m-0">
+          To edit payment details, please go to
+          <a [routerLink]="['/salepayments']" data-dismiss="modal"
+            >"Sales Receipts"</a
+          >
         </h6>
         <div class="col-md-12" #salespayhistory></div>
       </div>
@@ -138,15 +225,28 @@
 </div>
 
 <!-- Modal Order Details-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" *ngIf="selectedorder">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedorder"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-primary" id="exampleModalLabel">
-          GTO-{{ selectedorder.orderno }} | {{ selectedorder.orderdt | date: 'dd-MM-yyyy' }}
+          GTO-{{ selectedorder.orderno }} |
+          {{ selectedorder.orderdt | date: "dd-MM-yyyy" }}
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -154,70 +254,160 @@
         <div class="row">
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Customer Name</label>
-            <input type="text" class="form-control" [value]="selectedorder.name" readonly />
+            <input
+              type="text"
+              class="form-control"
+              [value]="selectedorder.name"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Address</label>
-            <input type="text" class="form-control" value="{{ selectedorder.address }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedorder.address }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Contact Number</label>
-            <input type="text" class="form-control" value="{{ selectedorder.contactno }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedorder.contactno }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Product Name</label>
-            <input type="text" class="form-control" value="{{ selectedorder.prodname }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedorder.prodname }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Quantity</label>
-            <input type="text" class="form-control" value="{{ selectedorder.quantity }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedorder.quantity }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-1">
             <label class="m-0">Order Sent to</label>
-            <input type="text" class="form-control" value="{{ selectedorder.remarks }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedorder.remarks }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
             <label class="m-0">DC. No.</label>
-            <input type="text" class="form-control" [(ngModel)]="dispatchdetails.dcno" readonly />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="dispatchdetails.dcno"
+            />
           </div>
           <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
             <label class="m-0">Dispatch Date</label>
-            <input type="text" class="form-control" [(ngModel)]="viewdispatcheddate" readonly />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="viewdispatcheddate"
+            />
           </div>
           <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
             <label class="m-0">Vehicle No.</label>
-            <input type="text" class="form-control" [(ngModel)]="dispatchdetails.vehicalno" readonly />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="dispatchdetails.vehicalno"
+            />
+          </div>
+          <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
+            <label class="m-0">Packing (KG).</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="dispatchdetails.packingkgs"
+            />
+          </div>
+          <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
+            <label class="m-0">No. of Bags.</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="dispatchdetails.noofbags"
+            />
+          </div>
+          <div class="col-md-4 col-sm-12" *ngIf="dispatchdetails">
+            <label class="m-0">Remarks.</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="dispatchdetails.deliveryremarks"
+            />
           </div>
           <div class="col-md-12 col-sm-12 my-1">
-            <p class="text-primary" *ngIf="dispatchbatches==false">
-              <i class="fa fa-pulse fa-spinner"></i> Please wait, checking for batches used...
+            <p class="text-primary" *ngIf="dispatchbatches == false">
+              <i class="fa fa-pulse fa-spinner"></i> Please wait, checking for
+              batches used...
             </p>
             <hr class="my-2" *ngIf="dispatchbatches" />
             <p class="mb-1" *ngIf="dispatchbatches">
-              <a class="btn-link font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button"
-                aria-expanded="false" aria-controls="collapseExample">
-                <i class="fa fa-truck"></i> Click to view "Batches" for this dispatch
+              <a
+                class="btn-link font-weight-bold"
+                data-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <i class="fa fa-truck"></i> Click to view "Batches" for this
+                dispatch
               </a>
             </p>
             <div class="collapse" id="collapseExample" *ngIf="dispatchbatches">
               <div class="card card-body px-4 py-2 bg-light">
                 <p class="mb-1">This dispatch used the following batches</p>
                 <ul class="list-group">
-                  <li class="list-group-item d-flex align-items-center p-2" *ngFor="let disp of dispatchbatches">
-                    Batch Date: <span
-                      class="font-weight-bold badge badge-info badge-pill mx-2">{{disp.manufacdate | date: 'dd-MM-yyyy'}}</span>
-                    / Batch ID: <span
-                      class="badge badge-danger badge-pill font-weight-bold mx-2">{{disp.batchid}}</span>
-                    / Quantity: <span class="badge badge-primary badge-pill ml-1">{{disp.quantity}} tons</span>
+                  <li
+                    class="list-group-item d-flex align-items-center p-2"
+                    *ngFor="let disp of dispatchbatches"
+                  >
+                    Batch Date:
+                    <span
+                      class="font-weight-bold badge badge-info badge-pill mx-2"
+                      >{{ disp.manufacdate | date: "dd-MM-yyyy" }}</span
+                    >
+                    / Batch ID:
+                    <span
+                      class="badge badge-danger badge-pill font-weight-bold mx-2"
+                      >{{ disp.batchid }}</span
+                    >
+                    / Quantity:
+                    <span class="badge badge-primary badge-pill ml-1"
+                      >{{ disp.quantity }} tons</span
+                    >
                   </li>
                 </ul>
               </div>
             </div>
-            <hr class="my-2" *ngIf="dispatchbatches">
+            <hr class="my-2" *ngIf="dispatchbatches" />
 
             <h6 class="text-primary">
-              <span *ngIf="selectedorder.remarks == 'SELF'">Self Order Address</span>
-              <span *ngIf="selectedorder.remarks == 'CONSIGNEE'">All Consignees</span>
+              <span *ngIf="selectedorder.remarks == 'SELF'"
+                >Self Order Address</span
+              >
+              <span *ngIf="selectedorder.remarks == 'CONSIGNEE'"
+                >All Consignees</span
+              >
             </h6>
             <table class="table table-sm">
               <thead class="thead-dark">
@@ -231,7 +421,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let consignee of selectedorderconsignees; let i = index">
+                <tr
+                  *ngFor="
+                    let consignee of selectedorderconsignees;
+                    let i = index
+                  "
+                >
                   <th scope="row">{{ i + 1 }}</th>
                   <td>{{ consignee.contactperson }}</td>
                   <td>{{ consignee.contactno }}</td>
@@ -247,6 +442,14 @@
         </div>
       </div>
       <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-info"
+          data-dismiss="modal"
+          (click)="updateDispatchDetails()"
+        >
+          Update Dispatch Details
+        </button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>

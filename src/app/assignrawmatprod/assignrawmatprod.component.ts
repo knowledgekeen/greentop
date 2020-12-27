@@ -2,13 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { RESTService } from "../rest.service";
 import { IntervalService } from "../interval.service";
 import * as moment from "moment";
-import { GlobalService } from '../global.service';
-import { CONSTANTS } from 'src/app/app.constants';
+import { GlobalService } from "../global.service";
+import { CONSTANTS } from "src/app/app.constants";
 
 @Component({
   selector: "app-assignrawmatprod",
   templateUrl: "./assignrawmatprod.component.html",
-  styleUrls: ["./assignrawmatprod.component.css"]
+  styleUrls: ["./assignrawmatprod.component.css"],
 })
 export class AssignrawmatprodComponent implements OnInit {
   allratmats: any;
@@ -30,7 +30,11 @@ export class AssignrawmatprodComponent implements OnInit {
   totalquantity: number = 0;
   HDPEBags: string = CONSTANTS.HDPE_BAGS;
 
-  constructor(private _rest: RESTService, private _interval: IntervalService, private _global: GlobalService) { }
+  constructor(
+    private _rest: RESTService,
+    private _interval: IntervalService,
+    private _global: GlobalService
+  ) {}
 
   ngOnInit() {
     this.moddate = moment(new Date()).format("DD-MM-YYYY");
@@ -41,7 +45,7 @@ export class AssignrawmatprodComponent implements OnInit {
   getRawMaterials() {
     this._rest
       .getData("rawmaterial.php", "getRawMaterials", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allratmats = Response["data"];
         }
@@ -51,7 +55,7 @@ export class AssignrawmatprodComponent implements OnInit {
   getActiveProducts() {
     this._rest
       .getData("product.php", "getActiveProducts", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allproducts = Response["data"];
         }
@@ -62,7 +66,7 @@ export class AssignrawmatprodComponent implements OnInit {
     //this.selected_prod = this.product;
     this.prod_rawmats = null;
 
-    this.allproducts.filter(Resp => {
+    this.allproducts.filter((Resp) => {
       if (Resp.prodid == this.product) {
         this.selected_prod = Resp;
       }
@@ -72,18 +76,22 @@ export class AssignrawmatprodComponent implements OnInit {
       let urldata = "prodid=" + this.selected_prod.prodid;
       this._rest
         .getData("production.php", "getAllProdRawmats", urldata)
-        .subscribe(Response => {
+        .subscribe((Response) => {
           //console.log(Response);
           if (Response) {
             let removedbags = null;
-            this.totalquantity = 0
+            this.totalquantity = 0;
             this.prod_rawmats = Response["data"];
-            for(let i=0;i<this.prod_rawmats.length;i++){
-              if(this.prod_rawmats[i].name === CONSTANTS.HDPE_BAGS){
-                removedbags = this.prod_rawmats.splice(i,1);
+            for (let i = 0; i < this.prod_rawmats.length; i++) {
+              if (
+                this.prod_rawmats[i].name.toLowerCase().indexOf("bags") != -1
+              ) {
+                removedbags = this.prod_rawmats.splice(i, 1);
                 i--;
-              }else{
-                this.totalquantity += parseFloat(this.prod_rawmats[i].defquantity);
+              } else {
+                this.totalquantity += parseFloat(
+                  this.prod_rawmats[i].defquantity
+                );
               }
             }
             this.prod_rawmats.push(removedbags[0]);
@@ -99,7 +107,7 @@ export class AssignrawmatprodComponent implements OnInit {
       prodid: this.selected_prod.prodid,
       rawmatid: this.rawmat,
       defqty: this.defqty,
-      moddate: new Date(myDate).getTime()
+      moddate: new Date(myDate).getTime(),
     };
 
     let flag = false;
@@ -113,7 +121,7 @@ export class AssignrawmatprodComponent implements OnInit {
     if (flag == false) {
       this._rest
         .postData("production.php", "addProdRawMaterial", tmpObj, null)
-        .subscribe(Response => {
+        .subscribe((Response) => {
           if (Response) {
             this.disablesubmitbtn = false;
             this.successMsg = "Raw material assigned successfully";
@@ -122,11 +130,11 @@ export class AssignrawmatprodComponent implements OnInit {
             this.selected_prod = null;
             this.rawmat = null;
             this.defqty = null;
-            this._interval.settimer(100).then(Response => {
+            this._interval.settimer(100).then((Response) => {
               this.product = prod;
               this.getAllProdRawmats();
             });
-            this._interval.settimer().then(Response => {
+            this._interval.settimer().then((Response) => {
               this.successMsg = null;
             });
           }
@@ -134,7 +142,7 @@ export class AssignrawmatprodComponent implements OnInit {
     } else {
       console.log("Error, already added");
       this.productadded = true;
-      this._interval.settimer(null).then(Response => {
+      this._interval.settimer(null).then((Response) => {
         this.productadded = false;
       });
     }
@@ -145,7 +153,12 @@ export class AssignrawmatprodComponent implements OnInit {
     this.rawmatnm = rawmat.rawmatid + "." + rawmat.name;
     this.defqty = rawmat.defquantity;
     this.disableeditsubmitbtn = false;
-    console.log(this.product, this.rawmat, this.defqty, this.disableeditsubmitbtn)
+    console.log(
+      this.product,
+      this.rawmat,
+      this.defqty,
+      this.disableeditsubmitbtn
+    );
   }
 
   saveEditRawMaterial() {
@@ -155,12 +168,12 @@ export class AssignrawmatprodComponent implements OnInit {
       prodid: this.selected_prod.prodid,
       rawmatid: this.rawmatnm.split(".")[0],
       defqty: this.defqty,
-      moddate: new Date(myDate).getTime()
+      moddate: new Date(myDate).getTime(),
     };
     //console.log(tmpObj);
     this._rest
       .postData("production.php", "saveEditRawMaterial", tmpObj, null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.disableeditsubmitbtn = false;
           this.successMsg = "Raw material quantity updated successfully";
@@ -171,11 +184,11 @@ export class AssignrawmatprodComponent implements OnInit {
           this.defqty = null;
           this.rawmatnm = null;
           this.editqtyrem = false;
-          this._interval.settimer(100).then(Resp => {
+          this._interval.settimer(100).then((Resp) => {
             this.product = prod;
             this.getAllProdRawmats();
           });
-          this._interval.settimer().then(Response => {
+          this._interval.settimer().then((Response) => {
             this.successMsg = null;
           });
         }
@@ -188,11 +201,11 @@ export class AssignrawmatprodComponent implements OnInit {
       prodid: this.selected_prod.prodid,
       rawmatid: rawmat.rawmatid,
       defqty: 0,
-      moddate: new Date().getTime()
+      moddate: new Date().getTime(),
     };
     this._rest
       .postData("production.php", "deassignRawMaterial", tmpObj)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.successMsg = "Raw material removed successfully";
           let prod = this.product;
@@ -200,11 +213,11 @@ export class AssignrawmatprodComponent implements OnInit {
           this.selected_prod = null;
           this.rawmat = null;
           this.defqty = null;
-          this._interval.settimer(100).then(Resp => {
+          this._interval.settimer(100).then((Resp) => {
             this.product = prod;
             this.getAllProdRawmats();
           });
-          this._interval.settimer().then(Response => {
+          this._interval.settimer().then((Response) => {
             this.successMsg = null;
           });
         }
@@ -221,27 +234,31 @@ export class AssignrawmatprodComponent implements OnInit {
     let geturl = "prodid=" + this.selected_prod.prodid;
     this._rest
       .getData("production.php", "getRawMatAssignmentHist", geturl)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.spinner = false;
           this.assignhistdata = Response["data"];
 
           for (let i = 0; i < this.assignhistdata.length; i++) {
             for (let j = i + 1; j < this.assignhistdata.length; j++) {
-              if (this.assignhistdata[i].rawmatid != this.assignhistdata[j].rawmatid) {
+              if (
+                this.assignhistdata[i].rawmatid !=
+                this.assignhistdata[j].rawmatid
+              ) {
                 this.assignhistdata[i].highlightrow = true;
                 break;
-              }
-              else {
+              } else {
                 this.assignhistdata[i].highlightrow = false;
                 break;
               }
             }
           }
 
-          this.assignhistdata[this.assignhistdata.length - 1].highlightrow = true;
+          this.assignhistdata[
+            this.assignhistdata.length - 1
+          ].highlightrow = true;
           console.log(this.assignhistdata);
         }
-      })
+      });
   }
 }

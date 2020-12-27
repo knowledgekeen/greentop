@@ -373,7 +373,6 @@ if($action == "getFromToStockHistory"){
 		$tmp[$i]['stockid'] = $row['stockid'];
 		$tmp[$i]['INorOUT'] = $row['INorOUT'];
 		$tmp[$i]['quantity'] = $row['quantity'];
-		$tmp[$i]['closingstock'] = $row['closingstock'];
 		$tmp[$i]['date'] = $row['date'];
 		$tmp[$i]['remarks'] = $row['remarks'];
 		$i++;

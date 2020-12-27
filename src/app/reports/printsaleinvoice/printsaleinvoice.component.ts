@@ -24,11 +24,11 @@ export class PrintsaleinvoiceComponent implements OnInit {
   billdt: string = null;
   blankrows: any = null;
   discountremarks: string;
+  totalblankrows: number = 7;
 
   constructor(private _route: ActivatedRoute, private _rest: RESTService) {}
 
   ngOnInit() {
-    this.blankrows = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this._route.params.subscribe((Response) => {
       this.invoiceno = Response.invoiceno;
       this.getInvoiceDetailsFromInvoiceNo();
@@ -44,7 +44,11 @@ export class PrintsaleinvoiceComponent implements OnInit {
           if (Response) {
             this.blankrows = [];
             this.invoicedata = Response["data"];
-            for (let i = 0; i < 12 - this.invoicedata.length; i++) {
+            for (
+              let i = 0;
+              i < this.totalblankrows - this.invoicedata.length;
+              i++
+            ) {
               this.blankrows.push(i);
             }
             this.calculateAmounts();
@@ -72,7 +76,9 @@ export class PrintsaleinvoiceComponent implements OnInit {
     this.finalamount = 0;
     this.amtinwords = null;
     for (let i in this.invoicedata) {
-      this.discountremarks += this.invoicedata[i].discountremarks + ", ";
+      this.discountremarks += this.invoicedata[i].discountremarks
+        ? this.invoicedata[i].discountremarks + ", "
+        : "";
       this.totaldcamt += parseFloat(this.invoicedata[i].amount);
       this.totaldcqty += parseFloat(this.invoicedata[i].quantity);
       this.finaldiscount += parseFloat(this.invoicedata[i].discount);
