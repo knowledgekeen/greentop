@@ -17,25 +17,19 @@ if($action == "getAllOrderInvoicePayments"){
     $todt= $_GET["todt"];
 	$sql = "SELECT * FROM `order_taxinvoice` WHERE `clientid`=$clientid AND `billdt` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
+    $tmp = array();
+	if($result){
+        $i=0;
 	while($row = $result->fetch_array())
 	{
-		$rows[] = $row;
+		$tmp[$i]['orderid'] = $row['orderid'];
+		$tmp[$i]['clientid'] = $row['clientid'];
+		$tmp[$i]['billno'] = $row['billno'];
+		$tmp[$i]['billdt'] = $row['billdt'];
+		$tmp[$i]['totalamount'] = $row['totalamount'];
+		$i++;
 	}
 
-	$tmp = array();
-	$data = array();
-	$i = 0;
-
-	if(count($rows)>0){
-		foreach($rows as $row)
-		{
-			$tmp[$i]['orderid'] = $row['orderid'];
-			$tmp[$i]['clientid'] = $row['clientid'];
-			$tmp[$i]['billno'] = $row['billno'];
-			$tmp[$i]['billdt'] = $row['billdt'];
-			$tmp[$i]['totalamount'] = $row['totalamount'];
-			$i++;
-		}
 		$data["status"] = 200;
 		$data["data"] = $tmp;
 		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL;
@@ -61,17 +55,10 @@ if($action == "getAllSaleOrderPayments"){
     $todt= $_GET["todt"];
 	$sql = "SELECT op.`orderpayid`, op.`paydate`, op.`clientid`, op.`amount`, op.`paymodeid`, op.`particulars`, pm.paymode FROM `order_payments` op, `paymode_master` pm WHERE op.`paymodeid`=pm.`paymodeid` AND `clientid`=$clientid AND `paydate` BETWEEN '$fromdt' AND '$todt'";
 	$result = $conn->query($sql);
-	while($row = $result->fetch_array())
-	{
-		$rows[] = $row;
-	}
-
 	$tmp = array();
-	$data = array();
-	$i = 0;
-
-	if(count($rows)>0){
-		foreach($rows as $row)
+	if($result){
+        $i=0;
+		while($row = $result->fetch_array())
 		{
 			$tmp[$i]['orderpayid'] = $row['orderpayid'];
 			$tmp[$i]['paydate'] = $row['paydate'];

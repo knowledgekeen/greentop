@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { RESTService } from '../rest.service';
-import { GlobalService } from '../global.service';
+import { Component, OnInit, Input } from "@angular/core";
+import { RESTService } from "../rest.service";
+import { GlobalService } from "../global.service";
 import * as moment from "moment";
-import { IntervalService } from '../interval.service';
+import { IntervalService } from "../interval.service";
 
 @Component({
-  selector: 'app-purchasepayhistory',
-  templateUrl: './purchasepayhistory.component.html',
-  styleUrls: ['./purchasepayhistory.component.css']
+  selector: "app-purchasepayhistory",
+  templateUrl: "./purchasepayhistory.component.html",
+  styleUrls: ["./purchasepayhistory.component.css"],
 })
 export class PurchasepayhistoryComponent implements OnInit {
   payhistory: any = null;
-  totalamt: { debit: number; credit: number; balance: number; };
+  totalamt: { debit: number; credit: number; balance: number };
   currfinanyr: any;
   editpurchdate: any = null;
   editamountpaid: any = null;
@@ -23,8 +23,13 @@ export class PurchasepayhistoryComponent implements OnInit {
   successflag: any = false;
   disableupdatebtn: any = false;
   updtsundryflag: any = false;
+  updtfailedflag: any = false;
 
-  constructor(private _rest: RESTService, private _global: GlobalService, private _interval: IntervalService) { }
+  constructor(
+    private _rest: RESTService,
+    private _global: GlobalService,
+    private _interval: IntervalService
+  ) {}
 
   ngOnInit() {
     //console.log(this.supplier)
@@ -39,7 +44,7 @@ export class PurchasepayhistoryComponent implements OnInit {
     let purchpay;
     let salepay;
     let openbal;
-    this.fetchAllPaymentData().then(Response => {
+    this.fetchAllPaymentData().then((Response) => {
       if (!Response) return;
 
       purchmast = Response["purchmast"];
@@ -58,7 +63,7 @@ export class PurchasepayhistoryComponent implements OnInit {
             parseFloat(openbal.openingbal) < 0 ? openbal.openingbal * -1 : null,
           credit:
             parseFloat(openbal.openingbal) >= 0 ? openbal.openingbal : null,
-          balance: 0
+          balance: 0,
         };
         tmparr.push(tmpobj);
       }
@@ -71,7 +76,7 @@ export class PurchasepayhistoryComponent implements OnInit {
             particulars: "Purchase Bill No. " + purchmast[i].billno,
             debit: null,
             credit: purchmast[i].totalamount,
-            balance: 0
+            balance: 0,
           };
           tmparr.push(tmpobj);
         }
@@ -90,7 +95,7 @@ export class PurchasepayhistoryComponent implements OnInit {
             particulars: particulars,
             debit: purchpay[i].amount,
             credit: null,
-            balance: 0
+            balance: 0,
           };
           tmparr.push(tmpobj);
         }
@@ -106,7 +111,7 @@ export class PurchasepayhistoryComponent implements OnInit {
             particulars: salepay[i].particulars,
             debit: null,
             credit: salepay[i].amountpaid,
-            balance: 0
+            balance: 0,
           };
           tmparr.push(tmpobj);
         }
@@ -124,7 +129,8 @@ export class PurchasepayhistoryComponent implements OnInit {
     let prevfinanyr = this._global.getSpecificFinancialYear(dt.getTime());
     //console.log(prevfinanyr);
     let geturl =
-      "clientid=" + this.supplier.split(".")[0] +
+      "clientid=" +
+      this.supplier.split(".")[0] +
       "&fromdt=" +
       this.currfinanyr.fromdt +
       "&todt=" +
@@ -141,11 +147,15 @@ export class PurchasepayhistoryComponent implements OnInit {
     return new Promise(function (resolve, reject) {
       vm._rest
         .getData("client.php", "getClientPurchaseOpeningBal", geturl)
-        .subscribe(CResp => {
+        .subscribe((CResp) => {
           //console.log(CResp);
           vm._rest
-            .getData("purchase_payments.php", "getAllPurchaseMastPayments", geturl)
-            .subscribe(Response => {
+            .getData(
+              "purchase_payments.php",
+              "getAllPurchaseMastPayments",
+              geturl
+            )
+            .subscribe((Response) => {
               //console.log(Response);
               if (Response) {
                 purchmast = Response["data"];
@@ -153,31 +163,39 @@ export class PurchasepayhistoryComponent implements OnInit {
 
               //Irrespective of data from getAllPurchaseMastPayments, need to get payments done details
               vm._rest
-                .getData("purchase_payments.php", "getAllPurchasePayments", geturl)
-                .subscribe(Resp => {
+                .getData(
+                  "purchase_payments.php",
+                  "getAllPurchasePayments",
+                  geturl
+                )
+                .subscribe((Resp) => {
                   //console.log(Resp);
                   if (Resp) {
                     purchpay = Resp["data"];
                   }
 
-                  
-                  vm._rest.getData("purchase_payments.php","getAllClientSuppMadePayments",geturl)
-                    .subscribe(supppay => {
-                    if (supppay) {
-                      salepay = supppay["data"];
-                      console.log(salepay);
-                    }
+                  vm._rest
+                    .getData(
+                      "purchase_payments.php",
+                      "getAllClientSuppMadePayments",
+                      geturl
+                    )
+                    .subscribe((supppay) => {
+                      if (supppay) {
+                        salepay = supppay["data"];
+                        console.log(salepay);
+                      }
 
-                  let tmpobj = {
-                    purchmast: purchmast,
-                    purchpay: purchpay,
-                    salepay: salepay,
-                    openingbal: CResp["data"]
-                  };
+                      let tmpobj = {
+                        purchmast: purchmast,
+                        purchpay: purchpay,
+                        salepay: salepay,
+                        openingbal: CResp["data"],
+                      };
 
-                  resolve(tmpobj);
-                  tmpobj = salepay = purchpay = purchmast = null;
-                  }); //getAllClientCustMadePayments Ends here
+                      resolve(tmpobj);
+                      tmpobj = salepay = purchpay = purchmast = null;
+                    }); //getAllClientCustMadePayments Ends here
                 });
             });
         });
@@ -188,7 +206,7 @@ export class PurchasepayhistoryComponent implements OnInit {
     let tmpobj = {
       debit: 0,
       credit: 0,
-      balance: 0
+      balance: 0,
     };
     for (let i in this.payhistory) {
       if (this.payhistory[i].debit) {
@@ -206,39 +224,66 @@ export class PurchasepayhistoryComponent implements OnInit {
       }
       this.payhistory[i].balance = tmpobj.balance + tmpcredit - tmpdebit;
     }
-    tmpobj.balance = tmpobj.credit-tmpobj.debit;
+    tmpobj.balance = tmpobj.credit - tmpobj.debit;
     this.totalamt = tmpobj;
-    
+
     const calcsundrydata = this.calculateSundryData();
     this.updtsundryflag = false;
-    
-    if(calcsundrydata.length>0 && this.supplier.split(".")[0]){
-      const sundrydata={
-        sundrydets: calcsundrydata
+    this.updtfailedflag = false;
+
+    if (calcsundrydata.length > 0 && this.supplier.split(".")[0]) {
+      const sundrydata = {
+        sundrydets: calcsundrydata,
       };
 
-      this._rest.postData("sundry.php", "updateSundryData", sundrydata).subscribe(Resp=>{
-        if(!Resp){
-          alert("Failed to update sundry debtor, kindly open this page again later.");
-        }
-        else{
-          this.updtsundryflag = true;
-        }
-        this._interval.settimer(1000).then(timer=>{
-          this.updtsundryflag = null;
-        });
-      });
+      this._rest
+        .postData("sundry.php", "updateSundryData", sundrydata)
+        .subscribe(
+          (Resp) => {
+            if (!Resp) {
+              alert(
+                "Failed to update sundry debtor, kindly open this page again later."
+              );
+            } else {
+              this.updtsundryflag = true;
+            }
+            this._interval.settimer(1000).then((timer) => {
+              this.updtsundryflag = null;
+            });
+            // Update balance amount with each component reload for each user.
+            this.updateClientsBalanceAmount(
+              calcsundrydata[calcsundrydata.length - 1]
+            );
+          },
+          (err) => {
+            this.updtfailedflag = true;
+          }
+        );
     }
     tmpobj = null;
   }
 
-  
-  calculateSundryData(){
+  updateClientsBalanceAmount(sundrydata) {
+    console.log(sundrydata);
+    const urldata = `clientid=${sundrydata.clientid}&balanceamt=${sundrydata.balance}`;
+    this._rest
+      .getData("client.php", "updateClientsBalanceAmount", urldata)
+      .subscribe(
+        (Response) => {
+          console.log("Customer balance amount updated", Response);
+        },
+        (err) => {
+          console.log("Error", err);
+        }
+      );
+  }
+
+  calculateSundryData() {
     // console.log(this.payhistory);
     let payhistorycopy = JSON.parse(JSON.stringify(this.payhistory));
     // console.log(payhistorycopy);
-    payhistorycopy.map(dt=>{
-      dt.clientid= this.supplier.split(".")[0]
+    payhistorycopy.map((dt) => {
+      dt.clientid = this.supplier.split(".")[0];
     });
     return payhistorycopy;
   }
@@ -248,12 +293,11 @@ export class PurchasepayhistoryComponent implements OnInit {
     this.editamountpaid = null;
     this.editparticulars = null;
     this.editpurchdate = moment(parseInt(hist.dates)).format("DD-MM-YYYY");
-    this.editamountpaid = hist.debit?hist.debit:hist.credit;
+    this.editamountpaid = hist.debit ? hist.debit : hist.credit;
     this.editparticulars = hist.particulars;
-    if(!caneditsupppay){
+    if (!caneditsupppay) {
       this.selectedpurchpayid = hist.purchpayid;
-    }
-    else{
+    } else {
       this.selectedrecievepurchpay = hist.recievepayid;
     }
   }
@@ -262,37 +306,42 @@ export class PurchasepayhistoryComponent implements OnInit {
     this.disableupdatebtn = true;
     let balDate = moment(this.editpurchdate, "DD-MM-YYYY").format("MM-DD-YYYY");
 
-    if(this.selectedpurchpayid){
+    if (this.selectedpurchpayid) {
       let postobj = {
         purchpayid: this.selectedpurchpayid,
         purchdate: new Date(balDate).getTime(),
         amountpaid: this.editamountpaid,
-        particulars: this.editparticulars
-      }
-      this._rest.postData("purchase_payments.php", "updatePurchasePayment", postobj)
-        .subscribe(Response => {
+        particulars: this.editparticulars,
+      };
+      this._rest
+        .postData("purchase_payments.php", "updatePurchasePayment", postobj)
+        .subscribe((Response) => {
           window.scrollTo(0, 0);
           this.successflag = "Payment details updated successfully";
           this.getAllPurchasePayments();
-          this._interval.settimer().then(rep => {
+          this._interval.settimer().then((rep) => {
             this.successflag = false;
             this.disableupdatebtn = false;
           });
         });
-    }
-    else{
+    } else {
       let postobj = {
         id: this.selectedrecievepurchpay,
         paydate: new Date(balDate).getTime(),
         amountpaid: this.editamountpaid,
-        particulars: this.editparticulars
-      }
-      this._rest.postData("purchase_payments.php", "updateReceivePurchasePayment", postobj)
-        .subscribe(Response => {
+        particulars: this.editparticulars,
+      };
+      this._rest
+        .postData(
+          "purchase_payments.php",
+          "updateReceivePurchasePayment",
+          postobj
+        )
+        .subscribe((Response) => {
           window.scrollTo(0, 0);
           this.successflag = "Payment details updated successfully";
           this.getAllPurchasePayments();
-          this._interval.settimer().then(rep => {
+          this._interval.settimer().then((rep) => {
             this.successflag = false;
             this.disableupdatebtn = false;
           });
@@ -301,33 +350,35 @@ export class PurchasepayhistoryComponent implements OnInit {
   }
 
   confirmDel(hist, cansdeletesupppay) {
-    if(cansdeletesupppay){
+    if (cansdeletesupppay) {
       this.selectedrecievepurchpay = hist.recievepayid;
-    }else{
+    } else {
       this.selectedpurchpayid = hist.purchpayid;
     }
   }
 
   deletePurchasePayRecord() {
-    if(this.selectedpurchpayid){
+    if (this.selectedpurchpayid) {
       let geturl = "purchpayid=" + this.selectedpurchpayid;
-      this._rest.getData("purchase_payments.php", "deletePurchasePayRecord", geturl)
-        .subscribe(Response => {
+      this._rest
+        .getData("purchase_payments.php", "deletePurchasePayRecord", geturl)
+        .subscribe((Response) => {
           window.scrollTo(0, 0);
           this.successflag = "Payment details deleted successfully";
           this.getAllPurchasePayments();
-          this._interval.settimer().then(rep => {
+          this._interval.settimer().then((rep) => {
             this.successflag = false;
           });
         });
-    }else{
+    } else {
       let geturl = "recievepayid=" + this.selectedrecievepurchpay;
-      this._rest.getData("purchase_payments.php", "deleteReceivePayRecord", geturl)
-        .subscribe(Response => {
+      this._rest
+        .getData("purchase_payments.php", "deleteReceivePayRecord", geturl)
+        .subscribe((Response) => {
           window.scrollTo(0, 0);
           this.successflag = "Payment details deleted successfully";
           this.getAllPurchasePayments();
-          this._interval.settimer().then(rep => {
+          this._interval.settimer().then((rep) => {
             this.successflag = false;
           });
         });

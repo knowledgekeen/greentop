@@ -529,4 +529,33 @@ if($action == "getTotalCustomerOpenBal"){
 
 	echo json_encode($data);
 }
+
+if($action == "updateClientsBalanceAmount"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$clientid = $_GET["clientid"];
+	$balanceamt = $_GET["balanceamt"];
+	$sql = "UPDATE `client_master` SET `balanceamt`='$balanceamt' WHERE `clientid`=$clientid";
+	$result = $conn->query($sql);
+	
+    $data1= array();
+    if($result){
+		$data1["status"] = 200;
+		$data1["data"] = $clientid;
+		$log  = "File: client.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: client.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data1).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+
+	echo json_encode($data1);
+}
 ?>
