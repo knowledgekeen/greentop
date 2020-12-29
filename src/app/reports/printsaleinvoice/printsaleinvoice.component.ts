@@ -75,10 +75,16 @@ export class PrintsaleinvoiceComponent implements OnInit {
     this.igstamt = 0;
     this.finalamount = 0;
     this.amtinwords = null;
+    let remarks = [];
     for (let i in this.invoicedata) {
-      this.discountremarks += this.invoicedata[i].discountremarks
-        ? this.invoicedata[i].discountremarks + ", "
-        : "";
+      // this.discountremarks += this.invoicedata[i].discountremarks
+      //   ? this.invoicedata[i].discountremarks + ", "
+      //   : "";
+      if (this.invoicedata[i].discountremarks) {
+        remarks.push(
+          "#" + (parseInt(i) + 1) + " " + this.invoicedata[i].discountremarks
+        );
+      }
       this.totaldcamt += parseFloat(this.invoicedata[i].amount);
       this.totaldcqty += parseFloat(this.invoicedata[i].quantity);
       this.finaldiscount += parseFloat(this.invoicedata[i].discount);
@@ -86,7 +92,7 @@ export class PrintsaleinvoiceComponent implements OnInit {
         parseFloat(this.invoicedata[i].roundoff).toFixed(2)
       );
     }
-
+    this.discountremarks = remarks.join(", ");
     this.finalamtb4tax = parseFloat(
       (this.totaldcamt - this.finaldiscount).toFixed(2)
     );

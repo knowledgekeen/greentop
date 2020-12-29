@@ -65,6 +65,9 @@
                 <td
                   class="border-left border-top border-bottom text-center text-top"
                 >
+                  <strong>#</strong>
+                </td>
+                <td class="border-top border-bottom text-center text-top">
                   <strong>D.C No.</strong>
                 </td>
                 <td class="border-top border-bottom text-top">
@@ -94,8 +97,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let invoice of invoicedata">
-                <td class="border-left text-center">
+              <tr *ngFor="let invoice of invoicedata; let i = index">
+                <td class="border-left text-center">{{ i + 1 }}</td>
+                <td class="text-center">
                   <ng-container *ngIf="invoice.nochallan != '1'; else elseDC">
                     {{ invoice.dcno }}
                   </ng-container>
@@ -125,12 +129,12 @@
               </tr>
               <tr *ngFor="let item of blankrows">
                 <td class="border-left">&nbsp;</td>
-                <td colspan="4">&nbsp;</td>
+                <td colspan="5">&nbsp;</td>
                 <td *ngIf="finaldiscount > 0">&nbsp;</td>
                 <td class="border-right">&nbsp;</td>
               </tr>
               <tr>
-                <td class="text-right font-weight-bold border" colspan="2">
+                <td class="text-right font-weight-bold border" colspan="3">
                   Total
                 </td>
                 <td class="text-center font-weight-bold border">

@@ -2,7 +2,9 @@
   @page {
     size: auto;
     margin: 0;
+    /* margin: 2cm 0 0.5cm; */
   }
+
   #monthlypurchasereport,
   #monthlypurchasereport *,
   #allsalesreports,

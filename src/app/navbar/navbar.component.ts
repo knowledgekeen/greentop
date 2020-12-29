@@ -6,10 +6,10 @@ import { Router, NavigationEnd } from "@angular/router";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-  email: string = null;
+  email: string = "greentoporganics@gmail.com";
   password: string = null;
   userdets: any = null;
   spinnerflag: any = false;
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     this._router.events.subscribe((val: any) => {
       if (val instanceof NavigationEnd) {
         if (sessionStorage.getItem("userkey")) {
-          this._session.getData("userkey").then(Response => {
+          this._session.getData("userkey").then((Response) => {
             let dt = new Date().setHours(0, 0, 0, 0);
             if (Response[0].sessiontime != dt) {
               this.logout();
@@ -42,10 +42,10 @@ export class NavbarComponent implements OnInit {
   initialize() {
     this._session
       .getData("userkey")
-      .then(Response => {
+      .then((Response) => {
         this.userdets = Response[0];
       })
-      .catch(err => { });
+      .catch((err) => {});
   }
 
   checkLogin() {
@@ -53,17 +53,18 @@ export class NavbarComponent implements OnInit {
     this.spinnerflag = true;
     let tmpObj = {
       email: this.email,
-      passwd: this.password
+      passwd: this.password,
     };
-    this._rest
-      .postData("users.php", "checkLogin", tmpObj, null)
-      .subscribe(Response => {
+    this._rest.postData("users.php", "checkLogin", tmpObj, null).subscribe(
+      (Response) => {
         this.spinnerflag = false;
         if (Response) {
           tmpObj = null;
-          Response["data"][0].sessiontime = new Date(Response["data"][0].sessiontime).setHours(0, 0, 0, 0);
+          Response["data"][0].sessiontime = new Date(
+            Response["data"][0].sessiontime
+          ).setHours(0, 0, 0, 0);
           this.userdets = Response["data"][0];
-          this._session.setData("userkey", Response["data"]).then(Resp => {
+          this._session.setData("userkey", Response["data"]).then((Resp) => {
             this._router.navigate(["/dashboard"]);
             this.email = null;
             this.password = null;
@@ -71,11 +72,13 @@ export class NavbarComponent implements OnInit {
         } else {
           alert("Invalid credentials, try again");
         }
-      }, error => {
+      },
+      (error) => {
         this.spinnerflag = false;
         console.log("error", error);
         alert("Having some trouble logging you in, please try again later.");
-      });
+      }
+    );
   }
 
   clickPwd(evt) {
