@@ -270,7 +270,7 @@ export class PurchasepayhistoryComponent implements OnInit {
       .getData("client.php", "updateClientsBalanceAmount", urldata)
       .subscribe(
         (Response) => {
-          console.log("Customer balance amount updated", Response);
+          console.log("Supplier balance amount updated", Response);
         },
         (err) => {
           console.log("Error", err);

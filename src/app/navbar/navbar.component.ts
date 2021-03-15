@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { RESTService } from "../rest.service";
 import { SessionService } from "../session.service";
 import { Router, NavigationEnd } from "@angular/router";
+import { GlobalService } from "../global.service";
+import { TRANSFER_ACCS } from "../app.constants";
 
 @Component({
   selector: "app-navbar",
@@ -17,7 +19,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private _rest: RESTService,
     private _session: SessionService,
-    private _router: Router
+    private _router: Router,
+    private _global: GlobalService
   ) {
     this._router.events.subscribe((val: any) => {
       if (val instanceof NavigationEnd) {
@@ -26,6 +29,24 @@ export class NavbarComponent implements OnInit {
             let dt = new Date().setHours(0, 0, 0, 0);
             if (Response[0].sessiontime != dt) {
               this.logout();
+            }
+            let flag = false;
+            // console.log(Response[0]);
+            for (let obj of Response[0].transferAcc) {
+              for (let i in TRANSFER_ACCS) {
+                if (TRANSFER_ACCS[i].columnNm === obj.transferaccs) {
+                  TRANSFER_ACCS[i].status = obj.status;
+                  break;
+                }
+              }
+              if (obj.status === "inactive") {
+                flag = true;
+              }
+            }
+            if (flag === true) {
+              if (val.url.indexOf("transferopenbal") === -1) {
+                this._router.navigate(["/transferopenbal"]);
+              }
             }
           });
         } else {
@@ -54,11 +75,14 @@ export class NavbarComponent implements OnInit {
     let tmpObj = {
       email: this.email,
       passwd: this.password,
+      fromdt: this._global.getCurrentFinancialYear().fromdt,
     };
+    console.log(tmpObj);
     this._rest.postData("users.php", "checkLogin", tmpObj, null).subscribe(
       (Response) => {
         this.spinnerflag = false;
         if (Response) {
+          console.log(Response);
           tmpObj = null;
           Response["data"][0].sessiontime = new Date(
             Response["data"][0].sessiontime

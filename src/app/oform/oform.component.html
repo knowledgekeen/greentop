@@ -282,19 +282,28 @@
                   <ol type="i">
                     <li>
                       Number
-                      <div class="float-right" *ngIf="custdetails">
+                      <div
+                        class="float-right"
+                        *ngIf="custdetails && !fresh_cert"
+                      >
                         {{ custdetails.licenseno }}
                       </div>
                     </li>
                     <li>
                       Date of Issue
-                      <div class="float-right" *ngIf="custdetails">
+                      <div
+                        class="float-right"
+                        *ngIf="custdetails && !fresh_cert"
+                      >
                         {{ custdetails.licenseissuedt | date: "dd/MM/yyyy" }}
                       </div>
                     </li>
                     <li>
                       Date of expiry
-                      <div class="float-right" *ngIf="custdetails">
+                      <div
+                        class="float-right"
+                        *ngIf="custdetails && !fresh_cert"
+                      >
                         {{ custdetails.licenseexpirydt | date: "dd/MM/yyyy" }}
                       </div>
                     </li>
@@ -302,7 +311,7 @@
                       Authority by whom issued
                       <div
                         class="float-right"
-                        *ngIf="custdetails"
+                        *ngIf="custdetails && !fresh_cert"
                         style="max-width: 300px"
                       >
                         {{ custdetails.licenseauthority }}

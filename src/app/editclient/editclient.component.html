@@ -151,44 +151,87 @@
             [(ngModel)]="address"
           ></textarea>
         </div>
+
+        <!-- Retail License Number -->
         <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
-          <label class="m-0">License Number</label>
+          <label class="m-0">License Number (Retail)</label>
           <input
             type="text"
             class="form-control"
-            placeholder="License Number"
+            placeholder="License Number (Retail)"
             [(ngModel)]="licenseno"
           />
         </div>
         <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
-          <label class="m-0">Date of Issue</label>
+          <label class="m-0">Date of Issue (Retail)</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Date of Issue"
+            placeholder="Date of Issue (Retail)"
             [(ngModel)]="licenseissuedt"
             (blur)="autoFillDt()"
           />
         </div>
         <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
-          <label class="m-0">Date of Expiry</label>
+          <label class="m-0">Date of Expiry (Retail)</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Date of Expiry"
+            placeholder="Date of Expiry (Retail)"
             [(ngModel)]="licenseexpirydt"
             (blur)="autoFillDt()"
           />
         </div>
         <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
-          <label class="m-0">Issuing Authority</label>
+          <label class="m-0">Issuing Authority (Retail)</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Issuing Authority"
+            placeholder="Issuing Authority (Retail)"
             [(ngModel)]="licenseauthority"
           />
         </div>
+
+        <!-- Wholesale License Number -->
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">License Number (Wholesale)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="License Number (Wholesale)"
+            [(ngModel)]="wholesale_licenseno"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">Date of Issue (Wholesale)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Issue (Wholesale)"
+            [(ngModel)]="wholesale_licenseissuedt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">Date of Expiry (Wholesale)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Date of Expiry (Wholesale)"
+            [(ngModel)]="wholesale_licenseexpirydt"
+            (blur)="autoFillDt()"
+          />
+        </div>
+        <div class="col-sm-3 col-xs-12 mb-3" *ngIf="clienttype === '2'">
+          <label class="m-0">Issuing Authority (Wholesale)</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Issuing Authority (Wholesale)"
+            [(ngModel)]="wholesale_licenseauthority"
+          />
+        </div>
+
         <div class="col-sm-6 col-xs-12 mb-3">
           <button
             class="btn btn-sm btn-warning"

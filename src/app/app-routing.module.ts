@@ -40,6 +40,7 @@ import { AddreceiptComponent } from "./addreceipt/addreceipt.component";
 import { EditstockComponent } from "./editstock/editstock.component";
 import { PurchasereturnsComponent } from "./purchasereturns/purchasereturns.component";
 import { OformComponent } from "./oform/oform.component";
+import { TransferopenbalComponent } from "./transferopenbal/transferopenbal.component";
 
 const routes: Routes = [
   { path: "index", component: IndexComponent },
@@ -85,6 +86,7 @@ const routes: Routes = [
   { path: "editstock", component: EditstockComponent },
   { path: "purchasereturns/:purcmastid", component: PurchasereturnsComponent },
   { path: "oform/:clientid", component: OformComponent },
+  { path: "transferopenbal", component: TransferopenbalComponent },
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "**", redirectTo: "/pagenotfound", pathMatch: "full" },
 ];

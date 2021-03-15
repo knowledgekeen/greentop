@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { EncDecService } from "./enc-dec.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class SessionService {
-  constructor(private _encdec: EncDecService) { }
+  constructor(private _encdec: EncDecService) {}
 
   getData(key: string) {
     let promise = new Promise((resolve, reject) => {
@@ -24,11 +24,12 @@ export class SessionService {
     return promise;
   }
 
+  /* FOR key:userkey set array of length 1, e.g data[0]  */
   setData(key: string, dataobj: any) {
     let promise = new Promise((resolve, reject) => {
       if (sessionStorage) {
         sessionStorage.setItem(key, this._encdec.encrypt(dataobj));
-        resolve();
+        resolve(true);
       } else {
         reject("session storage not found");
       }
@@ -39,9 +40,9 @@ export class SessionService {
 
   deleteSession() {
     let promise = new Promise((resolve, reject) => {
-      sessionStorage.removeItem('userdets');
+      sessionStorage.removeItem("userdets");
       sessionStorage.clear();
-      resolve();
+      resolve(true);
     });
     return promise;
   }

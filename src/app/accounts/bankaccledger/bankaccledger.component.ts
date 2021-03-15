@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { GlobalService } from 'src/app/global.service';
-import { RESTService } from 'src/app/rest.service';
-import { CONSTANTS } from 'src/app/app.constants';
+import { Component, OnInit } from "@angular/core";
+import { GlobalService } from "src/app/global.service";
+import { RESTService } from "src/app/rest.service";
+import { CONSTANTS } from "src/app/app.constants";
 
 @Component({
-  selector: 'app-bankaccledger',
-  templateUrl: './bankaccledger.component.html',
-  styleUrls: ['./bankaccledger.component.css']
+  selector: "app-bankaccledger",
+  templateUrl: "./bankaccledger.component.html",
+  styleUrls: ["./bankaccledger.component.css"],
 })
 export class BankaccledgerComponent implements OnInit {
   finanyr: any = null;
@@ -21,259 +21,353 @@ export class BankaccledgerComponent implements OnInit {
   totaldeposit: any = null;
   totalpayments: any = null;
 
-  constructor(private _global: GlobalService, private _rest:RESTService) { }
+  constructor(private _global: GlobalService, private _rest: RESTService) {}
 
   ngOnInit() {
     this.finanyr = this._global.getCurrentFinancialYear();
-    this.getFinanYrAccOpeningBalance().then(openbal=>{
-      this.getFromToPurchasesForAccounts().then(purchbal=>{
-        this.getExpendituresFromTo().then(expenditure =>{
-          this.getBankReceiptsFromTo().then(bankreceipts=>{
-            this.getAllOrderPaymentsFromToDt().then(orderpays=>{
-              this.getAllCustMakePayments().then(custmakepays =>{
-                this.getAllReceiveSupplierPayments().then(supprecpay=>{
-                  this.filterData();
-                }).catch(err=>{
-                  alert("Cannot get Supplier Receipt Payments");
-                });
-              }).catch(err=>{
-                alert("Cannot get Customer Make Payments");
+    this.getFinanYrAccOpeningBalance()
+      .then((openbal) => {
+        this.getFromToPurchasesForAccounts()
+          .then((purchbal) => {
+            this.getExpendituresFromTo()
+              .then((expenditure) => {
+                this.getBankReceiptsFromTo()
+                  .then((bankreceipts) => {
+                    this.getAllOrderPaymentsFromToDt()
+                      .then((orderpays) => {
+                        this.getAllCustMakePayments()
+                          .then((custmakepays) => {
+                            this.getAllReceiveSupplierPayments()
+                              .then((supprecpay) => {
+                                this.filterData();
+                              })
+                              .catch((err) => {
+                                alert("Cannot get Supplier Receipt Payments");
+                              });
+                          })
+                          .catch((err) => {
+                            alert("Cannot get Customer Make Payments");
+                          });
+                      })
+                      .catch((errorderpays) => {
+                        alert("Cannot fetch All order payments");
+                      });
+                  })
+                  .catch((errbankreceipt) => {
+                    alert("Cannot fetch Bank Receipts");
+                  });
+              })
+              .catch((errexpenditure) => {
+                alert("Cannot fetch Expenditure balance");
               });
-            }).catch(errorderpays=>{
-              alert("Cannot fetch All order payments")
-            });
-          }).catch(errbankreceipt=>{
-            alert("Cannot fetch Bank Receipts");
           })
-        }).catch(errexpenditure=>{
-          alert("Cannot fetch Expenditure balance");
-        })
-      }).catch(errpurchbal=>{
-        alert("Cannot fetch purchase balance");
+          .catch((errpurchbal) => {
+            alert("Cannot fetch purchase balance");
+          });
       })
-    }).catch(erropenbal=>{
-      alert("Cannot fetch opening balance for bank account");
-    });
+      .catch((erropenbal) => {
+        alert("Cannot fetch opening balance for bank account");
+      });
   }
 
   //Deposit - Getting Financial Opening Balance
-  getFinanYrAccOpeningBalance(){
+  getFinanYrAccOpeningBalance() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("accounts.php", "getFinanYrAccOpeningBalance", urldata)
-        .subscribe(Response=>{
-          _this.bankopenbal= Response && Response["data"] ? Response["data"][0] : 0;
-          resolve(_this.bankopenbal);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData("accounts.php", "getFinanYrAccOpeningBalance", urldata)
+        .subscribe(
+          (Response) => {
+            _this.bankopenbal =
+              Response && Response["data"] ? Response["data"][0] : 0;
+            resolve(_this.bankopenbal);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
     return promise;
   }
 
   // Payments - Get Purchase For Accounts
-  getFromToPurchasesForAccounts(){
+  getFromToPurchasesForAccounts() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("reports_purchases.php", "getFromToPurchasesForAccounts", urldata)
-        .subscribe(Response=>{
-          _this.purchaseacs= Response && Response["data"] ? Response["data"] : 0;
-          _this.purchaseacs= _this.purchaseacs ? _this.purchaseacs.filter(res=>{ return (res.paymode !== CONSTANTS.CASH && res.paymode !== CONSTANTS.OTHERS)}):null;
-          resolve(_this.purchaseacs);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData(
+          "reports_purchases.php",
+          "getFromToPurchasesForAccounts",
+          urldata
+        )
+        .subscribe(
+          (Response) => {
+            _this.purchaseacs =
+              Response && Response["data"] ? Response["data"] : 0;
+            _this.purchaseacs = _this.purchaseacs
+              ? _this.purchaseacs.filter((res) => {
+                  return (
+                    res.paymode !== CONSTANTS.CASH &&
+                    res.paymode !== CONSTANTS.OTHERS
+                  );
+                })
+              : null;
+            resolve(_this.purchaseacs);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
     return promise;
   }
 
   // Payments -  Get Expenditures for Accounts
-  getExpendituresFromTo(){
+  getExpendituresFromTo() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("expenditure.php", "getExpendituresFromTo", urldata)
-        .subscribe(Response=>{
-          _this.bankexpenditures= Response && Response["data"] ? Response["data"] : null;
-          _this.bankexpenditures = _this.bankexpenditures && _this.bankexpenditures.length>0 ? _this.bankexpenditures.filter(res=> res.exptype==="2"): null;
-          resolve(_this.bankexpenditures);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData("expenditure.php", "getExpendituresFromTo", urldata)
+        .subscribe(
+          (Response) => {
+            _this.bankexpenditures =
+              Response && Response["data"] ? Response["data"] : null;
+            _this.bankexpenditures =
+              _this.bankexpenditures && _this.bankexpenditures.length > 0
+                ? _this.bankexpenditures.filter((res) => res.exptype === "2")
+                : null;
+            resolve(_this.bankexpenditures);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
     return promise;
   }
 
   // Deposit -  Get Bank Receipts
-  getBankReceiptsFromTo(){
+  getBankReceiptsFromTo() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("expenditure.php", "getReceiptsFromTo", urldata)
-        .subscribe(Response=>{
-          _this.bankreceipts= Response && Response["data"] ? Response["data"] : null;
-          _this.bankreceipts = _this.bankreceipts && _this.bankreceipts.length>0 ? _this.bankreceipts.filter(res=> res.receipttype==="2"): null;
-          resolve(_this.bankreceipts);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData("expenditure.php", "getReceiptsFromTo", urldata)
+        .subscribe(
+          (Response) => {
+            _this.bankreceipts =
+              Response && Response["data"] ? Response["data"] : null;
+            _this.bankreceipts =
+              _this.bankreceipts && _this.bankreceipts.length > 0
+                ? _this.bankreceipts.filter((res) => res.receipttype === "2")
+                : null;
+            resolve(_this.bankreceipts);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
     return promise;
   }
 
   // Deposit - Get all order payments
-  getAllOrderPaymentsFromToDt(){
+  getAllOrderPaymentsFromToDt() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("sales_payments.php", "getAllOrderPaymentsFromToDt", urldata)
-        .subscribe(Response=>{
-          _this.salereceipts= Response && Response["data"] ? Response["data"] : null;
-          _this.salereceipts = _this.salereceipts && _this.salereceipts.length>0 ? _this.salereceipts.filter(res=> res.paymode!==CONSTANTS.CASH && res.paymode!==CONSTANTS.OTHERS): null;
-          resolve(_this.salereceipts);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData("sales_payments.php", "getAllOrderPaymentsFromToDt", urldata)
+        .subscribe(
+          (Response) => {
+            _this.salereceipts =
+              Response && Response["data"] ? Response["data"] : null;
+            _this.salereceipts =
+              _this.salereceipts && _this.salereceipts.length > 0
+                ? _this.salereceipts.filter(
+                    (res) =>
+                      res.paymode !== CONSTANTS.CASH &&
+                      res.paymode !== CONSTANTS.OTHERS
+                  )
+                : null;
+            resolve(_this.salereceipts);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
     return promise;
   }
 
   // Payments - Get Customer Make Payments
-  getAllCustMakePayments(){
+  getAllCustMakePayments() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("accounts.php", "getAllCustMakePayments", urldata)
-        .subscribe(Response=>{
-          _this.custmakepays= Response && Response["data"] ? Response["data"] : null;
-          _this.custmakepays= _this.custmakepays ? _this.custmakepays.filter(res=>{ return (res.paymode !== CONSTANTS.CASH && res.paymode !== CONSTANTS.OTHERS)}):null;
-          resolve(_this.custmakepays);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData("accounts.php", "getAllCustMakePayments", urldata)
+        .subscribe(
+          (Response) => {
+            _this.custmakepays =
+              Response && Response["data"] ? Response["data"] : null;
+            _this.custmakepays = _this.custmakepays
+              ? _this.custmakepays.filter((res) => {
+                  return (
+                    res.paymode !== CONSTANTS.CASH &&
+                    res.paymode !== CONSTANTS.OTHERS
+                  );
+                })
+              : null;
+            resolve(_this.custmakepays);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
-    return promise
+    return promise;
   }
 
   // Deposit - Get Receive Payments From Supplier
-  getAllReceiveSupplierPayments(){
+  getAllReceiveSupplierPayments() {
     const _this = this;
     const promise = new Promise((resolve, reject) => {
-      const urldata = "fromdt="+_this.finanyr.fromdt+"&todt="+_this.finanyr.todt;
-      _this._rest.getData("accounts.php", "getAllReceiveSupplierPayments", urldata)
-        .subscribe(Response=>{
-          _this.supprecpays= Response && Response["data"] ? Response["data"] : null;
-          _this.supprecpays= _this.supprecpays ? _this.supprecpays.filter(res=>{ return res.paymode !== CONSTANTS.CASH}):null;
-          resolve(_this.supprecpays);
-        },err=>{
-          reject(err);
-        });
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData("accounts.php", "getAllReceiveSupplierPayments", urldata)
+        .subscribe(
+          (Response) => {
+            _this.supprecpays =
+              Response && Response["data"] ? Response["data"] : null;
+            _this.supprecpays = _this.supprecpays
+              ? _this.supprecpays.filter((res) => {
+                  return res.paymode !== CONSTANTS.CASH;
+                })
+              : null;
+            resolve(_this.supprecpays);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
-    return promise
+    return promise;
   }
 
-  filterData(){
+  filterData() {
     let tmparr = [];
 
     //Deposit - Opening Balance
-    let tmpobj ={
+    let tmpobj = {
       id: tmparr.length,
       dated: this.bankopenbal.yeardt,
       particular: `Opening balance`,
       deposit: this.bankopenbal.amount,
       payments: 0,
-      balance: this.bankopenbal.amount
-    }
+      balance: this.bankopenbal.amount,
+    };
     tmparr.push(tmpobj);
 
     //Deposit - Bank Receipts
-    if(this.bankreceipts && this.bankreceipts.length>0){
-      for(let i=0; i<this.bankreceipts.length;i++){
+    if (this.bankreceipts && this.bankreceipts.length > 0) {
+      for (let i = 0; i < this.bankreceipts.length; i++) {
         let tmpobj = {
-          id:tmparr.length,
+          id: tmparr.length,
           dated: this.bankreceipts[i].receiptdate,
           particular: this.bankreceipts[i].particulars,
           deposit: this.bankreceipts[i].amount,
           payments: 0,
-          balance: 0
-        }
+          balance: 0,
+        };
         tmparr.push(tmpobj);
       }
     }
 
     // Deposit - Sale Receipts
-    if(this.salereceipts && this.salereceipts.length>0){
-      for(let i=0;i<this.salereceipts.length;i++){
+    if (this.salereceipts && this.salereceipts.length > 0) {
+      for (let i = 0; i < this.salereceipts.length; i++) {
         let tmpobj = {
-          id:tmparr.length,
+          id: tmparr.length,
           dated: this.salereceipts[i].paydate,
           particular: `${this.salereceipts[i].particulars} - ${this.salereceipts[i].name}`,
           deposit: this.salereceipts[i].amount,
           payments: 0,
-          balance: 0 
+          balance: 0,
         };
         tmparr.push(tmpobj);
       }
     }
 
     //Payments - Purchase Payments
-    if(this.purchaseacs && this.purchaseacs.length>0){
-      for(let i=0;i<this.purchaseacs.length;i++){
+    if (this.purchaseacs && this.purchaseacs.length > 0) {
+      for (let i = 0; i < this.purchaseacs.length; i++) {
         let tmpobj = {
-          id:tmparr.length,
+          id: tmparr.length,
           dated: this.purchaseacs[i].paydate,
           particular: `${this.purchaseacs[i].particulars} - ${this.purchaseacs[i].name}`,
           deposit: 0,
           payments: this.purchaseacs[i].amount,
-          balance: 0 
+          balance: 0,
         };
         tmparr.push(tmpobj);
       }
     }
 
     //Payments - Expenditure Payments
-    if(this.bankexpenditures && this.bankexpenditures.length>0){
-      for(let i=0;i<this.bankexpenditures.length;i++){
-      const tmpparticular = this.bankexpenditures[i].personalaccnm != CONSTANTS.NA? `${this.bankexpenditures[i].particulars} - <span class="text-primary">${this.bankexpenditures[i].personalaccnm}</span>`:`${this.bankexpenditures[i].particulars}`;
+    if (this.bankexpenditures && this.bankexpenditures.length > 0) {
+      for (let i = 0; i < this.bankexpenditures.length; i++) {
+        const tmpparticular =
+          this.bankexpenditures[i].personalaccnm != CONSTANTS.NA
+            ? `${this.bankexpenditures[i].particulars} - <span class="text-primary">${this.bankexpenditures[i].personalaccnm}</span>`
+            : `${this.bankexpenditures[i].particulars}`;
         let tmpobj = {
-          id:tmparr.length,
+          id: tmparr.length,
           dated: this.bankexpenditures[i].expdate,
           particular: tmpparticular,
           deposit: 0,
           payments: this.bankexpenditures[i].amount,
-          balance: 0 
+          balance: 0,
         };
         tmparr.push(tmpobj);
       }
     }
 
     //Payments - Customer Made payments
-    if(this.custmakepays && this.custmakepays.length>0){
-      for(let i=0;i<this.custmakepays.length;i++){
+    if (this.custmakepays && this.custmakepays.length > 0) {
+      for (let i = 0; i < this.custmakepays.length; i++) {
         let tmpobj = {
-          id:tmparr.length,
+          id: tmparr.length,
           dated: this.custmakepays[i].paydate,
           particular: `${this.custmakepays[i].particulars} - ${this.custmakepays[i].name}`,
           deposit: 0,
           payments: this.custmakepays[i].amountpaid,
-          balance: 0 
+          balance: 0,
         };
         tmparr.push(tmpobj);
       }
     }
 
     //Receipts - Supplier Receipt payments
-    if(this.supprecpays && this.supprecpays.length>0){
-      for(let i=0;i<this.supprecpays.length;i++){
+    if (this.supprecpays && this.supprecpays.length > 0) {
+      for (let i = 0; i < this.supprecpays.length; i++) {
         let tmpobj = {
-          id:tmparr.length,
+          id: tmparr.length,
           dated: this.supprecpays[i].paydate,
           particular: `${this.supprecpays[i].particulars} - ${this.supprecpays[i].name}`,
           deposit: this.supprecpays[i].amountpaid,
           payments: 0,
-          balance: 0 
+          balance: 0,
         };
         tmparr.push(tmpobj);
       }
@@ -283,8 +377,11 @@ export class BankaccledgerComponent implements OnInit {
     this.ledgerhist = tmparr;
 
     let tmpbalance = parseFloat(this.ledgerhist[0].deposit);
-    for (let k=1;k<this.ledgerhist.length;k++) {
-      this.ledgerhist[k].balance = tmpbalance + parseFloat(this.ledgerhist[k].deposit) - parseFloat(this.ledgerhist[k].payments);
+    for (let k = 1; k < this.ledgerhist.length; k++) {
+      this.ledgerhist[k].balance =
+        tmpbalance +
+        parseFloat(this.ledgerhist[k].deposit) -
+        parseFloat(this.ledgerhist[k].payments);
       tmpbalance = parseFloat(this.ledgerhist[k].balance);
     }
 
@@ -292,7 +389,29 @@ export class BankaccledgerComponent implements OnInit {
       this.totaldeposit += parseFloat(this.ledgerhist[j].deposit);
       this.totalpayments += parseFloat(this.ledgerhist[j].payments);
     }
-    // console.log(this.ledgerhist)
+    console.log(this.ledgerhist);
+    this.updateLatestBankBalanceToDB(
+      this.ledgerhist[this.ledgerhist.length - 1].balance
+    );
   }
 
+  updateLatestBankBalanceToDB(balance) {
+    const _this = this;
+    const urldata = {
+      acctype: "BANK",
+      balanceamt: parseFloat(balance),
+      curryr: _this.finanyr.fromdt,
+    };
+    console.log(urldata);
+    _this._rest
+      .postData("accounts.php", "updateLatestBalanceToDB", urldata)
+      .subscribe(
+        (Response) => {
+          console.log("Balance updated");
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
 }

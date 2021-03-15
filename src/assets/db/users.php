@@ -6,12 +6,13 @@ header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-T
 include 'conn.php';
 include 'jwt_helper.php';
 $action = $_GET['action'];
-
+$transferAccs=["client_open_bal", "cashbank_acc_ledger_bal", "stock_bal_transfer"];
 if($action == "checkLogin"){
     date_default_timezone_set("Asia/Calcutta");
     $data = json_decode(file_get_contents("php://input"));
 	$email = $data->email;
 	$passwd = md5($data->passwd);
+	$fromdt = $data->fromdt;
 	$sql = "select * from `user_register` where email='$email' AND password='$passwd'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_array();
@@ -29,6 +30,34 @@ if($action == "checkLogin"){
 		$d1 = new Datetime();
 		$tmp[0]['sessiontime'] = $d1->format('U')*1000;
 		$tmp[0]['token'] = JWT::encode($token, 'greentoporg');
+			$sqlyr = "SELECT * FROM `current_financialyr` WHERE `finanyr`=$fromdt";
+			$resultyr = $conn->query($sqlyr);
+			$rowyr = $resultyr->fetch_array();
+			$yrdet = array();
+			if($rowyr && count($rowyr)>0){
+				for($i=0; $i<count($transferAccs); $i++) {
+					$sqldet = "SELECT * FROM `current_financialyr` WHERE `finanyr`=$fromdt AND `transferaccs`='$transferAccs[$i]'";
+					$resultdet = $conn->query($sqldet);
+					$rowdet = $resultdet->fetch_array();
+					if($rowdet && count($rowdet)>0){
+						$yrdet[$i]["finanyr_id"]=$rowdet["finanyr_id"];
+						$yrdet[$i]["finanyr"]=$fromdt;
+						$yrdet[$i]["transferaccs"]=$rowdet["transferaccs"];
+						$yrdet[$i]["status"]=$rowdet["status"];
+					}
+				}
+
+			}else{
+				for($i=0; $i<count($transferAccs); $i++) {
+					$sqlin = "INSERT INTO `current_financialyr`(`finanyr`, `transferaccs`, `status`) VALUES ('$fromdt','$transferAccs[$i]','inactive')";
+					$resultin = $conn->query($sqlin);
+					$yrdet[$i]["finanyr"]=$fromdt;
+					$yrdet[$i]["transferaccs"]=$transferAccs[$i];
+					$yrdet[$i]["status"]='inactive';
+				}
+			}
+			$tmp[0]["transferAcc"] = $yrdet;
+
         $datares["status"] = 200;
 		$datares["data"] = $tmp;
 		$log  = "File: users.php - Method: ".$action.PHP_EOL.

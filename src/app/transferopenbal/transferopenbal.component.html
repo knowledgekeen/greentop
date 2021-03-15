@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <h5 class="my-2">
+    Transfer Opening Balances From Previous to Current Financial Year
+  </h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Description</th>
+              <th>Transfer Progress</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let acc of transferaccs; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ acc.name }}</td>
+              <td class="w-50">
+                <div class="text-success" *ngIf="acc.status === 'inactive'">
+                  <button
+                    class="btn btn-primary btn-sm"
+                    (click)="transferAccBalance(acc, i)"
+                  >
+                    Transfer
+                  </button>
+                </div>
+                <div class="text-success" *ngIf="acc.status === 'completed'">
+                  <i class="fa fa-check"></i> Completed
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

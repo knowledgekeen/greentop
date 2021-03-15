@@ -34,6 +34,10 @@ export class EditclientComponent implements OnInit {
   licenseissuedt: string = null;
   licenseexpirydt: string = null;
   licenseauthority: string = null;
+  wholesale_licenseno: string = null;
+  wholesale_licenseissuedt: string = null;
+  wholesale_licenseexpirydt: string = null;
+  wholesale_licenseauthority: string = null;
 
   constructor(
     private _route: ActivatedRoute,
@@ -116,13 +120,25 @@ export class EditclientComponent implements OnInit {
     this.address = this.clientdata.address;
     console.log(this.clientdata);
     this.licenseno = this.clientdata.licenseno;
-    this.licenseissuedt = moment(
-      parseInt(this.clientdata.licenseissuedt)
-    ).format("DD-MM-YYYY");
-    this.licenseexpirydt = moment(
-      parseInt(this.clientdata.licenseexpirydt)
-    ).format("DD-MM-YYYY");
+    this.licenseissuedt = this.clientdata.licenseissuedt
+      ? moment(parseInt(this.clientdata.licenseissuedt)).format("DD-MM-YYYY")
+      : "";
+    this.licenseexpirydt = this.clientdata.licenseexpirydt
+      ? moment(parseInt(this.clientdata.licenseexpirydt)).format("DD-MM-YYYY")
+      : "";
     this.licenseauthority = this.clientdata.licenseauthority;
+    this.wholesale_licenseno = this.clientdata.wholesale_licenseno;
+    this.wholesale_licenseissuedt = this.clientdata.wholesale_licenseissuedt
+      ? moment(parseInt(this.clientdata.wholesale_licenseissuedt)).format(
+          "DD-MM-YYYY"
+        )
+      : "";
+    this.wholesale_licenseexpirydt = this.clientdata.wholesale_licenseexpirydt
+      ? moment(parseInt(this.clientdata.wholesale_licenseexpirydt)).format(
+          "DD-MM-YYYY"
+        )
+      : "";
+    this.wholesale_licenseauthority = this.clientdata.wholesale_licenseauthority;
   }
 
   updateClient() {
@@ -138,6 +154,14 @@ export class EditclientComponent implements OnInit {
     const expDt = moment(this.licenseexpirydt, "DD-MM-YYYY").format(
       "MM-DD-YYYY"
     );
+    const wholesale_issueDt = moment(
+      this.wholesale_licenseissuedt,
+      "DD-MM-YYYY"
+    ).format("MM-DD-YYYY");
+    const wholesale_expDt = moment(
+      this.wholesale_licenseexpirydt,
+      "DD-MM-YYYY"
+    ).format("MM-DD-YYYY");
     let clientObj = {
       clientid: this.clientid,
       fname: this.fname,
@@ -157,6 +181,12 @@ export class EditclientComponent implements OnInit {
       licenseissuedt: new Date(issueDt).getTime(),
       licenseexpirydt: new Date(expDt).getTime(),
       licenseauthority: this.licenseauthority,
+      wholesale_licenseno: this.wholesale_licenseno,
+      wholesale_licenseissuedt: new Date(wholesale_issueDt).getTime(),
+      wholesale_licenseexpirydt: new Date(wholesale_expDt).getTime(),
+      wholesale_licenseauthority: this.wholesale_licenseauthority
+        ? this.wholesale_licenseauthority
+        : "",
     };
 
     this._rest
@@ -188,5 +218,13 @@ export class EditclientComponent implements OnInit {
     this.licenseexpirydt = this.licenseexpirydt
       ? this._global.getAutofillFormattedDt(this.licenseexpirydt)
       : this.licenseexpirydt;
+
+    this.wholesale_licenseissuedt = this.wholesale_licenseissuedt
+      ? this._global.getAutofillFormattedDt(this.wholesale_licenseissuedt)
+      : this.wholesale_licenseissuedt;
+
+    this.wholesale_licenseexpirydt = this.wholesale_licenseexpirydt
+      ? this._global.getAutofillFormattedDt(this.wholesale_licenseexpirydt)
+      : this.wholesale_licenseexpirydt;
   }
 }

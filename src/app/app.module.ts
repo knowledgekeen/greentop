@@ -73,6 +73,7 @@ import { AccountsModule } from "./accounts/accounts/accounts.module";
 import { CreatepersonalaccComponent } from "./accounts/createpersonalacc/createpersonalacc.component";
 import { PurchasereturnsComponent } from "./purchasereturns/purchasereturns.component";
 import { OformComponent } from './oform/oform.component';
+import { TransferopenbalComponent } from './transferopenbal/transferopenbal.component';
 
 @NgModule({
   declarations: [
@@ -132,6 +133,7 @@ import { OformComponent } from './oform/oform.component';
     CreatepersonalaccComponent,
     PurchasereturnsComponent,
     OformComponent,
+    TransferopenbalComponent,
   ],
   imports: [
     BrowserModule,
