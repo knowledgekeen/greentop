@@ -25,9 +25,6 @@ export let TRANSFER_ACCS = [
     name: "Client (Customer/Supplier) Opening Balance Transfer",
     filenm: "transfer.php",
     api: "transferCustOpenBal",
-    urldata: "",
-    data: "",
-    method: "",
     columnNm: "client_open_bal",
     status: "inactive",
   },
@@ -42,6 +39,8 @@ export let TRANSFER_ACCS = [
   {
     id: 3,
     name: "Stocks Balance Transfer",
+    filenm: "transfer.php",
+    api: "transferStockBal",
     columnNm: "stock_bal_transfer",
     status: "inactive",
   },

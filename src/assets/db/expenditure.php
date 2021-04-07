@@ -62,7 +62,7 @@ if($action == "getAllAccountHeads"){
 	$tmp = array();
 	$data = array();
 	$i = 0;
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['accheadid'] = $row['accheadid'];
@@ -199,7 +199,7 @@ if($action == "getExpendituresFromTo"){
 	$tmp = array();
 	$data = array();
 	$i = 0;
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['expid'] = $row['expid'];
@@ -346,7 +346,7 @@ if($action == "getReceiptsFromTo"){
 	$tmp = array();
 	$data = array();
 	$i = 0;
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['receiptid'] = $row['receiptid'];

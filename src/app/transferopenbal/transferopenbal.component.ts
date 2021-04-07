@@ -53,13 +53,18 @@ export class TransferopenbalComponent implements OnInit {
       prevtodt: prevyr.todt,
     };
 
-    console.log(globaldt, prevyr, dataobj);
+    // console.log(globaldt, prevyr, dataobj);
     // return;
     this._rest.postData(acc.filenm, acc.api, dataobj).subscribe((Response) => {
       this.transferaccs[index].status = "completed";
       console.log(this.transferaccs);
       for (let i in this.sessionData[0].transferAcc) {
         for (let tranacc of this.transferaccs) {
+          console.log(
+            this.sessionData[0].transferAcc[i].transferaccs,
+            tranacc.columnNm,
+            this.sessionData[0].transferAcc[i].transferaccs === tranacc.columnNm
+          );
           if (
             this.sessionData[0].transferAcc[i].transferaccs === tranacc.columnNm
           ) {

@@ -112,7 +112,9 @@ export class TaxinvoiceComponent implements OnInit {
     }
     let qty = this.orderdetails.quantity;
     this.rate = parseFloat(parseFloat(this.rate).toFixed(2));
-    let amount = parseFloat(qty) * parseFloat(this.rate);
+    let amount = parseFloat(
+      (parseFloat(qty) * parseFloat(this.rate)).toFixed(2)
+    );
     let discount = parseFloat(parseFloat(this.discount).toFixed(2));
     let netamt = amount - discount;
     let cgst = (this.cgstinr =

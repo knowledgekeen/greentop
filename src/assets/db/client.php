@@ -508,7 +508,8 @@ if($action == "deleteClient"){
 if($action == "getTotalCustomerOpenBal"){
 	$headers = apache_request_headers();
 	authenticate($headers);
-	$sql = "SELECT SUM(`openingbal`) as totalopenbal FROM `client_openingbal` co, `client_master` cm WHERE cm.type=2 AND co.`clientid`=cm.`clientid`";
+	$fromdt = $_GET["fromdt"];
+	$sql = "SELECT SUM(`openingbal`) as totalopenbal FROM `client_openingbal` co, `client_master` cm WHERE cm.type=2 AND co.`clientid`=cm.`clientid` and `baldate`=$fromdt";
 	$result = $conn->query($sql);
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 

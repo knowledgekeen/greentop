@@ -22,7 +22,7 @@ if($action == "getAllProdRawmats"){
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['prodrawid'] = $row['prodrawid'];
@@ -285,7 +285,7 @@ if($action == "getAllProductionBatches"){
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['batchmastid'] = $row['batchmastid'];
@@ -332,7 +332,7 @@ if($action == "getProductionBatchesFromToDt"){
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['batchmastid'] = $row['batchmastid'];
@@ -378,7 +378,7 @@ if($action == "getProductionBatchDetails"){
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['prodregid'] = $row['prodregid'];
@@ -491,7 +491,7 @@ if($action == "getRawMatAssignmentHist"){
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['assignrawmatid'] = $row['assignrawmatid'];

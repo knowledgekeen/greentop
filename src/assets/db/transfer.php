@@ -53,7 +53,7 @@ if($action == "transferCashBankAccLedgerBal"){
     $prevtodt = $data->prevtodt;
     
     if($_SERVER['REQUEST_METHOD']=='POST'){
-		$sqlyr = "SELECT `latestbal` FROM `account_openingbal` WHERE `yeardt`='1585679400000' AND `cashorbank`='BANK'";
+		$sqlyr = "SELECT `latestbal` FROM `account_openingbal` WHERE `yeardt`='$prevfromdt' AND `cashorbank`='BANK'";
 		$resultyr = $conn->query($sqlyr);
 		$rowyr = $resultyr->fetch_array();
 		if($rowyr){
@@ -64,7 +64,7 @@ if($action == "transferCashBankAccLedgerBal"){
         $tmp[0]["bankopenbalid"] = $bankopenbalid;
 		}
 		
-		$sqlyr = "SELECT `latestbal` FROM `account_openingbal` WHERE `yeardt`='1585679400000' AND `cashorbank`='CASH'";
+		$sqlyr = "SELECT `latestbal` FROM `account_openingbal` WHERE `yeardt`='$prevfromdt' AND `cashorbank`='CASH'";
 		$resultyr = $conn->query($sqlyr);
 		$rowyr = $resultyr->fetch_array();
 		if($rowyr){
@@ -81,6 +81,40 @@ if($action == "transferCashBankAccLedgerBal"){
         $result1 = $conn->query($sql1);
 		$data1["status"] = 200;
 		$data1["data"] = $tmp;
+		$log  = "File: transfer.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data1["status"] = 204;
+		$log  = "File: transfer.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+	echo json_encode($data1);
+}
+
+if($action == "transferStockBal"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+    $data = json_decode(file_get_contents("php://input"));
+    $fromdt = $data->fromdt;
+    $todt = $data->todt;
+    
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        // $sql = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) SELECT `stockid`,'IN',`quantity`,'$fromdt','Opening Balance' from `stock_master`";
+        $sql = "INSERT INTO `stock_register`(`stockid`, `INorOUT`, `quantity`, `date`, `remarks`) SELECT `stockid`,'IN',`quantity`,'1617215400000','Opening Balance' from `stock_master`";
+        $result = $conn->query($sql);
+    }
+    $data1= array();
+    if($result){
+		$sql1 = "UPDATE `current_financialyr` SET `status`='completed' WHERE `transferaccs`='stock_bal_transfer' AND `finanyr`='$fromdt'";
+        $result1 = $conn->query($sql1);
+		$data1["status"] = 200;
+		$data1["data"] = "success";
 		$log  = "File: transfer.php - Method: $action".PHP_EOL.
 		"Data: ".json_encode($data).PHP_EOL;
 		write_log($log, "success", NULL);

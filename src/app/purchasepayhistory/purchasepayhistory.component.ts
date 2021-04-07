@@ -183,7 +183,7 @@ export class PurchasepayhistoryComponent implements OnInit {
                     .subscribe((supppay) => {
                       if (supppay) {
                         salepay = supppay["data"];
-                        console.log(salepay);
+                        // console.log(salepay);
                       }
 
                       let tmpobj = {
@@ -257,6 +257,11 @@ export class PurchasepayhistoryComponent implements OnInit {
           },
           (err) => {
             this.updtfailedflag = true;
+
+            this._interval.settimer(1000).then((timer) => {
+              this.updtsundryflag = null;
+              this.updtfailedflag = null;
+            });
           }
         );
     }
@@ -264,13 +269,13 @@ export class PurchasepayhistoryComponent implements OnInit {
   }
 
   updateClientsBalanceAmount(sundrydata) {
-    console.log(sundrydata);
+    // console.log(sundrydata);
     const urldata = `clientid=${sundrydata.clientid}&balanceamt=${sundrydata.balance}`;
     this._rest
       .getData("client.php", "updateClientsBalanceAmount", urldata)
       .subscribe(
         (Response) => {
-          console.log("Supplier balance amount updated", Response);
+          // console.log("Supplier balance amount updated", Response);
         },
         (err) => {
           console.log("Error", err);

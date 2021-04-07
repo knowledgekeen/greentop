@@ -4,7 +4,7 @@
       class="text-right text-sm noprint"
       *ngIf="updtsundryflag == true || updtsundryflag == false"
     >
-      <span class="text-primary" *ngIf="!updtsundryflag"
+      <span class="text-primary" *ngIf="updtsundryflag === false"
         ><i class="fa fa-refresh fa-spin"></i> Updating sundry...</span
       >
       <span class="text-success" *ngIf="updtsundryflag"

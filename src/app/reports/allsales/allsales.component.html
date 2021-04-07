@@ -2,17 +2,25 @@
   <div class="card my-1">
     <div class="card-body">
       <h5 class="text-uppercase text-center">
-        <span class="border-bottom border-secondary">Sales Reports For the F.Y.
-          {{ finanyr.fromdt | date: "yyyy" }} - {{ finanyr.todt | date: "yyyy" }}</span>
+        <span class="border-bottom border-secondary"
+          >Sales Reports For the F.Y. {{ finanyr.fromdt | date: "yyyy" }} -
+          {{ finanyr.todt | date: "yyyy" }}</span
+        >
       </h5>
-      <hr class="my-3">
+      <hr class="my-3" />
       <h6>
         Report for:
-        <span class="font-weight-bold border-bottom border-secondary"
-          *ngIf="!customfrom || !customto">{{monthlabel}}</span>
-        <span class="font-weight-bold border-bottom border-secondary"
-          *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
-          {{customto | date: 'dd-MMM, yyyy'}}</span>
+        <span
+          class="font-weight-bold border-bottom border-secondary"
+          *ngIf="!customfrom || !customto"
+          >{{ monthlabel }}</span
+        >
+        <span
+          class="font-weight-bold border-bottom border-secondary"
+          *ngIf="customfrom && customto"
+          >{{ customfrom | date: "dd-MMM, yyyy" }} -
+          {{ customto | date: "dd-MMM, yyyy" }}</span
+        >
       </h6>
       <h6>
         <div class="row">
@@ -20,22 +28,34 @@
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">
             <label class="m-0">From</label>
-            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
-              (blur)="autofillfromdt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="From Date"
+              [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()"
+            />
           </div>
           <div class="col-md-2">
             <label class="m-0">To</label>
-            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
-              (blur)="autofilltodt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="To Date"
+              [(ngModel)]="todt"
+              (blur)="autofilltodt()"
+            />
           </div>
           <div class="col-md-2">
-            <button class="btn btn-info mt-3" (click)="filterData()"><i class="fa fa-filter"></i> Filter</button>
+            <button class="btn btn-info mt-3" (click)="filterData()">
+              <i class="fa fa-filter"></i> Filter
+            </button>
           </div>
         </div>
       </h6>
       <div class="table-responsive" id="allsalesreports">
         <table class="table table-striped table-sm">
-          <thead class="thead-dark">
+          <thead class="thead-dark" style="position: sticky; top: 0">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Invoice Date</th>
@@ -61,47 +81,72 @@
           <tbody>
             <tr>
               <td colspan="18" class="text-primary" *ngIf="!allinvoices">
-                <h6><i class="fa fa-pulse fa-spinner"></i> Please wait, loading data...</h6>
+                <h6>
+                  <i class="fa fa-pulse fa-spinner"></i> Please wait, loading
+                  data...
+                </h6>
               </td>
             </tr>
-            <tr *ngFor="let inv of allinvoices; let i = index;">
-              <th scope="row">{{i+1}}</th>
-              <td>{{inv.billdt | date : 'dd-MM-yyyy'}}</td>
-              <td>{{inv.billno}}</td>
-              <td>{{inv.name}}</td>
-              <td>{{inv.city}}</td>
+            <tr *ngFor="let inv of allinvoices; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ inv.billdt | date: "dd-MM-yyyy" }}</td>
+              <td>{{ inv.billno }}</td>
+              <td>{{ inv.name }}</td>
+              <td>{{ inv.city }}</td>
               <td>
-                <span *ngIf="inv.gstno">{{inv.gstno}}</span>
+                <span *ngIf="inv.gstno">{{ inv.gstno }}</span>
                 <span *ngIf="!inv.gstno">Not Applicable</span>
               </td>
-              <td>{{inv.prodname}}</td>
-              <td>{{inv.hsncode}}</td>
-              <td class="text-right">{{inv.quantity | number: '1.3-3'}}</td>
-              <td class="text-right">{{inv.amount | currency:"INR"}}</td>
-              <td class="text-right">{{inv.discount | currency:"INR"}}</td>
-              <td class="text-right">{{inv.netamt | currency: "INR"}}</td>
-              <td class="text-right">{{inv.rateofgst}}%</td>
-              <td class="text-right">{{inv.cgstinr | currency:"INR"}}</td>
-              <td class="text-right">{{inv.sgstinr | currency:"INR"}}</td>
-              <td class="text-right">{{inv.igstinr | currency:"INR"}}</td>
-              <td class="text-right">{{inv.roundoff| currency:"INR"}}</td>
-              <td class="text-right">{{inv.totalgst| currency:"INR"}}</td>
-              <td class="text-right">{{inv.totalamount| currency:"INR"}}</td>
+              <td>{{ inv.prodname }}</td>
+              <td>{{ inv.hsncode }}</td>
+              <td class="text-right">{{ inv.quantity | number: "1.3-3" }}</td>
+              <td class="text-right">{{ inv.amount | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.discount | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.netamt | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.rateofgst }}%</td>
+              <td class="text-right">{{ inv.cgstinr | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.sgstinr | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.igstinr | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.roundoff | currency: "INR" }}</td>
+              <td class="text-right">{{ inv.totalgst | currency: "INR" }}</td>
+              <td class="text-right">
+                {{ inv.totalamount | currency: "INR" }}
+              </td>
             </tr>
             <tr>
               <td colspan="7">&nbsp;</td>
               <td class="text-right font-weight-bold">Total</td>
-              <td class="text-right font-weight-bold">{{finalquantity | number:'1.3-3'}}</td>
-              <td class="text-right font-weight-bold">{{finalamt | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finaldiscount | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finalnetamt | currency: "INR"}}</td>
+              <td class="text-right font-weight-bold">
+                {{ finalquantity | number: "1.3-3" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finalamt | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finaldiscount | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finalnetamt | currency: "INR" }}
+              </td>
               <td>&nbsp;</td>
-              <td class="text-right font-weight-bold">{{finalcgst | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finalsgst | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finaligst | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finalroundoff | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finaltotalgst | currency: "INR"}}</td>
-              <td class="text-right font-weight-bold">{{finalgrandtotal | currency: "INR"}}</td>
+              <td class="text-right font-weight-bold">
+                {{ finalcgst | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finalsgst | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finaligst | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finalroundoff | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finaltotalgst | currency: "INR" }}
+              </td>
+              <td class="text-right font-weight-bold">
+                {{ finalgrandtotal | currency: "INR" }}
+              </td>
             </tr>
           </tbody>
         </table>
