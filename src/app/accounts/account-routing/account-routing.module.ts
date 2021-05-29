@@ -7,6 +7,7 @@ import { BankaccledgerComponent } from "../bankaccledger/bankaccledger.component
 import { GraphexpenditureComponent } from "../graphexpenditure/graphexpenditure.component";
 import { CashaccledgerComponent } from "../cashaccledger/cashaccledger.component";
 import { PersonalaccadjustmentsComponent } from "../personalaccadjustments/personalaccadjustments.component";
+import { AccheadledgerComponent } from "../accheadledger/accheadledger.component";
 
 const accountsRoutes: Routes = [
   { path: "accounts/openingbal", component: AccountOpenbalComponent },
@@ -15,6 +16,7 @@ const accountsRoutes: Routes = [
   { path: "accounts/personalaccledger", component: PersonalaccledgerComponent },
   { path: "accounts/graphexpenditure", component: GraphexpenditureComponent },
   { path: "accounts/cashaccledger", component: CashaccledgerComponent },
+  { path: "accounts/accheadledger", component: AccheadledgerComponent },
   {
     path: "accounts/personalaccadjustment",
     component: PersonalaccadjustmentsComponent,

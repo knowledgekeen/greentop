@@ -19,13 +19,47 @@ export class PersonalaccledgerComponent implements OnInit {
   totaldebit: number = null;
   totalcredit: number = null;
   selectedacc: string = null;
+  totalFinanyrs: any = null;
+  selectedFinanYr: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService) {}
 
   ngOnInit() {
     this.finanyr = this._global.getCurrentFinancialYear();
+    this.selectedFinanYr = this.finanyr.fromdt;
     // console.log(this.finanyr);
+    this.getAllFinancialYears();
     this.getDistinctPersonalAccs();
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs() {
+    console.log(this.selectedFinanYr);
+    // console.log(yrs, this._global.getSpecificFinancialYear(parseInt(yrs)));
+    this.finanyr = this._global.getSpecificFinancialYear(
+      parseInt(this.selectedFinanYr)
+    );
+    this.getDistinctPersonalAccs();
+    this.selectedacc = null;
+
+    // this.getAllPurchasePayments();
   }
 
   getDistinctPersonalAccs() {

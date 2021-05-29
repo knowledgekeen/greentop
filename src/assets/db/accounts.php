@@ -581,7 +581,6 @@ if($action == "getAllPersonalAccAdjustments"){
 	echo json_encode($data);
 }
 
-
 if($action == "updateLatestBalanceToDB"){
 	$headers = apache_request_headers();
 	authenticate($headers);

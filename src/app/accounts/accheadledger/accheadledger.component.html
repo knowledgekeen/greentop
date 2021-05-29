@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <h5 class="my-2 noprint">Account Head Ledger</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 noprint">
+          <label class="m-0">Search Account Head Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search Account Head Name"
+            [(ngModel)]="accheadnm"
+            list="acchead"
+            (change)="getAccountHeadDetails()"
+          />
+
+          <datalist id="acchead">
+            <option
+              value="{{ acchead.accheadnm }}"
+              *ngFor="let acchead of allaccheads"
+            >
+              {{ acchead.accheadnm }}
+            </option>
+          </datalist>
+        </div>
+
+        <div class="col-md-12 my-3">
+          <h6 *ngIf="totalFinanyrs" class="noprint mb-0">
+            <span class="mr-3">
+              All Financial Years
+              <small>(click on year to view its details)</small>:
+            </span>
+            <button
+              class="btn btn-link mr-3 px-0"
+              *ngFor="let yrs of totalFinanyrs"
+              (click)="changeFinancialyrs(yrs.finanyr)"
+            >
+              {{ yrs.finanyr.fromdt | date: "yy" }}-{{
+                yrs.finanyr.todt | date: "yy"
+              }}
+            </button>
+          </h6>
+        </div>
+
+        <div class="col-md-12 col-sm-12" *ngIf="showLedger">
+          <h5 class="text-center mt-3">
+            <span
+              class="font-weight-bold border-bottom border-primary font-italic"
+            >
+              {{ accheadnm }}
+            </span>
+          </h5>
+          <h5 class="text-center">
+            Account Head Ledger for the year:
+            <span class="text-info font-weight-bold"
+              >{{ finanyr.fromdt | date: "yyyy" }} -
+              {{ finanyr.todt | date: "yyyy" }}</span
+            >
+          </h5>
+          <div class="table-responsive mb-3">
+            <table class="table table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Particulars</th>
+                  <th scope="col">Type</th>
+                  <th scope="col" class="text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let acchead of accheaddata; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ acchead.expdate | date: "dd-MM-yyyy" }}</td>
+                  <td>{{ acchead.particulars }}</td>
+                  <td>
+                    <ng-container
+                      *ngIf="acchead.exptype === '1'; else elseAccHead"
+                    >
+                      Cash
+                    </ng-container>
+                    <ng-template #elseAccHead> Bank </ng-template>
+                  </td>
+                  <td class="text-right">
+                    {{ acchead.amount | currency: "INR" }}
+                  </td>
+                </tr>
+                <tr *ngIf="accheaddata.length <= 0">
+                  <td colspan="5" class="text-danger">
+                    <h6>No data found !!!</h6>
+                  </td>
+                </tr>
+                <tr class="thead-dark" *ngIf="accheaddata.length > 0">
+                  <th colspan="4" class="text-right">Total</th>
+                  <th class="text-right">
+                    {{ totalamount | currency: "INR" }}
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

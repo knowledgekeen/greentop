@@ -74,6 +74,7 @@ import { CreatepersonalaccComponent } from "./accounts/createpersonalacc/createp
 import { PurchasereturnsComponent } from "./purchasereturns/purchasereturns.component";
 import { OformComponent } from './oform/oform.component';
 import { TransferopenbalComponent } from './transferopenbal/transferopenbal.component';
+import { AccheadledgerComponent } from './accounts/accheadledger/accheadledger.component';
 
 @NgModule({
   declarations: [
@@ -134,6 +135,7 @@ import { TransferopenbalComponent } from './transferopenbal/transferopenbal.comp
     PurchasereturnsComponent,
     OformComponent,
     TransferopenbalComponent,
+    AccheadledgerComponent,
   ],
   imports: [
     BrowserModule,

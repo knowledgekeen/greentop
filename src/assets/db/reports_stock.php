@@ -85,7 +85,9 @@ if($action == "updateStock"){
 if($action == "getDistrictWiseSales"){
 	$headers = apache_request_headers();
 	authenticate($headers);
-    $sql = "SELECT cm.*,SUM(om.quantity) as totalquantity FROM `order_master` om, `client_master` cm WHERE om.`clientid`=cm.`clientid` GROUP BY cm.`district` ORDER BY cm.`district`";
+    $fromdt= $_GET["fromdt"];
+    $todt= $_GET["todt"];
+    $sql = "SELECT cm.*,SUM(om.quantity) as totalquantity FROM `order_master` om, `client_master` cm WHERE om.`clientid`=cm.`clientid` AND `orderdt` BETWEEN '$fromdt' AND '$todt' GROUP BY cm.`district` ORDER BY cm.`district`";
     $result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{

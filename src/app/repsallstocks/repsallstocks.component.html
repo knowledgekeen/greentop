@@ -4,37 +4,59 @@
       <span class="border-bottom border-primary">Current stocks</span>
     </h5>
     <div class="row">
-      <div class="col-sm-12 text-right" [ngClass]="{
+      <div
+        class="col-sm-12 text-right"
+        [ngClass]="{
           'col-md-4': hidegraph == false,
           'col-md-12': hidegraph == true
-        }">
-        <a href="javascript:void(0);" class="border-bottom" (click)="hidegraph = !hidegraph">
+        }"
+      >
+        <a
+          href="javascript:void(0);"
+          class="border-bottom"
+          (click)="hidegraph = !hidegraph"
+        >
           <span *ngIf="!hidegraph">Hide Graph</span>
           <span *ngIf="hidegraph">Show Graph</span>
         </a>
         <div id="container" [hidden]="hidegraph"></div>
       </div>
-      <div class="col-sm-12 mb-3" *ngIf="allstock" [ngClass]="{
+      <div
+        class="col-sm-12 mb-3"
+        *ngIf="allstock"
+        [ngClass]="{
           'col-md-8': hidegraph == false,
           'col-md-12': hidegraph == true
-        }">
+        }"
+      >
         <h6 class="text-dark text-uppercase font-italic font-weight-bold">
           Raw Materials
+
+          <a
+            class="float-right historictrans"
+            [routerLink]="['/reports/stockstatement']"
+            >Click here for historic transactions</a
+          >
         </h6>
         <table class="table table-sm">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">
-                Raw Material
-              </th>
+              <th scope="col">Raw Material</th>
               <th scope="col" class="text-right pr-5">Quantity</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let stock of allstock" [ngClass]="{ 'd-none': stock.rawmatid == null }">
+            <tr
+              *ngFor="let stock of allstock"
+              [ngClass]="{ 'd-none': stock.rawmatid == null }"
+            >
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#stockHistoryModal"
-                  (click)="selectRawMaterialOrProduct(stock)">
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#stockHistoryModal"
+                  (click)="selectRawMaterialOrProduct(stock)"
+                >
                   {{ stock.name }}
                 </a>
               </td>
@@ -63,13 +85,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let stock of allstock" [ngClass]="{
+            <tr
+              *ngFor="let stock of allstock"
+              [ngClass]="{
                 'd-none': stock.rawmatid != null || stock.prodid == null
-              }">
+              }"
+            >
               <td>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#stockHistoryModal"
-                  (click)="selectRawMaterialOrProduct(stock)">
-                  {{ stock.prodname }}</a>
+                <a
+                  href="javascript:void(0);"
+                  data-toggle="modal"
+                  data-target="#stockHistoryModal"
+                  (click)="selectRawMaterialOrProduct(stock)"
+                >
+                  {{ stock.prodname }}</a
+                >
               </td>
               <td class="text-right pr-5">
                 {{ stock.quantity | number: "1.3-3" }}
@@ -83,8 +113,15 @@
 </div>
 
 <!-- Stock History for Raw Materials -->
-<div class="modal" id="stockHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" *ngIf="selectedmat">
+<div
+  class="modal"
+  id="stockHistoryModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="selectedmat"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -92,7 +129,12 @@
           <span *ngIf="selectedmat.rawmatid">{{ selectedmat.name }}</span>
           <span *ngIf="!selectedmat.rawmatid">{{ selectedmat.prodname }}</span>
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -115,33 +157,73 @@
               <th scope="row">{{ i + 1 }}</th>
               <td class="datewidth">{{ hist.date | date: "dd-MM-yyyy" }}</td>
               <td class="text-right px-3">
-                <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') != -1;">
+                <span
+                  *ngIf="
+                    selectedmat.name &&
+                    selectedmat.name.toLowerCase().indexOf('bags') != -1
+                  "
+                >
                   {{ hist.openingstock }}
                 </span>
-                <span *ngIf="(selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags')  == -1) || (selectedmat.prodname)">
+                <span
+                  *ngIf="
+                    (selectedmat.name &&
+                      selectedmat.name.toLowerCase().indexOf('bags') == -1) ||
+                    selectedmat.prodname
+                  "
+                >
                   {{ hist.openingstock | number: "1.3-3" }}
                 </span>
               </td>
               <td>{{ hist.inout }}</td>
               <td class="text-right px-3">
-                <span *ngIf="selectedmat.name && (selectedmat.name.toLowerCase().indexOf('bags') != -1);">
+                <span
+                  *ngIf="
+                    selectedmat.name &&
+                    selectedmat.name.toLowerCase().indexOf('bags') != -1
+                  "
+                >
                   {{ hist.quantity }}
                 </span>
-                <span *ngIf="selectedmat.name && (selectedmat.name.toLowerCase().indexOf('bags') == -1) || (selectedmat.prodname)">
+                <span
+                  *ngIf="
+                    (selectedmat.name &&
+                      selectedmat.name.toLowerCase().indexOf('bags') == -1) ||
+                    selectedmat.prodname
+                  "
+                >
                   {{ hist.quantity | number: "1.3-3" }}
                 </span>
               </td>
               <td class="text-right px-3">
-                <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') != -1;">
+                <span
+                  *ngIf="
+                    selectedmat.name &&
+                    selectedmat.name.toLowerCase().indexOf('bags') != -1
+                  "
+                >
                   {{ hist.closingstock }}
                 </span>
-                <span *ngIf="selectedmat.name && selectedmat.name.toLowerCase().indexOf('bags') == -1 || (selectedmat.prodname)">
+                <span
+                  *ngIf="
+                    (selectedmat.name &&
+                      selectedmat.name.toLowerCase().indexOf('bags') == -1) ||
+                    selectedmat.prodname
+                  "
+                >
                   {{ hist.closingstock | number: "1.3-3" }}
                 </span>
               </td>
               <td>{{ hist.remarks }}</td>
               <td>
-                <span class="text-primary cursor-pointer" title="Edit Stock History" data-toggle="modal" data-target="#editStockRegModal" (click)="editStockDetails(hist)"><i class="fa fa-pencil"></i></span>
+                <span
+                  class="text-primary cursor-pointer"
+                  title="Edit Stock History"
+                  data-toggle="modal"
+                  data-target="#editStockRegModal"
+                  (click)="editStockDetails(hist)"
+                  ><i class="fa fa-pencil"></i
+                ></span>
               </td>
             </tr>
             <tr *ngIf="this.histarr.length <= 0">
@@ -157,7 +239,12 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="selectedmat=null;">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="selectedmat = null"
+        >
           Close
         </button>
       </div>
@@ -165,36 +252,73 @@
   </div>
 </div>
 
-
-<div class="modal editStockRegModal" id="editStockRegModal" tabindex="-1" role="dialog" aria-labelledby="editStockReg" aria-hidden="true" *ngIf="editStockReg">
+<div
+  class="modal editStockRegModal"
+  id="editStockRegModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editStockReg"
+  aria-hidden="true"
+  *ngIf="editStockReg"
+>
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editStockReg">Edit Stock Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-            <div class="alert alert-success" role="alert" *ngIf="successStkDetsMsg">
-              <i class="fa fa-check"></i> {{successStkDetsMsg}}.
+            <div
+              class="alert alert-success"
+              role="alert"
+              *ngIf="successStkDetsMsg"
+            >
+              <i class="fa fa-check"></i> {{ successStkDetsMsg }}.
             </div>
           </div>
           <div class="col-md-6">
             <label for="stkDetQuantity">Quantity</label>
-            <input type="text" class="form-control" [(ngModel)]="editStockReg.quantity">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="editStockReg.quantity"
+            />
           </div>
           <div class="col-md-6">
             <label for="stkDetQuantity">Remarks</label>
-            <input type="text" class="form-control" [(ngModel)]="editStockReg.remarks">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="editStockReg.remarks"
+            />
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="editStockReg=null">Back</button>
-        <button type="button" class="btn btn-primary" (click)="saveStockRegDetails()">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="editStockReg = null"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="saveStockRegDetails()"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>

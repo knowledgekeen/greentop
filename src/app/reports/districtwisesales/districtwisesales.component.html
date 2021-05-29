@@ -4,6 +4,23 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
+        <div class="col-md-12">
+          <h6 *ngIf="totalFinanyrs" class="noprint mb-0">
+            <span class="mr-3">
+              All Financial Years
+              <small>(click on year to view its details)</small>:
+            </span>
+            <button
+              class="btn btn-link mr-3 px-0"
+              *ngFor="let yrs of totalFinanyrs"
+              (click)="changeFinancialyrs(yrs.finanyr)"
+            >
+              {{ yrs.finanyr.fromdt | date: "yy" }}-{{
+                yrs.finanyr.todt | date: "yy"
+              }}
+            </button>
+          </h6>
+        </div>
         <div class="col-md-3">
           <table class="table table-sm my-3">
             <thead class="thead-dark">

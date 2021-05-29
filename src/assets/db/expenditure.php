@@ -439,4 +439,46 @@ if($action == "deleteReceipt"){
 	}
 	echo json_encode($data1);
 }
+
+if($action == "fetchExpenditureAccHeadDetails"){
+	$headers = apache_request_headers();
+    authenticate($headers);
+    $fromdt = $_GET["fromdt"];
+    $todt = $_GET["todt"];
+    $accheadid = $_GET["accheadid"];
+    $sql = "SELECT exp.*, acchead.* FROM `expenditure_register` exp, `accounthead_master` acchead WHERE exp.`accheadid`=acchead.`accheadid` AND exp.`accheadid`='$accheadid' AND exp.`expdate` BETWEEN '$fromdt' AND '$todt' ORDER BY exp.`expdate`";
+    $result = $conn->query($sql);
+    $tmp = array();
+    if($result){
+        $i=0;
+        while($row = $result->fetch_array())
+        {
+            $tmp[$i]["expid"]= $row["expid"];
+            $tmp[$i]["expdate"]= $row["expdate"];
+            $tmp[$i]["exptype"]= $row["exptype"];
+            $tmp[$i]["accheadid"]= $row["accheadid"];
+            $tmp[$i]["personalaccid"]= $row["personalaccid"];
+            $tmp[$i]["particulars"]= $row["particulars"];
+            $tmp[$i]["amount"]= $row["amount"];
+            $tmp[$i]["accheadnm"]= $row["accheadnm"];
+            $i++;
+        }
+
+        $data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: expenditure.php - Method: $action".PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: expenditure.php - Method: $action".PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+    }
+	echo json_encode($data);
+}
 ?>

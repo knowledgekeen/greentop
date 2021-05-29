@@ -34,6 +34,26 @@
             </div>
           </div>
         </div>
+
+        <div class="row px-4 mt-3">
+          <div class="col-md-7 pt-2">Selected Financial Year</div>
+          <div class="col-md-5">
+            <select
+              class="form-control"
+              (change)="changeFinancialyrs()"
+              [(ngModel)]="selectedFinanYr"
+            >
+              <option
+                *ngFor="let yrs of totalFinanyrs"
+                [value]="yrs.finanyr.fromdt"
+              >
+                {{ yrs.finanyr.fromdt | date: "yy" }} -
+                {{ yrs.finanyr.todt | date: "yy" }}
+              </option>
+            </select>
+          </div>
+        </div>
+
         <div class="card-body customercard">
           <ul class="list-group list-group-flush">
             <li
