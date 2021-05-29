@@ -16,6 +16,7 @@ export class CashaccledgerComponent implements OnInit {
   cashacctrans: any = null;
   custmakepays: any = null;
   supprecpays: any = null;
+  totalFinanyrs: any = null;
   totaldeposit: number = 0;
   totalpayments: number = 0;
 
@@ -23,6 +24,11 @@ export class CashaccledgerComponent implements OnInit {
 
   ngOnInit() {
     this.finanyr = this._global.getCurrentFinancialYear();
+    this.getAllFinancialYears();
+    this.initializeData();
+  }
+
+  initializeData() {
     this.getFinanYrAccOpeningBalance()
       .then((cashaccbal) => {
         this.getExpendituresFromTo()
@@ -56,6 +62,34 @@ export class CashaccledgerComponent implements OnInit {
       .catch((err) => {
         alert("Cannot fetch cash account balance, kindly try again.");
       });
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        // console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+        // console.log(this.totalFinanyrs);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs(finanyrs) {
+    // console.log("change finanyrs", finanyrs);
+    this.finanyr = this._global.getSpecificFinancialYear(
+      parseInt(finanyrs.fromdt)
+    );
+    // console.log(this.finanyr);
+    this.initializeData();
   }
 
   // Deposit - Cash Account Opening balance
@@ -287,6 +321,11 @@ export class CashaccledgerComponent implements OnInit {
   }
 
   updateLatestCashBalanceToDB(balance) {
+    const curryrfromdt = this._global.getCurrentFinancialYear().fromdt;
+
+    if (curryrfromdt !== this.finanyr.fromdt) {
+      return;
+    }
     const _this = this;
     const urldata = {
       acctype: "CASH",

@@ -24,6 +24,7 @@ export class PurchasepayhistoryComponent implements OnInit {
   disableupdatebtn: any = false;
   updtsundryflag: any = false;
   updtfailedflag: any = false;
+  totalFinanyrs: any = null;
 
   constructor(
     private _rest: RESTService,
@@ -34,6 +35,7 @@ export class PurchasepayhistoryComponent implements OnInit {
   ngOnInit() {
     //console.log(this.supplier)
     this.currfinanyr = this._global.getCurrentFinancialYear();
+    this.getAllFinancialYears();
     this.getAllPurchasePayments();
   }
 
@@ -388,5 +390,30 @@ export class PurchasepayhistoryComponent implements OnInit {
           });
         });
     }
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs(yrs) {
+    console.log(yrs, this._global.getSpecificFinancialYear(parseInt(yrs)));
+    this.currfinanyr = this._global.getSpecificFinancialYear(parseInt(yrs));
+    console.log(this.currfinanyr);
+    this.getAllPurchasePayments();
   }
 }

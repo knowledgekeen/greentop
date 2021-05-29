@@ -20,11 +20,46 @@ export class BankaccledgerComponent implements OnInit {
   ledgerhist: any = null;
   totaldeposit: any = null;
   totalpayments: any = null;
+  totalFinanyrs: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService) {}
 
   ngOnInit() {
     this.finanyr = this._global.getCurrentFinancialYear();
+    // console.log(this.finanyr);
+    this.getAllFinancialYears();
+    this.initializeData();
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        // console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+        // console.log(this.totalFinanyrs);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs(finanyrs) {
+    // console.log("change finanyrs", finanyrs);
+    this.finanyr = this._global.getSpecificFinancialYear(
+      parseInt(finanyrs.fromdt)
+    );
+    // console.log(this.finanyr);
+    this.initializeData();
+  }
+
+  initializeData() {
     this.getFinanYrAccOpeningBalance()
       .then((openbal) => {
         this.getFromToPurchasesForAccounts()
@@ -94,8 +129,10 @@ export class BankaccledgerComponent implements OnInit {
 
   // Payments - Get Purchase For Accounts
   getFromToPurchasesForAccounts() {
+    // console.log("getFromToPurchasesForAccounts", this.finanyr);
     const _this = this;
     const promise = new Promise((resolve, reject) => {
+      // console.log("getFromToPurchasesForAccounts promise", _this.finanyr);
       const urldata =
         "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
       _this._rest
@@ -389,20 +426,25 @@ export class BankaccledgerComponent implements OnInit {
       this.totaldeposit += parseFloat(this.ledgerhist[j].deposit);
       this.totalpayments += parseFloat(this.ledgerhist[j].payments);
     }
-    console.log(this.ledgerhist);
+    // console.log(this.ledgerhist);
     this.updateLatestBankBalanceToDB(
       this.ledgerhist[this.ledgerhist.length - 1].balance
     );
   }
 
   updateLatestBankBalanceToDB(balance) {
+    const curryrfromdt = this._global.getCurrentFinancialYear().fromdt;
+
+    if (curryrfromdt !== this.finanyr.fromdt) {
+      return;
+    }
     const _this = this;
     const urldata = {
       acctype: "BANK",
       balanceamt: parseFloat(balance),
       curryr: _this.finanyr.fromdt,
     };
-    console.log(urldata);
+    // console.log(urldata);
     _this._rest
       .postData("accounts.php", "updateLatestBalanceToDB", urldata)
       .subscribe(

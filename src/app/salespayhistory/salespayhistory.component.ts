@@ -24,6 +24,7 @@ export class SalespayhistoryComponent implements OnInit {
   updtsundryflag: any = false;
   updtfailedflag: any = false;
   totalamt: { payin: number; payout: number; balance: number };
+  totalFinanyrs: any = null;
 
   constructor(
     private _global: GlobalService,
@@ -33,6 +34,7 @@ export class SalespayhistoryComponent implements OnInit {
 
   ngOnInit() {
     this.currfinanyr = this._global.getCurrentFinancialYear();
+    this.getAllFinancialYears();
     this.getAllSalesPayments();
   }
 
@@ -195,6 +197,10 @@ export class SalespayhistoryComponent implements OnInit {
           },
           (err) => {
             this.updtfailedflag = true;
+
+            this._interval.settimer(1000).then((timer) => {
+              this.updtsundryflag = null;
+            });
           }
         );
     }
@@ -202,13 +208,13 @@ export class SalespayhistoryComponent implements OnInit {
   }
 
   updateClientsBalanceAmount(sundrydata) {
-    console.log(sundrydata);
+    // console.log(sundrydata);
     const urldata = `clientid=${sundrydata.clientid}&balanceamt=${sundrydata.balance}`;
     this._rest
       .getData("client.php", "updateClientsBalanceAmount", urldata)
       .subscribe(
         (Response) => {
-          console.log("Customer balance amount updated", Response);
+          // console.log("Customer balance amount updated", Response);
         },
         (err) => {
           console.log("Error", err);
@@ -225,7 +231,7 @@ export class SalespayhistoryComponent implements OnInit {
   }
 
   fetchAllPaymentData() {
-    let dt = new Date();
+    let dt = new Date(this.currfinanyr.fromdt);
     dt.setFullYear(new Date().getFullYear() - 1);
     let prevfinanyr = this._global.getSpecificFinancialYear(dt.getTime());
     let geturl =
@@ -239,6 +245,7 @@ export class SalespayhistoryComponent implements OnInit {
       prevfinanyr.fromdt +
       "&prevtodt=" +
       prevfinanyr.todt;
+    //console.log(geturl);
     let ordermast = null;
     let orderpay = null;
     let custpay = null;
@@ -383,5 +390,31 @@ export class SalespayhistoryComponent implements OnInit {
           });
         });
     }
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        // console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+        // console.log(this.totalFinanyrs);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs(yrs) {
+    // console.log(yrs, this._global.getSpecificFinancialYear(parseInt(yrs)));
+    this.currfinanyr = this._global.getSpecificFinancialYear(parseInt(yrs));
+    //console.log(this.currfinanyr);
+    this.getAllSalesPayments();
   }
 }

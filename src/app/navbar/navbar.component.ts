@@ -77,12 +77,10 @@ export class NavbarComponent implements OnInit {
       passwd: this.password,
       fromdt: this._global.getCurrentFinancialYear().fromdt,
     };
-    console.log(tmpObj);
     this._rest.postData("users.php", "checkLogin", tmpObj, null).subscribe(
       (Response) => {
         this.spinnerflag = false;
         if (Response) {
-          console.log(Response);
           tmpObj = null;
           Response["data"][0].sessiontime = new Date(
             Response["data"][0].sessiontime

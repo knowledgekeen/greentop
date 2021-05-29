@@ -37,6 +37,20 @@
         {{ currfinanyr.todt | date: "dd-MMM-yyyy" }}
       </span>
     </h6>
+    <h6 *ngIf="totalFinanyrs" class="noprint">
+      <span class="mr-3"
+        >All Financial Years <small>(click on year to view its details)</small>:
+      </span>
+      <button
+        class="btn btn-link mr-3 px-0"
+        *ngFor="let yrs of totalFinanyrs"
+        (click)="changeFinancialyrs(yrs.finanyr.fromdt)"
+      >
+        {{ yrs.finanyr.fromdt | date: "yy" }}-{{
+          yrs.finanyr.todt | date: "yy"
+        }}
+      </button>
+    </h6>
 
     <div class="row">
       <div class="col-md-12 col-sm-12">
@@ -105,12 +119,20 @@
               <tr>
                 <td colspan="3" class="text-right font-weight-bold">Total</td>
                 <td
-                  class="text-right font-weight-bold border-top border-secondary"
+                  class="
+                    text-right
+                    font-weight-bold
+                    border-top border-secondary
+                  "
                 >
                   {{ totalamt.debit | number: "1.2-2" }}
                 </td>
                 <td
-                  class="text-right font-weight-bold border-top border-secondary"
+                  class="
+                    text-right
+                    font-weight-bold
+                    border-top border-secondary
+                  "
                 >
                   {{ totalamt.credit | number: "1.2-2" }}
                 </td>

@@ -359,4 +359,35 @@ if($action == "getAllClientCustMadePayments"){
 	}
 	echo json_encode($data);
 }
+
+if($action == "getAllFinancialYears"){
+	$headers = apache_request_headers();
+	authenticate($headers);
+	$sql = "SELECT DISTINCT(`finanyr`) FROM `current_financialyr`";
+	$result = $conn->query($sql);
+	$tmp = array();
+	if($result){
+        $i=0;
+		while($row = $result->fetch_array())
+		{
+			$tmp[$i]['finanyr'] = $row['finanyr'];
+			$i++;
+		}
+		$data["status"] = 200;
+		$data["data"] = $tmp;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL;
+		write_log($log, "success", NULL);
+		header(' ', true, 200);
+	}
+	else{
+		$data["status"] = 204;
+		$log  = "File: sales_payments.php - Method: ".$action.PHP_EOL.
+		"Error message: ".$conn->error.PHP_EOL.
+		"Data: ".json_encode($data).PHP_EOL;
+		write_log($log, "error", $conn->error);
+		header(' ', true, 204);
+	}
+	echo json_encode($data);
+}
+
 ?>
