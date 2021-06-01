@@ -29,7 +29,6 @@ export class MonthwisepurchasesComponent implements OnInit {
   totalretqty: number = 0;
   grandtotalamt: number = 0;
   grandtotalqty: number = 0;
-  showfilter: boolean = false;
   purchreturns: any = null;
 
   constructor(
@@ -137,6 +136,5 @@ export class MonthwisepurchasesComponent implements OnInit {
     this.customto = totm;
     this.finanyr = this._global.getSpecificFinancialYear(fromtm);
     this.getFromToPurchases(fromtm, totm);
-    this.showfilter = false;
   }
 }

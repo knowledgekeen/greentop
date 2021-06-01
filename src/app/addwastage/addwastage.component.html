@@ -8,15 +8,27 @@
       </div>
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <h6 class="text-danger">NOTE: Add Wastage cautiously, as once added it cannot be modified.</h6>
+          <h6 class="text-danger">
+            NOTE: Add Wastage cautiously, as once added it cannot be modified.
+          </h6>
         </div>
         <div class="col-md-4 col-sm-12">
           <label class="m-0">Raw Material</label>
-          <input type="text" class="form-control" placeholder="Raw Material" [(ngModel)]="rawmat"
-            (change)="getRawMatStock()" list="allrawmat" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Raw Material"
+            [(ngModel)]="rawmat"
+            (change)="getRawMatStock()"
+            list="allrawmat"
+          />
           <datalist id="allrawmat">
-            <option value="{{ rawmat.rawmatid }}.{{ rawmat.name }}" *ngFor="let rawmat of allrawmats">
-              {{ rawmat.rawmatid }}.{{ rawmat.name }}</option>
+            <option
+              value="{{ rawmat.rawmatid }}.{{ rawmat.name }}"
+              *ngFor="let rawmat of allrawmats"
+            >
+              {{ rawmat.rawmatid }}.{{ rawmat.name }}
+            </option>
           </datalist>
           <p class="text-primary font-weight-bold" *ngIf="rawmatavailstk">
             Available Stock:
@@ -27,15 +39,29 @@
         </div>
         <div class="col-md-4 col-sm-12">
           <label class="m-0">Quantity</label>
-          <input type="text" class="form-control" placeholder="Quantity" [(ngModel)]="quantity" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Quantity"
+            [(ngModel)]="quantity"
+          />
         </div>
         <div class="col-md-4 col-sm-12">
           <label class="m-0">Wastage Date</label>
-          <input type="text" class="form-control" placeholder="Wastage Date" [(ngModel)]="wastagedt"
-            (blur)="autoFillDt()" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Wastage Date"
+            [(ngModel)]="wastagedt"
+            (blur)="autoFillDt()"
+          />
         </div>
         <div class="col-md-12 col-sm-12 my-3">
-          <button class="btn btn-primary" [disabled]="!rawmat || !wastagedt || !quantity" (click)="addWastage()">
+          <button
+            class="btn btn-primary"
+            [disabled]="!rawmat || !wastagedt || !quantity"
+            (click)="addWastage()"
+          >
             Add Wastage
           </button>
         </div>
@@ -43,7 +69,28 @@
 
       <div class="row my-3">
         <div class="col-md-12 col-sm-12">
-          <h6 class="text-primary">All Wastages of Current financial year</h6>
+          <h6 class="text-primary text-center">
+            All Wastages from
+            <strong class="text-info"
+              >{{ finanyr.fromdt | date: "dd-MMM-yyyy" }} -
+              {{ finanyr.todt | date: "dd-MMM-yyyy" }}</strong
+            >
+          </h6>
+
+          <h6 *ngIf="totalFinanyrs" class="noprint mb-0">
+            <span class="mr-2">
+              All Financial Years
+              <small>(click on year to view its details)</small>:
+            </span>
+            <button
+              class="btn btn-link mr-3 px-0"
+              *ngFor="let yrs of totalFinanyrs"
+              (click)="changeFinancialyrs(yrs.finanyr)"
+            >
+              {{ yrs.finanyr.fromdt | date: "yy" }} -
+              {{ yrs.finanyr.todt | date: "yy" }}
+            </button>
+          </h6>
         </div>
         <div class="col-md-12 col-sm-12">
           <div class="table-responsive">
@@ -67,6 +114,12 @@
                     <a href="javascript:void(0);" (click)="deleteWastage(waste)" class="text-danger">
                       <i class="fa fa-trash"></i> Delete</a>
                   </td> -->
+                </tr>
+                <tr *ngIf="!allwastages">
+                  <td colspan="4" class="text-danger">
+                    <i class="fa fa-exclamation-triangle"></i> No Wastage found
+                    !!!
+                  </td>
                 </tr>
               </tbody>
             </table>

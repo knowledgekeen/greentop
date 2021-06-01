@@ -10,7 +10,7 @@
         <printdoc printcomponentid="MonthwisepurchasesComponentID"></printdoc>
       </h5>
       <hr class="my-3" />
-      <h6>
+      <h6 class="noprint">
         Report for:
         <span
           class="font-weight-bold border-bottom border-secondary"
@@ -18,19 +18,14 @@
           >{{ monthlabel }}</span
         >
         <span
-          class="font-weight-bold border-bottom border-secondary"
+          class="font-weight-bold border-bottom border-secondary noprint"
           *ngIf="customfrom && customto"
           >{{ customfrom | date: "dd-MMM, yyyy" }} -
           {{ customto | date: "dd-MMM, yyyy" }}</span
         >
-        <i
-          class="fa fa-filter text-danger mx-2 cursor-pointer"
-          title="Filter From and To Dates"
-          (click)="showfilter = !showfilter"
-        ></i>
       </h6>
-      <h6>
-        <div class="row" [hidden]="!showfilter">
+      <h6 class="noprint">
+        <div class="row">
           <div class="col-md-5"></div>
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">

@@ -18,13 +18,48 @@ export class BillsandcollectionComponent implements OnInit {
   allbillsncollection: any = null;
   custmakepays: any = null;
   finanyr: any = null;
+  totalFinanyrs: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService) {}
 
   ngOnInit() {
-    let finanyr = this._global.getCurrentFinancialYear();
-    this.finanyr = finanyr;
-    const geturl = "fromdt=" + finanyr.fromdt + "&todt=" + finanyr.todt;
+    this.finanyr = this._global.getCurrentFinancialYear();
+    // this.finanyr = finanyr;
+    this.getAllFinancialYears();
+    this.initializeData();
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        // console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+        // console.log(this.totalFinanyrs);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs(finanyrs) {
+    // console.log("change finanyrs", finanyrs);
+    this.finanyr = this._global.getSpecificFinancialYear(
+      parseInt(finanyrs.fromdt)
+    );
+    // console.log(this.finanyr);
+    this.initializeData();
+  }
+
+  initializeData() {
+    const geturl =
+      "fromdt=" + this.finanyr.fromdt + "&todt=" + this.finanyr.todt;
     this.getTotalCustomerOpenBal().then((openbal) => {
       this.getInvoicesFromToDt(geturl).then((resp) => {
         this.getAllOrderPaymentsFromToDt(geturl).then((payments) => {

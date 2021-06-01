@@ -7,7 +7,7 @@ import { IntervalService } from "../interval.service";
 @Component({
   selector: "app-addwastage",
   templateUrl: "./addwastage.component.html",
-  styleUrls: ["./addwastage.component.css"]
+  styleUrls: ["./addwastage.component.css"],
 })
 export class AddwastageComponent implements OnInit {
   rawmat: any = null;
@@ -18,15 +18,47 @@ export class AddwastageComponent implements OnInit {
   allwastages: any = null;
   totalwaste: any = null;
   rawmatavailstk: any = null;
+  finanyr: any = null;
+  totalFinanyrs: any = null;
 
   constructor(
     private _global: GlobalService,
     private _rest: RESTService,
     private _interval: IntervalService
-  ) { }
+  ) {}
 
   ngOnInit() {
+    this.finanyr = this._global.getCurrentFinancialYear();
+    this.getAllFinancialYears();
+    this.getWastageFromTo();
     this.getRawMaterials();
+  }
+
+  getAllFinancialYears() {
+    this._rest.getData("sales_payments.php", "getAllFinancialYears").subscribe(
+      (Response: any) => {
+        // console.log(Response.data);
+        this.totalFinanyrs = Response ? Response.data : null;
+        for (let index in this.totalFinanyrs) {
+          this.totalFinanyrs[index].finanyr =
+            this._global.getSpecificFinancialYear(
+              parseInt(this.totalFinanyrs[index].finanyr)
+            );
+        }
+        // console.log(this.totalFinanyrs);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  changeFinancialyrs(finanyrs) {
+    // console.log("change finanyrs", finanyrs);
+    this.finanyr = this._global.getSpecificFinancialYear(
+      parseInt(finanyrs.fromdt)
+    );
+    // console.log(this.finanyr);
     this.getWastageFromTo();
   }
 
@@ -34,7 +66,7 @@ export class AddwastageComponent implements OnInit {
     this.allrawmats = null;
     this._rest
       .getData("rawmaterial.php", "getRawMaterials", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.allrawmats = Response["data"];
         }
@@ -53,14 +85,14 @@ export class AddwastageComponent implements OnInit {
     let tmpobj = {
       rawmatid: this.rawmat.split(".")[0],
       quantity: this.quantity,
-      wastagedt: new Date(myDate).getTime()
+      wastagedt: new Date(myDate).getTime(),
     };
     this._rest
       .postData("wastage.php", "addWastage", tmpobj)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           this.successmsg = "Wastage added successfully";
-          this._interval.settimer().then(Resp => {
+          this._interval.settimer().then((Resp) => {
             this.successmsg = null;
             this.rawmat = null;
             this.quantity = null;
@@ -74,16 +106,16 @@ export class AddwastageComponent implements OnInit {
   }
 
   getWastageFromTo() {
-    let finanyr = this._global.getCurrentFinancialYear();
-    let urldata = "fromdt=" + finanyr.fromdt + "&todt=" + finanyr.todt;
+    let urldata =
+      "fromdt=" + this.finanyr.fromdt + "&todt=" + this.finanyr.todt;
     let totalstk = {
       rawmat: 0,
-      bags: 0
+      bags: 0,
     };
     this._rest
       .getData("wastage.php", "getWastageFromTo", urldata)
-      .subscribe(Response => {
-        if (Response) {
+      .subscribe((Response) => {
+        if (Response && Response["data"]) {
           //console.log(Response);
           this.allwastages = Response["data"];
           for (const i in this.allwastages) {
@@ -95,6 +127,9 @@ export class AddwastageComponent implements OnInit {
           }
           //console.log(totalstk);
           this.totalwaste = totalstk;
+        } else {
+          this.totalwaste = null;
+          this.allwastages = null;
         }
       });
   }
@@ -107,7 +142,7 @@ export class AddwastageComponent implements OnInit {
     let geturl = "rawmatid=" + this.rawmat.split(".")[0];
     this._rest
       .getData("stock.php", "getRawMatStock", geturl)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         console.log(Response);
         if (Response) {
           this.rawmatavailstk = Response["data"];
@@ -120,15 +155,16 @@ export class AddwastageComponent implements OnInit {
     console.log(waste);
     this.successmsg = null;
     let geturl = "wastageid=" + waste.wastageid;
-    this._rest.getData("wastage.php", "deleteWastage", geturl)
-      .subscribe(Response => {
+    this._rest
+      .getData("wastage.php", "deleteWastage", geturl)
+      .subscribe((Response) => {
         if (Response) {
           this.successmsg = "Wastage deleted successfully";
           this.getWastageFromTo();
-          this._interval.settimer().then(Resp => {
+          this._interval.settimer().then((Resp) => {
             this.successmsg = null;
-          })
+          });
         }
-      })
+      });
   }
 }

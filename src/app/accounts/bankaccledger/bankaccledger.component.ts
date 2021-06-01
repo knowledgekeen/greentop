@@ -18,8 +18,8 @@ export class BankaccledgerComponent implements OnInit {
   custmakepays: any = null;
   supprecpays: any = null;
   ledgerhist: any = null;
-  totaldeposit: any = null;
-  totalpayments: any = null;
+  totaldeposit: any = 0;
+  totalpayments: any = 0;
   totalFinanyrs: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService) {}
@@ -278,6 +278,8 @@ export class BankaccledgerComponent implements OnInit {
   // Deposit - Get Receive Payments From Supplier
   getAllReceiveSupplierPayments() {
     const _this = this;
+    this.totaldeposit = 0;
+    this.totalpayments = 0;
     const promise = new Promise((resolve, reject) => {
       const urldata =
         "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;

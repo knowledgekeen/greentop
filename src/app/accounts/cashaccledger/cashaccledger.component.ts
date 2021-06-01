@@ -218,6 +218,9 @@ export class CashaccledgerComponent implements OnInit {
 
   filterData() {
     let tmparr = [];
+
+    this.totaldeposit = 0;
+    this.totalpayments = 0;
     //Deposit - Opening Balance
     let tmpobj = {
       id: tmparr.length,

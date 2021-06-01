@@ -40,7 +40,6 @@ export class ViewtaxinvoicesComponent implements OnInit {
   todt: any = null;
   customfrom: any = null;
   customto: any = null;
-  showfilter: boolean = false;
 
   constructor(
     private _interval: IntervalService,
@@ -228,6 +227,5 @@ export class ViewtaxinvoicesComponent implements OnInit {
     let totm = new Date(mytodate).getTime();
     this.customto = totm;
     this.getInvoicesFromToDt(fromtm, totm);
-    this.showfilter = false;
   }
 }

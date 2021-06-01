@@ -7,35 +7,48 @@
         <i class="fa fa-check"></i> Invoice updated successful.
       </div>
       <h6>
-        <span class="border-bottom border-primary">Invoices For -
-          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{monthlabel}}</span>
-          <span class="font-weight-bold" *ngIf="customfrom && customto">{{customfrom | date: 'dd-MMM, yyyy'}} -
-            {{customto | date: 'dd-MMM, yyyy'}}</span>
+        <span class="border-bottom border-primary"
+          >Invoices For -
+          <span class="font-weight-bold" *ngIf="!customfrom || !customto">{{
+            monthlabel
+          }}</span>
+          <span class="font-weight-bold" *ngIf="customfrom && customto"
+            >{{ customfrom | date: "dd-MMM, yyyy" }} -
+            {{ customto | date: "dd-MMM, yyyy" }}</span
+          >
         </span>
-        <i class="fa fa-filter cursor-pointer mx-2 text-danger" title="Click to filter between dates"
-          (click)="showfilter = !showfilter"></i>
       </h6>
-      <h6 [hidden]="!showfilter">
+      <h6 class="noprint">
         <div class="row">
           <div class="col-md-5"></div>
           <div class="col-md-1">Period:</div>
           <div class="col-md-2">
             <label class="m-0">From</label>
-            <input type="text" class="form-control form-control-sm" placeholder="From Date" [(ngModel)]="fromdt"
-              (blur)="autofillfromdt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="From Date"
+              [(ngModel)]="fromdt"
+              (blur)="autofillfromdt()"
+            />
           </div>
           <div class="col-md-2">
             <label class="m-0">To</label>
-            <input type="text" class="form-control form-control-sm" placeholder="To Date" [(ngModel)]="todt"
-              (blur)="autofilltodt()" />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="To Date"
+              [(ngModel)]="todt"
+              (blur)="autofilltodt()"
+            />
           </div>
           <div class="col-md-2">
-            <button class="btn btn-info mt-3" (click)="filterData()"><i class="fa fa-filter"></i>
-              Filter</button>
+            <button class="btn btn-info mt-3" (click)="filterData()">
+              <i class="fa fa-filter"></i> Filter
+            </button>
           </div>
         </div>
       </h6>
-
 
       <!-- Table with data -->
       <div class="table-responsive">
@@ -59,28 +72,46 @@
             <tr *ngFor="let bill of allinvoices; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <a href="javascript:void(0);" (click)="getOrderDetails(bill)" data-toggle="modal"
-                  data-target="#orderDetailsModal">
+                <a
+                  href="javascript:void(0);"
+                  (click)="getOrderDetails(bill)"
+                  data-toggle="modal"
+                  data-target="#orderDetailsModal"
+                >
                   {{ bill.dispatchdate | date: "dd-MM-yyyy" }}
                 </a>
               </td>
               <td>GTO-{{ bill.orderno }}</td>
               <td>
-                <a [routerLink]="[ '/reports/printdispatchchallan', bill.dcno, 0 ]" *ngIf="bill.dcno!='0'">
+                <a
+                  [routerLink]="['/reports/printdispatchchallan', bill.dcno, 0]"
+                  *ngIf="bill.dcno != '0'"
+                >
                   {{ bill.dcno }}
                 </a>
-                <a [routerLink]="[ '/reports/printdispatchchallan', bill.dcno, bill.orderno ]" *ngIf="bill.dcno=='0'">
+                <a
+                  [routerLink]="[
+                    '/reports/printdispatchchallan',
+                    bill.dcno,
+                    bill.orderno
+                  ]"
+                  *ngIf="bill.dcno == '0'"
+                >
                   {{ bill.dcno }}
                 </a>
               </td>
               <td>
-                <a href="javascript:void(0);" (click)="getBillDetails(bill)" data-toggle="modal"
-                  data-target="#billDetailsModal">
+                <a
+                  href="javascript:void(0);"
+                  (click)="getBillDetails(bill)"
+                  data-toggle="modal"
+                  data-target="#billDetailsModal"
+                >
                   {{ bill.billdt | date: "dd-MM-yyyy" }}
                 </a>
               </td>
               <td>
-                <a [routerLink]="[ '/reports/printsaleinvoice', bill.billno ]">
+                <a [routerLink]="['/reports/printsaleinvoice', bill.billno]">
                   {{ bill.billno }}
                 </a>
               </td>
@@ -91,8 +122,12 @@
                 {{ bill.totalamount | currency: "INR" }}
               </td>
               <td>
-                <a href="javascript:void(0);" (click)="getBillDetails(bill)" data-toggle="modal"
-                  data-target="#billDetailsModal">
+                <a
+                  href="javascript:void(0);"
+                  (click)="getBillDetails(bill)"
+                  data-toggle="modal"
+                  data-target="#billDetailsModal"
+                >
                   Edit
                 </a>
               </td>
@@ -115,8 +150,10 @@
             </tr>
             <tr *ngIf="!allinvoices">
               <th colspan="10">
-                <span class="text-danger"><i class="fa fa-exclamation"></i> No records found for this
-                  month</span>
+                <span class="text-danger"
+                  ><i class="fa fa-exclamation"></i> No records found for this
+                  month</span
+                >
               </th>
             </tr>
           </tbody>
@@ -127,18 +164,33 @@
 </div>
 
 <!-- Order Details Modal -->
-<div class="modal" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div
+  class="modal"
+  id="orderDetailsModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content" *ngIf="orderdetails">
       <div class="modal-header">
         <h5 class="modal-title w-100" id="exampleModalLabel">
-          <span class="text-primary font-weight-bold"> GTO-{{ orderdetails.orderno }} |
-            {{orderdetails.orderdt | date: 'dd-MM-yyyy'}}</span>
-          <span class="text-danger float-right font-weight-bold mx-3">Invoice No.: {{ selectedinvoice.billno }} |
-            Invoice Date: {{selectedinvoice.billdt | date: 'dd-MM-yyyy'}}</span>
+          <span class="text-primary font-weight-bold">
+            GTO-{{ orderdetails.orderno }} |
+            {{ orderdetails.orderdt | date: "dd-MM-yyyy" }}</span
+          >
+          <span class="text-danger float-right font-weight-bold mx-3"
+            >Invoice No.: {{ selectedinvoice.billno }} | Invoice Date:
+            {{ selectedinvoice.billdt | date: "dd-MM-yyyy" }}</span
+          >
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -146,45 +198,93 @@
         <div class="row">
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Customer Name</label>
-            <input type="text" class="form-control" [value]="orderdetails.name" readonly />
+            <input
+              type="text"
+              class="form-control"
+              [value]="orderdetails.name"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Address</label>
-            <input type="text" class="form-control" value="{{ orderdetails.address }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ orderdetails.address }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Contact Number</label>
-            <input type="text" class="form-control" value="{{ orderdetails.contactno }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ orderdetails.contactno }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Product Name</label>
-            <input type="text" class="form-control" value="{{ orderdetails.prodname }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ orderdetails.prodname }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Quantity</label>
-            <input type="text" class="form-control" value="{{ orderdetails.quantity }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ orderdetails.quantity }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Order Sent to</label>
-            <input type="text" class="form-control" value="{{ orderdetails.remarks }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ orderdetails.remarks }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">DC. No.</label>
-            <input type="text" class="form-control" value="{{ selectedinvoice.dcno }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedinvoice.dcno }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Dispatch Date</label>
-            <input type="text" class="form-control" value="{{ selectedinvoice.dispatchdate | date: 'dd-MM-yyyy' }}"
-              readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedinvoice.dispatchdate | date: 'dd-MM-yyyy' }}"
+              readonly
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-2">
             <label class="m-0">Vehicle No.</label>
-            <input type="text" class="form-control" value="{{ selectedinvoice.vehicalno }}" readonly />
+            <input
+              type="text"
+              class="form-control"
+              value="{{ selectedinvoice.vehicalno }}"
+              readonly
+            />
           </div>
           <div class="col-md-12 col-sm-12 my-1">
             <h6 class="text-primary">
-              <span *ngIf="orderdetails.remarks == 'SELF'">Self Order Address</span>
-              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'">All Consignees</span>
+              <span *ngIf="orderdetails.remarks == 'SELF'"
+                >Self Order Address</span
+              >
+              <span *ngIf="orderdetails.remarks == 'CONSIGNEE'"
+                >All Consignees</span
+              >
             </h6>
             <table class="table table-sm">
               <thead class="thead-dark">
@@ -222,19 +322,32 @@
 </div>
 
 <!--Bill Details Modal -->
-<div class="modal" id="billDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" *ngIf="billdetails">
+<div
+  class="modal"
+  id="billDetailsModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  *ngIf="billdetails"
+>
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           Invoice No.:
-          <span class="text-primary">{{ billdetails.billno }}</span> | Invoice Date:
+          <span class="text-primary">{{ billdetails.billno }}</span> | Invoice
+          Date:
           <span class="text-primary">{{
             billdetails.billdt | date: "dd-MM-yyyy"
           }}</span>
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -245,62 +358,124 @@
         <div class="row">
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Bill Number</label>
-            <input type="text" class="form-control" [(ngModel)]="billno" readonly />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="billno"
+              readonly
+            />
           </div>
           <div class="col-md-6 col-sm-12 mb-3">
             <label class="m-0">Bill Date</label>
-            <input type="text" class="form-control" [(ngModel)]="billdt" (blur)="autoFillDt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="billdt"
+              (blur)="autoFillDt()"
+            />
           </div>
           <div class="col-md-12 col-sm-12 mb-3">
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customControlAutosizing" [(ngModel)]="autocalc" />
-              <label class="custom-control-label" for="customControlAutosizing">Auto-Calculate</label>
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customControlAutosizing"
+                [(ngModel)]="autocalc"
+              />
+              <label class="custom-control-label" for="customControlAutosizing"
+                >Auto-Calculate</label
+              >
             </div>
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Rate</label>
-            <input type="text" class="form-control" [(ngModel)]="rate" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="rate"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Amount</label>
-            <input type="text" class="form-control" [(ngModel)]="amount" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="amount"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Discount</label>
-            <input type="text" class="form-control" [(ngModel)]="discount" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="discount"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-3 col-sm-12 mb-3">
             <label class="m-0">Amount Before GST</label>
-            <input type="text" class="form-control" [(ngModel)]="amtbeforegst" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="amtbeforegst"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">cgst (%)</label>
             <span class="float-right text-info" *ngIf="cgstinr">
               {{ cgstinr | currency: "INR" }}
             </span>
-            <input type="text" class="form-control" [(ngModel)]="cgst" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cgst"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">sgst (%)</label>
             <span class="float-right text-info" *ngIf="sgstinr">
               {{ sgstinr | currency: "INR" }}
             </span>
-            <input type="text" class="form-control" [(ngModel)]="sgst" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="sgst"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">igst (%)</label>
             <span class="float-right text-info" *ngIf="igstinr">
               {{ igstinr | currency: "INR" }}
             </span>
-            <input type="text" class="form-control" [(ngModel)]="igst" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="igst"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-2 col-sm-12 mb-3">
             <label class="m-0">Round Off(+/-)</label>
-            <input type="text" class="form-control" [(ngModel)]="roundoff" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="roundoff"
+              (blur)="calculateAmt()"
+            />
           </div>
           <div class="col-md-4 col-sm-12 mb-3">
             <label class="m-0">Total Amount</label>
-            <input type="text" class="form-control" [(ngModel)]="totalamount" (blur)="calculateAmt()" />
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="totalamount"
+              (blur)="calculateAmt()"
+            />
           </div>
         </div>
       </div>
@@ -308,7 +483,10 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-warning" [disabled]="
+        <button
+          type="button"
+          class="btn btn-warning"
+          [disabled]="
             !billdt ||
             !rate ||
             !amount ||
@@ -320,7 +498,9 @@
             !roundoff ||
             !totalamount ||
             disableupdatebtn
-          " (click)="updateBillDetails()">
+          "
+          (click)="updateBillDetails()"
+        >
           Update Bill
         </button>
       </div>
