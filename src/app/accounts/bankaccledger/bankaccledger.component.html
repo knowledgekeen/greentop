@@ -69,6 +69,32 @@
           </tbody>
         </table>
       </div>
+
+      <h5 class="text-center mt-3">Monthwise Totals</h5>
+      <div class="table-responsive">
+        <table class="table table-sm mb-3">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Month Name</th>
+              <th scope="col" class="text-right">Total Deposits</th>
+              <th scope="col" class="text-right">Total Payments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of annualMonthWiseData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ data.monthName }}</td>
+              <td class="text-right">
+                {{ data.depositAmt | currency: "INR" }}
+              </td>
+              <td class="text-right">
+                {{ data.paymentAmt | currency: "INR" }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -21,6 +21,7 @@ export class BankaccledgerComponent implements OnInit {
   totaldeposit: any = 0;
   totalpayments: any = 0;
   totalFinanyrs: any = null;
+  annualMonthWiseData: any = null;
 
   constructor(private _global: GlobalService, private _rest: RESTService) {}
 
@@ -432,6 +433,65 @@ export class BankaccledgerComponent implements OnInit {
     this.updateLatestBankBalanceToDB(
       this.ledgerhist[this.ledgerhist.length - 1].balance
     );
+
+    // CALCULATE MONTHWAISE TOTALS FOR DEPOSITS AND PAYMENTS
+    this.calculateMonthWiseTotals();
+  }
+
+  calculateMonthWiseTotals() {
+    const ledhist = JSON.parse(JSON.stringify(this.ledgerhist)); //Creating a copy so as not to change the original data
+    //console.log(ledhist);
+    let annualdata = new Array();
+    let selmonth = new Date(parseInt(ledhist[0].dated));
+    let monthMM = new Date(parseInt(ledhist[0].dated));
+    const monthnm = `${monthMM.toLocaleString("default", {
+      month: "long",
+    })} , ${monthMM.getFullYear()}`;
+    annualdata.push({
+      depositAmt: 0,
+      paymentAmt: 0,
+      monthName: monthnm,
+    });
+
+    // Starting from 1 as leaving the first entry
+    for (let i = 1; i < ledhist.length; i++) {
+      let monthMM = new Date(parseInt(ledhist[i].dated));
+      const monthnm = `${monthMM.toLocaleString("default", {
+        month: "long",
+      })} , ${monthMM.getFullYear()}`;
+      if (selmonth.getMonth() === monthMM.getMonth()) {
+        //console.log(ledhist[i]);
+        annualdata.find((o, index) => {
+          if (o.monthName === monthnm) {
+            //console.log(parseFloat(ledhist[i].deposit));
+            const anndepamt =
+              annualdata[index].depositAmt + parseFloat(ledhist[i].deposit);
+            const annpayamt =
+              annualdata[index].paymentAmt + parseFloat(ledhist[i].payments);
+            annualdata[index] = {
+              depositAmt: anndepamt,
+              paymentAmt: annpayamt,
+              monthName: monthnm,
+            };
+            return true;
+          }
+        });
+      } else {
+        selmonth = new Date(parseInt(ledhist[i].dated));
+        let monthMM = new Date(parseInt(ledhist[i].dated));
+        const monthnm = `${monthMM.toLocaleString("default", {
+          month: "long",
+        })} , ${monthMM.getFullYear()}`;
+        annualdata.push({
+          depositAmt: parseFloat(ledhist[i].deposit),
+          paymentAmt: parseFloat(ledhist[i].payments),
+          monthName: monthnm,
+        });
+      }
+      // console.log(monthMM, monthnm);
+      this.annualMonthWiseData = annualdata;
+      // console.log(annualdata);
+    }
   }
 
   updateLatestBankBalanceToDB(balance) {
