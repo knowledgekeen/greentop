@@ -15,6 +15,7 @@ export class CashaccledgerComponent implements OnInit {
   cashexpenditures: any = null;
   cashacctrans: any = null;
   custmakepays: any = null;
+  cashpays: any = null;
   supprecpays: any = null;
   totalFinanyrs: any = null;
   totaldeposit: number = 0;
@@ -40,7 +41,14 @@ export class CashaccledgerComponent implements OnInit {
                   .then((custmakepays) => {
                     this.getAllReceiveSupplierPayments()
                       .then((supprecpay) => {
-                        this.filterData();
+                        // this.filterData();
+                        this.getAllCashPaymentsToSuppliers()
+                          .then((cashpays) => {
+                            this.filterData();
+                          })
+                          .catch((err) => {
+                            alert("Cannot get CASH Payments made to suppliers");
+                          });
                       })
                       .catch((err) => {
                         alert("Cannot get Supplier Receipt Payments");
@@ -190,6 +198,37 @@ export class CashaccledgerComponent implements OnInit {
     return promise;
   }
 
+  // Payments - Get Cash Payments made to Suppliers
+  getAllCashPaymentsToSuppliers() {
+    const _this = this;
+    const promise = new Promise((resolve, reject) => {
+      const urldata =
+        "fromdt=" + _this.finanyr.fromdt + "&todt=" + _this.finanyr.todt;
+      _this._rest
+        .getData(
+          "purchase_payments.php",
+          "getAllCashPaymentsToSuppliers",
+          urldata
+        )
+        .subscribe(
+          (Response) => {
+            _this.cashpays =
+              Response && Response["data"] ? Response["data"] : null;
+            /* _this.cashpays = _this.cashpays
+              ? _this.cashpays.filter((res) => {
+                  return res.paymode === CONSTANTS.CASH;
+                })
+              : null; */
+            resolve(_this.cashpays);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
   // Receipts - Get Receive Payments From Supplier
   getAllReceiveSupplierPayments() {
     const _this = this;
@@ -276,6 +315,21 @@ export class CashaccledgerComponent implements OnInit {
           particular: `${this.custmakepays[i].particulars} - ${this.custmakepays[i].name}`,
           deposit: 0,
           payments: this.custmakepays[i].amountpaid,
+          balance: 0,
+        };
+        tmparr.push(tmpobj);
+      }
+    }
+
+    //Payments - Purchase CASH payments
+    if (this.cashpays && this.cashpays.length > 0) {
+      for (let i = 0; i < this.cashpays.length; i++) {
+        let tmpobj = {
+          id: tmparr.length,
+          dated: this.cashpays[i].paydate,
+          particular: `${this.cashpays[i].particulars} Purchase Account - <span class="text-primary">${this.cashpays[i].name}<span>`,
+          deposit: 0,
+          payments: this.cashpays[i].amount,
           balance: 0,
         };
         tmparr.push(tmpobj);
