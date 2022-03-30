@@ -17,7 +17,7 @@ if($action == "dispatchOrder"){
     $orderid = $data->orderid;
     $prodid = $data->prodid;
     $quantity = $data->quantity;
-    $vehicalno = $data->vehicalno;
+    $vehicalno = mysqli_real_escape_string($conn,$data->vehicalno);
     $todaydt = $data->todaydt;
     $remarks = $data->remarks;
     $packing = $data->packing;
