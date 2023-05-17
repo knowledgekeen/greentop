@@ -97,7 +97,7 @@ if($action == "getInvoicesFromToDt"){
 	$data = array();
 	$i = 0;
 
-	if(count($rows)>0){
+	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
 			$tmp[$i]['otaxinvoiceid'] = $row['otaxinvoiceid'];

@@ -8,10 +8,16 @@
           <span>{{ dcdata[0].address }}</span
           ><br />
           <strong>State: </strong> <span>{{ dcdata[0].state }}</span> <br />
-          <strong *ngIf="dcdata[0].gstno">State Code: </strong
-          ><span>{{ dcdata[0].gstno.substring(0, 2) }}</span> <br />
-          <strong *ngIf="dcdata[0].gstno">GST No. </strong>
-          <span>{{ dcdata[0].gstno }}</span>
+          <strong *ngIf="dcdata[0].gstno">State Code: </strong>
+          <span *ngIf="dcdata[0].gstno">
+            {{ dcdata[0].gstno.substring(0, 2) }}
+            <br />
+          </span>
+          <strong>GST No. </strong>
+          <span *ngIf="dcdata[0].gstno; else elseGST">
+            {{ dcdata[0].gstno }}
+          </span>
+          <ng-template #elseGST> URP </ng-template>
         </div>
 
         <div class="col-md-5 col-print-5">
@@ -26,11 +32,11 @@
           <strong>Order Date: </strong>
           <span *ngIf="!orderdate">
             <span *ngFor="let orderdata of dcdata">
-              {{ orderdata.orderdt | date: "dd/MM/yyyy" }}
+              {{ orderdata.orderdt | date : "dd/MM/yyyy" }}
             </span>
           </span>
           <span *ngIf="orderdate">
-            {{ dcdata[0].orderdt | date: "dd/MM/yyyy" }}
+            {{ dcdata[0].orderdt | date : "dd/MM/yyyy" }}
           </span>
           <br />
           <strong>Vehicle No.: </strong>
@@ -64,7 +70,7 @@
           <strong>Date: </strong>
           <span class="float-right" *ngIf="dcdata">
             <span *ngIf="dcdata && dcdata[0].nochallan == '0'">{{
-              dcdata[0].dispatchdate | date: "dd/MM/yyyy"
+              dcdata[0].dispatchdate | date : "dd/MM/yyyy"
             }}</span>
             <span *ngIf="dcdata && dcdata[0].nochallan == '1'">-</span>
           </span>
@@ -151,7 +157,7 @@
             </div>
             <div class="col-md-1 col-print-1 tablecol">{{ data.noofbags }}</div>
             <div class="col-md-1 col-print-1 tablecol">
-              {{ data.quantity | number: "1.3-3" }}
+              {{ data.quantity | number : "1.3-3" }}
             </div>
             <div class="col-md-1 col-print-1 tablecol">
               <span *ngIf="data.batchdata && data.batchdata.length == 1">{{
@@ -245,7 +251,7 @@
             <div
               class="col-md-1 col-print-1 tablecol font-weight-bold bordertop"
             >
-              {{ totalqty | number: "1.3-3" }}
+              {{ totalqty | number : "1.3-3" }}
             </div>
             <div class="col-md-1 col-print-1 tablecol bordertop">&nbsp;</div>
             <div

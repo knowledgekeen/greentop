@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RESTService } from 'src/app/rest.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { RESTService } from "src/app/rest.service";
 
 @Component({
-  selector: 'app-printdispatchchallan',
-  templateUrl: './printdispatchchallan.component.html',
-  styleUrls: ['./printdispatchchallan.component.css']
+  selector: "app-printdispatchchallan",
+  templateUrl: "./printdispatchchallan.component.html",
+  styleUrls: ["./printdispatchchallan.component.css"],
 })
 export class PrintdispatchchallanComponent implements OnInit {
   dcno: any = null;
@@ -17,11 +17,12 @@ export class PrintdispatchchallanComponent implements OnInit {
   totalnoofbags: any;
   totalqty: any;
 
-  constructor(private _route: ActivatedRoute, private _rest: RESTService) { }
+  constructor(private _route: ActivatedRoute, private _rest: RESTService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.dcdata = null;
-    this._route.params.subscribe(Response => {
+    this._route.params.subscribe((Response) => {
       this.dcno = Response["dcno"];
       this.orderno = Response["orderno"];
       this.orderno = this.orderno.toUpperCase();
@@ -30,23 +31,26 @@ export class PrintdispatchchallanComponent implements OnInit {
   }
 
   getDeliveryChallanDetails() {
-    if (this.orderno == '0') {
+    if (this.orderno == "0") {
       let geturl = "dcno=" + this.dcno;
-      this._rest.getData("dispatch.php", "getDeliveryChallanDetails", geturl).subscribe(Response => {
-        if (Response["data"]) {
-          this.dcdata = Response["data"];
-          this.setData();
-        }
-      });
-    }
-    else {
+      this._rest
+        .getData("dispatch.php", "getDeliveryChallanDetails", geturl)
+        .subscribe((Response) => {
+          if (Response["data"]) {
+            this.dcdata = Response["data"];
+            this.setData();
+          }
+        });
+    } else {
       let geturl = "dcno=" + this.dcno + "&orderno=" + this.orderno;
-      this._rest.getData("dispatch.php", "getDeliveryChallanDetailsWithOrderno", geturl).subscribe(Response => {
-        if (Response["data"]) {
-          this.dcdata = Response["data"];
-          this.setData();
-        }
-      });
+      this._rest
+        .getData("dispatch.php", "getDeliveryChallanDetailsWithOrderno", geturl)
+        .subscribe((Response) => {
+          if (Response["data"]) {
+            this.dcdata = Response["data"];
+            this.setData();
+          }
+        });
     }
   }
 
@@ -59,10 +63,10 @@ export class PrintdispatchchallanComponent implements OnInit {
     this.totalqty = 0;
     for (let i in this.dcdata) {
       this.ordernos += this.dcdata[i].orderno + ", ";
-      if (this.orderdate && (this.orderdate != this.dcdata[i].orderdt)) {
+      if (this.orderdate && this.orderdate != this.dcdata[i].orderdt) {
         this.orderdate = null;
       }
-      if (this.vehno && (this.vehno != this.dcdata[i].vehicalno)) {
+      if (this.vehno && this.vehno != this.dcdata[i].vehicalno) {
         this.vehno = null;
       }
       this.totalnoofbags += parseFloat(this.dcdata[i].noofbags);

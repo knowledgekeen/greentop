@@ -10,12 +10,12 @@
           ><br />
           <strong>State: </strong>
           <span *ngIf="invoicedata">{{ invoicedata[0].state }}</span> <br />
-          <strong *ngIf="invoicedata && invoicedata[0].gstno"
-            >State Code:
+          <strong *ngIf="invoicedata && invoicedata[0].gstno">
+            State Code:
           </strong>
-          <span *ngIf="invoicedata && invoicedata[0].gstno"
-            >{{ invoicedata[0].gstno.substring(0, 2) }} <br
-          /></span>
+          <span *ngIf="invoicedata && invoicedata[0].gstno">
+            {{ invoicedata[0].gstno.substring(0, 2) }} <br />
+          </span>
           <strong>GST No. </strong>
           <span *ngIf="invoicedata && invoicedata[0].gstno">{{
             invoicedata[0].gstno
@@ -32,7 +32,7 @@
           <br />
           <span>D.C Date: </span>
           <span *ngIf="invoicedata">{{
-            invoicedata[0].dispatchdate | date: "dd/MM/yyyy"
+            invoicedata[0].dispatchdate | date : "dd/MM/yyyy"
           }}</span>
         </div>
 
@@ -46,7 +46,7 @@
           <br />
           <strong>Date: </strong>
           <span class="float-right" *ngIf="invoicedata">{{
-            billdt | date: "dd/MM/yyyy"
+            billdt | date : "dd/MM/yyyy"
           }}</span>
         </div>
       </div>
@@ -107,10 +107,10 @@
                 </td>
                 <td>{{ invoice.prodname }}</td>
                 <td class="text-center">
-                  {{ invoice.quantity | number: "1.3-3" }}
+                  {{ invoice.quantity | number : "1.3-3" }}
                 </td>
                 <td class="text-center">
-                  {{ invoice.rate | number: "1.2-2" }}
+                  {{ invoice.rate | number : "1.2-2" }}
                   <span
                     class="text-small"
                     *ngIf="invoice.remarks == 'Party Transport'"
@@ -118,13 +118,13 @@
                   >
                 </td>
                 <td class="text-right">
-                  {{ invoice.amount | number: "1.2-2" }}
+                  {{ invoice.amount | number : "1.2-2" }}
                 </td>
                 <td class="text-right" *ngIf="finaldiscount > 0">
-                  {{ invoice.discount | number: "1.2-2" }}
+                  {{ invoice.discount | number : "1.2-2" }}
                 </td>
                 <td class="border-right text-right">
-                  {{ invoice.amount - invoice.discount | number: "1.2-2" }}
+                  {{ invoice.amount - invoice.discount | number : "1.2-2" }}
                 </td>
               </tr>
               <tr *ngFor="let item of blankrows">
@@ -138,23 +138,23 @@
                   Total
                 </td>
                 <td class="text-center font-weight-bold border">
-                  {{ totaldcqty | number: "1.3-3" }}
+                  {{ totaldcqty | number : "1.3-3" }}
                 </td>
                 <td class="border">&nbsp;</td>
                 <td class="text-right font-weight-bold border">
-                  {{ totaldcamt | number: "1.2-2" }}
+                  {{ totaldcamt | number : "1.2-2" }}
                 </td>
                 <td
                   class="text-right font-weight-bold border"
                   *ngIf="finaldiscount > 0"
                 >
-                  {{ finaldiscount | number: "1.2-2" }}
+                  {{ finaldiscount | number : "1.2-2" }}
                 </td>
                 <td
                   *ngIf="finalamtb4tax"
                   class="text-right font-weight-bold border"
                 >
-                  {{ finalamtb4tax | number: "1.2-2" }}
+                  {{ finalamtb4tax | number : "1.2-2" }}
                 </td>
               </tr>
             </tbody>
@@ -166,7 +166,7 @@
             <tr class="text-right" *ngIf="finalamtb4tax">
               <td class="py-1" colspan="5">Amount Before Tax</td>
               <td class="py-1" style="width: 13%">
-                {{ finalamtb4tax | number: "1.2-2" }}
+                {{ finalamtb4tax | number : "1.2-2" }}
               </td>
             </tr>
             <tr class="text-right" *ngIf="invoicedata">
@@ -174,30 +174,30 @@
                 CGST @ <span>{{ invoicedata[0].cgst }}</span
                 >%
               </td>
-              <td class="py-1">{{ cgstamt | number: "1.2-2" }}</td>
+              <td class="py-1">{{ cgstamt | number : "1.2-2" }}</td>
             </tr>
             <tr class="text-right" *ngIf="invoicedata">
               <td class="py-1" colspan="5">
                 SGST @ <span>{{ invoicedata[0].sgst }}</span
                 >%
               </td>
-              <td class="py-1">{{ sgstamt | number: "1.2-2" }}</td>
+              <td class="py-1">{{ sgstamt | number : "1.2-2" }}</td>
             </tr>
             <tr class="text-right" *ngIf="invoicedata">
               <td class="py-1" colspan="5">
                 IGST @ <span>{{ invoicedata[0].igst }}</span
                 >%
               </td>
-              <td class="py-1">{{ igstamt | number: "1.2-2" }}</td>
+              <td class="py-1">{{ igstamt | number : "1.2-2" }}</td>
             </tr>
             <tr class="text-right" *ngIf="invoicedata">
               <td class="py-1" colspan="5">Round Off (+/-)</td>
-              <td class="py-1">{{ totalroundoff | number: "1.2-2" }}</td>
+              <td class="py-1">{{ totalroundoff | number : "1.2-2" }}</td>
             </tr>
             <tr class="text-right" *ngIf="invoicedata">
               <td class="py-1 font-weight-bold" colspan="5">Total Amount</td>
               <td class="py-1 font-weight-bold">
-                {{ finalamount | number: "1.2-2" }}
+                {{ finalamount | number : "1.2-2" }}
               </td>
             </tr>
           </tbody>

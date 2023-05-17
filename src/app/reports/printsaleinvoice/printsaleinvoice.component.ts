@@ -29,6 +29,7 @@ export class PrintsaleinvoiceComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private _rest: RESTService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this._route.params.subscribe((Response) => {
       this.invoiceno = Response.invoiceno;
       this.getInvoiceDetailsFromInvoiceNo();
