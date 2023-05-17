@@ -77,7 +77,8 @@ export class BillsandcollectionComponent implements OnInit {
 
   getTotalCustomerOpenBal() {
     const _this = this;
-    const urldata = `fromdt=${this._global.getCurrentFinancialYear().fromdt}`;
+    // const urldata = `fromdt=${this._global.getCurrentFinancialYear().fromdt}`;
+    const urldata = `fromdt=${this.finanyr.fromdt}`;
     const promise = new Promise((resolve, reject) => {
       _this._rest
         .getData("client.php", "getTotalCustomerOpenBal", urldata)
@@ -85,7 +86,10 @@ export class BillsandcollectionComponent implements OnInit {
           (Response) => {
             if (Response && Response["data"]) {
               _this.totalopenbal = Response["data"];
-              console.log(_this.totalopenbal);
+              console.log(
+                "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",
+                _this.totalopenbal
+              );
               resolve(Response);
             } else {
               reject("error fetching data");
@@ -111,6 +115,8 @@ export class BillsandcollectionComponent implements OnInit {
             if (Response) {
               _this.allinvoices = Response["data"];
               resolve(_this.allinvoices);
+            } else {
+              resolve([]);
             }
           },
           (err) => {
@@ -132,6 +138,8 @@ export class BillsandcollectionComponent implements OnInit {
             if (Response) {
               _this.allpayments = Response["data"];
               resolve(_this.allpayments);
+            } else {
+              resolve([]);
             }
           },
           (err) => {
@@ -170,13 +178,11 @@ export class BillsandcollectionComponent implements OnInit {
     this.totalamtreceived = 0;
     // Initial Total Opening Balance of Customers
     this.allbillsncollection.push({
-      dated: this._global.getCurrentFinancialYear().fromdt,
+      dated: this.finanyr.fromdt,
       billno: "-",
       particulars:
         `OPENING BALANCE AS ON ` +
-        moment(new Date(this._global.getCurrentFinancialYear().fromdt)).format(
-          "DD-MM-YYYY"
-        ),
+        moment(new Date(this.finanyr.fromdt)).format("DD-MM-YYYY"),
       billamt: 0,
       amtreceived: 0,
       balance: this.totalopenbal,
@@ -229,11 +235,11 @@ export class BillsandcollectionComponent implements OnInit {
     // balance calculation
     let tmpbalance = parseFloat(this.totalopenbal);
     for (let k in this.allbillsncollection) {
-      console.log(
-        tmpbalance,
-        this.allbillsncollection[k].billamt,
-        this.allbillsncollection[k].amtreceived
-      );
+      // console.log(
+      //   tmpbalance,
+      //   this.allbillsncollection[k].billamt,
+      //   this.allbillsncollection[k].amtreceived
+      // );
       this.allbillsncollection[k].balance =
         tmpbalance +
         this.allbillsncollection[k].billamt -
