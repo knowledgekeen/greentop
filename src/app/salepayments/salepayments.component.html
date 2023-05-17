@@ -123,6 +123,9 @@
               {{ mode.paymode }}
             </option>
           </select>
+          <div [hidden]="!showBankAccNotice" class="text-danger">
+            Others won't affect in BANK Account
+          </div>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>
@@ -222,6 +225,9 @@
               {{ mode.paymode }}
             </option>
           </select>
+          <div [hidden]="!showBankAccNotice" class="text-danger">
+            Others won't affect in BANK Account
+          </div>
         </div>
         <div class="col-md-9 col-sm-12 my-3">
           <label class="m-0">Particulars</label>

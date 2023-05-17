@@ -1,14 +1,23 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, ComponentFactory } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+  ComponentFactoryResolver,
+  ComponentRef,
+  ComponentFactory,
+} from "@angular/core";
 import { RESTService } from "../rest.service";
 import { GlobalService } from "../global.service";
 import { IntervalService } from "../interval.service";
 import * as moment from "moment";
-import { SalespayhistoryComponent } from '../salespayhistory/salespayhistory.component';
+import { SalespayhistoryComponent } from "../salespayhistory/salespayhistory.component";
+import { CONSTANTS } from "../app.constants";
 
 @Component({
   selector: "app-salepayments",
   templateUrl: "./salepayments.component.html",
-  styleUrls: ["./salepayments.component.css"]
+  styleUrls: ["./salepayments.component.css"],
 })
 export class SalepaymentsComponent implements OnInit {
   currfinanyr: any = null;
@@ -27,18 +36,20 @@ export class SalepaymentsComponent implements OnInit {
   totalamt: any = null;
   showhideform: boolean = false;
   showmakepay: boolean = false;
+  showBankAccNotice: boolean = false;
   // Make Customer Pay fields
-  custpaydate: string =  null; 
-  customeramtpaid: string = "0"; 
+  custpaydate: string = null;
+  customeramtpaid: string = "0";
 
-  @ViewChild('salespayhistory', { read: ViewContainerRef, static: true }) entry: ViewContainerRef;
+  @ViewChild("salespayhistory", { read: ViewContainerRef, static: true })
+  entry: ViewContainerRef;
 
   constructor(
     private _rest: RESTService,
     private _global: GlobalService,
     private _interval: IntervalService,
     private resolver: ComponentFactoryResolver
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.currfinanyr = this._global.getCurrentFinancialYear();
@@ -50,15 +61,20 @@ export class SalepaymentsComponent implements OnInit {
     this.entry.clear();
     let flag = false;
     for (const i in this.allcustomers) {
-      if ((this.allcustomers[i].clientid+"."+this.allcustomers[i].name) == customer) {
+      if (
+        this.allcustomers[i].clientid + "." + this.allcustomers[i].name ==
+        customer
+      ) {
         flag = true;
         break;
       }
     }
-    if(flag === false){
+    if (flag === false) {
       return;
     }
-    const factory = this.resolver.resolveComponentFactory(SalespayhistoryComponent);
+    const factory = this.resolver.resolveComponentFactory(
+      SalespayhistoryComponent
+    );
     const componentRef = this.entry.createComponent(factory);
     componentRef.instance.customer = customer;
     componentRef.instance.iseditable = true;
@@ -68,7 +84,7 @@ export class SalepaymentsComponent implements OnInit {
     let suppdata = "clienttype=2";
     this._rest
       .getData("client.php", "getAllClients", suppdata)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           //console.log(Response["data"]);
           this.allcustomers = Response["data"];
@@ -79,7 +95,7 @@ export class SalepaymentsComponent implements OnInit {
   getAllPayModes() {
     this._rest
       .getData("payments_common.php", "getAllPayModes", null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         if (Response) {
           //console.log(Response["data"]);
           this.allpaymodes = Response["data"];
@@ -89,15 +105,15 @@ export class SalepaymentsComponent implements OnInit {
 
   autofillPayDt() {
     if (this.paydt)
-    this.paydt = this._global.getAutofillFormattedDt(this.paydt);
+      this.paydt = this._global.getAutofillFormattedDt(this.paydt);
     if (this.custpaydate)
-    this.custpaydate = this._global.getAutofillFormattedDt(this.custpaydate);
+      this.custpaydate = this._global.getAutofillFormattedDt(this.custpaydate);
   }
 
   addPayment() {
     if (parseFloat(this.amtpaid) == 0) {
       this.errormsg = "Amount received cannot be '0'";
-      this._interval.settimer(null).then(resp => {
+      this._interval.settimer(null).then((resp) => {
         this.errormsg = null;
       });
       return;
@@ -108,19 +124,19 @@ export class SalepaymentsComponent implements OnInit {
       custid: this.customer.split(".")[0],
       amtpaid: this.amtpaid,
       paymode: this.paymode,
-      particulars: this.particulars
+      particulars: this.particulars,
     };
     this.disableaddbtn = true;
     console.log(tmpObj);
     //return;
     this._rest
       .postData("sales_payments.php", "addSalesPayment", tmpObj, null)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         //console.log(Response);
         this.loadSalesPaymentHistory(this.customer);
         if (Response) {
           this.successmsg = "Payment done successfully";
-          this._interval.settimer(null).then(resp => {
+          this._interval.settimer(null).then((resp) => {
             this.resetForm();
           });
         }
@@ -137,7 +153,7 @@ export class SalepaymentsComponent implements OnInit {
     this.particulars = null;
     this.payhistory = null;
     this.custpaydate = null;
-    this.customeramtpaid="0";
+    this.customeramtpaid = "0";
   }
 
   setAutoPayMode() {
@@ -147,12 +163,27 @@ export class SalepaymentsComponent implements OnInit {
         break;
       }
     }
+    let tmpPaymodeId: any = -1;
+    for (let j in this.allpaymodes) {
+      if (CONSTANTS.OTHERS === this.allpaymodes[j].paymode) {
+        tmpPaymodeId = this.allpaymodes[j].paymodeid;
+        break;
+      }
+    }
+    if (
+      tmpPaymodeId !== -1 &&
+      parseInt(tmpPaymodeId) === parseInt(this.paymode)
+    ) {
+      this.showBankAccNotice = true;
+    } else {
+      this.showBankAccNotice = false;
+    }
   }
-  
+
   makeCustomerPayment() {
     if (parseFloat(this.customeramtpaid) == 0) {
       this.errormsg = "Amount paid cannot be '0'";
-      this._interval.settimer(null).then(resp => {
+      this._interval.settimer(null).then((resp) => {
         this.errormsg = null;
       });
       return;
@@ -163,16 +194,16 @@ export class SalepaymentsComponent implements OnInit {
       custid: this.customer.split(".")[0],
       customeramtpaid: this.customeramtpaid,
       paymode: this.paymode,
-      particulars: this.particulars
+      particulars: this.particulars,
     };
     this.disableaddbtn = true;
     this._rest
       .postData("sales_payments.php", "makeCustomerPayments", tmpObj)
-      .subscribe(Response => {
+      .subscribe((Response) => {
         this.loadSalesPaymentHistory(this.customer);
         if (Response) {
           this.custpaysuccessmsg = "Payment done successfully";
-          this._interval.settimer(null).then(resp => {
+          this._interval.settimer(null).then((resp) => {
             this.resetForm();
           });
         }
