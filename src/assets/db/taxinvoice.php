@@ -86,7 +86,7 @@ if($action == "getInvoicesFromToDt"){
 	authenticate($headers);
 	$fromdt = $_GET["fromdt"];
 	$todt = $_GET["todt"];
-	$sql = "SELECT DISTINCT(ot.`otaxinvoiceid`),ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, pm.`hsncode`, cm.`name`,cm.`city`, cm.`gstno`, dr.`dcno`,dr.`dispatchdate`,dr.`vehicalno` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm, `dispatch_register` dr WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid` = dr.`orderid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY ot.`otaxinvoiceid`,ot.`billno`";
+	$sql = "SELECT DISTINCT(ot.`otaxinvoiceid`),ot.`orderid`,ot.`clientid`,ot.`billno`,ot.`billdt`,ot.`amount`,ot.`discount`,ot.`rate`,ot.`cgst`,ot.`sgst`,ot.`igst`,ot.`roundoff`,ot.`totalamount`, ot.`status`, om.`orderno`,om.`orderdt`,om.`prodid`,om.`quantity`, pm.`prodname`, pm.`hsncode`, cm.`name`,cm.`city`, cm.`gstno`, dr.`dcno`,dr.`dispatchdate`,dr.`vehicalno` FROM `order_taxinvoice` ot, `order_master` om, `product_master` pm, `client_master` cm, `dispatch_register` dr WHERE om.`status`='closed' AND om.`prodid`=pm.`prodid` AND ot.`orderid`=om.`orderid` AND ot.`clientid`=cm.`clientid` AND ot.`orderid` = dr.`orderid` AND ot.`billdt` BETWEEN '$fromdt' AND '$todt' ORDER BY ot.`otaxinvoiceid`,ot.`billno`";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_array())
 	{
@@ -100,6 +100,12 @@ if($action == "getInvoicesFromToDt"){
 	if($rows && count($rows)>0){
 		foreach($rows as $row)
 		{
+			$quantity = $row['quantity'];
+			$clientname = $row['name'];
+			if($row['status'] == 'cancelled'){
+				$quantity = 0;
+				$clientname = $row['name']." (Only Invoice Cancelled)";
+			}
 			$tmp[$i]['otaxinvoiceid'] = $row['otaxinvoiceid'];
 			$tmp[$i]['billno'] = $row['billno'];
 			$tmp[$i]['billdt'] = $row['billdt'];
@@ -117,14 +123,15 @@ if($action == "getInvoicesFromToDt"){
 			$tmp[$i]['prodid'] = $row['prodid'];
 			$tmp[$i]['prodname'] = $row['prodname'];
 			$tmp[$i]['hsncode'] = $row['hsncode'];
-			$tmp[$i]['quantity'] = $row['quantity'];
+			$tmp[$i]['quantity'] = $quantity;
 			$tmp[$i]['clientid'] = $row['clientid'];
-			$tmp[$i]['name'] = $row['name'];
+			$tmp[$i]['name'] = $clientname;
 			$tmp[$i]['city'] = $row['city'];
 			$tmp[$i]['gstno'] = $row['gstno'];
 			$tmp[$i]['dcno'] = $row['dcno'];
 			$tmp[$i]['dispatchdate'] = $row['dispatchdate'];
 			$tmp[$i]['vehicalno'] = $row['vehicalno'];
+			$tmp[$i]['status'] = $row['status'];
 			$i++;
 		}
 		$data["status"] = 200;
